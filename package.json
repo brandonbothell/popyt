@@ -1,0 +1,21 @@
+{
+  "name": "better-youtube-api",
+  "version": "0.0.1",
+  "description": "Better than simple ones.",
+  "main": "out/index.js",
+  "scripts": {
+    "test": "tsc && node ./out/test.js",
+    "prepublish": "tsc"
+  },
+  "author": "jasonhaxstuff",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "googleapis": "^32.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.6",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^7.1.0",
+    "typescript": "^3.0.1"
+  }
+}

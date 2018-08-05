@@ -1,0 +1,5 @@
+node_modules
+src/test.js
+src/config.ts
+out/test.*
+out/config.*

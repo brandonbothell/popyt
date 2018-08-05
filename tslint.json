@@ -1,0 +1,16 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-standard"
+  ],
+  "rules": {
+    "no-unused-expression": true,
+    "no-unused-variable": true,
+    "no-unnecessary-qualifier": true,
+    "space-before-function-paren": true,
+    "jsdoc-format": false,
+    "radix": false
+  },
+  "rulesDirectory": [
+  ]
+}
