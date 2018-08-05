@@ -36,6 +36,9 @@ class YouTube {
                 part: 'snippet',
                 type: 'video'
             });
+            if (maxResults === 1) {
+                return new entities_1.Video(this, results.items[0]);
+            }
             let videos = [];
             for (let i = 0; i < results.items.length; i++) {
                 videos.push(new entities_1.Video(this, results.items[i]));
@@ -118,6 +121,9 @@ class YouTube {
                 part: 'snippet',
                 auth: this.token
             });
+            if (maxResults === 1) {
+                return new entities_1.Playlist(this, results.items[0]);
+            }
             let playlists = [];
             for (let i = 0; i < results.items.length; i++) {
                 playlists.push(new entities_1.Playlist(this, results.items[i]));

@@ -28,6 +28,10 @@ export class YouTube {
       type: 'video'
     })
 
+    if (maxResults === 1) {
+      return new Video(this, results.items[0])
+    }
+
     let videos: Video[] = []
 
     for (let i = 0; i < results.items.length; i++) {
@@ -116,6 +120,10 @@ export class YouTube {
       part: 'snippet',
       auth: this.token
     })
+
+    if (maxResults === 1) {
+      return new Playlist(this, results.items[0])
+    }
 
     let playlists: Playlist[] = []
 
