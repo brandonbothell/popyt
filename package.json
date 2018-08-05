@@ -12,6 +12,13 @@
   "dependencies": {
     "googleapis": "^32.0.0"
   },
+  "keywords": [
+    "youtube",
+    "api",
+    "search",
+    "youtube search",
+    "youtube api"
+  ],
   "devDependencies": {
     "@types/node": "^10.5.6",
     "tslint": "^5.11.0",
