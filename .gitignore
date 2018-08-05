@@ -1,5 +1,5 @@
 node_modules
-src/test.js
-src/config.ts
+src/test.*
+src/config.*
 out/test.*
 out/config.*
