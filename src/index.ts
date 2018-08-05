@@ -13,7 +13,7 @@ export class YouTube {
 
   /**
    *
-   * @param token Your YouTube Data API v3 token.
+   * @param token Your YouTube Data API v3 token. Don't share this with anybody.
    */
   constructor (token: string) {
     this.token = token
