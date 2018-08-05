@@ -133,14 +133,47 @@ class YouTube {
     }
     getPlaylistItems(playlistId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: results } = yield youtube.playlistItems.list({
+            let { data: results } = yield youtube.playlistItems.list({
                 playlistId,
                 part: 'snippet',
-                auth: this.token
+                auth: this.token,
+                maxResults: 50
             });
+            let oldRes;
             let videos = [];
-            for (let i = 0; i < results.items.length; i++) {
-                videos.push(new entities_1.Video(this, results.items[i]));
+            results.items.forEach(item => {
+                videos.push(new entities_1.Video(this, item));
+            });
+            while (true) {
+                if (!results.nextPageToken) {
+                    break;
+                }
+                let newResults;
+                if (!oldRes) {
+                    newResults = (yield youtube.playlistItems.list({
+                        playlistId,
+                        part: 'snippet',
+                        auth: this.token,
+                        maxResults: 50,
+                        pageToken: results.nextPageToken
+                    })).data;
+                }
+                else {
+                    newResults = (yield youtube.playlistItems.list({
+                        playlistId,
+                        part: 'snippet',
+                        auth: this.token,
+                        maxResults: 50,
+                        pageToken: oldRes.nextPageToken
+                    })).data;
+                }
+                oldRes = newResults;
+                newResults.items.forEach((item) => {
+                    videos.push(new entities_1.Video(this, item));
+                });
+                if (!oldRes.nextPageToken) {
+                    break;
+                }
             }
             return videos;
         });

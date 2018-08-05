@@ -1,4 +1,4 @@
-import { google } from 'googleapis'
+import { google, youtube_v3 } from 'googleapis'
 import { Video, Channel, Playlist } from './entities'
 import axios from 'axios'
 export * from './entities'
@@ -135,16 +135,53 @@ export class YouTube {
   }
 
   public async getPlaylistItems (playlistId: string) {
-    const { data: results } = await youtube.playlistItems.list({
+    let { data: results } = await youtube.playlistItems.list({
       playlistId,
       part: 'snippet',
-      auth: this.token
+      auth: this.token,
+      maxResults: 50
     })
 
+    let oldRes: youtube_v3.Schema$PlaylistItemListResponse
     let videos: Video[] = []
 
-    for (let i = 0; i < results.items.length; i++) {
-      videos.push(new Video(this, results.items[i]))
+    results.items.forEach(item => {
+      videos.push(new Video(this, item))
+    })
+
+    while (true) {
+      if (!results.nextPageToken) {
+        break
+      }
+
+      let newResults: youtube_v3.Schema$PlaylistItemListResponse
+
+      if (!oldRes) {
+        newResults = (await youtube.playlistItems.list({
+          playlistId,
+          part: 'snippet',
+          auth: this.token,
+          maxResults: 50,
+          pageToken: results.nextPageToken
+        })).data
+      } else {
+        newResults = (await youtube.playlistItems.list({
+          playlistId,
+          part: 'snippet',
+          auth: this.token,
+          maxResults: 50,
+          pageToken: oldRes.nextPageToken
+        })).data
+      }
+
+      oldRes = newResults
+      newResults.items.forEach((item) => {
+        videos.push(new Video(this, item))
+      })
+
+      if (!oldRes.nextPageToken) {
+        break
+      }
     }
 
     return videos
