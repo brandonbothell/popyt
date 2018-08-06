@@ -1,6 +1,6 @@
 {
   "name": "better-youtube-api",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Better than simple ones.",
   "main": "out/index.js",
   "scripts": {

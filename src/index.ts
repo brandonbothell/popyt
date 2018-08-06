@@ -259,7 +259,7 @@ export class YouTube {
       newResults.items.forEach((item) => {
         videos.push(new Video(this, item))
       })
-    }, 100)
+    }, 1)
 
     return videos
   }
