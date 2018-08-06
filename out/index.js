@@ -206,39 +206,30 @@ class YouTube {
             if (results.items.length === 0) {
                 Promise.reject('Playlist not found.');
             }
-            let oldRes;
+            let oldRes = results;
             let videos = [];
+            const totalResults = results.pageInfo.totalResults;
+            const perPage = 50;
+            const pages = Math.floor(totalResults / perPage);
             results.items.forEach(item => {
                 videos.push(new entities_1.Video(this, item));
             });
-            const interval = setInterval(() => __awaiter(this, void 0, void 0, function* () {
-                if (!results.nextPageToken || !oldRes.nextPageToken) {
-                    clearInterval(interval);
-                }
-                let newResults;
-                if (!oldRes) {
-                    newResults = (yield youtube.playlistItems.list({
-                        playlistId,
-                        part: 'snippet',
-                        auth: this.token,
-                        maxResults: 50,
-                        pageToken: results.nextPageToken
-                    })).data;
-                }
-                else {
-                    newResults = (yield youtube.playlistItems.list({
-                        playlistId,
-                        part: 'snippet',
-                        auth: this.token,
-                        maxResults: 50,
-                        pageToken: oldRes.nextPageToken
-                    })).data;
-                }
+            if (pages === 0) {
+                return videos;
+            }
+            for (let i = 0; i < pages; i++) {
+                const { data: newResults } = yield youtube.playlistItems.list({
+                    playlistId,
+                    part: 'snippet',
+                    auth: this.token,
+                    maxResults: 50,
+                    pageToken: oldRes.nextPageToken
+                });
                 oldRes = newResults;
                 newResults.items.forEach((item) => {
                     videos.push(new entities_1.Video(this, item));
                 });
-            }), 100);
+            }
             return videos;
         });
     }

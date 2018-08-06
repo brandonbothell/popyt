@@ -223,43 +223,34 @@ export class YouTube {
       Promise.reject('Playlist not found.')
     }
 
-    let oldRes: youtube_v3.Schema$PlaylistItemListResponse
+    let oldRes: youtube_v3.Schema$PlaylistItemListResponse = results
     let videos: Video[] = []
+    const totalResults = results.pageInfo.totalResults
+    const perPage = 50
+    const pages = Math.floor(totalResults / perPage)
 
     results.items.forEach(item => {
       videos.push(new Video(this, item))
     })
 
-    const interval = setInterval(async () => {
-      if (!results.nextPageToken || !oldRes.nextPageToken) {
-        clearInterval(interval)
-      }
+    if (pages === 0) {
+      return videos
+    }
 
-      let newResults: youtube_v3.Schema$PlaylistItemListResponse
-
-      if (!oldRes) {
-        newResults = (await youtube.playlistItems.list({
-            playlistId,
-            part: 'snippet',
-            auth: this.token,
-            maxResults: 50,
-            pageToken: results.nextPageToken
-          })).data
-      } else {
-        newResults = (await youtube.playlistItems.list({
-            playlistId,
-            part: 'snippet',
-            auth: this.token,
-            maxResults: 50,
-            pageToken: oldRes.nextPageToken
-          })).data
-      }
+    for (let i = 0; i < pages; i++) {
+      const { data: newResults } = await youtube.playlistItems.list({
+        playlistId,
+        part: 'snippet',
+        auth: this.token,
+        maxResults: 50,
+        pageToken: oldRes.nextPageToken
+      })
 
       oldRes = newResults
       newResults.items.forEach((item) => {
         videos.push(new Video(this, item))
       })
-    }, 1)
+    }
 
     return videos
   }
