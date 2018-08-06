@@ -13,6 +13,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const googleapis_1 = require("googleapis");
 const entities_1 = require("./entities");
+const util_1 = require("./util");
 const axios_1 = require("axios");
 __export(require("./entities"));
 const youtube = googleapis_1.google.youtube('v3');
@@ -53,6 +54,26 @@ class YouTube {
                 part: 'snippet,contentDetails',
                 auth: this.token
             });
+            if (video.items.length === 0) {
+                Promise.reject('Video not found.');
+            }
+            return new entities_1.Video(this, video.items[0]);
+        });
+    }
+    getVideoByUrl(url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = util_1.parseUrl(url);
+            if (!id.video) {
+                return Promise.reject('Not a valid video url.');
+            }
+            const { data: video } = yield youtube.videos.list({
+                id: id.video,
+                part: 'snippet,contentDetails',
+                auth: this.token
+            });
+            if (video.items.length === 0) {
+                Promise.reject('Video not found.');
+            }
             return new entities_1.Video(this, video.items[0]);
         });
     }
@@ -82,9 +103,29 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: channel } = yield youtube.channels.list({
                 id,
-                part: 'snippet,statistics,status',
+                part: 'snippet,statistics,status,contentDetails',
                 auth: this.token
             });
+            if (channel.items.length === 0) {
+                Promise.reject('Channel not found.');
+            }
+            return new entities_1.Channel(this, channel.items[0]);
+        });
+    }
+    getChannelByUrl(url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = util_1.parseUrl(url);
+            if (!id.channel) {
+                return Promise.reject('Not a valid channel url.');
+            }
+            const { data: channel } = yield youtube.channels.list({
+                id: id.channel,
+                part: 'snippet,statistics,status,contentDetails',
+                auth: this.token
+            });
+            if (channel.items.length === 0) {
+                Promise.reject('Channel not found.');
+            }
             return new entities_1.Channel(this, channel.items[0]);
         });
     }
@@ -96,6 +137,9 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             let videos = [];
             const { data: results } = yield axios_1.default.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${id}&order=date&key=${this.token}&maxResults=50`);
+            if (results.items.length === 0) {
+                Promise.reject('Channel not found.');
+            }
             for (let i = 0; i < results.items.length; i++) {
                 videos.push(new entities_1.Video(this, results.items[i]));
             }
@@ -109,6 +153,26 @@ class YouTube {
                 part: 'snippet,contentDetails,player',
                 auth: this.token
             });
+            if (playlist.items.length === 0) {
+                Promise.reject('Playlist not found.');
+            }
+            return new entities_1.Playlist(this, playlist.items[0]);
+        });
+    }
+    getPlaylistByUrl(url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = util_1.parseUrl(url);
+            if (!id.playlist) {
+                return Promise.reject('Not a valid playlist url.');
+            }
+            const { data: playlist } = yield youtube.playlists.list({
+                id: id.playlist,
+                part: 'snippet,contentDetails,player',
+                auth: this.token
+            });
+            if (playlist.items.length === 0) {
+                Promise.reject('Playlist not found.');
+            }
             return new entities_1.Playlist(this, playlist.items[0]);
         });
     }
@@ -139,14 +203,17 @@ class YouTube {
                 auth: this.token,
                 maxResults: 50
             });
+            if (results.items.length === 0) {
+                Promise.reject('Playlist not found.');
+            }
             let oldRes;
             let videos = [];
             results.items.forEach(item => {
                 videos.push(new entities_1.Video(this, item));
             });
-            while (true) {
-                if (!results.nextPageToken) {
-                    break;
+            const interval = setInterval(() => __awaiter(this, void 0, void 0, function* () {
+                if (!results.nextPageToken || !oldRes.nextPageToken) {
+                    clearInterval(interval);
                 }
                 let newResults;
                 if (!oldRes) {
@@ -171,10 +238,7 @@ class YouTube {
                 newResults.items.forEach((item) => {
                     videos.push(new entities_1.Video(this, item));
                 });
-                if (!oldRes.nextPageToken) {
-                    break;
-                }
-            }
+            }), 100);
             return videos;
         });
     }

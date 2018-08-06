@@ -49,6 +49,15 @@ class Channel {
             return Object.assign(this, channel);
         });
     }
+    getVideos() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.data.contentDetails) {
+                const videos = yield this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads);
+                this.videos = videos;
+                return videos;
+            }
+        });
+    }
 }
 exports.Channel = Channel;
 //# sourceMappingURL=Channel.js.map

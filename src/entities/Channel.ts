@@ -1,5 +1,6 @@
 import { YouTube } from '..'
 import { youtube_v3 } from 'googleapis'
+import { Playlist } from '.'
 
 /**
  * A YouTube channel.
@@ -75,6 +76,8 @@ export class Channel {
    */
   public status: youtube_v3.Schema$ChannelStatus
 
+  public videos: Playlist
+
   constructor (youtube: YouTube, data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult) {
     this.youtube = youtube
     this.data = data
@@ -113,5 +116,14 @@ export class Channel {
   public async fetch () {
     const channel = await this.youtube.getChannel(this.id)
     return Object.assign(this, channel)
+  }
+
+  public async getVideos () {
+    if ((this.data as youtube_v3.Schema$Channel).contentDetails) {
+      const videos = await this.youtube.getPlaylist((this.data as youtube_v3.Schema$Channel).contentDetails.relatedPlaylists.uploads)
+      this.videos = videos
+
+      return videos
+    }
   }
 }

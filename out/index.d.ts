@@ -14,9 +14,11 @@ export class YouTube {
 
   public searchVideos(searchTerm: string, maxResults: number): Promise<Video[] | Video>
   public getVideo(id: string): Promise<Video>
+  public getVideoByUrl(url: string): Promise<Video>
 
   public searchChannels(searchTerm: string, maxResults: number): Promise<Channel[] | Channel>
   public getChannel(id: string): Promise<Channel>
+  public getChannelByUrl(url: string): Promise<Channel>
 
   /**
    * Gets the 50 latest videos from a channel.
@@ -25,6 +27,7 @@ export class YouTube {
   public getChannelVideos(id: string): Promise<Video[]>
 
   public getPlaylist(id: string): Promise<Playlist>
+  public getPlaylistByUrl(url: string): Promise<Playlist>
   public searchPlaylists(searchTerm: string, maxResults: number): Promise<Playlist[] | Playlist>
   public getPlaylistItems(playlistId: string): Promise<Video[]>
 }
@@ -190,6 +193,11 @@ export class Channel {
    */
   public status: youtube_v3.Schema$ChannelStatus
 
+  /**
+   * The channel's uploads. Only available after called `Channel#getVideos()`
+   */
+  public videos: Playlist
+
   constructor (youtube: YouTube, data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult)
 
   /**
@@ -197,6 +205,11 @@ export class Channel {
    * Only useful if `this.full` is false, or if you want updated channel info.
    */
   public fetch (): Promise<this & Channel>
+
+  /**
+   * Fetches the channel's videos and assigns them to the `Channel#videos` property.
+   */
+  public getVideos (): Promise<Playlist>
 }
 
 /**
