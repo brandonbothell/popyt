@@ -2,6 +2,8 @@
 Want to access data from the YouTube Data v3 API? No problem! We've got ya covered.
 
 # Examples
+First of all, I recommend that you check out `out/index.d.ts` for all of the methods and what they return. Here are some basic methods:
+
 Instantiate the object:
 
 ```js
