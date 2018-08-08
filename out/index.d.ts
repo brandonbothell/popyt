@@ -7,17 +7,46 @@ export class YouTube {
   public token: string
 
   /**
-   *
    * @param token Your YouTube Data API v3 token. Don't share this with anybody.
    */
   constructor(token: string)
 
+  /**
+   * Search videos on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
   public searchVideos(searchTerm: string, maxResults: number): Promise<Video[] | Video>
+
+  /**
+   * Get a video object from the ID of a video.
+   * @param id The ID of the video.
+   */
   public getVideo(id: string): Promise<Video>
+
+  /**
+   * Get a video object from the url of a video.
+   * @param url The url of the video.
+   */
   public getVideoByUrl(url: string): Promise<Video>
 
+  /**
+   * Search channels on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
   public searchChannels(searchTerm: string, maxResults: number): Promise<Channel[] | Channel>
+
+  /**
+   * Get a channel object from the ID of a channel.
+   * @param id The url of the channel.
+   */
   public getChannel(id: string): Promise<Channel>
+
+  /**
+   * Get a channel object from the url of a channel.
+   * @param url The url of the channel.
+   */
   public getChannelByUrl(url: string): Promise<Channel>
 
   /**
@@ -26,9 +55,29 @@ export class YouTube {
    */
   public getChannelVideos(id: string): Promise<Video[]>
 
+  /**
+   * Get a playlist object from the ID of a playlist.
+   * @param id The url of the playlist.
+   */
   public getPlaylist(id: string): Promise<Playlist>
+
+  /**
+   * Get a playlist object from the url of a playlist.
+   * @param url The url of the playlist.
+   */
   public getPlaylistByUrl(url: string): Promise<Playlist>
+
+  /**
+   * Search playlists on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
   public searchPlaylists(searchTerm: string, maxResults: number): Promise<Playlist[] | Playlist>
+
+  /**
+   * Get every single video in a playlist. Used mostly internally with `Playlist#getVideos`.
+   * @param playlistId The ID of the playlist.
+   */
   public getPlaylistItems(playlistId: string): Promise<Video[]>
 }
 
@@ -282,8 +331,15 @@ export class Playlist {
   public tags: string[]
 
   constructor (youtube: YouTube, data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult)
-
+ 
+  /**
+   * Gets every video in the playlist and assigns them to the `videos` property of it.
+   */
   public getVideos (): Promise<Video[]>
 
+  /**
+   * Fetches this playlist and reassigns this object to the new playlist object.
+   * Only useful if `this.full` is false, or if you want updated playlist info.
+   */
   public fetch (): Promise<this & Playlist>
 }

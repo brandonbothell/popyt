@@ -28,8 +28,16 @@ class YouTube {
     constructor(token) {
         this.token = token;
     }
+    /**
+     * Search videos on YouTube.
+     * @param searchTerm What to search for on YouTube.
+     * @param maxResults The maximum amount of results to find. Defaults to 10.
+     */
     searchVideos(searchTerm, maxResults = 10) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (maxResults < 1 || maxResults > 50) {
+                return Promise.reject('Max results must be greater than 0 and less or equal to 50.');
+            }
             const { data: results } = yield youtube.search.list({
                 q: searchTerm,
                 maxResults,
@@ -47,6 +55,10 @@ class YouTube {
             return videos;
         });
     }
+    /**
+     * Get a video object from the ID of a video.
+     * @param id The ID of the video.
+     */
     getVideo(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: video } = yield youtube.videos.list({
@@ -55,11 +67,15 @@ class YouTube {
                 auth: this.token
             });
             if (video.items.length === 0) {
-                Promise.reject('Video not found.');
+                return Promise.reject('Video not found.');
             }
             return new entities_1.Video(this, video.items[0]);
         });
     }
+    /**
+     * Get a video object from the url of a video.
+     * @param url The url of the video.
+     */
     getVideoByUrl(url) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = util_1.parseUrl(url);
@@ -72,15 +88,20 @@ class YouTube {
                 auth: this.token
             });
             if (video.items.length === 0) {
-                Promise.reject('Video not found.');
+                return Promise.reject('Video not found.');
             }
             return new entities_1.Video(this, video.items[0]);
         });
     }
+    /**
+     * Search channels on YouTube.
+     * @param searchTerm What to search for on YouTube.
+     * @param maxResults The maximum amount of results to find. Defaults to 10.
+     */
     searchChannels(searchTerm, maxResults = 10) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (maxResults < 1) {
-                throw new Error('Max results must be greater than 0.');
+            if (maxResults < 1 || maxResults > 50) {
+                return Promise.reject('Max results must be greater than 0 and less or equal to 50.');
             }
             const { data: results } = yield youtube.search.list({
                 q: searchTerm,
@@ -99,6 +120,10 @@ class YouTube {
             return channels;
         });
     }
+    /**
+     * Get a channel object from the ID of a channel.
+     * @param id The url of the channel.
+     */
     getChannel(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: channel } = yield youtube.channels.list({
@@ -107,11 +132,15 @@ class YouTube {
                 auth: this.token
             });
             if (channel.items.length === 0) {
-                Promise.reject('Channel not found.');
+                return Promise.reject('Channel not found.');
             }
             return new entities_1.Channel(this, channel.items[0]);
         });
     }
+    /**
+     * Get a channel object from the url of a channel.
+     * @param url The url of the channel.
+     */
     getChannelByUrl(url) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = util_1.parseUrl(url);
@@ -124,7 +153,7 @@ class YouTube {
                 auth: this.token
             });
             if (channel.items.length === 0) {
-                Promise.reject('Channel not found.');
+                return Promise.reject('Channel not found.');
             }
             return new entities_1.Channel(this, channel.items[0]);
         });
@@ -138,7 +167,7 @@ class YouTube {
             let videos = [];
             const { data: results } = yield axios_1.default.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${id}&order=date&key=${this.token}&maxResults=50`);
             if (results.items.length === 0) {
-                Promise.reject('Channel not found.');
+                return Promise.reject('Channel not found/has no videos.');
             }
             for (let i = 0; i < results.items.length; i++) {
                 videos.push(new entities_1.Video(this, results.items[i]));
@@ -146,6 +175,10 @@ class YouTube {
             return videos;
         });
     }
+    /**
+     * Get a playlist object from the ID of a playlist.
+     * @param id The url of the playlist.
+     */
     getPlaylist(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: playlist } = yield youtube.playlists.list({
@@ -154,11 +187,15 @@ class YouTube {
                 auth: this.token
             });
             if (playlist.items.length === 0) {
-                Promise.reject('Playlist not found.');
+                return Promise.reject('Playlist not found.');
             }
             return new entities_1.Playlist(this, playlist.items[0]);
         });
     }
+    /**
+     * Get a playlist object from the url of a playlist.
+     * @param url The url of the playlist.
+     */
     getPlaylistByUrl(url) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = util_1.parseUrl(url);
@@ -171,13 +208,21 @@ class YouTube {
                 auth: this.token
             });
             if (playlist.items.length === 0) {
-                Promise.reject('Playlist not found.');
+                return Promise.reject('Playlist not found.');
             }
             return new entities_1.Playlist(this, playlist.items[0]);
         });
     }
+    /**
+     * Search playlists on YouTube.
+     * @param searchTerm What to search for on YouTube.
+     * @param maxResults The maximum amount of results to find. Defaults to 10.
+     */
     searchPlaylists(searchTerm, maxResults = 10) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (maxResults > 50 || maxResults < 1) {
+                return Promise.reject('Max results must be 50 or below, and greater than 0.');
+            }
             const { data: results } = yield youtube.search.list({
                 q: searchTerm,
                 maxResults,
@@ -195,28 +240,44 @@ class YouTube {
             return playlists;
         });
     }
-    getPlaylistItems(playlistId) {
+    /**
+     * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
+     * If <= 0 or not included, returns all videos in the playlist.
+     * @param playlistId The ID of the playlist.
+     * @param maxResults The maximum amount of videos to get from the playlist.
+     */
+    getPlaylistItems(playlistId, maxResults = -1) {
         return __awaiter(this, void 0, void 0, function* () {
+            let full;
+            let videos = [];
+            if (maxResults <= 0) {
+                full = true;
+            }
+            else {
+                full = false;
+            }
+            if (maxResults > 50) {
+                return Promise.reject('Max results must be 50 or below.');
+            }
             let { data: results } = yield youtube.playlistItems.list({
                 playlistId,
                 part: 'snippet',
                 auth: this.token,
-                maxResults: 50
+                maxResults: full ? 50 : maxResults
             });
             if (results.items.length === 0) {
-                Promise.reject('Playlist not found.');
+                return Promise.reject('Playlist not found.');
             }
-            let oldRes = results;
-            let videos = [];
             const totalResults = results.pageInfo.totalResults;
             const perPage = 50;
             const pages = Math.floor(totalResults / perPage);
             results.items.forEach(item => {
                 videos.push(new entities_1.Video(this, item));
             });
-            if (pages === 0) {
+            if (!full || pages === 0) {
                 return videos;
             }
+            let oldRes = results;
             for (let i = 0; i < pages; i++) {
                 const { data: newResults } = yield youtube.playlistItems.list({
                     playlistId,
