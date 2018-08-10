@@ -50,22 +50,15 @@ export class Video {
    */
   public channelId: string
 
-  /**
-   * The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S,
-   * in which the letters PT indicate that the value specifies a period of time, and the letters
-   * M and S refer to length in minutes and seconds, respectively. The # characters preceding the
-   * M and S letters are both integers that specify the number of minutes (or seconds) of the video.
-   * For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long.
-   */
-  public length: string
+  private _length: string
 
   /**
-   * The length of the video in minutes.
+   * The minutes of the video.
    */
   public minutes: number
 
   /**
-   * The length of the video in seconds.
+   * The seconds of the video.
    */
   public seconds: number
 
@@ -91,9 +84,9 @@ export class Video {
       const video = data as youtube_v3.Schema$Video
 
       this.id = video.id
-      this.length = video.contentDetails.duration
-      this.minutes = parseInt(this.length.substring(this.length.indexOf('PT') + 2, this.length.indexOf('M')))
-      this.seconds = parseInt(this.length.substring(this.length.indexOf('M') + 1, this.length.length - 1))
+      this._length = video.contentDetails.duration
+      this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')))
+      this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1))
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = (data.snippet as youtube_v3.Schema$PlaylistItemSnippet).resourceId.videoId
     } else if (data.kind === 'youtube#searchResult') {

@@ -119,11 +119,13 @@ export class Channel {
   }
 
   public async getVideos () {
-    if ((this.data as youtube_v3.Schema$Channel).contentDetails) {
-      const videos = await this.youtube.getPlaylist((this.data as youtube_v3.Schema$Channel).contentDetails.relatedPlaylists.uploads)
-      this.videos = videos
-
-      return videos
+    if (!((this.data as youtube_v3.Schema$Channel).contentDetails)) {
+      await this.fetch()
     }
+
+    const videos = await this.youtube.getPlaylist((this.data as youtube_v3.Schema$Channel).contentDetails.relatedPlaylists.uploads)
+    this.videos = videos
+
+    return videos
   }
 }

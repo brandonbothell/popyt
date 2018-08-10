@@ -14,7 +14,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const googleapis_1 = require("googleapis");
 const entities_1 = require("./entities");
 const util_1 = require("./util");
-const axios_1 = require("axios");
 __export(require("./entities"));
 const youtube = googleapis_1.google.youtube('v3');
 /**
@@ -36,7 +35,7 @@ class YouTube {
     searchVideos(searchTerm, maxResults = 10) {
         return __awaiter(this, void 0, void 0, function* () {
             if (maxResults < 1 || maxResults > 50) {
-                return Promise.reject('Max results must be greater than 0 and less or equal to 50.');
+                return Promise.reject('Max results must be greater than 0 and less than or equal to 50.');
             }
             const { data: results } = yield youtube.search.list({
                 q: searchTerm,
@@ -101,7 +100,7 @@ class YouTube {
     searchChannels(searchTerm, maxResults = 10) {
         return __awaiter(this, void 0, void 0, function* () {
             if (maxResults < 1 || maxResults > 50) {
-                return Promise.reject('Max results must be greater than 0 and less or equal to 50.');
+                return Promise.reject('Max results must be greater than 0 and less than or equal to 50.');
             }
             const { data: results } = yield youtube.search.list({
                 q: searchTerm,
@@ -156,23 +155,6 @@ class YouTube {
                 return Promise.reject('Channel not found.');
             }
             return new entities_1.Channel(this, channel.items[0]);
-        });
-    }
-    /**
-     * Gets the 50 latest videos from a channel.
-     * @param id The ID of the channel.
-     */
-    getChannelVideos(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let videos = [];
-            const { data: results } = yield axios_1.default.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${id}&order=date&key=${this.token}&maxResults=50`);
-            if (results.items.length === 0) {
-                return Promise.reject('Channel not found/has no videos.');
-            }
-            for (let i = 0; i < results.items.length; i++) {
-                videos.push(new entities_1.Video(this, results.items[i]));
-            }
-            return videos;
         });
     }
     /**
@@ -242,9 +224,8 @@ class YouTube {
     }
     /**
      * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
-     * If <= 0 or not included, returns all videos in the playlist.
      * @param playlistId The ID of the playlist.
-     * @param maxResults The maximum amount of videos to get from the playlist.
+     * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
      */
     getPlaylistItems(playlistId, maxResults = -1) {
         return __awaiter(this, void 0, void 0, function* () {

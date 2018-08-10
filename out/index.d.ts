@@ -50,12 +50,6 @@ export class YouTube {
   public getChannelByUrl(url: string): Promise<Channel>
 
   /**
-   * Gets the 50 latest videos from a channel.
-   * @param id The ID of the channel.
-   */
-  public getChannelVideos(id: string): Promise<Video[]>
-
-  /**
    * Get a playlist object from the ID of a playlist.
    * @param id The url of the playlist.
    */
@@ -75,10 +69,11 @@ export class YouTube {
   public searchPlaylists(searchTerm: string, maxResults: number): Promise<Playlist[] | Playlist>
 
   /**
-   * Get every single video in a playlist. Used mostly internally with `Playlist#getVideos`.
+   * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
    * @param playlistId The ID of the playlist.
+   * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
-  public getPlaylistItems(playlistId: string): Promise<Video[]>
+  public getPlaylistItems(playlistId: string, maxResults?: number): Promise<Video[]>
 }
 
 /**
@@ -131,21 +126,12 @@ export class Video {
   public channelId: string
 
   /**
-   * The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S,
-   * in which the letters PT indicate that the value specifies a period of time, and the letters
-   * M and S refer to length in minutes and seconds, respectively. The # characters preceding the
-   * M and S letters are both integers that specify the number of minutes (or seconds) of the video.
-   * For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long.
-   */
-  public length: string
-
-  /**
-   * The length of the video in minutes.
+   * The minutes of the video.
    */
   public minutes: number
 
   /**
-   * The length of the video in seconds.
+   * The seconds of the video.
    */
   public seconds: number
 

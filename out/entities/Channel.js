@@ -51,11 +51,12 @@ class Channel {
     }
     getVideos() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (this.data.contentDetails) {
-                const videos = yield this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads);
-                this.videos = videos;
-                return videos;
+            if (!(this.data.contentDetails)) {
+                yield this.fetch();
             }
+            const videos = yield this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads);
+            this.videos = videos;
+            return videos;
         });
     }
 }

@@ -27,7 +27,7 @@ export class YouTube {
    */
   public async searchVideos (searchTerm: string, maxResults: number = 10) {
     if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be greater than 0 and less or equal to 50.')
+      return Promise.reject('Max results must be greater than 0 and less than or equal to 50.')
     }
 
     const { data: results } = await youtube.search.list({
@@ -100,7 +100,7 @@ export class YouTube {
    */
   public async searchChannels (searchTerm: string, maxResults: number = 10) {
     if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be greater than 0 and less or equal to 50.')
+      return Promise.reject('Max results must be greater than 0 and less than or equal to 50.')
     }
 
     const { data: results } = await youtube.search.list({
@@ -164,25 +164,6 @@ export class YouTube {
     }
 
     return new Channel(this, channel.items[0])
-  }
-
-  /**
-   * Gets the 50 latest videos from a channel.
-   * @param id The ID of the channel.
-   */
-  public async getChannelVideos (id: string) {
-    let videos: Video[] = []
-    const { data: results } = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${id}&order=date&key=${this.token}&maxResults=50`)
-
-    if (results.items.length === 0) {
-      return Promise.reject('Channel not found/has no videos.')
-    }
-
-    for (let i = 0; i < results.items.length; i++) {
-      videos.push(new Video(this, results.items[i]))
-    }
-
-    return videos
   }
 
   /**
@@ -260,9 +241,8 @@ export class YouTube {
 
   /**
    * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
-   * If <= 0 or not included, returns all videos in the playlist.
    * @param playlistId The ID of the playlist.
-   * @param maxResults The maximum amount of videos to get from the playlist.
+   * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
   public async getPlaylistItems (playlistId: string, maxResults: number = -1) {
     let full

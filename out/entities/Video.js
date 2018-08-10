@@ -21,9 +21,9 @@ class Video {
         if (data.kind === 'youtube#video') {
             const video = data;
             this.id = video.id;
-            this.length = video.contentDetails.duration;
-            this.minutes = parseInt(this.length.substring(this.length.indexOf('PT') + 2, this.length.indexOf('M')));
-            this.seconds = parseInt(this.length.substring(this.length.indexOf('M') + 1, this.length.length - 1));
+            this._length = video.contentDetails.duration;
+            this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')));
+            this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1));
         }
         else if (data.kind === 'youtube#playlistItem') {
             this.id = data.snippet.resourceId.videoId;
