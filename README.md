@@ -1,5 +1,5 @@
 # Better YouTube API
-Want to access data from the YouTube Data v3 API? No problem! We've got ya covered.
+Want to access data from the YouTube Data v3 API? No problem! We've got ya covered. `npm i better-youtube-api`
 
 # Examples
 First of all, I recommend that you check out `out/index.d.ts` for all of the methods and what they return. Here are some basic methods:
