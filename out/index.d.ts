@@ -16,7 +16,7 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
-  public searchVideos(searchTerm: string, maxResults: number): Promise<Video[] | Video>
+  public searchVideos(searchTerm: string, maxResults?: number): Promise<Video[] | Video>
 
   /**
    * Get a video object from the ID of a video.
@@ -35,11 +35,11 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
-  public searchChannels(searchTerm: string, maxResults: number): Promise<Channel[] | Channel>
+  public searchChannels(searchTerm: string, maxResults?: number): Promise<Channel[] | Channel>
 
   /**
    * Get a channel object from the ID of a channel.
-   * @param id The url of the channel.
+   * @param id The ID of the channel.
    */
   public getChannel(id: string): Promise<Channel>
 
@@ -50,8 +50,15 @@ export class YouTube {
   public getChannelByUrl(url: string): Promise<Channel>
 
   /**
+   * Search playlists on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public searchPlaylists(searchTerm: string, maxResults?: number): Promise<Playlist[] | Playlist>
+
+  /**
    * Get a playlist object from the ID of a playlist.
-   * @param id The url of the playlist.
+   * @param id The ID of the playlist.
    */
   public getPlaylist(id: string): Promise<Playlist>
 
@@ -60,13 +67,6 @@ export class YouTube {
    * @param url The url of the playlist.
    */
   public getPlaylistByUrl(url: string): Promise<Playlist>
-
-  /**
-   * Search playlists on YouTube.
-   * @param searchTerm What to search for on YouTube.
-   * @param maxResults The maximum amount of results to find. Defaults to 10.
-   */
-  public searchPlaylists(searchTerm: string, maxResults: number): Promise<Playlist[] | Playlist>
 
   /**
    * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
@@ -144,6 +144,29 @@ export class Video {
    * The short url of the video, i.e. https://youtu.be/id
    */
   public shortUrl: string
+
+  /**
+   * The number of likes the video has.
+   */
+  public likes: number
+
+  /**
+   * The number of dislikes the video has.
+   */
+  public dislikes: number
+
+  /**
+   * The number of views the video has.
+   */
+  public views: number
+
+  /**
+   * Whether or not this video COULD BE private. True if the video might
+   * be private, as you cannot check if playlist items are private.
+   * I would recommend you try and fetch the video and catch an error
+   * if it is private.
+   */
+  public private: boolean
 
   constructor(youtube, data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult)
 
@@ -229,9 +252,24 @@ export class Channel {
   public status: youtube_v3.Schema$ChannelStatus
 
   /**
-   * The channel's uploads. Only available after called `Channel#getVideos()`
+   * This channel's view count.
+   */
+  public views: number
+
+  /**
+   * The channel's uploads. Only available after calling `Channel#getVideos()`
    */
   public videos: Playlist
+
+  /**
+   * The number of subscribers this channel has. `-1` if the subcount is hidden.
+   */
+  public subCount: number
+
+  /**
+   * This channel's comment count.
+   */
+  public comments: number
 
   constructor (youtube: YouTube, data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult)
 
@@ -239,12 +277,12 @@ export class Channel {
    * Fetches this channel and reassigns this object to the new channel object.
    * Only useful if `this.full` is false, or if you want updated channel info.
    */
-  public fetch (): Promise<this & Channel>
+  public fetch(): Promise<this & Channel>
 
   /**
    * Fetches the channel's videos and assigns them to the `Channel#videos` property.
    */
-  public getVideos (): Promise<Playlist>
+  public getVideos(): Promise<Playlist>
 }
 
 /**
@@ -321,11 +359,11 @@ export class Playlist {
   /**
    * Gets every video in the playlist and assigns them to the `videos` property of it.
    */
-  public getVideos (): Promise<Video[]>
+  public getVideos(): Promise<Video[]>
 
   /**
    * Fetches this playlist and reassigns this object to the new playlist object.
    * Only useful if `this.full` is false, or if you want updated playlist info.
    */
-  public fetch (): Promise<this & Playlist>
+  public fetch(): Promise<this & Playlist>
 }

@@ -67,16 +67,24 @@ export class Channel {
   public language: string
 
   /**
-   * This channel's statistics.
+   * This channel's view count.
    */
-  public statistics: youtube_v3.Schema$ChannelStatistics
+  public views: number
 
   /**
-   * The status of this channel.
+   * The channel's uploads. Only available after calling `Channel#getVideos()`
    */
-  public status: youtube_v3.Schema$ChannelStatus
-
   public videos: Playlist
+
+  /**
+   * The number of subscribers this channel has. `-1` if the subcount is hidden.
+   */
+  public subCount: number
+
+  /**
+   * This channel's comment count.
+   */
+  public comments: number
 
   constructor (youtube: YouTube, data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult) {
     this.youtube = youtube
@@ -93,8 +101,13 @@ export class Channel {
       this.id = channel.id
       this.country = channel.snippet.country
       this.language = channel.snippet.defaultLanguage
-      this.statistics = channel.statistics
-      this.status = channel.status
+      this.views = Number(channel.statistics.viewCount)
+      this.comments = Number(channel.statistics.commentCount)
+      if (!channel.statistics.hiddenSubscriberCount) {
+        this.subCount = Number(channel.statistics.subscriberCount)
+      } else {
+        this.subCount = -1
+      }
     } else if (data.kind === 'youtube#searchResult') {
       this.id = (data as youtube_v3.Schema$SearchResult).id.channelId
     } else {
@@ -118,7 +131,10 @@ export class Channel {
     return Object.assign(this, channel)
   }
 
-  public async getVideos () {
+  /**
+   * Fetches the channel's videos and assigns them to the `Channel#videos` property.
+   */
+  public async fetchVideos () {
     if (!((this.data as youtube_v3.Schema$Channel).contentDetails)) {
       await this.fetch()
     }
@@ -126,6 +142,6 @@ export class Channel {
     const videos = await this.youtube.getPlaylist((this.data as youtube_v3.Schema$Channel).contentDetails.relatedPlaylists.uploads)
     this.videos = videos
 
-    return videos
+    return this.videos
   }
 }

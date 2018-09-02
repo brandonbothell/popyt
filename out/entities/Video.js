@@ -20,13 +20,17 @@ class Video {
     _init(data) {
         if (data.kind === 'youtube#video') {
             const video = data;
-            this.id = video.id;
             this._length = video.contentDetails.duration;
             this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')));
             this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1));
+            this.likes = Number(video.statistics.likeCount);
+            this.dislikes = Number(video.statistics.dislikeCount);
+            this.views = Number(video.statistics.viewCount);
+            this.id = video.id;
         }
         else if (data.kind === 'youtube#playlistItem') {
             this.id = data.snippet.resourceId.videoId;
+            this.private = data.snippet.title === 'Private video' ? true : false;
         }
         else if (data.kind === 'youtube#searchResult') {
             this.id = data.id.videoId;
@@ -42,6 +46,7 @@ class Video {
         this.full = data.kind === 'youtube#video';
         this.url = `https://youtube.com/watch?v=${this.id}`;
         this.shortUrl = `https://youtu.be/${this.id}`;
+        return this;
     }
     /**
      * Fetches this video and reassigns this object to the new video object.

@@ -1,7 +1,6 @@
-import { google, youtube_v3 } from 'googleapis'
+import { google } from 'googleapis'
 import { Video, Channel, Playlist } from './entities'
 import { parseUrl } from './util'
-import axios from 'axios'
 export * from './entities'
 
 const youtube = google.youtube('v3')
@@ -42,7 +41,7 @@ export class YouTube {
       return new Video(this, results.items[0])
     }
 
-    let videos: Video[] = []
+    const videos: Video[] = []
 
     for (let i = 0; i < results.items.length; i++) {
       videos.push(new Video(this, results.items[i]))
@@ -58,7 +57,7 @@ export class YouTube {
   public async getVideo (id: string) {
     const { data: video } = await youtube.videos.list({
       id,
-      part: 'snippet,contentDetails',
+      part: 'snippet,contentDetails,statistics,status',
       auth: this.token
     })
 
@@ -82,7 +81,7 @@ export class YouTube {
 
     const { data: video } = await youtube.videos.list({
       id: id.video,
-      part: 'snippet,contentDetails',
+      part: 'snippet,contentDetails,statistics,status',
       auth: this.token
     })
 
@@ -126,7 +125,7 @@ export class YouTube {
 
   /**
    * Get a channel object from the ID of a channel.
-   * @param id The url of the channel.
+   * @param id The ID of the channel.
    */
   public async getChannel (id: string) {
     const { data: channel } = await youtube.channels.list({
@@ -168,7 +167,7 @@ export class YouTube {
 
   /**
    * Get a playlist object from the ID of a playlist.
-   * @param id The url of the playlist.
+   * @param id The ID of the playlist.
    */
   public async getPlaylist (id: string) {
     const { data: playlist } = await youtube.playlists.list({
@@ -281,7 +280,7 @@ export class YouTube {
       return videos
     }
 
-    let oldRes: youtube_v3.Schema$PlaylistItemListResponse = results
+    let oldRes = results
 
     for (let i = 0; i < pages; i++) {
       const { data: newResults } = await youtube.playlistItems.list({

@@ -5,7 +5,7 @@
   "main": "out/index.js",
   "scripts": {
     "test": "tsc && node ./out/test.js",
-    "prepublish": "tsc"
+    "prepublishOnly": "tsc"
   },
   "author": "jasonhaxstuff",
   "license": "GPL-3.0",

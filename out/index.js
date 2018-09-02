@@ -47,7 +47,7 @@ class YouTube {
             if (maxResults === 1) {
                 return new entities_1.Video(this, results.items[0]);
             }
-            let videos = [];
+            const videos = [];
             for (let i = 0; i < results.items.length; i++) {
                 videos.push(new entities_1.Video(this, results.items[i]));
             }
@@ -62,7 +62,7 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: video } = yield youtube.videos.list({
                 id,
-                part: 'snippet,contentDetails',
+                part: 'snippet,contentDetails,statistics,status',
                 auth: this.token
             });
             if (video.items.length === 0) {
@@ -83,7 +83,7 @@ class YouTube {
             }
             const { data: video } = yield youtube.videos.list({
                 id: id.video,
-                part: 'snippet,contentDetails',
+                part: 'snippet,contentDetails,statistics,status',
                 auth: this.token
             });
             if (video.items.length === 0) {
@@ -121,7 +121,7 @@ class YouTube {
     }
     /**
      * Get a channel object from the ID of a channel.
-     * @param id The url of the channel.
+     * @param id The ID of the channel.
      */
     getChannel(id) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -159,7 +159,7 @@ class YouTube {
     }
     /**
      * Get a playlist object from the ID of a playlist.
-     * @param id The url of the playlist.
+     * @param id The ID of the playlist.
      */
     getPlaylist(id) {
         return __awaiter(this, void 0, void 0, function* () {

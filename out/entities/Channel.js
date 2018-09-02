@@ -23,8 +23,14 @@ class Channel {
             this.id = channel.id;
             this.country = channel.snippet.country;
             this.language = channel.snippet.defaultLanguage;
-            this.statistics = channel.statistics;
-            this.status = channel.status;
+            this.views = Number(channel.statistics.viewCount);
+            this.comments = Number(channel.statistics.commentCount);
+            if (!channel.statistics.hiddenSubscriberCount) {
+                this.subCount = Number(channel.statistics.subscriberCount);
+            }
+            else {
+                this.subCount = -1;
+            }
         }
         else if (data.kind === 'youtube#searchResult') {
             this.id = data.id.channelId;
@@ -49,14 +55,17 @@ class Channel {
             return Object.assign(this, channel);
         });
     }
-    getVideos() {
+    /**
+     * Fetches the channel's videos and assigns them to the `Channel#videos` property.
+     */
+    fetchVideos() {
         return __awaiter(this, void 0, void 0, function* () {
             if (!(this.data.contentDetails)) {
                 yield this.fetch();
             }
             const videos = yield this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads);
             this.videos = videos;
-            return videos;
+            return this.videos;
         });
     }
 }

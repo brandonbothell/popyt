@@ -72,6 +72,29 @@ export class Video {
    */
   public shortUrl: string
 
+  /**
+   * The number of likes the video has.
+   */
+  public likes: number
+
+  /**
+   * The number of dislikes the video has.
+   */
+  public dislikes: number
+
+  /**
+   * The number of views the video has.
+   */
+  public views: number
+
+  /**
+   * Whether or not this video COULD BE private. True if the video might
+   * be private, as you cannot check if playlist items are private.
+   * I would recommend you try and fetch the video and catch an error
+   * if it is private.
+   */
+  public private: boolean
+
   constructor (youtube: YouTube, data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult) {
     this.youtube = youtube
     this.data = data
@@ -83,12 +106,17 @@ export class Video {
     if (data.kind === 'youtube#video') {
       const video = data as youtube_v3.Schema$Video
 
-      this.id = video.id
       this._length = video.contentDetails.duration
       this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')))
       this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1))
+
+      this.likes = Number(video.statistics.likeCount)
+      this.dislikes = Number(video.statistics.dislikeCount)
+      this.views = Number(video.statistics.viewCount)
+      this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = (data.snippet as youtube_v3.Schema$PlaylistItemSnippet).resourceId.videoId
+      this.private = data.snippet.title === 'Private video' ? true : false
     } else if (data.kind === 'youtube#searchResult') {
       this.id = (data.id as youtube_v3.Schema$ResourceId).videoId
     } else {
@@ -103,6 +131,8 @@ export class Video {
     this.full = data.kind === 'youtube#video'
     this.url = `https://youtube.com/watch?v=${this.id}`
     this.shortUrl = `https://youtu.be/${this.id}`
+
+    return this
   }
 
   /**
