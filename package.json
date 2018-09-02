@@ -1,7 +1,7 @@
 {
   "name": "better-youtube-api",
-  "version": "0.0.9",
-  "description": "Better than simple ones.",
+  "version": "0.1.0",
+  "description": "A very easy to use Youtube Data v3 API.",
   "main": "out/index.js",
   "scripts": {
     "test": "tsc && node ./out/test.js",
@@ -14,10 +14,9 @@
   },
   "keywords": [
     "youtube",
-    "api",
-    "search",
     "youtube search",
-    "youtube api"
+    "youtube api",
+    "youtube videos"
   ],
   "devDependencies": {
     "@types/node": "^10.5.6",
