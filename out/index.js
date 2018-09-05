@@ -56,35 +56,32 @@ class YouTube {
     }
     getItemById(type, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let item;
+            let result;
             if (type === 'video') {
-                item = (yield youtube.videos.list({
+                result = (yield youtube.videos.list({
                     id,
                     part: 'snippet,contentDetails,statistics,status',
                     auth: this.token
                 })).data;
             }
             else if (type === 'channel') {
-                item = (yield youtube.channels.list({
+                result = (yield youtube.channels.list({
                     id,
                     part: 'snippet,contentDetails,statistics,status',
                     auth: this.token
                 })).data;
             }
             else if (type === 'playlist') {
-                item = (yield youtube.playlists.list({
+                result = (yield youtube.playlists.list({
                     id,
                     part: 'snippet,contentDetails,player',
                     auth: this.token
                 })).data;
             }
-            else {
-                return Promise.reject('Unknown content type: ' + type);
-            }
-            if (item.items.length === 0) {
+            if (result.items.length === 0) {
                 return Promise.reject('Item not found');
             }
-            return item.items[0];
+            return result.items[0];
         });
     }
     /**
