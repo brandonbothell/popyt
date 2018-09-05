@@ -27,6 +27,66 @@ class YouTube {
     constructor(token) {
         this.token = token;
     }
+    search(type, searchTerm, maxResults = 10) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (maxResults < 1 || maxResults > 50) {
+                return Promise.reject('Max results must be greater than 0 and less than or equal to 50');
+            }
+            const { data: results } = yield youtube.search.list({
+                q: searchTerm,
+                maxResults,
+                auth: this.token,
+                part: 'snippet',
+                type
+            });
+            const items = [];
+            results.items.forEach(item => {
+                if (type === 'video') {
+                    items.push(new entities_1.Video(this, item));
+                }
+                else if (type === 'channel') {
+                    items.push(new entities_1.Channel(this, item));
+                }
+                else if (type === 'playlist') {
+                    items.push(new entities_1.Playlist(this, item));
+                }
+            });
+            return items;
+        });
+    }
+    getItemById(type, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let item;
+            if (type === 'video') {
+                item = (yield youtube.videos.list({
+                    id,
+                    part: 'snippet,contentDetails,statistics,status',
+                    auth: this.token
+                })).data;
+            }
+            else if (type === 'channel') {
+                item = (yield youtube.channels.list({
+                    id,
+                    part: 'snippet,contentDetails,statistics,status',
+                    auth: this.token
+                })).data;
+            }
+            else if (type === 'playlist') {
+                item = (yield youtube.playlists.list({
+                    id,
+                    part: 'snippet,contentDetails,player',
+                    auth: this.token
+                })).data;
+            }
+            else {
+                return Promise.reject('Unknown content type: ' + type);
+            }
+            if (item.items.length === 0) {
+                return Promise.reject('Item not found');
+            }
+            return item.items[0];
+        });
+    }
     /**
      * Search videos on YouTube.
      * @param searchTerm What to search for on YouTube.
@@ -34,24 +94,27 @@ class YouTube {
      */
     searchVideos(searchTerm, maxResults = 10) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (maxResults < 1 || maxResults > 50) {
-                return Promise.reject('Max results must be greater than 0 and less than or equal to 50.');
-            }
-            const { data: results } = yield youtube.search.list({
-                q: searchTerm,
-                maxResults,
-                auth: this.token,
-                part: 'snippet',
-                type: 'video'
-            });
-            if (maxResults === 1) {
-                return new entities_1.Video(this, results.items[0]);
-            }
-            const videos = [];
-            for (let i = 0; i < results.items.length; i++) {
-                videos.push(new entities_1.Video(this, results.items[i]));
-            }
-            return videos;
+            return this.search('video', searchTerm, maxResults);
+        });
+    }
+    /**
+     * Search channels on YouTube.
+     * @param searchTerm What to search for on YouTube.
+     * @param maxResults The maximum amount of results to find. Defaults to 10.
+     */
+    searchChannels(searchTerm, maxResults = 10) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.search('channel', searchTerm, maxResults);
+        });
+    }
+    /**
+     * Search playlists on YouTube.
+     * @param searchTerm What to search for on YouTube.
+     * @param maxResults The maximum amount of results to find. Defaults to 10.
+     */
+    searchPlaylists(searchTerm, maxResults = 10) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.search('playlist', searchTerm, maxResults);
         });
     }
     /**
@@ -60,15 +123,25 @@ class YouTube {
      */
     getVideo(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: video } = yield youtube.videos.list({
-                id,
-                part: 'snippet,contentDetails,statistics,status',
-                auth: this.token
-            });
-            if (video.items.length === 0) {
-                return Promise.reject('Video not found.');
-            }
-            return new entities_1.Video(this, video.items[0]);
+            return new entities_1.Video(this, yield this.getItemById('video', id));
+        });
+    }
+    /**
+     * Get a channel object from the ID of a channel.
+     * @param id The ID of the channel.
+     */
+    getChannel(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new entities_1.Channel(this, yield this.getItemById('channel', id));
+        });
+    }
+    /**
+     * Get a playlist object from the ID of a playlist.
+     * @param id The ID of the playlist.
+     */
+    getPlaylist(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new entities_1.Playlist(this, yield this.getItemById('playlist', id));
         });
     }
     /**
@@ -79,61 +152,9 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             const id = util_1.parseUrl(url);
             if (!id.video) {
-                return Promise.reject('Not a valid video url.');
+                return Promise.reject('Not a valid video url');
             }
-            const { data: video } = yield youtube.videos.list({
-                id: id.video,
-                part: 'snippet,contentDetails,statistics,status',
-                auth: this.token
-            });
-            if (video.items.length === 0) {
-                return Promise.reject('Video not found.');
-            }
-            return new entities_1.Video(this, video.items[0]);
-        });
-    }
-    /**
-     * Search channels on YouTube.
-     * @param searchTerm What to search for on YouTube.
-     * @param maxResults The maximum amount of results to find. Defaults to 10.
-     */
-    searchChannels(searchTerm, maxResults = 10) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (maxResults < 1 || maxResults > 50) {
-                return Promise.reject('Max results must be greater than 0 and less than or equal to 50.');
-            }
-            const { data: results } = yield youtube.search.list({
-                q: searchTerm,
-                maxResults,
-                auth: this.token,
-                part: 'snippet',
-                type: 'channel'
-            });
-            if (maxResults === 1) {
-                return new entities_1.Channel(this, results.items[0]);
-            }
-            let channels = [];
-            for (let i = 0; i < results.items.length; i++) {
-                channels.push(new entities_1.Channel(this, results.items[i]));
-            }
-            return channels;
-        });
-    }
-    /**
-     * Get a channel object from the ID of a channel.
-     * @param id The ID of the channel.
-     */
-    getChannel(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data: channel } = yield youtube.channels.list({
-                id,
-                part: 'snippet,statistics,status,contentDetails',
-                auth: this.token
-            });
-            if (channel.items.length === 0) {
-                return Promise.reject('Channel not found.');
-            }
-            return new entities_1.Channel(this, channel.items[0]);
+            return new entities_1.Video(this, yield this.getItemById('video', id.video));
         });
     }
     /**
@@ -144,34 +165,9 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             const id = util_1.parseUrl(url);
             if (!id.channel) {
-                return Promise.reject('Not a valid channel url.');
+                return Promise.reject('Not a valid channel url');
             }
-            const { data: channel } = yield youtube.channels.list({
-                id: id.channel,
-                part: 'snippet,statistics,status,contentDetails',
-                auth: this.token
-            });
-            if (channel.items.length === 0) {
-                return Promise.reject('Channel not found.');
-            }
-            return new entities_1.Channel(this, channel.items[0]);
-        });
-    }
-    /**
-     * Get a playlist object from the ID of a playlist.
-     * @param id The ID of the playlist.
-     */
-    getPlaylist(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data: playlist } = yield youtube.playlists.list({
-                id,
-                part: 'snippet,contentDetails,player',
-                auth: this.token
-            });
-            if (playlist.items.length === 0) {
-                return Promise.reject('Playlist not found.');
-            }
-            return new entities_1.Playlist(this, playlist.items[0]);
+            return new entities_1.Channel(this, yield this.getItemById('channel', id.channel));
         });
     }
     /**
@@ -182,44 +178,9 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             const id = util_1.parseUrl(url);
             if (!id.playlist) {
-                return Promise.reject('Not a valid playlist url.');
+                return Promise.reject('Not a valid playlist url');
             }
-            const { data: playlist } = yield youtube.playlists.list({
-                id: id.playlist,
-                part: 'snippet,contentDetails,player',
-                auth: this.token
-            });
-            if (playlist.items.length === 0) {
-                return Promise.reject('Playlist not found.');
-            }
-            return new entities_1.Playlist(this, playlist.items[0]);
-        });
-    }
-    /**
-     * Search playlists on YouTube.
-     * @param searchTerm What to search for on YouTube.
-     * @param maxResults The maximum amount of results to find. Defaults to 10.
-     */
-    searchPlaylists(searchTerm, maxResults = 10) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (maxResults > 50 || maxResults < 1) {
-                return Promise.reject('Max results must be 50 or below, and greater than 0.');
-            }
-            const { data: results } = yield youtube.search.list({
-                q: searchTerm,
-                maxResults,
-                type: 'playlist',
-                part: 'snippet',
-                auth: this.token
-            });
-            if (maxResults === 1) {
-                return new entities_1.Playlist(this, results.items[0]);
-            }
-            let playlists = [];
-            for (let i = 0; i < results.items.length; i++) {
-                playlists.push(new entities_1.Playlist(this, results.items[i]));
-            }
-            return playlists;
+            return new entities_1.Playlist(this, yield this.getItemById('playlist', id.playlist));
         });
     }
     /**
@@ -238,17 +199,16 @@ class YouTube {
                 full = false;
             }
             if (maxResults > 50) {
-                return Promise.reject('Max results must be 50 or below.');
+                return Promise.reject('Max results must be 50 or below');
             }
             let { data: results } = yield youtube.playlistItems.list({
                 playlistId,
                 part: 'snippet',
                 auth: this.token,
                 maxResults: full ? 50 : maxResults
+            }).catch(error => {
+                return Promise.reject('Playlist not found');
             });
-            if (results.items.length === 0) {
-                return Promise.reject('Playlist not found.');
-            }
             const totalResults = results.pageInfo.totalResults;
             const perPage = 50;
             const pages = Math.floor(totalResults / perPage);
@@ -277,4 +237,3 @@ class YouTube {
     }
 }
 exports.YouTube = YouTube;
-//# sourceMappingURL=index.js.map

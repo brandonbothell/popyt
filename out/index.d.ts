@@ -16,7 +16,21 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
-  public searchVideos(searchTerm: string, maxResults?: number): Promise<Video[] | Video>
+  public searchVideos(searchTerm: string, maxResults?: number): Promise<Video[]>
+
+  /**
+   * Search channels on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public searchChannels(searchTerm: string, maxResults?: number): Promise<Channel[]>
+
+  /**
+   * Search playlists on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public searchPlaylists(searchTerm: string, maxResults?: number): Promise<Playlist[]>
 
   /**
    * Get a video object from the ID of a video.
@@ -25,42 +39,28 @@ export class YouTube {
   public getVideo(id: string): Promise<Video>
 
   /**
-   * Get a video object from the url of a video.
-   * @param url The url of the video.
-   */
-  public getVideoByUrl(url: string): Promise<Video>
-
-  /**
-   * Search channels on YouTube.
-   * @param searchTerm What to search for on YouTube.
-   * @param maxResults The maximum amount of results to find. Defaults to 10.
-   */
-  public searchChannels(searchTerm: string, maxResults?: number): Promise<Channel[] | Channel>
-
-  /**
    * Get a channel object from the ID of a channel.
    * @param id The ID of the channel.
    */
   public getChannel(id: string): Promise<Channel>
 
   /**
-   * Get a channel object from the url of a channel.
-   * @param url The url of the channel.
-   */
-  public getChannelByUrl(url: string): Promise<Channel>
-
-  /**
-   * Search playlists on YouTube.
-   * @param searchTerm What to search for on YouTube.
-   * @param maxResults The maximum amount of results to find. Defaults to 10.
-   */
-  public searchPlaylists(searchTerm: string, maxResults?: number): Promise<Playlist[] | Playlist>
-
-  /**
    * Get a playlist object from the ID of a playlist.
    * @param id The ID of the playlist.
    */
   public getPlaylist(id: string): Promise<Playlist>
+
+  /**
+   * Get a video object from the url of a video.
+   * @param url The url of the video.
+   */
+  public getVideoByUrl(url: string): Promise<Video>
+
+  /**
+   * Get a channel object from the url of a channel.
+   * @param url The url of the channel.
+   */
+  public getChannelByUrl(url: string): Promise<Channel>
 
   /**
    * Get a playlist object from the url of a playlist.

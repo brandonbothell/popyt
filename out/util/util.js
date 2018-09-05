@@ -40,4 +40,3 @@ function parseUrl(url) {
     }
 }
 exports.parseUrl = parseUrl;
-//# sourceMappingURL=util.js.map

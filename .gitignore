@@ -1,5 +1,3 @@
 node_modules
-src/test.*
-src/config.*
-out/test.*
-out/config.*
+test/config.ts
+yarn.lock

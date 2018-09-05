@@ -1,10 +1,10 @@
 {
   "name": "better-youtube-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A very easy to use Youtube Data v3 API.",
   "main": "out/index.js",
   "scripts": {
-    "test": "tsc && node ./out/test.js",
+    "test": "mocha -r ts-node/register ./**/*.spec.ts",
     "prepublishOnly": "tsc"
   },
   "author": "jasonhaxstuff",
@@ -19,9 +19,14 @@
     "youtube videos"
   ],
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.6",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^7.1.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.1"
   },
   "repository": {

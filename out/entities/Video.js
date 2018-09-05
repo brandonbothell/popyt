@@ -60,4 +60,3 @@ class Video {
     }
 }
 exports.Video = Video;
-//# sourceMappingURL=Video.js.map

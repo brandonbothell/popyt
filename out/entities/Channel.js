@@ -70,4 +70,3 @@ class Channel {
     }
 }
 exports.Channel = Channel;
-//# sourceMappingURL=Channel.js.map

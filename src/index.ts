@@ -19,14 +19,9 @@ export class YouTube {
     this.token = token
   }
 
-  /**
-   * Search videos on YouTube.
-   * @param searchTerm What to search for on YouTube.
-   * @param maxResults The maximum amount of results to find. Defaults to 10.
-   */
-  public async searchVideos (searchTerm: string, maxResults: number = 10) {
+  private async search (type: 'video' | 'channel' | 'playlist', searchTerm: string, maxResults: number = 10) {
     if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be greater than 0 and less than or equal to 50.')
+      return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
     }
 
     const { data: results } = await youtube.search.list({
@@ -34,20 +29,79 @@ export class YouTube {
       maxResults,
       auth: this.token,
       part: 'snippet',
-      type: 'video'
+      type
     })
 
-    if (maxResults === 1) {
-      return new Video(this, results.items[0])
+    const items = []
+
+    results.items.forEach(item => {
+      if (type === 'video') {
+        items.push(new Video(this, item))
+      } else if (type === 'channel') {
+        items.push(new Channel(this, item))
+      } else if (type === 'playlist') {
+        items.push(new Playlist(this, item))
+      }
+    })
+
+    return items as Video[] | Channel[] | Playlist[]
+  }
+
+  private async getItemById (type: 'video' | 'channel' | 'playlist', id: string) {
+    let result
+
+    if (type === 'video') {
+      result = (await youtube.videos.list({
+        id,
+        part: 'snippet,contentDetails,statistics,status',
+        auth: this.token
+      })).data
+    } else if (type === 'channel') {
+      result = (await youtube.channels.list({
+        id,
+        part: 'snippet,contentDetails,statistics,status',
+        auth: this.token
+      })).data
+    } else if (type === 'playlist') {
+      result = (await youtube.playlists.list({
+        id,
+        part: 'snippet,contentDetails,player',
+        auth: this.token
+      })).data
     }
 
-    const videos: Video[] = []
-
-    for (let i = 0; i < results.items.length; i++) {
-      videos.push(new Video(this, results.items[i]))
+    if (result.items.length === 0) {
+      return Promise.reject('Item not found')
     }
 
-    return videos
+    return result.items[0]
+  }
+
+  /**
+   * Search videos on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public async searchVideos (searchTerm: string, maxResults: number = 10) {
+    return this.search('video', searchTerm, maxResults) as Promise<Video[]>
+  }
+
+  /**
+   * Search channels on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public async searchChannels (searchTerm: string, maxResults: number = 10) {
+    return this.search('channel', searchTerm, maxResults) as Promise<Channel[]>
+  }
+
+  /**
+   * Search playlists on YouTube.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public async searchPlaylists (searchTerm: string, maxResults: number = 10) {
+    return this.search('playlist', searchTerm, maxResults) as Promise<Playlist[]>
   }
 
   /**
@@ -55,17 +109,23 @@ export class YouTube {
    * @param id The ID of the video.
    */
   public async getVideo (id: string) {
-    const { data: video } = await youtube.videos.list({
-      id,
-      part: 'snippet,contentDetails,statistics,status',
-      auth: this.token
-    })
+    return new Video(this, await this.getItemById('video', id))
+  }
 
-    if (video.items.length === 0) {
-      return Promise.reject('Video not found.')
-    }
+  /**
+   * Get a channel object from the ID of a channel.
+   * @param id The ID of the channel.
+   */
+  public async getChannel (id: string) {
+    return new Channel(this, await this.getItemById('channel', id))
+  }
 
-    return new Video(this, video.items[0])
+  /**
+   * Get a playlist object from the ID of a playlist.
+   * @param id The ID of the playlist.
+   */
+  public async getPlaylist (id: string) {
+    return new Playlist(this, await this.getItemById('playlist', id))
   }
 
   /**
@@ -76,69 +136,10 @@ export class YouTube {
     const id = parseUrl(url)
 
     if (!id.video) {
-      return Promise.reject('Not a valid video url.')
+      return Promise.reject('Not a valid video url')
     }
 
-    const { data: video } = await youtube.videos.list({
-      id: id.video,
-      part: 'snippet,contentDetails,statistics,status',
-      auth: this.token
-    })
-
-    if (video.items.length === 0) {
-      return Promise.reject('Video not found.')
-    }
-
-    return new Video(this, video.items[0])
-  }
-
-  /**
-   * Search channels on YouTube.
-   * @param searchTerm What to search for on YouTube.
-   * @param maxResults The maximum amount of results to find. Defaults to 10.
-   */
-  public async searchChannels (searchTerm: string, maxResults: number = 10) {
-    if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be greater than 0 and less than or equal to 50.')
-    }
-
-    const { data: results } = await youtube.search.list({
-      q: searchTerm,
-      maxResults,
-      auth: this.token,
-      part: 'snippet',
-      type: 'channel'
-    })
-
-    if (maxResults === 1) {
-      return new Channel(this, results.items[0])
-    }
-
-    let channels: Channel[] = []
-
-    for (let i = 0; i < results.items.length; i++) {
-      channels.push(new Channel(this, results.items[i]))
-    }
-
-    return channels
-  }
-
-  /**
-   * Get a channel object from the ID of a channel.
-   * @param id The ID of the channel.
-   */
-  public async getChannel (id: string) {
-    const { data: channel } = await youtube.channels.list({
-      id,
-      part: 'snippet,statistics,status,contentDetails',
-      auth: this.token
-    })
-
-    if (channel.items.length === 0) {
-      return Promise.reject('Channel not found.')
-    }
-
-    return new Channel(this, channel.items[0])
+    return new Video(this, await this.getItemById('video', id.video))
   }
 
   /**
@@ -149,38 +150,10 @@ export class YouTube {
     const id = parseUrl(url)
 
     if (!id.channel) {
-      return Promise.reject('Not a valid channel url.')
+      return Promise.reject('Not a valid channel url')
     }
 
-    const { data: channel } = await youtube.channels.list({
-      id: id.channel,
-      part: 'snippet,statistics,status,contentDetails',
-      auth: this.token
-    })
-
-    if (channel.items.length === 0) {
-      return Promise.reject('Channel not found.')
-    }
-
-    return new Channel(this, channel.items[0])
-  }
-
-  /**
-   * Get a playlist object from the ID of a playlist.
-   * @param id The ID of the playlist.
-   */
-  public async getPlaylist (id: string) {
-    const { data: playlist } = await youtube.playlists.list({
-      id,
-      part: 'snippet,contentDetails,player',
-      auth: this.token
-    })
-
-    if (playlist.items.length === 0) {
-      return Promise.reject('Playlist not found.')
-    }
-
-    return new Playlist(this, playlist.items[0])
+    return new Channel(this, await this.getItemById('channel', id.channel))
   }
 
   /**
@@ -191,51 +164,10 @@ export class YouTube {
     const id = parseUrl(url)
 
     if (!id.playlist) {
-      return Promise.reject('Not a valid playlist url.')
+      return Promise.reject('Not a valid playlist url')
     }
 
-    const { data: playlist } = await youtube.playlists.list({
-      id: id.playlist,
-      part: 'snippet,contentDetails,player',
-      auth: this.token
-    })
-
-    if (playlist.items.length === 0) {
-      return Promise.reject('Playlist not found.')
-    }
-
-    return new Playlist(this, playlist.items[0])
-  }
-
-  /**
-   * Search playlists on YouTube.
-   * @param searchTerm What to search for on YouTube.
-   * @param maxResults The maximum amount of results to find. Defaults to 10.
-   */
-  public async searchPlaylists (searchTerm: string, maxResults: number = 10) {
-    if (maxResults > 50 || maxResults < 1) {
-      return Promise.reject('Max results must be 50 or below, and greater than 0.')
-    }
-
-    const { data: results } = await youtube.search.list({
-      q: searchTerm,
-      maxResults,
-      type: 'playlist',
-      part: 'snippet',
-      auth: this.token
-    })
-
-    if (maxResults === 1) {
-      return new Playlist(this, results.items[0])
-    }
-
-    let playlists: Playlist[] = []
-
-    for (let i = 0; i < results.items.length; i++) {
-      playlists.push(new Playlist(this, results.items[i]))
-    }
-
-    return playlists
+    return new Playlist(this, await this.getItemById('playlist', id.playlist))
   }
 
   /**
@@ -254,7 +186,7 @@ export class YouTube {
     }
 
     if (maxResults > 50) {
-      return Promise.reject('Max results must be 50 or below.')
+      return Promise.reject('Max results must be 50 or below')
     }
 
     let { data: results } = await youtube.playlistItems.list({
@@ -262,11 +194,9 @@ export class YouTube {
       part: 'snippet',
       auth: this.token,
       maxResults: full ? 50 : maxResults
+    }).catch(error => {
+      return Promise.reject('Playlist not found')
     })
-
-    if (results.items.length === 0) {
-      return Promise.reject('Playlist not found.')
-    }
 
     const totalResults = results.pageInfo.totalResults
     const perPage = 50

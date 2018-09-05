@@ -9,7 +9,8 @@
     "no-unnecessary-qualifier": true,
     "space-before-function-paren": true,
     "jsdoc-format": false,
-    "radix": false
+    "radix": false,
+    "handle-callback-err": false
   },
   "rulesDirectory": [
   ]

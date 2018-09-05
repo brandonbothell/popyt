@@ -4,12 +4,11 @@
     "target": "es6",
     "outDir": "out",
     "rootDir": "src",
-    "sourceMap": true,
     "strict": false
   },
   "exclude": [
     "node_modules",
-    "out"
+    "out",
+    "test"
   ]
 }
-
