@@ -4,12 +4,7 @@ import { parse as parseUrl } from 'url'
 
 export const request = {
   api: (subUrl: string, params: Object): Promise<any> => {
-    let url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? subUrl : '/' + subUrl)
-
-    for (let param in params) {
-      url += (!url.includes('?') ? '?' : '&') + param + '=' + params[param]
-    }
-
+    const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? subUrl : '/' + subUrl) + parseParams(params)
     return get(url)
   }
 }
@@ -94,4 +89,14 @@ function req (options: RequestOptions, reqFunction: Function) {
 
     reqFunction(https(options, cb))
   })
+}
+
+function parseParams (params: Object) {
+  let url = ''
+
+  for (let param in params) {
+    url += (!url.includes('?') ? '?' : '&') + param + '=' + params[param]
+  }
+
+  return url
 }

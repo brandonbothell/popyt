@@ -80,6 +80,13 @@ class YouTube {
                     key: this.token
                 });
             }
+            else if (type === 'comment') {
+                result = yield util_1.request.api('comments', {
+                    id,
+                    part: 'snippet',
+                    key: this.token
+                });
+            }
             if (result.items.length === 0) {
                 return Promise.reject('Item not found');
             }
@@ -144,6 +151,15 @@ class YouTube {
         });
     }
     /**
+     * Get a comment object from the ID of a comment.
+     * @param id The ID of the comment.
+     */
+    getComment(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new entities_1.YTComment(this, yield this.getItemById('comment', id));
+        });
+    }
+    /**
      * Get a video object from the url of a video.
      * @param url The url of the video.
      */
@@ -183,7 +199,7 @@ class YouTube {
         });
     }
     /**
-     * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
+     * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#fetchVideos`.
      * @param playlistId The ID of the playlist.
      * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
      */
@@ -209,7 +225,7 @@ class YouTube {
                 return Promise.reject('Playlist not found');
             });
             const totalResults = results.pageInfo.totalResults;
-            const perPage = 50;
+            const perPage = results.pageInfo.resultsPerPage;
             const pages = Math.floor(totalResults / perPage);
             results.items.forEach(item => {
                 videos.push(new entities_1.Video(this, item));
@@ -232,6 +248,126 @@ class YouTube {
                 });
             }
             return videos;
+        });
+    }
+    /**
+     * Get `maxResults` comments on a video. Used mostly internally with `Video#fetchComments`.
+     * @param videoId The ID of the video.
+     * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
+     */
+    getVideoComments(videoId, maxResults = -1) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let full;
+            let comments = [];
+            if (maxResults <= 0) {
+                full = true;
+            }
+            else {
+                full = false;
+            }
+            if (maxResults > 100) {
+                return Promise.reject('Max results must be 100 or below');
+            }
+            const results = yield util_1.request.api('commentThreads', {
+                videoId,
+                part: 'snippet,replies',
+                key: this.token,
+                maxResults: full ? 100 : maxResults,
+                textFormat: 'plainText'
+            }).catch(() => {
+                return Promise.reject('Comment thread not found');
+            });
+            const totalResults = results.pageInfo.totalResults;
+            const perPage = results.pageInfo.resultsPerPage;
+            const pages = Math.floor(totalResults / perPage);
+            results.items.forEach(item => {
+                const comment = new entities_1.YTComment(this, item.snippet.topLevelComment);
+                comments.push(comment);
+                if (item.replies) {
+                    item.replies.comments.forEach(reply => {
+                        const created = new entities_1.YTComment(this, reply);
+                        comment.replies.push(created);
+                    });
+                }
+            });
+            if (!full || pages === 0) {
+                return comments;
+            }
+            let oldRes = results;
+            for (let i = 1; i < pages; i++) {
+                const newResults = yield util_1.request.api('commentThreads', {
+                    videoId,
+                    part: 'snippet',
+                    key: this.token,
+                    maxResults: 50,
+                    pageToken: oldRes.nextPageToken,
+                    textFormat: 'plainText'
+                });
+                oldRes = newResults;
+                newResults.items.forEach(item => {
+                    const comment = new entities_1.YTComment(this, item.snippet.topLevelComment);
+                    comments.push(comment);
+                    if (item.replies) {
+                        item.replies.comments.forEach(reply => {
+                            const created = new entities_1.YTComment(this, reply);
+                            comment.replies.push(created);
+                        });
+                    }
+                });
+            }
+            return comments;
+        });
+    }
+    /**
+     * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
+     * @param commentId The ID of the comment to get replies from.
+     * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
+     */
+    getCommentReplies(commentId, maxResults = -1) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let full;
+            let replies = [];
+            if (maxResults <= 0) {
+                full = true;
+            }
+            else {
+                full = false;
+            }
+            if (maxResults > 100) {
+                return Promise.reject('Max results must be 50 or below');
+            }
+            const results = yield util_1.request.api('comments', {
+                parentId: commentId,
+                part: 'snippet',
+                key: this.token,
+                maxResults: full ? 100 : maxResults
+            }).catch(() => {
+                return Promise.reject('Playlist not found');
+            });
+            const totalResults = results.pageInfo.totalResults;
+            const perPage = results.pageInfo.resultsPerPage;
+            const pages = Math.floor(totalResults / perPage);
+            results.items.forEach(item => {
+                replies.push(new entities_1.YTComment(this, item));
+            });
+            if (!full || pages === 0) {
+                return replies;
+            }
+            let oldRes = results;
+            for (let i = 1; i < pages; i++) {
+                const newResults = yield util_1.request.api('comments', {
+                    parentId: commentId,
+                    part: 'snippet',
+                    key: this.token,
+                    maxResults: 100,
+                    pageToken: oldRes.nextPageToken
+                });
+                oldRes = newResults;
+                newResults.items.forEach(item => {
+                    replies.push(new entities_1.YTComment(this, item));
+                });
+            }
+            return replies;
         });
     }
 }

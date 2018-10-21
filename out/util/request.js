@@ -4,10 +4,7 @@ const https_1 = require("https");
 const url_1 = require("url");
 exports.request = {
     api: (subUrl, params) => {
-        let url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? subUrl : '/' + subUrl);
-        for (let param in params) {
-            url += (!url.includes('?') ? '?' : '&') + param + '=' + params[param];
-        }
+        const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? subUrl : '/' + subUrl) + parseParams(params);
         return get(url);
     }
 };
@@ -73,4 +70,11 @@ function req(options, reqFunction) {
         };
         reqFunction(https_1.request(options, cb));
     });
+}
+function parseParams(params) {
+    let url = '';
+    for (let param in params) {
+        url += (!url.includes('?') ? '?' : '&') + param + '=' + params[param];
+    }
+    return url;
 }

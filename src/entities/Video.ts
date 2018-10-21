@@ -1,5 +1,6 @@
 import { YouTube } from '..'
-import { youtube_v3 } from 'googleapis'
+import { Thumbnail } from '../types'
+import { YTComment } from './Comment'
 
 /**
  * A YouTube video.
@@ -13,7 +14,7 @@ export class Video {
   /**
    * The raw data of the video.
    */
-  public data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult
+  public data
 
   /**
    * Whether or not this is a full video object.
@@ -38,7 +39,13 @@ export class Video {
   /**
    * The thumbnails of the video.
    */
-  public thumbnails: youtube_v3.Schema$ThumbnailDetails
+  public thumbnails: {
+    default?: Thumbnail,
+    high?: Thumbnail,
+    maxres?: Thumbnail
+    medium?: Thumbnail,
+    standard?: Thumbnail
+  }
 
   /**
    * The date the video was published.
@@ -95,16 +102,21 @@ export class Video {
    */
   public private: boolean
 
-  constructor (youtube: YouTube, data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult) {
+  /**
+   * The video's comments. Only defined when Video#fetchComments is called.
+   */
+  public comments: YTComment[]
+
+  constructor (youtube: YouTube, data) {
     this.youtube = youtube
     this.data = data
 
     this._init(data)
   }
 
-  private _init (data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult) {
+  private _init (data) {
     if (data.kind === 'youtube#video') {
-      const video = data as youtube_v3.Schema$Video
+      const video = data
 
       this._length = video.contentDetails.duration
       this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')))
@@ -115,10 +127,10 @@ export class Video {
       this.views = Number(video.statistics.viewCount)
       this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
-      this.id = (data.snippet as youtube_v3.Schema$PlaylistItemSnippet).resourceId.videoId
-      this.private = data.snippet.title === 'Private video' ? true : false
+      this.id = data.snippet.resourceId.videoId
+      this.private = data.snippet.title === 'Private video'
     } else if (data.kind === 'youtube#searchResult') {
-      this.id = (data.id as youtube_v3.Schema$ResourceId).videoId
+      this.id = data.id.videoId
     } else {
       throw new Error(`Invalid video type: ${data.kind}.`)
     }
@@ -142,5 +154,10 @@ export class Video {
   public async fetch () {
     const video = await this.youtube.getVideo(this.id)
     return Object.assign(this, video)
+  }
+
+  public async fetchComments (maxResults: number = -1) {
+    this.comments = await this.youtube.getVideoComments(this.id, maxResults)
+    return this.comments
   }
 }

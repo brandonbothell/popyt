@@ -6,3 +6,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./Video"));
 __export(require("./Channel"));
 __export(require("./Playlist"));
+__export(require("./Comment"));

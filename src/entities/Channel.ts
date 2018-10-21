@@ -1,6 +1,6 @@
 import { YouTube } from '..'
-import { youtube_v3 } from 'googleapis'
 import { Playlist } from '.'
+import { Thumbnail } from '../types'
 
 /**
  * A YouTube channel.
@@ -19,7 +19,7 @@ export class Channel {
   /**
    * The raw data of this channel.
    */
-  public data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult
+  public data: any
 
   /**
    * The name of this channel.
@@ -54,7 +54,13 @@ export class Channel {
   /**
    * This channel's profile pictures.
    */
-  public profilePictures: youtube_v3.Schema$ThumbnailDetails
+  public profilePictures: {
+    default?: Thumbnail,
+    high?: Thumbnail,
+    maxres?: Thumbnail
+    medium?: Thumbnail,
+    standard?: Thumbnail
+  }
 
   /**
    * The date this channel was created.
@@ -86,17 +92,17 @@ export class Channel {
    */
   public comments: number
 
-  constructor (youtube: YouTube, data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult) {
+  constructor (youtube: YouTube, data) {
     this.youtube = youtube
     this.data = data
 
     this._init(data)
   }
 
-  private _init (data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult) {
+  private _init (data) {
 
-    if (data.kind === 'youtube#channel' && (data as youtube_v3.Schema$Channel).status.isLinked) {
-      const channel = data as youtube_v3.Schema$Channel
+    if (data.kind === 'youtube#channel' && data.status.isLinked) {
+      const channel = data
 
       this.id = channel.id
       this.country = channel.snippet.country
@@ -109,7 +115,7 @@ export class Channel {
         this.subCount = -1
       }
     } else if (data.kind === 'youtube#searchResult') {
-      this.id = (data as youtube_v3.Schema$SearchResult).id.channelId
+      this.id = data.id.channelId
     } else {
       throw new Error(`Invalid channel type: ${data.kind}`)
     }
@@ -135,11 +141,11 @@ export class Channel {
    * Fetches the channel's videos and assigns them to the `Channel#videos` property.
    */
   public async fetchVideos () {
-    if (!((this.data as youtube_v3.Schema$Channel).contentDetails)) {
+    if (!(this.data.contentDetails)) {
       await this.fetch()
     }
 
-    const videos = await this.youtube.getPlaylist((this.data as youtube_v3.Schema$Channel).contentDetails.relatedPlaylists.uploads)
+    const videos = await this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads)
     this.videos = videos
 
     return this.videos

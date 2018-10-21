@@ -1,5 +1,5 @@
 # Better YouTube API
-Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings? No problem! We've got ya covered. `npm i better-youtube-api`
+Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings and promises? No problem! We've got ya covered. `npm i better-youtube-api`
 
 # Examples
 First of all, I recommend that you check out `out/index.d.ts` for all of the methods and what they return. Here are some basic methods:
@@ -25,4 +25,4 @@ const video = await youtube.getVideoByUrl('https://youtube.com/watch?v=dQw4w9WgX
 console.log(video)
 ```
 
-You can do the same thing with playlists and channels by replacing `Video` with either one.
+You can do the same thing with playlists, channels, and comments by replacing `Video` with either one.

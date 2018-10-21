@@ -1,6 +1,7 @@
-import { Video, Channel, Playlist } from './entities'
+import { Video, Channel, Playlist, YTComment } from './entities'
 import { parseUrl, request } from './util'
 export * from './entities'
+export * from './types'
 
 /**
  * The main class used to interact with the YouTube API. Use this.
@@ -50,7 +51,7 @@ export class YouTube {
     return items as Video[] | Channel[] | Playlist[]
   }
 
-  private async getItemById (type: 'video' | 'channel' | 'playlist', id: string) {
+  private async getItemById (type: 'video' | 'channel' | 'playlist' | 'comment', id: string) {
     let result
 
     if (type === 'video') {
@@ -69,6 +70,12 @@ export class YouTube {
       result = await request.api('playlists', {
         id,
         part: 'snippet,contentDetails,player',
+        key: this.token
+      })
+    } else if (type === 'comment') {
+      result = await request.api('comments', {
+        id,
+        part: 'snippet',
         key: this.token
       })
     }
@@ -132,6 +139,14 @@ export class YouTube {
   }
 
   /**
+   * Get a comment object from the ID of a comment.
+   * @param id The ID of the comment.
+   */
+  public async getComment (id: string) {
+    return new YTComment(this, await this.getItemById('comment', id))
+  }
+
+  /**
    * Get a video object from the url of a video.
    * @param url The url of the video.
    */
@@ -174,7 +189,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#getVideos`.
+   * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#fetchVideos`.
    * @param playlistId The ID of the playlist.
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
@@ -202,7 +217,7 @@ export class YouTube {
     })
 
     const totalResults = results.pageInfo.totalResults
-    const perPage = 50
+    const perPage = results.pageInfo.resultsPerPage
     const pages = Math.floor(totalResults / perPage)
 
     results.items.forEach(item => {
@@ -231,5 +246,143 @@ export class YouTube {
     }
 
     return videos
+  }
+
+  /**
+   * Get `maxResults` comments on a video. Used mostly internally with `Video#fetchComments`.
+   * @param videoId The ID of the video.
+   * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
+   */
+  public async getVideoComments (videoId: string, maxResults: number = -1) {
+    let full
+    let comments: YTComment[] = []
+
+    if (maxResults <= 0) {
+      full = true
+    } else {
+      full = false
+    }
+
+    if (maxResults > 100) {
+      return Promise.reject('Max results must be 100 or below')
+    }
+
+    const results = await request.api('commentThreads', {
+      videoId,
+      part: 'snippet,replies',
+      key: this.token,
+      maxResults: full ? 100 : maxResults,
+      textFormat: 'plainText'
+    }).catch(() => {
+      return Promise.reject('Comment thread not found')
+    })
+
+    const totalResults = results.pageInfo.totalResults
+    const perPage = results.pageInfo.resultsPerPage
+    const pages = Math.floor(totalResults / perPage)
+
+    results.items.forEach(item => {
+      const comment = new YTComment(this, item.snippet.topLevelComment)
+      comments.push(comment)
+
+      if (item.replies) {
+        item.replies.comments.forEach(reply => {
+          const created = new YTComment(this, reply)
+          comment.replies.push(created)
+        })
+      }
+    })
+
+    if (!full || pages === 0) {
+      return comments
+    }
+
+    let oldRes = results
+
+    for (let i = 1; i < pages; i++) {
+      const newResults = await request.api('commentThreads', {
+        videoId,
+        part: 'snippet',
+        key: this.token,
+        maxResults: 50,
+        pageToken: oldRes.nextPageToken,
+        textFormat: 'plainText'
+      })
+
+      oldRes = newResults
+      newResults.items.forEach(item => {
+        const comment = new YTComment(this, item.snippet.topLevelComment)
+        comments.push(comment)
+
+        if (item.replies) {
+          item.replies.comments.forEach(reply => {
+            const created = new YTComment(this, reply)
+            comment.replies.push(created)
+          })
+        }
+      })
+    }
+
+    return comments
+  }
+
+  /**
+   * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
+   * @param commentId The ID of the comment to get replies from.
+   * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
+   */
+  public async getCommentReplies (commentId: string, maxResults: number = -1) {
+    let full
+    let replies: YTComment[] = []
+
+    if (maxResults <= 0) {
+      full = true
+    } else {
+      full = false
+    }
+
+    if (maxResults > 100) {
+      return Promise.reject('Max results must be 50 or below')
+    }
+
+    const results = await request.api('comments', {
+      parentId: commentId,
+      part: 'snippet',
+      key: this.token,
+      maxResults: full ? 100 : maxResults
+    }).catch(() => {
+      return Promise.reject('Playlist not found')
+    })
+
+    const totalResults = results.pageInfo.totalResults
+    const perPage = results.pageInfo.resultsPerPage
+    const pages = Math.floor(totalResults / perPage)
+
+    results.items.forEach(item => {
+      replies.push(new YTComment(this, item))
+    })
+
+    if (!full || pages === 0) {
+      return replies
+    }
+
+    let oldRes = results
+
+    for (let i = 1; i < pages; i++) {
+      const newResults = await request.api('comments', {
+        parentId: commentId,
+        part: 'snippet',
+        key: this.token,
+        maxResults: 100,
+        pageToken: oldRes.nextPageToken
+      })
+
+      oldRes = newResults
+      newResults.items.forEach(item => {
+        replies.push(new YTComment(this, item))
+      })
+    }
+
+    return replies
   }
 }

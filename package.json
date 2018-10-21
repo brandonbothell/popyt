@@ -1,7 +1,7 @@
 {
   "name": "better-youtube-api",
-  "version": "0.1.2",
-  "description": "A very easy to use Youtube Data v3 API.",
+  "version": "0.2.0",
+  "description": "A very easy to use promise-based Youtube Data v3 API.",
   "main": "out/index.js",
   "scripts": {
     "test": "mocha -r ts-node/register ./**/*.spec.ts",
@@ -13,17 +13,20 @@
     "youtube",
     "youtube search",
     "youtube api",
-    "youtube videos"
+    "youtube videos",
+    "promise",
+    "promise based",
+    "no dependencies"
   ],
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.6",
-    "tslint": "^5.11.0",
-    "tslint-config-standard": "^7.1.0",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^7.1.0",
     "typescript": "^3.0.1"
   },
   "repository": {

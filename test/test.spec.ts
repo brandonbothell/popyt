@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YouTube, Video, Playlist } from '../src'
+import { YouTube, Video, YTComment, Playlist } from '../src'
 import { apiKey } from './config'
 import { parseUrl } from '../src/util'
 
@@ -40,7 +40,6 @@ describe('Searching', () => {
 describe('Getting', () => {
   it('should work with ids', async () => {
     const youtube = new YouTube(apiKey)
-
     expect(await youtube.getVideo('dQw4w9WgXcQ')).to.be.instanceOf(Video)
   })
 
@@ -53,6 +52,21 @@ describe('Getting', () => {
   it('should reject if the item isn\'t found', async () => {
     const youtube = new YouTube(apiKey)
     expect(await youtube.getChannel('dQw4w9WgXcQ').catch(error => { return error })).to.equal('Item not found')
+  })
+
+  it('should work with comments', async () => {
+    const youtube = new YouTube(apiKey)
+    expect(await youtube.getComment('UgyNb5InfceN2n5WhG94AaABAg')).to.be.instanceOf(YTComment)
+  })
+
+  it('should work with replies', async () => {
+    const youtube = new YouTube(apiKey)
+    expect((await (await youtube.getComment('UgyNb5InfceN2n5WhG94AaABAg')).fetchReplies()).length).to.be.greaterThan(0)
+  })
+
+  it('should work with playlists', async () => {
+    const youtube = new YouTube(apiKey)
+    expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.instanceOf(Playlist)
   })
 
   describe('Playlist items', () => {
@@ -75,5 +89,30 @@ describe('Getting', () => {
       const youtube = new YouTube(apiKey)
       expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 0)).length).to.be.greaterThan(50)
     }).timeout(8000)
+  })
+
+  describe('Video comments', () => {
+    it('should work with valid videos with comments and replies', async () => {
+      const youtube = new YouTube(apiKey)
+      const comments = await youtube.getVideoComments('Lq1D8PFnjWY')
+
+      expect(comments.find(comment => comment.text.displayed.startsWith('comment'))).to.be.instanceOf(YTComment)
+      expect(comments.find(comment => comment.text.displayed.startsWith('comment')).replies[0]).to.be.instanceOf(YTComment)
+    })
+
+    it('should not work with valid videos with comments disabled', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getVideoComments('24EWkH5ipdw').catch(error => { return error })).to.equal('Comment thread not found')
+    })
+
+    it('should not work with invalid videos', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getVideoComments('0').catch(error => { return error })).to.equal('Comment thread not found')
+    })
+
+    it('should return an array with a length of <= maxResults', async () => {
+      const youtube = new YouTube(apiKey)
+      expect((await youtube.getVideoComments('Lq1D8PFnjWY', 1)).length).to.be.lessThan(2)
+    })
   })
 })

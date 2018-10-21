@@ -30,7 +30,7 @@ class Video {
         }
         else if (data.kind === 'youtube#playlistItem') {
             this.id = data.snippet.resourceId.videoId;
-            this.private = data.snippet.title === 'Private video' ? true : false;
+            this.private = data.snippet.title === 'Private video';
         }
         else if (data.kind === 'youtube#searchResult') {
             this.id = data.id.videoId;
@@ -56,6 +56,12 @@ class Video {
         return __awaiter(this, void 0, void 0, function* () {
             const video = yield this.youtube.getVideo(this.id);
             return Object.assign(this, video);
+        });
+    }
+    fetchComments(maxResults = -1) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.comments = yield this.youtube.getVideoComments(this.id, maxResults);
+            return this.comments;
         });
     }
 }

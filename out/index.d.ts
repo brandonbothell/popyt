@@ -1,5 +1,3 @@
-import { youtube_v3 } from "googleapis"
-
 /**
  * The main class used to interact with the YouTube API. Use this.
  */
@@ -74,6 +72,20 @@ export class YouTube {
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
   public getPlaylistItems(playlistId: string, maxResults?: number): Promise<Video[]>
+
+  /**
+   * Get `maxResults` comments on a video. Used mostly internally with `Video#fetchComments`.
+   * @param videoId The ID of the video.
+   * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
+   */
+  public getVideoComments (videoId: string, maxResults: number): Promise<YTComment[]>
+
+  /**
+   * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
+   * @param commentId The ID of the comment to get replies from.
+   * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
+   */
+  public getCommentReplies (commentId: string, maxResults: number): Promise<YTComment[]>
 }
 
 /**
@@ -81,14 +93,14 @@ export class YouTube {
  */
 export class Video {
   /**
- * YouTube object that created the video.
- */
-  public youtube
+   * YouTube object that created the video.
+   */
+  public youtube: YouTube
 
   /**
    * The raw data of the video.
    */
-  public data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult
+  public data
 
   /**
    * Whether or not this is a full video object.
@@ -113,7 +125,13 @@ export class Video {
   /**
    * The thumbnails of the video.
    */
-  public thumbnails: youtube_v3.Schema$ThumbnailDetails
+  public thumbnails: {
+    default?: Thumbnail,
+    high?: Thumbnail,
+    maxres?: Thumbnail
+    medium?: Thumbnail,
+    standard?: Thumbnail
+  }
 
   /**
    * The date the video was published.
@@ -124,6 +142,8 @@ export class Video {
    * The ID of the channel that uploaded the video.
    */
   public channelId: string
+
+  private _length: string
 
   /**
    * The minutes of the video.
@@ -168,7 +188,12 @@ export class Video {
    */
   public private: boolean
 
-  constructor(youtube, data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult)
+  /**
+   * The video's comments. Only defined when Video#fetchComments is called.
+   */
+  public comments: YTComment[]
+
+  constructor(youtube: YouTube, data)
 
   /**
    * Fetches this video and reassigns this object to the new video object.
@@ -194,7 +219,7 @@ export class Channel {
   /**
    * The raw data of this channel.
    */
-  public data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult
+  public data: any
 
   /**
    * The name of this channel.
@@ -229,7 +254,13 @@ export class Channel {
   /**
    * This channel's profile pictures.
    */
-  public profilePictures: youtube_v3.Schema$ThumbnailDetails
+  public profilePictures: {
+    default?: Thumbnail,
+    high?: Thumbnail,
+    maxres?: Thumbnail
+    medium?: Thumbnail,
+    standard?: Thumbnail
+  }
 
   /**
    * The date this channel was created.
@@ -240,16 +271,6 @@ export class Channel {
    * The default language for this channel's uploads.
    */
   public language: string
-
-  /**
-   * This channel's statistics.
-   */
-  public statistics: youtube_v3.Schema$ChannelStatistics
-
-  /**
-   * The status of this channel.
-   */
-  public status: youtube_v3.Schema$ChannelStatus
 
   /**
    * This channel's view count.
@@ -271,7 +292,7 @@ export class Channel {
    */
   public comments: number
 
-  constructor (youtube: YouTube, data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult)
+  constructor (youtube: YouTube, data)
 
   /**
    * Fetches this channel and reassigns this object to the new channel object.
@@ -297,7 +318,7 @@ export class Playlist {
   /**
    * The raw data of this playlist.
    */
-  public data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult
+  public data: any
 
   /**
    * Whether or not this is a full playlist object.
@@ -337,7 +358,13 @@ export class Playlist {
   /**
    * The thumbnails for the playlist.
    */
-  public thumbnails: youtube_v3.Schema$ThumbnailDetails
+  public thumbnails: {
+    default?: Thumbnail,
+    high?: Thumbnail,
+    maxres?: Thumbnail
+    medium?: Thumbnail,
+    standard?: Thumbnail
+  }
 
   /**
    * The number of items in the playlist.
@@ -354,7 +381,7 @@ export class Playlist {
    */
   public tags: string[]
 
-  constructor (youtube: YouTube, data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult)
+  constructor (youtube: YouTube, data)
  
   /**
    * Gets every video in the playlist and assigns them to the `videos` property of it.
@@ -366,4 +393,113 @@ export class Playlist {
    * Only useful if `this.full` is false, or if you want updated playlist info.
    */
   public fetch(): Promise<this & Playlist>
+}
+
+export class YTComment {
+  /**
+   * The YouTube object used to create the comment.
+   */
+  public youtube: YouTube
+
+  /**
+   * The raw data from the YouTube API of the comment.
+   */
+  public data: any
+
+  /**
+   * The comment's unique YouTube ID.
+   */
+  public id: string
+
+  /**
+   * The comment's author.
+   */
+  public author: {
+    /**
+     * The author's YouTube username. May not be unique.
+     */
+    username: string,
+
+    /**
+     * The author's avatar URL.
+     */
+    avatar: string,
+
+    /**
+     * The author's channel ID.
+     */
+    channelId: string,
+
+    /**
+     * The author's channel URL.
+     */
+    channelUrl: string
+  }
+
+  /**
+   * The comment's content.
+   */
+  public text: {
+    /**
+     * What YouTube displays to the user viewing the comment.
+     */
+    displayed: string,
+    /**
+     * The comment's plain text.
+     */
+    original: string
+  }
+
+  /**
+   * Whether or not you can like/dislike the comment.
+   */
+  public rateable: boolean
+
+  /**
+   * Either YouTube thinks it's popular, or it has at least 100 likes.
+   */
+  public popular: boolean
+
+  /**
+   * The number of likes the comment has gotten.
+   */
+  public likes: number
+
+  /**
+   * The date the comment was published.
+   */
+  public datePublished: Date
+
+  /**
+   * Either the date the comment was last edited, or the date it was
+   * posted.
+   */
+  public dateEdited: Date
+
+  /**
+   * Either the ID of the video that it commented on, or the ID of the
+   * comment it is replying to.
+   */
+  public parentId: string
+
+  /**
+   * Replies to the comment.
+   */
+  public replies: YTComment[]
+
+  constructor (youtube: YouTube, data)
+
+  /**
+   * Fetches replies to the comment.
+   * @param maxResults The maximum amount of replies to fetch. Fetches all comments if not included
+   * or less than 0.
+   */
+  public fetchReplies (maxResults?: number): Promise<YTComment[]>
+}
+
+
+export type Thumbnail = {
+  height?: number,
+  width?: number,
+  url?: string
 }

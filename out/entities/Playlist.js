@@ -40,11 +40,18 @@ class Playlist {
     /**
      * Adds every video in this playlist to the `videos` property of this playlist.
      */
-    getVideos() {
+    fetchVideos(maxResults = -1) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.videos = yield this.youtube.getPlaylistItems(this.id);
+            this.videos = yield this.youtube.getPlaylistItems(this.id, maxResults);
             return this.videos;
         });
+    }
+    /**
+     * Deprecated, use Playlist#fetchVideos instead.
+     * @param maxResults Maximum number of videos to fetch.
+     */
+    getVideos(maxResults = -1) {
+        return this.fetchVideos(maxResults);
     }
     /**
      * Fetches this playlist and reassigns this object to the new playlist object.

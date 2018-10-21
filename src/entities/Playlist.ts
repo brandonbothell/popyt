@@ -1,6 +1,6 @@
 import { YouTube } from '..'
-import { youtube_v3 } from 'googleapis'
 import { Video } from '.'
+import { Thumbnail } from '../types'
 
 /**
  * A YouTube playlist.
@@ -14,7 +14,7 @@ export class Playlist {
   /**
    * The raw data of this playlist.
    */
-  public data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult
+  public data: any
 
   /**
    * Whether or not this is a full playlist object.
@@ -54,7 +54,13 @@ export class Playlist {
   /**
    * The thumbnails for the playlist.
    */
-  public thumbnails: youtube_v3.Schema$ThumbnailDetails
+  public thumbnails: {
+    default?: Thumbnail,
+    high?: Thumbnail,
+    maxres?: Thumbnail
+    medium?: Thumbnail,
+    standard?: Thumbnail
+  }
 
   /**
    * The number of items in the playlist.
@@ -71,23 +77,23 @@ export class Playlist {
    */
   public tags: string[]
 
-  constructor (youtube: YouTube, data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult) {
+  constructor (youtube: YouTube, data) {
     this.youtube = youtube
     this.data = data
 
     this._init(data)
   }
 
-  private _init (data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult) {
+  private _init (data) {
     if (data.kind === 'youtube#playlist') {
-      const playlist = data as youtube_v3.Schema$Playlist
+      const playlist = data
 
       this.id = playlist.id
       this.tags = playlist.snippet.tags
       this.itemCount = playlist.contentDetails.itemCount
       this.embedHtml = playlist.player.embedHtml
     } else if (data.kind === 'youtube#searchResult') {
-      this.id = (data as youtube_v3.Schema$SearchResult).id.playlistId
+      this.id = data.id.playlistId
     } else {
       throw new Error(`Invalid playlist type: ${data.kind}`)
     }
@@ -102,9 +108,17 @@ export class Playlist {
   /**
    * Adds every video in this playlist to the `videos` property of this playlist.
    */
-  public async getVideos () {
-    this.videos = await this.youtube.getPlaylistItems(this.id)
+  public async fetchVideos (maxResults: number = -1) {
+    this.videos = await this.youtube.getPlaylistItems(this.id, maxResults)
     return this.videos
+  }
+
+  /**
+   * Deprecated, use Playlist#fetchVideos instead.
+   * @param maxResults Maximum number of videos to fetch.
+   */
+  public getVideos (maxResults: number = -1) {
+    return this.fetchVideos(maxResults)
   }
 
   /**
