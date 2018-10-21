@@ -1,9 +1,6 @@
-import { google } from 'googleapis'
 import { Video, Channel, Playlist } from './entities'
-import { parseUrl } from './util'
+import { parseUrl, request } from './util'
 export * from './entities'
-
-const youtube = google.youtube('v3')
 
 /**
  * The main class used to interact with the YouTube API. Use this.
@@ -24,10 +21,10 @@ export class YouTube {
       return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
     }
 
-    const { data: results } = await youtube.search.list({
+    const results = await request.api('search', {
       q: searchTerm,
       maxResults,
-      auth: this.token,
+      key: this.token,
       part: 'snippet',
       type
     })
@@ -35,12 +32,18 @@ export class YouTube {
     const items = []
 
     results.items.forEach(item => {
-      if (type === 'video') {
-        items.push(new Video(this, item))
-      } else if (type === 'channel') {
-        items.push(new Channel(this, item))
-      } else if (type === 'playlist') {
-        items.push(new Playlist(this, item))
+      switch (type) {
+        case 'video':
+          items.push(new Video(this, item))
+          break
+        case 'channel':
+          items.push(new Channel(this, item))
+          break
+        case 'playlist':
+          items.push(new Playlist(this, item))
+          break
+        default:
+          throw new Error('Type must be a video, channel, or playlist')
       }
     })
 
@@ -51,23 +54,23 @@ export class YouTube {
     let result
 
     if (type === 'video') {
-      result = (await youtube.videos.list({
+      result = await request.api('videos', {
         id,
         part: 'snippet,contentDetails,statistics,status',
-        auth: this.token
-      })).data
+        key: this.token
+      })
     } else if (type === 'channel') {
-      result = (await youtube.channels.list({
+      result = await request.api('channels', {
         id,
         part: 'snippet,contentDetails,statistics,status',
-        auth: this.token
-      })).data
+        key: this.token
+      })
     } else if (type === 'playlist') {
-      result = (await youtube.playlists.list({
+      result = await request.api('playlists', {
         id,
         part: 'snippet,contentDetails,player',
-        auth: this.token
-      })).data
+        key: this.token
+      })
     }
 
     if (result.items.length === 0) {
@@ -189,12 +192,12 @@ export class YouTube {
       return Promise.reject('Max results must be 50 or below')
     }
 
-    let { data: results } = await youtube.playlistItems.list({
+    const results = await request.api('playlistItems', {
       playlistId,
       part: 'snippet',
-      auth: this.token,
+      key: this.token,
       maxResults: full ? 50 : maxResults
-    }).catch(error => {
+    }).catch(() => {
       return Promise.reject('Playlist not found')
     })
 
@@ -212,17 +215,17 @@ export class YouTube {
 
     let oldRes = results
 
-    for (let i = 0; i < pages; i++) {
-      const { data: newResults } = await youtube.playlistItems.list({
+    for (let i = 1; i < pages; i++) {
+      const newResults = await request.api('playlistItems', {
         playlistId,
         part: 'snippet',
-        auth: this.token,
+        key: this.token,
         maxResults: 50,
         pageToken: oldRes.nextPageToken
       })
 
       oldRes = newResults
-      newResults.items.forEach((item) => {
+      newResults.items.forEach(item => {
         videos.push(new Video(this, item))
       })
     }

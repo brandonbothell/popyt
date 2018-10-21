@@ -1,6 +1,6 @@
 {
   "name": "better-youtube-api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A very easy to use Youtube Data v3 API.",
   "main": "out/index.js",
   "scripts": {
@@ -9,9 +9,6 @@
   },
   "author": "jasonhaxstuff",
   "license": "GPL-3.0",
-  "dependencies": {
-    "googleapis": "^32.0.0"
-  },
   "keywords": [
     "youtube",
     "youtube search",

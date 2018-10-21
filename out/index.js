@@ -11,11 +11,9 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-const googleapis_1 = require("googleapis");
 const entities_1 = require("./entities");
 const util_1 = require("./util");
 __export(require("./entities"));
-const youtube = googleapis_1.google.youtube('v3');
 /**
  * The main class used to interact with the YouTube API. Use this.
  */
@@ -32,23 +30,27 @@ class YouTube {
             if (maxResults < 1 || maxResults > 50) {
                 return Promise.reject('Max results must be greater than 0 and less than or equal to 50');
             }
-            const { data: results } = yield youtube.search.list({
+            const results = yield util_1.request.api('search', {
                 q: searchTerm,
                 maxResults,
-                auth: this.token,
+                key: this.token,
                 part: 'snippet',
                 type
             });
             const items = [];
             results.items.forEach(item => {
-                if (type === 'video') {
-                    items.push(new entities_1.Video(this, item));
-                }
-                else if (type === 'channel') {
-                    items.push(new entities_1.Channel(this, item));
-                }
-                else if (type === 'playlist') {
-                    items.push(new entities_1.Playlist(this, item));
+                switch (type) {
+                    case 'video':
+                        items.push(new entities_1.Video(this, item));
+                        break;
+                    case 'channel':
+                        items.push(new entities_1.Channel(this, item));
+                        break;
+                    case 'playlist':
+                        items.push(new entities_1.Playlist(this, item));
+                        break;
+                    default:
+                        throw new Error('Type must be a video, channel, or playlist');
                 }
             });
             return items;
@@ -58,25 +60,25 @@ class YouTube {
         return __awaiter(this, void 0, void 0, function* () {
             let result;
             if (type === 'video') {
-                result = (yield youtube.videos.list({
+                result = yield util_1.request.api('videos', {
                     id,
                     part: 'snippet,contentDetails,statistics,status',
-                    auth: this.token
-                })).data;
+                    key: this.token
+                });
             }
             else if (type === 'channel') {
-                result = (yield youtube.channels.list({
+                result = yield util_1.request.api('channels', {
                     id,
                     part: 'snippet,contentDetails,statistics,status',
-                    auth: this.token
-                })).data;
+                    key: this.token
+                });
             }
             else if (type === 'playlist') {
-                result = (yield youtube.playlists.list({
+                result = yield util_1.request.api('playlists', {
                     id,
                     part: 'snippet,contentDetails,player',
-                    auth: this.token
-                })).data;
+                    key: this.token
+                });
             }
             if (result.items.length === 0) {
                 return Promise.reject('Item not found');
@@ -198,12 +200,12 @@ class YouTube {
             if (maxResults > 50) {
                 return Promise.reject('Max results must be 50 or below');
             }
-            let { data: results } = yield youtube.playlistItems.list({
+            const results = yield util_1.request.api('playlistItems', {
                 playlistId,
                 part: 'snippet',
-                auth: this.token,
+                key: this.token,
                 maxResults: full ? 50 : maxResults
-            }).catch(error => {
+            }).catch(() => {
                 return Promise.reject('Playlist not found');
             });
             const totalResults = results.pageInfo.totalResults;
@@ -216,16 +218,16 @@ class YouTube {
                 return videos;
             }
             let oldRes = results;
-            for (let i = 0; i < pages; i++) {
-                const { data: newResults } = yield youtube.playlistItems.list({
+            for (let i = 1; i < pages; i++) {
+                const newResults = yield util_1.request.api('playlistItems', {
                     playlistId,
                     part: 'snippet',
-                    auth: this.token,
+                    key: this.token,
                     maxResults: 50,
                     pageToken: oldRes.nextPageToken
                 });
                 oldRes = newResults;
-                newResults.items.forEach((item) => {
+                newResults.items.forEach(item => {
                     videos.push(new entities_1.Video(this, item));
                 });
             }
