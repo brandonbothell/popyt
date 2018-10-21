@@ -1,5 +1,5 @@
 # Better YouTube API
-Want to access data from the YouTube Data v3 API? No problem! We've got ya covered. `npm i better-youtube-api`
+Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings? No problem! We've got ya covered. `npm i better-youtube-api`
 
 # Examples
 First of all, I recommend that you check out `out/index.d.ts` for all of the methods and what they return. Here are some basic methods:
@@ -7,7 +7,7 @@ First of all, I recommend that you check out `out/index.d.ts` for all of the met
 Instantiate the object:
 
 ```js
-const YouTube = require('better-youtube-api').YouTube
+const { YouTube } = require('better-youtube-api')
 const youtube = new YouTube(apiKey)
 ```
 
