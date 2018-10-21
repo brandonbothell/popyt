@@ -384,9 +384,16 @@ export class Playlist {
   constructor (youtube: YouTube, data)
  
   /**
-   * Gets every video in the playlist and assigns them to the `videos` property of it.
+   * Adds every video in this playlist to the `videos` property of this playlist.
+   * @param maxResults Maximum number of videos to fetch.
    */
-  public getVideos(): Promise<Video[]>
+  public fetchVideos (maxResults?: number): Promise<Video[]>
+
+  /**
+   * Deprecated, use Playlist#fetchVideos instead.
+   * @param maxResults Maximum number of videos to fetch.
+   */
+  public getVideos (maxResults?: number): Promise<Video[]>
 
   /**
    * Fetches this playlist and reassigns this object to the new playlist object.
