@@ -22,7 +22,7 @@ class Playlist {
             const playlist = data;
             this.id = playlist.id;
             this.tags = playlist.snippet.tags;
-            this.itemCount = playlist.contentDetails.itemCount;
+            this.length = playlist.contentDetails.itemCount;
             this.embedHtml = playlist.player.embedHtml;
         }
         else if (data.kind === 'youtube#searchResult') {
@@ -45,13 +45,6 @@ class Playlist {
             this.videos = yield this.youtube.getPlaylistItems(this.id, maxResults);
             return this.videos;
         });
-    }
-    /**
-     * Deprecated, use Playlist#fetchVideos instead.
-     * @param maxResults Maximum number of videos to fetch.
-     */
-    getVideos(maxResults = -1) {
-        return this.fetchVideos(maxResults);
     }
     /**
      * Fetches this playlist and reassigns this object to the new playlist object.

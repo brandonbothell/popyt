@@ -1,6 +1,4 @@
-import { YouTube } from '..'
-import { Playlist } from '.'
-import { Thumbnail } from '../types'
+import { YouTube, Playlist, Thumbnail } from '..'
 
 /**
  * A YouTube channel.
@@ -65,7 +63,7 @@ export class Channel {
   /**
    * The date this channel was created.
    */
-  public datePublished: Date
+  public dateCreated: Date
 
   /**
    * The default language for this channel's uploads.
@@ -78,7 +76,7 @@ export class Channel {
   public views: number
 
   /**
-   * The channel's uploads. Only available after calling `Channel#getVideos()`
+   * The channel's uploads. Only available after calling `Channel#fetchVideos()`
    */
   public videos: Playlist
 
@@ -122,7 +120,7 @@ export class Channel {
 
     this.url = `https://youtube.com/channel/${this.id}`
     this.profilePictures = data.snippet.thumbnails
-    this.datePublished = new Date(data.snippet.publishedAt)
+    this.dateCreated = new Date(data.snippet.publishedAt)
     this.name = data.snippet.title
     this.about = data.snippet.description
     this.full = data.kind === 'youtube#channel'

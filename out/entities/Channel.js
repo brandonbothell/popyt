@@ -40,7 +40,7 @@ class Channel {
         }
         this.url = `https://youtube.com/channel/${this.id}`;
         this.profilePictures = data.snippet.thumbnails;
-        this.datePublished = new Date(data.snippet.publishedAt);
+        this.dateCreated = new Date(data.snippet.publishedAt);
         this.name = data.snippet.title;
         this.about = data.snippet.description;
         this.full = data.kind === 'youtube#channel';

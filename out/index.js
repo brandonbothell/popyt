@@ -250,6 +250,112 @@ class YouTube {
             return videos;
         });
     }
+    getPaginatedItems(type, id, maxResults = -1) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let full;
+            let items = [];
+            if (maxResults <= 0) {
+                full = true;
+            }
+            else {
+                full = false;
+            }
+            let max;
+            if (type === 'playlistItems') {
+                max = 50;
+            }
+            else if (type === 'commentThreads' || type === 'comments') {
+                max = 100;
+            }
+            else {
+                Promise.reject('Unknown item type ' + type);
+            }
+            if (maxResults > max) {
+                return Promise.reject(`Max results must be ${max} or below`);
+            }
+            const options = {
+                part: 'snippet',
+                key: this.token,
+                maxResults: full ? max : maxResults
+            };
+            switch (type) {
+                case 'playlistItems':
+                    options.playlistId = id;
+                    break;
+                case 'commentThreads':
+                    options.videoId = id;
+                    options.part += ',replies';
+                    options.textFormat = 'plainText';
+                    break;
+                case 'comments':
+                    options.parentId = id;
+                    break;
+            }
+            const results = yield util_1.request.api(type, options).catch(error => {
+                return Promise.reject('Playlist not found' + error);
+            });
+            const totalResults = results.pageInfo.totalResults;
+            const perPage = results.pageInfo.resultsPerPage;
+            const pages = Math.floor(totalResults / perPage);
+            console.log(results.pageInfo);
+            results.items.forEach(item => {
+                let comment;
+                switch (type) {
+                    case 'playlistItems':
+                        items.push(new entities_1.Video(this, item));
+                        break;
+                    case 'commentThreads':
+                        comment = new entities_1.YTComment(this, item.snippet.topLevelComment);
+                        items.push(comment);
+                        break;
+                    case 'comments':
+                        items.push(new entities_1.YTComment(this, item));
+                        break;
+                }
+                if (item.replies) {
+                    item.replies.comments.forEach(reply => {
+                        const created = new entities_1.YTComment(this, reply);
+                        comment.replies.push(created);
+                    });
+                }
+            });
+            if (!full || pages === 0) {
+                return items;
+            }
+            let oldRes = results;
+            options.pageToken = oldRes.nextPageToken;
+            while (true) {
+                const newResults = yield util_1.request.api(type, options);
+                oldRes = newResults;
+                newResults.items.forEach(item => {
+                    let comment;
+                    switch (type) {
+                        case 'playlistItems':
+                            items.push(new entities_1.Video(this, item));
+                            break;
+                        case 'commentThreads':
+                            comment = new entities_1.YTComment(this, item.snippet.topLevelComment);
+                            items.push(comment);
+                            break;
+                        case 'comments':
+                            items.push(new entities_1.YTComment(this, item));
+                            break;
+                    }
+                    if (item.replies) {
+                        item.replies.comments.forEach(reply => {
+                            const created = new entities_1.YTComment(this, reply);
+                            comment.replies.push(created);
+                        });
+                    }
+                });
+                console.log(newResults.nextPageToken);
+                if (!(newResults.nextPageToken)) {
+                    break;
+                }
+            }
+            return items;
+        });
+    }
     /**
      * Get `maxResults` comments on a video. Used mostly internally with `Video#fetchComments`.
      * @param videoId The ID of the video.

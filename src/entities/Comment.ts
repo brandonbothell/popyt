@@ -66,7 +66,7 @@ export class YTComment {
   public popular: boolean
 
   /**
-   * The number of likes the comment has gotten.
+   * The number of likes the comment has received.
    */
   public likes: number
 
@@ -82,14 +82,14 @@ export class YTComment {
   public dateEdited: Date
 
   /**
-   * Either the ID of the video that it commented on, or the ID of the
+   * Either the ID of the video that it is commenting on, or the ID of the
    * comment it is replying to.
    */
   public parentId: string
 
   /**
-   * Replies to the comment. If the comment was fetched from a video, then
-   * this will be partially filled. You'll need to use Comment#fetchReplies
+   * Replies directed to the comment. If the comment was fetched from a video,
+   * then this will be partially filled. You'll need to use Comment#fetchReplies
    * to get all of the replies, though.
    */
   public replies: YTComment[]

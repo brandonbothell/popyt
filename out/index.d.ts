@@ -49,6 +49,12 @@ export class YouTube {
   public getPlaylist(id: string): Promise<Playlist>
 
   /**
+   * Get a comment object from the ID of a comment.
+   * @param id The ID of the comment.
+   */
+  public getComment (id: string): Promise<YTComment>
+
+  /**
    * Get a video object from the url of a video.
    * @param url The url of the video.
    */
@@ -75,17 +81,18 @@ export class YouTube {
 
   /**
    * Get `maxResults` comments on a video. Used mostly internally with `Video#fetchComments`.
+   * Can only get the last 100 comments on a video, due to a bug with the YouTube API.
    * @param videoId The ID of the video.
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
-  public getVideoComments (videoId: string, maxResults: number): Promise<YTComment[]>
+  public getVideoComments (videoId: string, maxResults?: number): Promise<YTComment[]>
 
   /**
    * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
    * @param commentId The ID of the comment to get replies from.
    * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
    */
-  public getCommentReplies (commentId: string, maxResults: number): Promise<YTComment[]>
+  public getCommentReplies (commentId: string, maxResults?: number): Promise<YTComment[]>
 }
 
 /**
@@ -200,6 +207,12 @@ export class Video {
    * Only useful if `this.full` is false, or if you want updated video info.
    */
   public fetch(): Promise<this & Video>
+
+  /**
+   * Fetches the video's comments and assigns them to Video#comments.
+   * @param maxResults The maximum amount of comments to fetch
+   */
+  public fetchComments (maxResults?: number): Promise<YTComment[]>
 }
 
 /**
@@ -265,7 +278,7 @@ export class Channel {
   /**
    * The date this channel was created.
    */
-  public datePublished: Date
+  public dateCreated: Date
 
   /**
    * The default language for this channel's uploads.
@@ -278,7 +291,7 @@ export class Channel {
   public views: number
 
   /**
-   * The channel's uploads. Only available after calling `Channel#getVideos()`
+   * The channel's uploads. Only available after calling `Channel#fetchVideos()`
    */
   public videos: Playlist
 
@@ -303,7 +316,7 @@ export class Channel {
   /**
    * Fetches the channel's videos and assigns them to the `Channel#videos` property.
    */
-  public getVideos(): Promise<Playlist>
+  public fetchVideos(): Promise<Playlist>
 }
 
 /**
@@ -341,7 +354,7 @@ export class Playlist {
   public description: string
 
   /**
-   * The videos in the playlist. Only available after calling `Playlist#getVideos()`.
+   * The videos in the playlist. Only available after calling `Playlist#fetchVideos()`.
    */
   public videos: Video[]
 
@@ -353,7 +366,7 @@ export class Playlist {
   /**
    * The date the playlist was created.
    */
-  public datePublished: Date
+  public dateCreated: Date
 
   /**
    * The thumbnails for the playlist.
@@ -369,7 +382,7 @@ export class Playlist {
   /**
    * The number of items in the playlist.
    */
-  public itemCount: number
+  public length: number
 
   /**
    * An <iframe> tag that embeds a player that will play the playlist.
@@ -388,12 +401,6 @@ export class Playlist {
    * @param maxResults Maximum number of videos to fetch.
    */
   public fetchVideos (maxResults?: number): Promise<Video[]>
-
-  /**
-   * Deprecated, use Playlist#fetchVideos instead.
-   * @param maxResults Maximum number of videos to fetch.
-   */
-  public getVideos (maxResults?: number): Promise<Video[]>
 
   /**
    * Fetches this playlist and reassigns this object to the new playlist object.
@@ -468,7 +475,7 @@ export class YTComment {
   public popular: boolean
 
   /**
-   * The number of likes the comment has gotten.
+   * The number of likes the comment has received.
    */
   public likes: number
 
@@ -484,13 +491,15 @@ export class YTComment {
   public dateEdited: Date
 
   /**
-   * Either the ID of the video that it commented on, or the ID of the
+   * Either the ID of the video that it is commenting on, or the ID of the
    * comment it is replying to.
    */
   public parentId: string
 
   /**
-   * Replies to the comment.
+   * Replies directed to the comment. If the comment was fetched from a video,
+   * then this will be partially filled. You'll need to use Comment#fetchReplies
+   * to get all of the replies, though.
    */
   public replies: YTComment[]
 

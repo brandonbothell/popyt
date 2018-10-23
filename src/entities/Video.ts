@@ -156,6 +156,10 @@ export class Video {
     return Object.assign(this, video)
   }
 
+  /**
+   * Fetches the video's comments and assigns them to Video#comments.
+   * @param maxResults The maximum amount of comments to fetch
+   */
   public async fetchComments (maxResults: number = -1) {
     this.comments = await this.youtube.getVideoComments(this.id, maxResults)
     return this.comments

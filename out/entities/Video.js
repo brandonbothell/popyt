@@ -58,6 +58,10 @@ class Video {
             return Object.assign(this, video);
         });
     }
+    /**
+     * Fetches the video's comments and assigns them to Video#comments.
+     * @param maxResults The maximum amount of comments to fetch
+     */
     fetchComments(maxResults = -1) {
         return __awaiter(this, void 0, void 0, function* () {
             this.comments = yield this.youtube.getVideoComments(this.id, maxResults);

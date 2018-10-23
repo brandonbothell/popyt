@@ -49,30 +49,10 @@ describe('Getting', () => {
     expect(parseUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl').playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
   })
 
-  it('should reject if the item isn\'t found', async () => {
-    const youtube = new YouTube(apiKey)
-    expect(await youtube.getChannel('dQw4w9WgXcQ').catch(error => { return error })).to.equal('Item not found')
-  })
-
-  it('should work with comments', async () => {
-    const youtube = new YouTube(apiKey)
-    expect(await youtube.getComment('UgyNb5InfceN2n5WhG94AaABAg')).to.be.instanceOf(YTComment)
-  })
-
-  it('should work with replies', async () => {
-    const youtube = new YouTube(apiKey)
-    expect((await (await youtube.getComment('UgyNb5InfceN2n5WhG94AaABAg')).fetchReplies()).length).to.be.greaterThan(0)
-  })
-
-  it('should work with playlists', async () => {
-    const youtube = new YouTube(apiKey)
-    expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.instanceOf(Playlist)
-  })
-
   describe('Playlist items', () => {
     it('should reject if the playlist isn\'t found', async () => {
       const youtube = new YouTube(apiKey)
-      expect(await youtube.getPlaylistItems('').catch(error => { return error })).to.equal('Playlist not found')
+      expect(await youtube.getPlaylistItems('').catch(error => { return error })).to.equal('Items not found')
     })
 
     it('should reject if maxResults is > 50', async () => {
@@ -102,17 +82,34 @@ describe('Getting', () => {
 
     it('should not work with valid videos with comments disabled', async () => {
       const youtube = new YouTube(apiKey)
-      expect(await youtube.getVideoComments('24EWkH5ipdw').catch(error => { return error })).to.equal('Comment thread not found')
+      expect(await youtube.getVideoComments('24EWkH5ipdw').catch(error => { return error })).to.equal('Items not found')
     })
 
     it('should not work with invalid videos', async () => {
       const youtube = new YouTube(apiKey)
-      expect(await youtube.getVideoComments('0').catch(error => { return error })).to.equal('Comment thread not found')
+      expect(await youtube.getVideoComments('0').catch(error => { return error })).to.equal('Items not found')
     })
 
     it('should return an array with a length of <= maxResults', async () => {
       const youtube = new YouTube(apiKey)
       expect((await youtube.getVideoComments('Lq1D8PFnjWY', 1)).length).to.be.lessThan(2)
+    })
+  })
+
+  describe('Comment replies', () => {
+    it('should work with valid comments with replies', async () => {
+      const youtube = new YouTube(apiKey)
+      expect((await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC'))[0]).to.be.instanceOf(YTComment)
+    })
+
+    it('should not work with invalid comments/comments with no replies', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getCommentReplies('0').catch(error => { return error })).to.equal('Items not found')
+    })
+
+    it('should return an array with a length of <= maxResults', async () => {
+      const youtube = new YouTube(apiKey)
+      expect((await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC', 1)).length).to.be.lessThan(2)
     })
   })
 })

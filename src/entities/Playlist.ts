@@ -1,6 +1,4 @@
-import { YouTube } from '..'
-import { Video } from '.'
-import { Thumbnail } from '../types'
+import { YouTube, Video, Thumbnail } from '..'
 
 /**
  * A YouTube playlist.
@@ -37,7 +35,7 @@ export class Playlist {
   public description: string
 
   /**
-   * The videos in the playlist. Only available after calling `Playlist#getVideos()`.
+   * The videos in the playlist. Only available after calling `Playlist#fetchVideos()`.
    */
   public videos: Video[]
 
@@ -49,7 +47,7 @@ export class Playlist {
   /**
    * The date the playlist was created.
    */
-  public datePublished: Date
+  public dateCreated: Date
 
   /**
    * The thumbnails for the playlist.
@@ -65,7 +63,7 @@ export class Playlist {
   /**
    * The number of items in the playlist.
    */
-  public itemCount: number
+  public length: number
 
   /**
    * An <iframe> tag that embeds a player that will play the playlist.
@@ -90,7 +88,7 @@ export class Playlist {
 
       this.id = playlist.id
       this.tags = playlist.snippet.tags
-      this.itemCount = playlist.contentDetails.itemCount
+      this.length = playlist.contentDetails.itemCount
       this.embedHtml = playlist.player.embedHtml
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.playlistId
@@ -100,7 +98,7 @@ export class Playlist {
 
     this.title = data.snippet.title
     this.creatorId = data.snippet.channelId
-    this.datePublished = new Date(data.snippet.publishedAt)
+    this.dateCreated = new Date(data.snippet.publishedAt)
     this.thumbnails = data.snippet.thumbnails
     this.full = data.kind === 'youtube#playlist'
   }
@@ -111,14 +109,6 @@ export class Playlist {
   public async fetchVideos (maxResults: number = -1) {
     this.videos = await this.youtube.getPlaylistItems(this.id, maxResults)
     return this.videos
-  }
-
-  /**
-   * Deprecated, use Playlist#fetchVideos instead.
-   * @param maxResults Maximum number of videos to fetch.
-   */
-  public getVideos (maxResults: number = -1) {
-    return this.fetchVideos(maxResults)
   }
 
   /**
