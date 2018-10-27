@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const util_1 = require("../util");
 /**
  * A YouTube video.
  */
@@ -20,9 +21,9 @@ class Video {
     _init(data) {
         if (data.kind === 'youtube#video') {
             const video = data;
-            this._length = video.contentDetails.duration;
-            this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')));
-            this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1));
+            this._length = util_1.parseIsoDuration(video.contentDetails.duration);
+            this.minutes = (this._length.hours * 60) + this._length.minutes;
+            this.seconds = this._length.minutes;
             this.likes = Number(video.statistics.likeCount);
             this.dislikes = Number(video.statistics.dislikeCount);
             this.views = Number(video.statistics.viewCount);
