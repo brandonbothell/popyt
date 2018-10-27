@@ -20,9 +20,9 @@ class Video {
     _init(data) {
         if (data.kind === 'youtube#video') {
             const video = data;
-            this._length = new Date(video.contentDetails.duration);
-            this.minutes = this._length.getMinutes() + (this._length.getHours() * 60);
-            this.seconds = this._length.getSeconds();
+            this._length = video.contentDetails.duration;
+            this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')));
+            this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1));
             this.likes = Number(video.statistics.likeCount);
             this.dislikes = Number(video.statistics.dislikeCount);
             this.views = Number(video.statistics.viewCount);
