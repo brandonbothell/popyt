@@ -1,4 +1,13 @@
 import { parse } from 'url'
+import { ISODuration } from '../types'
+
+const numbers = '\\d+(?:[\\.,]\\d{0,3})?'
+const weekPattern = `(${numbers}W)`
+const datePattern = `(${numbers}Y)?(${numbers}M)?(${numbers}D)?`
+const timePattern = `T(${numbers}H)?(${numbers}M)?(${numbers}S)?`
+const iso8601 = `P(?:${weekPattern}|${datePattern}(?:${timePattern})?)`
+const timeArray = ['weeks', 'years', 'months', 'days', 'hours', 'minutes', 'seconds']
+const pattern = new RegExp(iso8601)
 
 export function parseUrl (url: string): { video: string, playlist: string, channel: string } {
   const parsed = parse(url, true)
@@ -43,4 +52,11 @@ export function parseUrl (url: string): { video: string, playlist: string, chann
     default:
       return { video: null, playlist: null, channel: null }
   }
+}
+
+export function parseIsoDuration (duration: string): ISODuration {
+  return duration.match(pattern).slice(1).reduce((prev, current, index) => {
+    prev[timeArray[index]] = parseFloat(current) || 0
+    return prev
+  }, { weeks: 0, years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 })
 }

@@ -1,6 +1,7 @@
 import { YouTube } from '..'
-import { Thumbnail } from '../types'
+import { Thumbnail, ISODuration } from '../types'
 import { YTComment } from './Comment'
+import { parseIsoDuration } from '../util'
 
 /**
  * A YouTube video.
@@ -57,7 +58,7 @@ export class Video {
    */
   public channelId: string
 
-  private _length: string
+  private _length: ISODuration
 
   /**
    * The minutes of the video.
@@ -118,9 +119,9 @@ export class Video {
     if (data.kind === 'youtube#video') {
       const video = data
 
-      this._length = video.contentDetails.duration
-      this.minutes = parseInt(this._length.substring(this._length.indexOf('PT') + 2, this._length.indexOf('M')))
-      this.seconds = parseInt(this._length.substring(this._length.indexOf('M') + 1, this._length.length - 1))
+      this._length = parseIsoDuration(video.contentDetails.duration)
+      this.minutes = (this._length.hours * 60) + this._length.minutes
+      this.seconds = this._length.minutes
 
       this.likes = Number(video.statistics.likeCount)
       this.dislikes = Number(video.statistics.dislikeCount)
