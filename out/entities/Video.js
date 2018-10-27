@@ -23,7 +23,7 @@ class Video {
             const video = data;
             this._length = util_1.parseIsoDuration(video.contentDetails.duration);
             this.minutes = (this._length.hours * 60) + this._length.minutes;
-            this.seconds = this._length.minutes;
+            this.seconds = this._length.seconds;
             this.likes = Number(video.statistics.likeCount);
             this.dislikes = Number(video.statistics.dislikeCount);
             this.views = Number(video.statistics.viewCount);
