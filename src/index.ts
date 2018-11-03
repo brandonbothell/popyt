@@ -152,7 +152,7 @@ export class YouTube {
     }
 
     const results = await request.api('search', {
-      q: searchTerm,
+      q: encodeURIComponent(searchTerm),
       maxResults,
       key: this.token,
       part: 'snippet',
