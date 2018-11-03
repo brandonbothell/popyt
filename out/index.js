@@ -141,7 +141,7 @@ class YouTube {
                 return Promise.reject('Max results must be greater than 0 and less than or equal to 50');
             }
             const results = yield util_1.request.api('search', {
-                q: searchTerm,
+                q: encodeURIComponent(searchTerm),
                 maxResults,
                 key: this.token,
                 part: 'snippet',
