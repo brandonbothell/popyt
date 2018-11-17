@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/types/ISODuration.ts"],"names":[],"mappings":"","file":"ISODuration.js","sourcesContent":["export type ISODuration = {\r\n  weeks: number,\r\n  years: number,\r\n  months: number,\r\n  days: number,\r\n  hours: number,\r\n  minutes: number,\r\n  seconds: number\r\n}\r\n"],"sourceRoot":"../../src"}
