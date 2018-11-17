@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es6",
     "outDir": "out",
+    "declaration": true,
+    "removeComments": false,
+    "sourceMap": true,
     "rootDir": "src",
     "strict": false
   },

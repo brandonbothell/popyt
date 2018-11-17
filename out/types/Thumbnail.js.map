@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/types/Thumbnail.ts"],"names":[],"mappings":"","file":"Thumbnail.js","sourcesContent":["export type Thumbnail = {\r\n  height?: number,\r\n  width?: number,\r\n  url?: string\r\n}\r\n"],"sourceRoot":"../../src"}

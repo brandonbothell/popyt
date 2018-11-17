@@ -7,3 +7,5 @@ __export(require("./Video"));
 __export(require("./Channel"));
 __export(require("./Playlist"));
 __export(require("./Comment"));
+
+//# sourceMappingURL=index.js.map

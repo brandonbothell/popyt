@@ -1,11 +1,12 @@
 {
   "name": "better-youtube-api",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "A very easy to use promise-based Youtube Data v3 API.",
   "main": "out/index.js",
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register ./**/*.spec.ts",
-    "prepublishOnly": "tsc"
+    "prepublishOnly": "gulp"
   },
   "author": "jasonhaxstuff",
   "license": "GPL-3.0",
@@ -23,6 +24,11 @@
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.6",
     "chai": "^4.1.2",
+    "fs-nextra": "^0.3.7",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "merge2": "^1.2.3",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",

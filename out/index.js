@@ -320,3 +320,5 @@ class YouTube {
     }
 }
 exports.YouTube = YouTube;
+
+//# sourceMappingURL=index.js.map
