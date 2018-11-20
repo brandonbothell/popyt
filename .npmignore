@@ -1,8 +1,10 @@
 node_modules/
 test/
 src/
+docs/
 tsconfig.json
 tslint.json
+.vscode/
 gulpfile.js
 desktop.ini
 *.log
