@@ -22,10 +22,8 @@ async function build () {
   ])
 }
 
-async function docs () {
-  await fsn.emptydir('docs')
-
-  return gulp
+function docs () {
+  const toReturn = gulp
     .src(['src/**/*.ts'])
     .pipe(typedoc({
       module: 'commonjs',
@@ -34,6 +32,12 @@ async function docs () {
       out: 'docs/',
       name: 'Better YouTube API'
     }))
+
+  toReturn.on('end', () => {
+    fsn.createFile('docs/.nojekyll')
+  })
+
+  return toReturn
 }
 
 gulp.task('typedoc', docs)
