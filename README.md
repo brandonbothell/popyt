@@ -2,7 +2,7 @@
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings and promises? No problem! We've got ya covered. `npm i better-youtube-api`
 
 # Examples
-First of all, I recommend that you check out `out/index.d.ts` for all of the methods and what they return. Here are some basic methods:
+First of all, I recommend that you check out [the documentation](https://jasonhaxstuff.github.io/better-youtube-api/) for all of the methods and what they return. Here are some basic methods:
 
 Instantiate the object:
 
