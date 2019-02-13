@@ -6,7 +6,7 @@ const weekPattern = `(${numbers}W)`
 const datePattern = `(${numbers}Y)?(${numbers}M)?(${numbers}D)?`
 const timePattern = `T(${numbers}H)?(${numbers}M)?(${numbers}S)?`
 const iso8601 = `P(?:${weekPattern}|${datePattern}(?:${timePattern})?)`
-const timeArray = ['weeks', 'years', 'months', 'days', 'hours', 'minutes', 'seconds']
+const timeArray = [ 'weeks', 'years', 'months', 'days', 'hours', 'minutes', 'seconds' ]
 const pattern = new RegExp(iso8601)
 
 export function parseUrl (url: string): { video: string, playlist: string, channel: string } {

@@ -1,5 +1,5 @@
 import { request as https } from 'https'
-import { IncomingMessage, RequestOptions } from 'http'
+import { IncomingMessage, RequestOptions, OutgoingMessage } from 'http'
 import { parse as parseUrl } from 'url'
 
 export const request = {
@@ -23,28 +23,12 @@ function get (url: string): Promise<any> {
 
 function post (url: string, data: any): Promise<any> {
   const options = parseUrlToOptions(url, 'POST')
-
-  return req(options, req => {
-    req.on('error', error => {
-      throw error
-    })
-
-    req.write(data)
-    req.end()
-  })
+  return req(options, req => reqCallback(req, data))
 }
 
 function put (url: string, data: any): Promise<any> {
   const options = parseUrlToOptions(url, 'PUT')
-
-  return req(options, req => {
-    req.on('error', error => {
-      throw error
-    })
-
-    req.write(data)
-    req.end()
-  })
+  return req(options, req => reqCallback(req, data))
 }
 
 function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestOptions {
@@ -61,7 +45,7 @@ function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestO
   }
 }
 
-function req (options: RequestOptions, reqFunction: Function) {
+function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => void) {
   return new Promise((resolve, reject) => {
     const cb = (res: IncomingMessage) => {
       let data = ''
@@ -79,16 +63,25 @@ function req (options: RequestOptions, reqFunction: Function) {
           return reject(new Error(parsed.error.message))
         }
 
-        resolve(parsed)
+        return resolve(parsed)
       })
 
       res.on('error', error => {
-        reject(error)
+        return reject(error)
       })
     }
 
     reqFunction(https(options, cb))
   })
+}
+
+function reqCallback (req: OutgoingMessage, data?: any) {
+  req.on('error', error => {
+    throw error
+  })
+
+  if (data) req.write(data)
+  req.end()
 }
 
 function parseParams (params: Object) {

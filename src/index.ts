@@ -173,7 +173,7 @@ export class YouTube {
           items.push(new Playlist(this, item))
           break
         default:
-          throw new Error('Type must be a video, channel, or playlist')
+          return Promise.reject('Type must be a video, channel, or playlist')
       }
     })
 
@@ -223,7 +223,7 @@ export class YouTube {
       case 'comment':
         return new YTComment(this, result.items[0])
       default:
-        throw new Error('Type must be a video, channel, or playlist')
+        return Promise.reject('Type must be a video, channel, or playlist')
     }
   }
 
@@ -248,7 +248,7 @@ export class YouTube {
     }
 
     if (maxResults > max) {
-      return Promise.reject(`Max results must be ${max} or below`)
+      return Promise.reject(`Max results must be ${max} or below for ${type}`)
     }
 
     const options: {
@@ -355,3 +355,5 @@ export class YouTube {
     return items
   }
 }
+
+export default YouTube

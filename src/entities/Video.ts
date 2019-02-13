@@ -15,7 +15,7 @@ export class Video {
   /**
    * The raw data of the video.
    */
-  public data
+  public data: any
 
   /**
    * Whether or not this is a full video object.
@@ -58,7 +58,7 @@ export class Video {
    */
   public channelId: string
 
-  private _length: ISODuration
+  public _length: ISODuration
 
   /**
    * The minutes of the video.
@@ -115,7 +115,7 @@ export class Video {
     this._init(data)
   }
 
-  private _init (data) {
+  private _init (data: any) {
     if (data.kind === 'youtube#video') {
       const video = data
 

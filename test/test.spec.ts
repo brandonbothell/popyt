@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YouTube, Video, YTComment, Playlist } from '../src'
+import { YouTube, Video, YTComment } from '../src'
 import { apiKey } from './config'
 import { parseUrl } from '../src/util'
 
@@ -57,7 +57,7 @@ describe('Getting', () => {
 
     it('should reject if maxResults is > 50', async () => {
       const youtube = new YouTube(apiKey)
-      expect(await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 51).catch(error => { return error })).to.equal('Max results must be 50 or below')
+      expect(await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 51).catch(error => { return error })).to.equal('Max results must be 50 or below for playlistItems')
     })
 
     it('should return an array with a length of <= maxResults', async () => {
@@ -99,8 +99,11 @@ describe('Getting', () => {
   describe('Comment replies', () => {
     it('should work with valid comments with replies', async () => {
       const youtube = new YouTube(apiKey)
-      expect((await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC'))[0]).to.be.instanceOf(YTComment)
-    })
+
+      youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC').then(replies => {
+        expect(replies[0]).to.be.instanceOf(YTComment)
+      })
+    }).timeout(3000)
 
     it('should not work with invalid comments/comments with no replies', async () => {
       const youtube = new YouTube(apiKey)
