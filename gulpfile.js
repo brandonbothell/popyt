@@ -30,7 +30,9 @@ function docs () {
       readme: 'README.md',
       target: 'es6',
       out: 'docs/',
-      name: 'Better YouTube API'
+      name: 'Better YouTube API',
+      theme: 'minimal',
+      mode: 'file'
     }))
 
   toReturn.on('end', () => {

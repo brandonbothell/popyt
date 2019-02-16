@@ -9,6 +9,9 @@ export const request = {
   }
 }
 
+/**
+ * @ignore
+ */
 function get (url: string): Promise<any> {
   const options = parseUrlToOptions(url, 'GET')
 
@@ -21,16 +24,25 @@ function get (url: string): Promise<any> {
   })
 }
 
+/**
+ * @ignore
+ */
 function post (url: string, data: any): Promise<any> {
   const options = parseUrlToOptions(url, 'POST')
   return req(options, req => reqCallback(req, data))
 }
 
+/**
+ * @ignore
+ */
 function put (url: string, data: any): Promise<any> {
   const options = parseUrlToOptions(url, 'PUT')
   return req(options, req => reqCallback(req, data))
 }
 
+/**
+ * @ignore
+ */
 function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestOptions {
   const parsed = parseUrl(url)
 
@@ -45,6 +57,9 @@ function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestO
   }
 }
 
+/**
+ * @ignore
+ */
 function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => void) {
   return new Promise((resolve, reject) => {
     const cb = (res: IncomingMessage) => {
@@ -75,6 +90,9 @@ function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => vo
   })
 }
 
+/**
+ * @ignore
+ */
 function reqCallback (req: OutgoingMessage, data?: any) {
   req.on('error', error => {
     throw error
@@ -84,6 +102,9 @@ function reqCallback (req: OutgoingMessage, data?: any) {
   req.end()
 }
 
+/**
+ * @ignore
+ */
 function parseParams (params: Object) {
   let url = ''
 
