@@ -2,6 +2,7 @@ import { YouTube } from '..'
 import { Thumbnail, ISODuration } from '../types'
 import { YTComment } from './Comment'
 import { parseIsoDuration } from '../util'
+import { Cache } from '../util/caching'
 
 /**
  * A YouTube video.

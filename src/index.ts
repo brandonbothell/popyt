@@ -1,5 +1,6 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
 import { parseUrl, request } from './util'
+import { Cache } from './util/caching'
 export * from './entities'
 export * from './types'
 
@@ -7,14 +8,35 @@ export * from './types'
  * The main class used to interact with the YouTube API. Use this.
  */
 export class YouTube {
+  private _shouldCache: boolean
+  private _cacheSearches: boolean
+  private _cacheTTL: number
+
   public token: string
 
   /**
    *
    * @param token Your YouTube Data API v3 token. Don't share this with anybody.
+   * @param options Caching options. Recommended to change.
    */
-  constructor (token: string) {
+  constructor (token: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: false }) {
     this.token = token
+
+    this._shouldCache = options.cache
+    this._cacheSearches = options.cacheSearches
+    this._cacheTTL = options.cacheTTL
+
+    if (options.cacheCheckInterval > 0) {
+      setInterval(Cache.checkTTLs, options.cacheCheckInterval * 1000)
+    }
+  }
+
+  public _cache (id: string, value: any) {
+    if (!this._shouldCache) {
+      return
+    }
+
+    Cache.set(id, value, this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
   }
 
   /**
@@ -147,6 +169,12 @@ export class YouTube {
   }
 
   private async search (type: 'video' | 'channel' | 'playlist', searchTerm: string, maxResults: number = 10): Promise<Video[] | Channel[] | Playlist[]> {
+    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}`)
+
+    if (cached) {
+      return cached
+    }
+
     if (maxResults < 1 || maxResults > 50) {
       return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
     }
@@ -177,10 +205,20 @@ export class YouTube {
       }
     })
 
+    if (this._shouldCache && this._cacheSearches) {
+      this._cache(`search://${type}/"${searchTerm}"/${maxResults}`, items)
+    }
+
     return items
   }
 
   private async getItemById (type: 'video' | 'channel' | 'playlist' | 'comment', id: string): Promise<Video | Channel | Playlist | YTComment> {
+    const cached = Cache.get(`get://${type}/${id}`)
+
+    if (cached) {
+      return cached
+    }
+
     let result
 
     if (type === 'video') {
@@ -213,21 +251,39 @@ export class YouTube {
       return Promise.reject('Item not found')
     }
 
+    let endResult: Video | Playlist | Channel | YTComment
+
     switch (type) {
       case 'video':
-        return new Video(this, result.items[0])
+        endResult = new Video(this, result.items[0])
+        break
       case 'playlist':
-        return new Playlist(this, result.items[0])
+        endResult = new Playlist(this, result.items[0])
+        break
       case 'channel':
-        return new Channel(this, result.items[0])
+        endResult = new Channel(this, result.items[0])
+        break
       case 'comment':
-        return new YTComment(this, result.items[0])
+        endResult = new YTComment(this, result.items[0])
+        break
       default:
         return Promise.reject('Type must be a video, channel, or playlist')
     }
+
+    if (this._shouldCache) {
+      this._cache(`get://${type}/${id}`, endResult)
+    }
+
+    return endResult
   }
 
   private async getPaginatedItems (type: 'playlistItems' | 'commentThreads' | 'comments', id: string, maxResults: number = -1): Promise<Video[] | YTComment[]> {
+    const cached = Cache.get(`get://${type}/${id}/${maxResults}`)
+
+    if (cached) {
+      return cached
+    }
+
     let full: boolean
     let items = []
 
@@ -352,8 +408,34 @@ export class YouTube {
       })
     }
 
+    if (this._shouldCache) {
+      this._cache(`get://${type}/${id}/${maxResults}`, items)
+    }
+
     return items
   }
+}
+
+type YouTubeOptions = {
+  /**
+   * Whether or not to cache entities.
+   */
+  cache?: boolean
+
+  /**
+   * How long to cache entities in seconds (0 = unlimited).
+   */
+  cacheTTL?: number
+
+  /**
+   * How often to check for and delete expired cached items in seconds.
+   */
+  cacheCheckInterval?: number
+
+  /**
+   * Whether or not we should cache searches
+   */
+  cacheSearches?: boolean
 }
 
 export default YouTube

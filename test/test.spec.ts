@@ -65,7 +65,7 @@ describe('Getting', () => {
       expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 2)).length).to.be.lessThan(3)
     })
 
-    it('should return an array the size of the playlist is maxResults isn\'t defined or is < 1', async () => {
+    it('should return an array the size of the playlist if maxResults isn\'t defined or is < 1', async () => {
       const youtube = new YouTube(apiKey)
       expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 0)).length).to.be.greaterThan(50)
     }).timeout(8000)
@@ -115,4 +115,11 @@ describe('Getting', () => {
       expect((await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC', 1)).length).to.be.lessThan(2)
     })
   })
+})
+
+describe('Caching', () => {
+  it('should work fast', async () => {
+    const youtube = new YouTube(apiKey)
+    return youtube.getVideo('dQw4w9WgXcQ')
+  }).timeout(100)
 })
