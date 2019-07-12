@@ -927,8 +927,20 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-constructor tsd-parent-kind-class">
 					<a href="youtube.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a href="youtube.html#_cachesearches" class="tsd-kind-icon">_cache<wbr>Searches</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a href="youtube.html#_cachettl" class="tsd-kind-icon">_cacheTTL</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a href="youtube.html#_shouldcache" class="tsd-kind-icon">_should<wbr>Cache</a>
+				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="youtube.html#token" class="tsd-kind-icon">token</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="youtube.html#_cache" class="tsd-kind-icon">_cache</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="youtube.html#getchannel" class="tsd-kind-icon">get<wbr>Channel</a>
@@ -980,17 +992,38 @@ img { max-width: 100%; }
 				</li>
 			</ul>
 		</li>
+		<li class=" tsd-kind-type-alias tsd-is-not-exported">
+			<a href="../globals.html#cacheitem" class="tsd-kind-icon">Cache<wbr>Item</a>
+		</li>
 		<li class=" tsd-kind-type-alias">
 			<a href="../globals.html#isoduration" class="tsd-kind-icon">ISODuration</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
 			<a href="../globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a>
 		</li>
+		<li class=" tsd-kind-type-alias tsd-is-not-exported">
+			<a href="../globals.html#youtubeoptions" class="tsd-kind-icon">You<wbr>Tube<wbr>Options</a>
+		</li>
+		<li class=" tsd-kind-variable tsd-is-not-exported">
+			<a href="../globals.html#cache" class="tsd-kind-icon">cache</a>
+		</li>
+		<li class=" tsd-kind-function tsd-is-not-exported">
+			<a href="../globals.html#_delete" class="tsd-kind-icon">_delete</a>
+		</li>
+		<li class=" tsd-kind-function tsd-is-not-exported">
+			<a href="../globals.html#checkttls" class="tsd-kind-icon">checkTTLs</a>
+		</li>
 		<li class=" tsd-kind-function">
 			<a href="../globals.html#parseisoduration" class="tsd-kind-icon">parse<wbr>Iso<wbr>Duration</a>
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="../globals.html#parseurl" class="tsd-kind-icon">parse<wbr>Url</a>
+		</li>
+		<li class=" tsd-kind-function tsd-is-not-exported">
+			<a href="../globals.html#set" class="tsd-kind-icon">set</a>
+		</li>
+		<li class=" tsd-kind-object-literal">
+			<a href="../globals.html#cache" class="tsd-kind-icon">Cache</a>
 		</li>
 		<li class=" tsd-kind-object-literal">
 			<a href="../globals.html#request" class="tsd-kind-icon">request</a>
@@ -1027,12 +1060,16 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="youtube.html#_cachesearches" class="tsd-kind-icon">_cache<wbr>Searches</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="youtube.html#_cachettl" class="tsd-kind-icon">_cacheTTL</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="youtube.html#_shouldcache" class="tsd-kind-icon">_should<wbr>Cache</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="youtube.html#token" class="tsd-kind-icon">token</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="youtube.html#_cache" class="tsd-kind-icon">_cache</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="youtube.html#getchannel" class="tsd-kind-icon">get<wbr>Channel</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="youtube.html#getchannelbyurl" class="tsd-kind-icon">get<wbr>Channel<wbr>ByUrl</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="youtube.html#getcomment" class="tsd-kind-icon">get<wbr>Comment</a></li>
@@ -1060,13 +1097,13 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>You<wbr>Tube<span class="tsd-signature-symbol">(</span>token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="youtube.html" class="tsd-signature-type">YouTube</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>You<wbr>Tube<span class="tsd-signature-symbol">(</span>token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><a href="../globals.html#youtubeoptions" class="tsd-signature-type">YouTubeOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="youtube.html" class="tsd-signature-type">YouTube</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L10">index.ts:10</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L15">index.ts:15</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1081,6 +1118,14 @@ img { max-width: 100%; }
 									</div>
 								</div>
 							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../globals.html#youtubeoptions" class="tsd-signature-type">YouTubeOptions</a><span class="tsd-signature-symbol"> =&nbsp;{ cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: false }</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Caching options. Recommended to change.</p>
+									</div>
+								</div>
+							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="youtube.html" class="tsd-signature-type">YouTube</a></h4>
 					</li>
@@ -1089,19 +1134,75 @@ img { max-width: 100%; }
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<a name="_cachesearches" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cache<wbr>Searches</h3>
+				<div class="tsd-signature tsd-kind-icon">_cache<wbr>Searches<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L12">index.ts:12</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<a name="_cachettl" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cacheTTL</h3>
+				<div class="tsd-signature tsd-kind-icon">_cacheTTL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L13">index.ts:13</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<a name="_shouldcache" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _should<wbr>Cache</h3>
+				<div class="tsd-signature tsd-kind-icon">_should<wbr>Cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L11">index.ts:11</a></li>
+					</ul>
+				</aside>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 				<a name="token" class="tsd-anchor"></a>
 				<h3>token</h3>
 				<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L10">index.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L15">index.ts:15</a></li>
 					</ul>
 				</aside>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="_cache" class="tsd-anchor"></a>
+				<h3>_cache</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L34">index.ts:34</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>id: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>value: <span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 				<a name="getchannel" class="tsd-anchor"></a>
 				<h3>get<wbr>Channel</h3>
@@ -1112,7 +1213,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L59">index.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L81">index.ts:81</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1143,7 +1244,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L97">index.ts:97</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L119">index.ts:119</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1174,7 +1275,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L75">index.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L97">index.ts:97</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1205,7 +1306,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L145">index.ts:145</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L167">index.ts:167</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1242,7 +1343,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L183">index.ts:183</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L215">index.ts:215</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1268,7 +1369,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L230">index.ts:230</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L280">index.ts:280</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1297,7 +1398,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L67">index.ts:67</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L89">index.ts:89</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1328,7 +1429,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L111">index.ts:111</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L133">index.ts:133</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1359,7 +1460,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L126">index.ts:126</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L148">index.ts:148</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1396,7 +1497,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L51">index.ts:51</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L73">index.ts:73</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1427,7 +1528,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L83">index.ts:83</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L105">index.ts:105</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1458,7 +1559,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L136">index.ts:136</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L158">index.ts:158</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1496,7 +1597,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L149">index.ts:149</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L171">index.ts:171</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1525,7 +1626,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L34">index.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L56">index.ts:56</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1562,7 +1663,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L43">index.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L65">index.ts:65</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1599,7 +1700,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/ab1fa76/src/index.ts#L25">index.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1013f52/src/index.ts#L47">index.ts:47</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
