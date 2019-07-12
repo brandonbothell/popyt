@@ -1,8 +1,13 @@
 import 'mocha'
 import { expect } from 'chai'
 import { YouTube, Video, YTComment } from '../src'
-import { apiKey } from './config'
 import { parseUrl } from '../src/util'
+
+const apiKey = process.env.YOUTUBE_API_KEY
+
+if (!apiKey) {
+  throw new Error('No API key')
+}
 
 describe('Creation of the YouTube instance', () => {
   it('should work with an invalid token', () => {
