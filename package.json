@@ -5,7 +5,7 @@
   "main": "out/index.js",
   "types": "typings/index.d.ts",
   "scripts": {
-    "test": "mocha -r ts-node/register ./**/*.spec.ts",
+    "test": "mocha --exit -r ts-node/register ./**/*.spec.ts",
     "docs": "gulp typedoc",
     "prepublishOnly": "gulp"
   },

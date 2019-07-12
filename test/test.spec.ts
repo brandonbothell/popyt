@@ -105,9 +105,10 @@ describe('Getting', () => {
     it('should work with valid comments with replies', async () => {
       const youtube = new YouTube(apiKey)
 
-      youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC').then(replies => {
-        expect(replies[0]).to.be.instanceOf(YTComment)
-      })
+      const replies = await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC')
+      expect(replies[0]).to.be.instanceOf(YTComment)
+
+      return {}
     }).timeout(3000)
 
     it('should not work with invalid comments/comments with no replies', async () => {
