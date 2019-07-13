@@ -1,5 +1,5 @@
 # Better YouTube API
-Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings and promises? No problem! We've got ya covered. `npm i better-youtube-api`
+Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i better-youtube-api`
 
 [![GitHub issues](https://img.shields.io/github/issues/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/issues)
 [![GitHub stars](https://img.shields.io/github/stars/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/stargazers)
@@ -14,6 +14,13 @@ Instantiate the object:
 ```js
 const { YouTube } = require('better-youtube-api')
 const youtube = new YouTube(apiKey)
+```
+
+Instantiate the object without caching:
+
+```js
+const { YouTube } = require('better-youtube-api')
+const youtube = new YouTube(apiKey, { cache: false })
 ```
 
 Get a video by ID:
