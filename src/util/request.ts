@@ -27,22 +27,6 @@ function get (url: string): Promise<any> {
 /**
  * @ignore
  */
-function post (url: string, data: any): Promise<any> {
-  const options = parseUrlToOptions(url, 'POST')
-  return req(options, req => reqCallback(req, data))
-}
-
-/**
- * @ignore
- */
-function put (url: string, data: any): Promise<any> {
-  const options = parseUrlToOptions(url, 'PUT')
-  return req(options, req => reqCallback(req, data))
-}
-
-/**
- * @ignore
- */
 function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestOptions {
   const parsed = parseUrl(url)
 
@@ -88,18 +72,6 @@ function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => vo
 
     reqFunction(https(options, cb))
   })
-}
-
-/**
- * @ignore
- */
-function reqCallback (req: OutgoingMessage, data?: any) {
-  req.on('error', error => {
-    throw error
-  })
-
-  if (data) req.write(data)
-  req.end()
 }
 
 /**

@@ -19,7 +19,7 @@ function get (name: string | number): any {
     return undefined
   }
 
-  return cache[name]
+  return cache[name].v
 }
 
 function checkTTLs () {

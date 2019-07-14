@@ -11,3 +11,4 @@ desktop.ini
 *.log
 .nycrc
 .nyc_output/
+.coveralls.yml

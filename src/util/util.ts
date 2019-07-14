@@ -10,7 +10,7 @@ export function parseUrl (url: string): { video: string, playlist: string, chann
       const idRegex = /^[a-zA-Z0-9-_]+$/
 
       if (parsed.pathname === '/watch') {
-        if (!idRegex.test(parsed.query.v as string)) {
+        if (!parsed.query.v || !idRegex.test(parsed.query.v as string)) {
           return { video: null, playlist: null, channel: null }
         }
 
@@ -22,7 +22,7 @@ export function parseUrl (url: string): { video: string, playlist: string, chann
 
         return response
       } else if (parsed.pathname === '/playlist') {
-        if (!idRegex.test(parsed.query.list as string)) {
+        if (!parsed.query.list || !idRegex.test(parsed.query.list as string)) {
           return { video: null, playlist: null, channel: null }
         }
 
@@ -30,7 +30,7 @@ export function parseUrl (url: string): { video: string, playlist: string, chann
       } else if (parsed.pathname.startsWith('/channel/')) {
         const id = parsed.pathname.replace('/channel/', '')
 
-        if (!idRegex.test(id)) {
+        if (!id || !idRegex.test(id)) {
           return { video: null, playlist: null, channel: null }
         }
 

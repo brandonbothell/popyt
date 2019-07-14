@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YouTube, Video, YTComment } from '../src'
+import { YouTube, Video, YTComment, Channel, Playlist } from '../src'
 import { parseUrl } from '../src/util'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -38,7 +38,16 @@ describe('Searching', () => {
 
   it('should reject if api key is wrong', async () => {
     const youtube = new YouTube('')
-    expect(await youtube.searchVideos('never gonna give you up').catch(error => { return error })).to.be.instanceOf(Error)
+    expect(await youtube.searchVideos('never gonna give you up').catch(error => { return error })).to.be.an.instanceOf(Error)
+  })
+
+  it('should throw an error if kind is wrong', () => {
+    const youtube = new YouTube('')
+
+    expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
+    expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')
+    expect(() => new YTComment(youtube, { kind: 'notakind' })).to.throw('Invalid comment type: notakind')
+    expect(() => new Playlist(youtube, { kind: 'notakind' })).to.throw('Invalid playlist type: notakind')
   })
 })
 
@@ -48,10 +57,111 @@ describe('Getting', () => {
     expect(await youtube.getVideo('dQw4w9WgXcQ')).to.be.instanceOf(Video)
   })
 
-  it('should work with urls', async () => {
+  it('should work with urls', () => {
     expect(parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ').video).to.equal('dQw4w9WgXcQ')
     expect(parseUrl('https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw').channel).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
     expect(parseUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl').playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+  })
+
+  it('shouldn\'t work with bad urls', () => {
+    const parsed = parseUrl('https://www.youtube.com/watch')
+
+    expect(parsed.video).to.equal(null)
+    expect(parsed.channel).to.equal(null)
+    expect(parsed.playlist).to.equal(null)
+  })
+
+  describe('Videos', () => {
+    it('should reject if the video isn\'t found', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getVideo('').catch(error => { return error })).to.equal('Item not found')
+    })
+
+    it('should work with proper IDs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getVideo('Lq1D8PFnjWY')).to.be.an.instanceOf(Video)
+    })
+
+    it('should work with proper URLs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getVideoByUrl('https://youtube.com/watch?v=Lq1D8PFnjWY')).to.be.an.instanceOf(Video)
+    })
+
+    it('should work with fetching', async () => {
+      const youtube = new YouTube(apiKey)
+      const video = await youtube.getVideo('Lq1D8PFnjWY')
+
+      expect(await video.fetch()).to.be.an.instanceOf(Video)
+    })
+
+    it('should work with fetching videos', async () => {
+      const youtube = new YouTube(apiKey)
+      const video = await youtube.getVideo('Lq1D8PFnjWY')
+
+      expect(await video.fetchComments(1)).to.be.an.instanceOf(Array)
+    })
+  })
+
+  describe('Channels', () => {
+    it('should reject if the channel isn\'t found', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getChannel('').catch(error => { return error })).to.equal('Item not found')
+    })
+
+    it('should work with proper IDs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
+    })
+
+    it('should work with proper URLs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getChannelByUrl('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
+    })
+
+    it('should work with fetching', async () => {
+      const youtube = new YouTube(apiKey)
+      const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+
+      expect(await channel.fetch()).to.be.an.instanceOf(Channel)
+    })
+
+    it('should work with fetching videos', async () => {
+      const youtube = new YouTube(apiKey)
+      const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+
+      expect(await channel.fetchVideos()).to.be.an.instanceOf(Playlist)
+    })
+  })
+
+  describe('Playlists', () => {
+    it('should reject if the playlist isn\'t found', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getPlaylist('').catch(error => { return error })).to.equal('Item not found')
+    })
+
+    it('should work with proper IDs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
+    })
+
+    it('should work with proper URLs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getPlaylistByUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
+    })
+
+    it('should work with fetching', async () => {
+      const youtube = new YouTube(apiKey)
+      const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+
+      expect(await playlist.fetch()).to.be.an.instanceOf(Playlist)
+    })
+
+    it('should work with fetching videos', async () => {
+      const youtube = new YouTube(apiKey)
+      const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+
+      expect(await playlist.fetchVideos(1)).to.be.an.instanceOf(Array)
+    })
   })
 
   describe('Playlist items', () => {
@@ -99,6 +209,16 @@ describe('Getting', () => {
       const youtube = new YouTube(apiKey)
       expect((await youtube.getVideoComments('Lq1D8PFnjWY', 1)).length).to.be.lessThan(2)
     })
+
+    it('should work with fetching replies', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', 1))[0].fetchReplies())).to.be.an.instanceOf(Array)
+    })
+
+    it('should be individually gettable', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getComment('Uggw2qPdnUEfcHgCoAEC')).to.be.an.instanceOf(YTComment)
+    })
   })
 
   describe('Comment replies', () => {
@@ -127,5 +247,27 @@ describe('Caching', () => {
   it('should work fast', async () => {
     const youtube = new YouTube(apiKey)
     return youtube.getVideo('dQw4w9WgXcQ')
-  }).timeout(100)
+  }).timeout(50)
+
+  it('should be disabled if cache is false', async () => {
+    const youtube = new YouTube(apiKey, { cache: false })
+    const video = youtube.getVideo('dQw4w9WgXcQ')
+    const time = new Date().getTime()
+
+    await video
+
+    expect(new Date().getTime() - time).to.be.greaterThan(50)
+  })
+
+  it('should not use expired cached items', async () => {
+    const youtube = new YouTube(apiKey, { cacheTTL: 0.01, cacheCheckInterval: 0.009 })
+    await youtube.getVideo('dQw4w9WgXcQ')
+
+    const video = youtube.getVideo('dQw4w9WgXcQ')
+    const time = new Date().getTime()
+
+    await video
+
+    expect(new Date().getTime() - time).to.be.greaterThan(50)
+  })
 })

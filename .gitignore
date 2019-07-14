@@ -7,3 +7,4 @@ desktop.ini
 typings/
 .nyc_output/
 *.log
+.coveralls.yml

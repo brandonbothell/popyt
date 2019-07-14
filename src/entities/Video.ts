@@ -134,7 +134,7 @@ export class Video {
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.videoId
     } else {
-      throw new Error(`Invalid video type: ${data.kind}.`)
+      throw new Error(`Invalid video type: ${data.kind}`)
     }
 
     this.title = data.snippet.title

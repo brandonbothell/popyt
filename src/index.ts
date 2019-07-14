@@ -168,10 +168,11 @@ export class YouTube {
     return this.getPaginatedItems('comments', commentId, maxResults) as Promise<YTComment[]>
   }
 
+  /* istanbul ignore next */
   private async search (type: 'video' | 'channel' | 'playlist', searchTerm: string, maxResults: number = 10): Promise<Video[] | Channel[] | Playlist[]> {
     const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}`)
 
-    if (cached) {
+    if (this._shouldCache && cached) {
       return cached
     }
 
@@ -212,10 +213,11 @@ export class YouTube {
     return items
   }
 
+  /* istanbul ignore next */
   private async getItemById (type: 'video' | 'channel' | 'playlist' | 'comment', id: string): Promise<Video | Channel | Playlist | YTComment> {
     const cached = Cache.get(`get://${type}/${id}`)
 
-    if (cached) {
+    if (this._shouldCache && cached) {
       return cached
     }
 
@@ -267,7 +269,7 @@ export class YouTube {
         endResult = new YTComment(this, result.items[0])
         break
       default:
-        return Promise.reject('Type must be a video, channel, or playlist')
+        return Promise.reject('Type must be a video, channel, playlist, or comment.')
     }
 
     if (this._shouldCache) {
@@ -277,10 +279,11 @@ export class YouTube {
     return endResult
   }
 
+  /* istanbul ignore next */
   private async getPaginatedItems (type: 'playlistItems' | 'commentThreads' | 'comments', id: string, maxResults: number = -1): Promise<Video[] | YTComment[]> {
     const cached = Cache.get(`get://${type}/${id}/${maxResults}`)
 
-    if (cached) {
+    if (this._shouldCache && cached) {
       return cached
     }
 
