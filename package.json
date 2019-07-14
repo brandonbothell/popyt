@@ -5,7 +5,8 @@
   "main": "out/index.js",
   "types": "typings/index.d.ts",
   "scripts": {
-    "test": "mocha --exit -r ts-node/register ./**/*.spec.ts",
+    "test": "mocha --exit",
+    "coverage": "nyc mocha --exit && nyc report --reporter=text-lcov | coveralls",
     "docs": "gulp typedoc",
     "prepublishOnly": "gulp"
   },
@@ -23,10 +24,12 @@
     "caching"
   ],
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^0.1.3",
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
     "@types/node": "12.6.2",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.5",
     "fs-nextra": "0.4.5",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "^2.6.4",
@@ -34,6 +37,8 @@
     "gulp-typescript": "^5.0.0-alpha.3",
     "merge2": "^1.2.3",
     "mocha": "6.1.4",
+    "nyc": "^14.1.1",
+    "source-map-support": "^0.5.12",
     "ts-node": "8.3.0",
     "tslint": "^5.11.0",
     "tslint-config-standard": "8.0.1",
@@ -42,5 +47,6 @@
   },
   "repository": {
     "url": "https://github.com/jasonhaxstuff/better-youtube-api.git"
-  }
+  },
+  "dependencies": {}
 }

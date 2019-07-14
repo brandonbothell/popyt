@@ -2,9 +2,12 @@ node_modules/
 test/
 src/
 docs/
+coverage/
 tsconfig.json
 tslint.json
 .vscode/
 gulpfile.js
 desktop.ini
 *.log
+.nycrc
+.nyc_output/

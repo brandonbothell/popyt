@@ -2,6 +2,8 @@ node_modules/
 .vscode/
 test/config.ts
 out/
+coverage/
 desktop.ini
 typings/
+.nyc_output/
 *.log
