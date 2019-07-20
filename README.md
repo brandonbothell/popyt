@@ -39,3 +39,15 @@ console.log(video)
 ```
 
 You can do the same thing with playlists, channels, and comments by replacing `Video` with either one.
+
+Note 1: By using `better-youtube-api`, you are agreeing to be bound to the [YouTube ToS](https://www.youtube.com/t/terms).
+
+Note 2: This wrapper does not implement every feature of the YouTube API. With a single developer working on it, there just isn't time for everything to be implemented. Some of the objectively most-important features have been added. The limits imposed by the wrapper are not imposed by YouTube.
+
+## Privacy Policy
+`better-youtube-api` uses YouTube API services.  
+No personal user information is stored by the client.  
+Public channel/video/playlist/comment data is stored by the client for an amount of time editable by the user. This amount of time defaults to 10 minutes.  
+The client stores public channel data explicitly and/or implicitly (requesting video stores the uploader's ID, etc.) requested by the user.  
+Follows the [Google Privacy Policy](http://www.google.com/policies/privacy).  
+
