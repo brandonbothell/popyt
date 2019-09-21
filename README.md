@@ -8,8 +8,10 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![Actions Status](https://github.com/jasonhaxstuff/better-youtube-api/workflows/CI/badge.svg)](https://github.com/jasonhaxstuff/better-youtube-api/actions)
 [![Downloads](https://img.shields.io/npm/dt/better-youtube-api.svg)](https://www.npmjs.com/package/better-youtube-api)
 
+Check out [our website](https://bbothell.me/better-youtube-api)!
+
 # Examples
-First of all, I recommend that you check out [the documentation](https://jasonhaxstuff.github.io/better-youtube-api/) for all of the methods and what they return. Here are some basic methods:
+First of all, I recommend that you check out [the documentation](https://bbothell.me/better-youtube-api/docs) for all of the methods and what they return. Here are some basic methods:
 
 Instantiate the object:
 

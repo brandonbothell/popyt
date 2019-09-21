@@ -29,14 +29,14 @@ function docs () {
       module: 'commonjs',
       readme: 'README.md',
       target: 'es6',
-      out: 'docs/',
+      out: 'public/docs/',
       name: 'Better YouTube API',
-      theme: 'minimal',
+      theme: 'default',
       mode: 'file'
     }))
 
   toReturn.on('end', () => {
-    fsn.createFile('docs/.nojekyll')
+    fsn.createFile('public/docs/.nojekyll')
   })
 
   return toReturn
