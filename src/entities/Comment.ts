@@ -84,6 +84,7 @@ export class YTComment {
   /**
    * Either the ID of the video that it is commenting on, or the ID of the
    * comment it is replying to.
+   * Undefined whenever the comment is fetched directly using the ID.
    */
   public parentId: string
 
@@ -120,11 +121,11 @@ export class YTComment {
       original: comment.snippet.textOriginal
     }
     this.rateable = comment.canRate
-    this.popular = comment.viewerRating === 'like' ? true : comment.likeCount >= 100
+    this.popular = comment.likeCount >= 100
     this.likes = comment.likeCount
     this.datePublished = comment.publishedAt
     this.dateEdited = comment.updatedAt
-    this.parentId = comment.parentId ? comment.parentId : comment.videoId
+    this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId
     this.replies = []
   }
 

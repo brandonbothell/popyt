@@ -1,7 +1,7 @@
 import 'mocha'
 import { expect } from 'chai'
 import { YouTube, Video, YTComment, Channel, Playlist } from '../src'
-import { parseUrl } from '../src/util'
+import { parseUrl, request } from '../src/util'
 import { Cache } from '../src/util/caching'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -20,7 +20,9 @@ describe('Searching', () => {
   it('should default to 10 results', async () => {
     const youtube = new YouTube(apiKey)
     expect((await youtube.searchVideos('never gonna give you up')).length).to.equal(10)
-  })
+    expect((await youtube.searchChannels('rick astley')).length).to.equal(10)
+    expect((await youtube.searchPlaylists('music')).length).to.equal(10)
+  }).timeout(20000)
 
   it('should return an array', async () => {
     const youtube = new YouTube(apiKey)
@@ -41,6 +43,25 @@ describe('Searching', () => {
     const youtube = new YouTube('')
     expect(await youtube.searchVideos('never gonna give you up').catch(error => { return error })).to.be.an.instanceOf(Error)
   })
+
+  it('should set what it can with search results', async () => {
+    const youtube = new YouTube(apiKey)
+    const channel = (await youtube.searchChannels('rick astley', 1))[0]
+
+    expect(channel.id).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
+    expect(channel.country).to.equal(undefined)
+    expect(channel.language).to.equal(undefined)
+    expect(channel.views).to.equal(undefined)
+    expect(channel.comments).to.equal(undefined)
+  })
+
+  it('should be able to fetch videos of a channel search result', async () => {
+    const youtube = new YouTube(apiKey)
+    const channel = (await youtube.searchChannels('rick astley', 1))[0]
+    const videos = await channel.fetchVideos()
+
+    expect(videos).to.be.an.instanceOf(Playlist)
+  }).timeout(8000)
 
   it('should throw an error if kind is wrong', () => {
     const youtube = new YouTube('')
@@ -123,6 +144,11 @@ describe('Getting', () => {
       expect(await youtube.getVideoByUrl('https://youtube.com/watch?v=Lq1D8PFnjWY')).to.be.an.instanceOf(Video)
     })
 
+    it('shouldn\'t work with invalid URLs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getVideoByUrl('https://youtube.com/watch').catch(e => e)).to.equal('Not a valid video url')
+    })
+
     it('should work with fetching', async () => {
       const youtube = new YouTube(apiKey)
       const video = await youtube.getVideo('Lq1D8PFnjWY')
@@ -154,6 +180,11 @@ describe('Getting', () => {
       expect(await youtube.getChannelByUrl('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
     })
 
+    it('shouldn\'t work with invalid URLs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getChannelByUrl('https://youtube.com/channel').catch(e => e)).to.equal('Not a valid channel url')
+    })
+
     it('should work with fetching', async () => {
       const youtube = new YouTube(apiKey)
       const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
@@ -166,6 +197,13 @@ describe('Getting', () => {
       const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
 
       expect(await channel.fetchVideos()).to.be.an.instanceOf(Playlist)
+    })
+
+    it('should have a negative subscriber count if it is hidden', async () => {
+      const youtube = new YouTube(apiKey)
+      const channel = await youtube.getChannel('UCacsMRrp9ql-vdgpn0zUIdQ')
+
+      expect(channel.subCount).to.be.lessThan(0)
     })
   })
 
@@ -185,6 +223,11 @@ describe('Getting', () => {
       expect(await youtube.getPlaylistByUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
     })
 
+    it('shouldn\'t work with invalid URLs', async () => {
+      const youtube = new YouTube(apiKey)
+      expect(await youtube.getPlaylistByUrl('https://youtube.com/playlist').catch(e => e)).to.equal('Not a valid playlist url')
+    })
+
     it('should work with fetching', async () => {
       const youtube = new YouTube(apiKey)
       const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
@@ -192,7 +235,7 @@ describe('Getting', () => {
       expect(await playlist.fetch()).to.be.an.instanceOf(Playlist)
     })
 
-    it('should work with fetching videos', async () => {
+    it('should work with fetching maxResults videos', async () => {
       const youtube = new YouTube(apiKey)
       const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
       const videos = await playlist.fetchVideos(1)
@@ -200,6 +243,15 @@ describe('Getting', () => {
       expect(videos[0]).to.be.an.instanceOf(Video)
       expect(playlist.videos[0].id).to.equal(videos[0].id)
     })
+
+    it('should work with fetching all videos', async () => {
+      const youtube = new YouTube(apiKey)
+      const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+      const videos = await playlist.fetchVideos()
+
+      expect(videos.length).to.be.gte(150)
+      expect(playlist.videos.length).to.be.gte(150)
+    }).timeout(8000)
   })
 
   describe('Playlist items', () => {
@@ -266,13 +318,21 @@ describe('Getting', () => {
       const youtube = new YouTube(apiKey)
       expect(await youtube.getComment('Uggw2qPdnUEfcHgCoAEC')).to.be.an.instanceOf(YTComment)
     })
+
+    it('should have a parent ID of its video', async () => {
+      const youtube = new YouTube(apiKey)
+      const video = await youtube.getVideo('Lq1D8PFnjWY')
+      const comments = await video.fetchComments(1)
+
+      expect(comments[0].parentId).to.equal('Lq1D8PFnjWY')
+    })
   })
 
   describe('Comment replies', () => {
     it('should work with valid comments with replies', async () => {
       const youtube = new YouTube(apiKey)
 
-      const replies = await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC')
+      const replies = await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
       expect(replies[0]).to.be.instanceOf(YTComment)
 
       return {}
@@ -285,8 +345,16 @@ describe('Getting', () => {
 
     it('should return an array with a length of <= maxResults', async () => {
       const youtube = new YouTube(apiKey)
-      expect((await youtube.getCommentReplies('Uggw2qPdnUEfcHgCoAEC', 1)).length).to.be.lessThan(2)
+      expect((await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg', 1)).length).to.be.lessThan(2)
     })
+
+    it('should have a parent ID of the comment it replied to', async () => {
+      const youtube = new YouTube(apiKey)
+      const comment = await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
+      const replies = await comment.fetchReplies(1)
+
+      expect(replies[0].parentId).to.equal('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
+    }).timeout(8000)
   })
 })
 
@@ -339,5 +407,50 @@ describe('Caching', () => {
     Cache.checkTTLs()
 
     expect(Cache.get('test')).to.equal(undefined)
+  })
+
+  it('should not cache if _shouldCalche is false', () => {
+    const youtube = new YouTube(apiKey, { cache: false })
+    youtube._cache('test', 'value')
+
+    expect(Cache.get('test')).to.equal(undefined)
+  })
+
+  it('should cache if _shouldCache is true', () => {
+    const youtube = new YouTube(apiKey, { cache: true, cacheTTL: 60 })
+    youtube._cache('test', 'value')
+
+    expect(Cache.get('test')).to.equal('value')
+    Cache._delete('test')
+  })
+
+  it('should cache forever if cacheTTL is <= 0', () => {
+    const youtube = new YouTube(apiKey, { cache: true, cacheTTL: 0 })
+    youtube._cache('test', 'value')
+
+    expect(Cache.get('test')).to.equal('value')
+    Cache._delete('test')
+  })
+})
+
+describe('Requests', () => {
+  it('should work with and without / before subUrl', async () => {
+    const res = await request.api('/videos', {
+      id: 'dQw4w9WgXcQ',
+      part: 'snippet',
+      key: apiKey
+    })
+    const res2 = await request.api('videos', {
+      id: 'dQw4w9WgXcQ',
+      part: 'snippet',
+      key: apiKey
+    })
+
+    expect(res.id).to.equal(res2.id)
+  })
+
+  it('should throw errors', async () => {
+    const res = await request.api('videos', {}).catch(e => e.message)
+    expect(res).to.equal('Required parameter: part')
   })
 })

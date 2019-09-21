@@ -12,6 +12,7 @@ export const request = {
 /**
  * @ignore
  */
+/* istanbul ignore next */
 function get (url: string): Promise<any> {
   const options = parseUrlToOptions(url, 'GET')
 
@@ -27,6 +28,7 @@ function get (url: string): Promise<any> {
 /**
  * @ignore
  */
+/* istanbul ignore next */
 function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestOptions {
   const parsed = parseUrl(url)
 
@@ -44,6 +46,7 @@ function parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestO
 /**
  * @ignore
  */
+/* istanbul ignore next */
 function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => void) {
   return new Promise((resolve, reject) => {
     const cb = (res: IncomingMessage) => {
@@ -77,6 +80,7 @@ function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => vo
 /**
  * @ignore
  */
+/* istanbul ignore next */
 function parseParams (params: Object) {
   let url = ''
 
