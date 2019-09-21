@@ -2,6 +2,7 @@ import 'mocha'
 import { expect } from 'chai'
 import { YouTube, Video, YTComment, Channel, Playlist } from '../src'
 import { parseUrl } from '../src/util'
+import { Cache } from '../src/util/caching'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 
@@ -61,6 +62,41 @@ describe('Getting', () => {
     expect(parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ').video).to.equal('dQw4w9WgXcQ')
     expect(parseUrl('https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw').channel).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
     expect(parseUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl').playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+
+    const videoWithPlaylist = parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithPlaylist.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithPlaylist.video).to.equal('dQw4w9WgXcQ')
+    expect(videoWithPlaylist.channel).to.equal(null)
+
+    const playlistWithoutId = parseUrl('https://www.youtube.com/playlist')
+    expect(playlistWithoutId.playlist).to.equal(null)
+    expect(playlistWithoutId.video).to.equal(null)
+    expect(playlistWithoutId.channel).to.equal(null)
+
+    const channelWithoutId = parseUrl('https://www.youtube.com/channel/')
+    expect(channelWithoutId.playlist).to.equal(null)
+    expect(channelWithoutId.video).to.equal(null)
+    expect(channelWithoutId.channel).to.equal(null)
+
+    const invalidResource = parseUrl('https://www.youtube.com/dfsdfdsf/')
+    expect(invalidResource.playlist).to.equal(null)
+    expect(invalidResource.video).to.equal(null)
+    expect(invalidResource.channel).to.equal(null)
+
+    const shortUrl = parseUrl('https://youtu.be/dQw4w9WgXcQ')
+    expect(shortUrl.playlist).to.equal(null)
+    expect(shortUrl.video).to.equal('dQw4w9WgXcQ')
+    expect(shortUrl.channel).to.equal(null)
+
+    const shortUrlWithoutId = parseUrl('https://youtu.be')
+    expect(shortUrlWithoutId.playlist).to.equal(null)
+    expect(shortUrlWithoutId.video).to.equal(null)
+    expect(shortUrlWithoutId.channel).to.equal(null)
+
+    const invalidUrl = parseUrl('https://github.com/jasonhaxstuff')
+    expect(invalidUrl.playlist).to.equal(null)
+    expect(invalidUrl.video).to.equal(null)
+    expect(invalidUrl.channel).to.equal(null)
   })
 
   it('shouldn\'t work with bad urls', () => {
@@ -159,8 +195,10 @@ describe('Getting', () => {
     it('should work with fetching videos', async () => {
       const youtube = new YouTube(apiKey)
       const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+      const videos = await playlist.fetchVideos(1)
 
-      expect(await playlist.fetchVideos(1)).to.be.an.instanceOf(Array)
+      expect(videos[0]).to.be.an.instanceOf(Video)
+      expect(playlist.videos[0].id).to.equal(videos[0].id)
     })
   })
 
@@ -191,8 +229,17 @@ describe('Getting', () => {
       const youtube = new YouTube(apiKey)
       const comments = await youtube.getVideoComments('Lq1D8PFnjWY')
 
-      expect(comments.find(comment => comment.text.displayed.startsWith('comment'))).to.be.instanceOf(YTComment)
-      expect(comments.find(comment => comment.text.displayed.startsWith('comment')).replies[0]).to.be.instanceOf(YTComment)
+      expect(comments[0]).to.be.an.instanceOf(YTComment)
+      expect(comments.find(comment => comment.text.displayed.startsWith('comment')).replies[0]).to.be.an.instanceOf(YTComment)
+    })
+
+    it('should work with fetching from a video object', async () => {
+      const youtube = new YouTube(apiKey)
+      const video = await youtube.getVideo('Lq1D8PFnjWY')
+      const comments = await video.fetchComments()
+
+      expect(comments[0]).to.be.an.instanceOf(YTComment)
+      expect(video.comments[0].id).to.equal(comments[0].id)
     })
 
     it('should not work with valid videos with comments disabled', async () => {
@@ -259,7 +306,7 @@ describe('Caching', () => {
     expect(new Date().getTime() - time).to.be.greaterThan(50)
   })
 
-  it('should not use expired cached items', async () => {
+  it('should not use expired items', async () => {
     const youtube = new YouTube(apiKey, { cacheTTL: 0.01, cacheCheckInterval: 0.009 })
     await youtube.getVideo('dQw4w9WgXcQ')
 
@@ -269,5 +316,28 @@ describe('Caching', () => {
     await video
 
     expect(new Date().getTime() - time).to.be.greaterThan(50)
+  })
+
+  it('should delete items successfully', () => {
+    Cache.set('test', 'value', 0)
+    Cache._delete('test')
+
+    expect(Cache.get('test')).to.equal(undefined)
+  })
+
+  it('should ignore items with a ttl <= 0', () => {
+    Cache.set('test', 'value', 0)
+    Cache.checkTTLs()
+
+    expect(Cache.get('test')).to.equal('value')
+
+    Cache._delete('test')
+  })
+
+  it('should delete expired items', () => {
+    Cache.set('test', 'value', 1)
+    Cache.checkTTLs()
+
+    expect(Cache.get('test')).to.equal(undefined)
   })
 })

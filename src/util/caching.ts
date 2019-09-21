@@ -27,7 +27,7 @@ function checkTTLs () {
     const item = cache[itemName]
     const time = new Date().getTime()
 
-    if (!item || item.t <= 0) {
+    if (item.t <= 0) {
       return
     }
 
