@@ -36,7 +36,7 @@ describe('Videos', () => {
     expect(await video.fetch()).to.be.an.instanceOf(Video)
   })
 
-  it('should work with fetching videos', async () => {
+  it('should work with fetching video comments', async () => {
     const youtube = new YouTube(apiKey)
     const video = await youtube.getVideo('Lq1D8PFnjWY')
 
