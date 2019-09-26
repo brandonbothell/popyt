@@ -13,11 +13,13 @@ export const request = {
   post: (subUrl: string, params: Object, token: string, data: any): Promise<any> => {
     /* istanbul ignore next */
     const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params)
+    /* istanbul ignore next */
     return post(url, data, token)
   },
   put: (subUrl: string, params: Object, token: string, data: any): Promise<any> => {
     /* istanbul ignore next */
     const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params)
+    /* istanbul ignore next */
     return put(url, data, token)
   }
 }
