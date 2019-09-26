@@ -19,8 +19,10 @@ describe('Comments', () => {
   it('should work with valid channels with comments', async () => {
     const youtube = new YouTube(apiKey)
     const comments = await youtube.getChannelComments('UC6mi9rp7vRYninucP61qOjg', 1)
+    const allComments = await youtube.getChannelComments('UC6mi9rp7vRYninucP61qOjg')
 
     expect(comments[0]).to.be.an.instanceOf(YTComment)
+    expect(allComments.length).to.be.gte(comments.length)
   })
 
   it('should work with fetching from a video object', async () => {
