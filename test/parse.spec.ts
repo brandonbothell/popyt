@@ -13,6 +13,11 @@ describe('Creation of the YouTube instance', () => {
   it('should work with an invalid token', () => {
     expect(new YouTube('')).to.be.instanceOf(YouTube)
   })
+
+  it('should tell the difference between api key and oauth tokens', () => {
+    expect(new YouTube('ya29').tokenType).to.equal('oauth')
+    expect(new YouTube('blah').tokenType).to.equal('key')
+  })
 })
 
 describe('Getting/Parsing', () => {

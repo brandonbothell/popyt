@@ -13,14 +13,17 @@ export class YouTube {
   private _cacheTTL: number
 
   public token: string
+  public tokenType: 'key' | 'oauth'
 
   /**
    *
    * @param token Your YouTube Data API v3 token. Don't share this with anybody.
+   * It could be an API key or an OAuth 2.0 token.
    * @param options Caching options. Recommended to change.
    */
   constructor (token: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: false }) {
     this.token = token
+    this.tokenType = token.startsWith('ya29') ? 'oauth' : 'key'
 
     this._shouldCache = options.cache
     this._cacheSearches = options.cacheSearches
@@ -45,7 +48,7 @@ export class YouTube {
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
   public searchVideos (searchTerm: string, maxResults: number = 10) {
-    return this.search('video', searchTerm, maxResults) as Promise<Video[]>
+    return this.search(Video, searchTerm, maxResults) as Promise<Video[]>
   }
 
   /**
@@ -54,7 +57,7 @@ export class YouTube {
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
   public searchChannels (searchTerm: string, maxResults: number = 10) {
-    return this.search('channel', searchTerm, maxResults) as Promise<Channel[]>
+    return this.search(Channel, searchTerm, maxResults) as Promise<Channel[]>
   }
 
   /**
@@ -63,7 +66,7 @@ export class YouTube {
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
   public searchPlaylists (searchTerm: string, maxResults: number = 10) {
-    return this.search('playlist', searchTerm, maxResults) as Promise<Playlist[]>
+    return this.search(Playlist, searchTerm, maxResults) as Promise<Playlist[]>
   }
 
   /**
@@ -71,7 +74,7 @@ export class YouTube {
    * @param id The ID of the video.
    */
   public getVideo (id: string) {
-    return this.getItemById('video', id) as Promise<Video>
+    return this.getItemById(Video, id) as Promise<Video>
   }
 
   /**
@@ -79,7 +82,7 @@ export class YouTube {
    * @param id The ID of the channel.
    */
   public getChannel (id: string) {
-    return this.getItemById('channel', id) as Promise<Channel>
+    return this.getItemById(Channel, id) as Promise<Channel>
   }
 
   /**
@@ -87,7 +90,7 @@ export class YouTube {
    * @param id The ID of the playlist.
    */
   public getPlaylist (id: string) {
-    return this.getItemById('playlist', id) as Promise<Playlist>
+    return this.getItemById(Playlist, id) as Promise<Playlist>
   }
 
   /**
@@ -95,7 +98,7 @@ export class YouTube {
    * @param id The ID of the comment.
    */
   public getComment (id: string) {
-    return this.getItemById('comment', id) as Promise<YTComment>
+    return this.getItemById(YTComment, id) as Promise<YTComment>
   }
 
   /**
@@ -109,7 +112,7 @@ export class YouTube {
       return Promise.reject('Not a valid video url')
     }
 
-    return this.getItemById('video', id.video) as Promise<Video>
+    return this.getItemById(Video, id.video) as Promise<Video>
   }
 
   /**
@@ -123,7 +126,7 @@ export class YouTube {
       return Promise.reject('Not a valid channel url')
     }
 
-    return this.getItemById('channel', id.channel) as Promise<Channel>
+    return this.getItemById(Channel, id.channel) as Promise<Channel>
   }
 
   /**
@@ -137,7 +140,7 @@ export class YouTube {
       return Promise.reject('Not a valid playlist url')
     }
 
-    return this.getItemById('playlist', id.playlist) as Promise<Playlist>
+    return this.getItemById(Playlist, id.playlist) as Promise<Playlist>
   }
 
   /**
@@ -169,8 +172,8 @@ export class YouTube {
   }
 
   /* istanbul ignore next */
-  private async search (type: 'video' | 'channel' | 'playlist', searchTerm: string, maxResults: number = 10): Promise<Video[] | Channel[] | Playlist[]> {
-    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}`)
+  private async search (type: typeof Video | typeof Channel | typeof Playlist, searchTerm: string, maxResults: number = 10): Promise<Video[] | Channel[] | Playlist[]> {
+    const cached = Cache.get(`search://${type.name.toLowerCase()}/"${searchTerm}"/${maxResults}`)
 
     if (this._shouldCache && cached) {
       return cached
@@ -185,95 +188,78 @@ export class YouTube {
       maxResults,
       key: this.token,
       part: 'snippet',
-      type
+      type: type.name.toLowerCase()
     })
 
     const items = []
 
     results.items.forEach(item => {
-      switch (type) {
-        case 'video':
-          items.push(new Video(this, item))
-          break
-        case 'channel':
-          items.push(new Channel(this, item))
-          break
-        case 'playlist':
-          items.push(new Playlist(this, item))
-          break
-        default:
-          return Promise.reject('Type must be a video, channel, or playlist')
-      }
+      items.push(new type(this, item))
     })
 
     if (this._shouldCache && this._cacheSearches) {
-      this._cache(`search://${type}/"${searchTerm}"/${maxResults}`, items)
+      this._cache(`search://${type.name.toLowerCase()}/"${searchTerm}"/${maxResults}`, items)
     }
 
     return items
   }
 
   /* istanbul ignore next */
-  private async getItemById (type: 'video' | 'channel' | 'playlist' | 'comment', id: string): Promise<Video | Channel | Playlist | YTComment> {
-    const cached = Cache.get(`get://${type}/${id}`)
+  private async getItemById (type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment, id: string): Promise<Video | Channel | Playlist | YTComment> {
+    const cached = Cache.get(`get://${type.name.toLowerCase()}/${id}`)
 
     if (this._shouldCache && cached) {
       return cached
     }
 
     let result
+    let clazz: typeof Video | typeof Playlist | typeof Channel | typeof YTComment
 
-    if (type === 'video') {
-      result = await request.api('videos', {
-        id,
-        part: 'snippet,contentDetails,statistics,status',
-        key: this.token
-      })
-    } else if (type === 'channel') {
-      result = await request.api('channels', {
-        id,
-        part: 'snippet,contentDetails,statistics,status',
-        key: this.token
-      })
-    } else if (type === 'playlist') {
-      result = await request.api('playlists', {
-        id,
-        part: 'snippet,contentDetails,player',
-        key: this.token
-      })
-    } else if (type === 'comment') {
-      result = await request.api('comments', {
-        id,
-        part: 'snippet',
-        key: this.token
-      })
+    switch (type) {
+      case Video:
+        result = await request.api('videos', {
+          id,
+          part: 'snippet,contentDetails,statistics,status',
+          key: this.token
+        })
+        clazz = Video
+        break
+      case Channel:
+        result = await request.api('channels', {
+          id,
+          part: 'snippet,contentDetails,statistics,status',
+          key: this.token
+        })
+        clazz = Channel
+        break
+      case Playlist:
+        result = await request.api('playlists', {
+          id,
+          part: 'snippet,contentDetails,player',
+          key: this.token
+        })
+        clazz = Playlist
+        break
+      case YTComment:
+        result = await request.api('comments', {
+          id,
+          part: 'snippet',
+          key: this.token
+        })
+        clazz = YTComment
+        break
+      default:
+        return Promise.reject('Type must be a video, channel, playlist, or comment.')
     }
 
     if (result.items.length === 0) {
       return Promise.reject('Item not found')
     }
 
-    let endResult: Video | Playlist | Channel | YTComment
-
-    switch (type) {
-      case 'video':
-        endResult = new Video(this, result.items[0])
-        break
-      case 'playlist':
-        endResult = new Playlist(this, result.items[0])
-        break
-      case 'channel':
-        endResult = new Channel(this, result.items[0])
-        break
-      case 'comment':
-        endResult = new YTComment(this, result.items[0])
-        break
-      default:
-        return Promise.reject('Type must be a video, channel, playlist, or comment.')
-    }
+    let endResult: Video | Playlist | Channel | YTComment = new clazz(this, result.items[0])
 
     if (this._shouldCache) {
-      this._cache(`get://${type}/${id}`, endResult)
+      this._cache(`get://${type.name.toLowerCase()}/${id}`, endResult)
     }
 
     return endResult
@@ -325,81 +311,56 @@ export class YouTube {
       maxResults: full ? max : maxResults
     }
 
+    let clazz: typeof Video | typeof YTComment
+
     switch (type) {
       case 'playlistItems':
         options.playlistId = id
+        clazz = Video
         break
       case 'commentThreads':
         options.videoId = id
         options.part += ',replies'
         options.textFormat = 'plainText'
+        clazz = YTComment
         break
       case 'comments':
         options.parentId = id
+        clazz = YTComment
         break
     }
 
-    const results = await request.api(type, options).catch(error => {
-      return Promise.reject('Items not found')
-    })
+    let results
+    let pages = null
+    let shouldReturn = !full
 
-    if (results.items.length === 0) {
-      return Promise.reject('Items not found')
-    }
+    for (let i = 1; i < pages ? pages : 3; i++) {
+      results = await request.api(type, options).catch(err => {
+        return Promise.reject('Items not found')
+      })
 
-    const totalResults = results.pageInfo.totalResults
-    const perPage = results.pageInfo.resultsPerPage
-    const pages = Math.floor(totalResults / perPage)
-
-    results.items.forEach(item => {
-      let comment: YTComment
-
-      switch (type) {
-        case 'playlistItems':
-          items.push(new Video(this, item))
-          break
-        case 'commentThreads':
-          comment = new YTComment(this, item.snippet.topLevelComment)
-          items.push(comment)
-          break
-        case 'comments':
-          items.push(new YTComment(this, item))
-          break
+      if (results.items.length === 0) {
+        return Promise.reject('Items not found')
       }
 
-      if (item.replies) {
-        item.replies.comments.forEach(reply => {
-          const created = new YTComment(this, reply)
-          comment.replies.push(created)
-        })
+      if (!pages) {
+        pages = results.pageInfo.totalResults / results.pageInfo.resultsPerPage
+
+        if (pages <= 1) {
+          shouldReturn = true
+        }
+
+        pages = Math.floor(pages)
       }
-    })
 
-    if (!full || pages === 0) {
-      return items
-    }
-
-    let oldRes = results
-    options.pageToken = oldRes.nextPageToken
-
-    for (let i = 1; i < pages; i++) {
-      const newResults = await request.api(type, options)
-
-      oldRes = newResults
-      newResults.items.forEach(item => {
+      results.items.forEach(item => {
         let comment: YTComment
 
-        switch (type) {
-          case 'playlistItems':
-            items.push(new Video(this, item))
-            break
-          case 'commentThreads':
-            comment = new YTComment(this, item.snippet.topLevelComment)
-            items.push(comment)
-            break
-          case 'comments':
-            items.push(new YTComment(this, item))
-            break
+        if (item.snippet.topLevelComment) {
+          comment = new YTComment(this, item.snippet.topLevelComment)
+          items.push(comment)
+        } else {
+          items.push(new clazz(this, item))
         }
 
         if (item.replies) {
@@ -409,6 +370,12 @@ export class YouTube {
           })
         }
       })
+
+      if (results.nextPageToken && !shouldReturn) {
+        options.pageToken = results.nextPageToken
+      } else {
+        return items
+      }
     }
 
     if (this._shouldCache) {
