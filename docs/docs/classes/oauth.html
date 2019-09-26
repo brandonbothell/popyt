@@ -90,6 +90,15 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="oauth.html#youtube" class="tsd-kind-icon">youtube</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="oauth.html#checktokenandthrow" class="tsd-kind-icon">check<wbr>Token<wbr>And<wbr>Throw</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="oauth.html#editcomment" class="tsd-kind-icon">edit<wbr>Comment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="oauth.html#postcomment" class="tsd-kind-icon">post<wbr>Comment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="oauth.html#senddata" class="tsd-kind-icon">send<wbr>Data</a></li>
+							</ul>
+						</section>
 					</div>
 				</section>
 			</section>
@@ -105,13 +114,20 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in oauth.ts:4</li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/af481ba/src/oauth.ts#L10">oauth.ts:10</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>youtube: <a href="youtube.html" class="tsd-signature-type">YouTube</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The YouTube object to retrieve the token from.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="oauth.html" class="tsd-signature-type">OAuth</a></h4>
@@ -127,9 +143,144 @@
 					<div class="tsd-signature tsd-kind-icon">youtube<span class="tsd-signature-symbol">:</span> <a href="youtube.html" class="tsd-signature-type">YouTube</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in oauth.ts:4</li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/af481ba/src/oauth.ts#L10">oauth.ts:10</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checktokenandthrow" class="tsd-anchor"></a>
+					<h3>check<wbr>Token<wbr>And<wbr>Throw</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Token<wbr>And<wbr>Throw<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/af481ba/src/oauth.ts#L20">oauth.ts:20</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="editcomment" class="tsd-anchor"></a>
+					<h3>edit<wbr>Comment</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">edit<wbr>Comment<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, commentId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/af481ba/src/oauth.ts#L63">oauth.ts:63</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Edit a comment on a video or channel discussion.
+									Last tested 09/26/2019 06:23. PASSING</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The new text content of the comment.</p>
+									</div>
+								</li>
+								<li>
+									<h5>commentId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The ID of the comment.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="postcomment" class="tsd-anchor"></a>
+					<h3>post<wbr>Comment</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Comment<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, channelId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, videoId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/af481ba/src/oauth.ts#L36">oauth.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Post a comment on a video or channel discussion.
+									Last tested 09/26/2019 06:02. PASSING</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The text content of the comment.</p>
+									</div>
+								</li>
+								<li>
+									<h5>channelId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The channel to post the comment on.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> videoId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The video of the channel to post the comment on.
+										If falsey, the comment will be posted to the channel discussion.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="senddata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> send<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Data<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"post"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"put"</span>, endpoint<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, part<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/af481ba/src/oauth.ts#L87">oauth.ts:87</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>type: <span class="tsd-signature-type">"post"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"put"</span></h5>
+								</li>
+								<li>
+									<h5>endpoint: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>part: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -156,6 +307,18 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="oauth.html#youtube" class="tsd-kind-icon">youtube</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="oauth.html#checktokenandthrow" class="tsd-kind-icon">check<wbr>Token<wbr>And<wbr>Throw</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="oauth.html#editcomment" class="tsd-kind-icon">edit<wbr>Comment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="oauth.html#postcomment" class="tsd-kind-icon">post<wbr>Comment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="oauth.html#senddata" class="tsd-kind-icon">send<wbr>Data</a>
 							</li>
 						</ul>
 					</li>
@@ -205,6 +368,9 @@
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="../globals.html#cache" class="tsd-kind-icon">Cache</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="../globals.html#commentthreaddata" class="tsd-kind-icon">Comment<wbr>Thread<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="../globals.html#request" class="tsd-kind-icon">request</a>
