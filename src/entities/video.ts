@@ -1,13 +1,22 @@
 import { YouTube } from '..'
 import { Thumbnail, ISODuration } from '../types'
-import { YTComment } from './Comment'
+import { YTComment } from './comment'
 import { parseIsoDuration } from '../util'
-import { Cache } from '../util/caching'
 
 /**
  * A YouTube video.
  */
 export class Video {
+  /**
+   * The name of the endpoint used for this entity.
+   */
+  public static endpoint = 'videos'
+
+  /**
+   * The parts to request for this entity.
+   */
+  public static part = 'snippet,contentDetails,statistics,status'
+
   /**
    * YouTube object that created the video.
    */
@@ -147,6 +156,24 @@ export class Video {
     this.shortUrl = `https://youtu.be/${this.id}`
 
     return this
+  }
+
+  /**
+   * Posts a comment to the video.
+   * Must be using an access token with correct scopes.
+   * @param text The text of the comment.
+   */
+  /* istanbul ignore next */
+  public async postComment (text: string) {
+    const comment = await this.youtube.oauth.postComment(text, this.channelId, this.id)
+
+    if (this.comments !== undefined) {
+      this.comments.push(comment)
+    } else {
+      this.comments = [ comment ]
+    }
+
+    return comment
   }
 
   /**

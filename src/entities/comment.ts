@@ -2,6 +2,16 @@ import { YouTube } from '..'
 
 export class YTComment {
   /**
+   * The name of the endpoint used for this entity.
+   */
+  public static endpoint = 'comments'
+
+  /**
+   * The parts to request for this entity.
+   */
+  public static part = 'snippet'
+
+  /**
    * The YouTube object used to create the comment.
    */
   public youtube: YouTube
@@ -15,6 +25,11 @@ export class YTComment {
    * The comment's unique YouTube ID.
    */
   public id: string
+
+  /**
+   * Whether or not this a full comment object.
+   */
+  public full: true = true
 
   /**
    * The comment's author.
@@ -71,6 +86,11 @@ export class YTComment {
   public likes: number
 
   /**
+   * The url of the comment.
+   */
+  public url?: string
+
+  /**
    * The date the comment was published.
    */
   public datePublished: Date
@@ -82,8 +102,9 @@ export class YTComment {
   public dateEdited: Date
 
   /**
-   * Either the ID of the video that it is commenting on, or the ID of the
-   * comment it is replying to.
+   * Either the ID of the video that it is commenting on, the ID of the
+   * comment it is replying to, or the ID of the channel it is commenting
+   * on.
    * Undefined whenever the comment is fetched directly using the ID.
    */
   public parentId: string
@@ -123,10 +144,22 @@ export class YTComment {
     this.rateable = comment.canRate
     this.popular = comment.likeCount >= 100
     this.likes = comment.likeCount
+    this.url = 'https://youtube.com/' + (comment.snippet.channelId ? `${comment.snippet.channelId}/discussion?lc=${this.id}` :
+                comment.snippet.videoId ? `/watch?v=${comment.snippet.videoId}&lc=${this.id}` : undefined)
     this.datePublished = comment.publishedAt
     this.dateEdited = comment.updatedAt
-    this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId
+    this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
     this.replies = []
+  }
+
+  /**
+   * Edits the comment.
+   * Must be using an access token with correct scopes.
+   * @param text The new text of the comment.
+   */
+  /* istanbul ignore next */
+  public edit (text: string) {
+    return this.youtube.oauth.editComment(text, this.id)
   }
 
   /**

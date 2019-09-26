@@ -1,6 +1,6 @@
 node_modules/
 .vscode/
-test/config.ts
+oauth.spec.ts
 out/
 coverage/
 desktop.ini

@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Better YouTube API</title>
+	<title>OAuth | Better YouTube API</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">Better YouTube API</a>
+					<a href="../index.html" class="title">Better YouTube API</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -53,111 +53,161 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="oauth.html">OAuth</a>
 				</li>
 			</ul>
-			<h1> Better YouTube API</h1>
+			<h1>Class OAuth</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#better-youtube-api" id="better-youtube-api" style="color: inherit; text-decoration: none;">
-					<h1>Better YouTube API</h1>
-				</a>
-				<p>Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We&#39;ve got ya covered. <code>npm i better-youtube-api</code></p>
-				<p><a href="https://github.com/jasonhaxstuff/better-youtube-api/issues"><img src="https://img.shields.io/github/issues/jasonhaxstuff/better-youtube-api.svg" alt="GitHub issues"></a>
-					<a href="https://github.com/jasonhaxstuff/better-youtube-api/stargazers"><img src="https://img.shields.io/github/stars/jasonhaxstuff/better-youtube-api.svg" alt="GitHub stars"></a>
-					<a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jasonhaxstuff/better-youtube-api.svg" alt="GitHub license"></a>
-					<a href="https://coveralls.io/github/jasonhaxstuff/better-youtube-api?branch=master"><img src="https://coveralls.io/repos/github/jasonhaxstuff/better-youtube-api/badge.svg?branch=master" alt="Coverage Status"></a>
-					<a href="https://github.com/jasonhaxstuff/better-youtube-api/actions"><img src="https://github.com/jasonhaxstuff/better-youtube-api/workflows/CI/badge.svg" alt="Actions Status"></a>
-				<a href="https://www.npmjs.com/package/better-youtube-api"><img src="https://img.shields.io/npm/dt/better-youtube-api.svg" alt="Downloads"></a></p>
-				<p>Check out <a href="https://bbothell.me/better-youtube-api">our website</a>!</p>
-				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
-					<h1>Examples</h1>
-				</a>
-				<p>First of all, I recommend that you check out <a href="https://bbothell.me/better-youtube-api/docs">the documentation</a> for all of the methods and what they return. Here are some basic methods:</p>
-				<p>Instantiate the object:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> { YouTube } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'better-youtube-api'</span>)
-<span class="hljs-keyword">const</span> youtube = <span class="hljs-keyword">new</span> YouTube(apiKey)</code></pre>
-				<p>Instantiate the object without caching:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> { YouTube } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'better-youtube-api'</span>)
-<span class="hljs-keyword">const</span> youtube = <span class="hljs-keyword">new</span> YouTube(apiKey, { <span class="hljs-attr">cache</span>: <span class="hljs-literal">false</span> })</code></pre>
-				<p>Get a video by ID:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> video = <span class="hljs-keyword">await</span> youtube.getVideo(<span class="hljs-string">'dQw4w9WgXcQ'</span>)
-<span class="hljs-built_in">console</span>.log(video)</code></pre>
-				<p>Get a video by URL:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">const</span> video = <span class="hljs-keyword">await</span> youtube.getVideoByUrl(<span class="hljs-string">'https://youtube.com/watch?v=dQw4w9WgXcQ'</span>)
-<span class="hljs-built_in">console</span>.log(video)</code></pre>
-				<p>You can do the same thing with playlists, channels, and comments by replacing <code>Video</code> with either one.</p>
-				<p>Note: This wrapper does not implement every feature of the YouTube API. With a single developer working on it, there just isn&#39;t time for everything to be implemented. Some of the objectively most-important features have been added. The limits imposed by the wrapper are not imposed by YouTube.</p>
-			</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">OAuth</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="oauth.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="oauth.html#youtube" class="tsd-kind-icon">youtube</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new OAuth<span class="tsd-signature-symbol">(</span>youtube<span class="tsd-signature-symbol">: </span><a href="youtube.html" class="tsd-signature-type">YouTube</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="oauth.html" class="tsd-signature-type">OAuth</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in oauth.ts:4</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>youtube: <a href="youtube.html" class="tsd-signature-type">YouTube</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="oauth.html" class="tsd-signature-type">OAuth</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="youtube" class="tsd-anchor"></a>
+					<h3>youtube</h3>
+					<div class="tsd-signature tsd-kind-icon">youtube<span class="tsd-signature-symbol">:</span> <a href="youtube.html" class="tsd-signature-type">YouTube</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in oauth.ts:4</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="classes/channel.html" class="tsd-kind-icon">Channel</a>
+						<a href="channel.html" class="tsd-kind-icon">Channel</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="oauth.html" class="tsd-kind-icon">OAuth</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="oauth.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="oauth.html#youtube" class="tsd-kind-icon">youtube</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="playlist.html" class="tsd-kind-icon">Playlist</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/oauth.html" class="tsd-kind-icon">OAuth</a>
+						<a href="video.html" class="tsd-kind-icon">Video</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/playlist.html" class="tsd-kind-icon">Playlist</a>
+						<a href="ytcomment.html" class="tsd-kind-icon">YTComment</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/video.html" class="tsd-kind-icon">Video</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/ytcomment.html" class="tsd-kind-icon">YTComment</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/youtube.html" class="tsd-kind-icon">You<wbr>Tube</a>
+						<a href="youtube.html" class="tsd-kind-icon">You<wbr>Tube</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
-						<a href="globals.html#cacheitem" class="tsd-kind-icon">Cache<wbr>Item</a>
+						<a href="../globals.html#cacheitem" class="tsd-kind-icon">Cache<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#isoduration" class="tsd-kind-icon">ISODuration</a>
+						<a href="../globals.html#isoduration" class="tsd-kind-icon">ISODuration</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a>
+						<a href="../globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
-						<a href="globals.html#youtubeoptions" class="tsd-kind-icon">You<wbr>Tube<wbr>Options</a>
+						<a href="../globals.html#youtubeoptions" class="tsd-kind-icon">You<wbr>Tube<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#cache" class="tsd-kind-icon">cache</a>
+						<a href="../globals.html#cache" class="tsd-kind-icon">cache</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#_delete" class="tsd-kind-icon">_delete</a>
+						<a href="../globals.html#_delete" class="tsd-kind-icon">_delete</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#checkttls" class="tsd-kind-icon">checkTTLs</a>
+						<a href="../globals.html#checkttls" class="tsd-kind-icon">checkTTLs</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parseisoduration" class="tsd-kind-icon">parse<wbr>Iso<wbr>Duration</a>
+						<a href="../globals.html#parseisoduration" class="tsd-kind-icon">parse<wbr>Iso<wbr>Duration</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parseurl" class="tsd-kind-icon">parse<wbr>Url</a>
+						<a href="../globals.html#parseurl" class="tsd-kind-icon">parse<wbr>Url</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#set" class="tsd-kind-icon">set</a>
+						<a href="../globals.html#set" class="tsd-kind-icon">set</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
-						<a href="globals.html#cache" class="tsd-kind-icon">Cache</a>
+						<a href="../globals.html#cache" class="tsd-kind-icon">Cache</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
-						<a href="globals.html#request" class="tsd-kind-icon">request</a>
+						<a href="../globals.html#request" class="tsd-kind-icon">request</a>
 					</li>
 				</ul>
 			</nav>
@@ -228,7 +278,7 @@
 	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

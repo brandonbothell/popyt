@@ -1,6 +1,7 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
 import { parseUrl, request } from './util'
 import { Cache } from './util/caching'
+import { OAuth } from './oauth'
 export * from './entities'
 export * from './types'
 
@@ -11,9 +12,19 @@ export class YouTube {
   private _shouldCache: boolean
   private _cacheSearches: boolean
   private _cacheTTL: number
+  private _token: string
 
-  public token: string
+  get token (): string {
+    return this._token
+  }
+  set token (val: string) {
+    this._token = val
+    this.tokenType = val.startsWith('ya29') ? 'oauth' : 'key'
+  }
+
   public tokenType: 'key' | 'oauth'
+
+  public oauth: OAuth
 
   /**
    *
@@ -23,7 +34,8 @@ export class YouTube {
    */
   constructor (token: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: false }) {
     this.token = token
-    this.tokenType = token.startsWith('ya29') ? 'oauth' : 'key'
+
+    this.oauth = new OAuth(this)
 
     this._shouldCache = options.cache
     this._cacheSearches = options.cacheSearches
@@ -153,13 +165,21 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` comments on a video. Used mostly internally with `Video#fetchComments`.
-   * Can only get the last 100 comments on a video, due to a bug with the YouTube API.
+   * Get `maxResults` comments from a video. Used mostly internally with `Video#fetchComments`.
    * @param videoId The ID of the video.
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
   public getVideoComments (videoId: string, maxResults: number = -1) {
-    return this.getPaginatedItems('commentThreads', videoId, maxResults) as Promise<YTComment[]>
+    return this.getPaginatedItems('commentThreads:video', videoId, maxResults) as Promise<YTComment[]>
+  }
+
+  /**
+   * Get `maxResults` comments from a channel's discussion tab. Used mostly internally with `Channel#fetchComments`.
+   * @param channelId The ID of the channel.
+   * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
+   */
+  public getChannelComments (channelId: string, maxResults: number = -1) {
+    return this.getPaginatedItems('commentThreads:channel', channelId, maxResults) as Promise<YTComment[]>
   }
 
   /**
@@ -173,7 +193,7 @@ export class YouTube {
 
   /* istanbul ignore next */
   private async search (type: typeof Video | typeof Channel | typeof Playlist, searchTerm: string, maxResults: number = 10): Promise<Video[] | Channel[] | Playlist[]> {
-    const cached = Cache.get(`search://${type.name.toLowerCase()}/"${searchTerm}"/${maxResults}`)
+    const cached = Cache.get(`search://${type.endpoint}/"${searchTerm}"/${maxResults}`)
 
     if (this._shouldCache && cached) {
       return cached
@@ -186,10 +206,9 @@ export class YouTube {
     const results = await request.api('search', {
       q: encodeURIComponent(searchTerm),
       maxResults,
-      key: this.token,
       part: 'snippet',
-      type: type.name.toLowerCase()
-    })
+      type: type.endpoint.substring(0, type.endpoint.length - 1)
+    }, this.token, this.tokenType)
 
     const items = []
 
@@ -198,7 +217,7 @@ export class YouTube {
     })
 
     if (this._shouldCache && this._cacheSearches) {
-      this._cache(`search://${type.name.toLowerCase()}/"${searchTerm}"/${maxResults}`, items)
+      this._cache(`search://${type.endpoint}/"${searchTerm}"/${maxResults}`, items)
     }
 
     return items
@@ -206,68 +225,35 @@ export class YouTube {
 
   /* istanbul ignore next */
   private async getItemById (type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment, id: string): Promise<Video | Channel | Playlist | YTComment> {
-    const cached = Cache.get(`get://${type.name.toLowerCase()}/${id}`)
+    if (!([ Video, Channel, Playlist, YTComment ].includes(type))) {
+      return Promise.reject('Type must be a video, channel, playlist, or comment.')
+    }
+
+    const cached = Cache.get(`get://${type.endpoint}/${id}`)
 
     if (this._shouldCache && cached) {
       return cached
     }
 
-    let result
-    let clazz: typeof Video | typeof Playlist | typeof Channel | typeof YTComment
-
-    switch (type) {
-      case Video:
-        result = await request.api('videos', {
-          id,
-          part: 'snippet,contentDetails,statistics,status',
-          key: this.token
-        })
-        clazz = Video
-        break
-      case Channel:
-        result = await request.api('channels', {
-          id,
-          part: 'snippet,contentDetails,statistics,status',
-          key: this.token
-        })
-        clazz = Channel
-        break
-      case Playlist:
-        result = await request.api('playlists', {
-          id,
-          part: 'snippet,contentDetails,player',
-          key: this.token
-        })
-        clazz = Playlist
-        break
-      case YTComment:
-        result = await request.api('comments', {
-          id,
-          part: 'snippet',
-          key: this.token
-        })
-        clazz = YTComment
-        break
-      default:
-        return Promise.reject('Type must be a video, channel, playlist, or comment.')
-    }
+    const result = await request.api(type.endpoint, { id, part: type.part }, this.token, this.tokenType)
 
     if (result.items.length === 0) {
       return Promise.reject('Item not found')
     }
 
-    let endResult: Video | Playlist | Channel | YTComment = new clazz(this, result.items[0])
+    let endResult: Video | Playlist | Channel | YTComment = new type(this, result.items[0])
 
     if (this._shouldCache) {
-      this._cache(`get://${type.name.toLowerCase()}/${id}`, endResult)
+      this._cache(`get://${type.endpoint}/${id}`, endResult)
     }
 
     return endResult
   }
 
   /* istanbul ignore next */
-  private async getPaginatedItems (type: 'playlistItems' | 'commentThreads' | 'comments', id: string, maxResults: number = -1): Promise<Video[] | YTComment[]> {
-    const cached = Cache.get(`get://${type}/${id}/${maxResults}`)
+  private async getPaginatedItems (endpoint: 'playlistItems' | 'commentThreads' | 'commentThreads:video' | 'commentThreads:channel' | 'comments',
+                                    id: string, maxResults: number = -1): Promise<Video[] | YTComment[]> {
+    const cached = Cache.get(`get://${endpoint}/${id}/${maxResults}`)
 
     if (this._shouldCache && cached) {
       return cached
@@ -282,23 +268,8 @@ export class YouTube {
       full = false
     }
 
-    let max: number
-
-    if (type === 'playlistItems') {
-      max = 50
-    } else if (type === 'commentThreads' || type === 'comments') {
-      max = 100
-    } else {
-      return Promise.reject('Unknown item type ' + type)
-    }
-
-    if (maxResults > max) {
-      return Promise.reject(`Max results must be ${max} or below for ${type}`)
-    }
-
     const options: {
       part: string,
-      key: string,
       maxResults: number,
       videoId?: string,
       parentId?: string,
@@ -307,35 +278,46 @@ export class YouTube {
       pageToken?: string
     } = {
       part: 'snippet',
-      key: this.token,
-      maxResults: full ? max : maxResults
+      maxResults: 0
     }
 
+    let max: number
     let clazz: typeof Video | typeof YTComment
 
-    switch (type) {
-      case 'playlistItems':
-        options.playlistId = id
-        clazz = Video
-        break
-      case 'commentThreads':
-        options.videoId = id
-        options.part += ',replies'
-        options.textFormat = 'plainText'
-        clazz = YTComment
-        break
-      case 'comments':
-        options.parentId = id
-        clazz = YTComment
-        break
+    if (endpoint === 'playlistItems') {
+      max = 50
+      clazz = Video
+      options.playlistId = id
+    } else if (endpoint.startsWith('commentThreads')) {
+      max = 100
+      clazz = YTComment
+
+      const [, type ] = endpoint.split(':')
+
+      endpoint = 'commentThreads'
+      options[`${type ? type : 'video'}Id`] = id
+      options.part += ',replies'
+      options.textFormat = 'plainText'
+    } else if (endpoint === 'comments') {
+      max = 100
+      clazz = YTComment
+      options.parentId = id
+    } else {
+      return Promise.reject('Unknown item type ' + endpoint)
     }
+
+    if (maxResults > max) {
+      return Promise.reject(`Max results must be ${max} or below for ${endpoint}`)
+    }
+
+    options.maxResults = full ? max : maxResults
 
     let results
     let pages = null
     let shouldReturn = !full
 
     for (let i = 1; i < pages ? pages : 3; i++) {
-      results = await request.api(type, options).catch(err => {
+      results = await request.api(endpoint, options, this.token, this.tokenType).catch(() => {
         return Promise.reject('Items not found')
       })
 
@@ -379,7 +361,7 @@ export class YouTube {
     }
 
     if (this._shouldCache) {
-      this._cache(`get://${type}/${id}/${maxResults}`, items)
+      this._cache(`get://${endpoint}/${id}/${maxResults}`, items)
     }
 
     return items

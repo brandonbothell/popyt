@@ -5,6 +5,16 @@ import { YouTube, Video, Thumbnail } from '..'
  */
 export class Playlist {
   /**
+   * The name of the endpoint used for this entity.
+   */
+  public static endpoint = 'playlists'
+
+  /**
+   * The parts to request for this entity.
+   */
+  public static part = 'snippet,contentDetails,player'
+
+  /**
    * The YouTube object that created this playlist.
    */
   public youtube: YouTube
@@ -43,6 +53,11 @@ export class Playlist {
    * The ID of the creator of the playlist.
    */
   public creatorId: string
+
+  /**
+   * The url of the playlist.
+   */
+  public url: string
 
   /**
    * The date the playlist was created.
@@ -98,6 +113,7 @@ export class Playlist {
 
     this.title = data.snippet.title
     this.creatorId = data.snippet.channelId
+    this.url = `https://youtube.com/playlist?list=${this.id}`
     this.dateCreated = new Date(data.snippet.publishedAt)
     this.thumbnails = data.snippet.thumbnails
     this.full = data.kind === 'youtube#playlist'

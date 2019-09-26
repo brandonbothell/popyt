@@ -1,16 +1,27 @@
 import { YouTube, Playlist, Thumbnail } from '..'
+import { YTComment } from './comment'
 
 /**
  * A YouTube channel.
  */
 export class Channel {
   /**
+   * The name of the endpoint used for this entity.
+   */
+  public static endpoint = 'channels'
+
+  /**
+   * The parts to request for this entity.
+   */
+  public static part = 'snippet,contentDetails,statistics,status'
+
+  /**
    * The YouTube object that created this channel object.
    */
   public youtube: YouTube
 
   /**
-   * Whether or not this a full channel object or not.
+   * Whether or not this a full channel object.
    */
   public full: boolean
 
@@ -88,7 +99,12 @@ export class Channel {
   /**
    * This channel's comment count.
    */
-  public comments: number
+  public commentCount: number
+
+  /**
+   * The channel's comments. Only defined when Channel#fetchComments is called.
+   */
+  public comments: YTComment[]
 
   constructor (youtube: YouTube, data) {
     this.youtube = youtube
@@ -106,7 +122,7 @@ export class Channel {
       this.country = channel.snippet.country
       this.language = channel.snippet.defaultLanguage
       this.views = Number(channel.statistics.viewCount)
-      this.comments = Number(channel.statistics.commentCount)
+      this.commentCount = Number(channel.statistics.commentCount)
       if (!channel.statistics.hiddenSubscriberCount) {
         this.subCount = Number(channel.statistics.subscriberCount)
       } else {
@@ -124,6 +140,24 @@ export class Channel {
     this.name = data.snippet.title
     this.about = data.snippet.description
     this.full = data.kind === 'youtube#channel'
+  }
+
+  /**
+   * Posts a comment on the channel's discussion tab.
+   * Must be using an access token with correct scopes.
+   * @param text The text of the comment.
+   */
+  /* istanbul ignore next */
+  public async postComment (text: string) {
+    const comment = await this.youtube.oauth.postComment(text, this.id)
+
+    if (this.comments !== undefined) {
+      this.comments.push(comment)
+    } else {
+      this.comments = [ comment ]
+    }
+
+    return comment
   }
 
   /**
@@ -147,5 +181,14 @@ export class Channel {
     this.videos = videos
 
     return this.videos
+  }
+
+  /**
+   * Fetches the channels's discussion tab comments and assigns them to Channel#comments.
+   * @param maxResults The maximum amount of comments to fetch
+   */
+  public async fetchComments (maxResults: number = -1) {
+    this.comments = await this.youtube.getChannelComments(this.id, maxResults)
+    return this.comments
   }
 }

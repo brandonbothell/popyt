@@ -3,9 +3,20 @@ import { IncomingMessage, RequestOptions, OutgoingMessage } from 'http'
 import { parse as parseUrl } from 'url'
 
 export const request = {
-  api: (subUrl: string, params: Object): Promise<any> => {
-    const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? subUrl : '/' + subUrl) + parseParams(params)
-    return get(url)
+  api: (subUrl: string, params: Object, token: string, type: 'key' | 'oauth'): Promise<any> => {
+    const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params) +
+                (type === 'key' ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return get(url, type === 'oauth' ? token : undefined)
+  },
+  /* istanbul ignore next */
+  post: (subUrl: string, params: Object, token: string, data: any): Promise<any> => {
+    const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params)
+    return post(url, data, token)
+  },
+  /* istanbul ignore next */
+  put: (subUrl: string, params: Object, token: string, data: any): Promise<any> => {
+    const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params)
+    return put(url, data, token)
   }
 }
 
@@ -13,16 +24,42 @@ export const request = {
  * @ignore
  */
 /* istanbul ignore next */
-function get (url: string): Promise<any> {
+function get (url: string, token?: string): Promise<any> {
   const options = parseUrlToOptions(url, 'GET')
 
-  return req(options, req => {
-    req.on('error', error => {
-      throw error
-    })
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`
+  }
 
-    req.end()
-  })
+  return req(options, req => reqCallback(req))
+}
+
+/**
+ * @ignore
+ */
+/* istanbul ignore next */
+function post (url: string, data: any, token: string): Promise<any> {
+  const options = parseUrlToOptions(url, 'POST')
+
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`
+  }
+
+  return req(options, req => reqCallback(req, data))
+}
+
+/**
+ * @ignore
+ */
+/* istanbul ignore next */
+function put (url: string, data: any, token: string): Promise<any> {
+  const options = parseUrlToOptions(url, 'PUT')
+
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`
+  }
+
+  return req(options, req => reqCallback(req, data))
 }
 
 /**
@@ -59,6 +96,10 @@ function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => vo
       })
 
       res.on('end', () => {
+        if (res.statusCode === 404) {
+          return reject(new Error('Not found'))
+        }
+
         const parsed = JSON.parse(data)
 
         if (parsed.error) {
@@ -75,6 +116,22 @@ function req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => vo
 
     reqFunction(https(options, cb))
   })
+}
+
+/**
+ * @ignore
+ */
+/* istanbul ignore next */
+function reqCallback (req: OutgoingMessage, data?: any) {
+  req.on('error', error => {
+    throw error
+  })
+
+  if (data) {
+    req.write(data)
+  }
+
+  req.end()
 }
 
 /**

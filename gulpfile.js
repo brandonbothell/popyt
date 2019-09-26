@@ -29,7 +29,7 @@ function docs () {
       module: 'commonjs',
       readme: 'README.md',
       target: 'es6',
-      out: 'public/docs/',
+      out: 'docs/docs',
       name: 'Better YouTube API',
       theme: 'default',
       mode: 'file'
