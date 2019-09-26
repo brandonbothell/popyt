@@ -49,7 +49,8 @@ export class OAuth {
     }
 
     const result = await this.sendData('post', 'commentThreads', 'snippet', data)
-    return new YTComment(this.youtube, result.snippet.topLevelComment)
+    const type = result.snippet.channelId ? 'channel' : 'video'
+    return new YTComment(this.youtube, result.snippet.topLevelComment, type)
   }
 
   // tslint:disable:no-trailing-whitespace
@@ -72,11 +73,12 @@ export class OAuth {
     data.id = commentId
 
     const result = await this.sendData('put', 'commentThreads', 'snippet', data)
-    const comment = new YTComment(this.youtube, result.snippet.topLevelComment)
+    const type = result.snippet.channelId ? 'channel' : 'video'
+    const comment = new YTComment(this.youtube, result.snippet.topLevelComment, type)
 
     if (result.replies) {
       result.replies.comments.forEach(reply => {
-        const created = new YTComment(this.youtube, reply)
+        const created = new YTComment(this.youtube, reply, type)
         comment.replies.push(created)
       })
     }

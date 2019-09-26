@@ -4,17 +4,19 @@ import { parse as parseUrl } from 'url'
 
 export const request = {
   api: (subUrl: string, params: Object, token: string, type: 'key' | 'oauth'): Promise<any> => {
+    /* istanbul ignore next */
     const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params) +
                 (type === 'key' ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    /* istanbul ignore next */
     return get(url, type === 'oauth' ? token : undefined)
   },
-  /* istanbul ignore next */
   post: (subUrl: string, params: Object, token: string, data: any): Promise<any> => {
+    /* istanbul ignore next */
     const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params)
     return post(url, data, token)
   },
-  /* istanbul ignore next */
   put: (subUrl: string, params: Object, token: string, data: any): Promise<any> => {
+    /* istanbul ignore next */
     const url = 'https://www.googleapis.com/youtube/v3' + (subUrl.startsWith('/') ? '' : '/') + subUrl + parseParams(params)
     return put(url, data, token)
   }

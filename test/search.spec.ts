@@ -60,7 +60,7 @@ describe('Searching', () => {
 
     expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
     expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')
-    expect(() => new YTComment(youtube, { kind: 'notakind' })).to.throw('Invalid comment type: notakind')
+    expect(() => new YTComment(youtube, { kind: 'notakind' }, 'video')).to.throw('Invalid comment type: notakind')
     expect(() => new Playlist(youtube, { kind: 'notakind' })).to.throw('Invalid playlist type: notakind')
   })
 })

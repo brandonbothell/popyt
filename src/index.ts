@@ -241,7 +241,7 @@ export class YouTube {
       return Promise.reject('Item not found')
     }
 
-    let endResult: Video | Playlist | Channel | YTComment = new type(this, result.items[0])
+    let endResult: Video | Playlist | Channel | YTComment = new type(this, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
 
     if (this._shouldCache) {
       this._cache(`get://${type.endpoint}/${id}`, endResult)
@@ -283,6 +283,7 @@ export class YouTube {
 
     let max: number
     let clazz: typeof Video | typeof YTComment
+    let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
       max = 50
@@ -292,10 +293,11 @@ export class YouTube {
       max = 100
       clazz = YTComment
 
-      const [, type ] = endpoint.split(':')
+      const [, type ] = endpoint.split(':') as ('video' | 'channel')[]
 
+      commentType = type ? type : 'video'
       endpoint = 'commentThreads'
-      options[`${type ? type : 'video'}Id`] = id
+      options[`${type}Id`] = id
       options.part += ',replies'
       options.textFormat = 'plainText'
     } else if (endpoint === 'comments') {
@@ -339,15 +341,15 @@ export class YouTube {
         let comment: YTComment
 
         if (item.snippet.topLevelComment) {
-          comment = new YTComment(this, item.snippet.topLevelComment)
+          comment = new YTComment(this, item.snippet.topLevelComment, commentType)
           items.push(comment)
         } else {
-          items.push(new clazz(this, item))
+          items.push(new clazz(this, item, commentType))
         }
 
         if (item.replies) {
           item.replies.comments.forEach(reply => {
-            const created = new YTComment(this, reply)
+            const created = new YTComment(this, reply, commentType)
             comment.replies.push(created)
           })
         }

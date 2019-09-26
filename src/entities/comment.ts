@@ -116,14 +116,14 @@ export class YTComment {
    */
   public replies: YTComment[]
 
-  constructor (youtube: YouTube, data) {
+  constructor (youtube: YouTube, data, type: 'video' | 'channel') {
     this.youtube = youtube
     this.data = data
 
-    this._init(data)
+    this._init(data, type)
   }
 
-  private _init (data) {
+  private _init (data, type: 'video' | 'channel') {
     if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)
     }
@@ -144,11 +144,14 @@ export class YTComment {
     this.rateable = comment.canRate
     this.popular = comment.likeCount >= 100
     this.likes = comment.likeCount
-    this.url = 'https://youtube.com/' + (comment.snippet.channelId ? `${comment.snippet.channelId}/discussion?lc=${this.id}` :
-                comment.snippet.videoId ? `/watch?v=${comment.snippet.videoId}&lc=${this.id}` : undefined)
     this.datePublished = comment.publishedAt
     this.dateEdited = comment.updatedAt
     this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
+
+    if (this.parentId) {
+      this.url = 'https://youtube.com/' + (type === 'channel' ? `channel/${this.parentId}/discussion?lc=${this.id}` : `watch?v=${this.parentId}&lc=${this.id}`)
+    }
+
     this.replies = []
   }
 
