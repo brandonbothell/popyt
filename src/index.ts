@@ -184,15 +184,6 @@ export class YouTube {
   }
 
   /**
-   * Get a channel's banners. Used mostly internally with `Channel#fetchBanners`.
-   * @param urlOrId Either the ID of the channel or the url of the channel.
-   */
-  public getChannelBanners (urlOrId: string) {
-    let id = urlOrId.includes('youtube.com') ? parseUrl(urlOrId).channel : urlOrId
-    return request.api('channels', { id, part: 'brandingSettings' }, this.token, this.tokenType).then((r) => r.items[0].brandingSettings.image) as Promise<Banners>
-  }
-
-  /**
    * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
    * @param commentId The ID of the comment to get replies from.
    * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.

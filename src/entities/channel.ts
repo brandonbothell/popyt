@@ -13,7 +13,7 @@ export class Channel {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,statistics,status'
+  public static part = 'snippet,contentDetails,statistics,status,brandingSettings'
 
   /**
    * The YouTube object that created this channel object.
@@ -72,7 +72,7 @@ export class Channel {
   }
 
   /**
-   * This channel's banners. Only available after calling Channel#fetchBanners().
+   * This channel's banners.
    */
   public banners: Banners
 
@@ -90,6 +90,11 @@ export class Channel {
    * This channel's view count.
    */
   public views: number
+
+  /**
+   * This channel's keywords.
+   */
+  public keywords: string
 
   /**
    * The channel's uploads. Only available after calling `Channel#fetchVideos()`
@@ -110,6 +115,11 @@ export class Channel {
    * The channel's comments. Only defined when Channel#fetchComments is called.
    */
   public comments: YTComment[]
+
+  /**
+   * The urls of all the channels this channel features.
+   */
+  public featuredChannels: string[]
 
   constructor (youtube: YouTube, data) {
     this.youtube = youtube
@@ -145,6 +155,9 @@ export class Channel {
     this.name = data.snippet.title
     this.about = data.snippet.description
     this.full = data.kind === 'youtube#channel'
+    this.banners = data.brandingSettings.image
+    this.keywords = data.brandingSettings.channel.keywords
+    this.featuredChannels = data.brandingSettings.channel.featuredChannelsUrls.map((c) => `https://www.youtube.com/channel/${c}`)
   }
 
   /**
@@ -195,13 +208,5 @@ export class Channel {
   public async fetchComments (maxResults: number = -1) {
     this.comments = await this.youtube.getChannelComments(this.id, maxResults)
     return this.comments
-  }
-
-  /**
-   * Fetches the channel's banner images and assigns them to Channel#banners.
-   */
-  public async fetchBanners () {
-    this.banners = await this.youtube.getChannelBanners(this.id)
-    return this.banners
   }
 }
