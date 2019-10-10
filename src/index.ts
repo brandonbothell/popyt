@@ -82,8 +82,8 @@ export class YouTube {
   }
 
   /**
-   * Get a video object from the URL or ID of a video.
-   * @param videoResolvable The URL or ID of the video.
+   * Get a video object from the URL, ID, or Title of a video.
+   * @param videoResolvable The URL, ID, or Title of the video.
    */
   public async getVideo (videoResolvable: string) {
     const id = await this.getId(videoResolvable, 'video')
@@ -100,8 +100,8 @@ export class YouTube {
   }
 
   /**
-   * Get a playlist object from the URL or ID of a playlist.
-   * @param playlistResolvable The URL or ID of the playlist.
+   * Get a playlist object from the URL, ID, or Title of a playlist.
+   * @param playlistResolvable The URL, ID, or Title of the playlist.
    */
   public async getPlaylist (playlistResolvable: string) {
     const id = await this.getId(playlistResolvable, 'playlist')
