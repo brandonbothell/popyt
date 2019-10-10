@@ -82,26 +82,29 @@ export class YouTube {
   }
 
   /**
-   * Get a video object from the ID of a video.
-   * @param id The ID of the video.
+   * Get a video object from the URL or ID of a video.
+   * @param videoResolvable The URL or ID of the video.
    */
-  public getVideo (id: string) {
+  public async getVideo (videoResolvable: string) {
+    const id = await this.getId(videoResolvable, 'video')
     return this.getItemById(Video, id) as Promise<Video>
   }
 
   /**
-   * Get a channel object from the ID of a channel.
-   * @param id The ID of the channel.
+   * Get a channel object from the Username, CustomURL, URL or ID of a channel.
+   * @param channelResolvable The Username, CustomURL, URL or ID of the channel.
    */
-  public getChannel (id: string) {
+  public async getChannel (channelResolvable: string) {
+    const id = await this.getId(channelResolvable, 'channel')
     return this.getItemById(Channel, id) as Promise<Channel>
   }
 
   /**
-   * Get a playlist object from the ID of a playlist.
-   * @param id The ID of the playlist.
+   * Get a playlist object from the URL or ID of a playlist.
+   * @param playlistResolvable The URL or ID of the playlist.
    */
-  public getPlaylist (id: string) {
+  public async getPlaylist (playlistResolvable: string) {
+    const id = await this.getId(playlistResolvable, 'playlist')
     return this.getItemById(Playlist, id) as Promise<Playlist>
   }
 
@@ -109,76 +112,73 @@ export class YouTube {
    * Get a comment object from the ID of a comment.
    * @param id The ID of the comment.
    */
-  public getComment (id: string) {
-    return this.getItemById(YTComment, id) as Promise<YTComment>
+  public getComment (commentId: string) {
+    return this.getItemById(YTComment, commentId) as Promise<YTComment>
   }
 
   /**
+   * @deprecated Use getVideo() instead
    * Get a video object from the url of a video.
    * @param url The url of the video.
    */
   public getVideoByUrl (url: string) {
     const id = parseUrl(url)
 
-    if (!id.video) {
-      return Promise.reject('Not a valid video url')
-    }
-
+    if (!id.video) return Promise.reject('Not a valid video url')
     return this.getItemById(Video, id.video) as Promise<Video>
   }
 
   /**
+   * @deprecated Use getChannel() instead
    * Get a channel object from the url of a channel.
    * @param url The url of the channel.
    */
   public getChannelByUrl (url: string) {
     const id = parseUrl(url)
 
-    if (!id.channel) {
-      return Promise.reject('Not a valid channel url')
-    }
-
+    if (!id.channel) return Promise.reject('Not a valid channel url')
     return this.getItemById(Channel, id.channel) as Promise<Channel>
   }
 
   /**
+   * @deprecated Use getPlaylist() instead
    * Get a playlist object from the url of a playlist.
    * @param url The url of the playlist.
    */
   public getPlaylistByUrl (url: string) {
     const id = parseUrl(url)
 
-    if (!id.playlist) {
-      return Promise.reject('Not a valid playlist url')
-    }
-
+    if (!id.playlist) return Promise.reject('Not a valid playlist url')
     return this.getItemById(Playlist, id.playlist) as Promise<Playlist>
   }
 
   /**
    * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#fetchVideos`.
-   * @param playlistId The ID of the playlist.
+   * @param playlistResolvable The URL or ID of the playlist.
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
-  public getPlaylistItems (playlistId: string, maxResults: number = -1) {
+  public async getPlaylistItems (playlistResolvable: string, maxResults: number = -1) {
+    const playlistId = await this.getId(playlistResolvable, 'playlist')
     return this.getPaginatedItems('playlistItems', playlistId, maxResults) as Promise<Video[]>
   }
 
   /**
    * Get `maxResults` comments from a video. Used mostly internally with `Video#fetchComments`.
-   * @param videoId The ID of the video.
+   * @param videoResolvable The URL or ID of the video.
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
-  public getVideoComments (videoId: string, maxResults: number = -1) {
+  public async getVideoComments (videoResolvable: string, maxResults: number = -1) {
+    const videoId = await this.getId(videoResolvable, 'video')
     return this.getPaginatedItems('commentThreads:video', videoId, maxResults) as Promise<YTComment[]>
   }
 
   /**
    * Get `maxResults` comments from a channel's discussion tab. Used mostly internally with `Channel#fetchComments`.
-   * @param channelId The ID of the channel.
+   * @param channelResolvable The URL or ID of the channel.
    * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
    */
-  public getChannelComments (channelId: string, maxResults: number = -1) {
+  public async getChannelComments (channelResolvable: string, maxResults: number = -1) {
+    const channelId = await this.getId(channelResolvable, 'channel')
     return this.getPaginatedItems('commentThreads:channel', channelId, maxResults) as Promise<YTComment[]>
   }
 
@@ -367,6 +367,23 @@ export class YouTube {
     }
 
     return items
+  }
+
+  private getId (input: string, type: string) {
+    if (input.includes('youtube.com') || input.includes('youtu.be')) {
+      const result = parseUrl(input)[`${type}`]
+      if (!result.startsWith('UC') && type === 'channel') {
+        return request.api('search', { q: result, part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+      } else {
+        return result
+      }
+    } else {
+      if (input.length <= 20 && type === 'channel') {
+        return request.api('search', { q: input, part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+      } else {
+        return input
+      }
+    }
   }
 }
 
