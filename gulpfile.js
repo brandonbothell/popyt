@@ -36,7 +36,7 @@ function docs () {
     }))
 
   toReturn.on('end', () => {
-    fsn.createFile('public/docs/.nojekyll')
+    fsn.createFile('docs/.nojekyll')
   })
 
   return toReturn

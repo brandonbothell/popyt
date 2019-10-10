@@ -4,9 +4,10 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![GitHub issues](https://img.shields.io/github/issues/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/issues)
 [![GitHub stars](https://img.shields.io/github/stars/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/stargazers)
 [![GitHub license](https://img.shields.io/github/license/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/blob/master/LICENSE)
-[![Coverage Status](https://coveralls.io/repos/github/jasonhaxstuff/better-youtube-api/badge.svg?branch=master)](https://coveralls.io/github/jasonhaxstuff/better-youtube-api?branch=master)
-[![Actions Status](https://github.com/jasonhaxstuff/better-youtube-api/workflows/CI/badge.svg)](https://github.com/jasonhaxstuff/better-youtube-api/actions)
+[![Coverage status](https://coveralls.io/repos/github/jasonhaxstuff/better-youtube-api/badge.svg?branch=master)](https://coveralls.io/github/jasonhaxstuff/better-youtube-api?branch=master)
+[![Actions status](https://github.com/jasonhaxstuff/better-youtube-api/workflows/CI/badge.svg)](https://github.com/jasonhaxstuff/better-youtube-api/actions)
 [![Downloads](https://img.shields.io/npm/dt/better-youtube-api.svg)](https://www.npmjs.com/package/better-youtube-api)
+[![Version](https://img.shields.io/npm/v/better-youtube-api.svg)](https://www.npmjs.com/package/better-youtube-api)
 
 Check out [our website](https://bbothell.me/better-youtube-api)!
 
