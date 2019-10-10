@@ -1,6 +1,5 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
 import { parseUrl, request } from './util'
-import { Banners } from './types'
 import { Cache } from './util/caching'
 import { OAuth } from './oauth'
 export * from './entities'
