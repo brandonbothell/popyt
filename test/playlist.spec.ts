@@ -11,7 +11,7 @@ if (!apiKey) {
 describe('Playlists', () => {
   it('should reject if the playlist isn\'t found', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getPlaylist('').catch(error => { return error })).to.equal('Item not found')
+    expect(await youtube.getPlaylist('JSDJFSFaVeryFakePlaylist').catch(error => { return error })).to.equal('Item not found')
   })
 
   it('should work with proper IDs', async () => {

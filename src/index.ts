@@ -378,8 +378,12 @@ export class YouTube {
         return result
       }
     } else {
-      if (input.length <= 20 && type === 'channel') {
-        return request.api('search', { q: input, part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+      if ((input.length <= 20 && type === 'channel')) {
+        return request.api('search', { q: input, type: 'channel', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+      } else if ((input.length < 10 || input.trim().includes(' ')) && type === 'video') {
+        return request.api('search', { q: input, type: 'video', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.videoId)
+      } else if ((input.length < 10 || input.trim().includes(' ')) && type === 'playlist') {
+        return request.api('search', { q: input, type: 'playlist', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.playlistId)
       } else {
         return input
       }

@@ -11,7 +11,7 @@ if (!apiKey) {
 describe('Playlist items', () => {
   it('should reject if the playlist isn\'t found', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getPlaylistItems('').catch(error => { return error })).to.equal('Items not found')
+    expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID').catch(error => { return error })).to.equal('Items not found')
   })
 
   it('should reject if maxResults is > 50', async () => {

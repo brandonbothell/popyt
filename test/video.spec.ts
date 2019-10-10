@@ -11,7 +11,7 @@ if (!apiKey) {
 describe('Videos', () => {
   it('should reject if the video isn\'t found', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getVideo('').catch(error => { return error })).to.equal('Item not found')
+    expect(await youtube.getVideo('ASDADASaVeryFakeVideo').catch(error => { return error })).to.equal('Item not found')
   })
 
   it('should work with proper IDs', async () => {
