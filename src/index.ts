@@ -1,5 +1,6 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
 import { parseUrl, request } from './util'
+import { Banners } from './types'
 import { Cache } from './util/caching'
 import { OAuth } from './oauth'
 export * from './entities'
@@ -180,6 +181,15 @@ export class YouTube {
    */
   public getChannelComments (channelId: string, maxResults: number = -1) {
     return this.getPaginatedItems('commentThreads:channel', channelId, maxResults) as Promise<YTComment[]>
+  }
+
+  /**
+   * Get a channel's banners. Used mostly internally with `Channel#fetchBanners`.
+   * @param urlOrId Either the ID of the channel or the url of the channel.
+   */
+  public getChannelBanners (urlOrId: string) {
+    let id = urlOrId.includes('youtube.com') ? parseUrl(urlOrId).channel : urlOrId
+    return request.api('channels', { id, part: 'brandingSettings' }, this.token, this.tokenType).then((r) => r.items[0].brandingSettings.image) as Promise<Banners>
   }
 
   /**

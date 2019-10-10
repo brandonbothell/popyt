@@ -1,4 +1,4 @@
-import { YouTube, Playlist, Thumbnail } from '..'
+import { YouTube, Playlist, Thumbnail, Banners } from '..'
 import { YTComment } from './comment'
 
 /**
@@ -70,6 +70,11 @@ export class Channel {
     medium?: Thumbnail,
     standard?: Thumbnail
   }
+
+  /**
+   * This channel's banners. Only available after calling Channel#fetchBanners().
+   */
+  public banners: Banners
 
   /**
    * The date this channel was created.
@@ -184,11 +189,19 @@ export class Channel {
   }
 
   /**
-   * Fetches the channels's discussion tab comments and assigns them to Channel#comments.
+   * Fetches the channel's discussion tab comments and assigns them to Channel#comments.
    * @param maxResults The maximum amount of comments to fetch
    */
   public async fetchComments (maxResults: number = -1) {
     this.comments = await this.youtube.getChannelComments(this.id, maxResults)
     return this.comments
+  }
+
+  /**
+   * Fetches the channel's banner images and assigns them to Channel#banners.
+   */
+  public async fetchBanners () {
+    this.banners = await this.youtube.getChannelBanners(this.id)
+    return this.banners
   }
 }

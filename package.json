@@ -8,7 +8,8 @@
     "test": "mocha --exit --require ts-node/register --require source-map-support/register \"./test/!(oauth).spec.ts\"",
     "coverage": "nyc yarn test && nyc report --reporter=text-lcov | coveralls",
     "docs": "gulp typedoc",
-    "prepublishOnly": "gulp"
+    "prepublishOnly": "gulp",
+    "temp": "tsc && node out/temp.js"
   },
   "author": "jasonhaxstuff",
   "license": "GPL-3.0",
@@ -30,6 +31,7 @@
     "@types/node": "12.6.2",
     "chai": "^4.1.2",
     "coveralls": "^3.0.5",
+    "dotenv": "^8.1.0",
     "fs-nextra": "0.4.5",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "^2.6.4",
