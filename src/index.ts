@@ -379,7 +379,7 @@ export class YouTube {
   }
 
   /* istanbul ignore next */
-  private getId (input: string, type: 'playlist' | 'channel' | 'video'): Promise<string> {
+  private async getId (input: string, type: 'playlist' | 'channel' | 'video'): Promise<string> {
     let id: string = null
 
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
@@ -387,7 +387,7 @@ export class YouTube {
 
       // Custom channel URLs don't work that well
       if (type === 'channel' && !idFromUrl.startsWith('UC')) {
-        id = request.api('search', { q: idFromUrl, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+        id = await request.api('search', { q: idFromUrl, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 
       id = idFromUrl
@@ -397,18 +397,18 @@ export class YouTube {
       return id
     }
 
-    if (type === 'channel' && (input.length < 24 || !input.startsWith('UC') || input.includes(' '))) {
-      id = request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-    } else if (type === 'playlist' && (input.length < 34 || !input.startsWith('PL') || input.includes(' '))) {
-      id = request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+    if (type === 'channel' && (input.length < 20 || !input.startsWith('UC') || input.includes(' '))) {
+      id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+    } else if (type === 'playlist' && (input.length < 15 || input.includes(' '))) {
+      id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
     } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
-      id = request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
+      id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
     } else {
       id = input
     }
 
     if (id === null || id === undefined || id === '') {
-      return Promise.reject(`Invalid input for type ${type}: '${input}'`)
+      return Promise.reject('Item not found')
     }
 
     return id
