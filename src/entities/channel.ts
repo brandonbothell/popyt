@@ -138,6 +138,10 @@ export class Channel {
       this.language = channel.snippet.defaultLanguage
       this.views = Number(channel.statistics.viewCount)
       this.commentCount = Number(channel.statistics.commentCount)
+      this.banners = channel.brandingSettings.image
+      this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
+      this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
+        channel.brandingSettings.channel.featuredChannelsUrls.map(url => `https://www.youtube.com/channel/${url}`) : []
       if (!channel.statistics.hiddenSubscriberCount) {
         this.subCount = Number(channel.statistics.subscriberCount)
       } else {
@@ -149,18 +153,12 @@ export class Channel {
       throw new Error(`Invalid channel type: ${data.kind}`)
     }
 
-    const hasBranding = data.brandingSettings ? true : false
-
     this.url = `https://youtube.com/channel/${this.id}`
     this.profilePictures = data.snippet.thumbnails
     this.dateCreated = new Date(data.snippet.publishedAt)
     this.name = data.snippet.title
     this.about = data.snippet.description
     this.full = data.kind === 'youtube#channel'
-    this.banners = hasBranding ? data.brandingSettings.image : {}
-    this.keywords = hasBranding ? (data.brandingSettings.channel.keywords ? data.brandingSettings.channel.keywords.split(' ') : []) : []
-    this.featuredChannels = hasBranding ? (data.brandingSettings.channel.featuredChannelsUrls ?
-    data.brandingSettings.channel.featuredChannelsUrls.map(url => `https://www.youtube.com/channel/${url}`) : []) : []
   }
 
   /**

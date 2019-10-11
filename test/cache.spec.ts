@@ -2,8 +2,9 @@ import 'mocha'
 import { expect } from 'chai'
 import { YouTube } from '../src'
 import { Cache } from '../src/util/caching'
+import dotenv from 'dotenv'
 
-require('dotenv').config()
+dotenv.config()
 const apiKey = process.env.YOUTUBE_API_KEY
 
 if (!apiKey) {

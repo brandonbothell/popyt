@@ -50,24 +50,12 @@ describe('Channels', () => {
     expect(channel.subCount).to.be.lessThan(0)
   })
 
-  it('should have a banners property', async () => {
+  it('should contain branding properties', async () => {
     const youtube = new YouTube(apiKey)
     const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
 
     expect(channel.banners).to.haveOwnProperty('bannerImageUrl')
-  })
-
-  it('should have keywords, if the channel defined them', async () => {
-    const youtube = new YouTube(apiKey)
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
-
     expect(channel.keywords.length).to.be.greaterThan(0)
-  })
-
-  it('should have featured channels if the channel has featured channels', async () => {
-    const youtube = new YouTube(apiKey)
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
-
     expect(channel.featuredChannels.length).to.be.greaterThan(0)
   })
 })
