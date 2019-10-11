@@ -138,10 +138,14 @@ export class Channel {
       this.language = channel.snippet.defaultLanguage
       this.views = Number(channel.statistics.viewCount)
       this.commentCount = Number(channel.statistics.commentCount)
-      this.banners = channel.brandingSettings.image
-      this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
-      this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
-        channel.brandingSettings.channel.featuredChannelsUrls.map(url => `https://www.youtube.com/channel/${url}`) : []
+
+      if (channel.brandingSettings) {
+        this.banners = channel.brandingSettings.image
+        this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
+        this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
+        channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
+      }
+
       if (!channel.statistics.hiddenSubscriberCount) {
         this.subCount = Number(channel.statistics.subscriberCount)
       } else {
