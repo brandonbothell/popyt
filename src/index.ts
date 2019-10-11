@@ -91,8 +91,8 @@ export class YouTube {
   }
 
   /**
-   * Get a channel object from the Username, CustomURL, URL or ID of a channel.
-   * @param channelResolvable The Username, CustomURL, URL or ID of the channel.
+   * Get a channel object from the Username, URL or ID of a channel.
+   * @param channelResolvable The Username, URL or ID of the channel.
    */
   public async getChannel (channelResolvable: string) {
     const id = await this.getId(channelResolvable, 'channel')
@@ -127,6 +127,7 @@ export class YouTube {
     if (!id.video) {
       return Promise.reject('Not a valid video url')
     }
+
     return this.getItemById(Video, id.video) as Promise<Video>
   }
 
@@ -141,6 +142,7 @@ export class YouTube {
     if (!id.channel) {
       return Promise.reject('Not a valid channel url')
     }
+
     return this.getItemById(Channel, id.channel) as Promise<Channel>
   }
 
@@ -155,6 +157,7 @@ export class YouTube {
     if (!id.playlist) {
       return Promise.reject('Not a valid playlist url')
     }
+
     return this.getItemById(Playlist, id.playlist) as Promise<Playlist>
   }
 
@@ -180,7 +183,7 @@ export class YouTube {
 
   /**
    * Get `maxResults` comments from a channel's discussion tab. Used mostly internally with `Channel#fetchComments`.
-   * @param channelResolvable The URL, ID, CustomUrl or Username of the channel.
+   * @param channelResolvable The Username, URL, or ID of the channel.
    * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
    */
   public async getChannelComments (channelResolvable: string, maxResults: number = -1) {
@@ -375,26 +378,39 @@ export class YouTube {
     return items
   }
 
-  private getId (input: string, type: string) {
-    if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      const parsedUrl = parseUrl(input)[type]
+  private getId (input: string, type: 'playlist' | 'channel' | 'video'): Promise<string> {
+    let id: string = null
 
-      if (!parsedUrl.startsWith('UC') && type === 'channel') {
-        return request.api('search', { q: parsedUrl, type: 'channel', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-      } else {
-        return parsedUrl
+    if (input.includes('youtube.com') || input.includes('youtu.be')) {
+      const idFromUrl = parseUrl(input)[type]
+
+      // Custom channel URLs don't work that well
+      if (type === 'channel' && !idFromUrl.startsWith('UC')) {
+        id = request.api('search', { q: idFromUrl, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
-    } else {
-      if (input.length <= 20 && type === 'channel') {
-        return request.api('search', { q: input, type: 'channel', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-      } else if ((input.length < 10 || input.trim().includes(' ')) && type === 'video') {
-        return request.api('search', { q: input, type: 'video', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
-      } else if ((input.length < 10 || input.trim().includes(' ')) && type === 'playlist') {
-        return request.api('search', { q: input, type: 'playlist', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
-      } else {
-        return input
-      }
+
+      id = idFromUrl
     }
+
+    if (id !== null && id !== undefined && id !== '') {
+      return id
+    }
+
+    if (type === 'channel' && (input.length < 24 || !input.startsWith('UC') || input.includes(' '))) {
+      id = request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+    } else if (type === 'playlist' && (input.length < 34 || !input.startsWith('PL') || input.includes(' '))) {
+      id = request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+    } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
+      id = request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
+    } else {
+      id = input
+    }
+
+    if (id === null || id === undefined || id === '') {
+      return Promise.reject(`Invalid input for type ${type}: '${input}'`)
+    }
+
+    return id
   }
 }
 
