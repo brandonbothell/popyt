@@ -2,7 +2,7 @@ import { parse } from 'url'
 import { ISODuration } from '../types'
 
 export function parseUrl (url: string): { video: string, playlist: string, channel: string } {
-  url = url.startsWith('https') ? url : (url.startsWith('www') ? `https://${url}` : `https://www.${url}`)
+  url = url.startsWith('http') ? url : (url.startsWith('www') ? `https://${url}` : `https://www.${url}`)
   const parsed = parse(url, true)
   switch (parsed.hostname) {
     case 'www.youtube.com':
