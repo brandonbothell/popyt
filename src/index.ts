@@ -124,7 +124,9 @@ export class YouTube {
   public getVideoByUrl (url: string) {
     const id = parseUrl(url)
 
-    if (!id.video) return Promise.reject('Not a valid video url')
+    if (!id.video) {
+      return Promise.reject('Not a valid video url')
+    }
     return this.getItemById(Video, id.video) as Promise<Video>
   }
 
@@ -136,7 +138,9 @@ export class YouTube {
   public getChannelByUrl (url: string) {
     const id = parseUrl(url)
 
-    if (!id.channel) return Promise.reject('Not a valid channel url')
+    if (!id.channel) {
+      return Promise.reject('Not a valid channel url')
+    }
     return this.getItemById(Channel, id.channel) as Promise<Channel>
   }
 
@@ -148,13 +152,15 @@ export class YouTube {
   public getPlaylistByUrl (url: string) {
     const id = parseUrl(url)
 
-    if (!id.playlist) return Promise.reject('Not a valid playlist url')
+    if (!id.playlist) {
+      return Promise.reject('Not a valid playlist url')
+    }
     return this.getItemById(Playlist, id.playlist) as Promise<Playlist>
   }
 
   /**
    * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#fetchVideos`.
-   * @param playlistResolvable The URL or ID of the playlist.
+   * @param playlistResolvable The URL, ID, or Title of the playlist.
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
   public async getPlaylistItems (playlistResolvable: string, maxResults: number = -1) {
@@ -164,7 +170,7 @@ export class YouTube {
 
   /**
    * Get `maxResults` comments from a video. Used mostly internally with `Video#fetchComments`.
-   * @param videoResolvable The URL or ID of the video.
+   * @param videoResolvable The URL, ID, or Title of the video.
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
   public async getVideoComments (videoResolvable: string, maxResults: number = -1) {
@@ -174,7 +180,7 @@ export class YouTube {
 
   /**
    * Get `maxResults` comments from a channel's discussion tab. Used mostly internally with `Channel#fetchComments`.
-   * @param channelResolvable The URL or ID of the channel.
+   * @param channelResolvable The URL, ID, CustomUrl or Username of the channel.
    * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
    */
   public async getChannelComments (channelResolvable: string, maxResults: number = -1) {
@@ -371,19 +377,20 @@ export class YouTube {
 
   private getId (input: string, type: string) {
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      const result = parseUrl(input)[`${type}`]
-      if (!result.startsWith('UC') && type === 'channel') {
-        return request.api('search', { q: result, type: 'channel', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+      const parsedUrl = parseUrl(input)[type]
+
+      if (!parsedUrl.startsWith('UC') && type === 'channel') {
+        return request.api('search', { q: parsedUrl, type: 'channel', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       } else {
-        return result
+        return parsedUrl
       }
     } else {
-      if ((input.length <= 20 && type === 'channel')) {
-        return request.api('search', { q: input, type: 'channel', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+      if (input.length <= 20 && type === 'channel') {
+        return request.api('search', { q: input, type: 'channel', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       } else if ((input.length < 10 || input.trim().includes(' ')) && type === 'video') {
-        return request.api('search', { q: input, type: 'video', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.videoId)
+        return request.api('search', { q: input, type: 'video', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
       } else if ((input.length < 10 || input.trim().includes(' ')) && type === 'playlist') {
-        return request.api('search', { q: input, type: 'playlist', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.playlistId)
+        return request.api('search', { q: input, type: 'playlist', part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
       } else {
         return input
       }
