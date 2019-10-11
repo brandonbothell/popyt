@@ -373,7 +373,7 @@ export class YouTube {
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
       const result = parseUrl(input)[`${type}`]
       if (!result.startsWith('UC') && type === 'channel') {
-        return request.api('search', { q: result, part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
+        return request.api('search', { q: result, type: 'channel', part: 'id' }, this.token, this.tokenType).then((r) => r.items[0].id.channelId)
       } else {
         return result
       }
