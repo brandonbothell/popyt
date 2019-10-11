@@ -94,7 +94,7 @@ export class Channel {
   /**
    * This channel's keywords.
    */
-  public keywords: string
+  public keywords: string[]
 
   /**
    * The channel's uploads. Only available after calling `Channel#fetchVideos()`
