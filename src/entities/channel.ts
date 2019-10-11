@@ -117,7 +117,7 @@ export class Channel {
   public comments: YTComment[]
 
   /**
-   * The urls of all the channels this channel features.
+   * The URLS of all of this channel's featured channels.
    */
   public featuredChannels: string[]
 
@@ -149,15 +149,18 @@ export class Channel {
       throw new Error(`Invalid channel type: ${data.kind}`)
     }
 
+    const hasBranding = data.brandingSettings ? true : false
+
     this.url = `https://youtube.com/channel/${this.id}`
     this.profilePictures = data.snippet.thumbnails
     this.dateCreated = new Date(data.snippet.publishedAt)
     this.name = data.snippet.title
     this.about = data.snippet.description
     this.full = data.kind === 'youtube#channel'
-    this.banners = data.brandingSettings.image
-    this.keywords = data.brandingSettings.channel.keywords
-    this.featuredChannels = data.brandingSettings.channel.featuredChannelsUrls.map((c) => `https://www.youtube.com/channel/${c}`)
+    this.banners = hasBranding ? data.brandingSettings.image : {}
+    this.keywords = hasBranding ? (data.brandingSettings.channel.keywords ? data.brandingSettings.channel.keywords.split(' ') : []) : []
+    this.featuredChannels = hasBranding ? (data.brandingSettings.channel.featuredChannelsUrls ?
+    data.brandingSettings.channel.featuredChannelsUrls.map(url => `https://www.youtube.com/channel/${url}`) : []) : []
   }
 
   /**
