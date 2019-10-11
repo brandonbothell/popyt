@@ -378,6 +378,7 @@ export class YouTube {
     return items
   }
 
+  /* istanbul ignore next */
   private getId (input: string, type: 'playlist' | 'channel' | 'video'): Promise<string> {
     let id: string = null
 
