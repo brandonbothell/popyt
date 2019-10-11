@@ -9,4 +9,3 @@ typings/
 *.log
 .coveralls.yml
 .env
-src/temp.ts
