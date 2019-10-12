@@ -35,6 +35,8 @@ const video = await youtube.getVideo('dQw4w9WgXcQ')
 console.log(video)
 ```
 
+### You can do the same thing with playlists, channels, and comments by replacing `Video` with any of them. ###
+
 Get a video by URL:
 
 ```js
@@ -42,6 +44,11 @@ const video = await youtube.getVideoByUrl('https://youtube.com/watch?v=dQw4w9WgX
 console.log(video)
 ```
 
-You can do the same thing with playlists, channels, and comments by replacing `Video` with either one.
+Search videos:
+
+```js
+const videos = await youtube.searchVideos('never gonna give you up', 12)
+console.log(videos) // array of 12 partial video objects
+```
 
 Note: This wrapper does not implement every feature of the YouTube API. With a single developer working on it, there just isn't time for everything to be implemented. Some of the objectively most-important features have been added. The limits imposed by the wrapper are not imposed by YouTube.

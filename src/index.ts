@@ -55,12 +55,22 @@ export class YouTube {
   }
 
   /**
+   * Search supported entities on YouTube.
+   * @param types An array of types to search for. May be a single type or multiple types.
+   * @param searchTerm What to search for on YouTube.
+   * @param maxResults The maximum amount of results to find. Defaults to 10.
+   */
+  public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10) {
+    return this._search(types, searchTerm, maxResults)
+  }
+
+  /**
    * Search videos on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
   public searchVideos (searchTerm: string, maxResults: number = 10) {
-    return this.search(Video, searchTerm, maxResults) as Promise<Video[]>
+    return this.search([ Video ], searchTerm, maxResults) as Promise<Video[]>
   }
 
   /**
@@ -69,7 +79,7 @@ export class YouTube {
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
   public searchChannels (searchTerm: string, maxResults: number = 10) {
-    return this.search(Channel, searchTerm, maxResults) as Promise<Channel[]>
+    return this.search([ Channel ], searchTerm, maxResults) as Promise<Channel[]>
   }
 
   /**
@@ -78,7 +88,7 @@ export class YouTube {
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    */
   public searchPlaylists (searchTerm: string, maxResults: number = 10) {
-    return this.search(Playlist, searchTerm, maxResults) as Promise<Playlist[]>
+    return this.search([ Playlist ], searchTerm, maxResults) as Promise<Playlist[]>
   }
 
   /**
@@ -192,8 +202,9 @@ export class YouTube {
   }
 
   /* istanbul ignore next */
-  private async search (type: typeof Video | typeof Channel | typeof Playlist, searchTerm: string, maxResults: number = 10): Promise<Video[] | Channel[] | Playlist[]> {
-    const cached = Cache.get(`search://${type.endpoint}/"${searchTerm}"/${maxResults}`)
+  private async _search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10): Promise<(Video | Channel | Playlist)[]> {
+    const type = types.map(t => t.endpoint.substring(0, t.endpoint.length - 1)).join(',')
+    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}`)
 
     if (this._shouldCache && cached) {
       return cached
@@ -207,17 +218,23 @@ export class YouTube {
       q: encodeURIComponent(searchTerm),
       maxResults,
       part: 'snippet',
-      type: type.endpoint.substring(0, type.endpoint.length - 1)
+      type
     }, this.token, this.tokenType)
 
     const items = []
 
     results.items.forEach(item => {
-      items.push(new type(this, item))
+      if (item.id.videoId) {
+        items.push(new Video(this, item))
+      } else if (item.id.channelId) {
+        items.push(new Channel(this, item))
+      } else if (item.id.playlistId) {
+        items.push(new Playlist(this, item))
+      }
     })
 
     if (this._shouldCache && this._cacheSearches) {
-      this._cache(`search://${type.endpoint}/"${searchTerm}"/${maxResults}`, items)
+      this._cache(`search://${type}/"${searchTerm}"/${maxResults}`, items)
     }
 
     return items

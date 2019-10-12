@@ -1,6 +1,6 @@
 {
   "name": "better-youtube-api",
-  "version": "2.0.0",
+  "version": "2.1.0-dev",
   "description": "A very easy to use promise-based Youtube Data v3 API.",
   "main": "out/index.js",
   "types": "typings/index.d.ts",
@@ -43,7 +43,7 @@
     "tslint": "^5.11.0",
     "tslint-config-standard": "8.0.1",
     "typedoc": "0.15.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.6.4"
   },
   "repository": {
     "url": "https://github.com/jasonhaxstuff/better-youtube-api.git"
