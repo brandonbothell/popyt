@@ -44,7 +44,14 @@ const video = await youtube.getVideo('https://youtube.com/watch?v=dQw4w9WgXcQ')
 console.log(video)
 ```
 
-Search videos:
+Get a video by title (or similar title):
+
+```js
+const video = await youtube.getVideo('never gonna give you up')
+console.log(video)
+```
+
+## Search videos:
 
 ```js
 const videos = await youtube.searchVideos('never gonna give you up', 12)
