@@ -1,4 +1,4 @@
-import { YouTube, Playlist, Thumbnail } from '..'
+import { YouTube, Playlist, Thumbnail, Banners } from '..'
 import { YTComment } from './comment'
 
 /**
@@ -13,7 +13,7 @@ export class Channel {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,statistics,status'
+  public static part = 'snippet,contentDetails,statistics,status,brandingSettings'
 
   /**
    * The YouTube object that created this channel object.
@@ -72,6 +72,11 @@ export class Channel {
   }
 
   /**
+   * This channel's banners.
+   */
+  public banners: Banners
+
+  /**
    * The date this channel was created.
    */
   public dateCreated: Date
@@ -85,6 +90,11 @@ export class Channel {
    * This channel's view count.
    */
   public views: number
+
+  /**
+   * This channel's keywords.
+   */
+  public keywords: string[]
 
   /**
    * The channel's uploads. Only available after calling `Channel#fetchVideos()`
@@ -106,6 +116,11 @@ export class Channel {
    */
   public comments: YTComment[]
 
+  /**
+   * The URLS of all of this channel's featured channels.
+   */
+  public featuredChannels: string[]
+
   constructor (youtube: YouTube, data) {
     this.youtube = youtube
     this.data = data
@@ -123,6 +138,14 @@ export class Channel {
       this.language = channel.snippet.defaultLanguage
       this.views = Number(channel.statistics.viewCount)
       this.commentCount = Number(channel.statistics.commentCount)
+
+      if (channel.brandingSettings) {
+        this.banners = channel.brandingSettings.image
+        this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
+        this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
+        channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
+      }
+
       if (!channel.statistics.hiddenSubscriberCount) {
         this.subCount = Number(channel.statistics.subscriberCount)
       } else {
@@ -184,7 +207,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channels's discussion tab comments and assigns them to Channel#comments.
+   * Fetches the channel's discussion tab comments and assigns them to Channel#comments.
    * @param maxResults The maximum amount of comments to fetch
    */
   public async fetchComments (maxResults: number = -1) {

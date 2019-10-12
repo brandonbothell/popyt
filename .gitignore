@@ -8,3 +8,4 @@ typings/
 .nyc_output/
 *.log
 .coveralls.yml
+.env
