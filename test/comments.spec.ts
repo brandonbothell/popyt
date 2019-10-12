@@ -50,7 +50,7 @@ describe('Comments', () => {
 
   it('should not work with invalid videos', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getVideoComments('0').catch(error => { return error })).to.equal('Items not found')
+    expect(await youtube.getVideoComments('JSFSFDKFaVeryFakeVideoID').catch(error => { return error })).to.equal('Items not found')
   })
 
   it('should return an array with a length of <= maxResults', async () => {

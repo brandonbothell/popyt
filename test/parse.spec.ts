@@ -61,6 +61,21 @@ describe('Getting/Parsing', () => {
     expect(shortUrlWithoutId.video).to.equal(null)
     expect(shortUrlWithoutId.channel).to.equal(null)
 
+    const videoWithoutHttps = parseUrl('www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithoutHttps.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithoutHttps.video).to.equal('dQw4w9WgXcQ')
+    expect(videoWithoutHttps.channel).to.equal(null)
+
+    const videoWithoutWww = parseUrl('https://youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithoutWww.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithoutWww.video).to.equal('dQw4w9WgXcQ')
+    expect(videoWithoutWww.channel).to.equal(null)
+
+    const videoWithoutHttpsWww = parseUrl('youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithoutHttpsWww.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(videoWithoutHttpsWww.video).to.equal('dQw4w9WgXcQ')
+    expect(videoWithoutHttpsWww.channel).to.equal(null)
+
     const invalidUrl = parseUrl('https://github.com/jasonhaxstuff')
     expect(invalidUrl.playlist).to.equal(null)
     expect(invalidUrl.video).to.equal(null)

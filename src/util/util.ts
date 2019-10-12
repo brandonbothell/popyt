@@ -2,7 +2,12 @@ import { parse } from 'url'
 import { ISODuration } from '../types'
 
 export function parseUrl (url: string): { video: string, playlist: string, channel: string } {
+  url = url.startsWith('https://www.') ? url :
+    (url.startsWith('www.') ? `https://${url}` :
+      (url.startsWith('https://') ? `${url.substring(0, 8)}www.${url.substring(8)}` : `https://www.${url}`))
+
   const parsed = parse(url, true)
+
   switch (parsed.hostname) {
     case 'www.youtube.com':
     case 'youtube.com':
@@ -27,8 +32,8 @@ export function parseUrl (url: string): { video: string, playlist: string, chann
         }
 
         return { playlist: parsed.query.list as string, video: null, channel: null }
-      } else if (parsed.pathname.startsWith('/channel/')) {
-        const id = parsed.pathname.replace('/channel/', '')
+      } else if (parsed.pathname.startsWith('/channel/') || parsed.pathname.startsWith('/c/')) {
+        const id = parsed.pathname.replace('/channel/', '').replace('/c/', '')
 
         if (!id || !idRegex.test(id)) {
           return { video: null, playlist: null, channel: null }
@@ -39,6 +44,7 @@ export function parseUrl (url: string): { video: string, playlist: string, chann
 
       return { video: null, playlist: null, channel: null }
     }
+    case 'www.youtu.be':
     case 'youtu.be':
       return { video: /^\/[a-zA-Z0-9-_]+$/.test(parsed.pathname) ? parsed.pathname.slice(1) : null, playlist: null, channel: null }
     default:

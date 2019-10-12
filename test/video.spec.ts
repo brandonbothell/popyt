@@ -11,7 +11,7 @@ if (!apiKey) {
 describe('Videos', () => {
   it('should reject if the video isn\'t found', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getVideo('').catch(error => { return error })).to.equal('Item not found')
+    expect(await youtube.getVideo('ASDADASaVeryFakeVideo').catch(error => { return error })).to.equal('Item not found')
   })
 
   it('should work with proper IDs', async () => {
@@ -21,12 +21,12 @@ describe('Videos', () => {
 
   it('should work with proper URLs', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getVideoByUrl('https://youtube.com/watch?v=Lq1D8PFnjWY')).to.be.an.instanceOf(Video)
+    expect(await youtube.getVideo('https://youtube.com/watch?v=Lq1D8PFnjWY')).to.be.an.instanceOf(Video)
   })
 
-  it('shouldn\'t work with invalid URLs', async () => {
+  it('should work with single searching', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getVideoByUrl('https://youtube.com/watch').catch(e => e)).to.equal('Not a valid video url')
+    expect(await youtube.getVideo('how to youtube')).to.be.an.instanceOf(Video)
   })
 
   it('should work with fetching', async () => {

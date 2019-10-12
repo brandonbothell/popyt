@@ -11,7 +11,7 @@ if (!apiKey) {
 describe('Channels', () => {
   it('should reject if the channel isn\'t found', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getChannel('').catch(error => { return error })).to.equal('Item not found')
+    expect(await youtube.getChannel('QWERTRTRWEaVeryFakeChannelID').catch(error => { return error })).to.equal('Item not found')
   })
 
   it('should work with proper IDs', async () => {
@@ -21,12 +21,12 @@ describe('Channels', () => {
 
   it('should work with proper URLs', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getChannelByUrl('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
+    expect(await youtube.getChannel('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
   })
 
-  it('shouldn\'t work with invalid URLs', async () => {
+  it('should work with single searching', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getChannelByUrl('https://youtube.com/channel').catch(e => e)).to.equal('Not a valid channel url')
+    expect(await youtube.getChannel('youtube')).to.be.an.instanceOf(Channel)
   })
 
   it('should work with fetching', async () => {

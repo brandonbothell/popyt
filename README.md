@@ -40,7 +40,7 @@ console.log(video)
 Get a video by URL:
 
 ```js
-const video = await youtube.getVideoByUrl('https://youtube.com/watch?v=dQw4w9WgXcQ')
+const video = await youtube.getVideo('https://youtube.com/watch?v=dQw4w9WgXcQ')
 console.log(video)
 ```
 
