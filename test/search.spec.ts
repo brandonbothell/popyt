@@ -14,6 +14,7 @@ describe('Searching', () => {
     expect((await youtube.searchVideos('never gonna give you up')).length).to.equal(10)
     expect((await youtube.searchChannels('rick astley')).length).to.equal(10)
     expect((await youtube.searchPlaylists('music')).length).to.equal(10)
+    expect((await youtube.search([ Video, Channel, Playlist ], 'vevo')).length).to.equal(10)
   }).timeout(20000)
 
   it('should return an array', async () => {
