@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
+    - uses: nuxt/actions-yarn@master
     - name: Test
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       run: |
         echo Installing...
-        npm install
+        yarn
         
         echo Testing...
-        npm run coverage
+        yarn coverage
