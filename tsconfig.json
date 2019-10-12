@@ -2,7 +2,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es2016",
+    "lib": [ "es2016" ],
     "outDir": "out",
     "declaration": true,
     "removeComments": false,
