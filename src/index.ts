@@ -121,6 +121,7 @@ export class YouTube {
    * Get a video object from the url of a video.
    * @param url The url of the video.
    */
+  /* istanbul ignore next */
   public getVideoByUrl (url: string) {
     const id = parseUrl(url)
 
@@ -136,6 +137,7 @@ export class YouTube {
    * Get a channel object from the url of a channel.
    * @param url The url of the channel.
    */
+  /* istanbul ignore next */
   public getChannelByUrl (url: string) {
     const id = parseUrl(url)
 
@@ -151,6 +153,7 @@ export class YouTube {
    * Get a playlist object from the url of a playlist.
    * @param url The url of the playlist.
    */
+  /* istanbul ignore next */
   public getPlaylistByUrl (url: string) {
     const id = parseUrl(url)
 
@@ -386,7 +389,7 @@ export class YouTube {
       const idFromUrl = parseUrl(input)[type]
 
       // Custom channel URLs don't work that well
-      if (type === 'channel' && !idFromUrl.startsWith('UC')) {
+      if (type === 'channel' && idFromUrl && !idFromUrl.startsWith('UC')) {
         id = await request.api('search', { q: idFromUrl, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 
@@ -397,9 +400,9 @@ export class YouTube {
       return id
     }
 
-    if (type === 'channel' && (input.length < 20 || !input.startsWith('UC') || input.includes(' '))) {
+    if (type === 'channel' && (!input.startsWith('UC') || input.includes(' '))) {
       id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-    } else if (type === 'playlist' && (input.length < 15 || input.includes(' '))) {
+    } else if (type === 'playlist' && input.includes(' ')) {
       id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
     } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
       id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)

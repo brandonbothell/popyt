@@ -21,12 +21,12 @@ describe('Playlists', () => {
 
   it('should work with proper URLs', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getPlaylistByUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
+    expect(await youtube.getPlaylist('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
   })
 
-  it('shouldn\'t work with invalid URLs', async () => {
+  it('should work with single searching', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.getPlaylistByUrl('https://youtube.com/playlist').catch(e => e)).to.equal('Not a valid playlist url')
+    expect(await youtube.getPlaylist('best songs ever')).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching', async () => {
