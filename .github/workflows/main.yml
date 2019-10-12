@@ -8,10 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: |
-        actions/checkout@v1
-        nuxt/actions-yarn@master
-        
+    - uses: actions/checkout@v1
+    - uses: nuxt/actions-yarn@master
+      
     - name: Test
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
