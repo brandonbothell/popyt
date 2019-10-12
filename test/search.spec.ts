@@ -57,10 +57,11 @@ describe('Searching', () => {
 
   it('should work with multiple types', async () => {
     const youtube = new YouTube(apiKey)
-    const results = (await youtube.search([ Video, Playlist ], 'best songs ever', 5)) as (Video | Playlist)[]
+    const results = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 10))
 
     expect(results.find(r => r instanceof Video)).to.not.equal(undefined)
     expect(results.find(r => r instanceof Playlist)).to.not.equal(undefined)
+    expect(results.find(r => r instanceof Channel)).to.not.equal(undefined)
   })
 
   it('should throw an error if kind is wrong', () => {
