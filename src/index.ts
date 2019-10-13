@@ -424,11 +424,11 @@ export class YouTube {
     }
 
     if (type === 'channel' && (!input.startsWith('UC') || input.includes(' '))) {
-      id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
     } else if (type === 'playlist' && input.includes(' ')) {
-      id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
     } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
-      id = await request.api('search', { q: input, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
+      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
     } else {
       id = input
     }
