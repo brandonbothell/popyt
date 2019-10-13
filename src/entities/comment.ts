@@ -12,6 +12,12 @@ export class YTComment {
   public static part = 'snippet'
 
   /**
+   * The fields to request for this entity.
+   */
+  public static fields = 'items(kind,id,' +
+    'snippet(authorDisplayName,authorProfileImageUrl,authorChannelId,authorChannelUrl,textDisplay,textOriginal,parentId,videoId,channelId,canRate,likeCount,publishedAt,updatedAt))'
+
+  /**
    * The YouTube object used to create the comment.
    */
   public youtube: YouTube
@@ -141,11 +147,11 @@ export class YTComment {
       displayed: comment.snippet.textDisplay,
       original: comment.snippet.textOriginal
     }
-    this.rateable = comment.canRate
-    this.popular = comment.likeCount >= 100
-    this.likes = comment.likeCount
-    this.datePublished = comment.publishedAt
-    this.dateEdited = comment.updatedAt
+    this.rateable = comment.snippet.canRate
+    this.popular = comment.snippet.likeCount >= 100
+    this.likes = comment.snippet.likeCount
+    this.datePublished = comment.snippet.publishedAt
+    this.dateEdited = comment.snippet.updatedAt
     this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
 
     if (this.parentId) {

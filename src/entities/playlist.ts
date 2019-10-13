@@ -15,6 +15,11 @@ export class Playlist {
   public static part = 'snippet,contentDetails,player'
 
   /**
+   * The fields to request for this entity.
+   */
+  public static fields = 'items(kind,id,snippet(tags,title,channelId,publishedAt,thumbnails),contentDetails(itemCount),player(embedHtml))'
+
+  /**
    * The YouTube object that created this playlist.
    */
   public youtube: YouTube

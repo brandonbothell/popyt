@@ -16,6 +16,12 @@ export class Channel {
   public static part = 'snippet,contentDetails,statistics,status,brandingSettings'
 
   /**
+   * The fields to request for this entity.
+   */
+  public static fields = 'items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,commentCount,viewCount,hiddenSubscriberCount),' +
+    'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),status(isLinked))'
+
+  /**
    * The YouTube object that created this channel object.
    */
   public youtube: YouTube
@@ -117,9 +123,18 @@ export class Channel {
   public comments: YTComment[]
 
   /**
-   * The URLS of all of this channel's featured channels.
+   * The URLs of all of this channel's featured channels.
    */
   public featuredChannels: string[]
+
+  /**
+   * Only set if the channel is a search result.
+   *
+   * If the channel has an ongoing livestream, this is `live`.
+   * If the channel has an upcoming livestream, this is `upcoming`.
+   * If the channel has neither an ongoing nor upcoming livestream, this is `false`.
+   */
+  public liveStatus: 'live' | 'upcoming' | false
 
   constructor (youtube: YouTube, data) {
     this.youtube = youtube
@@ -140,9 +155,14 @@ export class Channel {
       this.commentCount = Number(channel.statistics.commentCount)
 
       this.banners = channel.brandingSettings.image
-      this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
-      this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
-        channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
+
+      // Unknown behavior
+      /* istanbul ignore next */
+      if (channel.brandingSettings.channel) {
+        this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
+        this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
+          channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
+      }
 
       if (!channel.statistics.hiddenSubscriberCount) {
         this.subCount = Number(channel.statistics.subscriberCount)
@@ -151,6 +171,9 @@ export class Channel {
       }
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.channelId
+      // Impossible to test
+      /* istanbul ignore next */
+      this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
     } else {
       throw new Error(`Invalid channel type: ${data.kind}`)
     }

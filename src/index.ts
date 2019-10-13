@@ -226,8 +226,10 @@ export class YouTube {
       return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
     }
 
+    const fields = 'items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'
     const results = await request.api('search', {
       q: encodeURIComponent(searchTerm),
+      fields: encodeURIComponent(fields),
       maxResults,
       part: 'snippet',
       type
@@ -264,7 +266,11 @@ export class YouTube {
       return cached
     }
 
-    const result = await request.api(type.endpoint, { id, part: type.part }, this.token, this.tokenType)
+    const result = await request.api(type.endpoint, {
+      id,
+      fields: encodeURIComponent(type.fields),
+      part: type.part
+    }, this.token, this.tokenType)
 
     if (result.items.length === 0) {
       return Promise.reject('Item not found')

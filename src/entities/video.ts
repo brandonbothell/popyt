@@ -18,6 +18,12 @@ export class Video {
   public static part = 'snippet,contentDetails,statistics,status'
 
   /**
+   * The fields to request for this entity.
+   */
+  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount),' +
+    'snippet(title,description,thumbnails,publishedAt,channelId,liveBroadcastContent))'
+
+  /**
    * YouTube object that created the video.
    */
   public youtube: YouTube
@@ -118,6 +124,13 @@ export class Video {
    */
   public comments: YTComment[]
 
+  /**
+   * If this is a ongoing livestream, this is `live`.
+   * If this is an upcoming livestream, this is `upcoming`.
+   * If this is not a livestream, this is `false`.
+   */
+  public liveStatus: 'live' | 'upcoming' | false
+
   constructor (youtube: YouTube, data) {
     this.youtube = youtube
     this.data = data
@@ -154,6 +167,10 @@ export class Video {
     this.full = data.kind === 'youtube#video'
     this.url = `https://youtube.com/watch?v=${this.id}`
     this.shortUrl = `https://youtu.be/${this.id}`
+
+    // Impossible to test
+    /* istanbul ignore next */
+    this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
 
     return this
   }
