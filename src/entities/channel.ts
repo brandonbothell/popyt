@@ -118,7 +118,7 @@ export class Channel {
   public commentCount: number
 
   /**
-   * The channel's comments. Only defined when Channel#fetchComments is called.
+   * The channel's comments. Only defined when `Channel#fetchComments` is called.
    */
   public comments: YTComment[]
 
@@ -126,6 +126,11 @@ export class Channel {
    * The URLs of all of this channel's featured channels.
    */
   public featuredChannels: string[]
+
+  /**
+   * The channel's playlists. Only defined when `Channel#fetchPlaylists` is called.
+   */
+  public playlists: Playlist[]
 
   /**
    * Only set if the channel is a search result.
@@ -234,5 +239,14 @@ export class Channel {
   public async fetchComments (maxResults: number = -1) {
     this.comments = await this.youtube.getChannelComments(this.id, maxResults)
     return this.comments
+  }
+
+  /**
+   * Fetches the channel's playlists and assigns them to Channel#playlists.
+   * @param maxResults The maximum amount of playlists to fetch
+   */
+  public async fetchPlaylists (maxResults: number = -1) {
+    this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults)
+    return this.playlists
   }
 }

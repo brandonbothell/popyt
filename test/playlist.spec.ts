@@ -53,4 +53,19 @@ describe('Playlists', () => {
     expect(videos.length).to.be.gte(150)
     expect(playlist.videos.length).to.be.gte(150)
   }).timeout(8000)
+
+  it('should work with fetching channel playlists with maxResults', async () => {
+    const youtube = new YouTube(apiKey)
+    const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', 5)
+
+    expect(playlists.length).to.equal(5)
+    expect(playlists[0]).to.be.an.instanceOf(Playlist)
+  })
+
+  it('should work with fetching channel playlists', async () => {
+    const youtube = new YouTube(apiKey)
+    const playlists = await youtube.getChannelPlaylists('UC6mi9rp7vRYninucP61qOjg')
+
+    expect(playlists[0]).to.be.an.instanceOf(Playlist)
+  })
 })

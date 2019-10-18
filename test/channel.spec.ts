@@ -43,6 +43,20 @@ describe('Channels', () => {
     expect(await channel.fetchVideos()).to.be.an.instanceOf(Playlist)
   })
 
+  it('should work with fetching playlists with maxResults', async () => {
+    const youtube = new YouTube(apiKey)
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+
+    expect((await channel.fetchPlaylists(5))[0]).to.be.an.instanceOf(Playlist)
+  })
+
+  it('should work with fetching playlists', async () => {
+    const youtube = new YouTube(apiKey)
+    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
+
+    expect((await channel.fetchPlaylists())[0]).to.be.an.instanceOf(Playlist)
+  })
+
   it('should have a negative subscriber count if it is hidden', async () => {
     const youtube = new YouTube(apiKey)
     const channel = await youtube.getChannel('UCacsMRrp9ql-vdgpn0zUIdQ')

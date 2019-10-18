@@ -109,6 +109,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#language" class="tsd-kind-icon">language</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#livestatus" class="tsd-kind-icon">live<wbr>Status</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#playlists" class="tsd-kind-icon">playlists</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#profilepictures" class="tsd-kind-icon">profile<wbr>Pictures</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#subcount" class="tsd-kind-icon">sub<wbr>Count</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#url" class="tsd-kind-icon">url</a></li>
@@ -126,6 +127,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="channel.html#_init" class="tsd-kind-icon">_init</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetch" class="tsd-kind-icon">fetch</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchcomments" class="tsd-kind-icon">fetch<wbr>Comments</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchplaylists" class="tsd-kind-icon">fetch<wbr>Playlists</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchvideos" class="tsd-kind-icon">fetch<wbr>Videos</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#postcomment" class="tsd-kind-icon">post<wbr>Comment</a></li>
 							</ul>
@@ -145,7 +147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L137">entities/channel.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L142">entities/channel.ts:142</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -170,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">about<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L47">entities/channel.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L47">entities/channel.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -185,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">banners<span class="tsd-signature-symbol">:</span> <a href="../globals.html#banners" class="tsd-signature-type">Banners</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L83">entities/channel.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L83">entities/channel.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -200,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">comment<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L118">entities/channel.ts:118</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L118">entities/channel.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,12 +217,12 @@
 					<div class="tsd-signature tsd-kind-icon">comments<span class="tsd-signature-symbol">:</span> <a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L123">entities/channel.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L123">entities/channel.ts:123</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The channel&#39;s comments. Only defined when Channel#fetchComments is called.</p>
+							<p>The channel&#39;s comments. Only defined when <code>Channel#fetchComments</code> is called.</p>
 						</div>
 					</div>
 				</section>
@@ -230,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L57">entities/channel.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L57">entities/channel.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -245,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">custom<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L67">entities/channel.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L67">entities/channel.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,7 +262,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L37">entities/channel.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L37">entities/channel.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -275,7 +277,7 @@
 					<div class="tsd-signature tsd-kind-icon">date<wbr>Created<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L88">entities/channel.ts:88</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L88">entities/channel.ts:88</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -290,7 +292,7 @@
 					<div class="tsd-signature tsd-kind-icon">featured<wbr>Channels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L128">entities/channel.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L128">entities/channel.ts:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -305,7 +307,7 @@
 					<div class="tsd-signature tsd-kind-icon">full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L32">entities/channel.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L32">entities/channel.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -320,7 +322,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L52">entities/channel.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L52">entities/channel.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -335,7 +337,7 @@
 					<div class="tsd-signature tsd-kind-icon">keywords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L103">entities/channel.ts:103</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L103">entities/channel.ts:103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -350,7 +352,7 @@
 					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L93">entities/channel.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L93">entities/channel.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -365,7 +367,7 @@
 					<div class="tsd-signature tsd-kind-icon">live<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"live"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"upcoming"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L137">entities/channel.ts:137</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L142">entities/channel.ts:142</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -383,7 +385,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L42">entities/channel.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L42">entities/channel.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -393,12 +395,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="playlists" class="tsd-anchor"></a>
+					<h3>playlists</h3>
+					<div class="tsd-signature tsd-kind-icon">playlists<span class="tsd-signature-symbol">:</span> <a href="playlist.html" class="tsd-signature-type">Playlist</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L133">entities/channel.ts:133</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The channel&#39;s playlists. Only defined when <code>Channel#fetchPlaylists</code> is called.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="profilepictures" class="tsd-anchor"></a>
 					<h3>profile<wbr>Pictures</h3>
 					<div class="tsd-signature tsd-kind-icon">profile<wbr>Pictures<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L72">entities/channel.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L72">entities/channel.ts:72</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -433,7 +450,7 @@
 					<div class="tsd-signature tsd-kind-icon">sub<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L113">entities/channel.ts:113</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L113">entities/channel.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -448,7 +465,7 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L62">entities/channel.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L62">entities/channel.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -463,7 +480,7 @@
 					<div class="tsd-signature tsd-kind-icon">videos<span class="tsd-signature-symbol">:</span> <a href="playlist.html" class="tsd-signature-type">Playlist</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L108">entities/channel.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L108">entities/channel.ts:108</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -478,7 +495,7 @@
 					<div class="tsd-signature tsd-kind-icon">views<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L98">entities/channel.ts:98</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L98">entities/channel.ts:98</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -493,7 +510,7 @@
 					<div class="tsd-signature tsd-kind-icon">youtube<span class="tsd-signature-symbol">:</span> <a href="youtube.html" class="tsd-signature-type">YouTube</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L27">entities/channel.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L27">entities/channel.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -508,7 +525,7 @@
 					<div class="tsd-signature tsd-kind-icon">endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;channels&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L11">entities/channel.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L11">entities/channel.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -523,7 +540,7 @@
 					<div class="tsd-signature tsd-kind-icon">fields<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x27;items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,commentCount,viewCount,hiddenSubscriberCount),&#x27; +&#x27;snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),status(isLinked))&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L21">entities/channel.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L21">entities/channel.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -538,7 +555,7 @@
 					<div class="tsd-signature tsd-kind-icon">part<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;snippet,contentDetails,statistics,status,brandingSettings&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L16">entities/channel.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L16">entities/channel.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -560,7 +577,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L146">entities/channel.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L151">entities/channel.ts:151</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -583,7 +600,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L211">entities/channel.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L216">entities/channel.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -606,7 +623,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L234">entities/channel.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L239">entities/channel.ts:239</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -628,6 +645,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="fetchplaylists" class="tsd-anchor"></a>
+					<h3>fetch<wbr>Playlists</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Playlists<span class="tsd-signature-symbol">(</span>maxResults<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="playlist.html" class="tsd-signature-type">Playlist</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L248">entities/channel.ts:248</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Fetches the channel&#39;s playlists and assigns them to Channel#playlists.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxResults: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;-1</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The maximum amount of playlists to fetch</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="playlist.html" class="tsd-signature-type">Playlist</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="fetchvideos" class="tsd-anchor"></a>
 					<h3>fetch<wbr>Videos</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -637,7 +685,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L219">entities/channel.ts:219</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L224">entities/channel.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -659,7 +707,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/1b5d00f/src/entities/channel.ts#L195">entities/channel.ts:195</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/better-youtube-api/blob/c2d66d9/src/entities/channel.ts#L200">entities/channel.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -747,6 +795,9 @@
 								<a href="channel.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="channel.html#playlists" class="tsd-kind-icon">playlists</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="channel.html#profilepictures" class="tsd-kind-icon">profile<wbr>Pictures</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -781,6 +832,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="channel.html#fetchcomments" class="tsd-kind-icon">fetch<wbr>Comments</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="channel.html#fetchplaylists" class="tsd-kind-icon">fetch<wbr>Playlists</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="channel.html#fetchvideos" class="tsd-kind-icon">fetch<wbr>Videos</a>

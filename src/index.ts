@@ -24,6 +24,9 @@ export class YouTube {
 
   public tokenType: 'key' | 'oauth'
 
+  /**
+   * Methods requiring an OAuth token
+   */
   public oauth: OAuth
 
   /**
@@ -205,6 +208,16 @@ export class YouTube {
   }
 
   /**
+   * Get `maxResults` of a channel's playlists. Used mostly internally with `Channel#fetchPlaylists`.
+   * @param channelResolvable The Username, URL, or ID of the channel.
+   * @param maxResults The maximum amount of playlists to get from the channel. If <= 0 or not included, returns all playlists.
+   */
+  public async getChannelPlaylists (channelResolvable: string, maxResults: number = -1) {
+    const channelId = await this.getId(channelResolvable, 'channel')
+    return this.getPaginatedItems('playlists:channel', channelId, maxResults) as Promise<Playlist[]>
+  }
+
+  /**
    * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
    * @param commentId The ID of the comment to get replies from.
    * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
@@ -286,8 +299,8 @@ export class YouTube {
   }
 
   /* istanbul ignore next */
-  private async getPaginatedItems (endpoint: 'playlistItems' | 'commentThreads' | 'commentThreads:video' | 'commentThreads:channel' | 'comments',
-                                    id: string, maxResults: number = -1): Promise<Video[] | YTComment[]> {
+  private async getPaginatedItems (endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
+    'commentThreads:video' | 'commentThreads:channel' | 'comments', id: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[]> {
     const cached = Cache.get(`get://${endpoint}/${id}/${maxResults}`)
 
     if (this._shouldCache && cached) {
@@ -310,6 +323,7 @@ export class YouTube {
       parentId?: string,
       textFormat?: string,
       playlistId?: string,
+      channelId?: string,
       pageToken?: string
     } = {
       part: 'snippet',
@@ -317,7 +331,7 @@ export class YouTube {
     }
 
     let max: number
-    let clazz: typeof Video | typeof YTComment
+    let clazz: typeof Video | typeof YTComment | typeof Playlist
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -339,6 +353,12 @@ export class YouTube {
       max = 100
       clazz = YTComment
       options.parentId = id
+    } else if (endpoint === 'playlists:channel') {
+      max = 50
+      clazz = Playlist
+      endpoint = 'playlists'
+      options.part += ',contentDetails,player'
+      options.channelId = id
     } else {
       return Promise.reject('Unknown item type ' + endpoint)
     }
