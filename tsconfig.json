@@ -9,11 +9,13 @@
     "removeComments": false,
     "sourceMap": true,
     "rootDir": "src",
-    "strict": false
+    "strict": false,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
     "out",
-    "test"
+    "test",
+    "gulpfile.ts"
   ]
 }
