@@ -11,7 +11,7 @@
     "prepublishOnly": "gulp"
   },
   "author": "jasonhaxstuff",
-  "license": "GPL-3.0",
+  "license": "Unlicense",
   "keywords": [
     "youtube",
     "youtube search",
