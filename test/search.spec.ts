@@ -1,6 +1,7 @@
 import 'mocha'
 import { expect } from 'chai'
 import YouTube, { Playlist, Video, Channel, YTComment } from '../src'
+import { youtube } from './cache.spec'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 
@@ -10,7 +11,6 @@ if (!apiKey) {
 
 describe('Searching', () => {
   it('should default to 10 results', async () => {
-    const youtube = new YouTube(apiKey)
     expect((await youtube.searchVideos('never gonna give you up')).results.length).to.equal(10)
     expect((await youtube.searchChannels('rick astley')).results.length).to.equal(10)
     expect((await youtube.searchPlaylists('music')).results.length).to.equal(10)
@@ -18,17 +18,14 @@ describe('Searching', () => {
   }).timeout(20000)
 
   it('should return an array', async () => {
-    const youtube = new YouTube(apiKey)
     expect((await youtube.searchPlaylists('music')).results).to.be.instanceOf(Array)
   })
 
   it('should reject if maxResults is < 1', async () => {
-    const youtube = new YouTube(apiKey)
     expect(await youtube.searchChannels('rick astley', 0).catch(error => { return error })).to.equal('Max results must be greater than 0 and less than or equal to 50')
   })
 
   it('should reject if maxResults is > 50', async () => {
-    const youtube = new YouTube(apiKey)
     expect(await youtube.searchVideos('never gonna give you up', 51).catch(error => { return error })).to.equal('Max results must be greater than 0 and less than or equal to 50')
   })
 
@@ -38,7 +35,6 @@ describe('Searching', () => {
   })
 
   it('should set what it can with search results', async () => {
-    const youtube = new YouTube(apiKey)
     const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
 
     expect(channel.id).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
@@ -49,7 +45,6 @@ describe('Searching', () => {
   })
 
   it('should be able to fetch videos of a channel search result', async () => {
-    const youtube = new YouTube(apiKey)
     const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
     const videos = await channel.fetchVideos()
 
@@ -57,7 +52,6 @@ describe('Searching', () => {
   }).timeout(8000)
 
   it('should work with multiple types', async () => {
-    const youtube = new YouTube(apiKey)
     const data = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 10))
 
     expect(data.results.find(r => r instanceof Video)).to.not.equal(undefined)
@@ -66,8 +60,6 @@ describe('Searching', () => {
   })
 
   it('should throw an error if kind is wrong', () => {
-    const youtube = new YouTube('')
-
     expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
     expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')
     expect(() => new YTComment(youtube, { kind: 'notakind' }, 'video')).to.throw('Invalid comment type: notakind')

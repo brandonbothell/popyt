@@ -1,7 +1,8 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YouTube, Video, YTComment } from '../src'
-import { parseUrl, request } from '../src/util'
+import { YouTube, Video } from '../src'
+import { parseUrl } from '../src/util'
+import { youtube } from './cache.spec'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 
@@ -22,7 +23,6 @@ describe('Creation of the YouTube instance', () => {
 
 describe('Getting/Parsing', () => {
   it('should work with ids', async () => {
-    const youtube = new YouTube(apiKey)
     expect(await youtube.getVideo('dQw4w9WgXcQ')).to.be.instanceOf(Video)
   })
 
