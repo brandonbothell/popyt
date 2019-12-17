@@ -62,36 +62,40 @@ export class YouTube {
    * @param types An array of types to search for. May be a single type or multiple types.
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
+   * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
-  public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10) {
-    return this._search(types, searchTerm, maxResults)
+  public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string) {
+    return this._search(types, searchTerm, maxResults, pageToken)
   }
 
   /**
    * Search videos on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
+   * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
-  public searchVideos (searchTerm: string, maxResults: number = 10) {
-    return this.search([ Video ], searchTerm, maxResults) as Promise<Video[]>
+  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string) {
+    return this.search([ Video ], searchTerm, maxResults, pageToken) as Promise<{ results: Video[], prevPageToken: string, nextPageToken: string }>
   }
 
   /**
    * Search channels on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
+   * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
-  public searchChannels (searchTerm: string, maxResults: number = 10) {
-    return this.search([ Channel ], searchTerm, maxResults) as Promise<Channel[]>
+  public searchChannels (searchTerm: string, maxResults: number = 10, pageToken?: string) {
+    return this.search([ Channel ], searchTerm, maxResults, pageToken) as Promise<{ results: Channel[], prevPageToken: string, nextPageToken: string }>
   }
 
   /**
    * Search playlists on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
+   * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
-  public searchPlaylists (searchTerm: string, maxResults: number = 10) {
-    return this.search([ Playlist ], searchTerm, maxResults) as Promise<Playlist[]>
+  public searchPlaylists (searchTerm: string, maxResults: number = 10, pageToken?: string) {
+    return this.search([ Playlist ], searchTerm, maxResults, pageToken) as Promise<{ results: Playlist[], prevPageToken: string, nextPageToken: string }>
   }
 
   /**
@@ -227,9 +231,11 @@ export class YouTube {
   }
 
   /* istanbul ignore next */
-  private async _search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10): Promise<(Video | Channel | Playlist)[]> {
+  private async _search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string): Promise<
+    { results: (Video | Channel | Playlist)[], prevPageToken: string, nextPageToken: string }
+  > {
     const type = types.map(t => t.endpoint.substring(0, t.endpoint.length - 1)).join(',')
-    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}`)
+    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
 
     if (this._shouldCache && cached) {
       return cached
@@ -239,15 +245,27 @@ export class YouTube {
       return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
     }
 
-    const fields = 'items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'
-    const results = await request.api('search', {
+    const fields = 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'
+    const data: {
+      q: string,
+      fields: string
+      maxResults: number,
+      part: string,
+      type: string,
+      pageToken?: string
+    } = {
       q: encodeURIComponent(searchTerm),
       fields: encodeURIComponent(fields),
       maxResults,
       part: 'snippet',
       type
-    }, this.token, this.tokenType)
+    }
 
+    if (pageToken) {
+      data.pageToken = pageToken
+    }
+
+    const results = await request.api('search', data, this.token, this.tokenType)
     const items = []
 
     results.items.forEach(item => {
@@ -261,10 +279,10 @@ export class YouTube {
     })
 
     if (this._shouldCache && this._cacheSearches) {
-      this._cache(`search://${type}/"${searchTerm}"/${maxResults}`, items)
+      this._cache(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`, items)
     }
 
-    return items
+    return { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
   }
 
   /* istanbul ignore next */
@@ -307,15 +325,9 @@ export class YouTube {
       return cached
     }
 
-    let full: boolean
     let items = []
 
-    if (maxResults <= 0) {
-      full = true
-    } else {
-      full = false
-    }
-
+    const full = maxResults <= 0
     const options: {
       part: string,
       maxResults: number,

@@ -1,6 +1,6 @@
 {
   "name": "better-youtube-api",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "A very easy to use promise-based Youtube Data v3 API.",
   "main": "out/index.js",
   "types": "typings/index.d.ts",

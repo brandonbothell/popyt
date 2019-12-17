@@ -11,15 +11,15 @@ if (!apiKey) {
 describe('Searching', () => {
   it('should default to 10 results', async () => {
     const youtube = new YouTube(apiKey)
-    expect((await youtube.searchVideos('never gonna give you up')).length).to.equal(10)
-    expect((await youtube.searchChannels('rick astley')).length).to.equal(10)
-    expect((await youtube.searchPlaylists('music')).length).to.equal(10)
-    expect((await youtube.search([ Video, Channel, Playlist ], 'vevo')).length).to.equal(10)
+    expect((await youtube.searchVideos('never gonna give you up')).results.length).to.equal(10)
+    expect((await youtube.searchChannels('rick astley')).results.length).to.equal(10)
+    expect((await youtube.searchPlaylists('music')).results.length).to.equal(10)
+    expect((await youtube.search([ Video, Channel, Playlist ], 'vevo')).results.length).to.equal(10)
   }).timeout(20000)
 
   it('should return an array', async () => {
     const youtube = new YouTube(apiKey)
-    expect(await youtube.searchPlaylists('music')).to.be.instanceOf(Array)
+    expect((await youtube.searchPlaylists('music')).results).to.be.instanceOf(Array)
   })
 
   it('should reject if maxResults is < 1', async () => {
@@ -39,7 +39,7 @@ describe('Searching', () => {
 
   it('should set what it can with search results', async () => {
     const youtube = new YouTube(apiKey)
-    const channel = (await youtube.searchChannels('rick astley', 1))[0]
+    const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
 
     expect(channel.id).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
     expect(channel.country).to.equal(undefined)
@@ -50,7 +50,7 @@ describe('Searching', () => {
 
   it('should be able to fetch videos of a channel search result', async () => {
     const youtube = new YouTube(apiKey)
-    const channel = (await youtube.searchChannels('rick astley', 1))[0]
+    const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
     const videos = await channel.fetchVideos()
 
     expect(videos).to.be.an.instanceOf(Playlist)
@@ -58,11 +58,11 @@ describe('Searching', () => {
 
   it('should work with multiple types', async () => {
     const youtube = new YouTube(apiKey)
-    const results = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 10))
+    const data = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 10))
 
-    expect(results.find(r => r instanceof Video)).to.not.equal(undefined)
-    expect(results.find(r => r instanceof Playlist)).to.not.equal(undefined)
-    expect(results.find(r => r instanceof Channel)).to.not.equal(undefined)
+    expect(data.results.find(r => r instanceof Video)).to.not.equal(undefined)
+    expect(data.results.find(r => r instanceof Playlist)).to.not.equal(undefined)
+    expect(data.results.find(r => r instanceof Channel)).to.not.equal(undefined)
   })
 
   it('should throw an error if kind is wrong', () => {
