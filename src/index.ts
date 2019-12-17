@@ -35,7 +35,7 @@ export class YouTube {
    * It could be an API key or an OAuth 2.0 token.
    * @param options Caching options. Recommended to change.
    */
-  constructor (token: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: false }) {
+  constructor (token: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true }) {
     this.token = token
 
     this.oauth = new OAuth(this)
@@ -278,11 +278,13 @@ export class YouTube {
       }
     })
 
+    const toReturn = { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
+
     if (this._shouldCache && this._cacheSearches) {
-      this._cache(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`, items)
+      this._cache(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`, toReturn)
     }
 
-    return { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
+    return toReturn
   }
 
   /* istanbul ignore next */

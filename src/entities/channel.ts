@@ -154,40 +154,59 @@ export class Channel {
       const channel = data
 
       this.id = channel.id
-      this.country = channel.snippet.country
-      this.language = channel.snippet.defaultLanguage
-      this.views = Number(channel.statistics.viewCount)
-      this.commentCount = Number(channel.statistics.commentCount)
 
-      this.banners = channel.brandingSettings.image
-
-      // Unknown behavior
       /* istanbul ignore next */
-      if (channel.brandingSettings.channel) {
-        this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
-        this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
-          channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
+      if (channel.snippet) {
+        this.country = channel.snippet.country
+        this.language = channel.snippet.defaultLanguage
       }
 
-      if (!channel.statistics.hiddenSubscriberCount) {
-        this.subCount = Number(channel.statistics.subscriberCount)
-      } else {
-        this.subCount = -1
+      /* istanbul ignore next */
+      if (channel.statistics) {
+        this.views = Number(channel.statistics.viewCount)
+        this.commentCount = Number(channel.statistics.commentCount)
+
+        if (!channel.statistics.hiddenSubscriberCount) {
+          this.subCount = Number(channel.statistics.subscriberCount)
+        } else {
+          this.subCount = -1
+        }
+      }
+
+      /* istanbul ignore next */
+      if (channel.brandingSettings) {
+        this.banners = channel.brandingSettings.image
+
+        // Unknown behavior
+        /* istanbul ignore next */
+        if (channel.brandingSettings.channel) {
+          this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
+          this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
+            channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
+        }
       }
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.channelId
-      // Impossible to test
+
       /* istanbul ignore next */
-      this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
+      if (data.snippet) {
+        // Impossible to test
+        /* istanbul ignore next */
+        this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
+      }
     } else {
       throw new Error(`Invalid channel type: ${data.kind}`)
     }
 
+    /* istanbul ignore next */
+    if (data.snippet) {
+      this.profilePictures = data.snippet.thumbnails
+      this.dateCreated = new Date(data.snippet.publishedAt)
+      this.name = data.snippet.title
+      this.about = data.snippet.description
+    }
+
     this.url = `https://youtube.com/channel/${this.id}`
-    this.profilePictures = data.snippet.thumbnails
-    this.dateCreated = new Date(data.snippet.publishedAt)
-    this.name = data.snippet.title
-    this.about = data.snippet.description
     this.full = data.kind === 'youtube#channel'
   }
 

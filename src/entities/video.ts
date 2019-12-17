@@ -142,13 +142,20 @@ export class Video {
     if (data.kind === 'youtube#video') {
       const video = data
 
-      this._length = parseIsoDuration(video.contentDetails.duration)
-      this.minutes = (this._length.hours * 60) + this._length.minutes
-      this.seconds = this._length.seconds
+      /* istanbul ignore next */
+      if (video.contentDetails) {
+        this._length = parseIsoDuration(video.contentDetails.duration)
+        this.minutes = (this._length.hours * 60) + this._length.minutes
+        this.seconds = this._length.seconds
+      }
 
-      this.likes = Number(video.statistics.likeCount)
-      this.dislikes = Number(video.statistics.dislikeCount)
-      this.views = Number(video.statistics.viewCount)
+      /* istanbul ignore next */
+      if (video.statistics) {
+        this.likes = Number(video.statistics.likeCount)
+        this.dislikes = Number(video.statistics.dislikeCount)
+        this.views = Number(video.statistics.viewCount)
+      }
+
       this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = data.snippet.resourceId.videoId
@@ -159,18 +166,21 @@ export class Video {
       throw new Error(`Invalid video type: ${data.kind}`)
     }
 
-    this.title = data.snippet.title
-    this.description = data.snippet.description
-    this.thumbnails = data.snippet.thumbnails
-    this.datePublished = new Date(data.snippet.publishedAt)
-    this.channelId = data.snippet.channelId
+    /* istanbul ignore next */
+    if (data.snippet) {
+      this.title = data.snippet.title
+      this.description = data.snippet.description
+      this.thumbnails = data.snippet.thumbnails
+      this.datePublished = new Date(data.snippet.publishedAt)
+      this.channelId = data.snippet.channelId
+      // Impossible to test
+      /* istanbul ignore next */
+      this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
+    }
+
     this.full = data.kind === 'youtube#video'
     this.url = `https://youtube.com/watch?v=${this.id}`
     this.shortUrl = `https://youtu.be/${this.id}`
-
-    // Impossible to test
-    /* istanbul ignore next */
-    this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
 
     return this
   }

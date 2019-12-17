@@ -136,23 +136,27 @@ export class YTComment {
 
     const comment = data
 
+    /* istanbul ignore next */
+    if (comment.snippet) {
+      this.author = {
+        username: comment.snippet.authorDisplayName,
+        avatar: comment.snippet.authorProfileImageUrl,
+        channelId: comment.snippet.authorChannelId.value,
+        channelUrl: comment.snippet.authorChannelUrl
+      }
+      this.text = {
+        displayed: comment.snippet.textDisplay,
+        original: comment.snippet.textOriginal
+      }
+      this.rateable = comment.snippet.canRate
+      this.popular = comment.snippet.likeCount >= 100
+      this.likes = comment.snippet.likeCount
+      this.datePublished = comment.snippet.publishedAt
+      this.dateEdited = comment.snippet.updatedAt
+      this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
+    }
+
     this.id = comment.id
-    this.author = {
-      username: comment.snippet.authorDisplayName,
-      avatar: comment.snippet.authorProfileImageUrl,
-      channelId: comment.snippet.authorChannelId.value,
-      channelUrl: comment.snippet.authorChannelUrl
-    }
-    this.text = {
-      displayed: comment.snippet.textDisplay,
-      original: comment.snippet.textOriginal
-    }
-    this.rateable = comment.snippet.canRate
-    this.popular = comment.snippet.likeCount >= 100
-    this.likes = comment.snippet.likeCount
-    this.datePublished = comment.snippet.publishedAt
-    this.dateEdited = comment.snippet.updatedAt
-    this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
 
     if (this.parentId) {
       this.url = 'https://youtube.com/' + (type === 'channel' ? `channel/${this.parentId}/discussion?lc=${this.id}` : `watch?v=${this.parentId}&lc=${this.id}`)

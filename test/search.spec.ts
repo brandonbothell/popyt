@@ -31,7 +31,7 @@ describe('Searching', () => {
 
   it('should reject if api key is wrong', async () => {
     const youtube = new YouTube('')
-    expect(await youtube.searchVideos('never gonna give you up').catch(error => { return error })).to.be.an.instanceOf(Error)
+    expect(await youtube.searchVideos('la di da').catch(error => { return error })).to.be.an.instanceOf(Error)
   })
 
   it('should set what it can with search results', async () => {

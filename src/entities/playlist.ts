@@ -107,20 +107,27 @@ export class Playlist {
       const playlist = data
 
       this.id = playlist.id
-      this.tags = playlist.snippet.tags
-      this.length = playlist.contentDetails.itemCount
-      this.embedHtml = playlist.player.embedHtml
+      /* istanbul ignore next */
+      this.tags = playlist.snippet ? playlist.snippet.tags : undefined
+      /* istanbul ignore next */
+      this.length = playlist.contentDetails ? playlist.contentDetails.itemCount : undefined
+      /* istanbul ignore next */
+      this.embedHtml = playlist.player ? playlist.player.embedHtml : undefined
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.playlistId
     } else {
       throw new Error(`Invalid playlist type: ${data.kind}`)
     }
 
-    this.title = data.snippet.title
-    this.creatorId = data.snippet.channelId
+    /* istanbul ignore next */
+    if (data.snippet) {
+      this.title = data.snippet.title
+      this.creatorId = data.snippet.channelId
+      this.dateCreated = new Date(data.snippet.publishedAt)
+      this.thumbnails = data.snippet.thumbnails
+    }
+
     this.url = `https://youtube.com/playlist?list=${this.id}`
-    this.dateCreated = new Date(data.snippet.publishedAt)
-    this.thumbnails = data.snippet.thumbnails
     this.full = data.kind === 'youtube#playlist'
   }
 
