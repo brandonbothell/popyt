@@ -180,7 +180,19 @@ export class Channel {
         // Unknown behavior
         /* istanbul ignore next */
         if (channel.brandingSettings.channel) {
-          this.keywords = channel.brandingSettings.channel.keywords ? channel.brandingSettings.channel.keywords.split(' ') : []
+          this.keywords = []
+
+          if (channel.brandingSettings.channel.keywords) {
+            // Split by spaces but keep quotations intact
+            const broken: string[] = channel.brandingSettings.channel.keywords.split(/( )(?=(?:[^"]*"[^"]*")*[^"]*$)/i)
+
+            for (let i = 0; i < broken.length; i++) {
+              if (i % 2 === 0) {
+                this.keywords.push(broken[i].replace(/(^"|"$)/gi, ''))
+              }
+            }
+          }
+
           this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
             channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
         }
