@@ -149,8 +149,8 @@ export class Channel {
   }
 
   private _init (data) {
-
-    if (data.kind === 'youtube#channel' && data.status.isLinked) {
+    /* istanbul ignore next */
+    if (data.kind === 'youtube#channel' && (!data.status || data.status.isLinked)) {
       const channel = data
 
       this.id = channel.id
