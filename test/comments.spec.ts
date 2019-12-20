@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YTComment } from '../src'
+import { YTComment, Channel } from '../src'
 import { youtube } from './cache.spec'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -11,6 +11,8 @@ if (!apiKey) {
 
 describe('Comments', () => {
   it('should work with valid videos with comments and replies', async () => {
+    YTComment.part = 'id'
+
     const comments = await youtube.getVideoComments('Lq1D8PFnjWY', 1)
     expect(comments[0]).to.be.an.instanceOf(YTComment)
   })
@@ -32,6 +34,8 @@ describe('Comments', () => {
   })
 
   it('should work with fetching from a channel object', async () => {
+    Channel.part = 'id'
+
     const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
     const comments = await channel.fetchComments(1)
 
@@ -60,6 +64,8 @@ describe('Comments', () => {
   })
 
   it('should have a parent ID of its video', async () => {
+    YTComment.part = 'snippet'
+
     const video = await youtube.getVideo('Lq1D8PFnjWY')
     const comments = await video.fetchComments(1)
 

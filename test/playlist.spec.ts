@@ -15,6 +15,7 @@ describe('Playlists', () => {
   })
 
   it('should work with proper IDs', async () => {
+    Playlist.part = 'id'
     expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
   })
 

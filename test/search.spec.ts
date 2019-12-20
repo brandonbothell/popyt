@@ -45,6 +45,8 @@ describe('Searching', () => {
   })
 
   it('should be able to fetch videos of a channel search result', async () => {
+    Channel.part = 'contentDetails'
+
     const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
     const videos = await channel.fetchVideos()
 

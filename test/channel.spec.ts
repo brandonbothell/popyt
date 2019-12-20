@@ -15,6 +15,7 @@ describe('Channels', () => {
   })
 
   it('should work with proper IDs', async () => {
+    Channel.part = 'id,contentDetails,brandingSettings'
     expect(await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
   })
 
@@ -42,11 +43,15 @@ describe('Channels', () => {
   })
 
   it('should work with fetching playlists', async () => {
+    Channel.part = 'id'
+
     const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
     expect((await channel.fetchPlaylists())[0]).to.be.an.instanceOf(Playlist)
   })
 
   it('should have a negative subscriber count if it is hidden', async () => {
+    Channel.part = 'statistics'
+
     const channel = await youtube.getChannel('UCacsMRrp9ql-vdgpn0zUIdQ')
     expect(channel.subCount).to.be.lessThan(0)
   })
