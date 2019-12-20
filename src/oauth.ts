@@ -18,7 +18,7 @@ export class OAuth {
   }
 
   private checkTokenAndThrow () {
-    if (this.youtube.tokenType !== 'oauth') {
+    if (this.youtube._tokenType !== 'oauth') {
       throw new Error('Token is not an oauth token')
     }
   }

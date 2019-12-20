@@ -16,8 +16,8 @@ describe('Creation of the YouTube instance', () => {
   })
 
   it('should tell the difference between api key and oauth tokens', () => {
-    expect(new YouTube('ya29').tokenType).to.equal('oauth')
-    expect(new YouTube('blah').tokenType).to.equal('key')
+    expect(new YouTube('ya29')._tokenType).to.equal('oauth')
+    expect(new YouTube('blah')._tokenType).to.equal('key')
   })
 })
 

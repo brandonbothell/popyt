@@ -1,7 +1,8 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
-import { parseUrl, request } from './util'
-import { Cache } from './util/caching'
+import { parseUrl, Cache } from './util'
 import { OAuth } from './oauth'
+import { SearchService, GenericService } from './services'
+
 export * from './entities'
 export * from './types'
 
@@ -9,9 +10,11 @@ export * from './types'
  * The main class used to interact with the YouTube API. Use this.
  */
 export class YouTube {
-  private _shouldCache: boolean
-  private _cacheSearches: boolean
-  private _cacheTTL: number
+  public _shouldCache: boolean
+  public _cacheSearches: boolean
+  public _cacheTTL: number
+  public _tokenType: 'key' | 'oauth'
+
   private _token: string
 
   get token (): string {
@@ -19,10 +22,8 @@ export class YouTube {
   }
   set token (val: string) {
     this._token = val
-    this.tokenType = val.startsWith('ya29') ? 'oauth' : 'key'
+    this._tokenType = val.startsWith('ya29') ? 'oauth' : 'key'
   }
-
-  public tokenType: 'key' | 'oauth'
 
   /**
    * Methods requiring an OAuth token
@@ -65,7 +66,7 @@ export class YouTube {
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
   public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string) {
-    return this._search(types, searchTerm, maxResults, pageToken)
+    return SearchService.search(this, types, searchTerm, maxResults, pageToken)
   }
 
   /**
@@ -103,8 +104,8 @@ export class YouTube {
    * @param videoResolvable The URL, ID, or Title of the video.
    */
   public async getVideo (videoResolvable: string) {
-    const id = await this.getId(videoResolvable, 'video')
-    return this.getItemById(Video, id) as Promise<Video>
+    const id = await GenericService.getId(this, videoResolvable, 'video')
+    return GenericService.getItemById(this, Video, id) as Promise<Video>
   }
 
   /**
@@ -112,8 +113,8 @@ export class YouTube {
    * @param channelResolvable The Username, URL or ID of the channel.
    */
   public async getChannel (channelResolvable: string) {
-    const id = await this.getId(channelResolvable, 'channel')
-    return this.getItemById(Channel, id) as Promise<Channel>
+    const id = await GenericService.getId(this, channelResolvable, 'channel')
+    return GenericService.getItemById(this, Channel, id) as Promise<Channel>
   }
 
   /**
@@ -121,8 +122,8 @@ export class YouTube {
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    */
   public async getPlaylist (playlistResolvable: string) {
-    const id = await this.getId(playlistResolvable, 'playlist')
-    return this.getItemById(Playlist, id) as Promise<Playlist>
+    const id = await GenericService.getId(this, playlistResolvable, 'playlist')
+    return GenericService.getItemById(this, Playlist, id) as Promise<Playlist>
   }
 
   /**
@@ -130,7 +131,7 @@ export class YouTube {
    * @param id The ID of the comment.
    */
   public getComment (commentId: string) {
-    return this.getItemById(YTComment, commentId) as Promise<YTComment>
+    return GenericService.getItemById(this, YTComment, commentId) as Promise<YTComment>
   }
 
   /**
@@ -146,7 +147,7 @@ export class YouTube {
       return Promise.reject('Not a valid video url')
     }
 
-    return this.getItemById(Video, id.video) as Promise<Video>
+    return GenericService.getItemById(this, Video, id.video) as Promise<Video>
   }
 
   /**
@@ -162,7 +163,7 @@ export class YouTube {
       return Promise.reject('Not a valid channel url')
     }
 
-    return this.getItemById(Channel, id.channel) as Promise<Channel>
+    return GenericService.getItemById(this, Channel, id.channel) as Promise<Channel>
   }
 
   /**
@@ -178,7 +179,7 @@ export class YouTube {
       return Promise.reject('Not a valid playlist url')
     }
 
-    return this.getItemById(Playlist, id.playlist) as Promise<Playlist>
+    return GenericService.getItemById(this, Playlist, id.playlist) as Promise<Playlist>
   }
 
   /**
@@ -187,8 +188,8 @@ export class YouTube {
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
   public async getPlaylistItems (playlistResolvable: string, maxResults: number = -1) {
-    const playlistId = await this.getId(playlistResolvable, 'playlist')
-    return this.getPaginatedItems('playlistItems', playlistId, maxResults) as Promise<Video[]>
+    const playlistId = await GenericService.getId(this, playlistResolvable, 'playlist')
+    return GenericService.getPaginatedItems(this, 'playlistItems', playlistId, maxResults) as Promise<Video[]>
   }
 
   /**
@@ -197,8 +198,8 @@ export class YouTube {
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
   public async getVideoComments (videoResolvable: string, maxResults: number = -1) {
-    const videoId = await this.getId(videoResolvable, 'video')
-    return this.getPaginatedItems('commentThreads:video', videoId, maxResults) as Promise<YTComment[]>
+    const videoId = await GenericService.getId(this, videoResolvable, 'video')
+    return GenericService.getPaginatedItems(this, 'commentThreads:video', videoId, maxResults) as Promise<YTComment[]>
   }
 
   /**
@@ -207,8 +208,8 @@ export class YouTube {
    * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
    */
   public async getChannelComments (channelResolvable: string, maxResults: number = -1) {
-    const channelId = await this.getId(channelResolvable, 'channel')
-    return this.getPaginatedItems('commentThreads:channel', channelId, maxResults) as Promise<YTComment[]>
+    const channelId = await GenericService.getId(this, channelResolvable, 'channel')
+    return GenericService.getPaginatedItems(this, 'commentThreads:channel', channelId, maxResults) as Promise<YTComment[]>
   }
 
   /**
@@ -217,8 +218,8 @@ export class YouTube {
    * @param maxResults The maximum amount of playlists to get from the channel. If <= 0 or not included, returns all playlists.
    */
   public async getChannelPlaylists (channelResolvable: string, maxResults: number = -1) {
-    const channelId = await this.getId(channelResolvable, 'channel')
-    return this.getPaginatedItems('playlists:channel', channelId, maxResults) as Promise<Playlist[]>
+    const channelId = await GenericService.getId(this, channelResolvable, 'channel')
+    return GenericService.getPaginatedItems(this, 'playlists:channel', channelId, maxResults) as Promise<Playlist[]>
   }
 
   /**
@@ -227,251 +228,7 @@ export class YouTube {
    * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
    */
   public getCommentReplies (commentId: string, maxResults: number = -1) {
-    return this.getPaginatedItems('comments', commentId, maxResults) as Promise<YTComment[]>
-  }
-
-  /* istanbul ignore next */
-  private async _search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string): Promise<
-    { results: (Video | Channel | Playlist)[], prevPageToken: string, nextPageToken: string }
-  > {
-    const type = types.map(t => t.endpoint.substring(0, t.endpoint.length - 1)).join(',')
-    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
-
-    if (this._shouldCache && cached) {
-      return cached
-    }
-
-    if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
-    }
-
-    const fields = 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'
-    const data: {
-      q: string,
-      fields: string
-      maxResults: number,
-      part: string,
-      type: string,
-      pageToken?: string
-    } = {
-      q: encodeURIComponent(searchTerm),
-      fields: encodeURIComponent(fields),
-      maxResults,
-      part: 'snippet',
-      type
-    }
-
-    if (pageToken) {
-      data.pageToken = pageToken
-    }
-
-    const results = await request.api('search', data, this.token, this.tokenType)
-    const items = []
-
-    results.items.forEach(item => {
-      if (item.id.videoId) {
-        items.push(new Video(this, item))
-      } else if (item.id.channelId) {
-        items.push(new Channel(this, item))
-      } else if (item.id.playlistId) {
-        items.push(new Playlist(this, item))
-      }
-    })
-
-    const toReturn = { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
-
-    if (this._shouldCache && this._cacheSearches) {
-      this._cache(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`, toReturn)
-    }
-
-    return toReturn
-  }
-
-  /* istanbul ignore next */
-  private async getItemById (type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment, id: string): Promise<Video | Channel | Playlist | YTComment> {
-    if (!([ Video, Channel, Playlist, YTComment ].includes(type))) {
-      return Promise.reject('Type must be a video, channel, playlist, or comment.')
-    }
-
-    const cached = Cache.get(`get://${type.endpoint}/${id}`)
-
-    if (this._shouldCache && cached) {
-      return cached
-    }
-
-    const result = await request.api(type.endpoint, {
-      id,
-      fields: encodeURIComponent(type.fields),
-      part: type.part
-    }, this.token, this.tokenType)
-
-    if (result.items.length === 0) {
-      return Promise.reject('Item not found')
-    }
-
-    let endResult: Video | Playlist | Channel | YTComment = new type(this, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
-
-    if (this._shouldCache) {
-      this._cache(`get://${type.endpoint}/${id}`, endResult)
-    }
-
-    return endResult
-  }
-
-  /* istanbul ignore next */
-  private async getPaginatedItems (endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-    'commentThreads:video' | 'commentThreads:channel' | 'comments', id: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[]> {
-    const cached = Cache.get(`get://${endpoint}/${id}/${maxResults}`)
-
-    if (this._shouldCache && cached) {
-      return cached
-    }
-
-    let items = []
-
-    const full = maxResults <= 0
-    const options: {
-      part: string,
-      maxResults: number,
-      videoId?: string,
-      parentId?: string,
-      textFormat?: string,
-      playlistId?: string,
-      channelId?: string,
-      pageToken?: string
-    } = {
-      part: 'snippet',
-      maxResults: 0
-    }
-
-    let max: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist
-    let commentType: 'video' | 'channel'
-
-    if (endpoint === 'playlistItems') {
-      max = 50
-      clazz = Video
-      options.playlistId = id
-    } else if (endpoint.startsWith('commentThreads')) {
-      max = 100
-      clazz = YTComment
-
-      const [, type ] = endpoint.split(':') as ('video' | 'channel')[]
-
-      commentType = type ? type : 'video'
-      endpoint = 'commentThreads'
-      options[`${type}Id`] = id
-      options.part += ',replies'
-      options.textFormat = 'plainText'
-    } else if (endpoint === 'comments') {
-      max = 100
-      clazz = YTComment
-      options.parentId = id
-    } else if (endpoint === 'playlists:channel') {
-      max = 50
-      clazz = Playlist
-      endpoint = 'playlists'
-      options.part += ',contentDetails,player'
-      options.channelId = id
-    } else {
-      return Promise.reject('Unknown item type ' + endpoint)
-    }
-
-    if (maxResults > max) {
-      return Promise.reject(`Max results must be ${max} or below for ${endpoint}`)
-    }
-
-    options.maxResults = full ? max : maxResults
-
-    let results
-    let pages = null
-    let shouldReturn = !full
-
-    for (let i = 1; i < pages ? pages : 3; i++) {
-      results = await request.api(endpoint, options, this.token, this.tokenType).catch(() => {
-        return Promise.reject('Items not found')
-      })
-
-      if (results.items.length === 0) {
-        return Promise.reject('Items not found')
-      }
-
-      if (!pages) {
-        pages = results.pageInfo.totalResults / results.pageInfo.resultsPerPage
-
-        if (pages <= 1) {
-          shouldReturn = true
-        }
-
-        pages = Math.floor(pages)
-      }
-
-      results.items.forEach(item => {
-        let comment: YTComment
-
-        if (item.snippet.topLevelComment) {
-          comment = new YTComment(this, item.snippet.topLevelComment, commentType)
-          items.push(comment)
-        } else {
-          items.push(new clazz(this, item, commentType))
-        }
-
-        if (item.replies) {
-          item.replies.comments.forEach(reply => {
-            const created = new YTComment(this, reply, commentType)
-            comment.replies.push(created)
-          })
-        }
-      })
-
-      if (results.nextPageToken && !shouldReturn) {
-        options.pageToken = results.nextPageToken
-      } else {
-        return items
-      }
-    }
-
-    if (this._shouldCache) {
-      this._cache(`get://${endpoint}/${id}/${maxResults}`, items)
-    }
-
-    return items
-  }
-
-  /* istanbul ignore next */
-  private async getId (input: string, type: 'playlist' | 'channel' | 'video'): Promise<string> {
-    let id: string = null
-
-    if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      const idFromUrl = parseUrl(input)[type]
-
-      // Custom channel URLs don't work that well
-      if (type === 'channel' && idFromUrl && !idFromUrl.startsWith('UC')) {
-        id = await request.api('search', { q: idFromUrl, type, part: 'id' }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-      }
-
-      id = idFromUrl
-    }
-
-    if (id !== null && id !== undefined && id !== '') {
-      return id
-    }
-
-    if (type === 'channel' && (!input.startsWith('UC') || input.includes(' '))) {
-      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-    } else if (type === 'playlist' && input.includes(' ')) {
-      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
-    } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
-      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, this.token, this.tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
-    } else {
-      id = input
-    }
-
-    if (id === null || id === undefined || id === '') {
-      return Promise.reject('Item not found')
-    }
-
-    return id
+    return GenericService.getPaginatedItems(this, 'comments', commentId, maxResults) as Promise<YTComment[]>
   }
 }
 
