@@ -17,14 +17,20 @@ export class GenericService {
     const result = await request.api(type.endpoint, {
       id,
       fields: encodeURIComponent(type.fields),
-      part: type.part
+      part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
     }, youtube.token, youtube._tokenType)
 
     if (result.items.length === 0) {
       return Promise.reject('Item not found')
     }
 
-    let endResult: Video | Playlist | Channel | YTComment = new type(youtube, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
+    let endResult: Video | Playlist | Channel | YTComment
+
+    if (type === YTComment) {
+      endResult = new type(youtube, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
+    } else {
+      endResult = new (type as typeof Video | typeof Channel | typeof Playlist)(youtube, result.items[0])
+    }
 
     if (youtube._shouldCache) {
       youtube._cache(`get://${type.endpoint}/${id}`, endResult)
