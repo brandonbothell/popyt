@@ -1,6 +1,9 @@
 import YouTube, { Video, Channel, Playlist } from '..'
-import { Cache, request } from '../util'
+import { Cache } from '../util'
 
+/**
+ * @ignore
+ */
 export class SearchService {
   /* istanbul ignore next */
   public static async search (youtube: YouTube, types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string):
@@ -36,7 +39,7 @@ export class SearchService {
       data.pageToken = pageToken
     }
 
-    const results = await request.api('search', data, youtube.token, youtube._tokenType)
+    const results = await youtube._request.api('search', data, youtube.token, youtube._tokenType)
     const items = []
 
     results.items.forEach(item => {

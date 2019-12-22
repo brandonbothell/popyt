@@ -148,6 +148,9 @@ export class Channel {
     this._init(data)
   }
 
+  /**
+   * @ignore
+   */
   private _init (data) {
     /* istanbul ignore next */
     if (data.kind === 'youtube#channel' && (!data.status || data.status.isLinked)) {

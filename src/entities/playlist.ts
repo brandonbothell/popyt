@@ -102,6 +102,9 @@ export class Playlist {
     this._init(data)
   }
 
+  /**
+   * @ignore
+   */
   private _init (data) {
     if (data.kind === 'youtube#playlist') {
       const playlist = data

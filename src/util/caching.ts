@@ -1,52 +1,53 @@
-const cache: { [key: string]: CacheItem } = {}
+/**
+ * @ignore
+ */
+export class Cache {
+  private static cache: { [key: string]: CacheItem } = {}
 
-export const Cache = {
-  set,
-  get,
-  checkTTLs,
-  _delete
-}
-
-function set (name: string | number, value: any, ttl: number) {
-  cache[name] = { v: value, t: ttl }
-}
-
-function get (name: string | number): any {
-  const item = cache[name]
-
-  if (item === undefined || (item.t > 0 && new Date().getTime() >= item.t)) {
-    _delete(name)
-    return undefined
+  public static set (name: string | number, value: any, ttl: number) {
+    this.cache[name] = { v: value, t: ttl }
   }
 
-  return cache[name].v
-}
+  public static get (name: string | number): any {
+    const item = this.cache[name]
 
-function checkTTLs () {
-  for (const itemName in cache) {
-    const item = cache[itemName]
-    const time = new Date().getTime()
+    if (item === undefined || (item.t > 0 && new Date().getTime() >= item.t)) {
+      this._delete(name)
+      return undefined
+    }
 
-    if (item.t <= 0) {
+    return this.cache[name].v
+  }
+
+  public static checkTTLs () {
+    for (const itemName in this.cache) {
+      const item = this.cache[itemName]
+      const time = new Date().getTime()
+
+      if (item.t <= 0) {
+        return
+      }
+
+      if (time >= item.t) {
+        delete this.cache[itemName]
+      }
+    }
+  }
+
+  public static _delete (name: string | number) {
+    const item = this.cache[name]
+
+    if (!item) {
       return
     }
 
-    if (time >= item.t) {
-      delete cache[itemName]
-    }
+    delete this.cache[name]
   }
 }
 
-function _delete (name: string | number) {
-  const item = cache[name]
-
-  if (!item) {
-    return
-  }
-
-  delete cache[name]
-}
-
+/**
+ * @ignore
+ */
 type CacheItem = {
   v: any
   t: number

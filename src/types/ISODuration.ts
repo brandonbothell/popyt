@@ -1,3 +1,6 @@
+/**
+ * @ignore
+ */
 export type ISODuration = {
   weeks: number,
   years: number,

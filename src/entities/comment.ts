@@ -129,6 +129,9 @@ export class YTComment {
     this._init(data, type)
   }
 
+  /**
+   * @ignore
+   */
   private _init (data, type: 'video' | 'channel') {
     if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)

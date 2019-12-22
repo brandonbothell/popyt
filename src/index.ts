@@ -1,5 +1,5 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
-import { parseUrl, Cache } from './util'
+import { Parser, Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService } from './services'
 
@@ -10,11 +10,31 @@ export * from './types'
  * The main class used to interact with the YouTube API. Use this.
  */
 export class YouTube {
+  /**
+   * @ignore
+   */
   public _shouldCache: boolean
+
+  /**
+   * @ignore
+   */
   public _cacheSearches: boolean
+
+  /**
+   * @ignore
+   */
   public _cacheTTL: number
+
+  /**
+   * @ignore
+   */
+  public _request = new Request('https://www.googleapis.com/youtube/v3')
+
   public _tokenType: 'key' | 'oauth'
 
+  /**
+   * @ignore
+   */
   private _token: string
 
   get token (): string {
@@ -50,6 +70,9 @@ export class YouTube {
     }
   }
 
+  /**
+   * @ignore
+   */
   public _cache (id: string, value: any) {
     if (!this._shouldCache) {
       return
@@ -100,7 +123,7 @@ export class YouTube {
   }
 
   /**
-   * Get a video object from the URL, ID, or Title of a video.
+   * Get a [[Video]] object from the URL, ID, or Title of a video.
    * @param videoResolvable The URL, ID, or Title of the video.
    */
   public async getVideo (videoResolvable: string) {
@@ -109,7 +132,7 @@ export class YouTube {
   }
 
   /**
-   * Get a channel object from the Username, URL or ID of a channel.
+   * Get a [[Channel]] object from the Username, URL or ID of a channel.
    * @param channelResolvable The Username, URL or ID of the channel.
    */
   public async getChannel (channelResolvable: string) {
@@ -118,7 +141,7 @@ export class YouTube {
   }
 
   /**
-   * Get a playlist object from the URL, ID, or Title of a playlist.
+   * Get a [[Playlist]] object from the URL, ID, or Title of a playlist.
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    */
   public async getPlaylist (playlistResolvable: string) {
@@ -127,7 +150,7 @@ export class YouTube {
   }
 
   /**
-   * Get a comment object from the ID of a comment.
+   * Get a [[Comment]] object from the ID of a comment.
    * @param id The ID of the comment.
    */
   public getComment (commentId: string) {
@@ -135,13 +158,13 @@ export class YouTube {
   }
 
   /**
-   * @deprecated Use getVideo() instead
    * Get a video object from the url of a video.
+   * @deprecated Use getVideo() instead
    * @param url The url of the video.
    */
   /* istanbul ignore next */
   public getVideoByUrl (url: string) {
-    const id = parseUrl(url)
+    const id = Parser.parseUrl(url)
 
     if (!id.video) {
       return Promise.reject('Not a valid video url')
@@ -151,13 +174,13 @@ export class YouTube {
   }
 
   /**
-   * @deprecated Use getChannel() instead
    * Get a channel object from the url of a channel.
+   * @deprecated Use getChannel() instead
    * @param url The url of the channel.
    */
   /* istanbul ignore next */
   public getChannelByUrl (url: string) {
-    const id = parseUrl(url)
+    const id = Parser.parseUrl(url)
 
     if (!id.channel) {
       return Promise.reject('Not a valid channel url')
@@ -167,13 +190,13 @@ export class YouTube {
   }
 
   /**
-   * @deprecated Use getPlaylist() instead
    * Get a playlist object from the url of a playlist.
+   * @deprecated Use getPlaylist() instead
    * @param url The url of the playlist.
    */
   /* istanbul ignore next */
   public getPlaylistByUrl (url: string) {
-    const id = parseUrl(url)
+    const id = Parser.parseUrl(url)
 
     if (!id.playlist) {
       return Promise.reject('Not a valid playlist url')
@@ -183,7 +206,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` videos in a playlist. Used mostly internally with `Playlist#fetchVideos`.
+   * Get `maxResults` videos in a [[Playlist]]. Used mostly internally with `Playlist#fetchVideos`.
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
@@ -193,7 +216,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` comments from a video. Used mostly internally with `Video#fetchComments`.
+   * Get `maxResults` [[YTComment]]s from a [[Video]]. Used mostly internally with `Video#fetchComments`.
    * @param videoResolvable The URL, ID, or Title of the video.
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
@@ -203,7 +226,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` comments from a channel's discussion tab. Used mostly internally with `Channel#fetchComments`.
+   * Get `maxResults` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with `Channel#fetchComments`.
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
    */
@@ -213,7 +236,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` of a channel's playlists. Used mostly internally with `Channel#fetchPlaylists`.
+   * Get `maxResults` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with `Channel#fetchPlaylists`.
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param maxResults The maximum amount of playlists to get from the channel. If <= 0 or not included, returns all playlists.
    */
@@ -223,7 +246,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` replies to a comment. Used mostly internally with `Comment#fetchReplies`.
+   * Get `maxResults` replies to a [[YTComment]]. Used mostly internally with `Comment#fetchReplies`.
    * @param commentId The ID of the comment to get replies from.
    * @param maxResults The maximum amount of replies to get. Gets all replies if <= 0 or not included.
    */

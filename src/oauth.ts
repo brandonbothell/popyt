@@ -2,10 +2,12 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube from '.'
-import { request } from './util'
 import { YTComment } from './entities'
 import { CommentThreadData } from './constants'
 
+/**
+ * @ignore
+ */
 export class OAuth {
   public youtube: YouTube
 
@@ -25,7 +27,7 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Post a comment on a video or channel discussion.  
+   * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
    * Last tested 09/26/2019 06:02. PASSING
    * @param text The text content of the comment.
    * @param channelId The channel to post the comment on.
@@ -55,7 +57,7 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Edit a comment on a video or channel discussion.  
+   * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
    * Last tested 09/26/2019 06:23. PASSING
    * @param text The new text content of the comment.
    * @param commentId The ID of the comment.
@@ -87,6 +89,6 @@ export class OAuth {
   }
 
   private sendData (type: 'post' | 'put', endpoint: string, part: string, data: any) {
-    return request[type](endpoint, { part }, this.youtube.token, JSON.stringify(data))
+    return this.youtube._request[type](endpoint, { part }, this.youtube.token, JSON.stringify(data))
   }
 }

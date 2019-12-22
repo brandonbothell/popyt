@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { request } from '../src/util'
+import { Request } from '../src/util'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 
@@ -8,12 +8,15 @@ if (!apiKey) {
   throw new Error('No API key')
 }
 
+const request = new Request('https://www.googleapis.com/youtube/v3')
+
 describe('Requests', () => {
   it('should work with and without / before subUrl', async () => {
     const res = await request.api('/videos', {
       id: 'dQw4w9WgXcQ',
       part: 'snippet'
     }, apiKey, 'key')
+
     const res2 = await request.api('videos', {
       id: 'dQw4w9WgXcQ',
       part: 'snippet'

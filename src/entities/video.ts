@@ -1,7 +1,7 @@
 import { YouTube } from '..'
 import { Thumbnail, ISODuration } from '../types'
 import { YTComment } from './comment'
-import { parseIsoDuration } from '../util'
+import { Parser } from '../util'
 
 /**
  * A YouTube video.
@@ -74,6 +74,9 @@ export class Video {
    */
   public channelId: string
 
+  /**
+   * @ignore
+   */
   public _length: ISODuration
 
   /**
@@ -138,13 +141,16 @@ export class Video {
     this._init(data)
   }
 
+  /**
+   * @ignore
+   */
   private _init (data: any) {
     if (data.kind === 'youtube#video') {
       const video = data
 
       /* istanbul ignore next */
       if (video.contentDetails) {
-        this._length = parseIsoDuration(video.contentDetails.duration)
+        this._length = Parser.parseIsoDuration(video.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
         this.seconds = this._length.seconds
       }

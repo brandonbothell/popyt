@@ -1,7 +1,7 @@
 import 'mocha'
 import { expect } from 'chai'
 import { YouTube, Video } from '../src'
-import { parseUrl } from '../src/util'
+import { Parser } from '../src/util'
 import { youtube } from './cache.spec'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -27,63 +27,63 @@ describe('Getting/Parsing', () => {
   })
 
   it('should work with urls', () => {
-    expect(parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ').video).to.equal('dQw4w9WgXcQ')
-    expect(parseUrl('https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw').channel).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
-    expect(parseUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl').playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(Parser.parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ').video).to.equal('dQw4w9WgXcQ')
+    expect(Parser.parseUrl('https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw').channel).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
+    expect(Parser.parseUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl').playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
 
-    const videoWithPlaylist = parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    const videoWithPlaylist = Parser.parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithPlaylist.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithPlaylist.video).to.equal('dQw4w9WgXcQ')
     expect(videoWithPlaylist.channel).to.equal(null)
 
-    const playlistWithoutId = parseUrl('https://www.youtube.com/playlist')
+    const playlistWithoutId = Parser.parseUrl('https://www.youtube.com/playlist')
     expect(playlistWithoutId.playlist).to.equal(null)
     expect(playlistWithoutId.video).to.equal(null)
     expect(playlistWithoutId.channel).to.equal(null)
 
-    const channelWithoutId = parseUrl('https://www.youtube.com/channel/')
+    const channelWithoutId = Parser.parseUrl('https://www.youtube.com/channel/')
     expect(channelWithoutId.playlist).to.equal(null)
     expect(channelWithoutId.video).to.equal(null)
     expect(channelWithoutId.channel).to.equal(null)
 
-    const invalidResource = parseUrl('https://www.youtube.com/dfsdfdsf/')
+    const invalidResource = Parser.parseUrl('https://www.youtube.com/dfsdfdsf/')
     expect(invalidResource.playlist).to.equal(null)
     expect(invalidResource.video).to.equal(null)
     expect(invalidResource.channel).to.equal(null)
 
-    const shortUrl = parseUrl('https://youtu.be/dQw4w9WgXcQ')
+    const shortUrl = Parser.parseUrl('https://youtu.be/dQw4w9WgXcQ')
     expect(shortUrl.playlist).to.equal(null)
     expect(shortUrl.video).to.equal('dQw4w9WgXcQ')
     expect(shortUrl.channel).to.equal(null)
 
-    const shortUrlWithoutId = parseUrl('https://youtu.be')
+    const shortUrlWithoutId = Parser.parseUrl('https://youtu.be')
     expect(shortUrlWithoutId.playlist).to.equal(null)
     expect(shortUrlWithoutId.video).to.equal(null)
     expect(shortUrlWithoutId.channel).to.equal(null)
 
-    const videoWithoutHttps = parseUrl('www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    const videoWithoutHttps = Parser.parseUrl('www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithoutHttps.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithoutHttps.video).to.equal('dQw4w9WgXcQ')
     expect(videoWithoutHttps.channel).to.equal(null)
 
-    const videoWithoutWww = parseUrl('https://youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    const videoWithoutWww = Parser.parseUrl('https://youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithoutWww.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithoutWww.video).to.equal('dQw4w9WgXcQ')
     expect(videoWithoutWww.channel).to.equal(null)
 
-    const videoWithoutHttpsWww = parseUrl('youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    const videoWithoutHttpsWww = Parser.parseUrl('youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithoutHttpsWww.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithoutHttpsWww.video).to.equal('dQw4w9WgXcQ')
     expect(videoWithoutHttpsWww.channel).to.equal(null)
 
-    const invalidUrl = parseUrl('https://github.com/jasonhaxstuff')
+    const invalidUrl = Parser.parseUrl('https://github.com/jasonhaxstuff')
     expect(invalidUrl.playlist).to.equal(null)
     expect(invalidUrl.video).to.equal(null)
     expect(invalidUrl.channel).to.equal(null)
   })
 
   it('shouldn\'t work with bad urls', () => {
-    const parsed = parseUrl('https://www.youtube.com/watch')
+    const parsed = Parser.parseUrl('https://www.youtube.com/watch')
 
     expect(parsed.video).to.equal(null)
     expect(parsed.channel).to.equal(null)

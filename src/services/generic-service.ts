@@ -1,6 +1,9 @@
 import YouTube, { Video, Channel, Playlist, YTComment } from '..'
-import { Cache, parseUrl, request } from '../util'
+import { Cache, Parser } from '../util'
 
+/**
+ * @ignore
+ */
 export class GenericService {
   /* istanbul ignore next */
   public static async getItemById (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment, id: string): Promise<Video | Channel | Playlist | YTComment> {
@@ -14,7 +17,7 @@ export class GenericService {
       return cached
     }
 
-    const result = await request.api(type.endpoint, {
+    const result = await youtube._request.api(type.endpoint, {
       id,
       fields: encodeURIComponent(type.fields),
       part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
@@ -109,7 +112,7 @@ export class GenericService {
     let shouldReturn = !full
 
     for (let i = 1; i < pages ? pages : 3; i++) {
-      results = await request.api(endpoint, options, youtube.token, youtube._tokenType).catch(() => {
+      results = await youtube._request.api(endpoint, options, youtube.token, youtube._tokenType).catch(() => {
         return Promise.reject('Items not found')
       })
 
@@ -164,11 +167,11 @@ export class GenericService {
     let id: string = null
 
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      const idFromUrl = parseUrl(input)[type]
+      const idFromUrl = Parser.parseUrl(input)[type]
 
       // Custom channel URLs don't work that well
       if (type === 'channel' && idFromUrl && !idFromUrl.startsWith('UC')) {
-        id = await request.api('search', { q: idFromUrl, type, part: 'id' }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+        id = await youtube._request.api('search', { q: idFromUrl, type, part: 'id' }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 
       id = idFromUrl
@@ -179,11 +182,11 @@ export class GenericService {
     }
 
     if (type === 'channel' && (!input.startsWith('UC') || input.includes(' '))) {
-      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+      id = await youtube._request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
     } else if (type === 'playlist' && input.includes(' ')) {
-      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+      id = await youtube._request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
     } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
-      id = await request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
+      id = await youtube._request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
     } else {
       id = input
     }

@@ -1,3 +1,6 @@
+/**
+ * @ignore
+ */
 export const CommentThreadData: {
   id?: string,
   snippet: {
