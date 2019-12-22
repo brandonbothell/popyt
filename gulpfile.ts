@@ -29,7 +29,7 @@ function docs () {
     .pipe(typedoc({
       module: 'commonjs',
       readme: 'README.md',
-      target: 'es6',
+      target: 'es2016',
       out: 'docs/docs',
       name: 'Better YouTube API',
       theme: 'default',

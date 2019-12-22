@@ -59,3 +59,10 @@ console.log(videos) // array of 12 partial video objects
 ```
 
 Note: This wrapper does not implement every feature of the YouTube API. With a single developer working on it, there just isn't time for everything to be implemented. Some of the objectively most-important features have been added. The limits imposed by the wrapper are not imposed by YouTube.
+
+# Development
+## Before committing:
+
+* Run TSLint.
+* Run `npm run coverage` to check if you've added enough tests. It should display 100% statement, line, and branch coverage.
+* Run `yarn test` or `npm run test` and make sure that every test passes.
