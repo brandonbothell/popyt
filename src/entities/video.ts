@@ -20,8 +20,8 @@ export class Video {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount),' +
-    'snippet(title,description,thumbnails,publishedAt,channelId,liveBroadcastContent))'
+  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount),status(privacyStatus),' +
+    'snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent))'
 
   /**
    * YouTube object that created the video.
@@ -63,6 +63,11 @@ export class Video {
     medium?: Thumbnail,
     standard?: Thumbnail
   }
+
+  /**
+   * The tags of the video.
+   */
+  public tags: string[]
 
   /**
    * The date the video was published.
@@ -117,8 +122,9 @@ export class Video {
   /**
    * Whether or not this video COULD BE private. True if the video might
    * be private, as you cannot check if playlist items are private.
-   * I would recommend you try and fetch the video and catch an error
-   * if it is private.
+   *
+   * I would recommend that you try and fetch the video and catch an error
+   * if it is from a playlist & marked as private.
    */
   public private: boolean
 
@@ -177,11 +183,17 @@ export class Video {
       this.title = data.snippet.title
       this.description = data.snippet.description
       this.thumbnails = data.snippet.thumbnails
+      this.tags = data.snippet.tags
       this.datePublished = new Date(data.snippet.publishedAt)
       this.channelId = data.snippet.channelId
       // Impossible to test
       /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
+    }
+
+    /* istanbul ignore next */
+    if (data.status) {
+      this.private = data.status.privacyStatus === 'private'
     }
 
     this.full = data.kind === 'youtube#video'
