@@ -127,7 +127,7 @@ export class YouTube {
    * @param videoResolvable The URL, ID, or Title of the video.
    */
   public async getVideo (videoResolvable: string) {
-    const id = await GenericService.getId(this, videoResolvable, 'video')
+    const id = await GenericService.getId(this, videoResolvable, Video)
     return GenericService.getItemById(this, Video, id) as Promise<Video>
   }
 
@@ -136,7 +136,7 @@ export class YouTube {
    * @param channelResolvable The Username, URL or ID of the channel.
    */
   public async getChannel (channelResolvable: string) {
-    const id = await GenericService.getId(this, channelResolvable, 'channel')
+    const id = await GenericService.getId(this, channelResolvable, Channel)
     return GenericService.getItemById(this, Channel, id) as Promise<Channel>
   }
 
@@ -145,7 +145,7 @@ export class YouTube {
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    */
   public async getPlaylist (playlistResolvable: string) {
-    const id = await GenericService.getId(this, playlistResolvable, 'playlist')
+    const id = await GenericService.getId(this, playlistResolvable, Playlist)
     return GenericService.getItemById(this, Playlist, id) as Promise<Playlist>
   }
 
@@ -211,7 +211,7 @@ export class YouTube {
    * @param maxResults The maximum amount of videos to get from the playlist. If <= 0 or not included, returns all videos in the playlist.
    */
   public async getPlaylistItems (playlistResolvable: string, maxResults: number = -1) {
-    const playlistId = await GenericService.getId(this, playlistResolvable, 'playlist')
+    const playlistId = await GenericService.getId(this, playlistResolvable, Playlist)
     return GenericService.getPaginatedItems(this, 'playlistItems', playlistId, maxResults) as Promise<Video[]>
   }
 
@@ -221,7 +221,7 @@ export class YouTube {
    * @param maxResults The maximum amount of comments to get from the video. If <= 0 or not included, returns all comments on the video.
    */
   public async getVideoComments (videoResolvable: string, maxResults: number = -1) {
-    const videoId = await GenericService.getId(this, videoResolvable, 'video')
+    const videoId = await GenericService.getId(this, videoResolvable, Video)
     return GenericService.getPaginatedItems(this, 'commentThreads:video', videoId, maxResults) as Promise<YTComment[]>
   }
 
@@ -231,7 +231,7 @@ export class YouTube {
    * @param maxResults The maximum amount of comments to get from the channel. If <= 0 or not included, returns all comments on the channel.
    */
   public async getChannelComments (channelResolvable: string, maxResults: number = -1) {
-    const channelId = await GenericService.getId(this, channelResolvable, 'channel')
+    const channelId = await GenericService.getId(this, channelResolvable, Channel)
     return GenericService.getPaginatedItems(this, 'commentThreads:channel', channelId, maxResults) as Promise<YTComment[]>
   }
 
@@ -241,7 +241,7 @@ export class YouTube {
    * @param maxResults The maximum amount of playlists to get from the channel. If <= 0 or not included, returns all playlists.
    */
   public async getChannelPlaylists (channelResolvable: string, maxResults: number = -1) {
-    const channelId = await GenericService.getId(this, channelResolvable, 'channel')
+    const channelId = await GenericService.getId(this, channelResolvable, Channel)
     return GenericService.getPaginatedItems(this, 'playlists:channel', channelId, maxResults) as Promise<Playlist[]>
   }
 

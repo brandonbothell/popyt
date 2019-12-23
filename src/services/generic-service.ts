@@ -35,9 +35,7 @@ export class GenericService {
       endResult = new (type as typeof Video | typeof Channel | typeof Playlist)(youtube, result.items[0])
     }
 
-    if (youtube._shouldCache) {
-      youtube._cache(`get://${type.endpoint}/${id}`, endResult)
-    }
+    youtube._cache(`get://${type.endpoint}/${id}`, endResult)
 
     return endResult
   }
@@ -155,23 +153,33 @@ export class GenericService {
       }
     }
 
-    if (youtube._shouldCache) {
-      youtube._cache(`get://${endpoint}/${id}/${maxResults}`, items)
-    }
+    youtube._cache(`get://${endpoint}/${id}/${maxResults}`, items)
 
     return items
   }
 
   /* istanbul ignore next */
-  public static async getId (youtube: YouTube, input: string, type: 'playlist' | 'channel' | 'video'): Promise<string> {
+  public static async getId (youtube: YouTube, input: string, type: typeof Video | typeof Channel | typeof Playlist): Promise<string> {
     let id: string = null
 
+    const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
+
+    if (cached) {
+      return cached
+    }
+
+    const cachedEntity: Video | Channel | Playlist | YTComment = Cache.get(`get://${type.endpoint}/${input}`)
+
+    if (cachedEntity && cachedEntity.id) {
+      return cachedEntity.id
+    }
+
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      const idFromUrl = Parser.parseUrl(input)[type]
+      const idFromUrl = Parser.parseUrl(input)[type.name.toLowerCase()]
 
       // Custom channel URLs don't work that well
-      if (type === 'channel' && idFromUrl && !idFromUrl.startsWith('UC')) {
-        id = await youtube._request.api('search', { q: idFromUrl, type, part: 'id' }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+      if (type === Channel && idFromUrl && !idFromUrl.startsWith('UC')) {
+        id = await youtube._request.api('search', { q: idFromUrl, type: type.endpoint, part: 'id' }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 
       id = idFromUrl
@@ -181,12 +189,26 @@ export class GenericService {
       return id
     }
 
-    if (type === 'channel' && (!input.startsWith('UC') || input.includes(' '))) {
-      id = await youtube._request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
-    } else if (type === 'playlist' && input.includes(' ')) {
-      id = await youtube._request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
-    } else if (type === 'video' && (input.length < 11 || input.includes(' '))) {
-      id = await youtube._request.api('search', { q: input, type, part: 'id', maxResults: 1 }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
+    if (type === Channel && (!input.startsWith('UC') || input.includes(' '))) {
+      id = await youtube._request.api('search', {
+        q: input,
+        type: type.endpoint,
+        part: 'id', maxResults: 1
+      }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+    } else if (type === Playlist && input.includes(' ')) {
+      id = await youtube._request.api('search', {
+        q: input,
+        type: type.endpoint,
+        part: 'id',
+        maxResults: 1
+      }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+    } else if (type === Video && (input.length < 11 || input.includes(' '))) {
+      id = await youtube._request.api('search', {
+        q: input,
+        type: type.endpoint,
+        part: 'id',
+        maxResults: 1
+      }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
     } else {
       id = input
     }
@@ -194,6 +216,8 @@ export class GenericService {
     if (id === null || id === undefined || id === '') {
       return Promise.reject('Item not found')
     }
+
+    youtube._cache(`get_id://${type.endpoint}/${input}`, id)
 
     return id
   }
