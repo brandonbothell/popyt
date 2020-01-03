@@ -20,7 +20,7 @@ export class Video {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount),status(privacyStatus),' +
+  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount,commentCount),status(privacyStatus),' +
     'snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent))'
 
   /**
@@ -134,6 +134,11 @@ export class Video {
   public comments: YTComment[]
 
   /**
+   * The number of comments on the video.
+   */
+  public commentCount: number
+
+  /**
    * If this is a ongoing livestream, this is `live`.
    * If this is an upcoming livestream, this is `upcoming`.
    * If this is not a livestream, this is `false`.
@@ -166,6 +171,7 @@ export class Video {
         this.likes = Number(video.statistics.likeCount)
         this.dislikes = Number(video.statistics.dislikeCount)
         this.views = Number(video.statistics.viewCount)
+        this.commentCount = Number(video.statistics.commentCount)
       }
 
       this.id = video.id
