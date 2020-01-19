@@ -31,7 +31,7 @@ function docs () {
       readme: 'README.md',
       target: 'es2016',
       out: 'docs/docs',
-      name: 'Better YouTube API',
+      name: 'popyt',
       theme: 'default',
       mode: 'file'
     }))

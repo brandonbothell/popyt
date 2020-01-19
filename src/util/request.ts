@@ -7,14 +7,14 @@ import { parse as parseUrl } from 'url'
  */
 /* istanbul ignore next */
 export class Request {
-  public baseUrl: string
+  public baseUrl?: string
 
-  constructor (baseUrl: string) {
+  constructor (baseUrl?: string) {
     this.baseUrl = baseUrl
   }
 
   public api (subUrl: string, params: Object, token: string, type: 'key' | 'oauth'): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+    const url = (this.baseUrl || '') + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (type === 'key' ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this.get(url, type === 'oauth' ? token : undefined)
   }

@@ -1,30 +1,30 @@
-# Better YouTube API
-Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i better-youtube-api`
+# popyt
+Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
-[![GitHub issues](https://img.shields.io/github/issues/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/issues)
-[![GitHub stars](https://img.shields.io/github/stars/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/stargazers)
-[![GitHub license](https://img.shields.io/github/license/jasonhaxstuff/better-youtube-api.svg)](https://github.com/jasonhaxstuff/better-youtube-api/blob/master/LICENSE)
-[![Coverage status](https://coveralls.io/repos/github/jasonhaxstuff/better-youtube-api/badge.svg?branch=master)](https://coveralls.io/github/jasonhaxstuff/better-youtube-api?branch=master)
-[![Actions status](https://github.com/jasonhaxstuff/better-youtube-api/workflows/CI/badge.svg)](https://github.com/jasonhaxstuff/better-youtube-api/actions)
-[![Downloads](https://img.shields.io/npm/dt/better-youtube-api.svg)](https://www.npmjs.com/package/better-youtube-api)
-[![Version](https://img.shields.io/npm/v/better-youtube-api.svg)](https://www.npmjs.com/package/better-youtube-api)
+[![GitHub issues](https://img.shields.io/github/issues/jasonhaxstuff/popyt.svg)](https://github.com/jasonhaxstuff/popyt/issues)
+[![GitHub stars](https://img.shields.io/github/stars/jasonhaxstuff/popyt.svg)](https://github.com/jasonhaxstuff/popyt/stargazers)
+[![GitHub license](https://img.shields.io/github/license/jasonhaxstuff/popyt.svg)](https://github.com/jasonhaxstuff/popyt/blob/master/LICENSE)
+[![Coverage status](https://coveralls.io/repos/github/jasonhaxstuff/popyt/badge.svg?branch=master)](https://coveralls.io/github/jasonhaxstuff/popyt?branch=master)
+[![Actions status](https://github.com/jasonhaxstuff/popyt/workflows/CI/badge.svg)](https://github.com/jasonhaxstuff/popyt/actions)
+[![Downloads](https://img.shields.io/npm/dt/popyt.svg)](https://www.npmjs.com/package/popyt)
+[![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
 
-Check out [our website](https://bbothell.me/better-youtube-api)!
+Check out [our website](https://bbothell.me/popyt)!
 
 # Examples
-First of all, I recommend that you check out [the documentation](https://bbothell.me/better-youtube-api/docs) for all of the methods and what they return. Here are some basic methods:
+First of all, I recommend that you check out [the documentation](https://bbothell.me/popyt/docs) for all of the methods and what they return. Here are some basic methods:
 
 Instantiate the object:
 
 ```js
-const { YouTube } = require('better-youtube-api')
+const { YouTube } = require('popyt')
 const youtube = new YouTube(apiKey)
 ```
 
 Instantiate the object without caching:
 
 ```js
-const { YouTube } = require('better-youtube-api')
+const { YouTube } = require('popyt')
 const youtube = new YouTube(apiKey, { cache: false })
 ```
 

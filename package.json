@@ -1,5 +1,5 @@
 {
-  "name": "better-youtube-api",
+  "name": "popyt",
   "version": "2.1.7",
   "description": "A very easy to use promise-based Youtube Data v3 API.",
   "main": "out/index.js",
@@ -51,6 +51,6 @@
     "typescript": "^3.6.4"
   },
   "repository": {
-    "url": "https://github.com/jasonhaxstuff/better-youtube-api.git"
+    "url": "https://github.com/jasonhaxstuff/popyt.git"
   }
 }
