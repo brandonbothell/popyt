@@ -64,5 +64,5 @@ Note: This wrapper does not implement every feature of the YouTube API. With a s
 ## Before committing:
 
 * Run TSLint.
-* Run `npm run coverage` to check if you've added enough tests. It should display 100% statement, line, and branch coverage.
-* Run `yarn test` or `npm run test` and make sure that every test passes.
+* Run `yarn coverage` or `npm run coverage` to check if you've added enough tests. It should display 100% statement, line, and branch coverage.
+* Also, make sure that every test passes.
