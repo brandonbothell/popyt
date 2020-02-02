@@ -25,7 +25,7 @@
   ],
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.1",
-    "@types/chai": "4.2.7",
+    "@types/chai": "4.2.8",
     "@types/gulp": "4.0.6",
     "@types/gulp-sourcemaps": "0.0.32",
     "@types/merge2": "1.3.0",
