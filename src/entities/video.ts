@@ -21,7 +21,7 @@ export class Video {
    * The fields to request for this entity.
    */
   public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount,commentCount),status(privacyStatus),' +
-    'snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent))'
+    'snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent,categoryId))'
 
   /**
    * YouTube object that created the video.
