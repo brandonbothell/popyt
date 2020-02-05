@@ -122,7 +122,7 @@ export class YTComment {
    */
   public replies: YTComment[]
 
-  constructor (youtube: YouTube, data, type: 'video' | 'channel') {
+  constructor (youtube: YouTube, data: any, type: 'video' | 'channel') {
     this.youtube = youtube
     this.data = data
 
@@ -132,7 +132,7 @@ export class YTComment {
   /**
    * @ignore
    */
-  private _init (data, type: 'video' | 'channel') {
+  private _init (data: any, type: 'video' | 'channel') {
     if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)
     }

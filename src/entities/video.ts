@@ -145,7 +145,12 @@ export class Video {
    */
   public liveStatus: 'live' | 'upcoming' | false
 
-  constructor (youtube: YouTube, data) {
+  /**
+   * The video category associated with the video.
+   */
+  public category: string
+
+  constructor (youtube: YouTube, data: any) {
     this.youtube = youtube
     this.data = data
 
@@ -195,6 +200,7 @@ export class Video {
       // Impossible to test
       /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
+      this.category = data.snippet.categoryId
     }
 
     /* istanbul ignore next */

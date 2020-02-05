@@ -141,7 +141,7 @@ export class Channel {
    */
   public liveStatus: 'live' | 'upcoming' | false
 
-  constructor (youtube: YouTube, data) {
+  constructor (youtube: YouTube, data: any) {
     this.youtube = youtube
     this.data = data
 
@@ -151,7 +151,7 @@ export class Channel {
   /**
    * @ignore
    */
-  private _init (data) {
+  private _init (data: any) {
     /* istanbul ignore next */
     if (data.kind === 'youtube#channel' && (!data.status || data.status.isLinked)) {
       const channel = data

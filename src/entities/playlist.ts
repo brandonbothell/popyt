@@ -95,7 +95,7 @@ export class Playlist {
    */
   public tags: string[]
 
-  constructor (youtube: YouTube, data) {
+  constructor (youtube: YouTube, data: any) {
     this.youtube = youtube
     this.data = data
 
@@ -105,7 +105,7 @@ export class Playlist {
   /**
    * @ignore
    */
-  private _init (data) {
+  private _init (data: any) {
     if (data.kind === 'youtube#playlist') {
       const playlist = data
 
