@@ -9,3 +9,4 @@ typings/
 *.log
 .coveralls.yml
 .env
+.ionide
