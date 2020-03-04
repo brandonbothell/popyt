@@ -179,7 +179,11 @@ export class GenericService {
 
       // Custom channel URLs don't work that well
       if (type === Channel && idFromUrl && !idFromUrl.startsWith('UC')) {
-        id = await youtube._request.api('search', { q: idFromUrl, type: type.endpoint, part: 'id' }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+        id = await youtube._request.api('search', {
+          q: encodeURIComponent(idFromUrl),
+          type: type.endpoint,
+          part: 'id'
+        }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 
       id = idFromUrl
@@ -191,20 +195,20 @@ export class GenericService {
 
     if (type === Channel && (!input.startsWith('UC') || input.includes(' '))) {
       id = await youtube._request.api('search', {
-        q: input,
+        q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id', maxResults: 1
       }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
     } else if (type === Playlist && input.includes(' ')) {
       id = await youtube._request.api('search', {
-        q: input,
+        q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id',
         maxResults: 1
       }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
     } else if (type === Video && (input.length < 11 || input.includes(' '))) {
       id = await youtube._request.api('search', {
-        q: input,
+        q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id',
         maxResults: 1

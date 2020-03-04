@@ -1,5 +1,5 @@
 import { Video, Channel, Playlist, YTComment } from './entities'
-import { Parser, Cache, Request } from './util'
+import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService } from './services'
 
@@ -124,6 +124,7 @@ export class YouTube {
 
   /**
    * Get a [[Video]] object from the URL, ID, or Title of a video.
+   * Meant mostly for getting by URL or ID.
    * @param videoResolvable The URL, ID, or Title of the video.
    */
   public async getVideo (videoResolvable: string) {
@@ -133,6 +134,7 @@ export class YouTube {
 
   /**
    * Get a [[Channel]] object from the Username, URL or ID of a channel.
+   * Meant mostly for getting by URL or ID.
    * @param channelResolvable The Username, URL or ID of the channel.
    */
   public async getChannel (channelResolvable: string) {
@@ -142,6 +144,7 @@ export class YouTube {
 
   /**
    * Get a [[Playlist]] object from the URL, ID, or Title of a playlist.
+   * Meant mostly for getting by URL or ID.
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    */
   public async getPlaylist (playlistResolvable: string) {
@@ -155,54 +158,6 @@ export class YouTube {
    */
   public getComment (commentId: string) {
     return GenericService.getItemById(this, YTComment, commentId) as Promise<YTComment>
-  }
-
-  /**
-   * Get a video object from the url of a video.
-   * @deprecated Use getVideo() instead
-   * @param url The url of the video.
-   */
-  /* istanbul ignore next */
-  public getVideoByUrl (url: string) {
-    const id = Parser.parseUrl(url)
-
-    if (!id.video) {
-      return Promise.reject('Not a valid video url')
-    }
-
-    return GenericService.getItemById(this, Video, id.video) as Promise<Video>
-  }
-
-  /**
-   * Get a channel object from the url of a channel.
-   * @deprecated Use getChannel() instead
-   * @param url The url of the channel.
-   */
-  /* istanbul ignore next */
-  public getChannelByUrl (url: string) {
-    const id = Parser.parseUrl(url)
-
-    if (!id.channel) {
-      return Promise.reject('Not a valid channel url')
-    }
-
-    return GenericService.getItemById(this, Channel, id.channel) as Promise<Channel>
-  }
-
-  /**
-   * Get a playlist object from the url of a playlist.
-   * @deprecated Use getPlaylist() instead
-   * @param url The url of the playlist.
-   */
-  /* istanbul ignore next */
-  public getPlaylistByUrl (url: string) {
-    const id = Parser.parseUrl(url)
-
-    if (!id.playlist) {
-      return Promise.reject('Not a valid playlist url')
-    }
-
-    return GenericService.getItemById(this, Playlist, id.playlist) as Promise<Playlist>
   }
 
   /**
