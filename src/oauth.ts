@@ -2,8 +2,9 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube from '.'
-import { YTComment } from './entities'
-import { CommentThreadData } from './constants'
+import { YTComment, Channel } from './entities'
+import { CommentThreadData, SubscriptionData } from './constants'
+import { Subscription } from './entities/subscription'
 
 /**
  * @ignore
@@ -28,7 +29,7 @@ export class OAuth {
   // tslint:disable:no-trailing-whitespace
   /**
    * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 09/26/2019 06:02. PASSING
+   * Last tested 03/04/2019 23:20. PASSING
    * @param text The text content of the comment.
    * @param channelId The channel to post the comment on.
    * @param videoId The video of the channel to post the comment on.
@@ -58,7 +59,7 @@ export class OAuth {
   // tslint:disable:no-trailing-whitespace
   /**
    * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 09/26/2019 06:23. PASSING
+   * Last tested 03/04/2019 23:20. PASSING
    * @param text The new text content of the comment.
    * @param commentId The ID of the comment.
    */
@@ -86,6 +87,45 @@ export class OAuth {
     }
 
     return comment
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Subscribe to a [[Channel]].  
+   * Last tested 03/04/2019 23:17. PASSING
+   * @param channelId The channel to subscribe to.
+   * @returns A partial subscription object.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async subscribeToChannel (channelId: string): Promise<Subscription> {
+    this.checkTokenAndThrow()
+
+    if (channelId === undefined || channelId === null || channelId.trim() === '') {
+      return Promise.reject('Invalid channel ID')
+    }
+
+    const data: typeof SubscriptionData = JSON.parse(JSON.stringify(SubscriptionData))
+    data.snippet.resourceId.channelId = channelId
+
+    const result = await this.sendData('post', 'subscriptions', 'snippet', data)
+    return new Subscription(this.youtube, result)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Unsubscribe from a [[Channel]].  
+   * Last tested 03/04/2019 23:17. PASSING
+   * @param channelId The channel to unsubscribe from.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async unsubscribeFromChannel (subscriptionId: string): Promise<void> {
+    this.checkTokenAndThrow()
+
+    if (subscriptionId === undefined || subscriptionId === null || subscriptionId.trim() === '') {
+      return Promise.reject('Invalid subscription ID')
+    }
+
+    await this.youtube._request.delete('subscriptions', { id: subscriptionId }, this.youtube.token)
   }
 
   private sendData (type: 'post' | 'put', endpoint: string, part: string, data: any) {

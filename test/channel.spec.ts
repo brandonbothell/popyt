@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { Channel, Playlist } from '../src'
+import { Channel, Playlist, Subscription } from '../src'
 import { youtube } from './cache.spec'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -47,6 +47,13 @@ describe('Channels', () => {
 
     const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
     expect((await channel.fetchPlaylists())[0]).to.be.an.instanceOf(Playlist)
+  })
+
+  it('should work with fetching subscriptions with maxResults', async () => {
+    Channel.part = 'id'
+
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+    expect((await channel.fetchSubscriptions(1))[0]).to.be.an.instanceOf(Subscription)
   })
 
   it('should have a negative subscriber count if it is hidden', async () => {

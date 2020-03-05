@@ -1,5 +1,4 @@
-import { YouTube, Playlist, Thumbnail, Banners } from '..'
-import { YTComment } from './comment'
+import { YouTube, Playlist, Thumbnail, Banners, YTComment, Subscription } from '..'
 
 /**
  * A YouTube channel.
@@ -19,7 +18,8 @@ export class Channel {
    * The fields to request for this entity.
    */
   public static fields = 'items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,commentCount,viewCount,hiddenSubscriberCount),' +
-    'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),status(isLinked))'
+    'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),' +
+    'status(isLinked,madeForKids,selfDeclaredMadeForKids))'
 
   /**
    * The YouTube object that created this channel object.
@@ -133,6 +133,11 @@ export class Channel {
   public playlists: Playlist[]
 
   /**
+   * The channel's subscriptions. Only defined when `Channel#fetchSubscriptions` is called.
+   */
+  public subscriptions: Subscription[]
+
+  /**
    * Only set if the channel is a search result.
    *
    * If the channel has an ongoing livestream, this is `live`.
@@ -140,6 +145,21 @@ export class Channel {
    * If the channel has neither an ongoing nor upcoming livestream, this is `false`.
    */
   public liveStatus: 'live' | 'upcoming' | false
+
+  /**
+   * Properties to do with videos made for children.
+   */
+  public kids: {
+    /**
+     * Whether or not the video was made for children.
+     */
+    madeForKids: boolean,
+
+    /**
+     * Whether or not the poster of the video marked it as made for kids.
+     */
+    selfDeclaredMadeForKids: boolean
+  }
 
   constructor (youtube: YouTube, data: any) {
     this.youtube = youtube
@@ -173,6 +193,13 @@ export class Channel {
           this.subCount = Number(channel.statistics.subscriberCount)
         } else {
           this.subCount = -1
+        }
+      }
+
+      if (channel.status) {
+        this.kids = {
+          madeForKids: channel.status.madeForKids,
+          selfDeclaredMadeForKids: channel.status.selfDeclaredMadeForKids
         }
       }
 
@@ -282,5 +309,33 @@ export class Channel {
   public async fetchPlaylists (maxResults: number = -1) {
     this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults)
     return this.playlists
+  }
+
+  /**
+   * Fetches the channel's subscriptions and assigns them to Channel#subscriptions.
+   * @param maxResults The maximum amount of subscriptions to fetch
+   */
+  /* istanbul ignore next */
+  public async fetchSubscriptions (maxResults: number = -1) {
+    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults)
+    return this.subscriptions
+  }
+
+  /**
+   * Subscribes to the channel.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public subscribe () {
+    return this.youtube.oauth.subscribeToChannel(this.id)
+  }
+
+  /**
+   * Unsubscribes from the channel.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public unsubscribe () {
+    return this.youtube.oauth.unsubscribeFromChannel(this.id)
   }
 }

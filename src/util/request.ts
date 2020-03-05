@@ -29,6 +29,11 @@ export class Request {
     return this._put(url, data, token)
   }
 
+  public delete (subUrl: string, params: Object, token: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params)
+    return this._delete(url, token)
+  }
+
   private get (url: string, token?: string): Promise<any> {
     const options = this.parseUrlToOptions(url, 'GET')
 
@@ -59,7 +64,17 @@ export class Request {
     return this.req(options, req => this.reqCallback(req, data))
   }
 
-  private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET'): RequestOptions {
+  private _delete (url: string, token: string): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'DELETE')
+
+    if (token) {
+      options.headers['Authorization'] = `Bearer ${token}`
+    }
+
+    return this.req(options, req => this.reqCallback(req))
+  }
+
+  private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE'): RequestOptions {
     const parsed = parseUrl(url)
 
     return {
@@ -87,6 +102,11 @@ export class Request {
         res.on('end', () => {
           if (res.statusCode === 404) {
             return reject(new Error('Not found'))
+          }
+
+          // no content
+          if (res.statusCode === 204) {
+            return resolve()
           }
 
           const parsed = JSON.parse(data)

@@ -1,14 +1,16 @@
 import YouTube, { Video, Channel, Playlist, YTComment } from '..'
 import { Cache, Parser } from '../util'
+import { Subscription } from '../entities/subscription'
 
 /**
  * @ignore
  */
 export class GenericService {
   /* istanbul ignore next */
-  public static async getItemById (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment, id: string): Promise<Video | Channel | Playlist | YTComment> {
-    if (!([ Video, Channel, Playlist, YTComment ].includes(type))) {
-      return Promise.reject('Type must be a video, channel, playlist, or comment.')
+  public static async getItemById (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription, id: string):
+    Promise<Video | Channel | Playlist | YTComment | Subscription> {
+    if (!([ Video, Channel, Playlist, YTComment, Subscription ].includes(type))) {
+      return Promise.reject('Type must be a video, channel, playlist, comment, or subscription.')
     }
 
     const cached = Cache.get(`get://${type.endpoint}/${id}`)
@@ -42,7 +44,8 @@ export class GenericService {
 
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-    'commentThreads:video' | 'commentThreads:channel' | 'comments', id: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[]> {
+    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions', id: string, maxResults: number = -1):
+      Promise<Video[] | YTComment[] | Playlist[] | Subscription[]> {
     const cached = Cache.get(`get://${endpoint}/${id}/${maxResults}`)
 
     if (youtube._shouldCache && cached) {
@@ -67,7 +70,7 @@ export class GenericService {
     }
 
     let max: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist
+    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -94,6 +97,10 @@ export class GenericService {
       clazz = Playlist
       endpoint = 'playlists'
       options.part += ',contentDetails,player'
+      options.channelId = id
+    } else if (endpoint === 'subscriptions') {
+      max = 50
+      clazz = Subscription
       options.channelId = id
     } else {
       return Promise.reject('Unknown item type ' + endpoint)

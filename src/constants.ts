@@ -5,7 +5,7 @@ export const CommentThreadData: {
   id?: string,
   snippet: {
     channelId: string,
-    videoId?: string
+    videoId?: string,
     topLevelComment: {
       snippet: {
         textOriginal: string
@@ -19,6 +19,25 @@ export const CommentThreadData: {
       snippet: {
         textOriginal: undefined
       }
+    }
+  }
+}
+
+/**
+ * @ignore
+ */
+export const SubscriptionData: {
+  snippet: {
+    resourceId: {
+      kind: 'youtube#channel',
+      channelId: string
+    }
+  }
+} = {
+  snippet: {
+    resourceId: {
+      kind: 'youtube#channel',
+      channelId: undefined
     }
   }
 }

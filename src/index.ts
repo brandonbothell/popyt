@@ -1,7 +1,7 @@
-import { Video, Channel, Playlist, YTComment } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
-import { SearchService, GenericService } from './services'
+import { SearchService, GenericService, SubscriptionService } from './services'
 
 export * from './entities'
 export * from './types'
@@ -154,10 +154,30 @@ export class YouTube {
 
   /**
    * Get a [[Comment]] object from the ID of a comment.
-   * @param id The ID of the comment.
+   * @param commentId The ID of the comment.
    */
   public getComment (commentId: string) {
     return GenericService.getItemById(this, YTComment, commentId) as Promise<YTComment>
+  }
+
+  /**
+   * Get a [[Subscription]] object from the ID of a subscription.
+   * @param subscriptionId The ID of the subscription.
+   */
+  public getSubscription (subscriptionId: string) {
+    return GenericService.getItemById(this, Subscription, subscriptionId) as Promise<Subscription>
+  }
+
+  /**
+   * Get a [[Subscription]] object from the subscriber and channel of a subscription.
+   * @param subscriberResolvable A resolvable channel that is the subscriber.
+   * @param channelResolvable A resolvable channel that is the channel being subscribed to.
+   */
+  public async getSubscriptionByChannels (subscriberResolvable: string, channelResolvable: string) {
+    const subscriberId = await GenericService.getId(this, subscriberResolvable, Channel)
+    const channelId = await GenericService.getId(this, channelResolvable, Channel)
+
+    return SubscriptionService.getSubscriptionByChannels(this, subscriberId, channelId)
   }
 
   /**
@@ -198,6 +218,16 @@ export class YouTube {
   public async getChannelPlaylists (channelResolvable: string, maxResults: number = -1) {
     const channelId = await GenericService.getId(this, channelResolvable, Channel)
     return GenericService.getPaginatedItems(this, 'playlists:channel', channelId, maxResults) as Promise<Playlist[]>
+  }
+
+  /**
+   * Get `maxResults` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with `Channel#fetchSubscriptions`.
+   * @param channelResolvable The Username, URL, or ID of the channel.
+   * @param maxResults The maximum amount of subscriptions to get from the channel. If <= 0 or not included, returns all subscriptions.
+   */
+  public async getChannelSubscriptions (channelResolvable: string, maxResults: number = -1) {
+    const channelId = await GenericService.getId(this, channelResolvable, Channel)
+    return GenericService.getPaginatedItems(this, 'subscriptions', channelId, maxResults) as Promise<Subscription[]>
   }
 
   /**

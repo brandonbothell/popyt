@@ -20,8 +20,8 @@ export class Video {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount,commentCount),status(privacyStatus),' +
-    'snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent,categoryId))'
+  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount,commentCount),' +
+    'status(privacyStatus,madeForKids,selfDeclaredMadeForKids),snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent,categoryId))'
 
   /**
    * YouTube object that created the video.
@@ -150,6 +150,21 @@ export class Video {
    */
   public category: string
 
+  /**
+   * Properties to do with videos made for children.
+   */
+  public kids: {
+    /**
+     * Whether or not the video was made for children.
+     */
+    madeForKids: boolean,
+
+    /**
+     * Whether or not the poster of the video marked it as made for kids.
+     */
+    selfDeclaredMadeForKids: boolean
+  }
+
   constructor (youtube: YouTube, data: any) {
     this.youtube = youtube
     this.data = data
@@ -206,6 +221,10 @@ export class Video {
     /* istanbul ignore next */
     if (data.status) {
       this.private = data.status.privacyStatus === 'private'
+      this.kids = {
+        madeForKids: data.status.madeForKids,
+        selfDeclaredMadeForKids: data.status.selfDeclaredMadeForKids
+      }
     }
 
     this.full = data.kind === 'youtube#video'
