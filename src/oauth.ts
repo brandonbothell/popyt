@@ -7,7 +7,8 @@ import { GenericService } from './services'
 import { Cache } from './util'
 
 /**
- * @ignore
+ * All methods requiring an OAuth access token.
+ * Use `YouTube#oauth` to access these methods.
  */
 export class OAuth {
   public youtube: YouTube
@@ -20,6 +21,9 @@ export class OAuth {
     this.youtube = youtube
   }
 
+  /**
+   * @ignore
+   */
   private checkTokenAndThrow () {
     if (!this.youtube.accessToken) {
       throw new Error('Must have an access token for OAuth related methods')
