@@ -18,7 +18,7 @@ describe('Replies', () => {
   }).timeout(3000)
 
   it('should not work with invalid comments/comments with no replies', async () => {
-    expect(await youtube.getCommentReplies('0').catch(error => { return error })).to.equal('Items not found')
+    expect(await youtube.getCommentReplies('0').catch(error => { return error })).to.equal('comments not found')
   })
 
   it('should return an array with a length of <= maxResults', async () => {

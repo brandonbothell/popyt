@@ -278,4 +278,40 @@ export class Video {
     this.comments = await this.youtube.getVideoComments(this.id, maxResults)
     return this.comments
   }
+
+  /**
+   * Gets the user's rating on the video.
+   */
+  /* istanbul ignore next */
+  public async getRating (): Promise<'like' | 'dislike' | 'none' | 'unspecified'> {
+    const response = await this.youtube.oauth.getMyRatings([ this.id ])
+    return response[0].rating
+  }
+
+  /**
+   * Likes the video.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public like () {
+    return this.youtube.oauth.rateVideo(this.id, 'like')
+  }
+
+  /**
+   * Dislikes the video.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public dislike () {
+    return this.youtube.oauth.rateVideo(this.id, 'dislike')
+  }
+
+  /**
+   * Removes the user's like/dislike on the video.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public unrate () {
+    return this.youtube.oauth.rateVideo(this.id, 'none')
+  }
 }

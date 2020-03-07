@@ -4,6 +4,7 @@
 import YouTube, { YTComment, Channel, Playlist, Subscription } from '.'
 import { CommentThreadData, SubscriptionData } from './constants'
 import { GenericService } from './services'
+import { Cache } from './util'
 
 /**
  * @ignore
@@ -28,41 +29,44 @@ export class OAuth {
   // tslint:disable:no-trailing-whitespace
   /**
    * Gets the authorized user's [[Channel]].
-   * Last tested 03/06/2019 22:21. PASSING
+   * Last tested 03/06/2020 22:21. PASSING
    */
   // tslint:enable:no-trailing-whitespace
   public getMe (): Promise<Channel> {
+    this.checkTokenAndThrow()
     return GenericService.getItem(this.youtube, Channel, true) as Promise<Channel>
   }
 
   // tslint:disable:no-trailing-whitespace
   /**
    * Gets the authorized user's [[Subscription]]s.
-   * Last tested 03/06/2019 23:20. PASSING
+   * Last tested 03/06/2020 23:20. PASSING
    * @param maxResults The maximum number of subscriptions to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
   // tslint:enable:no-trailing-whitespace
   public getMySubscriptions (maxResults: number = 10): Promise<Subscription[]> {
+    this.checkTokenAndThrow()
     return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults) as Promise<Subscription[]>
   }
 
   // tslint:disable:no-trailing-whitespace
   /**
    * Gets the authorized user's [[Playlist]]s.
-   * Last tested 03/06/2019 23:23. PASSING
+   * Last tested 03/06/2020 23:23. PASSING
    * @param maxResults The maximum number of playlists to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
   // tslint:enable:no-trailing-whitespace
   public getMyPlaylists (maxResults: number = 10): Promise<Playlist[]> {
+    this.checkTokenAndThrow()
     return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults) as Promise<Playlist[]>
   }
 
   // tslint:disable:no-trailing-whitespace
   /**
    * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 03/04/2019 23:20. PASSING
+   * Last tested 03/04/2020 23:20. PASSING
    * @param text The text content of the comment.
    * @param channelId The channel to post the comment on.
    * @param videoId The video of the channel to post the comment on.
@@ -72,10 +76,6 @@ export class OAuth {
   public async postComment (text: string, channelId: string, videoId?: string): Promise<YTComment> {
     this.checkTokenAndThrow()
 
-    if (text === undefined || text === null || text.trim() === '') {
-      return Promise.reject('Invalid comment text')
-    }
-
     const data: typeof CommentThreadData = JSON.parse(JSON.stringify(CommentThreadData))
     data.snippet.topLevelComment.snippet.textOriginal = text
     data.snippet.channelId = channelId
@@ -84,7 +84,7 @@ export class OAuth {
       data.snippet.videoId = videoId
     }
 
-    const result = await this.sendData('post', 'commentThreads', 'snippet', data)
+    const result = await this.youtube._request.post('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
     const type = result.snippet.channelId ? 'channel' : 'video'
     return new YTComment(this.youtube, result.snippet.topLevelComment, type)
   }
@@ -92,7 +92,7 @@ export class OAuth {
   // tslint:disable:no-trailing-whitespace
   /**
    * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 03/04/2019 23:20. PASSING
+   * Last tested 03/04/2020 23:20. PASSING
    * @param text The new text content of the comment.
    * @param commentId The ID of the comment.
    */
@@ -100,15 +100,11 @@ export class OAuth {
   public async editComment (text: string, commentId: string): Promise<YTComment> {
     this.checkTokenAndThrow()
 
-    if (text === undefined || text === null || text.trim() === '') {
-      return Promise.reject('Invalid comment text')
-    }
-
     const data: typeof CommentThreadData = JSON.parse(JSON.stringify(CommentThreadData))
     data.snippet.topLevelComment.snippet.textOriginal = text
     data.id = commentId
 
-    const result = await this.sendData('put', 'commentThreads', 'snippet', data)
+    const result = await this.youtube._request.put('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
     const type = result.snippet.channelId ? 'channel' : 'video'
     const comment = new YTComment(this.youtube, result.snippet.topLevelComment, type)
 
@@ -125,7 +121,7 @@ export class OAuth {
   // tslint:disable:no-trailing-whitespace
   /**
    * Subscribe to a [[Channel]].  
-   * Last tested 03/04/2019 23:17. PASSING
+   * Last tested 03/04/2020 23:17. PASSING
    * @param channelId The channel to subscribe to.
    * @returns A partial subscription object.
    */
@@ -133,35 +129,57 @@ export class OAuth {
   public async subscribeToChannel (channelId: string): Promise<Subscription> {
     this.checkTokenAndThrow()
 
-    if (channelId === undefined || channelId === null || channelId.trim() === '') {
-      return Promise.reject('Invalid channel ID')
-    }
-
     const data: typeof SubscriptionData = JSON.parse(JSON.stringify(SubscriptionData))
     data.snippet.resourceId.channelId = channelId
 
-    const result = await this.sendData('post', 'subscriptions', 'snippet', data)
+    const result = await this.youtube._request.post('subscriptions', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
     return new Subscription(this.youtube, result)
   }
 
   // tslint:disable:no-trailing-whitespace
   /**
    * Unsubscribe from a [[Channel]].  
-   * Last tested 03/04/2019 23:17. PASSING
+   * Last tested 03/04/2020 23:17. PASSING
    * @param channelId The channel to unsubscribe from.
    */
   // tslint:enable:no-trailing-whitespace
-  public async unsubscribeFromChannel (subscriptionId: string): Promise<void> {
+  public unsubscribeFromChannel (subscriptionId: string): Promise<void> {
     this.checkTokenAndThrow()
-
-    if (subscriptionId === undefined || subscriptionId === null || subscriptionId.trim() === '') {
-      return Promise.reject('Invalid subscription ID')
-    }
-
-    await this.youtube._request.delete('subscriptions', { id: subscriptionId }, this.youtube.accessToken)
+    return this.youtube._request.delete('subscriptions', { id: subscriptionId }, null, this.youtube.accessToken)
   }
 
-  private sendData (type: 'post' | 'put', endpoint: string, part: string, data: any) {
-    return this.youtube._request[type](endpoint, { part }, this.youtube.accessToken, JSON.stringify(data))
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Like, dislike, or remove a rating from a video.  
+   * Last tested 03/07/2020 02:15. PASSING
+   * @param videoId The video to rate.
+   * @param rating The rating to give the video.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async rateVideo (videoId: string, rating: 'like' | 'dislike' | 'none'): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.post('videos/rate', { id: videoId, rating }, null, null, this.youtube.accessToken)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Retrieve your rating on a video.  
+   * Last tested 03/07/2020 02:35. PASSING
+   * @param videoId The video to retrieve your rating from.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async getMyRatings (videoIds: string[]): Promise<{ videoId: string, rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
+    this.checkTokenAndThrow()
+
+    const cached = Cache.get(`get://videos/getRating/${JSON.stringify(videoIds)}`)
+
+    if (this.youtube._shouldCache && cached) {
+      return cached
+    }
+
+    const response = await this.youtube._request.api('videos/getRating', { id: videoIds.join(',') }, null, this.youtube.accessToken)
+    this.youtube._cache(`get://videos/getRating/${JSON.stringify(videoIds)}`, response.items)
+
+    return response.items
   }
 }

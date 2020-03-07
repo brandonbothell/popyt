@@ -28,7 +28,7 @@ export class SubscriptionService {
     const results = await youtube._request.api('subscriptions', data, youtube.token, youtube.accessToken)
 
     if (results.items.length === 0) {
-      return Promise.reject('Item not found')
+      return Promise.reject('Subscription not found')
     }
 
     const toReturn = new Subscription(youtube, results.items[0])

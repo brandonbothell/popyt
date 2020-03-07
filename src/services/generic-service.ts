@@ -132,12 +132,10 @@ export class GenericService {
     let shouldReturn = !full
 
     for (let i = 1; i < pages ? pages : 3; i++) {
-      results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken).catch(err => {
-        return Promise.reject(`Error fetching items: ${err}`)
-      })
+      results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
 
       if (results.items.length === 0) {
-        return Promise.reject('Items not found')
+        return Promise.reject(`${endpoint} not found`)
       }
 
       if (!pages) {
@@ -220,27 +218,25 @@ export class GenericService {
         q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id', maxResults: 1
-      }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+      }, youtube.token, youtube.accessToken).then(r => r.items.length > 0 ? r.items[0].id.channelId : undefined)
     } else if (type === Playlist && input.includes(' ')) {
       id = await youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+      }, youtube.token, youtube.accessToken).then(r => r.items.length > 0 ? r.items[0].id.playlistId : undefined)
     } else if (type === Video && (input.length < 11 || input.includes(' '))) {
       id = await youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
-    } else {
-      id = input
+      }, youtube.token, youtube.accessToken).then(r => r.items.length > 0 ? r.items[0].id.videoId : undefined)
     }
 
     if (id === null || id === undefined || id === '') {
-      return Promise.reject('Item not found')
+      id = input
     }
 
     youtube._cache(`get_id://${type.endpoint}/${input}`, id)

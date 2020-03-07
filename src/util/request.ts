@@ -19,13 +19,13 @@ export class Request {
     return this.get(url, accessToken)
   }
 
-  public post (subUrl: string, params: Object, data: any, token?: string, accessToken?: string): Promise<any> {
+  public post (subUrl: string, params: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this._post(url, data, accessToken)
   }
 
-  public put (subUrl: string, params: Object, data: any, token?: string, accessToken?: string): Promise<any> {
+  public put (subUrl: string, params: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this._put(url, data, accessToken)
