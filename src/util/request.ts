@@ -13,25 +13,25 @@ export class Request {
     this.baseUrl = baseUrl
   }
 
-  public api (subUrl: string, params: Object, token?: string, accessToken?: string): Promise<any> {
+  public api (subUrl: string, params?: Object, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this.get(url, accessToken)
   }
 
-  public post (subUrl: string, params: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
+  public post (subUrl: string, params?: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this._post(url, data, accessToken)
   }
 
-  public put (subUrl: string, params: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
+  public put (subUrl: string, params?: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this._put(url, data, accessToken)
   }
 
-  public delete (subUrl: string, params: Object, token?: string, accessToken?: string): Promise<any> {
+  public delete (subUrl: string, params?: Object, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
     return this._delete(url, accessToken)
@@ -143,6 +143,10 @@ export class Request {
   }
 
   private parseParams (params: Object) {
+    if (!params) {
+      return ''
+    }
+
     let url = ''
 
     for (let param in params) {

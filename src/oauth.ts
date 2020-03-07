@@ -150,20 +150,20 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Like, dislike, or remove a rating from a video.  
+   * Like, dislike, or remove a rating from a [[Video]].  
    * Last tested 03/07/2020 02:15. PASSING
    * @param videoId The video to rate.
    * @param rating The rating to give the video.
    */
   // tslint:enable:no-trailing-whitespace
-  public async rateVideo (videoId: string, rating: 'like' | 'dislike' | 'none'): Promise<void> {
+  public rateVideo (videoId: string, rating: 'like' | 'dislike' | 'none'): Promise<void> {
     this.checkTokenAndThrow()
     return this.youtube._request.post('videos/rate', { id: videoId, rating }, null, null, this.youtube.accessToken)
   }
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Retrieve your rating on a video.  
+   * Retrieve your rating on a [[Video]].  
    * Last tested 03/07/2020 02:35. PASSING
    * @param videoId The video to retrieve your rating from.
    */
@@ -181,5 +181,49 @@ export class OAuth {
     this.youtube._cache(`get://videos/getRating/${JSON.stringify(videoIds)}`, response.items)
 
     return response.items
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Report a [[Video]] for abuse.  
+   * Last tested NEVER
+   * @param videoId The video to report.
+   * @param reasonId The reason for reporting. (IDs can be found [here](https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list))
+   * @param secondaryReasonId An optional second reason for reporting.
+   * @param comments Any additional information.
+   * @param language The language that the reporter speaks.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public reportAbuse (videoId: string, reasonId: string, secondaryReasonId?: string, comments?: string, language?: string): Promise<void> {
+    this.checkTokenAndThrow()
+
+    const data: {
+      videoId: string,
+      reasonId: string,
+      secondaryReasonId?: string,
+      comments?: string,
+      language?: string
+    } = {
+      videoId,
+      reasonId
+    }
+
+    if (secondaryReasonId) data.secondaryReasonId = secondaryReasonId
+    if (comments) data.comments = comments
+    if (language) data.language = language
+
+    return this.youtube._request.post('videos/reportAbuse', null, JSON.stringify(data), null, this.youtube.accessToken)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Deletes a video.  
+   * Last tested NEVER
+   * @param videoId The video to delete.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public deleteVideo (videoId: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('videos', { id: videoId }, null, this.youtube.accessToken)
   }
 }

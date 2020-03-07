@@ -314,4 +314,26 @@ export class Video {
   public unrate () {
     return this.youtube.oauth.rateVideo(this.id, 'none')
   }
+
+  /**
+   * Reports the video for abuse.
+   * Must be using an access token with correct scopes.
+   * @param reasonId The reason for reporting. (IDs can be found [here](https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list))
+   * @param secondaryReasonId An optional second reason for reporting.
+   * @param comments Any additional information.
+   * @param language The language that the reporter speaks.
+   */
+  /* istanbul ignore next */
+  public reportAbuse (reasonId: string, secondaryReasonId?: string, comments?: string, language?: string) {
+    return this.youtube.oauth.reportAbuse(this.id, reasonId, secondaryReasonId, comments, language)
+  }
+
+  /**
+   * Deletes the video.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public delete () {
+    return this.youtube.oauth.deleteVideo(this.id)
+  }
 }
