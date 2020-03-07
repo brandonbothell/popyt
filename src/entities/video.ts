@@ -336,4 +336,19 @@ export class Video {
   public delete () {
     return this.youtube.oauth.deleteVideo(this.id)
   }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Updates the video.
+   * Must be using an access token with correct scopes.  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**
+   * @param video The updated video object.
+   */
+  // tslint:enable:no-trailing-whitespace
+  /* istanbul ignore next */
+  public async update (video: VideoUpdateResource): Promise<Video> {
+    const newVideo = await this.youtube.oauth.updateVideo(video)
+    return Object.assign(this, { ...newVideo, full: true })
+  }
 }

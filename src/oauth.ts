@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
-import YouTube, { YTComment, Channel, Playlist, Subscription } from '.'
+import YouTube, { YTComment, Channel, Playlist, Subscription, Video } from '.'
 import { CommentThreadData, SubscriptionData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
@@ -225,5 +225,47 @@ export class OAuth {
   public deleteVideo (videoId: string): Promise<void> {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('videos', { id: videoId }, null, this.youtube.accessToken)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Updates a video.  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested NEVER
+   * @param video The updated video object.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async updateVideo (video: VideoUpdateResource): Promise<Video> {
+    this.checkTokenAndThrow()
+
+    const parts = []
+
+    if (video.snippet) {
+      parts.push('snippet')
+      if (Array.isArray(video.snippet.tags)) video.snippet.tags = video.snippet.tags.join(',')
+    }
+
+    if (video.status) {
+      parts.push('status')
+      if (video.status.publishAt instanceof Date) video.status.publishAt = video.status.publishAt.toISOString()
+    }
+
+    if (video.recordingDetails) {
+      parts.push('recordingDetails')
+
+      if (video.recordingDetails.recordingDate instanceof Date) {
+        video.recordingDetails.recordingDate = video.recordingDetails.recordingDate.toISOString()
+      }
+    }
+
+    if (video.localizations) parts.push('localizations')
+
+    if (parts.length === 0) {
+      return this.youtube.getVideo(video.id)
+    }
+
+    const response = this.youtube._request.put('videos', { part: parts.join(',') }, JSON.stringify(video), null, this.youtube.accessToken)
+    return new Video(this.youtube, response)
   }
 }
