@@ -184,6 +184,8 @@ export class Video {
         this._length = Parser.parseIsoDuration(video.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
         this.seconds = this._length.seconds
+      } else {
+        this.full = false
       }
 
       /* istanbul ignore next */
@@ -192,13 +194,17 @@ export class Video {
         this.dislikes = Number(video.statistics.dislikeCount)
         this.views = Number(video.statistics.viewCount)
         this.commentCount = Number(video.statistics.commentCount)
+      } else {
+        this.full = false
       }
 
       this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
+      this.full = false
       this.id = data.snippet.resourceId.videoId
       this.private = data.snippet.title === 'Private video'
     } else if (data.kind === 'youtube#searchResult') {
+      this.full = false
       this.id = data.id.videoId
     } else {
       throw new Error(`Invalid video type: ${data.kind}`)
@@ -216,6 +222,8 @@ export class Video {
       /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
       this.category = data.snippet.categoryId
+    } else {
+      this.full = false
     }
 
     /* istanbul ignore next */
@@ -225,9 +233,10 @@ export class Video {
         madeForKids: data.status.madeForKids,
         selfDeclaredMadeForKids: data.status.selfDeclaredMadeForKids
       }
+    } else {
+      this.full = false
     }
 
-    this.full = data.kind === 'youtube#video'
     this.url = `https://youtube.com/watch?v=${this.id}`
     this.shortUrl = `https://youtu.be/${this.id}`
 
@@ -265,7 +274,7 @@ export class Video {
    * Fetches the video's comments and assigns them to Video#comments.
    * @param maxResults The maximum amount of comments to fetch
    */
-  public async fetchComments (maxResults: number = -1) {
+  public async fetchComments (maxResults: number = 10) {
     this.comments = await this.youtube.getVideoComments(this.id, maxResults)
     return this.comments
   }

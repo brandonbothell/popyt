@@ -13,25 +13,28 @@ export class Request {
     this.baseUrl = baseUrl
   }
 
-  public api (subUrl: string, params: Object, token: string, type: 'key' | 'oauth'): Promise<any> {
-    const url = (this.baseUrl || '') + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (type === 'key' ? (params ? `&key=${token}` : `?key=${token}`) : '')
-    return this.get(url, type === 'oauth' ? token : undefined)
+  public api (subUrl: string, params: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return this.get(url, accessToken)
   }
 
-  public post (subUrl: string, params: Object, token: string, data: any): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params)
-    return this._post(url, data, token)
+  public post (subUrl: string, params: Object, data: any, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return this._post(url, data, accessToken)
   }
 
-  public put (subUrl: string, params: Object, token: string, data: any): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params)
-    return this._put(url, data, token)
+  public put (subUrl: string, params: Object, data: any, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return this._put(url, data, accessToken)
   }
 
-  public delete (subUrl: string, params: Object, token: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params)
-    return this._delete(url, token)
+  public delete (subUrl: string, params: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return this._delete(url, accessToken)
   }
 
   private get (url: string, token?: string): Promise<any> {

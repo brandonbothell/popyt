@@ -12,12 +12,20 @@ if (!apiKey) {
 
 describe('Creation of the YouTube instance', () => {
   it('should work with an invalid token', () => {
-    expect(new YouTube('')).to.be.instanceOf(YouTube)
+    expect(new YouTube('adasd')).to.be.instanceOf(YouTube)
   })
 
-  it('should tell the difference between api key and oauth tokens', () => {
-    expect(new YouTube('ya29')._tokenType).to.equal('oauth')
-    expect(new YouTube('blah')._tokenType).to.equal('key')
+  it('should fail with no token', () => {
+    let err: string
+
+    try {
+      // tslint:disable-next-line:no-unused-expression
+      new YouTube('', '')
+    } catch (error) {
+      err = error.message
+    }
+
+    expect(err).to.equal('Must include one of token or access token whenever constructing the YouTube object.')
   })
 })
 

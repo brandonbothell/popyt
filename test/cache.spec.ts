@@ -26,7 +26,7 @@ describe('Caching', () => {
   }).timeout(8000)
 
   it('should be disabled if cache is false', async () => {
-    const youtube = new YouTube(apiKey, { cache: false })
+    const youtube = new YouTube(apiKey, null, { cache: false })
     const video = youtube.getVideo('dQw4w9WgXcQ')
     const time = new Date().getTime()
 
@@ -36,7 +36,7 @@ describe('Caching', () => {
   })
 
   it('should not use expired items', async () => {
-    const youtube = new YouTube(apiKey, { cacheTTL: 0.01, cacheCheckInterval: 0.009 })
+    const youtube = new YouTube(apiKey, null, { cacheTTL: 0.01, cacheCheckInterval: 0.009 })
     await youtube.getVideo('dQw4w9WgXcQ')
 
     const video = youtube.getVideo('dQw4w9WgXcQ')
@@ -71,14 +71,14 @@ describe('Caching', () => {
   })
 
   it('should not cache if _shouldCalche is false', () => {
-    const youtube = new YouTube(apiKey, { cache: false })
+    const youtube = new YouTube(apiKey, null, { cache: false })
     youtube._cache('test', 'value')
 
     expect(Cache.get('test')).to.equal(undefined)
   })
 
   it('should cache if _shouldCache is true', () => {
-    const youtube = new YouTube(apiKey, { cache: true, cacheTTL: 60 })
+    const youtube = new YouTube(apiKey, null, { cache: true, cacheTTL: 60 })
     youtube._cache('test', 'value')
 
     expect(Cache.get('test')).to.equal('value')
@@ -86,7 +86,7 @@ describe('Caching', () => {
   })
 
   it('should cache forever if cacheTTL is <= 0', () => {
-    const youtube = new YouTube(apiKey, { cache: true, cacheTTL: 0 })
+    const youtube = new YouTube(apiKey, null, { cache: true, cacheTTL: 0 })
     youtube._cache('test', 'value')
 
     expect(Cache.get('test')).to.equal('value')

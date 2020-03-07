@@ -1,10 +1,9 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
-import YouTube from '.'
-import { YTComment, Channel } from './entities'
+import YouTube, { YTComment, Channel, Playlist, Subscription } from '.'
 import { CommentThreadData, SubscriptionData } from './constants'
-import { Subscription } from './entities/subscription'
+import { GenericService } from './services'
 
 /**
  * @ignore
@@ -21,9 +20,43 @@ export class OAuth {
   }
 
   private checkTokenAndThrow () {
-    if (this.youtube._tokenType !== 'oauth') {
-      throw new Error('Token is not an oauth token')
+    if (!this.youtube.accessToken) {
+      throw new Error('Must have an access token for OAuth related methods')
     }
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Gets the authorized user's [[Channel]].
+   * Last tested 03/06/2019 22:21. PASSING
+   */
+  // tslint:enable:no-trailing-whitespace
+  public getMe (): Promise<Channel> {
+    return GenericService.getItem(this.youtube, Channel, true) as Promise<Channel>
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Gets the authorized user's [[Subscription]]s.
+   * Last tested 03/06/2019 23:20. PASSING
+   * @param maxResults The maximum number of subscriptions to fetch.
+   * Fetches 10 by default. Set to a value <=0 to fetch all.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public getMySubscriptions (maxResults: number = 10): Promise<Subscription[]> {
+    return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults) as Promise<Subscription[]>
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Gets the authorized user's [[Playlist]]s.
+   * Last tested 03/06/2019 23:23. PASSING
+   * @param maxResults The maximum number of playlists to fetch.
+   * Fetches 10 by default. Set to a value <=0 to fetch all.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public getMyPlaylists (maxResults: number = 10): Promise<Playlist[]> {
+    return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults) as Promise<Playlist[]>
   }
 
   // tslint:disable:no-trailing-whitespace
@@ -125,10 +158,10 @@ export class OAuth {
       return Promise.reject('Invalid subscription ID')
     }
 
-    await this.youtube._request.delete('subscriptions', { id: subscriptionId }, this.youtube.token)
+    await this.youtube._request.delete('subscriptions', { id: subscriptionId }, this.youtube.accessToken)
   }
 
   private sendData (type: 'post' | 'put', endpoint: string, part: string, data: any) {
-    return this.youtube._request[type](endpoint, { part }, this.youtube.token, JSON.stringify(data))
+    return this.youtube._request[type](endpoint, { part }, this.youtube.accessToken, JSON.stringify(data))
   }
 }

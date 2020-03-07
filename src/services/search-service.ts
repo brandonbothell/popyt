@@ -39,7 +39,7 @@ export class SearchService {
       data.pageToken = pageToken
     }
 
-    const results = await youtube._request.api('search', data, youtube.token, youtube._tokenType)
+    const results = await youtube._request.api('search', data, youtube.token, youtube.accessToken)
     const items = []
 
     results.items.forEach(item => {

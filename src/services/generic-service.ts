@@ -7,23 +7,31 @@ import { Subscription } from '../entities/subscription'
  */
 export class GenericService {
   /* istanbul ignore next */
-  public static async getItemById (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription, id: string):
+  public static async getItem (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription, mine: boolean, id?: string):
     Promise<Video | Channel | Playlist | YTComment | Subscription> {
     if (!([ Video, Channel, Playlist, YTComment, Subscription ].includes(type))) {
       return Promise.reject('Type must be a video, channel, playlist, comment, or subscription.')
     }
 
-    const cached = Cache.get(`get://${type.endpoint}/${id}`)
+    if (!mine && (id === undefined || id === null)) {
+      return Promise.reject('Items must either specify an ID or the \'mine\' parameter.')
+    }
+
+    if (mine && (type === YTComment || type === Video)) {
+      return Promise.reject(`${type.endpoint} cannot be filtered by the 'mine' parameter.`)
+    }
+
+    const cached = Cache.get(`get://${type.endpoint}/${id ? id : 'mine'}`)
 
     if (youtube._shouldCache && cached) {
       return cached
     }
 
     const result = await youtube._request.api(type.endpoint, {
-      id,
+      [id ? 'id' : 'mine']: id ? id : mine,
       fields: encodeURIComponent(type.fields),
       part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
-    }, youtube.token, youtube._tokenType)
+    }, youtube.token, youtube.accessToken)
 
     if (result.items.length === 0) {
       return Promise.reject('Item not found')
@@ -37,16 +45,24 @@ export class GenericService {
       endResult = new (type as typeof Video | typeof Channel | typeof Playlist)(youtube, result.items[0])
     }
 
-    youtube._cache(`get://${type.endpoint}/${id}`, endResult)
+    youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
 
     return endResult
   }
 
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions', id: string, maxResults: number = -1):
+    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions', mine: boolean, id?: string, maxResults: number = -1):
       Promise<Video[] | YTComment[] | Playlist[] | Subscription[]> {
-    const cached = Cache.get(`get://${endpoint}/${id}/${maxResults}`)
+    if (!mine && (id === undefined || id === null)) {
+      return Promise.reject('Paginated items must either specify an ID or the \'mine\' parameter.')
+    }
+
+    if (mine && (endpoint.startsWith('comment') || endpoint === 'playlistItems')) {
+      return Promise.reject(`${endpoint} cannot be filtered by the 'mine' parameter.`)
+    }
+
+    const cached = Cache.get(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}`)
 
     if (youtube._shouldCache && cached) {
       return cached
@@ -63,7 +79,8 @@ export class GenericService {
       textFormat?: string,
       playlistId?: string,
       channelId?: string,
-      pageToken?: string
+      pageToken?: string,
+      mine?: boolean
     } = {
       part: 'snippet',
       maxResults: 0
@@ -86,7 +103,6 @@ export class GenericService {
       commentType = type ? type : 'video'
       endpoint = 'commentThreads'
       options[`${type}Id`] = id
-      options.part += ',replies'
       options.textFormat = 'plainText'
     } else if (endpoint === 'comments') {
       max = 100
@@ -96,12 +112,11 @@ export class GenericService {
       max = 50
       clazz = Playlist
       endpoint = 'playlists'
-      options.part += ',contentDetails,player'
-      options.channelId = id
+      if (mine) options.mine = mine; else options.channelId = id
     } else if (endpoint === 'subscriptions') {
       max = 50
       clazz = Subscription
-      options.channelId = id
+      if (mine) options.mine = mine; else options.channelId = id
     } else {
       return Promise.reject('Unknown item type ' + endpoint)
     }
@@ -117,8 +132,8 @@ export class GenericService {
     let shouldReturn = !full
 
     for (let i = 1; i < pages ? pages : 3; i++) {
-      results = await youtube._request.api(endpoint, options, youtube.token, youtube._tokenType).catch(() => {
-        return Promise.reject('Items not found')
+      results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken).catch(err => {
+        return Promise.reject(`Error fetching items: ${err}`)
       })
 
       if (results.items.length === 0) {
@@ -160,7 +175,7 @@ export class GenericService {
       }
     }
 
-    youtube._cache(`get://${endpoint}/${id}/${maxResults}`, items)
+    youtube._cache(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}`, items)
 
     return items
   }
@@ -190,7 +205,7 @@ export class GenericService {
           q: encodeURIComponent(idFromUrl),
           type: type.endpoint,
           part: 'id'
-        }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+        }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 
       id = idFromUrl
@@ -205,21 +220,21 @@ export class GenericService {
         q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id', maxResults: 1
-      }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+      }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
     } else if (type === Playlist && input.includes(' ')) {
       id = await youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
+      }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.playlistId : undefined)
     } else if (type === Video && (input.length < 11 || input.includes(' '))) {
       id = await youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: type.endpoint,
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube._tokenType).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
+      }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.videoId : undefined)
     } else {
       id = input
     }

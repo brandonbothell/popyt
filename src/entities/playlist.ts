@@ -117,6 +117,7 @@ export class Playlist {
       /* istanbul ignore next */
       this.embedHtml = playlist.player ? playlist.player.embedHtml : undefined
     } else if (data.kind === 'youtube#searchResult') {
+      this.full = false
       this.id = data.id.playlistId
     } else {
       throw new Error(`Invalid playlist type: ${data.kind}`)
@@ -128,16 +129,18 @@ export class Playlist {
       this.creatorId = data.snippet.channelId
       this.dateCreated = new Date(data.snippet.publishedAt)
       this.thumbnails = data.snippet.thumbnails
+    } else {
+      this.full = false
     }
 
     this.url = `https://youtube.com/playlist?list=${this.id}`
-    this.full = data.kind === 'youtube#playlist'
   }
 
   /**
-   * Adds every video in this playlist to the `videos` property of this playlist.
+   * Adds videos in this playlist to the `videos` property of this playlist.
+   * @param maxResults Fetches all videos if <=0.
    */
-  public async fetchVideos (maxResults: number = -1) {
+  public async fetchVideos (maxResults: number = 10) {
     this.videos = await this.youtube.getPlaylistItems(this.id, maxResults)
     return this.videos
   }

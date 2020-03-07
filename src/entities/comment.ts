@@ -35,7 +35,7 @@ export class YTComment {
   /**
    * Whether or not this a full comment object.
    */
-  public full: true = true
+  public full: boolean
 
   /**
    * The comment's author.
@@ -157,6 +157,8 @@ export class YTComment {
       this.datePublished = comment.snippet.publishedAt
       this.dateEdited = comment.snippet.updatedAt
       this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
+    } else {
+      this.full = false
     }
 
     this.id = comment.id
@@ -180,10 +182,9 @@ export class YTComment {
 
   /**
    * Fetches replies to the comment.
-   * @param maxResults The maximum amount of replies to fetch. Fetches all comments if not included
-   * or less than 0.
+   * @param maxResults The maximum amount of replies to fetch. Fetches all comments if <=0.
    */
-  public async fetchReplies (maxResults: number = -1) {
+  public async fetchReplies (maxResults: number = 10) {
     this.replies = await this.youtube.getCommentReplies(this.id, maxResults)
     return this.replies
   }

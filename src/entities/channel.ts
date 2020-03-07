@@ -182,6 +182,8 @@ export class Channel {
       if (channel.snippet) {
         this.country = channel.snippet.country
         this.language = channel.snippet.defaultLanguage
+      } else {
+        this.full = false
       }
 
       /* istanbul ignore next */
@@ -194,6 +196,8 @@ export class Channel {
         } else {
           this.subCount = -1
         }
+      } else {
+        this.full = false
       }
 
       if (channel.status) {
@@ -201,6 +205,8 @@ export class Channel {
           madeForKids: channel.status.madeForKids,
           selfDeclaredMadeForKids: channel.status.selfDeclaredMadeForKids
         }
+      } else {
+        this.full = false
       }
 
       /* istanbul ignore next */
@@ -226,8 +232,11 @@ export class Channel {
           this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
             channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
         }
+      } else {
+        this.full = false
       }
     } else if (data.kind === 'youtube#searchResult') {
+      this.full = false
       this.id = data.id.channelId
 
       /* istanbul ignore next */
@@ -246,10 +255,11 @@ export class Channel {
       this.dateCreated = new Date(data.snippet.publishedAt)
       this.name = data.snippet.title
       this.about = data.snippet.description
+    } else {
+      this.full = false
     }
 
     this.url = `https://youtube.com/channel/${this.id}`
-    this.full = data.kind === 'youtube#channel'
   }
 
   /**
@@ -297,7 +307,7 @@ export class Channel {
    * Fetches the channel's discussion tab comments and assigns them to Channel#comments.
    * @param maxResults The maximum amount of comments to fetch
    */
-  public async fetchComments (maxResults: number = -1) {
+  public async fetchComments (maxResults: number = 10) {
     this.comments = await this.youtube.getChannelComments(this.id, maxResults)
     return this.comments
   }
@@ -306,7 +316,7 @@ export class Channel {
    * Fetches the channel's playlists and assigns them to Channel#playlists.
    * @param maxResults The maximum amount of playlists to fetch
    */
-  public async fetchPlaylists (maxResults: number = -1) {
+  public async fetchPlaylists (maxResults: number = 10) {
     this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults)
     return this.playlists
   }
@@ -316,7 +326,7 @@ export class Channel {
    * @param maxResults The maximum amount of subscriptions to fetch
    */
   /* istanbul ignore next */
-  public async fetchSubscriptions (maxResults: number = -1) {
+  public async fetchSubscriptions (maxResults: number = 10) {
     this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults)
     return this.subscriptions
   }

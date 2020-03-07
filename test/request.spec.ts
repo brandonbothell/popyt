@@ -15,18 +15,18 @@ describe('Requests', () => {
     const res = await request.api('/videos', {
       id: 'dQw4w9WgXcQ',
       part: 'snippet'
-    }, apiKey, 'key')
+    }, apiKey)
 
     const res2 = await request.api('videos', {
       id: 'dQw4w9WgXcQ',
       part: 'snippet'
-    }, apiKey, 'key')
+    }, apiKey)
 
     expect(res.id).to.equal(res2.id)
   })
 
   it('should throw errors', async () => {
-    const res = await request.api('videos', { id: '' }, apiKey, 'key').catch(e => e.message)
+    const res = await request.api('videos', { id: '' }, apiKey).catch(e => e.message)
     expect(res).to.equal('Required parameter: part')
   })
 })
