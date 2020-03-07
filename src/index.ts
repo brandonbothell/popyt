@@ -30,6 +30,11 @@ export class YouTube {
    */
   public _request = new Request('https://www.googleapis.com/youtube/v3')
 
+  /**
+   * @ignore
+   */
+  public _upload = new Request('https://www.googleapis.com/upload/youtube/v3')
+
   public token: string
 
   public accessToken: string

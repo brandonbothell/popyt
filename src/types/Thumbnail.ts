@@ -1,5 +1,5 @@
 export type Thumbnail = {
-  height?: number,
+  url?: string,
   width?: number,
-  url?: string
+  height?: number
 }

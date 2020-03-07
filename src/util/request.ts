@@ -37,8 +37,14 @@ export class Request {
     return this._delete(url, accessToken)
   }
 
-  private get (url: string, token?: string): Promise<any> {
-    const options = this.parseUrlToOptions(url, 'GET')
+  public imagePost (subUrl: string, image: Buffer, imageType: 'jpeg' | 'png', params?: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return this._post(url, image, accessToken, `image/${imageType}`)
+  }
+
+  private get (url: string, token?: string, contentType: string = 'application/json'): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'GET', contentType)
 
     if (token) {
       options.headers['Authorization'] = `Bearer ${token}`
@@ -47,8 +53,8 @@ export class Request {
     return this.req(options, req => this.reqCallback(req))
   }
 
-  private _post (url: string, data: any, token: string): Promise<any> {
-    const options = this.parseUrlToOptions(url, 'POST')
+  private _post (url: string, data: any, token: string, contentType: string = 'application/json'): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'POST', contentType)
 
     if (token) {
       options.headers['Authorization'] = `Bearer ${token}`
@@ -57,8 +63,8 @@ export class Request {
     return this.req(options, req => this.reqCallback(req, data))
   }
 
-  private _put (url: string, data: any, token: string): Promise<any> {
-    const options = this.parseUrlToOptions(url, 'PUT')
+  private _put (url: string, data: any, token: string, contentType: string = 'application/json'): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'PUT', contentType)
 
     if (token) {
       options.headers['Authorization'] = `Bearer ${token}`
@@ -67,8 +73,8 @@ export class Request {
     return this.req(options, req => this.reqCallback(req, data))
   }
 
-  private _delete (url: string, token: string): Promise<any> {
-    const options = this.parseUrlToOptions(url, 'DELETE')
+  private _delete (url: string, token: string, contentType: string = 'application/json'): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'DELETE', contentType)
 
     if (token) {
       options.headers['Authorization'] = `Bearer ${token}`
@@ -77,7 +83,7 @@ export class Request {
     return this.req(options, req => this.reqCallback(req))
   }
 
-  private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE'): RequestOptions {
+  private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE', contentType: string): RequestOptions {
     const parsed = parseUrl(url)
 
     return {
@@ -86,7 +92,7 @@ export class Request {
       path: parsed.path,
       method: type,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': contentType
       }
     }
   }

@@ -217,7 +217,7 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Deletes a video.  
+   * Deletes a [[Video]].  
    * Last tested NEVER
    * @param videoId The video to delete.
    */
@@ -229,7 +229,7 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Updates a video.  
+   * Updates a [[Video]].  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * Last tested NEVER
@@ -267,5 +267,20 @@ export class OAuth {
 
     const response = this.youtube._request.put('videos', { part: parts.join(',') }, JSON.stringify(video), null, this.youtube.accessToken)
     return new Video(this.youtube, response)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Sets a new [[Thumbnail]] for a [[Video]].  
+   * Last tested 03/07/2020 11:25. PASSING
+   * @param videoId The video to set the thumbnail for.
+   * @param image The image data and type to upload.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async setThumbnail (videoId: string, image: { type: 'jpeg' | 'png', data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
+    this.checkTokenAndThrow()
+
+    const response = await this.youtube._upload.imagePost('thumbnails/set', image.data, image.type, { videoId }, null, this.youtube.accessToken)
+    return response.items[0]
   }
 }

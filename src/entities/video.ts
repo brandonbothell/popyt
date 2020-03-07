@@ -58,10 +58,10 @@ export class Video {
    */
   public thumbnails: {
     default?: Thumbnail,
-    high?: Thumbnail,
-    maxres?: Thumbnail
     medium?: Thumbnail,
+    high?: Thumbnail,
     standard?: Thumbnail
+    maxres?: Thumbnail
   }
 
   /**
@@ -339,7 +339,7 @@ export class Video {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Updates the video.
+   * Edits the video.
    * Must be using an access token with correct scopes.  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**
@@ -350,5 +350,16 @@ export class Video {
   public async update (video: VideoUpdateResource): Promise<Video> {
     const newVideo = await this.youtube.oauth.updateVideo(video)
     return Object.assign(this, { ...newVideo, full: true })
+  }
+
+  /**
+   * Sets a new thumbnail for a video.
+   * Must be using an access token with correct scopes.
+   * @param image The image data and type to upload.
+   */
+  /* istanbul ignore next */
+  public async setThumbnail (image: { type: 'jpeg' | 'png', data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
+    const newThumbnails = await this.youtube.oauth.setThumbnail(this.id, image)
+    return Object.assign(this.thumbnails, newThumbnails)
   }
 }
