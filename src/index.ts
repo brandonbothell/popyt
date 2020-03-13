@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -168,6 +168,14 @@ export class YouTube {
   }
 
   /**
+   * Get a [[VideoCategory]] object from the ID of a category.
+   * @param categoryId The ID of the category.
+   */
+  public getCategory (categoryId: string) {
+    return GenericService.getItem(this, VideoCategory, false, categoryId) as Promise<VideoCategory>
+  }
+
+  /**
    * Get a [[Subscription]] object from the subscriber and channel of a subscription.
    * @param subscriberResolvable A resolvable channel that is the subscriber.
    * @param channelResolvable A resolvable channel that is the channel being subscribed to.
@@ -242,6 +250,16 @@ export class YouTube {
    */
   public getCommentReplies (commentId: string, maxResults: number = 10) {
     return GenericService.getPaginatedItems(this, 'comments', false, commentId, maxResults) as Promise<YTComment[]>
+  }
+
+  /**
+   * Get a list of categories of a country..
+   * @param region An [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html) region code.
+   * Defaults to the US.
+   * @param all Whether or not to get all categories (otherwise just gets a page).
+   */
+  public getCategories (region: string = 'US', all: boolean = false) {
+    return GenericService.getPaginatedItems(this, 'videoCategories', false, region, all ? -1 : 100) as Promise<VideoCategory[]>
   }
 }
 
