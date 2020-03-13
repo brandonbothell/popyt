@@ -1,16 +1,17 @@
 import YouTube, { Video, Channel, Playlist, YTComment } from '..'
 import { Cache, Parser } from '../util'
 import { Subscription } from '../entities/subscription'
+import { VideoCategory } from '../entities'
 
 /**
  * @ignore
  */
 export class GenericService {
   /* istanbul ignore next */
-  public static async getItem (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription, mine: boolean, id?: string):
-    Promise<Video | Channel | Playlist | YTComment | Subscription> {
-    if (!([ Video, Channel, Playlist, YTComment, Subscription ].includes(type))) {
-      return Promise.reject('Type must be a video, channel, playlist, comment, or subscription.')
+  public static async getItem (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription | typeof VideoCategory,
+    mine: boolean, id?: string): Promise<Video | Channel | Playlist | YTComment | Subscription | VideoCategory> {
+    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory ].includes(type))) {
+      return Promise.reject('Type must be a video, channel, playlist, comment, subscription, or video category.')
     }
 
     if (!mine && (id === undefined || id === null)) {
@@ -37,12 +38,12 @@ export class GenericService {
       return Promise.reject('Item not found')
     }
 
-    let endResult: Video | Playlist | Channel | YTComment
+    let endResult: Video | Playlist | Channel | YTComment | Subscription | VideoCategory
 
     if (type === YTComment) {
       endResult = new type(youtube, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
     } else {
-      endResult = new (type as typeof Video | typeof Channel | typeof Playlist)(youtube, result.items[0])
+      endResult = new (type as typeof Video | typeof Channel | typeof Playlist | typeof Subscription | typeof VideoCategory)(youtube, result.items[0])
     }
 
     youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
@@ -52,13 +53,13 @@ export class GenericService {
 
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions', mine: boolean, id?: string, maxResults: number = -1):
-      Promise<Video[] | YTComment[] | Playlist[] | Subscription[]> {
+    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories', mine: boolean, id?: string, maxResults: number = -1):
+      Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[]> {
     if (!mine && (id === undefined || id === null)) {
       return Promise.reject('Paginated items must either specify an ID or the \'mine\' parameter.')
     }
 
-    if (mine && (endpoint.startsWith('comment') || endpoint === 'playlistItems')) {
+    if (mine && (endpoint.startsWith('comment') || [ 'playlistItems', 'videoCategories' ].includes(endpoint))) {
       return Promise.reject(`${endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
@@ -73,21 +74,21 @@ export class GenericService {
     const full = maxResults <= 0
     const options: {
       part: string,
-      maxResults: number,
+      maxResults?: number,
       videoId?: string,
       parentId?: string,
       textFormat?: string,
       playlistId?: string,
       channelId?: string,
+      regionCode?: string
       pageToken?: string,
       mine?: boolean
     } = {
-      part: 'snippet',
-      maxResults: 0
+      part: 'snippet'
     }
 
     let max: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription
+    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -117,15 +118,20 @@ export class GenericService {
       max = 50
       clazz = Subscription
       if (mine) options.mine = mine; else options.channelId = id
+    } else if (endpoint === 'videoCategories') {
+      clazz = VideoCategory
+      options.regionCode = id
     } else {
       return Promise.reject('Unknown item type ' + endpoint)
     }
 
-    if (maxResults > max) {
+    if (max && maxResults > max) {
       return Promise.reject(`Max results must be ${max} or below for ${endpoint}`)
     }
 
-    options.maxResults = full ? max : maxResults
+    if (max) {
+      options.maxResults = full ? max : maxResults
+    }
 
     let results
     let pages = null
@@ -139,7 +145,7 @@ export class GenericService {
       }
 
       if (!pages) {
-        pages = results.pageInfo.totalResults / results.pageInfo.resultsPerPage
+        pages = results.pageInfo ? results.pageInfo.totalResults / results.pageInfo.resultsPerPage : 0
 
         if (pages <= 1) {
           shouldReturn = true
