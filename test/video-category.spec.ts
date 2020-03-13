@@ -41,7 +41,7 @@ describe('Video categories', () => {
   })
 
   it('should work with fetching categories\' channels', async () => {
-    const category = (await youtube.getCategories('US', false))[0]
+    const category = (await youtube.getCategories())[0]
     expect(await category.getChannel()).to.be.an.instanceOf(Channel)
   })
 })
