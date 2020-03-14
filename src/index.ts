@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -253,7 +253,7 @@ export class YouTube {
   }
 
   /**
-   * Get a list of categories of a country..
+   * Get a list of categories of a country.
    * @param region An [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html) region code.
    * Defaults to the US.
    * @param all Whether or not to get all categories (otherwise just gets a page).

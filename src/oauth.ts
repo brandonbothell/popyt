@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
-import YouTube, { YTComment, Channel, Playlist, Subscription, Video } from '.'
+import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason } from '.'
 import { CommentThreadData, SubscriptionData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
@@ -286,5 +286,15 @@ export class OAuth {
 
     const response = await this.youtube._upload.imagePost('thumbnails/set', image.data, image.type, { videoId }, null, this.youtube.accessToken)
     return response.items[0]
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Get a list of video abuse report reasons.  
+   * Last tested 03/14/2020 10:47. PASSING
+   */
+  // tslint:enable:no-trailing-whitespace
+  public getVideoAbuseReportReasons () {
+    return GenericService.getPaginatedItems(this.youtube, 'videoAbuseReportReasons', false) as Promise<VideoAbuseReportReason[]>
   }
 }
