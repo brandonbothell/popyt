@@ -1,7 +1,5 @@
-import YouTube, { Video, Channel, Playlist, YTComment } from '..'
+import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory } from '..'
 import { Cache, Parser } from '../util'
-import { Subscription } from '../entities/subscription'
-import { VideoCategory } from '../entities'
 
 /**
  * @ignore
@@ -10,7 +8,7 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getItem (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription | typeof VideoCategory,
     mine: boolean, id?: string): Promise<Video | Channel | Playlist | YTComment | Subscription | VideoCategory> {
-    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory ].includes(type))) {
+    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason ].includes(type))) {
       return Promise.reject('Type must be a video, channel, playlist, comment, subscription, or video category.')
     }
 
@@ -53,10 +51,10 @@ export class GenericService {
 
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories', mine: boolean, id?: string, maxResults: number = -1):
-      Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[]> {
-    if (!mine && (id === undefined || id === null)) {
-      return Promise.reject('Paginated items must either specify an ID or the \'mine\' parameter.')
+    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories' | 'videoAbuseReportReasons',
+    mine: boolean, id?: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[]> {
+    if (!mine && (id === undefined || id === null) && endpoint !== 'videoAbuseReportReasons') {
+      return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
 
     if (mine && (endpoint.startsWith('comment') || [ 'playlistItems', 'videoCategories' ].includes(endpoint))) {
@@ -88,7 +86,7 @@ export class GenericService {
     }
 
     let max: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory
+    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -121,6 +119,8 @@ export class GenericService {
     } else if (endpoint === 'videoCategories') {
       clazz = VideoCategory
       options.regionCode = id
+    } else if (endpoint === 'videoAbuseReportReasons') {
+      clazz = VideoAbuseReportReason
     } else {
       return Promise.reject('Unknown item type ' + endpoint)
     }
