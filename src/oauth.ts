@@ -302,6 +302,8 @@ export class OAuth {
   // tslint:enable:no-trailing-whitespace
   public async createPlaylist (title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
     localizations?: {[language: string]: { title: string, description: string }}): Promise<Playlist> {
+    this.checkTokenAndThrow()
+
     const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
     const parts: string[] = [ 'id', 'player' ]
 
@@ -326,7 +328,7 @@ export class OAuth {
    * Updates a [[Playlist]].  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested NEVER
+   * Last tested 03/19/2020 03:13. PASSING
    * @param id The ID of the playlist to update.
    * @param title A title for the playlist.
    * @param description A description of the playlist.
@@ -338,6 +340,8 @@ export class OAuth {
   // tslint:enable:no-trailing-whitespace
   public async updatePlaylist (id: string, title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
     localizations?: {[language: string]: { title: string, description: string }}): Promise<Playlist> {
+    this.checkTokenAndThrow()
+
     const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
     const parts: string[] = [ 'id', 'player' ]
 
@@ -360,11 +364,24 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
+   * Deletes a [[Playlist]].  
+   * Last tested 03/19/2020 03:18. PASSING
+   * @param id The ID of the playlist to delete.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public deletePlaylist (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('playlists', { id }, null, this.youtube.accessToken)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
    * Get a list of video abuse report reasons.  
    * Last tested 03/14/2020 10:47. PASSING
    */
   // tslint:enable:no-trailing-whitespace
   public getVideoAbuseReportReasons () {
+    this.checkTokenAndThrow()
     return GenericService.getPaginatedItems(this.youtube, 'videoAbuseReportReasons', false) as Promise<VideoAbuseReportReason[]>
   }
 }
