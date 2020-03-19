@@ -290,8 +290,8 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
-   * Creates a [[Playlist]]  
-   * Last tested NEVER
+   * Creates a [[Playlist]].  
+   * Last tested 03/19/2020 03:06. PASSING
    * @param title A title for the playlist.
    * @param description A description of the playlist.
    * @param privacy Whether the video is private, public, or unlisted.
@@ -318,6 +318,43 @@ export class OAuth {
     if (localizations) parts.push('localizations')
 
     const response = await this.youtube._request.post('playlists', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Playlist(this.youtube, response)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Updates a [[Playlist]].  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested NEVER
+   * @param id The ID of the playlist to update.
+   * @param title A title for the playlist.
+   * @param description A description of the playlist.
+   * @param privacy Whether the video is private, public, or unlisted.
+   * @param tags Tags pertaining to the playlist.
+   * @param language The language of the playlist's default title and description.
+   * @param localizations Translated titles and descriptions.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async updatePlaylist (id: string, title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
+    localizations?: {[language: string]: { title: string, description: string }}): Promise<Playlist> {
+    const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
+    const parts: string[] = [ 'id', 'player' ]
+
+    data.id = id
+    data.snippet = { title }
+
+    if (description) data.snippet.description = description
+    if (privacy) data.status = { privacyStatus: privacy }
+    if (tags) data.snippet.tags = tags.join(',')
+    if (language) data.snippet.defaultLanguage = language
+    if (localizations) data.localizations = localizations
+
+    if (description || tags || language) parts.push('snippet')
+    if (privacy) parts.push('status')
+    if (localizations) parts.push('localizations')
+
+    const response = await this.youtube._request.put('playlists', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
     return new Playlist(this.youtube, response)
   }
 
