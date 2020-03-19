@@ -2,7 +2,7 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason } from '.'
-import { CommentThreadData, SubscriptionData } from './constants'
+import { CommentThreadData, SubscriptionData, PlaylistData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -269,7 +269,7 @@ export class OAuth {
       return this.youtube.getVideo(video.id)
     }
 
-    const response = this.youtube._request.put('videos', { part: parts.join(',') }, JSON.stringify(video), null, this.youtube.accessToken)
+    const response = await this.youtube._request.put('videos', { part: parts.join(',') }, JSON.stringify(video), null, this.youtube.accessToken)
     return new Video(this.youtube, response)
   }
 
@@ -290,11 +290,98 @@ export class OAuth {
 
   // tslint:disable:no-trailing-whitespace
   /**
+   * Creates a [[Playlist]].  
+   * Last tested 03/19/2020 03:06. PASSING
+   * @param title A title for the playlist.
+   * @param description A description of the playlist.
+   * @param privacy Whether the video is private, public, or unlisted.
+   * @param tags Tags pertaining to the playlist.
+   * @param language The language of the playlist's default title and description.
+   * @param localizations Translated titles and descriptions.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async createPlaylist (title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
+    localizations?: {[language: string]: { title: string, description: string }}): Promise<Playlist> {
+    this.checkTokenAndThrow()
+
+    const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
+    const parts: string[] = [ 'id', 'player' ]
+
+    data.snippet = { title }
+
+    if (description) data.snippet.description = description
+    if (privacy) data.status = { privacyStatus: privacy }
+    if (tags) data.snippet.tags = tags.join(',')
+    if (language) data.snippet.defaultLanguage = language
+    if (localizations) data.localizations = localizations
+
+    if (description || tags || language) parts.push('snippet')
+    if (privacy) parts.push('status')
+    if (localizations) parts.push('localizations')
+
+    const response = await this.youtube._request.post('playlists', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Playlist(this.youtube, response)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Updates a [[Playlist]].  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested 03/19/2020 03:13. PASSING
+   * @param id The ID of the playlist to update.
+   * @param title A title for the playlist.
+   * @param description A description of the playlist.
+   * @param privacy Whether the video is private, public, or unlisted.
+   * @param tags Tags pertaining to the playlist.
+   * @param language The language of the playlist's default title and description.
+   * @param localizations Translated titles and descriptions.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public async updatePlaylist (id: string, title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
+    localizations?: {[language: string]: { title: string, description: string }}): Promise<Playlist> {
+    this.checkTokenAndThrow()
+
+    const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
+    const parts: string[] = [ 'id', 'player' ]
+
+    data.id = id
+    data.snippet = { title }
+
+    if (description) data.snippet.description = description
+    if (privacy) data.status = { privacyStatus: privacy }
+    if (tags) data.snippet.tags = tags.join(',')
+    if (language) data.snippet.defaultLanguage = language
+    if (localizations) data.localizations = localizations
+
+    if (description || tags || language) parts.push('snippet')
+    if (privacy) parts.push('status')
+    if (localizations) parts.push('localizations')
+
+    const response = await this.youtube._request.put('playlists', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Playlist(this.youtube, response)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
+   * Deletes a [[Playlist]].  
+   * Last tested 03/19/2020 03:18. PASSING
+   * @param id The ID of the playlist to delete.
+   */
+  // tslint:enable:no-trailing-whitespace
+  public deletePlaylist (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('playlists', { id }, null, this.youtube.accessToken)
+  }
+
+  // tslint:disable:no-trailing-whitespace
+  /**
    * Get a list of video abuse report reasons.  
    * Last tested 03/14/2020 10:47. PASSING
    */
   // tslint:enable:no-trailing-whitespace
   public getVideoAbuseReportReasons () {
+    this.checkTokenAndThrow()
     return GenericService.getPaginatedItems(this.youtube, 'videoAbuseReportReasons', false) as Promise<VideoAbuseReportReason[]>
   }
 }

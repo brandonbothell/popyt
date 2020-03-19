@@ -17,7 +17,7 @@ export class Playlist {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,snippet(tags,title,channelId,publishedAt,thumbnails),contentDetails(itemCount),player(embedHtml))'
+  public static fields = 'items(kind,id,snippet(tags,title,description,channelId,publishedAt,thumbnails),contentDetails(itemCount),player(embedHtml))'
 
   /**
    * The YouTube object that created this playlist.
@@ -125,7 +125,10 @@ export class Playlist {
 
     /* istanbul ignore next */
     if (data.snippet) {
+      /* istanbul ignore next */
+      this.tags = data.snippet.tags ? data.snippet.tags.split(',') : undefined
       this.title = data.snippet.title
+      this.description = data.snippet.description
       this.creatorId = data.snippet.channelId
       this.dateCreated = new Date(data.snippet.publishedAt)
       this.thumbnails = data.snippet.thumbnails
