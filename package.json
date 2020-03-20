@@ -33,7 +33,7 @@
     "@types/mocha": "7.0.2",
     "@types/node": "13.9.2",
     "chai": "4.2.0",
-    "coveralls": "3.0.9",
+    "coveralls": "3.0.11",
     "dotenv": "8.2.0",
     "fs-nextra": "0.4.7",
     "gulp": "4.0.2",
