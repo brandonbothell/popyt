@@ -11,3 +11,4 @@ typings/
 .coveralls.yml
 .env
 .ionide
+.fake
