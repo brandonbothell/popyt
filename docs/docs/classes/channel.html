@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Channel | popyt</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for popyt">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -106,12 +106,14 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#full" class="tsd-kind-icon">full</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#keywords" class="tsd-kind-icon">keywords</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#kids" class="tsd-kind-icon">kids</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#language" class="tsd-kind-icon">language</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#livestatus" class="tsd-kind-icon">live<wbr>Status</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#playlists" class="tsd-kind-icon">playlists</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#profilepictures" class="tsd-kind-icon">profile<wbr>Pictures</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#subcount" class="tsd-kind-icon">sub<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#subscriptions" class="tsd-kind-icon">subscriptions</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#url" class="tsd-kind-icon">url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#videos" class="tsd-kind-icon">videos</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="channel.html#views" class="tsd-kind-icon">views</a></li>
@@ -127,8 +129,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetch" class="tsd-kind-icon">fetch</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchcomments" class="tsd-kind-icon">fetch<wbr>Comments</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchplaylists" class="tsd-kind-icon">fetch<wbr>Playlists</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchsubscriptions" class="tsd-kind-icon">fetch<wbr>Subscriptions</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#fetchvideos" class="tsd-kind-icon">fetch<wbr>Videos</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#postcomment" class="tsd-kind-icon">post<wbr>Comment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="channel.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a></li>
 							</ul>
 						</section>
 					</div>
@@ -146,7 +151,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L142">entities/channel.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L162">entities/channel.ts:162</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -171,7 +176,7 @@
 					<div class="tsd-signature tsd-kind-icon">about<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L47">entities/channel.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L47">entities/channel.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -186,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">banners<span class="tsd-signature-symbol">:</span> <a href="../globals.html#banners" class="tsd-signature-type">Banners</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L83">entities/channel.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L83">entities/channel.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -201,7 +206,7 @@
 					<div class="tsd-signature tsd-kind-icon">comment<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L118">entities/channel.ts:118</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L118">entities/channel.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">comments<span class="tsd-signature-symbol">:</span> <a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L123">entities/channel.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L123">entities/channel.ts:123</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -231,7 +236,7 @@
 					<div class="tsd-signature tsd-kind-icon">country<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L57">entities/channel.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L57">entities/channel.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -246,7 +251,7 @@
 					<div class="tsd-signature tsd-kind-icon">custom<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L67">entities/channel.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L67">entities/channel.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -261,7 +266,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L37">entities/channel.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L37">entities/channel.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -276,7 +281,7 @@
 					<div class="tsd-signature tsd-kind-icon">date<wbr>Created<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L88">entities/channel.ts:88</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L88">entities/channel.ts:88</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -291,7 +296,7 @@
 					<div class="tsd-signature tsd-kind-icon">featured<wbr>Channels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L128">entities/channel.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L128">entities/channel.ts:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -306,7 +311,7 @@
 					<div class="tsd-signature tsd-kind-icon">full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L32">entities/channel.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L32">entities/channel.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -321,7 +326,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L52">entities/channel.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L52">entities/channel.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -336,7 +341,7 @@
 					<div class="tsd-signature tsd-kind-icon">keywords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L103">entities/channel.ts:103</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L103">entities/channel.ts:103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -346,12 +351,48 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="kids" class="tsd-anchor"></a>
+					<h3>kids</h3>
+					<div class="tsd-signature tsd-kind-icon">kids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>madeForKids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>selfDeclaredMadeForKids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L152">entities/channel.ts:152</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Properties to do with videos made for children.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>made<wbr>For<wbr>Kids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Whether or not the video was made for children.</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>self<wbr>Declared<wbr>Made<wbr>For<wbr>Kids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Whether or not the poster of the video marked it as made for kids.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="language" class="tsd-anchor"></a>
 					<h3>language</h3>
 					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L93">entities/channel.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L93">entities/channel.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -366,7 +407,7 @@
 					<div class="tsd-signature tsd-kind-icon">live<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"live"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"upcoming"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L142">entities/channel.ts:142</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L147">entities/channel.ts:147</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -384,7 +425,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L42">entities/channel.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L42">entities/channel.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -399,7 +440,7 @@
 					<div class="tsd-signature tsd-kind-icon">playlists<span class="tsd-signature-symbol">:</span> <a href="playlist.html" class="tsd-signature-type">Playlist</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L133">entities/channel.ts:133</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L133">entities/channel.ts:133</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -414,7 +455,7 @@
 					<div class="tsd-signature tsd-kind-icon">profile<wbr>Pictures<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>default<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>high<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>maxres<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>medium<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>standard<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L72">entities/channel.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L72">entities/channel.ts:72</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -449,7 +490,7 @@
 					<div class="tsd-signature tsd-kind-icon">sub<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L113">entities/channel.ts:113</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L113">entities/channel.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -459,12 +500,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="subscriptions" class="tsd-anchor"></a>
+					<h3>subscriptions</h3>
+					<div class="tsd-signature tsd-kind-icon">subscriptions<span class="tsd-signature-symbol">:</span> <a href="subscription.html" class="tsd-signature-type">Subscription</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L138">entities/channel.ts:138</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The channel&#39;s subscriptions. Only defined when <code>Channel#fetchSubscriptions</code> is called.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="url" class="tsd-anchor"></a>
 					<h3>url</h3>
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L62">entities/channel.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L62">entities/channel.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -479,7 +535,7 @@
 					<div class="tsd-signature tsd-kind-icon">videos<span class="tsd-signature-symbol">:</span> <a href="playlist.html" class="tsd-signature-type">Playlist</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L108">entities/channel.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L108">entities/channel.ts:108</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -494,7 +550,7 @@
 					<div class="tsd-signature tsd-kind-icon">views<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L98">entities/channel.ts:98</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L98">entities/channel.ts:98</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -509,7 +565,7 @@
 					<div class="tsd-signature tsd-kind-icon">youtube<span class="tsd-signature-symbol">:</span> <a href="youtube.html" class="tsd-signature-type">YouTube</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L27">entities/channel.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L27">entities/channel.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -524,7 +580,7 @@
 					<div class="tsd-signature tsd-kind-icon">endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;channels&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L11">entities/channel.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L10">entities/channel.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -536,10 +592,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="fields" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> fields</h3>
-					<div class="tsd-signature tsd-kind-icon">fields<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,commentCount,viewCount,hiddenSubscriberCount),&#x27; +&#x27;snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),status(isLinked))&#x27;</span></div>
+					<div class="tsd-signature tsd-kind-icon">fields<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,commentCount,viewCount,hiddenSubscriberCount),&#x27; +&#x27;snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),&#x27; +&#x27;status(isLinked,madeForKids,selfDeclaredMadeForKids))&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L21">entities/channel.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L20">entities/channel.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -554,7 +610,7 @@
 					<div class="tsd-signature tsd-kind-icon">part<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;snippet,contentDetails,statistics,status,brandingSettings&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L16">entities/channel.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L15">entities/channel.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -576,7 +632,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L250">entities/channel.ts:250</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L287">entities/channel.ts:287</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -599,7 +655,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L273">entities/channel.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L310">entities/channel.ts:310</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -610,7 +666,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxResults: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = -1</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxResults: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The maximum amount of comments to fetch</p>
 									</div>
@@ -630,7 +686,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L282">entities/channel.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L319">entities/channel.ts:319</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -641,13 +697,44 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxResults: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = -1</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxResults: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The maximum amount of playlists to fetch</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="playlist.html" class="tsd-signature-type">Playlist</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="fetchsubscriptions" class="tsd-anchor"></a>
+					<h3>fetch<wbr>Subscriptions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Subscriptions<span class="tsd-signature-symbol">(</span>maxResults<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="subscription.html" class="tsd-signature-type">Subscription</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L329">entities/channel.ts:329</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Fetches the channel&#39;s subscriptions and assigns them to Channel#subscriptions.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxResults: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The maximum amount of subscriptions to fetch</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="subscription.html" class="tsd-signature-type">Subscription</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -661,7 +748,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L258">entities/channel.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L295">entities/channel.ts:295</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -683,7 +770,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/55f3bbd/src/entities/channel.ts#L234">entities/channel.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L271">entities/channel.ts:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -702,6 +789,52 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="subscribe" class="tsd-anchor"></a>
+					<h3>subscribe</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="subscription.html" class="tsd-signature-type">Subscription</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L339">entities/channel.ts:339</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Subscribes to the channel.
+									Must be using an access token with correct scopes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="subscription.html" class="tsd-signature-type">Subscription</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="unsubscribe" class="tsd-anchor"></a>
+					<h3>unsubscribe</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">unsubscribe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/a452eb4/src/entities/channel.ts#L348">entities/channel.ts:348</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Unsubscribes from the channel.
+									Must be using an access token with correct scopes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -762,6 +895,9 @@
 								<a href="channel.html#keywords" class="tsd-kind-icon">keywords</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="channel.html#kids" class="tsd-kind-icon">kids</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="channel.html#language" class="tsd-kind-icon">language</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -778,6 +914,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="channel.html#subcount" class="tsd-kind-icon">sub<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="channel.html#subscriptions" class="tsd-kind-icon">subscriptions</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="channel.html#url" class="tsd-kind-icon">url</a>
@@ -810,20 +949,41 @@
 								<a href="channel.html#fetchplaylists" class="tsd-kind-icon">fetch<wbr>Playlists</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="channel.html#fetchsubscriptions" class="tsd-kind-icon">fetch<wbr>Subscriptions</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="channel.html#fetchvideos" class="tsd-kind-icon">fetch<wbr>Videos</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="channel.html#postcomment" class="tsd-kind-icon">post<wbr>Comment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="channel.html#subscribe" class="tsd-kind-icon">subscribe</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="channel.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
+						<a href="oauth.html" class="tsd-kind-icon">OAuth</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="playlist.html" class="tsd-kind-icon">Playlist</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="subscription.html" class="tsd-kind-icon">Subscription</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="video.html" class="tsd-kind-icon">Video</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="videoabusereportreason.html" class="tsd-kind-icon">Video<wbr>Abuse<wbr>Report<wbr>Reason</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="videocategory.html" class="tsd-kind-icon">Video<wbr>Category</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="ytcomment.html" class="tsd-kind-icon">YTComment</a>
@@ -838,6 +998,9 @@
 						<a href="../globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#videoupdateresource" class="tsd-kind-icon">Video<wbr>Update<wbr>Resource</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#youtubeoptions" class="tsd-kind-icon">You<wbr>Tube<wbr>Options</a>
 					</li>
 				</ul>
@@ -850,57 +1013,12 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
