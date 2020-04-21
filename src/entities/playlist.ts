@@ -86,7 +86,7 @@ export class Playlist {
   public length: number
 
   /**
-   * An <iframe> tag that embeds a player that will play the playlist.
+   * An \<iframe\> tag that embeds a player that will play the playlist.
    */
   public embedHtml: string
 
