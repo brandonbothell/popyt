@@ -6,7 +6,8 @@ import { Cache } from '../util'
  */
 export class SearchService {
   /* istanbul ignore next */
-  public static async search (youtube: YouTube, types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string):
+  public static async search (youtube: YouTube, types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string,
+   fields?: string, category?: string, onlyEmbeddable: boolean = false, eventType?: 'completed' | 'live' | 'upcoming'):
   Promise<{ results: (Video | Channel | Playlist)[], prevPageToken: string, nextPageToken: string }> {
     const type = types.map(t => t.endpoint.substring(0, t.endpoint.length - 1)).join(',')
     const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
@@ -19,17 +20,19 @@ export class SearchService {
       return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
     }
 
-    const fields = 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'
     const data: {
       q: string,
-      fields: string
+      fields: string,
       maxResults: number,
       part: string,
       type: string,
-      pageToken?: string
+      pageToken?: string,
+      videoEmbeddable?: string,
+      category?: string,
+      eventType?: string
     } = {
       q: encodeURIComponent(searchTerm),
-      fields: encodeURIComponent(fields),
+      fields: encodeURIComponent(fields || 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'),
       maxResults,
       part: 'snippet',
       type
@@ -37,6 +40,18 @@ export class SearchService {
 
     if (pageToken) {
       data.pageToken = pageToken
+    }
+
+    if (category) {
+      data.category = category
+    }
+
+    if (eventType) {
+      data.eventType = eventType
+    }
+
+    if (onlyEmbeddable) {
+      data.videoEmbeddable = 'true'
     }
 
     const results = await youtube._request.api('search', data, youtube.token, youtube.accessToken)

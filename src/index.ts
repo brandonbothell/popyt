@@ -85,10 +85,11 @@ export class YouTube {
    * @param types An array of types to search for. May be a single type or multiple types.
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
+   * @param fields The fields to include in the response. Includes all by default.
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
-  public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string) {
-    return SearchService.search(this, types, searchTerm, maxResults, pageToken)
+  public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string, fields?: string) {
+    return SearchService.search(this, types, searchTerm, maxResults, pageToken, fields)
   }
 
   /**
@@ -96,9 +97,14 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
+   * @param category The category ID that you want to specifically search for.
+   * @param onlyEmbeddable Whether or not to return only embeddable videos.
+   * @param eventType The type of event you want to search for. Searches for everything by default.
    */
-  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string) {
-    return this.search([ Video ], searchTerm, maxResults, pageToken) as Promise<{ results: Video[], prevPageToken: string, nextPageToken: string }>
+  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string, category?: string, onlyEmbeddable: boolean = false,
+    eventType?: 'completed' | 'live' | 'upcoming') {
+    return SearchService.search(this, [ Video ], searchTerm, maxResults, pageToken,
+      null, category, onlyEmbeddable, eventType) as Promise<{ results: Video[], prevPageToken: string, nextPageToken: string }>
   }
 
   /**
