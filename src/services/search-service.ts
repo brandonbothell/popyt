@@ -7,7 +7,7 @@ import { Cache } from '../util'
 export class SearchService {
   /* istanbul ignore next */
   public static async search (youtube: YouTube, types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string,
-   fields?: string, category?: string, onlyEmbeddable: boolean = false, eventType?: 'completed' | 'live' | 'upcoming'):
+   fields?: string, category?: string, onlyEmbeddable: boolean = false, eventType?: 'completed' | 'live' | 'upcoming', videoType?: 'any' | 'episode' | 'movie'):
   Promise<{ results: (Video | Channel | Playlist)[], prevPageToken: string, nextPageToken: string }> {
     const type = types.map(t => t.endpoint.substring(0, t.endpoint.length - 1)).join(',')
     const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
@@ -29,7 +29,8 @@ export class SearchService {
       pageToken?: string,
       videoEmbeddable?: string,
       category?: string,
-      eventType?: string
+      eventType?: string,
+      videoType?: string
     } = {
       q: encodeURIComponent(searchTerm),
       fields: encodeURIComponent(fields || 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'),
@@ -52,6 +53,10 @@ export class SearchService {
 
     if (onlyEmbeddable) {
       data.videoEmbeddable = 'true'
+    }
+
+    if (videoType) {
+      data.videoType = videoType
     }
 
     const results = await youtube._request.api('search', data, youtube.token, youtube.accessToken)
