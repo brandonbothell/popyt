@@ -12,7 +12,8 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 Check out [our website](https://bbothell.me/popyt)!
 
 # Examples
-First of all, I recommend that you check out [the documentation](https://bbothell.me/popyt/docs) for all of the methods and what they return. Here are some basic methods:
+## Check out [the documentation](https://bbothell.me/popyt/docs).
+Here are some basic methods:
 
 Instantiate the object:
 
@@ -35,7 +36,7 @@ const video = await youtube.getVideo('dQw4w9WgXcQ')
 console.log(video)
 ```
 
-### You can do the same thing with playlists, channels, and comments by replacing `Video` with any of them. ###
+You can do the same thing with playlists, channels, and comments by replacing `Video` with any of them.  
 
 Get a video by URL:
 
@@ -51,7 +52,7 @@ const video = await youtube.getVideo('never gonna give you up')
 console.log(video)
 ```
 
-## Search videos:
+Search videos:
 
 ```js
 const videos = await youtube.searchVideos('never gonna give you up', 12)
@@ -60,7 +61,7 @@ console.log(videos) // array of 12 partial video objects
 
 Note: This wrapper does not implement every feature of the YouTube API. With a single developer working on it, there just isn't time for everything to be implemented. Some of the objectively most-important features have been added. The limits imposed by the wrapper are not imposed by YouTube.
 
-# Development
+# Development/Contributing
 ## Before committing:
 
 * Run TSLint.
