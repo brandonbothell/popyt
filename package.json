@@ -48,7 +48,7 @@
     "tslint": "6.1.2",
     "tslint-config-standard": "9.0.0",
     "typedoc": "0.17.6",
-    "typescript": "3.8.3"
+    "typescript": "3.9.2"
   },
   "repository": {
     "url": "https://github.com/jasonhaxstuff/popyt.git"
