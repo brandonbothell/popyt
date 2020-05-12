@@ -16,6 +16,7 @@
     "node_modules",
     "out",
     "test",
-    "gulpfile.ts"
+    "gulpfile.ts",
+    "typings"
   ]
 }
