@@ -11,7 +11,7 @@ if (!apiKey) {
 
 describe('Channels', () => {
   it('should reject if the channel isn\'t found', async () => {
-    expect(await youtube.getChannel('QWERTRTRWEaVeryFakeChannelID').catch(error => { return error })).to.equal('Item not found')
+    expect(await youtube.getChannel('UCQWERTRTRWEaVeryFakeChannelID').catch(error => { return error })).to.equal('Item not found')
   })
 
   it('should work with proper IDs', async () => {

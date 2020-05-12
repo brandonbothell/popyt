@@ -26,7 +26,7 @@ describe('Requests', () => {
   })
 
   it('should throw errors', async () => {
-    const res = await request.api('videos', { id: '' }, apiKey).catch(e => e.message)
-    expect(res).to.equal('Required parameter: part')
+    const res = await request.api('videos', { id: '', part: 'some' }, apiKey).catch(e => e.message)
+    expect(res).to.equal('some')
   })
 })
