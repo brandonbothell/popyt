@@ -32,7 +32,7 @@ export class GenericService {
       part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
     }, youtube.token, youtube.accessToken)
 
-    if (result.items.length === 0) {
+    if (!result.items || result.items.length === 0) {
       return Promise.reject('Item not found')
     }
 
