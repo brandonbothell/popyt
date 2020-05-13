@@ -35,7 +35,7 @@
     "chai": "4.2.0",
     "coveralls": "3.1.0",
     "dotenv": "8.2.0",
-    "fs-nextra": "0.5.0",
+    "fs-nextra": "0.5.1",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "2.6.5",
     "gulp-typedoc": "2.2.5",
