@@ -1532,10 +1532,10 @@ fs-mkdirp-stream@^1.0.0:
     graceful-fs "^4.1.11"
     through2 "^2.0.3"
 
-fs-nextra@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/fs-nextra/-/fs-nextra-0.5.0.tgz#ca405715bf2317bca68f7c0c65caca1277ee1f7d"
-  integrity sha512-gWrj7BtOa2CnCEwbD+aNP5bLejID3NBBzqUledoocYY8taQjuQjIvBoS7JUKh5ITcpIpHBa3OUApflxvrMEcjA==
+fs-nextra@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/fs-nextra/-/fs-nextra-0.5.1.tgz#acf8bd3785a46a30573d3be768e158652191fafc"
+  integrity sha512-93pi+T9yVoiUduWeLCkxgnSHWiJoplFdINdUZtNhH//DCoW7/Ee3St/NjVIdkc0UuCeU9+WVWHK+AX2JmRIMBw==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
