@@ -14,9 +14,9 @@ export class SubscriptionService {
     }
 
     const data: {
-      part: string,
-      forChannelId: string,
-      channelId: string,
+      part: string
+      forChannelId: string
+      channelId: string
       maxResults: number
     } = {
       part: 'snippet,contentDetails,subscriberSnippet',

@@ -57,9 +57,9 @@ export class Video {
    * The thumbnails of the video.
    */
   public thumbnails: {
-    default?: Thumbnail,
-    medium?: Thumbnail,
-    high?: Thumbnail,
+    default?: Thumbnail
+    medium?: Thumbnail
+    high?: Thumbnail
     standard?: Thumbnail
     maxres?: Thumbnail
   }
@@ -157,7 +157,7 @@ export class Video {
     /**
      * Whether or not the video was made for children.
      */
-    madeForKids: boolean,
+    madeForKids: boolean
 
     /**
      * Whether or not the poster of the video marked it as made for kids.
@@ -337,7 +337,6 @@ export class Video {
     return this.youtube.oauth.deleteVideo(this.id)
   }
 
-  // tslint:disable:no-trailing-whitespace
   /**
    * Edits the video.
    * Must be using an access token with correct scopes.  
@@ -345,7 +344,6 @@ export class Video {
    * the property's existing value will be deleted.**
    * @param video The updated video object.
    */
-  // tslint:enable:no-trailing-whitespace
   /* istanbul ignore next */
   public async update (video: VideoUpdateResource): Promise<Video> {
     const newVideo = await this.youtube.oauth.updateVideo(video)
@@ -358,7 +356,7 @@ export class Video {
    * @param image The image data and type to upload.
    */
   /* istanbul ignore next */
-  public async setThumbnail (image: { type: 'jpeg' | 'png', data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
+  public async setThumbnail (image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
     const newThumbnails = await this.youtube.oauth.setThumbnail(this.id, image)
     return Object.assign(this.thumbnails, newThumbnails)
   }

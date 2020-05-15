@@ -73,10 +73,10 @@ export class Playlist {
    * The thumbnails for the playlist.
    */
   public thumbnails: {
-    default?: Thumbnail,
-    high?: Thumbnail,
+    default?: Thumbnail
+    high?: Thumbnail
     maxres?: Thumbnail
-    medium?: Thumbnail,
+    medium?: Thumbnail
     standard?: Thumbnail
   }
 

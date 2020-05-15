@@ -70,10 +70,10 @@ export class Channel {
    * This channel's profile pictures.
    */
   public profilePictures: {
-    default?: Thumbnail,
-    high?: Thumbnail,
+    default?: Thumbnail
+    high?: Thumbnail
     maxres?: Thumbnail
-    medium?: Thumbnail,
+    medium?: Thumbnail
     standard?: Thumbnail
   }
 
@@ -153,7 +153,7 @@ export class Channel {
     /**
      * Whether or not the video was made for children.
      */
-    madeForKids: boolean,
+    madeForKids: boolean
 
     /**
      * Whether or not the poster of the video marked it as made for kids.

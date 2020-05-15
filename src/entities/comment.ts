@@ -44,17 +44,17 @@ export class YTComment {
     /**
      * The author's YouTube username. May not be unique.
      */
-    username: string,
+    username: string
 
     /**
      * The author's avatar URL.
      */
-    avatar: string,
+    avatar: string
 
     /**
      * The author's channel ID.
      */
-    channelId: string,
+    channelId: string
 
     /**
      * The author's channel URL.
@@ -69,7 +69,7 @@ export class YTComment {
     /**
      * What YouTube displays to the user viewing the comment.
      */
-    displayed: string,
+    displayed: string
     /**
      * The comment's plain text.
      */

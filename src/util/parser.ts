@@ -5,10 +5,10 @@ import { ISODuration } from '../types'
  * @ignore
  */
 export class Parser {
-  public static parseUrl (url: string): { video: string, playlist: string, channel: string } {
+  public static parseUrl (url: string): { video: string; playlist: string; channel: string } {
     url = url.startsWith('https://www.') ? url :
       (url.startsWith('www.') ? `https://${url}` :
-      (url.startsWith('https://') ? `${url.substring(0, 8)}www.${url.substring(8)}` : `https://www.${url}`))
+        (url.startsWith('https://') ? `${url.substring(0, 8)}www.${url.substring(8)}` : `https://www.${url}`))
 
     const parsed = parse(url, true)
 
@@ -23,7 +23,7 @@ export class Parser {
             return { video: null, playlist: null, channel: null }
           }
 
-          const response: { video: string, playlist: string, channel: string } = { video: parsed.query.v as string, playlist: null, channel: null }
+          const response: { video: string; playlist: string; channel: string } = { video: parsed.query.v as string, playlist: null, channel: null }
 
           if (parsed.query.list) {
             response.playlist = parsed.query.list as string

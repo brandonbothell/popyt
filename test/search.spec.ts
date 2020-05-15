@@ -22,16 +22,22 @@ describe('Searching', () => {
   })
 
   it('should reject if maxResults is < 1', async () => {
-    expect(await youtube.searchChannels('rick astley', 0).catch(error => { return error })).to.equal('Max results must be greater than 0 and less than or equal to 50')
+    expect(await youtube.searchChannels('rick astley', 0).catch(error => {
+      return error
+    })).to.equal('Max results must be greater than 0 and less than or equal to 50')
   })
 
   it('should reject if maxResults is > 50', async () => {
-    expect(await youtube.searchVideos('never gonna give you up', 51).catch(error => { return error })).to.equal('Max results must be greater than 0 and less than or equal to 50')
+    expect(await youtube.searchVideos('never gonna give you up', 51).catch(error => {
+      return error
+    })).to.equal('Max results must be greater than 0 and less than or equal to 50')
   })
 
   it('should reject if api key is wrong', async () => {
     const youtube = new YouTube('asda')
-    expect(await youtube.searchVideos('la di da').catch(error => { return error })).to.be.an.instanceOf(Error)
+    expect(await youtube.searchVideos('la di da').catch(error => {
+      return error
+    })).to.be.an.instanceOf(Error)
   })
 
   it('should set what it can with search results', async () => {

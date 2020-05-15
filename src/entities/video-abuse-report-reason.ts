@@ -50,7 +50,7 @@ export class VideoAbuseReportReason {
   /**
    * A list of secondary reasons associated with the reason, if any are available.
    */
-  public secondaryReasons: { id: string, label: string }[]
+  public secondaryReasons: { id: string; label: string }[]
 
   constructor (youtube: YouTube, data: any) {
     this.youtube = youtube

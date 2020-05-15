@@ -2,10 +2,10 @@
  * @ignore
  */
 export const CommentThreadData: {
-  id?: string,
+  id?: string
   snippet: {
-    channelId: string,
-    videoId?: string,
+    channelId: string
+    videoId?: string
     topLevelComment: {
       snippet: {
         textOriginal: string
@@ -29,7 +29,7 @@ export const CommentThreadData: {
 export const SubscriptionData: {
   snippet: {
     resourceId: {
-      kind: 'youtube#channel',
+      kind: 'youtube#channel'
       channelId: string
     }
   }
@@ -46,17 +46,17 @@ export const SubscriptionData: {
  * @ignore
  */
 export const PlaylistData: {
-  id?: string,
+  id?: string
   snippet: {
-    title: string,
-    description?: string,
-    tags?: string[] | string,
+    title: string
+    description?: string
+    tags?: string[] | string
     defaultLanguage?: string
-  },
+  }
   status?: {
     privacyStatus?: 'private' | 'public' | 'unlisted'
-  },
-  localizations?: {[language: string]: { title: string, description: string }}
+  }
+  localizations?: {[language: string]: { title: string; description: string }}
 } = {
   snippet: {
     title: undefined

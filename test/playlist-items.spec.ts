@@ -10,12 +10,15 @@ if (!apiKey) {
 
 describe('Playlist items', () => {
   it('should reject if the playlist isn\'t found', async () => {
-    expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID').catch(error => { return error.message })).to.equal('Not found')
+    expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID').catch(error => {
+      return error.message
+    })).to.equal('Not found')
   })
 
   it('should reject if maxResults is > 50', async () => {
-    expect(await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 51)
-      .catch(error => { return error })).to.equal('Max results must be 50 or below for playlistItems')
+    expect(await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 51).catch(error => {
+      return error
+    })).to.equal('Max results must be 50 or below for playlistItems')
   })
 
   it('should return an array with a length of <= maxResults', async () => {

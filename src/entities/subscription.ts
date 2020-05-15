@@ -53,7 +53,7 @@ export class Subscription {
     /**
      * The ID of the channel.
      */
-    id: string,
+    id: string
 
     /**
      * The name of the channel.
@@ -78,24 +78,24 @@ export class Subscription {
     /**
      * The user's ID.
      */
-    id: string,
+    id: string
 
     /**
      * The user's username.
      */
-    name: string,
+    name: string
 
     /**
      * The user's description.
      */
-    description: string,
+    description: string
 
     /**
      * Thumbnail images for the user's channel.
      */
     thumbnails: {
-      default: Thumbnail,
-      medium: Thumbnail,
+      default: Thumbnail
+      medium: Thumbnail
       high: Thumbnail
     }
   }
@@ -104,8 +104,8 @@ export class Subscription {
    * Thumbnail images for the subscription.
    */
   public thumbnails: {
-    default: Thumbnail,
-    medium: Thumbnail,
+    default: Thumbnail
+    medium: Thumbnail
     high: Thumbnail
   }
 

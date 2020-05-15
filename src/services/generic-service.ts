@@ -51,8 +51,8 @@ export class GenericService {
 
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-    'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories' | 'videoAbuseReportReasons',
-    mine: boolean, id?: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[]> {
+  'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories' | 'videoAbuseReportReasons',
+  mine: boolean, id?: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[]> {
     if (!mine && (id === undefined || id === null) && endpoint !== 'videoAbuseReportReasons') {
       return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
@@ -71,15 +71,15 @@ export class GenericService {
 
     const full = maxResults <= 0
     const options: {
-      part: string,
-      maxResults?: number,
-      videoId?: string,
-      parentId?: string,
-      textFormat?: string,
-      playlistId?: string,
-      channelId?: string,
+      part: string
+      maxResults?: number
+      videoId?: string
+      parentId?: string
+      textFormat?: string
+      playlistId?: string
+      channelId?: string
       regionCode?: string
-      pageToken?: string,
+      pageToken?: string
       mine?: boolean
     } = {
       part: 'snippet'

@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -104,7 +104,7 @@ export class YouTube {
   public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string, category?: string, onlyEmbeddable: boolean = false,
     eventType?: 'completed' | 'live' | 'upcoming', type: 'any' | 'episode' | 'movie' = 'any') {
     return SearchService.search(this, [ Video ], searchTerm, maxResults, pageToken,
-      null, category, onlyEmbeddable, eventType, type) as Promise<{ results: Video[], prevPageToken: string, nextPageToken: string }>
+      null, category, onlyEmbeddable, eventType, type) as Promise<{ results: Video[]; prevPageToken: string; nextPageToken: string }>
   }
 
   /**
@@ -114,7 +114,7 @@ export class YouTube {
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
   public searchChannels (searchTerm: string, maxResults: number = 10, pageToken?: string) {
-    return this.search([ Channel ], searchTerm, maxResults, pageToken) as Promise<{ results: Channel[], prevPageToken: string, nextPageToken: string }>
+    return this.search([ Channel ], searchTerm, maxResults, pageToken) as Promise<{ results: Channel[]; prevPageToken: string; nextPageToken: string }>
   }
 
   /**
@@ -124,7 +124,7 @@ export class YouTube {
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
   public searchPlaylists (searchTerm: string, maxResults: number = 10, pageToken?: string) {
-    return this.search([ Playlist ], searchTerm, maxResults, pageToken) as Promise<{ results: Playlist[], prevPageToken: string, nextPageToken: string }>
+    return this.search([ Playlist ], searchTerm, maxResults, pageToken) as Promise<{ results: Playlist[]; prevPageToken: string; nextPageToken: string }>
   }
 
   /**
