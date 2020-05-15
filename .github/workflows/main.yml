@@ -8,6 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1.4.2
+      with:
+        node-version: '12.12.0'
     - name: Lint
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -22,6 +24,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1.4.2
+      with:
+          node-version: '12.12.0'
     - name: Test
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}

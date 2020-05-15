@@ -8,6 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1.4.2
+      with:
+        node-version: '12.12.0'
     - name: Publish
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
