@@ -3,13 +3,22 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  lint:
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v1
-    - name: Test
+    - name: Lint
+      run: |
+        echo Installing...
+        npm i
+        
+        echo Linting...
+        npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
