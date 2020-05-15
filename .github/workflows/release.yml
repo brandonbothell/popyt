@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Publish
       env:
-
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         echo Publishing to npm...
         yarn publish
