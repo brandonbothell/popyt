@@ -1,0 +1,14 @@
+node_modules/
+.vscode/
+oauth.spec.ts
+test/data/
+out/
+coverage/
+desktop.ini
+typings/
+.nyc_output/
+*.log
+.coveralls.yml
+.env
+.ionide
+.fake
