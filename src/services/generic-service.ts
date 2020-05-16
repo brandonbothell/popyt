@@ -52,7 +52,8 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
   'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories' | 'videoAbuseReportReasons',
-  mine: boolean, id?: string, maxResults: number = -1): Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[]> {
+  mine: boolean, id?: string, maxResults: number = -1, subId?: string):
+  Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[]> {
     if (!mine && (id === undefined || id === null) && endpoint !== 'videoAbuseReportReasons') {
       return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
@@ -93,6 +94,7 @@ export class GenericService {
       max = 50
       clazz = Video
       options.playlistId = id
+      if (subId) options.videoId = subId
     } else if (endpoint.startsWith('commentThreads')) {
       max = 100
       clazz = YTComment

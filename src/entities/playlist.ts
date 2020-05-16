@@ -1,4 +1,5 @@
 import { YouTube, Video, Thumbnail } from '..'
+import { GenericService } from '../services'
 
 /**
  * A YouTube playlist.
@@ -154,5 +155,68 @@ export class Playlist {
   public async fetch () {
     const playlist = await this.youtube.getPlaylist(this.id)
     return Object.assign(this, playlist)
+  }
+
+  /**
+   * Adds a [[Video]] to the playlist.
+   * Must be using an access token with correct scopes.
+   * @param videoResolvable The URL, ID, or Title of the video.
+   * @param position The zero-based position to insert the video in.
+   * @param note A note on the video.
+   */
+  /* istanbul ignore next */
+  public async addVideo (videoResolvable: string, position?: number, note?: string) {
+    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const video = await this.youtube.oauth.addPlaylistItem(this.id, videoId, position, note)
+
+    if (this.videos) {
+      this.videos.push(video)
+    } else {
+      this.videos = [ video ]
+    }
+
+    return video
+  }
+
+  /**
+   * Updates a [[Video]] in the playlist.
+   * Must be using an access token with correct scopes.
+   * @param videoResolvable The URL, ID, or Title of the video.
+   * @param position The zero-based position to move the video to.
+   * @param note A new note on the video.
+   * @param itemId The playlist item ID if you have it.
+   */
+  /* istanbul ignore next */
+  public async updateVideo (videoResolvable: string, position?: number, note?: string, itemId?: string) {
+    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const playlistItemId = itemId ? itemId : (await GenericService.getPaginatedItems(this.youtube, 'playlistItems', false, this.id, 1, videoId))[0].id
+
+    return this.youtube.oauth.updatePlaylistItem(playlistItemId, this.id, videoId, position, note)
+  }
+
+  /**
+   * Removes a [[Video]] from the playlist.
+   * Must be using an access token with correct scopes.
+   * @param videoResolvable The URL, ID, or Title of the video. Must specify this or `itemId`.
+   * @param itemId The playlist item ID if you have it. Must specify this or `videoResolvable`.
+   */
+  /* istanbul ignore next */
+  public async removeVideo (videoResolvable?: string, itemId?: string) {
+    if (!videoResolvable && !itemId) {
+      return Promise.reject('Must specify either videoResolvable or itemId')
+    }
+
+    const playlistItemId = itemId ? itemId : (await GenericService.getPaginatedItems(this.youtube, 'playlistItems', false, this.id, 1,
+      await GenericService.getId(this.youtube, videoResolvable, Video)))[0].id
+
+    await this.youtube.oauth.deletePlaylistItem(playlistItemId)
+
+    if (this.videos) {
+      const index = this.videos.findIndex(v => v.data.id === playlistItemId)
+      
+      if (index) {
+        this.videos.splice(index, 1)
+      }
+    }
   }
 }
