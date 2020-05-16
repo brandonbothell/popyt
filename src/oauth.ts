@@ -2,7 +2,7 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason } from '.'
-import { CommentThreadData, SubscriptionData, PlaylistData } from './constants'
+import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -52,7 +52,7 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [[Playlist]]s.
-   * Last tested 03/06/2020 23:23. PASSING
+   * Last tested 05/16/2020 04:33. PASSING
    * @param maxResults The maximum number of playlists to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
@@ -264,7 +264,7 @@ export class OAuth {
 
   /**
    * Creates a [[Playlist]].
-   * Last tested 03/19/2020 03:06. PASSING
+   * Last tested 05/16/2020 04:33. PASSING
    * @param title A title for the playlist.
    * @param description A description of the playlist.
    * @param privacy Whether the video is private, public, or unlisted.
@@ -299,7 +299,7 @@ export class OAuth {
    * Updates a [[Playlist]].
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**
-   * Last tested 03/19/2020 03:13. PASSING
+   * Last tested 05/16/2020 04:33. PASSING
    * @param id The ID of the playlist to update.
    * @param title A title for the playlist.
    * @param description A description of the playlist.
@@ -333,6 +333,33 @@ export class OAuth {
   }
 
   /**
+   * Adds a [[Video]] to a [[Playlist]].  
+   * Last tested 05/16/2020 04:33. PASSING
+   * @param playlistId The ID of the playlist to add the video to.
+   * @param videoId The ID of the video to add to the playlist.
+   * @param position The position to add the video in. Defaults to the end.
+   * @param note A user-generated note on the video.
+   * @returns A partial video object.
+   */
+  public async addVideoToPlaylist (playlistId: string, videoId: string, position?: number, note?: string): Promise<Video> {
+    this.checkTokenAndThrow()
+
+    const data: typeof PlaylistItemData = JSON.parse(JSON.stringify(PlaylistItemData))
+    const parts: string[] = [ 'id', 'snippet' ]
+
+    data.snippet.playlistId = playlistId
+    data.snippet.resourceId.videoId = videoId
+
+    if (position) data.snippet.position = position
+    if (note) data.contentDetails = { note }
+
+    if (note) parts.push('contentDetails')
+
+    const response = await this.youtube._request.post('playlistItems', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Video(this.youtube, response)
+  }
+
+  /**
    * Deletes a [[Playlist]].
    * Last tested 03/19/2020 03:18. PASSING
    * @param id The ID of the playlist to delete.
@@ -343,7 +370,7 @@ export class OAuth {
   }
 
   /**
-   * Get a list of video abuse report reasons.
+   * Get a list of [[VideoAbuseReportReason]]s.
    * Last tested 03/14/2020 10:47. PASSING
    */
   public getVideoAbuseReportReasons () {

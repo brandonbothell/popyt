@@ -125,8 +125,7 @@ export class Playlist {
 
     /* istanbul ignore next */
     if (data.snippet) {
-      /* istanbul ignore next */
-      this.tags = data.snippet.tags ? data.snippet.tags.split(',') : undefined
+      this.tags = data.snippet.tags
       this.title = data.snippet.title
       this.description = data.snippet.description
       this.creatorId = data.snippet.channelId

@@ -62,3 +62,28 @@ export const PlaylistData: {
     title: undefined
   }
 }
+
+/**
+ * @ignore
+ */
+export const PlaylistItemData: {
+  snippet: {
+    playlistId: string
+    resourceId: {
+      kind: string
+      videoId: string
+    }
+    position?: number
+  }
+  contentDetails?: {
+    note?: string
+  }
+} = {
+  snippet: {
+    playlistId: undefined,
+    resourceId: {
+      kind: 'youtube#video',
+      videoId: undefined
+    }
+  }
+}
