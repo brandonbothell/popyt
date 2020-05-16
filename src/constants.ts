@@ -67,6 +67,7 @@ export const PlaylistData: {
  * @ignore
  */
 export const PlaylistItemData: {
+  id?: string
   snippet: {
     playlistId: string
     resourceId: {

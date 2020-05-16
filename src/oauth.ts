@@ -31,7 +31,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [[Channel]].
+   * Gets the authorized user's [[Channel]].  
    * Last tested 03/06/2020 22:21. PASSING
    */
   public getMe (): Promise<Channel> {
@@ -40,7 +40,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [[Subscription]]s.
+   * Gets the authorized user's [[Subscription]]s.  
    * Last tested 03/06/2020 23:20. PASSING
    * @param maxResults The maximum number of subscriptions to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
@@ -51,7 +51,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [[Playlist]]s.
+   * Gets the authorized user's [[Playlist]]s.  
    * Last tested 05/16/2020 04:33. PASSING
    * @param maxResults The maximum number of playlists to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
@@ -62,7 +62,7 @@ export class OAuth {
   }
 
   /**
-   * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.
+   * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
    * Last tested 03/04/2020 23:20. PASSING
    * @param text The text content of the comment.
    * @param channelId The channel to post the comment on.
@@ -86,7 +86,7 @@ export class OAuth {
   }
 
   /**
-   * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.
+   * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
    * Last tested 03/04/2020 23:20. PASSING
    * @param text The new text content of the comment.
    * @param commentId The ID of the comment.
@@ -113,7 +113,7 @@ export class OAuth {
   }
 
   /**
-   * Subscribe to a [[Channel]].
+   * Subscribe to a [[Channel]].  
    * Last tested 03/04/2020 23:17. PASSING
    * @param channelId The channel to subscribe to.
    * @returns A partial subscription object.
@@ -129,7 +129,7 @@ export class OAuth {
   }
 
   /**
-   * Unsubscribe from a [[Channel]].
+   * Unsubscribe from a [[Channel]].  
    * Last tested 03/04/2020 23:17. PASSING
    * @param channelId The channel to unsubscribe from.
    */
@@ -150,7 +150,7 @@ export class OAuth {
   }
 
   /**
-   * Retrieve your rating on a [[Video]].
+   * Retrieve your rating on a [[Video]].  
    * Last tested 03/07/2020 02:35. PASSING
    * @param videoId The video to retrieve your rating from.
    */
@@ -170,7 +170,7 @@ export class OAuth {
   }
 
   /**
-   * Report a [[Video]] for abuse.
+   * Report a [[Video]] for abuse.  
    * Last tested NEVER
    * @param videoId The video to report.
    * @param reasonId The reason for reporting. (IDs can be found [here](https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list))
@@ -210,9 +210,9 @@ export class OAuth {
   }
 
   /**
-   * Updates a [[Video]].
+   * Updates a [[Video]].  
    * **If your request does not specify a value for a property that already has a value,
-   * the property's existing value will be deleted.**
+   * the property's existing value will be deleted.**  
    * Last tested NEVER
    * @param video The updated video object.
    */
@@ -250,7 +250,7 @@ export class OAuth {
   }
 
   /**
-   * Sets a new [[Thumbnail]] for a [[Video]].
+   * Sets a new [[Thumbnail]] for a [[Video]].  
    * Last tested 03/07/2020 11:25. PASSING
    * @param videoId The video to set the thumbnail for.
    * @param image The image data and type to upload.
@@ -263,7 +263,7 @@ export class OAuth {
   }
 
   /**
-   * Creates a [[Playlist]].
+   * Creates a [[Playlist]].  
    * Last tested 05/16/2020 04:33. PASSING
    * @param title A title for the playlist.
    * @param description A description of the playlist.
@@ -296,9 +296,9 @@ export class OAuth {
   }
 
   /**
-   * Updates a [[Playlist]].
+   * Updates a [[Playlist]].  
    * **If your request does not specify a value for a property that already has a value,
-   * the property's existing value will be deleted.**
+   * the property's existing value will be deleted.**  
    * Last tested 05/16/2020 04:33. PASSING
    * @param id The ID of the playlist to update.
    * @param title A title for the playlist.
@@ -333,6 +333,16 @@ export class OAuth {
   }
 
   /**
+   * Deletes a [[Playlist]].  
+   * Last tested 03/19/2020 03:18. PASSING
+   * @param id The ID of the playlist to delete.
+   */
+  public deletePlaylist (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('playlists', { id }, null, this.youtube.accessToken)
+  }
+
+  /**
    * Adds a [[Video]] to a [[Playlist]].  
    * Last tested 05/16/2020 04:33. PASSING
    * @param playlistId The ID of the playlist to add the video to.
@@ -341,7 +351,7 @@ export class OAuth {
    * @param note A user-generated note on the video.
    * @returns A partial video object.
    */
-  public async addVideoToPlaylist (playlistId: string, videoId: string, position?: number, note?: string): Promise<Video> {
+  public async addPlaylistItem (playlistId: string, videoId: string, position?: number, note?: string): Promise<Video> {
     this.checkTokenAndThrow()
 
     const data: typeof PlaylistItemData = JSON.parse(JSON.stringify(PlaylistItemData))
@@ -360,13 +370,34 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [[Playlist]].
-   * Last tested 03/19/2020 03:18. PASSING
-   * @param id The ID of the playlist to delete.
+   * Edits a playlist item.  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested 05/16/2020 04:51. PASSING
+   * @param id The ID of the playlist item to edit.
+   * @param playlistId The ID of the playlist that the video is in.
+   * @param videoId The ID of the video that is in the playlist.
+   * @param position The position to change the playlist item's to.
+   * @param note The note to change the playlist item's to.
+   * @returns A partial video object.
    */
-  public deletePlaylist (id: string): Promise<void> {
+  public async updatePlaylistItem (id: string, playlistId: string, videoId: string, position?: number, note?: string): Promise<Video> {
     this.checkTokenAndThrow()
-    return this.youtube._request.delete('playlists', { id }, null, this.youtube.accessToken)
+
+    const data: typeof PlaylistItemData = JSON.parse(JSON.stringify(PlaylistItemData))
+    const parts: string[] = [ 'id', 'snippet' ]
+
+    data.id = id
+    data.snippet.playlistId = playlistId
+    data.snippet.resourceId.videoId = videoId
+
+    if (position) data.snippet.position = position
+    if (note) data.contentDetails = { note }
+
+    if (note) parts.push('contentDetails')
+
+    const response = await this.youtube._request.put('playlistItems', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Video(this.youtube, response)
   }
 
   /**
