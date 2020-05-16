@@ -12,3 +12,4 @@ typings/
 .env
 .ionide
 .fake
+docs/
