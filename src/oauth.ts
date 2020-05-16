@@ -401,6 +401,16 @@ export class OAuth {
   }
 
   /**
+   * Deletes a playlist item.  
+   * Last tested 05/16/2020 04:54. PASSING
+   * @param id The ID of the playlist item to delete.
+   */
+  public deletePlaylistItem (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('playlistItems', { id }, null, this.youtube.accessToken)
+  }
+
+  /**
    * Get a list of [[VideoAbuseReportReason]]s.
    * Last tested 03/14/2020 10:47. PASSING
    */
