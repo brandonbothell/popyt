@@ -171,21 +171,65 @@ export class YTComment {
   }
 
   /**
-   * Edits the comment.
-   * Must be using an access token with correct scopes.
-   * @param text The new text of the comment.
-   */
-  /* istanbul ignore next */
-  public edit (text: string) {
-    return this.youtube.oauth.editComment(text, this.id)
-  }
-
-  /**
    * Fetches replies to the comment.
    * @param maxResults The maximum amount of replies to fetch. Fetches all comments if <=0.
    */
   public async fetchReplies (maxResults: number = 10) {
     this.replies = await this.youtube.getCommentReplies(this.id, maxResults)
     return this.replies
+  }
+
+  /**
+   * Edits the comment.
+   * Must be using an access token with correct scopes.
+   * @param text The new text of the comment.
+   */
+  /* istanbul ignore next */
+  public edit (text: string) {
+    if (this.data.snippet.parentId) {
+      return this.youtube.oauth.editCommentReply(this.id, text)
+    }
+
+    return this.youtube.oauth.editComment(text, this.id)
+  }
+
+  /**
+   * Replies to the comment.
+   * Must be using an access token with correct scopes.
+   * @param text The text of the reply.
+   */
+  /* istanbul ignore next */
+  public reply (text: string) {
+    return this.youtube.oauth.replyToComment(this.id, text)
+  }
+
+  /**
+   * Marks the comment as spam.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public markAsSpam () {
+    return this.youtube.oauth.markCommentAsSpam(this.id)
+  }
+
+  /**
+   * Sets the comment's moderation status.
+   * Must be using an access token with correct scopes.
+   * @param status The status to set the comment to.
+   * @param banAuthor Whether or not to ban the author of the comment from commenting again.
+   * Defaults to false.
+   */
+  /* istanbul ignore next */
+  public setModerationStatus (status?: 'heldForReview' | 'published' | 'rejected', banAuthor: boolean = false) {
+    return this.youtube.oauth.setCommentModerationStatus(this.id, status, banAuthor)
+  }
+
+  /**
+   * Deletes the comment.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public delete () {
+    return this.youtube.oauth.deleteComment(this.id)
   }
 }

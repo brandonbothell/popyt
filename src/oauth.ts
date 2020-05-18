@@ -93,14 +93,14 @@ export class OAuth {
    * @param commentType What this comment is on - defaults to video.
    * Required for [[YTComment#url]] to be correct.
    */
-  public async replyToComment (commentId: string, text: string, commentType: 'video' | 'channel' = 'video') {
+  public async replyToComment (commentId: string, text: string) {
     this.checkTokenAndThrow()
 
     const data: typeof CommentData = JSON.parse(JSON.stringify(CommentData))
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, response, commentType)
+    return new YTComment(this.youtube, response, response.snippet.channelId ? 'channel' : 'video')
   }
 
   /**
@@ -138,7 +138,7 @@ export class OAuth {
    * @param commentType What this comment is on - defaults to video.
    * Required for [[YTComment#url]] to be correct.
    */
-  public async editCommentReply (commentId: string, text: string, commentType: 'video' | 'channel' = 'video') {
+  public async editCommentReply (commentId: string, text: string) {
     this.checkTokenAndThrow()
 
     const data: typeof CommentData = JSON.parse(JSON.stringify(CommentData))
@@ -146,7 +146,7 @@ export class OAuth {
     data.snippet.textOriginal = text
 
     const response = await this.youtube._request.put('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, response, commentType)
+    return new YTComment(this.youtube, response, response.snippet.channelId ? 'channel' : 'video')
   }
 
   /**
