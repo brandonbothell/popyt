@@ -213,7 +213,7 @@ export class Playlist {
 
     if (this.videos) {
       const index = this.videos.findIndex(v => v.data.id === playlistItemId)
-      
+
       if (index) {
         this.videos.splice(index, 1)
       }
