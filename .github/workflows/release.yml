@@ -10,17 +10,17 @@ jobs:
     - uses: actions/setup-node@v1.4.2
       with:
         node-version: '12.12.0'
+    - name: Install Deps
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        yarn
     - name: Publish Package
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         echo Publishing to npm...
         yarn publish
-    - name: Install Deps
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn
     - name: Build Docs
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
