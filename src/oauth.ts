@@ -32,7 +32,7 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [[Channel]].  
-   * Last tested 03/06/2020 22:21. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    */
   public getMe (): Promise<Channel> {
     this.checkTokenAndThrow()
@@ -41,7 +41,7 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [[Subscription]]s.  
-   * Last tested 03/06/2020 23:20. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param maxResults The maximum number of subscriptions to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
@@ -52,7 +52,7 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [[Playlist]]s.  
-   * Last tested 05/16/2020 04:33. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param maxResults The maximum number of playlists to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
@@ -63,7 +63,7 @@ export class OAuth {
 
   /**
    * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 03/04/2020 23:20. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param text The text content of the comment.
    * @param channelId The channel to post the comment on.
    * @param videoId The video of the channel to post the comment on.
@@ -87,7 +87,7 @@ export class OAuth {
 
   /**
    * Replies to a [[YTComment]].  
-   * Last tested 05/18/2020 11:37. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
    * @param commentType What this comment is on - defaults to video.
@@ -105,7 +105,7 @@ export class OAuth {
 
   /**
    * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 03/04/2020 23:20. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param text The new text content of the comment.
    * @param commentId The ID of the comment.
    */
@@ -132,7 +132,7 @@ export class OAuth {
 
   /**
    * Edits a [[YTComment]] reply.  
-   * Last tested 05/18/2020 11:37. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param commentId The ID of the reply to edit.
    * @param text The text to edit the reply to.
    * @param commentType What this comment is on - defaults to video.
@@ -187,7 +187,7 @@ export class OAuth {
 
   /**
    * Deletes a [[YTComment]].  
-   * Last tested 05/18/2020 11:37. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the comment to delete.
    */
   public deleteComment (id: string): Promise<void> {
@@ -197,7 +197,7 @@ export class OAuth {
 
   /**
    * Subscribe to a [[Channel]].  
-   * Last tested 03/04/2020 23:17. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param channelId The channel to subscribe to.
    * @returns A partial subscription object.
    */
@@ -213,7 +213,7 @@ export class OAuth {
 
   /**
    * Unsubscribe from a [[Channel]].  
-   * Last tested 03/04/2020 23:17. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param channelId The channel to unsubscribe from.
    */
   public unsubscribeFromChannel (subscriptionId: string): Promise<void> {
@@ -223,7 +223,7 @@ export class OAuth {
 
   /**
    * Like, dislike, or remove a rating from a [[Video]].
-   * Last tested 03/07/2020 02:15. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param videoId The video to rate.
    * @param rating The rating to give the video.
    */
@@ -234,7 +234,7 @@ export class OAuth {
 
   /**
    * Retrieve your rating on a [[Video]].  
-   * Last tested 03/07/2020 02:35. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param videoId The video to retrieve your rating from.
    */
   public async getMyRatings (videoIds: string[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
@@ -334,7 +334,7 @@ export class OAuth {
 
   /**
    * Sets a new [[Thumbnail]] for a [[Video]].  
-   * Last tested 03/07/2020 11:25. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param videoId The video to set the thumbnail for.
    * @param image The image data and type to upload.
    */
@@ -347,7 +347,7 @@ export class OAuth {
 
   /**
    * Creates a [[Playlist]].  
-   * Last tested 05/16/2020 04:33. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param title A title for the playlist.
    * @param description A description of the playlist.
    * @param privacy Whether the video is private, public, or unlisted.
@@ -382,7 +382,7 @@ export class OAuth {
    * Updates a [[Playlist]].  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 05/16/2020 04:33. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the playlist to update.
    * @param title A title for the playlist.
    * @param description A description of the playlist.
@@ -417,7 +417,7 @@ export class OAuth {
 
   /**
    * Deletes a [[Playlist]].  
-   * Last tested 03/19/2020 03:18. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the playlist to delete.
    */
   public deletePlaylist (id: string): Promise<void> {
@@ -427,7 +427,7 @@ export class OAuth {
 
   /**
    * Adds a [[Video]] to a [[Playlist]].  
-   * Last tested 05/16/2020 04:33. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param playlistId The ID of the playlist to add the video to.
    * @param videoId The ID of the video to add to the playlist.
    * @param position The position to add the video in. Defaults to the end.
@@ -456,7 +456,7 @@ export class OAuth {
    * Edits a playlist item.  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 05/16/2020 04:51. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the playlist item to edit.
    * @param playlistId The ID of the playlist that the video is in.
    * @param videoId The ID of the video that is in the playlist.
@@ -485,7 +485,7 @@ export class OAuth {
 
   /**
    * Deletes a playlist item.  
-   * Last tested 05/16/2020 04:54. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the playlist item to delete.
    */
   public deletePlaylistItem (id: string): Promise<void> {
@@ -495,7 +495,7 @@ export class OAuth {
 
   /**
    * Get a list of [[VideoAbuseReportReason]]s.
-   * Last tested 03/14/2020 10:47. PASSING
+   * Last tested 05/18/2020 11:48. PASSING
    */
   public getVideoAbuseReportReasons () {
     this.checkTokenAndThrow()
