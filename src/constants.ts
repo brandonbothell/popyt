@@ -88,3 +88,18 @@ export const PlaylistItemData: {
     }
   }
 }
+
+/**
+ * @ignore
+ */
+export const CommentData: {
+  id?: string
+  snippet: {
+    textOriginal: string
+    parentId?: string
+  }
+} = {
+  snippet: {
+    textOriginal: undefined
+  }
+}

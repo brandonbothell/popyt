@@ -2,7 +2,7 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason } from '.'
-import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData } from './constants'
+import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -86,6 +86,24 @@ export class OAuth {
   }
 
   /**
+   * Replies to a [[YTComment]].  
+   * Last tested 05/18/2020 11:37. PASSING
+   * @param commentId The ID of the comment to reply to.
+   * @param text The text to reply with.
+   * @param commentType What this comment is on - defaults to video.
+   * Required for [[YTComment#url]] to be correct.
+   */
+  public async replyToComment (commentId: string, text: string, commentType: 'video' | 'channel' = 'video') {
+    this.checkTokenAndThrow()
+
+    const data: typeof CommentData = JSON.parse(JSON.stringify(CommentData))
+    data.snippet = { parentId: commentId, textOriginal: text }
+
+    const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new YTComment(this.youtube, response, commentType)
+  }
+
+  /**
    * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
    * Last tested 03/04/2020 23:20. PASSING
    * @param text The new text content of the comment.
@@ -110,6 +128,71 @@ export class OAuth {
     }
 
     return comment
+  }
+
+  /**
+   * Edits a [[YTComment]] reply.  
+   * Last tested 05/18/2020 11:37. PASSING
+   * @param commentId The ID of the reply to edit.
+   * @param text The text to edit the reply to.
+   * @param commentType What this comment is on - defaults to video.
+   * Required for [[YTComment#url]] to be correct.
+   */
+  public async editCommentReply (commentId: string, text: string, commentType: 'video' | 'channel' = 'video') {
+    this.checkTokenAndThrow()
+
+    const data: typeof CommentData = JSON.parse(JSON.stringify(CommentData))
+    data.id = commentId
+    data.snippet.textOriginal = text
+
+    const response = await this.youtube._request.put('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new YTComment(this.youtube, response, commentType)
+  }
+
+  /**
+   * Marks a [[YTComment]] as spam.  
+   * Last tested NEVER
+   * @param commentId The ID of the comment to mark as spam.
+   */
+  public markCommentAsSpam (commentId: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.post('comments/markAsSpam', { id: commentId }, null, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Sets the moderation status of a [[YTComment]]  
+   * Last tested NEVER
+   * @param commentId The ID of the comment to set the moderation status of.
+   * @param moderationStatus The moderation status to set the comment to.
+   * @param banAuthor Whether or not to ban the author from making future comments.
+   */
+  public setCommentModerationStatus (commentId: string, moderationStatus: 'heldForReview' | 'published' | 'rejected', banAuthor?: boolean): Promise<void> {
+    this.checkTokenAndThrow()
+
+    const data: {
+      id: string
+      moderationStatus: string
+      banAuthor?: boolean
+    } = {
+      id: commentId,
+      moderationStatus
+    }
+
+    if (banAuthor) {
+      data.banAuthor = banAuthor
+    }
+
+    return this.youtube._request.post('comments/setModerationStatus', data, null, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Deletes a [[YTComment]].  
+   * Last tested 05/18/2020 11:37. PASSING
+   * @param id The ID of the comment to delete.
+   */
+  public deleteComment (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('comments', { id }, null, this.youtube.accessToken)
   }
 
   /**
