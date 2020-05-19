@@ -1,7 +1,7 @@
 import 'mocha'
 import { expect } from 'chai'
 import { youtube } from './cache.spec'
-import { VideoCategory, Channel } from '../src'
+import { GuideCategory, Channel } from '../src'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 
@@ -11,20 +11,18 @@ if (!apiKey) {
 
 let categoryId: string
 
-describe('Video categories', () => {
+describe('Guide categories', () => {
   it('should set all available properties', async () => {
-    let category = (await youtube.getCategories('US', false))[0]
+    const category = (await youtube.getGuideCategories('US'))[0]
 
     expect(category.full).to.equal(true)
 
     categoryId = category.id
-    category = (await youtube.getCategories('US', true))[0]
     await category.fetch()
 
     expect(category.id).to.be.a('string')
     expect(category.channelId).to.be.a('string')
     expect(category.title).to.be.a('string')
-    expect(category.assignable).to.be.a('boolean')
   })
 
   it('should throw an error on invalid type', () => {
@@ -32,21 +30,21 @@ describe('Video categories', () => {
 
     try {
       // tslint:disable-next-line:no-unused-expression
-      new VideoCategory(youtube, { kind: 'invalid' })
+      new GuideCategory(youtube, { kind: 'invalid' })
     } catch (err) {
       error = err.message
     }
 
-    expect(error).to.equal('Invalid video category type: invalid')
+    expect(error).to.equal('Invalid guide category type: invalid')
   })
 
   it('should work with fetching categories directly', async () => {
-    const category = await youtube.getCategory(categoryId)
+    const category = await youtube.getGuideCategory(categoryId)
     expect(category.id).to.equal(categoryId)
   })
 
   it('should work with fetching categories\' channels', async () => {
-    const category = (await youtube.getCategories())[0]
+    const category = (await youtube.getGuideCategories())[0]
     expect(await category.getChannel()).to.be.an.instanceOf(Channel)
   })
 })

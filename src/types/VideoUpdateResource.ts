@@ -1,4 +1,4 @@
-type VideoUpdateResource = {
+export type VideoUpdateResource = {
   id: string
   snippet?: {
     title: string

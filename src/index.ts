@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -182,6 +182,14 @@ export class YouTube {
   }
 
   /**
+   * Get a [[GuideCategory]] object from the ID of a category.
+   * @param categoryId The ID of the category.
+   */
+  public getGuideCategory (categoryId: string) {
+    return GenericService.getItem(this, GuideCategory, false, categoryId) as Promise<GuideCategory>
+  }
+
+  /**
    * Get a [[Subscription]] object from the subscriber and channel of a subscription.
    * @param subscriberResolvable A resolvable channel that is the subscriber.
    * @param channelResolvable A resolvable channel that is the channel being subscribed to.
@@ -266,6 +274,16 @@ export class YouTube {
    */
   public getCategories (region: string = 'US', all: boolean = false) {
     return GenericService.getPaginatedItems(this, 'videoCategories', false, region, all ? -1 : 100) as Promise<VideoCategory[]>
+  }
+
+  /**
+   * Get a list of guide categories of a country.
+   * @param region An [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html) region code.
+   * Defaults to the US.
+   * @param all Whether or not to get all categories (otherwise just gets a page).
+   */
+  public getGuideCategories (region: string = 'US') {
+    return GenericService.getPaginatedItems(this, 'guideCategories', false, region, -1) as Promise<GuideCategory[]>
   }
 }
 

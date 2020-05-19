@@ -1,22 +1,22 @@
-import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory } from '..'
+import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory } from '..'
 import { Cache, Parser } from '../util'
+import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns } from '../types'
 
 /**
  * @ignore
  */
 export class GenericService {
   /* istanbul ignore next */
-  public static async getItem (youtube: YouTube, type: typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription | typeof VideoCategory,
-    mine: boolean, id?: string): Promise<Video | Channel | Playlist | YTComment | Subscription | VideoCategory> {
-    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason ].includes(type))) {
-      return Promise.reject('Type must be a video, channel, playlist, comment, subscription, or video category.')
+  public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string): Promise<ItemReturns> {
+    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, GuideCategory ].includes(type))) {
+      return Promise.reject('Type must be a video, channel, playlist, comment, subscription, or video/guide category.')
     }
 
     if (!mine && (id === undefined || id === null)) {
       return Promise.reject('Items must either specify an ID or the \'mine\' parameter.')
     }
 
-    if (mine && (type === YTComment || type === Video)) {
+    if (mine && (type === YTComment || type === Video || type === GuideCategory)) {
       return Promise.reject(`${type.endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
@@ -36,7 +36,7 @@ export class GenericService {
       return Promise.reject('Item not found')
     }
 
-    let endResult: Video | Playlist | Channel | YTComment | Subscription | VideoCategory
+    let endResult: ItemReturns
 
     if (type === YTComment) {
       endResult = new type(youtube, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
@@ -50,10 +50,8 @@ export class GenericService {
   }
 
   /* istanbul ignore next */
-  public static async getPaginatedItems (youtube: YouTube, endpoint: 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' |
-  'commentThreads:video' | 'commentThreads:channel' | 'comments' | 'subscriptions' | 'videoCategories' | 'videoAbuseReportReasons',
-  mine: boolean, id?: string, maxResults: number = -1, subId?: string):
-  Promise<Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[]> {
+  public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1, subId?: string):
+  Promise<PaginatedItemsReturns> {
     if (!mine && (id === undefined || id === null) && endpoint !== 'videoAbuseReportReasons') {
       return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
@@ -87,7 +85,7 @@ export class GenericService {
     }
 
     let max: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason
+    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof GuideCategory
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -118,8 +116,8 @@ export class GenericService {
       max = 50
       clazz = Subscription
       if (mine) options.mine = mine; else options.channelId = id
-    } else if (endpoint === 'videoCategories') {
-      clazz = VideoCategory
+    } else if (endpoint === 'videoCategories' || endpoint === 'guideCategories') {
+      clazz = endpoint === 'videoCategories' ? VideoCategory : GuideCategory
       options.regionCode = id
     } else if (endpoint === 'videoAbuseReportReasons') {
       clazz = VideoAbuseReportReason

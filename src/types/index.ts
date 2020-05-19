@@ -1,3 +1,6 @@
 export * from './Thumbnail'
 export * from './ISODuration'
 export * from './Banners'
+export * from './GetItem'
+export * from './VideoUpdateResource'
+export * from './GetPaginatedItems'
