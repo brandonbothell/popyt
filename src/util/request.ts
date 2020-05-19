@@ -43,6 +43,19 @@ export class Request {
     return this._post(url, image, accessToken, `image/${imageType}`)
   }
 
+  public multipartPost (subUrl: string, data: any, image: Buffer, imageType: 'jpeg' | 'png', params?: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+
+    let boundary = '--------------------------'
+
+    for (let i = 0; i < 24; i++) {
+      boundary += Math.floor(Math.random() * 10).toString(16)
+    }
+
+    return this._postMultipart(url, data, image, accessToken, 'application/json', `image/${imageType}`, boundary)
+  }
+
   private get (url: string, token?: string, contentType: string = 'application/json'): Promise<any> {
     const options = this.parseUrlToOptions(url, 'GET', contentType)
 
@@ -83,6 +96,16 @@ export class Request {
     return this.req(options, req => this.reqCallback(req))
   }
 
+  private _postMultipart (url: string, data: any, image: Buffer, token: string, contentType: string, imageType: string, boundary: string): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'POST', `multipart/form-data; boundary=${boundary}`)
+
+    if (token) {
+      options.headers['Authorization'] = `Bearer ${token}`
+    }
+
+    return this.req(options, req => this.reqCallbackMultipart(req, [ { data, type: contentType }, { data: image, type: imageType } ], boundary))
+  }
+
   private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE', contentType: string): RequestOptions {
     const parsed = parseUrl(url)
 
@@ -118,7 +141,13 @@ export class Request {
             return resolve()
           }
 
-          const parsed = JSON.parse(data)
+          let parsed: any
+
+          try {
+            parsed = JSON.parse(data)
+          } catch(err) {
+            return reject('Error parsing JSON response: ' + data)
+          }
 
           if (parsed.error) {
             return reject(new Error(parsed.error.message))
@@ -145,6 +174,24 @@ export class Request {
       req.write(data)
     }
 
+    req.end()
+  }
+
+  private reqCallbackMultipart (req: OutgoingMessage, data: { type: string; data: any }[], boundary: string) {
+    req.on('error', error => {
+      throw error
+    })
+
+    for (let i = 0; i < data.length; i++) {
+      req.write(`--${boundary}\n`)
+      req.write(`Content-Disposition: form-data; name="${i}"\n`)
+      req.write(`Content-Type: ${data[i].type}\n\n`)
+
+      req.write(data[i].data)
+      req.write('\n')
+    }
+
+    req.write(`--${boundary}--`)
     req.end()
   }
 

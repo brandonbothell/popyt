@@ -2,7 +2,7 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, VideoUpdateResource } from '.'
-import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData } from './constants'
+import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData, WatermarkData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -491,6 +491,39 @@ export class OAuth {
   public deletePlaylistItem (id: string): Promise<void> {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('playlistItems', { id }, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Sets a channel's watermark.  
+   * Last tested 05/19/2020 18:07. PASSING
+   * @param id The ID of the channel to set the watermark for.
+   * @param type The timing type of the watermark.
+   * @param offset The offset, in milliseconds, from the start/end of the video to display the watermark from.
+   * @param duration The duration, in millseconds, to display the watermark for.
+   * @param image The watermark image.
+   */
+  public setChannelWatermark (id: string, type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Buffer, imageType: 'png' | 'jpeg'): Promise<void> {
+    this.checkTokenAndThrow()
+
+    const data: typeof WatermarkData = JSON.parse(JSON.stringify(WatermarkData))
+
+    data.timing = {
+      type: type === 'fromStart' ? 'offsetFromStart' : 'offsetFromEnd',
+      offsetMs: offset,
+      durationMs: duration
+    }
+
+    return this.youtube._upload.multipartPost('watermarks/set', JSON.stringify(data), image, imageType, { channelId: id }, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Unsets a channel's watermark.  
+   * Last tested 05/18/2020 18:23. PASSING
+   * @param id The ID of the channel to unset the watermark from.
+   */
+  public unsetChannelWatermark (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.post('watermarks/unset', { channelId: id }, null, null, this.youtube.accessToken)
   }
 
   /**

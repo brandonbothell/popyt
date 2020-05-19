@@ -66,7 +66,7 @@ describe('OAuth', () => {
   it('should post comment replies', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.replyToComment(commentId, text, 'channel')
+    const comment = await youtube.oauth.replyToComment(commentId, text)
     commentReplyId = comment.id
 
     expect(comment.parentId).to.equal(commentId)
@@ -75,7 +75,7 @@ describe('OAuth', () => {
   it('should edit comment replies', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.editCommentReply(commentReplyId, text, 'channel')
+    const comment = await youtube.oauth.editCommentReply(commentReplyId, text)
 
     expect(comment.text.original).to.equal(text)
   }).timeout(8000)
@@ -190,5 +190,25 @@ describe('OAuth', () => {
   it('should work with deleting playlists', async () => {
     const youtube = new YouTube(key, token)
     await youtube.oauth.deletePlaylist(playlistId)
+  })
+
+  it('should set channel watermarks', async () => {
+    const youtube = new YouTube(key, token)
+
+    if (!channelId) {
+      channelId = (await youtube.oauth.getMe()).id
+    }
+
+    await youtube.oauth.setChannelWatermark(channelId, 'fromStart', 3000, 10000, readFileSync('./test/data/watermark.png'), 'png')
+  })
+
+  it('should unset channel watermarks', async () => {
+    const youtube = new YouTube(key, token)
+
+    if (!channelId) {
+      channelId = (await youtube.oauth.getMe()).id
+    }
+
+    await youtube.oauth.unsetChannelWatermark(channelId)
   })
 })

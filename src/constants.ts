@@ -103,3 +103,20 @@ export const CommentData: {
     textOriginal: undefined
   }
 }
+
+/**
+ * @ignore
+ */
+export const WatermarkData: {
+  timing: {
+    type: string
+    offsetMs: number
+    durationMs: number
+  }
+} = {
+  timing: {
+    type: undefined,
+    offsetMs: undefined,
+    durationMs: undefined
+  }
+}
