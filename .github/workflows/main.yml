@@ -20,6 +20,11 @@ jobs:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         yarn lint
+    - name: Build
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        yarn tsc
     - name: Test
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
