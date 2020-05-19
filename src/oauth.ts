@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
-import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason } from '.'
+import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, VideoUpdateResource } from '.'
 import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'

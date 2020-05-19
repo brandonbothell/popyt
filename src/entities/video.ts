@@ -1,4 +1,4 @@
-import { YouTube } from '..'
+import { YouTube, VideoUpdateResource } from '..'
 import { Thumbnail, ISODuration } from '../types'
 import { YTComment } from './comment'
 import { Parser } from '../util'
