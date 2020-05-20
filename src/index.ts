@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language, Region } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -50,15 +50,21 @@ export class YouTube {
   public language: string
 
   /**
+   * The region for the API cater responses to. See [[YouTube#getRegions]].
+   */
+  public region: string
+
+  /**
    *
    * @param token Your YouTube Data API v3 token. Don't share this with anybody.
    * It could be an API key or an OAuth 2.0 token.
    * @param accessToken A Google OAuth 2.0 access token. Used for [[YouTube#oauth]] methods.
    * @param options Caching options. Recommended to change.
    * @param language The language for the API to respond in. See [[YouTube#getLanguages]].
+   * @param region The region for the API cater responses to. See [[YouTube#getRegions]].
    */
   constructor (token?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
-    language: string = 'en_US') {
+    language: string = 'en_US', region: string = 'US') {
     this.token = token
     this.accessToken = accessToken
 
@@ -73,6 +79,7 @@ export class YouTube {
     this._cacheTTL = options.cacheTTL
 
     this.language = language
+    this.region = region
 
     if (options.cacheCheckInterval > 0) {
       setInterval(Cache.checkTTLs, options.cacheCheckInterval * 1000)
@@ -292,8 +299,8 @@ export class YouTube {
    * Defaults to the US.
    * @param all Whether or not to get all categories (otherwise just gets a page).
    */
-  public getGuideCategories (region: string = 'US') {
-    return GenericService.getPaginatedItems(this, 'guideCategories', false, region) as Promise<GuideCategory[]>
+  public getGuideCategories () {
+    return GenericService.getPaginatedItems(this, 'guideCategories', false) as Promise<GuideCategory[]>
   }
 
   /**
@@ -301,6 +308,13 @@ export class YouTube {
    */
   public getLanguages () {
     return GenericService.getPaginatedItems(this, 'i18nLanguages', false, null) as Promise<Language[]>
+  }
+
+  /**
+   * Get a list of regions that YouTube supports.
+   */
+  public getRegions () {
+    return GenericService.getPaginatedItems(this, 'i18nRegions', false, null) as Promise<Region[]>
   }
 }
 

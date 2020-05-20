@@ -1,4 +1,4 @@
-import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory, Language } from '..'
+import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory, Language, Region } from '..'
 import { Cache, Parser } from '../util'
 import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns } from '../types'
 
@@ -53,7 +53,7 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1, subId?: string):
   Promise<PaginatedItemsReturns> {
-    if (!mine && (id === undefined || id === null) && !([ 'videoAbuseReportReasons', 'i18nLanguages' ].includes(endpoint))) {
+    if (!mine && (id === undefined || id === null) && !([ 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions' ].includes(endpoint))) {
       return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
 
@@ -88,7 +88,7 @@ export class GenericService {
 
     let max: number
     let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof GuideCategory |
-      typeof Language
+      typeof Language | typeof Region
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -121,10 +121,10 @@ export class GenericService {
       if (mine) options.mine = mine; else options.channelId = id
     } else if (endpoint === 'videoCategories' || endpoint === 'guideCategories') {
       clazz = endpoint === 'videoCategories' ? VideoCategory : GuideCategory
-      options.regionCode = id
+      options.regionCode = youtube.region
       options.hl = youtube.language
-    } else if (endpoint === 'videoAbuseReportReasons' || endpoint === 'i18nLanguages') {
-      clazz = endpoint === 'videoAbuseReportReasons' ? VideoAbuseReportReason : Language
+    } else if (endpoint === 'videoAbuseReportReasons' || endpoint === 'i18nLanguages' || endpoint === 'i18nRegions') {
+      clazz = endpoint === 'videoAbuseReportReasons' ? VideoAbuseReportReason : (endpoint === 'i18nLanguages' ? Language : Region)
       options.hl = youtube.language
     } else {
       return Promise.reject('Unknown item type ' + endpoint)

@@ -363,14 +363,13 @@ export class OAuth {
     const parts: string[] = [ 'id', 'player' ]
 
     data.snippet = { title }
+    data.snippet.defaultLanguage = language ? language : this.youtube.language
 
     if (description) data.snippet.description = description
     if (privacy) data.status = { privacyStatus: privacy }
     if (tags) data.snippet.tags = tags.join(',')
-    if (language) data.snippet.defaultLanguage = language
     if (localizations) data.localizations = localizations
 
-    if (description || tags || language) parts.push('snippet')
     if (privacy) parts.push('status')
     if (localizations) parts.push('localizations')
 
@@ -396,18 +395,17 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
-    const parts: string[] = [ 'id', 'player' ]
+    const parts: string[] = [ 'id', 'player', 'snippet' ]
 
     data.id = id
     data.snippet = { title }
+    data.snippet.defaultLanguage = language ? language : this.youtube.language
 
     if (description) data.snippet.description = description
     if (privacy) data.status = { privacyStatus: privacy }
     if (tags) data.snippet.tags = tags.join(',')
-    if (language) data.snippet.defaultLanguage = language
     if (localizations) data.localizations = localizations
 
-    if (description || tags || language) parts.push('snippet')
     if (privacy) parts.push('status')
     if (localizations) parts.push('localizations')
 

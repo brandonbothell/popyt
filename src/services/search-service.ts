@@ -26,6 +26,7 @@ export class SearchService {
       maxResults: number
       part: string
       type: string
+      regionCode: string
       pageToken?: string
       videoEmbeddable?: string
       category?: string
@@ -36,7 +37,8 @@ export class SearchService {
       fields: encodeURIComponent(fields || 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId))'),
       maxResults,
       part: 'snippet',
-      type
+      type,
+      regionCode: youtube.region
     }
 
     if (pageToken) {
