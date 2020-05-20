@@ -151,12 +151,12 @@ export class Channel {
    */
   public kids: {
     /**
-     * Whether or not the video was made for children.
+     * Whether or not the channel is made for children.
      */
     madeForKids: boolean
 
     /**
-     * Whether or not the poster of the video marked it as made for kids.
+     * Whether or not the owner of the channel marked it as made for kids.
      */
     selfDeclaredMadeForKids: boolean
   }

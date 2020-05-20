@@ -1,8 +1,8 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
-import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, VideoUpdateResource } from '.'
-import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData, WatermarkData } from './constants'
+import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, VideoUpdateResource, BrandingSettings } from '.'
+import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData, WatermarkData, ChannelData } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -489,6 +489,66 @@ export class OAuth {
   public deletePlaylistItem (id: string): Promise<void> {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('playlistItems', { id }, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Updates a channel's branding settings.
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested NEVER
+   * @param id The channel's ID.
+   * @param brandingSettings The new branding settings.
+   */
+  public async updateChannelBranding (id: string, brandingSettings: BrandingSettings): Promise<Channel> {
+    this.checkTokenAndThrow()
+
+    const data: typeof ChannelData = JSON.parse(JSON.stringify(ChannelData))
+
+    data.id = id
+    data.brandingSettings = brandingSettings
+
+    const response = await this.youtube._request.put('channels', { part: 'brandingSettings' }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Channel(this.youtube, response)
+  }
+
+  /**
+   * Updates a channel's localizations.
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested 05/20/2020 02:58. PASSING
+   * @param id The channel's ID.
+   * @param localizations The new localizations.
+   */
+  public async updateChannelLocalizations (id: string, localizations: { [key: string]: { title: string; description: string } }): Promise<Channel> {
+    this.checkTokenAndThrow()
+
+    const data: typeof ChannelData = JSON.parse(JSON.stringify(ChannelData))
+
+    data.id = id
+    data.localizations = localizations
+
+    const response = await this.youtube._request.put('channels', { part: 'localizations' }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Channel(this.youtube, response)
+  }
+
+  /**
+   * Sets a channel as made for kids or not made for kids.  
+   * Last tested 05/20/2020 02:58. PASSING
+   * @param id The ID of the channel to update.
+   * @param madeForKids Whether or not the channel is made for kids.
+   */
+  public async setChannelMadeForKids (id: string, madeForKids: boolean): Promise<Channel> {
+    this.checkTokenAndThrow()
+
+    const data: typeof ChannelData = JSON.parse(JSON.stringify(ChannelData))
+
+    data.id = id
+    data.status = {
+      selfDeclaredMadeForKids: madeForKids
+    }
+
+    const response = await this.youtube._request.put('channels', { part: 'status' }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new Channel(this.youtube, response)
   }
 
   /**

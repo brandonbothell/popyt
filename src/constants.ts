@@ -1,3 +1,5 @@
+import { BrandingSettings } from '.'
+
 /**
  * @ignore
  */
@@ -119,4 +121,23 @@ export const WatermarkData: {
     offsetMs: undefined,
     durationMs: undefined
   }
+}
+
+/**
+ * @ignore
+ */
+export const ChannelData: {
+  id: string
+  brandingSettings?: BrandingSettings
+  localizations?: {
+    [key: string]: {
+      title: string
+      description: string
+    }
+  }
+  status?: {
+    selfDeclaredMadeForKids?: boolean
+  }
+} = {
+  id: undefined
 }

@@ -210,4 +210,26 @@ describe('OAuth', () => {
 
     await youtube.oauth.unsetChannelWatermark(channelId)
   })
+
+  it('should update channel localizations', async () => {
+    const youtube = new YouTube(key, token)
+
+    if (!channelId) {
+      channelId = (await youtube.oauth.getMe()).id
+    }
+
+    // eslint-disable-next-line camelcase
+    await youtube.oauth.updateChannelLocalizations(channelId, { de_DE: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
+  })
+
+  it('should update a channel\'s made for kids status', async () => {
+    const youtube = new YouTube(key, token)
+
+    if (!channelId) {
+      channelId = (await youtube.oauth.getMe()).id
+    }
+
+    const channel = await youtube.oauth.setChannelMadeForKids(channelId, false)
+    expect(channel.kids.selfDeclaredMadeForKids).to.equal(false)
+  })
 })
