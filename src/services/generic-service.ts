@@ -53,7 +53,7 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1, subId?: string):
   Promise<PaginatedItemsReturns> {
-    if (!mine && (id === undefined || id === null) && !([ 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions' ].includes(endpoint))) {
+    if (!mine && (id === undefined || id === null) && !([ 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions', 'guideCategories' ].includes(endpoint))) {
       return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
 
