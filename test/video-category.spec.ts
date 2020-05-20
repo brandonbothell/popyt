@@ -31,7 +31,6 @@ describe('Video categories', () => {
     let error: string = null
 
     try {
-      // tslint:disable-next-line:no-unused-expression
       new VideoCategory(youtube, { kind: 'invalid' })
     } catch (err) {
       error = err.message

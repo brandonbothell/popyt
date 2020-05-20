@@ -14,7 +14,7 @@ export class OAuth {
   public youtube: YouTube
 
   /**
-   *
+   * 
    * @param youtube The YouTube object to retrieve the token from.
    */
   constructor (youtube: YouTube) {

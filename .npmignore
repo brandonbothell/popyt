@@ -4,11 +4,11 @@ src/
 docs/
 coverage/
 tsconfig.json
-tslint.json
 .vscode/
 gulpfile.js
 desktop.ini
 *.log
+.eslintrc.json
 .nycrc
 .nyc_output/
 .coveralls.yml

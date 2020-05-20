@@ -19,7 +19,6 @@ describe('Creation of the YouTube instance', () => {
     let err: string
 
     try {
-      // tslint:disable-next-line:no-unused-expression
       new YouTube('', '')
     } catch (error) {
       err = error.message

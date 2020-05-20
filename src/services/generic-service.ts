@@ -1,4 +1,4 @@
-import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory } from '..'
+import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory, Language } from '..'
 import { Cache, Parser } from '../util'
 import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns } from '../types'
 
@@ -29,7 +29,8 @@ export class GenericService {
     const result = await youtube._request.api(type.endpoint, {
       [id ? 'id' : 'mine']: id ? id : mine,
       fields: encodeURIComponent(type.fields),
-      part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
+      part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part,
+      [type === VideoCategory || type === GuideCategory ? 'hl' : '']: youtube.language
     }, youtube.token, youtube.accessToken)
 
     if (!result.items || result.items.length === 0) {
@@ -52,7 +53,7 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1, subId?: string):
   Promise<PaginatedItemsReturns> {
-    if (!mine && (id === undefined || id === null) && endpoint !== 'videoAbuseReportReasons') {
+    if (!mine && (id === undefined || id === null) && !([ 'videoAbuseReportReasons', 'i18nLanguages' ].includes(endpoint))) {
       return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
     }
 
@@ -80,12 +81,14 @@ export class GenericService {
       regionCode?: string
       pageToken?: string
       mine?: boolean
+      hl?: string
     } = {
       part: 'snippet'
     }
 
     let max: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof GuideCategory
+    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof GuideCategory |
+      typeof Language
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -119,8 +122,10 @@ export class GenericService {
     } else if (endpoint === 'videoCategories' || endpoint === 'guideCategories') {
       clazz = endpoint === 'videoCategories' ? VideoCategory : GuideCategory
       options.regionCode = id
-    } else if (endpoint === 'videoAbuseReportReasons') {
-      clazz = VideoAbuseReportReason
+      options.hl = youtube.language
+    } else if (endpoint === 'videoAbuseReportReasons' || endpoint === 'i18nLanguages') {
+      clazz = endpoint === 'videoAbuseReportReasons' ? VideoAbuseReportReason : Language
+      options.hl = youtube.language
     } else {
       return Promise.reject('Unknown item type ' + endpoint)
     }

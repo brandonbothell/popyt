@@ -29,7 +29,6 @@ describe('Guide categories', () => {
     let error: string = null
 
     try {
-      // tslint:disable-next-line:no-unused-expression
       new GuideCategory(youtube, { kind: 'invalid' })
     } catch (err) {
       error = err.message
