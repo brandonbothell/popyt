@@ -232,4 +232,11 @@ describe('OAuth', () => {
     const channel = await youtube.oauth.setChannelMadeForKids(channelId, false)
     expect(channel.kids.selfDeclaredMadeForKids).to.equal(false)
   })
+
+  it('should upload channel banners', async () => {
+    const youtube = new YouTube(key, token)
+    const url = await youtube.oauth.uploadChannelBanner({ type: 'png', data: readFileSync('./test/data/banner.png') })
+
+    expect(url).to.be.a('string')
+  })
 })

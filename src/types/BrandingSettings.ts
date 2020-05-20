@@ -67,7 +67,7 @@ export type BrandingSettings = {
   }
   image?: {
     /**
-     * The URL of a banner to use for the channel.
+     * The URL of a banner (obtained from [[OAuth#uploadChannelBanner]]) to use for the channel.
      */
     bannerExternalUrl?: string
 

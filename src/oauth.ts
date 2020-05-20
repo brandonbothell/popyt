@@ -585,6 +585,20 @@ export class OAuth {
   }
 
   /**
+   * Uploads a channel banner.  
+   * Last tested 05/20/2020 03:17. PASSING
+   * @param image The channel banner to upload.
+   * @returns The URL of the uploaded banner, used as
+   * [[BrandingSettings#image#bannerExternalUrl]] in [[OAuth#updateChannelBranding]]
+   */
+  public async uploadChannelBanner (image: { data: Buffer; type: 'png' | 'jpeg' }): Promise<string> {
+    this.checkTokenAndThrow()
+
+    const response = await this.youtube._upload.imagePost('channelBanners/insert', image.data, image.type, null, null, this.youtube.accessToken)
+    return response.url
+  }
+
+  /**
    * Get a list of [[VideoAbuseReportReason]]s.
    * Last tested 05/18/2020 11:48. PASSING
    */
