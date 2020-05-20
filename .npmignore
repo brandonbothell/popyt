@@ -5,9 +5,12 @@ docs/
 coverage/
 tsconfig.json
 .vscode/
-gulpfile.js
+gulpfile.ts
 desktop.ini
+CHANGELOG.md
+renovate.json
 *.log
+.github/
 .eslintrc.json
 .nycrc
 .nyc_output/

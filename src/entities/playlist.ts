@@ -165,7 +165,7 @@ export class Playlist {
    * @param note A note on the video.
    */
   /* istanbul ignore next */
-  public async addVideo (videoResolvable: string, position?: number, note?: string) {
+  public async addVideo (videoResolvable: string | Video, position?: number, note?: string) {
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
     const video = await this.youtube.oauth.addPlaylistItem(this.id, videoId, position, note)
 
@@ -187,7 +187,7 @@ export class Playlist {
    * @param itemId The playlist item ID if you have it.
    */
   /* istanbul ignore next */
-  public async updateVideo (videoResolvable: string, position?: number, note?: string, itemId?: string) {
+  public async updateVideo (videoResolvable: string | Video, position?: number, note?: string, itemId?: string) {
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
     const playlistItemId = itemId ? itemId : (await GenericService.getPaginatedItems(this.youtube, 'playlistItems', false, this.id, 1, videoId))[0].id
 

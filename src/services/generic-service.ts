@@ -190,7 +190,7 @@ export class GenericService {
   }
 
   /* istanbul ignore next */
-  public static async getId (youtube: YouTube, input: string, type: typeof Video | typeof Channel | typeof Playlist): Promise<string> {
+  public static async getId (youtube: YouTube, input: string | Video | Channel | Playlist, type: typeof Video | typeof Channel | typeof Playlist): Promise<string> {
     let id: string = null
 
     const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
@@ -203,6 +203,10 @@ export class GenericService {
 
     if (cachedEntity && cachedEntity.id) {
       return cachedEntity.id
+    }
+
+    if (typeof input !== 'string') {
+      return input.id
     }
 
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
