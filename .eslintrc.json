@@ -13,7 +13,24 @@
   ],
   "rules": {
     "@typescript-eslint/await-thenable": "error",
-    "@typescript-eslint/class-name-casing": "error",
+    "@typescript-eslint/naming-convention": ["error",
+      {
+        "selector": "default",
+        "format": ["camelCase"],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE"],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      }
+    ],
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/member-delimiter-style": [
       "error",
@@ -56,7 +73,6 @@
     "arrow-spacing": "error",
     "brace-style": [ "error", "1tbs" ],
     "block-spacing": [ "error", "always" ],
-    "camelcase": "error",
     "comma-dangle": "error",
     "curly": [ "error", "multi-line" ],
     "eol-last": "error",

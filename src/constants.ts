@@ -3,7 +3,7 @@ import { BrandingSettings } from '.'
 /**
  * @ignore
  */
-export const CommentThreadData: {
+export const COMMENT_THREAD_DATA: {
   id?: string
   snippet: {
     channelId: string
@@ -28,7 +28,7 @@ export const CommentThreadData: {
 /**
  * @ignore
  */
-export const SubscriptionData: {
+export const SUBSCRIPTION_DATA: {
   snippet: {
     resourceId: {
       kind: 'youtube#channel'
@@ -47,7 +47,7 @@ export const SubscriptionData: {
 /**
  * @ignore
  */
-export const PlaylistData: {
+export const PLAYLIST_DATA: {
   id?: string
   snippet: {
     title: string
@@ -68,7 +68,7 @@ export const PlaylistData: {
 /**
  * @ignore
  */
-export const PlaylistItemData: {
+export const PLAYLIST_ITEM_DATA: {
   id?: string
   snippet: {
     playlistId: string
@@ -94,7 +94,7 @@ export const PlaylistItemData: {
 /**
  * @ignore
  */
-export const CommentData: {
+export const COMMENT_DATA: {
   id?: string
   snippet: {
     textOriginal: string
@@ -109,7 +109,7 @@ export const CommentData: {
 /**
  * @ignore
  */
-export const WatermarkData: {
+export const WATERMARK_DATA: {
   timing: {
     type: string
     offsetMs: number
@@ -126,7 +126,7 @@ export const WatermarkData: {
 /**
  * @ignore
  */
-export const ChannelData: {
+export const CHANNEL_DATA: {
   id: string
   brandingSettings?: BrandingSettings
   localizations?: {

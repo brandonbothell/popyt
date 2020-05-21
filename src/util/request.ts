@@ -115,6 +115,7 @@ export class Request {
       path: parsed.path,
       method: type,
       headers: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         'Content-Type': contentType
       }
     }
