@@ -148,7 +148,7 @@ describe('OAuth', () => {
   it('should work with creating playlists', async () => {
     const youtube = new YouTube(key, token)
     const playlist = await youtube.oauth.createPlaylist('Some playlist', 'An awesome playlist!', 'unlisted', [ 'awesome', 'cool' ], 'en_US',
-      // eslint-disable-next-line camelcase
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       { de_DE: { title: 'Einige Wiedergabelisten', description: 'Eine tolle Wiedergabeliste!' } })
     playlistId = playlist.id
 
@@ -218,7 +218,7 @@ describe('OAuth', () => {
       channelId = (await youtube.oauth.getMe()).id
     }
 
-    // eslint-disable-next-line camelcase
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     await youtube.oauth.updateChannelLocalizations(channelId, { de_DE: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
   })
 

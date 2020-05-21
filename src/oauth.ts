@@ -2,7 +2,7 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, VideoUpdateResource, BrandingSettings } from '.'
-import { CommentThreadData, SubscriptionData, PlaylistData, PlaylistItemData, CommentData, WatermarkData, ChannelData } from './constants'
+import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -74,7 +74,7 @@ export class OAuth {
 
     const channelId = await GenericService.getId(this.youtube, channelResolvable, Channel)
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
-    const data: typeof CommentThreadData = JSON.parse(JSON.stringify(CommentThreadData))
+    const data: typeof COMMENT_THREAD_DATA = JSON.parse(JSON.stringify(COMMENT_THREAD_DATA))
 
     data.snippet.topLevelComment.snippet.textOriginal = text
     data.snippet.channelId = channelId
@@ -99,7 +99,7 @@ export class OAuth {
   public async replyToComment (commentId: string, text: string) {
     this.checkTokenAndThrow()
 
-    const data: typeof CommentData = JSON.parse(JSON.stringify(CommentData))
+    const data: typeof COMMENT_DATA = JSON.parse(JSON.stringify(COMMENT_DATA))
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
@@ -115,7 +115,7 @@ export class OAuth {
   public async editComment (text: string, commentId: string): Promise<YTComment> {
     this.checkTokenAndThrow()
 
-    const data: typeof CommentThreadData = JSON.parse(JSON.stringify(CommentThreadData))
+    const data: typeof COMMENT_THREAD_DATA = JSON.parse(JSON.stringify(COMMENT_THREAD_DATA))
     data.snippet.topLevelComment.snippet.textOriginal = text
     data.id = commentId
 
@@ -144,7 +144,7 @@ export class OAuth {
   public async editCommentReply (commentId: string, text: string) {
     this.checkTokenAndThrow()
 
-    const data: typeof CommentData = JSON.parse(JSON.stringify(CommentData))
+    const data: typeof COMMENT_DATA = JSON.parse(JSON.stringify(COMMENT_DATA))
     data.id = commentId
     data.snippet.textOriginal = text
 
@@ -208,7 +208,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const channelId = await GenericService.getId(this.youtube, channelResolvable, Channel)
-    const data: typeof SubscriptionData = JSON.parse(JSON.stringify(SubscriptionData))
+    const data: typeof SUBSCRIPTION_DATA = JSON.parse(JSON.stringify(SUBSCRIPTION_DATA))
 
     data.snippet.resourceId.channelId = channelId
 
@@ -372,7 +372,7 @@ export class OAuth {
     localizations?: {[language: string]: { title: string; description: string }}): Promise<Playlist> {
     this.checkTokenAndThrow()
 
-    const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
+    const data: typeof PLAYLIST_DATA = JSON.parse(JSON.stringify(PLAYLIST_DATA))
     const parts: string[] = [ 'id', 'player' ]
 
     data.snippet = { title }
@@ -408,7 +408,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const id = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
-    const data: typeof PlaylistData = JSON.parse(JSON.stringify(PlaylistData))
+    const data: typeof PLAYLIST_DATA = JSON.parse(JSON.stringify(PLAYLIST_DATA))
     const parts: string[] = [ 'id', 'player', 'snippet' ]
 
     data.id = id
@@ -454,7 +454,7 @@ export class OAuth {
     const playlistId = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
 
-    const data: typeof PlaylistItemData = JSON.parse(JSON.stringify(PlaylistItemData))
+    const data: typeof PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
 
     data.snippet.playlistId = playlistId
@@ -487,7 +487,7 @@ export class OAuth {
     const playlistId = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
 
-    const data: typeof PlaylistItemData = JSON.parse(JSON.stringify(PlaylistItemData))
+    const data: typeof PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
 
     data.id = id
@@ -525,7 +525,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
-    const data: typeof ChannelData = JSON.parse(JSON.stringify(ChannelData))
+    const data: typeof CHANNEL_DATA = JSON.parse(JSON.stringify(CHANNEL_DATA))
 
     data.id = id
     data.brandingSettings = brandingSettings
@@ -546,7 +546,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
-    const data: typeof ChannelData = JSON.parse(JSON.stringify(ChannelData))
+    const data: typeof CHANNEL_DATA = JSON.parse(JSON.stringify(CHANNEL_DATA))
 
     data.id = id
     data.localizations = localizations
@@ -565,7 +565,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
-    const data: typeof ChannelData = JSON.parse(JSON.stringify(ChannelData))
+    const data: typeof CHANNEL_DATA = JSON.parse(JSON.stringify(CHANNEL_DATA))
 
     data.id = id
     data.status = {
@@ -589,7 +589,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
-    const data: typeof WatermarkData = JSON.parse(JSON.stringify(WatermarkData))
+    const data: typeof WATERMARK_DATA = JSON.parse(JSON.stringify(WATERMARK_DATA))
 
     data.timing = {
       type: type === 'fromStart' ? 'offsetFromStart' : 'offsetFromEnd',
