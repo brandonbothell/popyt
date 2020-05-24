@@ -1,4 +1,4 @@
-export type BrandingSettings = {
+export type ChannelBrandingSettings = {
   channel?: {
     /**
      * The country this channel is based in.

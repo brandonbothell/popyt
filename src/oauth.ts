@@ -1,8 +1,9 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
-import YouTube, { YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, VideoUpdateResource, BrandingSettings } from '.'
-import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA } from './constants'
+import YouTube,
+{ YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, ChannelSection, VideoUpdateResource, ChannelBrandingSettings, ChannelSectionType } from '.'
+import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -521,7 +522,7 @@ export class OAuth {
    * @param channelResolvable The channel to update the branding settings of.
    * @param brandingSettings The new branding settings.
    */
-  public async updateChannelBranding (channelResolvable: string | Channel, brandingSettings: BrandingSettings): Promise<Channel> {
+  public async updateChannelBranding (channelResolvable: string | Channel, brandingSettings: ChannelBrandingSettings): Promise<Channel> {
     this.checkTokenAndThrow()
 
     const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
@@ -624,6 +625,99 @@ export class OAuth {
 
     const response = await this.youtube._upload.imagePost('channelBanners/insert', image.data, image.type, null, null, this.youtube.accessToken)
     return response.url
+  }
+
+  /**
+   * 
+   * Last tested 05/24/2020 10:11. PASSING
+   * @param type The type of channel section.
+   * @param style The style of the channel section.
+   * @param name The name of the channel section.
+   * @param position The position of the channel section on the channel homepage.
+   * @param language The default language of the channel section.
+   * @param playlistsResolvable Any playlists in the channel section.
+   * @param channelsResolvable Any channels in the channel section.
+   * @param localizations Translations of the channel section's title.
+   * @param targeting Targeting data for the channel section.
+   */
+  public async addChannelSection (type: ChannelSectionType, style: 'horizontalRow' | 'verticalList', name?: string, language?: string,
+    playlistsResolvable?: (string | Playlist)[], channelsResolvable?: (string | Channel)[], localizations?: { [key: string]: { title: string } },
+    targeting?: { countries?: string[]; languages?: string[]; regions?: string[] }): Promise<ChannelSection> {
+    this.checkTokenAndThrow()
+
+    const data: typeof CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(CHANNEL_SECTION_DATA))
+    const parts: string[] = [ 'id', 'snippet' ]
+
+    data.snippet.type = type
+    data.snippet.style = style
+
+    if (name) data.snippet.title = name
+    if (language) data.snippet.defaultLanguage = language
+    if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
+    if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => GenericService.getId(this.youtube, v, Playlist)))
+    if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => GenericService.getId(this.youtube, v, Channel)))
+    if (localizations) data.localizations = localizations
+    if (targeting) data.targeting = targeting
+
+    if (playlistsResolvable || channelsResolvable) parts.push('contentDetails')
+    if (localizations) parts.push('localizations')
+    if (targeting) parts.push('targeting')
+
+    const response = await this.youtube._request.post('channelSections', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new ChannelSection(this.youtube, response)
+  }
+
+  /**
+   * 
+   * Last tested 05/24/2020 10:11. PASSING
+   * @param id The ID of the channel section.
+   * @param type The type of channel section.
+   * @param style The style of the channel section.
+   * @param name The name of the channel section.
+   * @param position The position of the channel section on the channel homepage.
+   * @param language The default language of the channel section.
+   * @param playlistsResolvable Any playlists in the channel section.
+   * @param channelsResolvable Any channels in the channel section.
+   * @param localizations Translations of the channel section's title.
+   * @param targeting Targeting data for the channel section.
+   */
+  public async updateChannelSection (id: string, type: ChannelSectionType, style: 'horizontalRow' | 'verticalList', name?: string, position?: number, language?: string,
+    playlistsResolvable?: (string | Playlist)[], channelsResolvable?: (string | Channel)[], localizations?: { [key: string]: { title: string } },
+    targeting?: { countries?: string[]; languages?: string[]; regions?: string[] }): Promise<ChannelSection> {
+    this.checkTokenAndThrow()
+
+    const data: typeof CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(CHANNEL_SECTION_DATA))
+    const parts: string[] = [ 'id', 'snippet' ]
+
+    data.id = id
+    data.snippet.type = type
+    data.snippet.style = style
+
+    if (name) data.snippet.title = name
+    if (position) data.snippet.position = position
+    if (language) data.snippet.defaultLanguage = language
+    if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
+    if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => GenericService.getId(this.youtube, v, Playlist)))
+    if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => GenericService.getId(this.youtube, v, Channel)))
+    if (localizations) data.localizations = localizations
+    if (targeting) data.targeting = targeting
+
+    if (playlistsResolvable || channelsResolvable) parts.push('contentDetails')
+    if (localizations) parts.push('localizations')
+    if (targeting) parts.push('targeting')
+
+    const response = await this.youtube._request.put('channelSections', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
+    return new ChannelSection(this.youtube, response)
+  }
+
+  /**
+   * 
+   * Last tested 05/24/2020 10:11. PASSING
+   * @param id The ID of the channel section.
+   */
+  public deleteChannelSection (id: string): Promise<ChannelSection> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('channelSections', { id }, null, this.youtube.accessToken)
   }
 
   /**

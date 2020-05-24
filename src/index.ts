@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language, Region } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language, Region, ChannelSection } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -206,6 +206,10 @@ export class YouTube {
     return GenericService.getItem(this, GuideCategory, false, categoryId) as Promise<GuideCategory>
   }
 
+  public getChannelSection (sectionId: string) {
+    return GenericService.getItem(this, ChannelSection, false, sectionId) as Promise<ChannelSection>
+  }
+
   /**
    * Get a [[Subscription]] object from the subscriber and channel of a subscription.
    * @param subscriberResolvable A resolvable channel that is the subscriber.
@@ -284,13 +288,20 @@ export class YouTube {
   }
 
   /**
+   * Gets the [[ChannelSection]]s of a [[Channel]]. Used mostly internally with [[Channel#fetchSections]].
+   * @param channelId The ID of the channel to get the sections from.
+   * @returns Partial channel section objects.
+   */
+  public getChannelSections (channelId: string) {
+    return GenericService.getPaginatedItems(this, 'channelSections', false, channelId) as Promise<ChannelSection[]>
+  }
+
+  /**
    * Get a list of categories of a country.
-   * @param region An [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html) region code.
-   * Defaults to the US.
    * @param all Whether or not to get all categories (otherwise just gets a page).
    */
-  public getCategories (region: string = 'US', all: boolean = false) {
-    return GenericService.getPaginatedItems(this, 'videoCategories', false, region, all ? -1 : 100) as Promise<VideoCategory[]>
+  public getCategories (all: boolean = false) {
+    return GenericService.getPaginatedItems(this, 'videoCategories', false, null, all ? -1 : 100) as Promise<VideoCategory[]>
   }
 
   /**

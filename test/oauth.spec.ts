@@ -23,6 +23,8 @@ let commentReplyId: string
 let playlistId: string
 let playlistItemId: string
 
+let sectionId: string
+
 describe('OAuth', () => {
   it('should fetch my channel', async () => {
     const youtube = new YouTube(key, token)
@@ -238,5 +240,43 @@ describe('OAuth', () => {
     const url = await youtube.oauth.uploadChannelBanner({ type: 'png', data: readFileSync('./test/data/banner.png') })
 
     expect(url).to.be.a('string')
+  })
+
+  it('should work with adding channel sections', async () => {
+    const youtube = new YouTube(key, token)
+    const section = await youtube.oauth.addChannelSection('multipleChannels', 'horizontalRow', 'Testing woot', 'en_US',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      null, [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ], { de_DE: { title: 'Test juchhu' } }, { languages: [ 'en_US', 'de_DE' ] })
+    sectionId = section.id
+
+    expect(section.type).to.equal('multipleChannels')
+    expect(section.style).to.equal('horizontalRow')
+    expect(section.name).to.equal('Testing woot')
+    expect(section.channelId).to.equal(channelId)
+    expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw').and.contain('UCS5Oz6CHmeoF7vSad0qqXfw')
+    expect(section.language).to.equal('en_US')
+    expect(section.localizations).to.haveOwnProperty('de')
+    expect(section.targeting.languages).to.contain('en').and.contain('de')
+  })
+
+  it('should work with updating channel sections', async () => {
+    const youtube = new YouTube(key, token)
+    const section = await youtube.oauth.updateChannelSection(sectionId, 'multiplePlaylists', 'verticalList', 'Test...', 1, 'de_DE',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ], null, { en_US: { title: 'Testing...' } }, { languages: [ 'en_US', 'de_DE' ] })
+
+    expect(section.type).to.equal('multiplePlaylists')
+    expect(section.style).to.equal('verticalList')
+    expect(section.name).to.equal('Test...')
+    expect(section.position).to.equal(1)
+    expect(section.playlistIds).to.contain('PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74').and.contain('PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6')
+    expect(section.language).to.equal('de')
+    expect(section.localizations).to.haveOwnProperty('en')
+    expect(section.targeting.languages).to.contain('en').and.contain('de')
+  })
+
+  it('should work with deleting channel sections', async () => {
+    const youtube = new YouTube(key, token)
+    await youtube.oauth.deleteChannelSection(sectionId)
   })
 })

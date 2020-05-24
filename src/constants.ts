@@ -1,4 +1,4 @@
-import { BrandingSettings } from '.'
+import { ChannelBrandingSettings, ChannelSectionType } from '.'
 
 /**
  * @ignore
@@ -128,7 +128,7 @@ export const WATERMARK_DATA: {
  */
 export const CHANNEL_DATA: {
   id: string
-  brandingSettings?: BrandingSettings
+  brandingSettings?: ChannelBrandingSettings
   localizations?: {
     [key: string]: {
       title: string
@@ -140,4 +140,37 @@ export const CHANNEL_DATA: {
   }
 } = {
   id: undefined
+}
+
+/**
+ * @ignore
+ */
+export const CHANNEL_SECTION_DATA: {
+  id?: string
+  snippet: {
+    type: ChannelSectionType
+    style: 'horizontalRow' | 'verticalList'
+    title?: string
+    position?: number
+    defaultLanguage?: string
+  }
+  contentDetails?: {
+    playlists?: string[]
+    channels?: string[]
+  }
+  localizations?: {
+    [key: string]: {
+      title: string
+    }
+  }
+  targeting?: {
+    countries?: string[]
+    languages?: string[]
+    regions?: string[]
+  }
+} = {
+  snippet: {
+    type: undefined,
+    style: undefined
+  }
 }
