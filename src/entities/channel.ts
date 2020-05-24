@@ -1,4 +1,4 @@
-import { YouTube, Playlist, Thumbnail, Banners, YTComment, Subscription } from '..'
+import { YouTube, Playlist, Thumbnail, Banners, YTComment, Subscription, ChannelSection } from '..'
 
 /**
  * A YouTube channel.
@@ -136,6 +136,11 @@ export class Channel {
    * The channel's subscriptions. Only defined when `Channel#fetchSubscriptions` is called.
    */
   public subscriptions: Subscription[]
+
+  /**
+   * The channel's sections. Only defined when [[Channel#fetchSections]] is called.
+   */
+  public sections: ChannelSection[]
 
   /**
    * Only set if the channel is a search result.
@@ -329,6 +334,14 @@ export class Channel {
   public async fetchSubscriptions (maxResults: number = 10) {
     this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults)
     return this.subscriptions
+  }
+
+  /**
+   * Fetches the channel's sections and assigns them to [[Channel#sections]].
+   */
+  public async fetchSections () {
+    this.sections = await this.youtube.getChannelSections(this.id)
+    return this.sections
   }
 
   /**
