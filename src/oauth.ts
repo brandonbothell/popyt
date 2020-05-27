@@ -245,7 +245,7 @@ export class OAuth {
    * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvables The video(s) to retrieve your rating from.
    */
-  public async getMyRatings (videoResolvables: string[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
+  public async getMyRatings (videoResolvables: (string | Video)[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
     this.checkTokenAndThrow()
 
     const videoIds = await Promise.all(videoResolvables.map(videoResolvable => GenericService.getId(this.youtube, videoResolvable, Video)))
@@ -628,7 +628,7 @@ export class OAuth {
   }
 
   /**
-   * 
+   * Adds a [[ChannelSection]] to a [[Channel]].  
    * Last tested 05/24/2020 10:11. PASSING
    * @param type The type of channel section.
    * @param style The style of the channel section.
@@ -668,7 +668,9 @@ export class OAuth {
   }
 
   /**
-   * 
+   * Updates a [[ChannelSection]].
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
    * Last tested 05/24/2020 10:11. PASSING
    * @param id The ID of the channel section.
    * @param type The type of channel section.
@@ -711,7 +713,7 @@ export class OAuth {
   }
 
   /**
-   * 
+   * Deletes a [[ChannelSection]].
    * Last tested 05/24/2020 10:11. PASSING
    * @param id The ID of the channel section.
    */
@@ -721,7 +723,7 @@ export class OAuth {
   }
 
   /**
-   * Get a list of [[VideoAbuseReportReason]]s.
+   * Gets a list of [[VideoAbuseReportReason]]s.
    * Last tested 05/18/2020 11:48. PASSING
    */
   public getVideoAbuseReportReasons () {
