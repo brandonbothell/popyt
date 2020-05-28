@@ -26,12 +26,23 @@ export class GenericService {
       return cached
     }
 
-    const result = await youtube._request.api(type.endpoint, {
+    const params: {
+      id?: string
+      mine?: string
+      fields: string
+      part: string
+      hl?: string
+    } = {
       [id ? 'id' : 'mine']: id ? id : mine,
       fields: encodeURIComponent(type.fields),
-      part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part,
-      [type === VideoCategory || type === GuideCategory ? 'hl' : '']: youtube.language
-    }, youtube.token, youtube.accessToken)
+      part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
+    }
+
+    if (type === VideoCategory || type === GuideCategory) {
+      params.hl = youtube.language
+    }
+
+    const result = await youtube._request.api(type.endpoint, params, youtube.token, youtube.accessToken)
 
     if (!result.items || result.items.length === 0) {
       return Promise.reject('Item not found')
