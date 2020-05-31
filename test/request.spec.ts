@@ -27,6 +27,6 @@ describe('Requests', () => {
 
   it('should throw errors', async () => {
     const res = await request.api('videos', { id: '', part: 'some' }, apiKey).catch(e => e.message)
-    expect(res).to.equal('\'some\'')
+    expect(res).to.equal('some')
   })
 })
