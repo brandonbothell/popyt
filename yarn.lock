@@ -2999,10 +2999,10 @@ memoizee@0.4.X:
     next-tick "1"
     timers-ext "^0.1.5"
 
-merge2@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.3.0.tgz#5b366ee83b2f1582c48f87e47cf1a9352103ca81"
-  integrity sha512-2j4DAdlBOkiSZIsaXk4mTE3sRS02yBHAtfy127xRV3bQUFqXkjHCHLW6Scv7DwNRbIWNHH8zpnz9zMaKXIdvYw==
+merge2@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.4.0.tgz#bdd9881be97140bb706cd4ff0fa4dc95855dbd60"
+  integrity sha512-jxzaaEHzHbWqSj2fn02NhgvJSYT6RQYNGBDh4xL8ynXzzEhrtolRQ5AKCNXX99mX/JbwD9uI6gK5Y1dzZcUUtQ==
 
 micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
