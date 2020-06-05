@@ -54,7 +54,7 @@ describe('Channels', () => {
   it('should work with fetching subscriptions with maxResults', async () => {
     Channel.part = 'id'
 
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+    const channel = await youtube.getChannel('UCg4XK-l40KZD7fLi12pJ1YA')
     expect((await channel.fetchSubscriptions(1))[0]).to.be.an.instanceOf(Subscription)
   })
 
