@@ -39,7 +39,7 @@
     "coveralls": "3.1.0",
     "dotenv": "8.2.0",
     "eslint": "7.2.0",
-    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-import": "2.21.0",
     "eslint-plugin-jsdoc": "27.0.4",
     "fs-nextra": "0.5.1",
     "gulp": "4.0.2",
