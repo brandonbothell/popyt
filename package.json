@@ -6,7 +6,7 @@
   "main": "out/index.js",
   "types": "typings/index.d.ts",
   "scripts": {
-    "test": "mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/!(oauth).spec.ts\" --timeout 10000",
+    "test": "mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --parallel --recursive \"./test/!(oauth|caption).spec.ts\" --timeout 10000",
     "coverage": "nyc yarn test && nyc report --reporter=text-lcov | coveralls",
     "docs": "gulp typedoc",
     "prepublishOnly": "gulp",

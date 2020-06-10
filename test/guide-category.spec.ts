@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { youtube } from './cache.spec'
+import { youtube } from './setup-instance'
 import { GuideCategory, Channel } from '../src'
 
 const apiKey = process.env.YOUTUBE_API_KEY
