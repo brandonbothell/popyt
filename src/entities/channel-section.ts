@@ -72,15 +72,11 @@ export class ChannelSection {
   /**
    * The IDs of the playlists in this channel section. Undefined if there aren't any.
    */
-  // API broken
-  /* istanbul ignore next */
   public playlistIds?: string[]
 
   /**
    * The IDs of the channels in this channel section. Undefined if there aren't any.
    */
-  // API broken
-  /* istanbul ignore next */
   public channelIds?: string[]
 
   /**
@@ -121,15 +117,11 @@ export class ChannelSection {
   /**
    * The playlists in the channel section. Only available after calling [[ChannelSection#fetchPlaylists]].
    */
-  // API broken
-  /* istanbul ignore next */
   public playlists?: Playlist[]
 
   /**
    * The channels in the channel section. Only available after calling [[ChannelSection#fetchChannels]].
    */
-  // API broken
-  /* istanbul ignore next */
   public channels?: Channel[]
 
   /**
@@ -205,8 +197,6 @@ export class ChannelSection {
   /**
    * Fetches the channel section's playlists and assigns them to the [[ChannelSection#playlists]] property.
    */
-  // API broken
-  /* istanbul ignore next */
   public async fetchPlaylists () {
     if (!this.playlistIds) {
       return
@@ -225,8 +215,6 @@ export class ChannelSection {
   /**
    * Fetches the channel section's playlists and assigns them to the [[ChannelSection#playlists]] property.
    */
-  // API broken
-  /* istanbul ignore next */
   public async fetchChannels () {
     if (!this.channelIds) {
       return

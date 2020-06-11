@@ -1,11 +1,12 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YouTube, VideoAbuseReportReason } from '../src'
+import { YouTube, VideoAbuseReportReason, Caption } from '../src'
 import { readFileSync } from 'fs'
 
 const key = process.env.YOUTUBE_API_KEY
 const token = process.env.YOUTUBE_ACCESS_TOKEN
 const thumbnailVideoId = process.env.YOUTUBE_THUMBNAIL_VIDEO_ID
+const captionVideoId = process.env.YOUTUBE_CAPTION_VIDEO_ID
 
 if (!key) {
   throw new Error('No API key')
@@ -24,6 +25,9 @@ let playlistId: string
 let playlistItemId: string
 
 let sectionId: string
+
+let trackId: string
+let captionTrack: Buffer
 
 describe('OAuth', () => {
   it('should fetch my channel', async () => {
@@ -278,5 +282,51 @@ describe('OAuth', () => {
   it('should work with deleting channel sections', async () => {
     const youtube = new YouTube(key, token)
     await youtube.oauth.deleteChannelSection(sectionId)
+  })
+
+  it('should get caption tracks of videos', async () => {
+    const youtube = new YouTube(key, token)
+    const tracks = await youtube.oauth.getCaptions(captionVideoId)
+    const track = await youtube.oauth.getCaption(captionVideoId, tracks[0].id)
+
+    trackId = track.id
+
+    expect(tracks).to.be.an('array')
+    expect(tracks[0]).to.be.an.instanceOf(Caption)
+    expect(track).to.be.an.instanceOf(Caption)
+  })
+
+  it('should download caption tracks', async () => {
+    const youtube = new YouTube(key, token)
+    captionTrack = await youtube.oauth.downloadCaption(trackId, 'sbv')
+
+    expect(captionTrack).to.be.an.instanceOf(Buffer)
+  })
+
+  it('should update caption tracks', async () => {
+    const youtube = new YouTube(key, token)
+    const track = await youtube.oauth.updateCaption(trackId, captionTrack, false)
+
+    expect(track.draft).to.equal(false)
+  })
+
+  it('should delete caption tracks', async () => {
+    const youtube = new YouTube(key, token)
+
+    if (!captionTrack) {
+      console.log('no caption track to replace with, not attempting to delete the current one')
+      return
+    }
+
+    await youtube.oauth.deleteCaption(trackId)
+  })
+
+  it('should upload caption tracks', async () => {
+    const youtube = new YouTube(key, token)
+    const track = await youtube.oauth.uploadCaption(captionVideoId, 'en_US', 'Main', captionTrack, false)
+
+    expect(track.draft).to.equal(false)
+    expect(track.name).to.equal('Main')
+    expect(track.language).to.equal('en-US')
   })
 })

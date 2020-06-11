@@ -2,8 +2,20 @@
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
 import YouTube,
-{ YTComment, Channel, Playlist, Subscription, Video, VideoAbuseReportReason, ChannelSection, VideoUpdateResource, ChannelBrandingSettings, ChannelSectionType } from '.'
-import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA } from './constants'
+{
+  YTComment,
+  Channel,
+  Playlist,
+  Subscription,
+  Video,
+  VideoAbuseReportReason,
+  ChannelSection,
+  VideoUpdateResource,
+  ChannelBrandingSettings,
+  ChannelSectionType,
+  Caption
+} from '.'
+import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA, CAPTION_DATA } from './constants'
 import { GenericService } from './services'
 import { Cache } from './util'
 
@@ -598,7 +610,7 @@ export class OAuth {
       durationMs: duration
     }
 
-    return this.youtube._upload.multipartPost('watermarks/set', JSON.stringify(data), image, imageType, { channelId: id }, null, this.youtube.accessToken)
+    return this.youtube._upload.multipartImagePost('watermarks/set', JSON.stringify(data), image, imageType, { channelId: id }, null, this.youtube.accessToken)
   }
 
   /**
@@ -720,6 +732,137 @@ export class OAuth {
   public deleteChannelSection (id: string): Promise<ChannelSection> {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('channelSections', { id }, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Get a [[Caption]] object from the ID of the caption.  
+   * Last tested 06/11/2020 04:50. PASSING
+   * @param videoResolvable The Title, URL, or ID of the video to get the caption from.
+   * @param captionId The ID of the caption.
+   */
+  public async getCaption (videoResolvable: string | Video, captionId: string): Promise<Caption> {
+    this.checkTokenAndThrow()
+
+    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const data = await this.youtube._request.api('captions', { videoId, id: captionId, part: 'snippet' }, null, this.youtube.accessToken)
+
+    if (!data.items || data.items.length === 0) {
+      return Promise.reject('Caption not found')
+    }
+
+    return new Caption(this.youtube, data.items[0])
+  }
+
+  /**
+   * Gets the [[Caption]]s of a [[Video]]. Used mostly internally with [[Video#fetchCaptions]].  
+   * Last tested 06/11/2020 04:50. PASSING
+   * @param videoResolvable The Title, URL, or ID of the video to get the captions from.
+   */
+  public async getCaptions (videoResolvable: string | Video): Promise<Caption[]> {
+    this.checkTokenAndThrow()
+
+    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const data = await this.youtube._request.api('captions', { videoId, part: 'snippet' }, null, this.youtube.accessToken)
+
+    if (!data.items || data.items.length === 0) {
+      return Promise.reject('Captions not found')
+    }
+
+    return data.items.map(caption => new Caption(this.youtube, caption))
+  }
+
+  /**
+   * Uploads a [[Caption]] track for a [[Video]].  
+   * Last tested 06/11/2020 04:50. PASSING
+   * @param videoResolvable The video to add the caption track to.
+   * @param language The language that the caption track is in.
+   * @param name The name of the caption track.
+   * @param track The caption track to upload.
+   * @param draft Whether or not the caption track is a draft. If it is, it isn't visible to users.
+   */
+  public async uploadCaption (videoResolvable: string | Video, language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
+    this.checkTokenAndThrow()
+
+    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const data: typeof CAPTION_DATA = JSON.parse(JSON.stringify(CAPTION_DATA))
+
+    data.snippet = {
+      videoId: videoId,
+      language: language,
+      name: name,
+      isDraft: draft
+    }
+
+    const response = await this.youtube._upload.multipartStreamPost('captions', JSON.stringify(data), track, { part: 'snippet' }, null, this.youtube.accessToken)
+    return new Caption(this.youtube, response)
+  }
+
+  /**
+   * Edits a [[Caption]] track.  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**  
+   * Last tested 06/11/2020 04:50. PASSING
+   * @param id The ID of the caption track to edit.
+   * @param track The caption track to upload.
+   * @param draft Whether or not the caption track is a draft. If it is, it isn't visible to users.
+   */
+  public async updateCaption (id: string, track?: Buffer, draft: boolean = null): Promise<Caption> {
+    this.checkTokenAndThrow()
+
+    const data: typeof CAPTION_DATA = JSON.parse(JSON.stringify(CAPTION_DATA))
+
+    data.id = id
+    data.snippet = { isDraft: draft }
+
+    let response
+
+    if (track) {
+      if (draft !== null) {
+        response = await this.youtube._upload.multipartStreamPut('captions', JSON.stringify(data), track, { part: 'snippet' }, null, this.youtube.accessToken)
+      } else {
+        response = await this.youtube._upload.streamPut('captions', track, { part: 'snippet' }, null, this.youtube.accessToken)
+      }
+    } else {
+      response = await this.youtube._request.put('captions', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
+    }
+
+    return new Caption(this.youtube, response)
+  }
+
+  /**
+   * Downloads a [[Caption]] track.  
+   * Last tested 06/11/2020 04:50. PASSING
+   * @param id The ID of the caption track to download.
+   * @param format The file format to download the track in.
+   * @param language The language to download the track in.
+   */
+  public downloadCaption (id: string, format?: 'sbv' | 'scc' | 'srt' | 'ttml' | 'vtt', language?: string): Promise<Buffer> {
+    this.checkTokenAndThrow()
+
+    const params: {
+      tfmt?: string
+      tlang?: string
+    } = {}
+
+    if (format) {
+      params.tfmt = format
+    }
+
+    if (language) {
+      params.tlang = language
+    }
+
+    return this.youtube._request.api(`captions/${id}`, params, null, this.youtube.accessToken)
+  }
+
+  /**
+   * Deletes a [[Caption]] track.  
+   * Last tested 06/11/2020 04:50. PASSING
+   * @param id The ID of the caption track to delete.
+   */
+  public deleteCaption (id: string): Promise<void> {
+    this.checkTokenAndThrow()
+    return this.youtube._request.delete('captions', { id }, null, this.youtube.accessToken)
   }
 
   /**

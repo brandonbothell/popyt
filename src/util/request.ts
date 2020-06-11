@@ -43,7 +43,26 @@ export class Request {
     return this._post(url, image, accessToken, `image/${imageType}`)
   }
 
-  public multipartPost (subUrl: string, data: any, image: Buffer, imageType: 'jpeg' | 'png', params?: Object, token?: string, accessToken?: string): Promise<any> {
+  public streamPut (subUrl: string, stream: Buffer, params?: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    return this._put(url, stream, accessToken, 'application/octet-stream')
+  }
+
+  public multipartStreamPost (subUrl: string, data: any, extraData: Buffer, params?: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+
+    let boundary = '--------------------------'
+
+    for (let i = 0; i < 24; i++) {
+      boundary += Math.floor(Math.random() * 10).toString(16)
+    }
+
+    return this._postMultipart(url, data, extraData, accessToken, 'application/json', 'application/octet-stream', boundary)
+  }
+
+  public multipartImagePost (subUrl: string, data: any, image: Buffer, imageType: 'jpeg' | 'png', params?: Object, token?: string, accessToken?: string): Promise<any> {
     const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
                 (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
 
@@ -54,6 +73,19 @@ export class Request {
     }
 
     return this._postMultipart(url, data, image, accessToken, 'application/json', `image/${imageType}`, boundary)
+  }
+
+  public multipartStreamPut (subUrl: string, data: any, extraData: Buffer, params?: Object, token?: string, accessToken?: string): Promise<any> {
+    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
+                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+
+    let boundary = '--------------------------'
+
+    for (let i = 0; i < 24; i++) {
+      boundary += Math.floor(Math.random() * 10).toString(16)
+    }
+
+    return this._putMultipart(url, data, extraData, accessToken, 'application/json', 'application/octet-stream', boundary)
   }
 
   private get (url: string, token?: string, contentType: string = 'application/json'): Promise<any> {
@@ -96,14 +128,24 @@ export class Request {
     return this.req(options, req => this.reqCallback(req))
   }
 
-  private _postMultipart (url: string, data: any, image: Buffer, token: string, contentType: string, imageType: string, boundary: string): Promise<any> {
+  private _postMultipart (url: string, data: any, extraData: Buffer, token: string, contentType: string, extraType: string, boundary: string): Promise<any> {
     const options = this.parseUrlToOptions(url, 'POST', `multipart/form-data; boundary=${boundary}`)
 
     if (token) {
       options.headers['Authorization'] = `Bearer ${token}`
     }
 
-    return this.req(options, req => this.reqCallbackMultipart(req, [ { data, type: contentType }, { data: image, type: imageType } ], boundary))
+    return this.req(options, req => this.reqCallbackMultipart(req, [ { data, type: contentType }, { data: extraData, type: extraType } ], boundary))
+  }
+
+  private _putMultipart (url: string, data: any, extraData: Buffer, token: string, contentType: string, extraType: string, boundary: string): Promise<any> {
+    const options = this.parseUrlToOptions(url, 'PUT', `multipart/form-data; boundary=${boundary}`)
+
+    if (token) {
+      options.headers['Authorization'] = `Bearer ${token}`
+    }
+
+    return this.req(options, req => this.reqCallbackMultipart(req, [ { data, type: contentType }, { data: extraData, type: extraType } ], boundary))
   }
 
   private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE', contentType: string): RequestOptions {
@@ -140,6 +182,14 @@ export class Request {
           // no content
           if (res.statusCode === 204) {
             return resolve()
+          }
+
+          if (res.headers['content-type'].startsWith('application/octet-stream')) {
+            return resolve(Buffer.from(data))
+          }
+
+          if (!res.headers['content-type'].startsWith('application/json')) {
+            return reject('Unexpected content type: ' + res.headers['content-type'] + '\nData: ' + data)
           }
 
           let parsed: any

@@ -174,3 +174,16 @@ export const CHANNEL_SECTION_DATA: {
     style: undefined
   }
 }
+
+/**
+ * @ignore
+ */
+export const CAPTION_DATA: {
+  id?: string
+  snippet?: {
+    videoId?: string
+    language?: string
+    name?: string
+    isDraft?: boolean
+  }
+} = {}

@@ -1,4 +1,4 @@
-import { YouTube, VideoUpdateResource } from '..'
+import { YouTube, VideoUpdateResource, Caption } from '..'
 import { Thumbnail, ISODuration } from '../types'
 import { YTComment } from './comment'
 import { Parser } from '../util'
@@ -164,6 +164,11 @@ export class Video {
      */
     selfDeclaredMadeForKids: boolean
   }
+
+  /**
+   * The caption data associated with this video. Only available after running [[Video#fetchCaptions]].
+   */
+  public captions: Caption[]
 
   constructor (youtube: YouTube, data: any) {
     this.youtube = youtube
@@ -359,5 +364,41 @@ export class Video {
   public async setThumbnail (image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
     const newThumbnails = await this.youtube.oauth.setThumbnail(this.id, image)
     return Object.assign(this.thumbnails, newThumbnails)
+  }
+
+  /**
+   * Fetches the captions for the video.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public async fetchCaptions (): Promise<Caption[]> {
+    this.captions = await this.youtube.oauth.getCaptions(this.id)
+    return this.captions
+  }
+
+  /**
+   * Uploads a caption track for a video.
+   * Must be using an access token with correct scopes.
+   * @param language The language of the track.
+   * @param name The name of the track.
+   * @param track The caption track to upload.
+   * @param draft Whether or not the track is a draft.
+   */
+  /* istanbul ignore next */
+  public async uploadCaption (language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
+    const toReturn = await this.youtube.oauth.uploadCaption(this.id, language, name, track, draft)
+    return toReturn
+  }
+
+  /**
+   * Updates a caption track of a video.
+   * Must be using an access token with correct scopes.
+   * @param track The modified caption track to upload.
+   * @param draft Whether or not the track is a draft.
+   */
+  /* istanbul ignore next */
+  public async updateCaption (track: Buffer, draft: boolean = null): Promise<Caption> {
+    const toReturn = await this.youtube.oauth.updateCaption(this.id, track, draft)
+    return toReturn
   }
 }

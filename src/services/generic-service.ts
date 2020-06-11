@@ -1,4 +1,5 @@
-import YouTube, { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory, Language, Region, ChannelSection } from '..'
+import YouTube,
+{ Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, GuideCategory, Language, Region, ChannelSection, Caption } from '..'
 import { Cache, Parser } from '../util'
 import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns } from '../types'
 
@@ -8,7 +9,7 @@ import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns 
 export class GenericService {
   /* istanbul ignore next */
   public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string): Promise<ItemReturns> {
-    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, GuideCategory, ChannelSection ].includes(type))) {
+    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, GuideCategory, ChannelSection, Caption ].includes(type))) {
       return Promise.reject('Type must be a video, channel, playlist, comment, subscription, video/guide category, or channel section.')
     }
 
@@ -70,7 +71,7 @@ export class GenericService {
     }
 
     if (mine && (endpoint.startsWith('comment') ||
-    [ 'playlistItems', 'videoCategories', 'videoAbuseReportReasons', 'guideCategories', 'i18nLanguages', 'i18nRegions' ].includes(endpoint))) {
+    [ 'playlistItems', 'videoCategories', 'videoAbuseReportReasons', 'guideCategories', 'i18nLanguages', 'i18nRegions', 'captions' ].includes(endpoint))) {
       return Promise.reject(`${endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
@@ -101,7 +102,7 @@ export class GenericService {
 
     let max: number
     let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof GuideCategory |
-      typeof Language | typeof Region | typeof ChannelSection
+      typeof Language | typeof Region | typeof ChannelSection | typeof Caption
     let commentType: 'video' | 'channel'
 
     if (endpoint === 'playlistItems') {
@@ -142,6 +143,9 @@ export class GenericService {
     } else if (endpoint === 'channelSections') {
       clazz = ChannelSection
       if (mine) options.mine = mine; else options.channelId = id
+    } else if (endpoint === 'captions') {
+      clazz = Caption
+      options.videoId = id
     } else {
       return Promise.reject('Unknown item type ' + endpoint)
     }

@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language, Region, ChannelSection } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language, Region, ChannelSection, Caption } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -206,6 +206,10 @@ export class YouTube {
     return GenericService.getItem(this, GuideCategory, false, categoryId) as Promise<GuideCategory>
   }
 
+  /**
+   * Get a [[ChannelSection]] object from the ID of a section.
+   * @param categoryId The ID of the section.
+   */
   public getChannelSection (sectionId: string) {
     return GenericService.getItem(this, ChannelSection, false, sectionId) as Promise<ChannelSection>
   }
@@ -289,10 +293,11 @@ export class YouTube {
 
   /**
    * Gets the [[ChannelSection]]s of a [[Channel]]. Used mostly internally with [[Channel#fetchSections]].
-   * @param channelId The ID of the channel to get the sections from.
+   * @param channelResolvable The Username, URL, or ID of the channel to get the sections from.
    * @returns Partial channel section objects.
    */
-  public getChannelSections (channelId: string) {
+  public async getChannelSections (channelResolvable: string | Channel) {
+    const channelId = await GenericService.getId(this, channelResolvable, Channel)
     return GenericService.getPaginatedItems(this, 'channelSections', false, channelId) as Promise<ChannelSection[]>
   }
 
