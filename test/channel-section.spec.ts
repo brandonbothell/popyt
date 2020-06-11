@@ -35,16 +35,24 @@ describe('Channel sections', () => {
 
   it('should fetch channels', async () => {
     const section = sections.find(s => s.channelIds)
+    const antiSection = sections.find(s => !s.channelIds)
+
     await section.fetchChannels()
+    await antiSection.fetchChannels()
 
     expect(section.channels[0]).to.be.an.instanceOf(Channel)
+    expect(antiSection.channels).to.equal(undefined)
   })
 
   it('should fetch playlists', async () => {
     const section = sections.find(s => s.playlistIds)
+    const antiSection = sections.find(s => !s.playlistIds)
+
     await section.fetchPlaylists()
+    await antiSection.fetchPlaylists()
 
     expect(section.playlists[0]).to.be.an.instanceOf(Playlist)
+    expect(antiSection.playlists).to.equal(undefined)
   })
 
   it('should throw an error on invalid type', () => {
