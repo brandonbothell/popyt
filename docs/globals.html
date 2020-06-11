@@ -70,9 +70,14 @@
 						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-class"><a href="classes/caption.html" class="tsd-kind-icon">Caption</a></li>
 								<li class="tsd-kind-class"><a href="classes/channel.html" class="tsd-kind-icon">Channel</a></li>
+								<li class="tsd-kind-class"><a href="classes/channelsection.html" class="tsd-kind-icon">Channel<wbr>Section</a></li>
+								<li class="tsd-kind-class"><a href="classes/guidecategory.html" class="tsd-kind-icon">Guide<wbr>Category</a></li>
+								<li class="tsd-kind-class"><a href="classes/language.html" class="tsd-kind-icon">Language</a></li>
 								<li class="tsd-kind-class"><a href="classes/oauth.html" class="tsd-kind-icon">OAuth</a></li>
 								<li class="tsd-kind-class"><a href="classes/playlist.html" class="tsd-kind-icon">Playlist</a></li>
+								<li class="tsd-kind-class"><a href="classes/region.html" class="tsd-kind-icon">Region</a></li>
 								<li class="tsd-kind-class"><a href="classes/subscription.html" class="tsd-kind-icon">Subscription</a></li>
 								<li class="tsd-kind-class"><a href="classes/video.html" class="tsd-kind-icon">Video</a></li>
 								<li class="tsd-kind-class"><a href="classes/videoabusereportreason.html" class="tsd-kind-icon">Video<wbr>Abuse<wbr>Report<wbr>Reason</a></li>
@@ -85,6 +90,8 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias"><a href="globals.html#banners" class="tsd-kind-icon">Banners</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#channelbrandingsettings" class="tsd-kind-icon">Channel<wbr>Branding<wbr>Settings</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#channelsectiontype" class="tsd-kind-icon">Channel<wbr>Section<wbr>Type</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#videoupdateresource" class="tsd-kind-icon">Video<wbr>Update<wbr>Resource</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#youtubeoptions" class="tsd-kind-icon">You<wbr>Tube<wbr>Options</a></li>
@@ -101,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">Banners<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>bannerImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerMobileExtraHdImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerMobileHdImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerMobileImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerMobileLowImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerMobileMediumImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTabletExtraHdImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTabletHdImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTabletImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTabletLowImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTvHighImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTvImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTvLowImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>bannerTvMediumImageUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/367eb8c/src/types/Banners.ts#L1">types/Banners.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/types/Banners.ts#L1">types/Banners.ts:1</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -153,12 +160,175 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="channelbrandingsettings" class="tsd-anchor"></a>
+					<h3>Channel<wbr>Branding<wbr>Settings</h3>
+					<div class="tsd-signature tsd-kind-icon">Channel<wbr>Branding<wbr>Settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>channel<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>country<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>defaultLanguage<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>defaultTab<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>description<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>featuredChannelsTitle<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>featuredChannelsUrls<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>keywords<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>moderateComments<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>profileColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>showBrowseView<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>showRelatedChannels<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>trackingAnalyticsAccountId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>unsubscribedTrailer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>image<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>bannerExternalUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>trackingImageUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>watchIconImageUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/types/BrandingSettings.ts#L1">types/BrandingSettings.ts:1</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> channel<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>country<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>defaultLanguage<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>defaultTab<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>description<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>featuredChannelsTitle<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>featuredChannelsUrls<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>keywords<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>moderateComments<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>profileColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>showBrowseView<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>showRelatedChannels<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>trackingAnalyticsAccountId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>unsubscribedTrailer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> country<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The country this channel is based in.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> default<wbr>Language<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The default language for this channel&#39;s uploads.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> default<wbr>Tab<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The content tab that users see by default.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> description<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The description of this channel.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> featured<wbr>Channels<wbr>Title<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The title that displays above the featured channels</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> featured<wbr>Channels<wbr>Urls<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The IDs of all of this channel&#39;s featured channels.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> keywords<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>This channel&#39;s keywords.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> moderate<wbr>Comments<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Whether or not comments need to be approved before being visible.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> profile<wbr>Color<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>A color that matches well with the channel.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Browse<wbr>View<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Whether or not to show content in a browse view (as opposed to an activity feed).</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Related<wbr>Channels<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>Whether or not to show related channels in the sidebar.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> tracking<wbr>Analytics<wbr>Account<wbr>Id<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The ID of a Google Analytics account used to measure channel traffic.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> unsubscribed<wbr>Trailer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The ID of a video to highlight to unsubsribed viewers.</p>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> image<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>bannerExternalUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>trackingImageUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>watchIconImageUrl<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> banner<wbr>External<wbr>Url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The URL of a banner (obtained from [[OAuth#uploadChannelBanner]]) to use for the channel.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> tracking<wbr>Image<wbr>Url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The URL for a 1px by 1px tracking image that can be used to collect stats.</p>
+											</div>
+										</div>
+									</li>
+									<li class="tsd-parameter">
+										<h5><span class="tsd-flag ts-flagOptional">Optional</span> watch<wbr>Icon<wbr>Image<wbr>Url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<div class="lead">
+												<p>The URL for a 25 pixel high image with a width &lt;=170 pixels that appears above the player.</p>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="channelsectiontype" class="tsd-anchor"></a>
+					<h3>Channel<wbr>Section<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">Channel<wbr>Section<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"allPlaylists"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"completedEvents"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"likedPlaylists"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"likes"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"liveEvents"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"multipleChannels"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"multiplePlaylists"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"popularUploads"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"postedPlaylists"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"postedVideos"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"recentActivity"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"recentPosts"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"recentUploads"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"singlePlaylist"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"subscriptions"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"upcomingEvents"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/types/ChannelSectionType.ts#L1">types/ChannelSectionType.ts:1</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="thumbnail" class="tsd-anchor"></a>
 					<h3>Thumbnail</h3>
 					<div class="tsd-signature tsd-kind-icon">Thumbnail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>height<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>url<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/367eb8c/src/types/Thumbnail.ts#L1">types/Thumbnail.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/types/Thumbnail.ts#L1">types/Thumbnail.ts:1</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -182,7 +352,7 @@
 					<div class="tsd-signature tsd-kind-icon">Video<wbr>Update<wbr>Resource<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>localizations<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>recordingDetails<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>recordingDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>snippet<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>categoryId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>defaultLanguage<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>description<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>tags<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>status<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>embeddable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>license<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>privacyStatus<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"private"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"public"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"unlisted"</span><span class="tsd-signature-symbol">; </span>publicStatsViewable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>publishAt<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>selfDeclaredMadeForKids<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/367eb8c/src/types/VideoUpdateResource.ts#L1">types/VideoUpdateResource.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/types/VideoUpdateResource.ts#L1">types/VideoUpdateResource.ts:1</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -267,7 +437,7 @@
 					<div class="tsd-signature tsd-kind-icon">You<wbr>Tube<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>cache<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>cacheCheckInterval<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>cacheSearches<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>cacheTTL<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/367eb8c/src/index.ts#L272">index.ts:272</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/index.ts#L337">index.ts:337</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -321,13 +491,28 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
+						<a href="classes/caption.html" class="tsd-kind-icon">Caption</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/channel.html" class="tsd-kind-icon">Channel</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/channelsection.html" class="tsd-kind-icon">Channel<wbr>Section</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/guidecategory.html" class="tsd-kind-icon">Guide<wbr>Category</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/language.html" class="tsd-kind-icon">Language</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/oauth.html" class="tsd-kind-icon">OAuth</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/playlist.html" class="tsd-kind-icon">Playlist</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/region.html" class="tsd-kind-icon">Region</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/subscription.html" class="tsd-kind-icon">Subscription</a>
@@ -349,6 +534,12 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#banners" class="tsd-kind-icon">Banners</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#channelbrandingsettings" class="tsd-kind-icon">Channel<wbr>Branding<wbr>Settings</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#channelsectiontype" class="tsd-kind-icon">Channel<wbr>Section<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a>

@@ -94,6 +94,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="video.html#captions" class="tsd-kind-icon">captions</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="video.html#category" class="tsd-kind-icon">category</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="video.html#channelid" class="tsd-kind-icon">channel<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="video.html#commentcount" class="tsd-kind-icon">comment<wbr>Count</a></li>
@@ -128,6 +129,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#delete" class="tsd-kind-icon">delete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#dislike" class="tsd-kind-icon">dislike</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#fetch" class="tsd-kind-icon">fetch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#fetchcaptions" class="tsd-kind-icon">fetch<wbr>Captions</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#fetchcomments" class="tsd-kind-icon">fetch<wbr>Comments</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#getrating" class="tsd-kind-icon">get<wbr>Rating</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#like" class="tsd-kind-icon">like</a></li>
@@ -136,6 +138,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#setthumbnail" class="tsd-kind-icon">set<wbr>Thumbnail</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#unrate" class="tsd-kind-icon">unrate</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#updatecaption" class="tsd-kind-icon">update<wbr>Caption</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="video.html#uploadcaption" class="tsd-kind-icon">upload<wbr>Caption</a></li>
 							</ul>
 						</section>
 					</div>
@@ -153,7 +157,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L166">entities/video.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L171">entities/video.ts:171</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -173,12 +177,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="captions" class="tsd-anchor"></a>
+					<h3>captions</h3>
+					<div class="tsd-signature tsd-kind-icon">captions<span class="tsd-signature-symbol">:</span> <a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L171">entities/video.ts:171</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The caption data associated with this video. Only available after running [[Video#fetchCaptions]].</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="category" class="tsd-anchor"></a>
 					<h3>category</h3>
 					<div class="tsd-signature tsd-kind-icon">category<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L151">entities/video.ts:151</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L151">entities/video.ts:151</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -193,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">channel<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L80">entities/video.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L80">entities/video.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -208,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">comment<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L139">entities/video.ts:139</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L139">entities/video.ts:139</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -223,7 +242,7 @@
 					<div class="tsd-signature tsd-kind-icon">comments<span class="tsd-signature-symbol">:</span> <a href="ytcomment.html" class="tsd-signature-type">YTComment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L134">entities/video.ts:134</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L134">entities/video.ts:134</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -238,7 +257,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L34">entities/video.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L34">entities/video.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -253,7 +272,7 @@
 					<div class="tsd-signature tsd-kind-icon">date<wbr>Published<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L75">entities/video.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L75">entities/video.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -268,7 +287,7 @@
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L54">entities/video.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L54">entities/video.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -283,7 +302,7 @@
 					<div class="tsd-signature tsd-kind-icon">dislikes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L115">entities/video.ts:115</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L115">entities/video.ts:115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -298,7 +317,7 @@
 					<div class="tsd-signature tsd-kind-icon">full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L39">entities/video.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L39">entities/video.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -313,7 +332,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L44">entities/video.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L44">entities/video.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -328,7 +347,7 @@
 					<div class="tsd-signature tsd-kind-icon">kids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>madeForKids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>selfDeclaredMadeForKids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L156">entities/video.ts:156</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L156">entities/video.ts:156</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -364,7 +383,7 @@
 					<div class="tsd-signature tsd-kind-icon">likes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L110">entities/video.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L110">entities/video.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -379,7 +398,7 @@
 					<div class="tsd-signature tsd-kind-icon">live<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"live"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"upcoming"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L146">entities/video.ts:146</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L146">entities/video.ts:146</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -396,7 +415,7 @@
 					<div class="tsd-signature tsd-kind-icon">minutes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L90">entities/video.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L90">entities/video.ts:90</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -411,7 +430,7 @@
 					<div class="tsd-signature tsd-kind-icon">private<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L129">entities/video.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L129">entities/video.ts:129</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -429,7 +448,7 @@
 					<div class="tsd-signature tsd-kind-icon">seconds<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L95">entities/video.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L95">entities/video.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -444,7 +463,7 @@
 					<div class="tsd-signature tsd-kind-icon">short<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L105">entities/video.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L105">entities/video.ts:105</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -459,7 +478,7 @@
 					<div class="tsd-signature tsd-kind-icon">tags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L70">entities/video.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L70">entities/video.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -474,7 +493,7 @@
 					<div class="tsd-signature tsd-kind-icon">thumbnails<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>default<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>high<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>maxres<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>medium<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol">; </span>standard<span class="tsd-signature-symbol">?: </span><a href="../globals.html#thumbnail" class="tsd-signature-type">Thumbnail</a><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L59">entities/video.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L59">entities/video.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -509,7 +528,7 @@
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L49">entities/video.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L49">entities/video.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -524,7 +543,7 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L100">entities/video.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L100">entities/video.ts:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -539,7 +558,7 @@
 					<div class="tsd-signature tsd-kind-icon">views<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L120">entities/video.ts:120</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L120">entities/video.ts:120</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -554,7 +573,7 @@
 					<div class="tsd-signature tsd-kind-icon">youtube<span class="tsd-signature-symbol">:</span> <a href="youtube.html" class="tsd-signature-type">YouTube</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L29">entities/video.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L29">entities/video.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -569,7 +588,7 @@
 					<div class="tsd-signature tsd-kind-icon">endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;videos&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L13">entities/video.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L13">entities/video.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -584,7 +603,7 @@
 					<div class="tsd-signature tsd-kind-icon">fields<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x27;items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount,commentCount),&#x27; +&#x27;status(privacyStatus,madeForKids,selfDeclaredMadeForKids),snippet(title,description,thumbnails,tags,publishedAt,channelId,liveBroadcastContent,categoryId))&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L23">entities/video.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L23">entities/video.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -599,7 +618,7 @@
 					<div class="tsd-signature tsd-kind-icon">part<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;snippet,contentDetails,statistics,status&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L18">entities/video.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L18">entities/video.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -621,7 +640,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L336">entities/video.ts:336</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L341">entities/video.ts:341</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -644,7 +663,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L305">entities/video.ts:305</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L310">entities/video.ts:310</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -667,7 +686,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L268">entities/video.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L273">entities/video.ts:273</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -681,6 +700,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="fetchcaptions" class="tsd-anchor"></a>
+					<h3>fetch<wbr>Captions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Captions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L374">entities/video.ts:374</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Fetches the captions for the video.
+									Must be using an access token with correct scopes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="fetchcomments" class="tsd-anchor"></a>
 					<h3>fetch<wbr>Comments</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -690,7 +732,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L277">entities/video.ts:277</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L282">entities/video.ts:282</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -721,7 +763,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L286">entities/video.ts:286</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L291">entities/video.ts:291</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -743,7 +785,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L296">entities/video.ts:296</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L301">entities/video.ts:301</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -766,7 +808,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L252">entities/video.ts:252</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L257">entities/video.ts:257</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -798,7 +840,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L327">entities/video.ts:327</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L332">entities/video.ts:332</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -848,7 +890,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L361">entities/video.ts:361</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L364">entities/video.ts:364</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -888,7 +930,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L314">entities/video.ts:314</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L319">entities/video.ts:319</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -911,7 +953,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/687199d/src/entities/video.ts#L350">entities/video.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L353">entities/video.ts:353</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -935,6 +977,94 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updatecaption" class="tsd-anchor"></a>
+					<h3>update<wbr>Caption</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Caption<span class="tsd-signature-symbol">(</span>track<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, draft<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L400">entities/video.ts:400</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates a caption track of a video.
+									Must be using an access token with correct scopes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>track: <span class="tsd-signature-type">Buffer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The modified caption track to upload.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> draft: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Whether or not the track is a draft.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="uploadcaption" class="tsd-anchor"></a>
+					<h3>upload<wbr>Caption</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">upload<wbr>Caption<span class="tsd-signature-symbol">(</span>language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, track<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, draft<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/jasonhaxstuff/popyt/blob/73f9b24/src/entities/video.ts#L388">entities/video.ts:388</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Uploads a caption track for a video.
+									Must be using an access token with correct scopes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language of the track.</p>
+									</div>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the track.</p>
+									</div>
+								</li>
+								<li>
+									<h5>track: <span class="tsd-signature-type">Buffer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The caption track to upload.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> draft: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Whether or not the track is a draft.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="caption.html" class="tsd-signature-type">Caption</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -948,13 +1078,28 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
+						<a href="caption.html" class="tsd-kind-icon">Caption</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="channel.html" class="tsd-kind-icon">Channel</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="channelsection.html" class="tsd-kind-icon">Channel<wbr>Section</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="guidecategory.html" class="tsd-kind-icon">Guide<wbr>Category</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="language.html" class="tsd-kind-icon">Language</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="oauth.html" class="tsd-kind-icon">OAuth</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="playlist.html" class="tsd-kind-icon">Playlist</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="region.html" class="tsd-kind-icon">Region</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="subscription.html" class="tsd-kind-icon">Subscription</a>
@@ -966,6 +1111,9 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="video.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="video.html#captions" class="tsd-kind-icon">captions</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="video.html#category" class="tsd-kind-icon">category</a>
@@ -1055,6 +1203,9 @@
 								<a href="video.html#fetch" class="tsd-kind-icon">fetch</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="video.html#fetchcaptions" class="tsd-kind-icon">fetch<wbr>Captions</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="video.html#fetchcomments" class="tsd-kind-icon">fetch<wbr>Comments</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1078,6 +1229,12 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="video.html#update" class="tsd-kind-icon">update</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="video.html#updatecaption" class="tsd-kind-icon">update<wbr>Caption</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="video.html#uploadcaption" class="tsd-kind-icon">upload<wbr>Caption</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -1096,6 +1253,12 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#banners" class="tsd-kind-icon">Banners</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#channelbrandingsettings" class="tsd-kind-icon">Channel<wbr>Branding<wbr>Settings</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#channelsectiontype" class="tsd-kind-icon">Channel<wbr>Section<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#thumbnail" class="tsd-kind-icon">Thumbnail</a>
