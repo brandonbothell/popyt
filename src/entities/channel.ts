@@ -1,4 +1,4 @@
-import { YouTube, Playlist, Thumbnail, Banners, YTComment, Subscription, ChannelSection } from '..'
+import { YouTube, Playlist, Thumbnail, Banners, YTComment, Subscription, ChannelSection, ChannelBrandingSettings } from '..'
 
 /**
  * A YouTube channel.
@@ -360,5 +360,68 @@ export class Channel {
   /* istanbul ignore next */
   public unsubscribe () {
     return this.youtube.oauth.unsubscribeFromChannel(this.id)
+  }
+
+  /**
+   * Updates the channel's branding settings.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public updateBranding (branding: ChannelBrandingSettings) {
+    return this.youtube.oauth.updateChannelBranding(this.id, branding)
+  }
+
+  /**
+   * Updates the channel's localizations.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public updateLocalizations (localizations: { [key: string]: { title: string; description: string } }) {
+    return this.youtube.oauth.updateChannelLocalizations(this.id, localizations)
+  }
+
+  /**
+   * Sets whether or not the channel is made for kids.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public setMadeForKids (madeForKids: boolean) {
+    return this.youtube.oauth.setChannelMadeForKids(this.id, madeForKids)
+  }
+
+  /**
+   * Sets the channel's watermark.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public setWatermark (type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Buffer, imageType: 'png' | 'jpeg') {
+    return this.youtube.oauth.setChannelWatermark(this.id, type, offset, duration, image, imageType)
+  }
+
+  /**
+   * Unsets the channel's watermark.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public unsetWatermark () {
+    return this.youtube.oauth.unsetChannelWatermark(this.id)
+  }
+
+  /**
+   * Uploads and sets the channel's banner.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public async setBanner (image: { data: Buffer; type: 'png' | 'jpeg' }) {
+    if (!this.data.brandingSettings) {
+      await this.fetch()
+    }
+
+    if (!this.data.brandingSettings) {
+      return Promise.reject('Unable to fetch channel branding settings')
+    }
+
+    this.data.brandingSettings.image.bannerExternalUrl = await this.youtube.oauth.uploadChannelBanner(image)
+    return this.youtube.oauth.updateChannelBranding(this.id, this.data.brandingSettings)
   }
 }

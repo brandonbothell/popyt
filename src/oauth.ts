@@ -640,7 +640,7 @@ export class OAuth {
   }
 
   /**
-   * Adds a [[ChannelSection]] to a [[Channel]].  
+   * Adds a [[ChannelSection]] to the authorized user's [[Channel]].  
    * Last tested 05/24/2020 10:11. PASSING
    * @param type The type of channel section.
    * @param style The style of the channel section.

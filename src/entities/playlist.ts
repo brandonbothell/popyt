@@ -158,6 +158,25 @@ export class Playlist {
   }
 
   /**
+   * Edits the playlist.
+   * Must be using an access token with correct scopes.  
+   * **If your request does not specify a value for a property that already has a value,
+   * the property's existing value will be deleted.**
+   * @param title A title for the playlist.
+   * @param description A description of the playlist.
+   * @param privacy Whether the video is private, public, or unlisted.
+   * @param tags Tags pertaining to the playlist.
+   * @param language The language of the playlist's default title and description.
+   * @param localizations Translated titles and descriptions.
+   */
+  /* istanbul ignore next */
+  public async update (title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
+    localizations?: {[language: string]: { title: string; description: string }}): Promise<Playlist> {
+    const newPlaylist = await this.youtube.oauth.updatePlaylist(this.id, title, description, privacy, tags, language, localizations)
+    return Object.assign(this, { ...newPlaylist, full: true })
+  }
+
+  /**
    * Adds a [[Video]] to the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or Title of the video.
@@ -218,5 +237,14 @@ export class Playlist {
         this.videos.splice(index, 1)
       }
     }
+  }
+
+  /**
+   * Deletes the playlist.
+   * Must be using an access token with correct scopes.
+   */
+  /* istanbul ignore next */
+  public delete () {
+    return this.youtube.oauth.deletePlaylist(this.id)
   }
 }
