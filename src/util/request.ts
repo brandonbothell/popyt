@@ -14,76 +14,52 @@ export class Request {
   }
 
   public api (subUrl: string, params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    const url = this.formUrl(subUrl, params, token, accessToken)
     return this.get(url, accessToken)
   }
 
   public post (subUrl: string, params?: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    const url = this.formUrl(subUrl, params, token, accessToken)
     return this._post(url, data, accessToken)
   }
 
   public put (subUrl: string, params?: Object, data?: any, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    const url = this.formUrl(subUrl, params, token, accessToken)
     return this._put(url, data, accessToken)
   }
 
   public delete (subUrl: string, params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    const url = this.formUrl(subUrl, params, token, accessToken)
     return this._delete(url, accessToken)
   }
 
   public imagePost (subUrl: string, image: Buffer, imageType: 'jpeg' | 'png', params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    const url = this.formUrl(subUrl, params, token, accessToken)
     return this._post(url, image, accessToken, `image/${imageType}`)
   }
 
   public streamPut (subUrl: string, stream: Buffer, params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+    const url = this.formUrl(subUrl, params, token, accessToken)
     return this._put(url, stream, accessToken, 'application/octet-stream')
   }
 
   public multipartStreamPost (subUrl: string, data: any, extraData: Buffer, params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
-
-    let boundary = '--------------------------'
-
-    for (let i = 0; i < 24; i++) {
-      boundary += Math.floor(Math.random() * 10).toString(16)
-    }
+    const url = this.formUrl(subUrl, params, token, accessToken)
+    const boundary = this.generateBoundary()
 
     return this._postMultipart(url, data, extraData, accessToken, 'application/json', 'application/octet-stream', boundary)
   }
 
   public multipartImagePost (subUrl: string, data: any, image: Buffer, imageType: 'jpeg' | 'png', params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
-
-    let boundary = '--------------------------'
-
-    for (let i = 0; i < 24; i++) {
-      boundary += Math.floor(Math.random() * 10).toString(16)
-    }
+    const url = this.formUrl(subUrl, params, token, accessToken)
+    const boundary = this.generateBoundary()
 
     return this._postMultipart(url, data, image, accessToken, 'application/json', `image/${imageType}`, boundary)
   }
 
   public multipartStreamPut (subUrl: string, data: any, extraData: Buffer, params?: Object, token?: string, accessToken?: string): Promise<any> {
-    const url = this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) +
-                (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
-
-    let boundary = '--------------------------'
-
-    for (let i = 0; i < 24; i++) {
-      boundary += Math.floor(Math.random() * 10).toString(16)
-    }
+    const url = this.formUrl(subUrl, params, token, accessToken)
+    const boundary = this.generateBoundary()
 
     return this._putMultipart(url, data, extraData, accessToken, 'application/json', 'application/octet-stream', boundary)
   }
@@ -148,6 +124,10 @@ export class Request {
     return this.req(options, req => this.reqCallbackMultipart(req, [ { data, type: contentType }, { data: extraData, type: extraType } ], boundary))
   }
 
+  private formUrl (subUrl: string, params?: object, token?: string, accessToken?: string) {
+    return this.baseUrl + (subUrl.startsWith('/') ? '' : '/') + subUrl + this.parseParams(params) + (!accessToken ? (params ? `&key=${token}` : `?key=${token}`) : '')
+  }
+
   private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE', contentType: string): RequestOptions {
     const parsed = parseUrl(url)
 
@@ -161,6 +141,16 @@ export class Request {
         'Content-Type': contentType
       }
     }
+  }
+
+  private generateBoundary () {
+    let boundary = '--------------------------'
+
+    for (let i = 0; i < 24; i++) {
+      boundary += Math.floor(Math.random() * 10).toString(16)
+    }
+
+    return boundary
   }
 
   private req (options: RequestOptions, reqFunction: (req: OutgoingMessage) => void) {
