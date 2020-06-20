@@ -179,7 +179,8 @@ export class GenericService {
         pages = Math.floor(pages)
       }
 
-      results.items.forEach(item => {
+      for (let i = 0; i < results.items.length; i++) {
+        const item = results.items[i]
         let comment: YTComment
 
         if (item.snippet.topLevelComment) {
@@ -195,7 +196,7 @@ export class GenericService {
             comment.replies.push(created)
           })
         }
-      })
+      }
 
       if (results.nextPageToken && !shouldReturn) {
         options.pageToken = results.nextPageToken
