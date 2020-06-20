@@ -36,21 +36,21 @@ describe('OAuth', () => {
     channelId = channel.id
 
     expect(channel.id).to.be.a('string')
-  }).timeout(8000)
+  })
 
   it('should fetch my subscriptions', async () => {
     const youtube = new YouTube(key, token)
     const subscription = (await youtube.oauth.getMySubscriptions(1))[0]
 
     expect(subscription.id).to.be.a('string')
-  }).timeout(8000)
+  })
 
   it('should fetch my playlists', async () => {
     const youtube = new YouTube(key, token)
     const playlist = (await youtube.oauth.getMyPlaylists(1))[0]
 
     expect(playlist.id).to.be.a('string')
-  }).timeout(8000)
+  })
 
   it('should post comments', async () => {
     const youtube = new YouTube(key, token)
@@ -59,7 +59,7 @@ describe('OAuth', () => {
     commentId = comment.id
 
     expect(comment.parentId).to.equal(channelId)
-  }).timeout(8000)
+  })
 
   it('should edit comments', async () => {
     const youtube = new YouTube(key, token)
@@ -67,7 +67,7 @@ describe('OAuth', () => {
     const comment = await youtube.oauth.editComment(text, commentId)
 
     expect(comment.text.original).to.equal(text)
-  }).timeout(8000)
+  })
 
   it('should post comment replies', async () => {
     const youtube = new YouTube(key, token)
@@ -76,7 +76,7 @@ describe('OAuth', () => {
     commentReplyId = comment.id
 
     expect(comment.parentId).to.equal(commentId)
-  }).timeout(8000)
+  })
 
   it('should edit comment replies', async () => {
     const youtube = new YouTube(key, token)
@@ -84,7 +84,7 @@ describe('OAuth', () => {
     const comment = await youtube.oauth.editCommentReply(commentReplyId, text)
 
     expect(comment.text.original).to.equal(text)
-  }).timeout(8000)
+  })
 
   it('should delete comments', async () => {
     const youtube = new YouTube(key, token)
@@ -99,21 +99,21 @@ describe('OAuth', () => {
     expect(subscription.channel.id).to.equal(channel)
 
     await youtube.oauth.unsubscribeFromChannel(subscription.id)
-  }).timeout(8000)
+  })
 
   it('should rate videos', async () => {
     const youtube = new YouTube(key, token)
 
     await youtube.oauth.rateVideo('E6UTz_Doic8', 'like')
     await youtube.oauth.rateVideo('E6UTz_Doic8', 'none')
-  }).timeout(8000)
+  })
 
   it('should retrieve ratings on videos', async () => {
     const youtube = new YouTube(key, token)
     const rating = (await youtube.oauth.getMyRatings([ 'E6UTz_Doic8' ]))[0].rating
 
     expect(rating).to.equal('none')
-  }).timeout(8000)
+  })
 
   it('should set thumbnails', async () => {
     if (!thumbnailVideoId) {
@@ -126,7 +126,7 @@ describe('OAuth', () => {
     const thumbnails = await youtube.oauth.setThumbnail(thumbnailVideoId, { type: 'jpeg', data: image })
 
     expect(thumbnails.default.url).to.be.a('string')
-  }).timeout(8000)
+  })
 
   it('should set all available properties of abuse reasons', async () => {
     const youtube = new YouTube(key, token)

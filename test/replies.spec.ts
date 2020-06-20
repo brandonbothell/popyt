@@ -15,7 +15,7 @@ describe('Replies', () => {
     expect(replies[0]).to.be.instanceOf(YTComment)
 
     return {}
-  }).timeout(3000)
+  })
 
   it('should not work with invalid comments/comments with no replies', async () => {
     expect(await youtube.getCommentReplies('0').catch(error => {
@@ -32,5 +32,5 @@ describe('Replies', () => {
     const replies = await comment.fetchReplies(1)
 
     expect(replies[0].parentId).to.equal('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
-  }).timeout(8000)
+  })
 })

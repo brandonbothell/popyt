@@ -27,5 +27,5 @@ describe('Playlist items', () => {
 
   it('should return an array the size of the playlist if maxResults isn\'t defined or is < 1', async () => {
     expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 0)).length).to.be.greaterThan(50)
-  }).timeout(8000)
+  })
 })

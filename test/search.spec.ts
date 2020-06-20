@@ -57,7 +57,7 @@ describe('Searching', () => {
     const videos = await channel.fetchVideos()
 
     expect(videos).to.be.an.instanceOf(Playlist)
-  }).timeout(8000)
+  })
 
   it('should work with multiple types', async () => {
     const data = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 10))

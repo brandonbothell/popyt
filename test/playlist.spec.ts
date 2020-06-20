@@ -48,7 +48,7 @@ describe('Playlists', () => {
 
     expect(videos.length).to.be.lte(10)
     expect(playlist.videos.length).to.be.lte(10)
-  }).timeout(8000)
+  })
 
   it('should work with fetching channel playlists with maxResults', async () => {
     const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', 5)

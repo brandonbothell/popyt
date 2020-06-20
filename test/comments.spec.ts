@@ -83,5 +83,5 @@ describe('Comments', () => {
 
     expect(videoComment.url).to.equal('https://youtube.com/watch?v=Lq1D8PFnjWY&lc=Ugyv3oMTx4CLRXS-9BZ4AaABAg')
     expect(channelComment.url).to.equal('https://youtube.com/channel/UC6mi9rp7vRYninucP61qOjg/discussion?lc=UgjH7gcaETIe4HgCoAEC')
-  }).timeout(8000)
+  })
 })

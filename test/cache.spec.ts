@@ -21,7 +21,7 @@ describe('Caching', () => {
     await video
 
     expect(new Date().getTime() - time).to.be.lessThan(50)
-  }).timeout(8000)
+  })
 
   it('should be disabled if cache is false', async () => {
     const youtube = new YouTube(apiKey, null, { cache: false })
