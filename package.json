@@ -38,7 +38,7 @@
     "chai": "4.2.0",
     "coveralls": "3.1.0",
     "dotenv": "8.2.0",
-    "eslint": "7.3.1",
+    "eslint": "7.4.0",
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-jsdoc": "28.6.1",
     "fs-nextra": "0.5.1",
