@@ -114,6 +114,7 @@ export class Channel {
 
   /**
    * This channel's comment count.
+   * @deprecated See https://developers.google.com/youtube/v3/docs/channels#statistics.commentCount
    */
   public commentCount: number
 

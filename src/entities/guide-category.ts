@@ -2,6 +2,7 @@ import YouTube from '..'
 
 /**
  * A YouTube guide category.
+ * @deprecated See https://developers.google.com/youtube/v3/docs/guideCategories
  */
 export class GuideCategory {
   /**

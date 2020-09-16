@@ -302,7 +302,7 @@ export class YouTube {
   }
 
   /**
-   * Get a list of categories of a country.
+   * Get the list of categories in `this.region`.
    * @param all Whether or not to get all categories (otherwise just gets a page).
    */
   public getCategories (all: boolean = false) {
@@ -310,10 +310,8 @@ export class YouTube {
   }
 
   /**
-   * Get a list of guide categories of a country.
-   * @param region An [ISO 3166-1 alpha-2](https://www.iso.org/iso-3166-country-codes.html) region code.
-   * Defaults to the US.
-   * @param all Whether or not to get all categories (otherwise just gets a page).
+   * Get the list of guide categories in `this.region`.
+   * @deprecated See https://developers.google.com/youtube/v3/docs/guideCategories/list
    */
   public getGuideCategories () {
     return GenericService.getPaginatedItems(this, 'guideCategories', false) as Promise<GuideCategory[]>
