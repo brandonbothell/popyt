@@ -201,7 +201,9 @@ export class YouTube {
   /**
    * Get a [[GuideCategory]] object from the ID of a category.
    * @param categoryId The ID of the category.
+   * @deprecated See https://developers.google.com/youtube/v3/docs/guideCategories/list
    */
+  /* istanbul ignore next */
   public getGuideCategory (categoryId: string) {
     return GenericService.getItem(this, GuideCategory, false, categoryId) as Promise<GuideCategory>
   }

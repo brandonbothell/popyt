@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+
 import YouTube from '..'
 
 /**
