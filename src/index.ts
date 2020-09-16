@@ -313,6 +313,7 @@ export class YouTube {
    * Get the list of guide categories in `this.region`.
    * @deprecated See https://developers.google.com/youtube/v3/docs/guideCategories/list
    */
+  /* istanbul ignore next */
   public getGuideCategories () {
     return GenericService.getPaginatedItems(this, 'guideCategories', false) as Promise<GuideCategory[]>
   }
