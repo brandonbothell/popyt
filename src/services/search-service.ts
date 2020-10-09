@@ -22,12 +22,12 @@ export class SearchService {
 
     const data: {
       q: string
-      channelId: string
       fields: string
       maxResults: number
       part: string
       type: string
       regionCode: string
+      channelId?: string
       pageToken?: string
       videoEmbeddable?: string
       category?: string
