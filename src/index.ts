@@ -106,7 +106,7 @@ export class YouTube {
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
    */
   public search (types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string, fields?: string) {
-    return SearchService.search(this, types, searchTerm, maxResults, pageToken, fields)
+    return SearchService.search(this, types, searchTerm, maxResults, pageToken, null, fields)
   }
 
   /**
@@ -114,13 +114,14 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param maxResults The maximum amount of results to find. Defaults to 10.
    * @param pageToken The page token to start at. Provide this if you have received it as output from a call to a search method.
+   * @param channelId The channel ID that you want to specifically search for.
    * @param category The category ID that you want to specifically search for.
    * @param onlyEmbeddable Whether or not to return only embeddable videos.
    * @param eventType The type of event you want to search for. Searches for everything by default.
    */
-  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string, category?: string, onlyEmbeddable: boolean = false,
+  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string, channelId?: string, category?: string, onlyEmbeddable: boolean = false,
     eventType?: 'completed' | 'live' | 'upcoming', type: 'any' | 'episode' | 'movie' = 'any') {
-    return SearchService.search(this, [ Video ], searchTerm, maxResults, pageToken,
+    return SearchService.search(this, [ Video ], searchTerm, maxResults, pageToken, channelId,
       null, category, onlyEmbeddable, eventType, type) as Promise<{ results: Video[]; prevPageToken: string; nextPageToken: string }>
   }
 
