@@ -67,6 +67,11 @@ describe('Searching', () => {
     expect(data.results.find(r => r instanceof Channel)).to.not.equal(undefined)
   })
 
+  it('should work with channelId', async () => {
+    const data = (await youtube.searchVideos('08.10.2020-Programa Minha Fé', 10, null, 'UCdjGA5x9NPzv1ZrQv-9-dxQ')).results[0]
+    expect(data.data.snippet.channelId).to.equal('UCdjGA5x9NPzv1ZrQv-9-dxQ')
+  })
+
   it('should throw an error if kind is wrong', () => {
     expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
     expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')
