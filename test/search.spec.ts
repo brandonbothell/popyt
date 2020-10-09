@@ -67,9 +67,9 @@ describe('Searching', () => {
     expect(data.results.find(r => r instanceof Channel)).to.not.equal(undefined)
   })
 
-  it('should work with channelId', async () => {
-    const data = (await youtube.searchVideos('08.10.2020-Programa Minha Fé', 10, null, 'UCdjGA5x9NPzv1ZrQv-9-dxQ')).results[0]
-    expect(data.data.snippet.channelId).to.equal('UCdjGA5x9NPzv1ZrQv-9-dxQ')
+  it('should work with fetching videos of a channel', async () => {
+    const video = (await youtube.searchVideos('bukkit', 10, null, null, 'UC6mi9rp7vRYninucP61qOjg')).results[0]
+    expect(video.channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
   })
 
   it('should throw an error if kind is wrong', () => {

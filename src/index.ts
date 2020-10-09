@@ -119,7 +119,7 @@ export class YouTube {
    * @param onlyEmbeddable Whether or not to return only embeddable videos.
    * @param eventType The type of event you want to search for. Searches for everything by default.
    */
-  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string, channelId?: string, category?: string, onlyEmbeddable: boolean = false,
+  public searchVideos (searchTerm: string, maxResults: number = 10, pageToken?: string, category?: string, channelId?: string, onlyEmbeddable: boolean = false,
     eventType?: 'completed' | 'live' | 'upcoming', type: 'any' | 'episode' | 'movie' = 'any') {
     return SearchService.search(this, [ Video ], searchTerm, maxResults, pageToken, channelId,
       null, category, onlyEmbeddable, eventType, type) as Promise<{ results: Video[]; prevPageToken: string; nextPageToken: string }>
