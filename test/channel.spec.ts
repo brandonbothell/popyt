@@ -75,7 +75,6 @@ describe('Channels', () => {
   it('should contain branding properties', async () => {
     const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
 
-    expect(channel.banners).to.haveOwnProperty('bannerImageUrl')
     expect(channel.keywords.length).to.be.greaterThan(0)
     expect(channel.featuredChannels.length).to.be.greaterThan(0)
   })

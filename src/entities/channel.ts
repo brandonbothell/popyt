@@ -79,6 +79,7 @@ export class Channel {
 
   /**
    * This channel's banners.
+   * @deprecated See https://developers.google.com/youtube/v3/docs/channels#brandingSettings.image
    */
   public banners: Banners
 
@@ -420,6 +421,10 @@ export class Channel {
 
     if (!this.data.brandingSettings) {
       return Promise.reject('Unable to fetch channel branding settings')
+    }
+
+    if (!this.data.brandingSettings.image) {
+      this.data.brandingSettings.image = {}
     }
 
     this.data.brandingSettings.image.bannerExternalUrl = await this.youtube.oauth.uploadChannelBanner(image)
