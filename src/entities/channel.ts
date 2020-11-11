@@ -125,8 +125,9 @@ export class Channel {
   public comments: YTComment[]
 
   /**
-   * The URLs of all of this channel's featured channels.
+   * The URLs of all of this channel's featured channels. This property is broken for some channels.
    */
+  /* istanbul ignore next */
   public featuredChannels: string[]
 
   /**
@@ -236,6 +237,8 @@ export class Channel {
             }
           }
 
+          // Broken for many channels
+          /* istanbul ignore next */
           this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
             channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
         }
