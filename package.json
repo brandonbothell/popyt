@@ -43,7 +43,7 @@
     "eslint-plugin-jsdoc": "30.7.7",
     "fs-nextra": "0.5.1",
     "gulp": "4.0.2",
-    "gulp-sourcemaps": "2.6.5",
+    "gulp-sourcemaps": "3.0.0",
     "gulp-typedoc": "2.2.5",
     "gulp-typescript": "5.0.1",
     "merge2": "1.4.1",
