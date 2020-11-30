@@ -282,10 +282,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.9.1.tgz#96f606f8cd67fb018847d9b61e93997dabdefc72"
   integrity sha512-E6M6N0blf/jiZx8Q3nb0vNaswQeEyn0XlupO+xN6DtJ6r6IT4nXrTry7zhIfYvFCl3/8Cu6WIysmUBKiqV0bqQ==
 
-"@types/node@13.13.33":
-  version "13.13.33"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.33.tgz#300e65e0b465bda102b9845d172d8d45726a2dd8"
-  integrity sha512-1B3GM1yuYsFyEvBb+ljBqWBOylsWDYioZ5wpu8AhXdIhq20neXS7eaSC8GkwHE0yQYGiOIV43lMsgRYTgKZefQ==
+"@types/node@13.13.34":
+  version "13.13.34"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.34.tgz#c9300a1b6560d90817fb2bba650e250116a575f9"
+  integrity sha512-g8D1HF2dMDKYSDl5+79izRwRgNPsSynmWMbj50mj7GZ0b7Lv4p8EmZjbo3h0h+6iLr6YmVz9VnF6XVZ3O6V1Ug==
 
 "@types/undertaker-registry@*":
   version "1.0.1"
