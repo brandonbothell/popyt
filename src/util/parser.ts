@@ -18,6 +18,10 @@ export class Parser {
       case 'm.youtube.com': {
         const idRegex = /^[a-zA-Z0-9-_]+$/
 
+        if (parsed.pathname.endsWith('/')) {
+          parsed.pathname = parsed.pathname.substring(0, parsed.pathname.length - 1)
+        }
+
         if (parsed.pathname === '/watch') {
           if (!parsed.query.v || !idRegex.test(parsed.query.v as string)) {
             return { video: null, playlist: null, channel: null }

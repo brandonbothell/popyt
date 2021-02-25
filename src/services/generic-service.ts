@@ -238,7 +238,8 @@ export class GenericService {
         id = await youtube._request.api('search', {
           q: encodeURIComponent(idFromUrl),
           type: 'channel',
-          part: 'id'
+          part: 'id',
+          maxResults: 1
         }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
 

@@ -157,7 +157,8 @@ export class YouTube {
 
   /**
    * Get a [[Channel]] object from the Username, URL or ID of a channel.
-   * Meant mostly for getting by URL or ID.
+   * Meant mostly for getting by URL or ID.  
+   * **Beware**, custom channel URLs may not work.
    * @param channelResolvable The Username, URL or ID of the channel.
    */
   public async getChannel (channelResolvable: string | Channel) {

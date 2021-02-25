@@ -37,6 +37,8 @@ describe('Getting/Parsing', () => {
     expect(Parser.parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ').video).to.equal('dQw4w9WgXcQ')
     expect(Parser.parseUrl('https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw').channel).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
     expect(Parser.parseUrl('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl').playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
+    expect(Parser.parseUrl('https://www.youtube.com/c/SomeChannel').channel).to.equal('SomeChannel')
+    expect(Parser.parseUrl('https://www.youtube.com/c/SomeChannel/').channel).to.equal('SomeChannel')
 
     const videoWithPlaylist = Parser.parseUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
     expect(videoWithPlaylist.playlist).to.equal('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')

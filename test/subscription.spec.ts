@@ -11,7 +11,7 @@ if (!apiKey) {
 
 describe('Subscriptions', () => {
   it('should set all available properties', async () => {
-    const subscription = (await youtube.getChannelSubscriptions('UCg4XK-l40KZD7fLi12pJ1YA', 1))[0]
+    const subscription = (await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1))[0]
 
     expect(subscription.full).to.equal(false)
     await subscription.fetch()
@@ -41,8 +41,8 @@ describe('Subscriptions', () => {
   })
 
   it('should work with valid channels with subscriptions', async () => {
-    const subscriptions = await youtube.getChannelSubscriptions('UCg4XK-l40KZD7fLi12pJ1YA', 1)
-    const allSubscriptions = await youtube.getChannelSubscriptions('UCg4XK-l40KZD7fLi12pJ1YA')
+    const subscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1)
+    const allSubscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ')
 
     expect(subscriptions[0]).to.be.an.instanceOf(Subscription)
     expect(allSubscriptions.length).to.be.gte(subscriptions.length)

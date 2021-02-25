@@ -9,8 +9,6 @@ if (!apiKey) {
   throw new Error('No API key')
 }
 
-let categoryId: string
-
 describe('Captions', () => {
   it('should set all available properties', async () => {
     const caption = new Caption(null, {
