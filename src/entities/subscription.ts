@@ -27,8 +27,10 @@ export class Subscription {
   public youtube: YouTube
 
   /**
-   * Whether or not this is a full subscription object.
+   * Whether or not this is a full subscription object.  
+   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
+  /* istanbul ignore next */
   public full: boolean
 
   /**
@@ -72,8 +74,10 @@ export class Subscription {
   public description: string
 
   /**
-   * Information on the user that subscribed to the channel.
+   * Information on the user that subscribed to the channel.  
+   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
+  /* istanbul ignore next */
   public subscriber: {
     /**
      * The user's ID.
@@ -110,8 +114,10 @@ export class Subscription {
   }
 
   /**
-   * Statistics on the items that the subscription points to.
+   * Statistics on the items that the subscription points to.  
+   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
+  /* istanbul ignore next */
   public items: {
     /**
      * The number of new items in the subscription.
@@ -125,8 +131,10 @@ export class Subscription {
   }
 
   /**
-   * The activities that the user has subscribed to.
+   * The activities that the user has subscribed to.  
+   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
+  /* istanbul ignore next */
   public activities: 'all' | 'uploads'
 
   constructor (youtube: YouTube, data: any) {
@@ -191,7 +199,8 @@ export class Subscription {
 
   /**
    * Fetches this subscription and reassigns this object to the new subscription object.
-   * Only useful if `this.full` is false, or if you want updated subscription info.
+   * Only useful if `this.full` is false, or if you want updated subscription info.  
+   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
   public async fetch () {
     let subscription = await this.youtube.getSubscription(this.id).catch((e: string) => e)

@@ -17,13 +17,15 @@ describe('Subscriptions', () => {
     await subscription.fetch()
 
     expect(subscription.id).to.be.a('string')
-    expect(subscription.activities).to.satisfy(a => a === 'all' || a === 'uploads')
+    /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
+    // expect(subscription.activities).to.satisfy(a => a === 'all' || a === 'uploads')
     expect(subscription.channel).to.satisfy(c => typeof c.id === 'string' && typeof c.name === 'string')
     expect(subscription.dateSubscribed).to.be.an.instanceOf(Date)
     expect(subscription.description).to.be.a('string')
-    expect(subscription.full).to.equal(true)
-    expect(subscription.items).to.satisfy(i => typeof i.new === 'number' && typeof i.total === 'number')
-    expect(subscription.subscriber).to.satisfy(s => typeof s.id === 'string' && typeof s.name === 'string' && typeof s.description === 'string' && typeof s.thumbnails === 'object')
+    /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
+    // expect(subscription.full).to.equal(true)
+    // expect(subscription.items).to.satisfy(i => typeof i.new === 'number' && typeof i.total === 'number')
+    // expect(subscription.subscriber).to.satisfy(s => typeof s.id === 'string' && typeof s.name === 'string' && typeof s.description === 'string' && typeof s.thumbnails === 'object')
     expect(subscription.thumbnails).to.satisfy(t => typeof t.default === 'object' && typeof t.medium === 'object' && typeof t.high === 'object')
     expect(subscription.title).to.be.a('string')
   })
