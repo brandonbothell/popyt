@@ -11,3 +11,5 @@ typings/
 .ionide
 .fake
 docs/
+.yarn/
+.yarnrc
