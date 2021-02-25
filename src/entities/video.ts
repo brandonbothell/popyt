@@ -222,7 +222,7 @@ export class Video {
       this.thumbnails = data.snippet.thumbnails
       this.tags = data.snippet.tags
       this.datePublished = new Date(data.snippet.publishedAt)
-      this.channelId = data.snippet.channelId
+      this.channelId = data.snippet.channelId || data.snippet.videoOwnerChannelId
       // Impossible to test
       /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
