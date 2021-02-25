@@ -7,7 +7,7 @@
   "types": "typings/index.d.ts",
   "scripts": {
     "test": "mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --parallel --recursive \"./test/!(oauth).spec.ts\" --timeout 10000",
-    "coverage": "nyc yarn test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "cross-env NODE_ENV=test nyc yarn test && cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
     "docs": "gulp typedoc",
     "prepublishOnly": "gulp",
     "lint": "eslint src/**/*.ts test/**/*.ts"
@@ -37,6 +37,7 @@
     "@typescript-eslint/parser": "4.9.1",
     "chai": "4.2.0",
     "coveralls": "3.1.0",
+    "cross-env": "7.0.3",
     "dotenv": "8.2.0",
     "eslint": "7.14.0",
     "eslint-plugin-import": "2.22.1",
@@ -48,7 +49,7 @@
     "gulp-typescript": "5.0.1",
     "merge2": "1.4.1",
     "mocha": "8.2.1",
-    "nyc": "15.1.0",
+    "nyc": "13.3.0",
     "source-map-support": "0.5.19",
     "ts-node": "9.1.0",
     "typedoc": "0.19.2",
