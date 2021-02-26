@@ -55,6 +55,11 @@ describe('Getting/Parsing', () => {
     expect(channelWithoutId.video).to.equal(null)
     expect(channelWithoutId.channel).to.equal(null)
 
+    const channelWithInvalidId = Parser.parseUrl('https://www.youtube.com/channel/yay!')
+    expect(channelWithInvalidId.playlist).to.equal(null)
+    expect(channelWithInvalidId.video).to.equal(null)
+    expect(channelWithInvalidId.channel).to.equal(null)
+
     const invalidResource = Parser.parseUrl('https://www.youtube.com/dfsdfdsf/')
     expect(invalidResource.playlist).to.equal(null)
     expect(invalidResource.video).to.equal(null)

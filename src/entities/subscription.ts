@@ -178,6 +178,8 @@ export class Subscription {
       this.full = false
     }
 
+    /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
+    /* istanbul ignore next */
     if (subscription.contentDetails) {
       this.items = {
         new: subscription.contentDetails.newItemCount,
@@ -188,6 +190,8 @@ export class Subscription {
       this.full = false
     }
 
+    /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
+    /* istanbul ignore next */
     if (subscription.subscriberSnippet) {
       this.subscriber.name = subscription.subscriberSnippet.title
       this.subscriber.description = subscription.subscriberSnippet.description

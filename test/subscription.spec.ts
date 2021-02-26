@@ -9,6 +9,8 @@ if (!apiKey) {
   throw new Error('No API key')
 }
 
+let channelId: string
+
 describe('Subscriptions', () => {
   it('should set all available properties', async () => {
     const subscription = (await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1))[0]
@@ -20,6 +22,7 @@ describe('Subscriptions', () => {
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
     // expect(subscription.activities).to.satisfy(a => a === 'all' || a === 'uploads')
     expect(subscription.channel).to.satisfy(c => typeof c.id === 'string' && typeof c.name === 'string')
+    channelId = subscription.channel.id
     expect(subscription.dateSubscribed).to.be.an.instanceOf(Date)
     expect(subscription.description).to.be.a('string')
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
@@ -48,5 +51,12 @@ describe('Subscriptions', () => {
 
     expect(subscriptions[0]).to.be.an.instanceOf(Subscription)
     expect(allSubscriptions.length).to.be.gte(subscriptions.length)
+  })
+
+  it('should work when fetching by channels', async () => {
+    const subscription = await youtube.getSubscriptionByChannels('UCacsMRrp9ql-vdgpn0zUIdQ', channelId)
+
+    expect(subscription.subscriber.id).to.equal('UCacsMRrp9ql-vdgpn0zUIdQ')
+    expect(subscription.channel.id).to.equal(channelId)
   })
 })
