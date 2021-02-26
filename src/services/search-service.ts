@@ -36,7 +36,8 @@ export class SearchService {
       videoType?: string
     } = {
       q: encodeURIComponent(searchTerm),
-      fields: encodeURIComponent(fields || 'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId,liveBroadcastContent))'),
+      fields: encodeURIComponent(fields ||
+        'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId,channelTitle,liveBroadcastContent))'),
       maxResults,
       part: 'snippet',
       type,
