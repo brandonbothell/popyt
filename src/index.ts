@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, GuideCategory, Language, Region, ChannelSection, Caption } from './entities'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
@@ -201,16 +201,6 @@ export class YouTube {
   }
 
   /**
-   * Get a [[GuideCategory]] object from the ID of a category.
-   * @param categoryId The ID of the category.
-   * @deprecated See https://developers.google.com/youtube/v3/docs/guideCategories/list
-   */
-  /* istanbul ignore next */
-  public getGuideCategory (categoryId: string) {
-    return GenericService.getItem(this, GuideCategory, false, categoryId) as Promise<GuideCategory>
-  }
-
-  /**
    * Get a [[ChannelSection]] object from the ID of a section.
    * @param categoryId The ID of the section.
    */
@@ -311,15 +301,6 @@ export class YouTube {
    */
   public getCategories (all: boolean = false) {
     return GenericService.getPaginatedItems(this, 'videoCategories', false, null, all ? -1 : 100) as Promise<VideoCategory[]>
-  }
-
-  /**
-   * Get the list of guide categories in `this.region`.
-   * @deprecated See https://developers.google.com/youtube/v3/docs/guideCategories/list
-   */
-  /* istanbul ignore next */
-  public getGuideCategories () {
-    return GenericService.getPaginatedItems(this, 'guideCategories', false) as Promise<GuideCategory[]>
   }
 
   /**

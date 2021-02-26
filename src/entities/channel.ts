@@ -78,12 +78,6 @@ export class Channel {
   }
 
   /**
-   * This channel's banners.
-   * @deprecated See https://developers.google.com/youtube/v3/docs/channels#brandingSettings.image
-   */
-  public banners: Banners
-
-  /**
    * The date this channel was created.
    */
   public dateCreated: Date
@@ -219,8 +213,6 @@ export class Channel {
 
       /* istanbul ignore next */
       if (channel.brandingSettings) {
-        this.banners = channel.brandingSettings.image
-
         // Unknown behavior
         /* istanbul ignore next */
         if (channel.brandingSettings.channel) {
