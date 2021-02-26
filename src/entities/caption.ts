@@ -1,5 +1,4 @@
-import YouTube, { ISODuration } from '..'
-import { Parser } from '../util'
+import YouTube from '..'
 
 /**
  * A caption track.

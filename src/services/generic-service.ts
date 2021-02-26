@@ -159,17 +159,17 @@ export class GenericService {
     }
 
     let results
-    let pages = null
+    let pages = -1
     let shouldReturn = !full
 
-    for (let i = 1; i < pages ? pages : 3; i++) {
+    for (let i = 1; i < (pages > 0 ? pages : 3); i++) {
       results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
 
       if (results.items.length === 0) {
         return Promise.reject(`${endpoint} not found`)
       }
 
-      if (!pages) {
+      if (pages < 1) {
         pages = results.pageInfo ? results.pageInfo.totalResults / results.pageInfo.resultsPerPage : 0
 
         if (pages <= 1) {
@@ -231,19 +231,17 @@ export class GenericService {
     }
 
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      const idFromUrl = Parser.parseUrl(input)[type.name.toLowerCase()]
+      id = Parser.parseUrl(input)[type.name.toLowerCase()]
 
       // Custom channel URLs don't work that well
-      if (type === Channel && idFromUrl && !idFromUrl.startsWith('UC')) {
+      if (type === Channel && id && !id.startsWith('UC')) {
         id = await youtube._request.api('search', {
-          q: encodeURIComponent(idFromUrl),
+          q: encodeURIComponent(id),
           type: 'channel',
           part: 'id',
           maxResults: 1
         }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
       }
-
-      id = idFromUrl
     }
 
     if (id !== null && id !== undefined && id !== '') {

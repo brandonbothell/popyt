@@ -1,4 +1,4 @@
-import { YouTube, Playlist, Thumbnail, Banners, YTComment, Subscription, ChannelSection, ChannelBrandingSettings } from '..'
+import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings } from '..'
 
 /**
  * A YouTube channel.
