@@ -69,7 +69,8 @@ describe('Searching', () => {
 
   it('should work with fetching videos of a channel', async () => {
     const video = (await youtube.searchVideos('bukkit', 10, null, null, 'UC6mi9rp7vRYninucP61qOjg')).results[0]
-    expect(video.channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
+    expect(video.channel.id).to.equal('UC6mi9rp7vRYninucP61qOjg')
+    expect(video.channel.name).to.be.a('string')
   })
 
   it('should throw an error if kind is wrong', () => {

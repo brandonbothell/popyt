@@ -75,9 +75,12 @@ export class Video {
   public datePublished: Date
 
   /**
-   * The ID of the channel that uploaded the video.
+   * Information on the channel that uploaded the video.
    */
-  public channelId: string
+  public channel: {
+    id: string
+    name: string
+  }
 
   /**
    * @ignore
@@ -222,7 +225,10 @@ export class Video {
       this.thumbnails = data.snippet.thumbnails
       this.tags = data.snippet.tags
       this.datePublished = new Date(data.snippet.publishedAt)
-      this.channelId = data.snippet.channelId || data.snippet.videoOwnerChannelId
+      this.channel = {
+        id: data.snippet.channelId || data.snippet.videoOwnerChannelId,
+        name: data.snippet.channelTitle || data.snippet.videoOwnerChannelTitle
+      }
       // Impossible to test
       /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
@@ -255,7 +261,7 @@ export class Video {
    */
   /* istanbul ignore next */
   public async postComment (text: string) {
-    const comment = await this.youtube.oauth.postComment(text, this.channelId, this.id)
+    const comment = await this.youtube.oauth.postComment(text, this.channel.id, this.id)
 
     if (this.comments !== undefined) {
       this.comments.push(comment)
