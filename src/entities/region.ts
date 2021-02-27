@@ -20,22 +20,22 @@ export class Region {
   public static fields = 'items(kind,id,snippet(gl,name))'
 
   /**
-   * The YouTube object that created this language object.
+   * The YouTube object that created this region object.
    */
   public youtube: YouTube
 
   /**
-   * Whether or not this is a full language object.
+   * Whether or not this is a full region object.
    */
   public full: boolean
 
   /**
-   * The raw data of this language.
+   * The raw data of this region.
    */
   public data: any
 
   /**
-   * The ID of this language.
+   * The ID of this region.
    */
   public id: string
 

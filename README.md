@@ -58,7 +58,7 @@ const videos = await youtube.searchVideos('never gonna give you up', 12)
 console.log(videos) // array of 12 partial video objects
 ```
 
-Note: This wrapper does not implement every feature of the YouTube API. With a single developer working on it, there just isn't time for everything to be implemented. Some of the objectively most-important features have been added. The limits imposed by the wrapper are not imposed by YouTube.
+Note: This wrapper does not implement every feature of the YouTube API. If you would like anything added, feel free to open an issue. The limits imposed by the wrapper are not imposed by YouTube.
 
 # Development/Contributing
 ## Before committing:
