@@ -329,10 +329,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/gulp-sourcemaps@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@types/gulp-sourcemaps/-/gulp-sourcemaps-0.0.33.tgz#9194199ac1eef4d10a370f87c94344b18106b0ea"
-  integrity sha512-D2OD0SasWuwAg4ONykniPaoddzWJ8fmcMaQhCXpexExbskHDRBxmR7BpxMcuqHIB4Vjdwrq0ZSCq1OCOm28Ubg==
+"@types/gulp-sourcemaps@0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/gulp-sourcemaps/-/gulp-sourcemaps-0.0.34.tgz#af63e5317425b96a90ad295d01377dfcf1f5efdc"
+  integrity sha512-FOn9QOQpiH27Ay6Gy7bEl465+TzJ/QmIXgXD/oYptyX5W8wy8DZ7ZacIBAIOUylC68RT8qIYo+5KJG4OUfiFQQ==
   dependencies:
     "@types/node" "*"
     "@types/vinyl" "*"
