@@ -2442,10 +2442,10 @@ gulp-sourcemaps@3.0.0:
     strip-bom-string "^1.0.0"
     through2 "^2.0.0"
 
-gulp-typedoc@2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/gulp-typedoc/-/gulp-typedoc-2.2.7.tgz#02f1b13487e6f68f76dc4ea0fc5d5b8d8be9f266"
-  integrity sha512-imYG30TnxsVc+BAa9+gfRRBT1CCXJGv3ZcsM0+Yr0clWfmaViXG4iLBwxGeRIDQeUy22rRUrVIdeSqpMSRcaqw==
+gulp-typedoc@2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/gulp-typedoc/-/gulp-typedoc-2.2.9.tgz#a9b7e994ed2e25da36eb9819d1f52eab21c4f988"
+  integrity sha512-mrG2f8Ri5MUD1FxQx/V9eclxUwTtBzZPnEpO/It8kGKmQRzxTTdWwA7dgIGjApOGGTIE7pco6nSZNTdKoXx/RA==
   dependencies:
     ansi-colors "^4.1.1"
     event-stream "^4.0.1"
