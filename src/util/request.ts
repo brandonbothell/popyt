@@ -171,7 +171,7 @@ export class Request {
 
           // no content
           if (res.statusCode === 204) {
-            return resolve()
+            return resolve(undefined)
           }
 
           if (res.headers['content-type'].startsWith('application/octet-stream')) {
