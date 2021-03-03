@@ -31,8 +31,8 @@ jobs:
     - name: Publish Docs
       uses: JamesIves/github-pages-deploy-action@4.0.0
       with:
-        ACCESS_TOKEN: ${{ secrets.GIT_ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: docs
-        COMMIT_MESSAGE: 'docs: CI build'
-        GIT_CONFIG_EMAIL: shadowmanguyyt@gmail.com
+        token: ${{ secrets.GIT_ACCESS_TOKEN }}
+        branch: gh-pages
+        folder: docs
+        commit-message: 'docs: CI build'
+        git-config-email: shadowmanguyyt@gmail.com
