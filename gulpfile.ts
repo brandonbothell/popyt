@@ -32,8 +32,7 @@ function docs () {
       target: 'es2016',
       out: 'docs/docs',
       name: 'popyt',
-      theme: 'default',
-      mode: 'file'
+      theme: 'default'
     }))
 
   toReturn.on('end', () => {

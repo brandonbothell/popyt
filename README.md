@@ -11,7 +11,7 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
 
 # Examples
-## See [the documentation](https://bbothell.rocks/popyt/docs).
+## See [the documentation](https://bbothell.rocks/popyt/docs/classes/_index_.youtube.html).
 Here are some basic methods:
 
 Instantiate the object:
