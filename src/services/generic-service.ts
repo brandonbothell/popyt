@@ -36,7 +36,7 @@ export class GenericService {
     } = {
       [id ? 'id' : 'mine']: id ? id : mine,
       fields: encodeURIComponent(type.fields),
-      part: parts ? parts.join(',') : type.part
+      part: type === YTComment ? 'snippet' : parts ? parts.join(',') : type.part
     }
 
     if (type === VideoCategory) {
@@ -63,7 +63,7 @@ export class GenericService {
   }
 
   /* istanbul ignore next */
-  public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1,
+  public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = 10,
     subId?: string, parts?: string[]):
   Promise<PaginatedItemsReturns> {
     if (!mine && (id === undefined || id === null) &&
@@ -111,6 +111,7 @@ export class GenericService {
       clazz = Video
       options.playlistId = id
       if (subId) options.videoId = subId
+      if (!options.part.includes('snippet')) options.part += ',snippet'
     } else if (endpoint.startsWith('commentThreads')) {
       max = 100
       clazz = YTComment
@@ -121,10 +122,12 @@ export class GenericService {
       endpoint = 'commentThreads'
       options[`${type}Id`] = id
       options.textFormat = 'plainText'
+      options.part = 'snippet'
     } else if (endpoint === 'comments') {
       max = 100
       clazz = YTComment
       options.parentId = id
+      options.part = 'snippet'
     } else if (endpoint === 'playlists:channel') {
       max = 50
       clazz = Playlist
@@ -184,7 +187,7 @@ export class GenericService {
         const item = results.items[i]
         let comment: YTComment
 
-        if (item.snippet.topLevelComment) {
+        if (item.snippet && item.snippet.topLevelComment) {
           comment = new YTComment(youtube, item.snippet.topLevelComment, commentType)
           items.push(comment)
         } else {
