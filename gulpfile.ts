@@ -2,7 +2,7 @@ import * as gulp from 'gulp'
 import * as fsn from 'fs-nextra'
 import * as ts from 'gulp-typescript'
 import * as sourcemaps from 'gulp-sourcemaps'
-import typedoc from 'gulp-typedoc'
+import * as TypeDoc from 'typedoc'
 import merge from 'merge2'
 
 const project = ts.createProject('tsconfig.json')
@@ -23,23 +23,26 @@ async function build () {
   ])
 }
 
-function docs () {
-  const toReturn = gulp
-    .src(['src/**/*.ts'])
-    .pipe(typedoc({
-      module: 'commonjs',
-      readme: 'README.md',
-      target: 'es2016',
-      out: 'docs/docs',
-      name: 'popyt',
-      theme: 'default'
-    }))
+async function docs () {
+  const app = new TypeDoc.Application()
 
-  toReturn.on('end', () => {
-    fsn.createFile('docs/.nojekyll')
+  app.options.addReader(new TypeDoc.TSConfigReader())
+  app.bootstrap({
+    entryPoints: [ 'src/index.ts' ],
+    readme: 'README.md',
+    out: 'docs/docs',
+    name: 'popyt',
+    theme: 'default'
   })
 
-  return toReturn
+  const project = app.convert()
+
+  if (project) {
+    await app.generateDocs(project, 'docs/docs')
+    fsn.createFile('docs/.nojekyll')
+  } else {
+    Promise.reject('An error occured while converting the TypeDoc app to a project')
+  }
 }
 
 gulp.task('typedoc', docs)
