@@ -17,6 +17,7 @@ import YouTube,
 } from '.'
 import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA, CAPTION_DATA } from './constants'
 import { GenericService } from './services'
+import { ChannelParts, PlaylistParts, SubscriptionParts } from './types/Parts'
 import { Cache } from './util'
 
 /**
@@ -47,9 +48,9 @@ export class OAuth {
    * Gets the authorized user's [[Channel]].  
    * Last tested 05/18/2020 11:48. PASSING
    */
-  public getMe (): Promise<Channel> {
+  public getMe (parts?: ChannelParts): Promise<Channel> {
     this.checkTokenAndThrow()
-    return GenericService.getItem(this.youtube, Channel, true) as Promise<Channel>
+    return GenericService.getItem(this.youtube, Channel, true, null, parts) as Promise<Channel>
   }
 
   /**
@@ -58,9 +59,9 @@ export class OAuth {
    * @param maxResults The maximum number of subscriptions to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
-  public getMySubscriptions (maxResults: number = 10): Promise<Subscription[]> {
+  public getMySubscriptions (maxResults: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults) as Promise<Subscription[]>
+    return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults, null, parts) as Promise<Subscription[]>
   }
 
   /**
@@ -69,9 +70,9 @@ export class OAuth {
    * @param maxResults The maximum number of playlists to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
-  public getMyPlaylists (maxResults: number = 10): Promise<Playlist[]> {
+  public getMyPlaylists (maxResults: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults) as Promise<Playlist[]>
+    return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults, null, parts) as Promise<Playlist[]>
   }
 
   /**
