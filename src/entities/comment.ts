@@ -1,4 +1,5 @@
 import { YouTube } from '..'
+import { CommentParts } from '../types/Parts'
 
 export class YTComment {
   /**
@@ -174,8 +175,8 @@ export class YTComment {
    * Fetches replies to the comment.
    * @param maxResults The maximum amount of replies to fetch. Fetches all comments if <=0.
    */
-  public async fetchReplies (maxResults: number = 10) {
-    this.replies = await this.youtube.getCommentReplies(this.id, maxResults)
+  public async fetchReplies (maxResults: number = 10, parts?: CommentParts) {
+    this.replies = await this.youtube.getCommentReplies(this.id, maxResults, parts)
     return this.replies
   }
 

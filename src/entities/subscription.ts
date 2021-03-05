@@ -1,5 +1,6 @@
 import YouTube from '..'
 import { Thumbnail } from '../types'
+import { SubscriptionParts } from '../types/Parts'
 
 /**
  * A YouTube subscription.
@@ -206,12 +207,12 @@ export class Subscription {
    * Only useful if `this.full` is false, or if you want updated subscription info.  
    * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
-  public async fetch () {
-    let subscription = await this.youtube.getSubscription(this.id).catch((e: string) => e)
+  public async fetch (parts?: SubscriptionParts) {
+    let subscription = await this.youtube.getSubscription(this.id, parts).catch((e: string) => e)
 
     /* istanbul ignore next */
     if (typeof subscription === 'string') {
-      subscription = await this.youtube.getSubscriptionByChannels(this.subscriber.id, this.channel.id).catch(e => e)
+      subscription = await this.youtube.getSubscriptionByChannels(this.subscriber.id, this.channel.id)
     }
 
     return Object.assign(this, subscription)

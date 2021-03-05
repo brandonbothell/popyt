@@ -1,5 +1,6 @@
 import { YouTube, Video, Thumbnail } from '..'
 import { GenericService } from '../services'
+import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
 
 /**
  * A YouTube playlist.
@@ -143,8 +144,8 @@ export class Playlist {
    * Adds videos in this playlist to the `videos` property of this playlist.
    * @param maxResults Fetches all videos if <=0.
    */
-  public async fetchVideos (maxResults: number = 10) {
-    this.videos = await this.youtube.getPlaylistItems(this.id, maxResults)
+  public async fetchVideos (maxResults: number = 10, parts?: PlaylistItemParts) {
+    this.videos = await this.youtube.getPlaylistItems(this.id, maxResults, parts)
     return this.videos
   }
 
@@ -152,8 +153,8 @@ export class Playlist {
    * Fetches this playlist and reassigns this object to the new playlist object.
    * Only useful if `this.full` is false, or if you want updated playlist info.
    */
-  public async fetch () {
-    const playlist = await this.youtube.getPlaylist(this.id)
+  public async fetch (parts?: PlaylistParts) {
+    const playlist = await this.youtube.getPlaylist(this.id, parts)
     return Object.assign(this, playlist)
   }
 

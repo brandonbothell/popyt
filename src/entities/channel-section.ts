@@ -1,4 +1,5 @@
 import { YouTube, Playlist, Channel, ChannelSectionType } from '..'
+import { ChannelParts, ChannelSectionParts, PlaylistParts } from '../types/Parts'
 
 /**
  * A YouTube channel section.
@@ -189,15 +190,15 @@ export class ChannelSection {
    * Fetches this channel section and reassigns this object to the new channel section object.
    * Only useful if `this.full` is false, or if you want updated channel section info.
    */
-  public async fetch () {
-    const section = await this.youtube.getChannelSection(this.id)
+  public async fetch (parts?: ChannelSectionParts) {
+    const section = await this.youtube.getChannelSection(this.id, parts)
     return Object.assign(this, section)
   }
 
   /**
    * Fetches the channel section's playlists and assigns them to the [[ChannelSection#playlists]] property.
    */
-  public async fetchPlaylists () {
+  public async fetchPlaylists (parts?: PlaylistParts) {
     if (!this.playlistIds) {
       return
     }
@@ -205,7 +206,7 @@ export class ChannelSection {
     const playlists = []
 
     for (let i = 0; i < this.playlistIds.length; i++) {
-      playlists.push(await this.youtube.getPlaylist(this.playlistIds[i]))
+      playlists.push(await this.youtube.getPlaylist(this.playlistIds[i], parts))
     }
 
     this.playlists = playlists
@@ -213,9 +214,9 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's playlists and assigns them to the [[ChannelSection#playlists]] property.
+   * Fetches the channel section's channels and assigns them to the [[ChannelSection#channels]] property.
    */
-  public async fetchChannels () {
+  public async fetchChannels (parts?: ChannelParts) {
     if (!this.channelIds) {
       return
     }
@@ -223,7 +224,7 @@ export class ChannelSection {
     const channels = []
 
     for (let i = 0; i < this.channelIds.length; i++) {
-      channels.push(await this.youtube.getChannel(this.channelIds[i]))
+      channels.push(await this.youtube.getChannel(this.channelIds[i], parts))
     }
 
     this.channels = channels

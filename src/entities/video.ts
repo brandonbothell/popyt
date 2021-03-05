@@ -2,6 +2,7 @@ import { YouTube, VideoUpdateResource, Caption } from '..'
 import { Thumbnail, ISODuration } from '../types'
 import { YTComment } from './comment'
 import { Parser } from '../util'
+import { CommentThreadParts, VideoParts } from '../types/Parts'
 
 /**
  * A YouTube video.
@@ -277,8 +278,8 @@ export class Video {
    * Fetches this video and reassigns this object to the new video object.
    * Only useful if `this.full` is false, or if you want updated video info.
    */
-  public async fetch () {
-    const video = await this.youtube.getVideo(this.id)
+  public async fetch (parts?: VideoParts) {
+    const video = await this.youtube.getVideo(this.id, parts)
     return Object.assign(this, video)
   }
 
@@ -286,13 +287,14 @@ export class Video {
    * Fetches the video's comments and assigns them to Video#comments.
    * @param maxResults The maximum amount of comments to fetch
    */
-  public async fetchComments (maxResults: number = 10) {
-    this.comments = await this.youtube.getVideoComments(this.id, maxResults)
+  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
+    this.comments = await this.youtube.getVideoComments(this.id, maxResults, parts)
     return this.comments
   }
 
   /**
    * Gets the user's rating on the video.
+   * Must be using an access token with correct scopes.
    */
   /* istanbul ignore next */
   public async getRating (): Promise<'like' | 'dislike' | 'none' | 'unspecified'> {

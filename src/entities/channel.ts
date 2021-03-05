@@ -1,4 +1,5 @@
 import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings } from '..'
+import { ChannelParts, ChannelSectionParts, CommentThreadParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
 
 /**
  * A YouTube channel.
@@ -286,20 +287,20 @@ export class Channel {
    * Fetches this channel and reassigns this object to the new channel object.
    * Only useful if `this.full` is false, or if you want updated channel info.
    */
-  public async fetch () {
-    const channel = await this.youtube.getChannel(this.id)
+  public async fetch (parts?: ChannelParts) {
+    const channel = await this.youtube.getChannel(this.id, parts)
     return Object.assign(this, channel)
   }
 
   /**
-   * Fetches the channel's videos and assigns them to the `Channel#videos` property.
+   * Fetches the channel's playlist of uploads and assigns it to the `Channel#videos` property.
    */
-  public async fetchVideos () {
+  public async fetchVideos (parts?: PlaylistParts) {
     if (!(this.data.contentDetails)) {
-      await this.fetch()
+      await this.fetch([ 'contentDetails' ])
     }
 
-    const videos = await this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads)
+    const videos = await this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads, parts)
     this.videos = videos
 
     return this.videos
@@ -309,8 +310,8 @@ export class Channel {
    * Fetches the channel's discussion tab comments and assigns them to Channel#comments.
    * @param maxResults The maximum amount of comments to fetch
    */
-  public async fetchComments (maxResults: number = 10) {
-    this.comments = await this.youtube.getChannelComments(this.id, maxResults)
+  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
+    this.comments = await this.youtube.getChannelComments(this.id, maxResults, parts)
     return this.comments
   }
 
@@ -318,8 +319,8 @@ export class Channel {
    * Fetches the channel's playlists and assigns them to Channel#playlists.
    * @param maxResults The maximum amount of playlists to fetch
    */
-  public async fetchPlaylists (maxResults: number = 10) {
-    this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults)
+  public async fetchPlaylists (maxResults: number = 10, parts?: PlaylistParts) {
+    this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults, parts)
     return this.playlists
   }
 
@@ -328,16 +329,16 @@ export class Channel {
    * @param maxResults The maximum amount of subscriptions to fetch
    */
   /* istanbul ignore next */
-  public async fetchSubscriptions (maxResults: number = 10) {
-    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults)
+  public async fetchSubscriptions (maxResults: number = 10, parts?: SubscriptionParts) {
+    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults, parts)
     return this.subscriptions
   }
 
   /**
    * Fetches the channel's sections and assigns them to [[Channel#sections]].
    */
-  public async fetchSections () {
-    this.sections = await this.youtube.getChannelSections(this.id)
+  public async fetchSections (parts?: ChannelSectionParts) {
+    this.sections = await this.youtube.getChannelSections(this.id, parts)
     return this.sections
   }
 
