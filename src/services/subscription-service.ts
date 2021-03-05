@@ -1,4 +1,5 @@
 import YouTube, { Subscription } from '..'
+import { SubscriptionParts } from '../types/Parts'
 import { Cache } from '../util'
 
 /**
@@ -6,7 +7,7 @@ import { Cache } from '../util'
  */
 export class SubscriptionService {
   /* istanbul ignore next */
-  public static async getSubscriptionByChannels (youtube: YouTube, subscriberId: string, channelId: string): Promise<Subscription> {
+  public static async getSubscriptionByChannels (youtube: YouTube, subscriberId: string, channelId: string, parts?: SubscriptionParts): Promise<Subscription> {
     const cached = Cache.get(`sub_by_channels://"${subscriberId}"/"${channelId}"`)
 
     if (youtube._shouldCache && cached) {
@@ -19,7 +20,7 @@ export class SubscriptionService {
       channelId: string
       maxResults: number
     } = {
-      part: 'snippet,contentDetails,subscriberSnippet',
+      part: parts ? parts.join(',') : 'snippet,contentDetails,subscriberSnippet',
       forChannelId: channelId,
       channelId: subscriberId,
       maxResults: 1

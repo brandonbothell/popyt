@@ -8,7 +8,7 @@ import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns 
  */
 export class GenericService {
   /* istanbul ignore next */
-  public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string): Promise<ItemReturns> {
+  public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string, parts?: string[]): Promise<ItemReturns> {
     if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
       return Promise.reject('Type must be a video, channel, playlist, comment, subscription, video category, or channel section.')
     }
@@ -36,7 +36,7 @@ export class GenericService {
     } = {
       [id ? 'id' : 'mine']: id ? id : mine,
       fields: encodeURIComponent(type.fields),
-      part: type === YTComment ? !type.part.includes('snippet') ? type.part + ',snippet' : type.part : type.part
+      part: parts ? parts.join(',') : type.part
     }
 
     if (type === VideoCategory) {
@@ -63,7 +63,8 @@ export class GenericService {
   }
 
   /* istanbul ignore next */
-  public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1, subId?: string):
+  public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = -1,
+    subId?: string, parts?: string[]):
   Promise<PaginatedItemsReturns> {
     if (!mine && (id === undefined || id === null) &&
       !([ 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions', 'videoCategories' ].includes(endpoint))) {
@@ -97,7 +98,7 @@ export class GenericService {
       mine?: boolean
       hl?: string
     } = {
-      part: 'snippet'
+      part: parts ? parts.join(',') : 'snippet'
     }
 
     let max: number
