@@ -22,10 +22,10 @@ describe('Playlist items', () => {
   })
 
   it('should return an array with a length of <= maxResults', async () => {
-    expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 2)).length).to.be.lessThan(3)
+    expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 2, [ 'id' ])).length).to.be.lessThan(3)
   })
 
   it('should return an array the size of the playlist if maxResults isn\'t defined or is < 1', async () => {
-    expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 0)).length).to.be.greaterThan(50)
+    expect((await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 0, [ 'id' ])).length).to.be.greaterThan(50)
   })
 })

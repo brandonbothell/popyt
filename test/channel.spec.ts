@@ -17,63 +17,54 @@ describe('Channels', () => {
   })
 
   it('should work with proper IDs', async () => {
-    Channel.part = 'id,contentDetails,brandingSettings'
-    expect(await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
+    expect(await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id', 'contentDetails', 'brandingSettings' ])).to.be.an.instanceOf(Channel)
   })
 
   it('should work with proper URLs', async () => {
-    expect(await youtube.getChannel('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ')).to.be.an.instanceOf(Channel)
+    expect(await youtube.getChannel('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])).to.be.an.instanceOf(Channel)
   })
 
   it('should work with single searching', async () => {
-    expect(await youtube.getChannel('youtube')).to.be.an.instanceOf(Channel)
+    expect(await youtube.getChannel('youtube', [ 'id' ])).to.be.an.instanceOf(Channel)
   })
 
   it('should work with fetching', async () => {
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
-    expect(await channel.fetch()).to.be.an.instanceOf(Channel)
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])
+    expect(await channel.fetch([ 'id' ])).to.be.an.instanceOf(Channel)
   })
 
   it('should work with fetching videos', async () => {
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
-    expect(await channel.fetchVideos()).to.be.an.instanceOf(Playlist)
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'contentDetails' ])
+    expect(await channel.fetchVideos([ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching playlists with maxResults', async () => {
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
-    expect((await channel.fetchPlaylists(5))[0]).to.be.an.instanceOf(Playlist)
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])
+    expect((await channel.fetchPlaylists(5, [ 'id' ]))[0]).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching playlists', async () => {
-    Channel.part = 'id'
-
-    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
-    expect((await channel.fetchPlaylists())[0]).to.be.an.instanceOf(Playlist)
+    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
+    expect((await channel.fetchPlaylists(undefined, [ 'id' ]))[0]).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching subscriptions with maxResults', async () => {
-    Channel.part = 'id'
-
-    const channel = await youtube.getChannel('UCg4XK-l40KZD7fLi12pJ1YA')
-    expect((await channel.fetchSubscriptions(1))[0]).to.be.an.instanceOf(Subscription)
+    const channel = await youtube.getChannel('UCg4XK-l40KZD7fLi12pJ1YA', [ 'id' ])
+    expect((await channel.fetchSubscriptions(1, [ 'id' ]))[0]).to.be.an.instanceOf(Subscription)
   })
 
   it('should work with fetching sections', async () => {
-    Channel.part = 'id'
-
-    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
-    expect((await channel.fetchSections())[0]).to.be.an.instanceOf(ChannelSection)
+    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
+    expect((await channel.fetchSections([ 'id' ]))[0]).to.be.an.instanceOf(ChannelSection)
   })
 
   it('should have a negative subscriber count if it is hidden', async () => {
-    Channel.part = 'statistics'
-
-    const channel = await youtube.getChannel('UCacsMRrp9ql-vdgpn0zUIdQ')
+    const channel = await youtube.getChannel('UCacsMRrp9ql-vdgpn0zUIdQ', [ 'statistics' ])
     expect(channel.subCount).to.be.lessThan(0)
   })
 
   it('should contain branding properties', async () => {
-    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'brandingSettings' ])
     expect(channel.keywords.length).to.be.greaterThan(0)
   })
 })

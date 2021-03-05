@@ -17,41 +17,40 @@ describe('Playlists', () => {
   })
 
   it('should work with proper IDs', async () => {
-    Playlist.part = 'id'
-    expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
+    expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with proper URLs', async () => {
-    expect(await youtube.getPlaylist('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')).to.be.an.instanceOf(Playlist)
+    expect(await youtube.getPlaylist('https://www.youtube.com/playlist?list=PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with single searching', async () => {
-    expect(await youtube.getPlaylist('best songs ever')).to.be.an.instanceOf(Playlist)
+    expect(await youtube.getPlaylist('best songs ever', [ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching', async () => {
-    const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
-    expect(await playlist.fetch()).to.be.an.instanceOf(Playlist)
+    const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
+    expect(await playlist.fetch([ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching maxResults videos', async () => {
-    const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
-    const videos = await playlist.fetchVideos(1)
+    const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
+    const videos = await playlist.fetchVideos(1, [ 'id' ])
 
     expect(videos[0]).to.be.an.instanceOf(Video)
     expect(playlist.videos[0].id).to.equal(videos[0].id)
   })
 
   it('should work with fetching all videos', async () => {
-    const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl')
-    const videos = await playlist.fetchVideos()
+    const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
+    const videos = await playlist.fetchVideos(undefined, [ 'id' ])
 
     expect(videos.length).to.be.lte(10)
     expect(playlist.videos.length).to.be.lte(10)
   })
 
   it('should work with fetching channel playlists with maxResults', async () => {
-    const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', 5)
+    const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', 5, [ 'id' ])
 
     expect(playlists.length).to.equal(5)
     expect(playlists[0]).to.be.an.instanceOf(Playlist)

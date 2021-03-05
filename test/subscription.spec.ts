@@ -46,15 +46,15 @@ describe('Subscriptions', () => {
   })
 
   it('should work with valid channels with subscriptions', async () => {
-    const subscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1)
-    const allSubscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ')
+    const subscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1, [ 'id' ])
+    const tenSubscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', undefined, [ 'id' ])
 
     expect(subscriptions[0]).to.be.an.instanceOf(Subscription)
-    expect(allSubscriptions.length).to.be.gte(subscriptions.length)
+    expect(tenSubscriptions.length).to.be.gte(subscriptions.length)
   })
 
   it('should work when fetching by channels', async () => {
-    const subscription = await youtube.getSubscriptionByChannels('UCacsMRrp9ql-vdgpn0zUIdQ', channelId)
+    const subscription = await youtube.getSubscriptionByChannels('UCacsMRrp9ql-vdgpn0zUIdQ', channelId, [ 'snippet' ])
 
     expect(subscription.subscriber.id).to.equal('UCacsMRrp9ql-vdgpn0zUIdQ')
     expect(subscription.channel.id).to.equal(channelId)

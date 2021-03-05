@@ -32,7 +32,7 @@ let captionTrack: Buffer
 describe('OAuth', () => {
   it('should fetch my channel', async () => {
     const youtube = new YouTube(key, token)
-    const channel = await youtube.oauth.getMe()
+    const channel = await youtube.oauth.getMe([ 'id' ])
     channelId = channel.id
 
     expect(channel.id).to.be.a('string')
@@ -40,14 +40,14 @@ describe('OAuth', () => {
 
   it('should fetch my subscriptions', async () => {
     const youtube = new YouTube(key, token)
-    const subscription = (await youtube.oauth.getMySubscriptions(1))[0]
+    const subscription = (await youtube.oauth.getMySubscriptions(1, [ 'id' ]))[0]
 
     expect(subscription.id).to.be.a('string')
   })
 
   it('should fetch my playlists', async () => {
     const youtube = new YouTube(key, token)
-    const playlist = (await youtube.oauth.getMyPlaylists(1))[0]
+    const playlist = (await youtube.oauth.getMyPlaylists(1, [ 'id' ]))[0]
 
     expect(playlist.id).to.be.a('string')
   })

@@ -34,10 +34,8 @@ describe('Comments', () => {
   })
 
   it('should work with fetching from a channel object', async () => {
-    Channel.part = 'id'
-
-    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')
-    const comments = await channel.fetchComments(1)
+    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
+    const comments = await channel.fetchComments(1, [ 'id' ])
 
     expect(comments[0]).to.be.an.instanceOf(YTComment)
     expect(channel.comments[0].id).to.equal(comments[0].id)
@@ -57,11 +55,11 @@ describe('Comments', () => {
   })
 
   it('should return an array with a length of <= maxResults', async () => {
-    expect((await youtube.getVideoComments('Lq1D8PFnjWY', 1)).length).to.be.lessThan(2)
+    expect((await youtube.getVideoComments('Lq1D8PFnjWY', 1, [ 'id' ])).length).to.be.lessThan(2)
   })
 
   it('should work with fetching replies', async () => {
-    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', 1))[0].fetchReplies())).to.be.an.instanceOf(Array)
+    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', 1, [ 'id' ]))[0].fetchReplies())).to.be.an.instanceOf(Array)
   })
 
   it('should be individually gettable', async () => {
@@ -69,17 +67,15 @@ describe('Comments', () => {
   })
 
   it('should have a parent ID of its video', async () => {
-    YTComment.part = 'snippet'
-
-    const video = await youtube.getVideo('Lq1D8PFnjWY')
-    const comments = await video.fetchComments(1)
+    const video = await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])
+    const comments = await video.fetchComments(1, [ 'snippet' ])
 
     expect(comments[0].parentId).to.equal('Lq1D8PFnjWY')
   })
 
   it('should have a correct URL', async () => {
-    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY')).fetchComments()).find(c => c.id === 'Ugyv3oMTx4CLRXS-9BZ4AaABAg')
-    const channelComment = (await (await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg')).fetchComments()).find(c => c.id === 'UgjH7gcaETIe4HgCoAEC')
+    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).fetchComments()).find(c => c.id === 'Ugyv3oMTx4CLRXS-9BZ4AaABAg')
+    const channelComment = (await (await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])).fetchComments()).find(c => c.id === 'UgjH7gcaETIe4HgCoAEC')
 
     expect(videoComment.url).to.equal('https://youtube.com/watch?v=Lq1D8PFnjWY&lc=Ugyv3oMTx4CLRXS-9BZ4AaABAg')
     expect(channelComment.url).to.equal('https://youtube.com/channel/UC6mi9rp7vRYninucP61qOjg/discussion?lc=UgjH7gcaETIe4HgCoAEC')
