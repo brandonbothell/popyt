@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module Entities
+ */
+
 export * from './video'
 export * from './channel'
 export * from './playlist'

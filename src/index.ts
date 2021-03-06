@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module Public
+ */
+
 import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection } from './entities'
 import { Cache, Request } from './util'
 import { OAuth } from './oauth'
@@ -333,7 +338,7 @@ export class YouTube {
   }
 }
 
-type YouTubeOptions = {
+export type YouTubeOptions = {
   /**
    * Whether or not to cache entities.
    */

@@ -1,6 +1,11 @@
 /* istanbul ignore file */
 /* We ignore this file because OAuth endpoints are too taxing to test, they are instead manually tested. */
 
+/**
+ * @packageDocumentation
+ * @module OAuth
+ */
+
 import YouTube,
 {
   YTComment,

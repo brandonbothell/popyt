@@ -17,6 +17,54 @@
     "out",
     "test",
     "gulpfile.ts",
-    "typings"
-  ]
+    "typings",
+    "docs",
+    "docs-resources"
+  ],
+  "typedocOptions": {
+    "entryPoints": [ "src/index.ts", "src/oauth.ts", "src/entities/index.ts" ],
+    "readme": "README.md",
+    "out": "docs/docs",
+    "name": "popyt",
+    "theme": "./node_modules/typedoc-neo-theme/bin/default",
+    "highlightTheme": "github-dark",
+    "plugin": [ "typedoc-neo-theme" ],
+    "search": [{
+      "name": "YouTube",
+      "subtitle": "Main class for fetching public data"
+    }],
+    "outline": [{
+      "Main classes": {
+        "Public data (YouTube)": "classes/public.youtube",
+        "Private data (OAuth)": "classes/oauth.oauth-1"
+      },
+      "Entities": {
+        "Overview": "modules/entities",
+        "Captions": "classes/entities.caption",
+        "Channel Sections": "classes/entities.channelsection",
+        "Channels": "classes/entities.channel",
+        "Comments": "classes/entities.ytcomment",
+        "Languages": "classes/entities.language",
+        "Playlists": "classes/entities.playlist",
+        "Regions": "classes/entities.region",
+        "Subscriptions": "classes/entities.subscription",
+        "Video Abuse Report Reasons": "classes/entities.videoabusereportreason",
+        "Video categories": "classes/entities.videocategory",
+        "Videos": "classes/entities.video"
+      },
+      "Other": {
+        "All exports (including types)": "modules/public"
+      }
+    }],
+    "customScripts": [{
+      "path": [ "assets/js/global.js" ]
+    }, {
+      "path": [ "../assets/js/global.js" ]
+    }],
+    "customStyles": [{
+      "path": [ "assets/css/dark.css" ]
+    }, {
+      "path": [ "../assets/css/dark.css" ]
+    }]
+  }
 }
