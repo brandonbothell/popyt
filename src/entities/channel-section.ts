@@ -2,7 +2,7 @@ import { YouTube, Playlist, Channel, ChannelSectionType } from '..'
 import { ChannelParts, ChannelSectionParts, PlaylistParts } from '../types/Parts'
 
 /**
- * A YouTube channel section.
+ * A YouTube [[Channel]] section.
  */
 export class ChannelSection {
   /**

@@ -27,19 +27,16 @@ async function docs () {
   const app = new TypeDoc.Application()
 
   app.options.addReader(new TypeDoc.TSConfigReader())
-  app.bootstrap({
-    entryPoints: [ 'src/index.ts' ],
-    readme: 'README.md',
-    out: 'docs/docs',
-    name: 'popyt',
-    theme: 'default'
-  })
+  app.bootstrap()
 
   const project = app.convert()
 
   if (project) {
     await app.generateDocs(project, 'docs/docs')
-    fsn.createFile('docs/.nojekyll')
+
+    await fsn.createFile('docs/.nojekyll')
+    await fsn.copyFileAtomic('docs-resources/js/global.js', 'docs/docs/assets/js/global.js')
+    await fsn.copyFileAtomic('docs-resources/css/dark.css', 'docs/docs/assets/css/dark.css')
   } else {
     Promise.reject('An error occured while converting the TypeDoc app to a project')
   }

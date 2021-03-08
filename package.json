@@ -1,6 +1,6 @@
 {
   "name": "popyt",
-  "version": "5.0.0",
+  "version": "6.0.0-dev",
   "description": "A very easy to use promise-based Youtube Data v3 API.",
   "homepage": "https://bbothell.rocks/popyt/docs",
   "main": "out/index.js",
@@ -45,7 +45,6 @@
     "fs-nextra": "0.5.1",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "3.0.0",
-    "gulp-typedoc": "2.2.9",
     "gulp-typescript": "5.0.1",
     "merge2": "1.4.1",
     "mocha": "8.3.1",
@@ -53,6 +52,7 @@
     "source-map-support": "0.5.19",
     "ts-node": "9.1.1",
     "typedoc": "0.20.30",
+    "typedoc-neo-theme": "^1.1.0",
     "typescript": "4.2.3"
   },
   "repository": {
