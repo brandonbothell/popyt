@@ -25,7 +25,7 @@ Instantiate the object without caching:
 
 ```js
 const { YouTube } = require('popyt')
-const youtube = new YouTube(apiKey, { cache: false })
+const youtube = new YouTube(apiKey, undefined, { cache: false })
 ```
 
 Get a video by ID:
