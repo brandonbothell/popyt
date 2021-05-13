@@ -170,7 +170,7 @@ export class GenericService {
       results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
 
       if (results.items.length === 0) {
-        return Promise.reject(`${endpoint} not found`)
+        return []
       }
 
       if (pages < 1) {
