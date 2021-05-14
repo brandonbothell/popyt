@@ -51,12 +51,12 @@ export class YouTube {
   public oauth: OAuth
 
   /**
-   * The language for the API to respond in. See [[YouTube#getLanguages]].
+   * The language for the API to respond in. See [[YouTube.getLanguages]].
    */
   public language: string
 
   /**
-   * The region for the API cater responses to. See [[YouTube#getRegions]].
+   * The region for the API cater responses to. See [[YouTube.getRegions]].
    */
   public region: string
 
@@ -64,10 +64,10 @@ export class YouTube {
    *
    * @param token Your YouTube Data API v3 token. Don't share this with anybody.
    * It could be an API key or an OAuth 2.0 token.
-   * @param accessToken A Google OAuth 2.0 access token. Used for [[YouTube#oauth]] methods.
+   * @param accessToken A Google OAuth 2.0 access token. Used for [[YouTube.oauth]] methods.
    * @param options Caching options. Recommended to change.
-   * @param language The language for the API to respond in. See [[YouTube#getLanguages]].
-   * @param region The region for the API cater responses to. See [[YouTube#getRegions]].
+   * @param language The language for the API to respond in. See [[YouTube.getLanguages]].
+   * @param region The region for the API cater responses to. See [[YouTube.getRegions]].
    */
   constructor (token?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
     language: string = 'en_US', region: string = 'US') {
@@ -234,7 +234,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` videos in a [[Playlist]]. Used mostly internally with `Playlist#fetchVideos`.
+   * Get `maxResults` videos in a [[Playlist]]. Used mostly internally with [[Playlist.fetchVideos]].
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    * @param maxResults The maximum amount of videos to get from the playlist. If <=0, returns all videos in the playlist.
    * @param parts The parts of the videos to fetch (saves quota if you aren't using certain properties!)
@@ -246,7 +246,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` [[YTComment]]s from a [[Video]]. Used mostly internally with `Video#fetchComments`.
+   * Get `maxResults` [[YTComment]]s from a [[Video]]. Used mostly internally with [[Video.fetchComments]].
    * @param videoResolvable The URL, ID, or Title of the video.
    * @param maxResults The maximum amount of comments to get from the video. If <=0, returns all comments on the video.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
@@ -258,7 +258,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with `Channel#fetchComments`.
+   * Get `maxResults` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with [[Channel.fetchComments]].
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param maxResults The maximum amount of comments to get from the channel. If <=0, returns all comments on the channel.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
@@ -270,7 +270,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with `Channel#fetchPlaylists`.
+   * Get `maxResults` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with [[Channel.fetchPlaylists]].
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param maxResults The maximum amount of playlists to get from the channel. If <=0, returns all playlists.
    * @param parts The parts of the playlists to fetch (saves quota if you aren't using certain properties!)
@@ -282,7 +282,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with `Channel#fetchSubscriptions`.
+   * Get `maxResults` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with [[Channel.fetchSubscriptions]].
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param maxResults The maximum amount of subscriptions to get from the channel. If <=0, returns all subscriptions.
    * @param parts The parts of the subscriptions to fetch (saves quota if you aren't using certain properties!)
@@ -294,7 +294,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` replies to a [[YTComment]]. Used mostly internally with `Comment#fetchReplies`.
+   * Get `maxResults` replies to a [[YTComment]]. Used mostly internally with [[Comment.fetchReplies]].
    * @param commentId The ID of the comment to get replies from.
    * @param maxResults The maximum amount of replies to get. Gets all replies if <=0.
    * @param parts The parts of the replies to fetch (saves quota if you aren't using certain properties!)
@@ -305,7 +305,7 @@ export class YouTube {
   }
 
   /**
-   * Gets the [[ChannelSection]]s of a [[Channel]]. Used mostly internally with [[Channel#fetchSections]].
+   * Gets the [[ChannelSection]]s of a [[Channel]]. Used mostly internally with [[Channel.fetchSections]].
    * @param channelResolvable The Username, URL, or ID of the channel to get the sections from.
    * @param parts The parts of the channel sections to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial channel section objects.

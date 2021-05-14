@@ -134,7 +134,7 @@ export class Video {
   public private: boolean
 
   /**
-   * The video's comments. Only defined when Video#fetchComments is called.
+   * The video's comments. Only defined when [[Video.fetchComments]] is called.
    */
   public comments: YTComment[]
 
@@ -171,7 +171,7 @@ export class Video {
   }
 
   /**
-   * The caption data associated with this video. Only available after running [[Video#fetchCaptions]].
+   * The caption data associated with this video. Only available after running [[Video.fetchCaptions]].
    */
   public captions: Caption[]
 
@@ -284,7 +284,7 @@ export class Video {
   }
 
   /**
-   * Fetches the video's comments and assigns them to Video#comments.
+   * Fetches the video's comments and assigns them to [[Video.comments]].
    * @param maxResults The maximum amount of comments to fetch
    */
   public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {

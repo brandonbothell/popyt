@@ -52,7 +52,7 @@ export class Playlist {
   public description: string
 
   /**
-   * The videos in the playlist. Only available after calling `Playlist#fetchVideos()`.
+   * The videos in the playlist. Only available after calling [[Playlist.fetchVideos]].
    */
   public videos: Video[]
 

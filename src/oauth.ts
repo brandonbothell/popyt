@@ -27,7 +27,7 @@ import { Cache } from './util'
 
 /**
  * All methods requiring an OAuth access token.
- * Use `YouTube#oauth` to access these methods.
+ * Use `YouTube.oauth` to access these methods.
  */
 export class OAuth {
   public youtube: YouTube
@@ -113,7 +113,7 @@ export class OAuth {
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
    * @param commentType What this comment is on - defaults to video.
-   * Required for [[YTComment#url]] to be correct.
+   * Required for [[YTComment.url]] to be correct.
    */
   public async replyToComment (commentId: string, text: string) {
     this.checkTokenAndThrow()
@@ -158,7 +158,7 @@ export class OAuth {
    * @param commentId The ID of the reply to edit.
    * @param text The text to edit the reply to.
    * @param commentType What this comment is on - defaults to video.
-   * Required for [[YTComment#url]] to be correct.
+   * Required for [[YTComment.url]] to be correct.
    */
   public async editCommentReply (commentId: string, text: string) {
     this.checkTokenAndThrow()
@@ -636,7 +636,7 @@ export class OAuth {
    * Last tested 05/20/2020 03:17. PASSING
    * @param image The channel banner to upload.
    * @returns The URL of the uploaded banner, used as
-   * [[BrandingSettings#image#bannerExternalUrl]] in [[OAuth#updateChannelBranding]]
+   * [[BrandingSettings.image.bannerExternalUrl]] in [[OAuth.updateChannelBranding]]
    */
   public async uploadChannelBanner (image: { data: Buffer; type: 'png' | 'jpeg' }): Promise<string> {
     this.checkTokenAndThrow()
@@ -760,7 +760,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the [[Caption]]s of a [[Video]]. Used mostly internally with [[Video#fetchCaptions]].  
+   * Gets the [[Caption]]s of a [[Video]]. Used mostly internally with [[Video.fetchCaptions]].  
    * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the captions from.
    */

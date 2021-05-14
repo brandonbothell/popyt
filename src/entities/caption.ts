@@ -100,7 +100,7 @@ export class Caption {
   public status: 'failed' | 'serving' | 'syncing'
 
   /**
-   * If [[Caption#status]] is `failed`, then this is populated with the reason failure.
+   * If [[Caption.status]] is `failed`, then this is populated with the reason failure.
    */
   // Must fail for this property to be populated
   /* istanbul ignore next */

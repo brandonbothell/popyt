@@ -99,7 +99,7 @@ export class Channel {
   public keywords: string[]
 
   /**
-   * The channel's uploads. Only available after calling `Channel#fetchVideos()`
+   * The channel's uploads. Only available after calling [[Channel.fetchVideos]]
    */
   public videos: Playlist
 
@@ -115,7 +115,7 @@ export class Channel {
   public commentCount: number
 
   /**
-   * The channel's comments. Only defined when `Channel#fetchComments` is called.
+   * The channel's comments. Only defined when [[Channel.fetchComments]] is called.
    */
   public comments: YTComment[]
 
@@ -126,17 +126,17 @@ export class Channel {
   public featuredChannels: string[]
 
   /**
-   * The channel's playlists. Only defined when `Channel#fetchPlaylists` is called.
+   * The channel's playlists. Only defined when [[Channel.fetchPlaylists]] is called.
    */
   public playlists: Playlist[]
 
   /**
-   * The channel's subscriptions. Only defined when `Channel#fetchSubscriptions` is called.
+   * The channel's subscriptions. Only defined when [[Channel.fetchSubscriptions]] is called.
    */
   public subscriptions: Subscription[]
 
   /**
-   * The channel's sections. Only defined when [[Channel#fetchSections]] is called.
+   * The channel's sections. Only defined when [[Channel.fetchSections]] is called.
    */
   public sections: ChannelSection[]
 
@@ -293,7 +293,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's playlist of uploads and assigns it to the `Channel#videos` property.
+   * Fetches the channel's playlist of uploads and assigns it to the [[Channel.videos]] property.
    */
   public async fetchVideos (parts?: PlaylistParts) {
     if (!(this.data.contentDetails)) {
@@ -307,7 +307,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's discussion tab comments and assigns them to Channel#comments.
+   * Fetches the channel's discussion tab comments and assigns them to Channel.comments.
    * @param maxResults The maximum amount of comments to fetch
    */
   public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
@@ -316,7 +316,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's playlists and assigns them to Channel#playlists.
+   * Fetches the channel's playlists and assigns them to Channel.playlists.
    * @param maxResults The maximum amount of playlists to fetch
    */
   public async fetchPlaylists (maxResults: number = 10, parts?: PlaylistParts) {
@@ -325,7 +325,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's subscriptions and assigns them to Channel#subscriptions.
+   * Fetches the channel's subscriptions and assigns them to Channel.subscriptions.
    * @param maxResults The maximum amount of subscriptions to fetch
    */
   /* istanbul ignore next */
@@ -335,7 +335,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's sections and assigns them to [[Channel#sections]].
+   * Fetches the channel's sections and assigns them to [[Channel.sections]].
    */
   public async fetchSections (parts?: ChannelSectionParts) {
     this.sections = await this.youtube.getChannelSections(this.id, parts)

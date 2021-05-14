@@ -116,12 +116,12 @@ export class ChannelSection {
   }
 
   /**
-   * The playlists in the channel section. Only available after calling [[ChannelSection#fetchPlaylists]].
+   * The playlists in the channel section. Only available after calling [[ChannelSection.fetchPlaylists]].
    */
   public playlists?: Playlist[]
 
   /**
-   * The channels in the channel section. Only available after calling [[ChannelSection#fetchChannels]].
+   * The channels in the channel section. Only available after calling [[ChannelSection.fetchChannels]].
    */
   public channels?: Channel[]
 
@@ -196,7 +196,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's playlists and assigns them to the [[ChannelSection#playlists]] property.
+   * Fetches the channel section's playlists and assigns them to the [[ChannelSection.playlists]] property.
    */
   public async fetchPlaylists (parts?: PlaylistParts) {
     if (!this.playlistIds) {
@@ -214,7 +214,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's channels and assigns them to the [[ChannelSection#channels]] property.
+   * Fetches the channel section's channels and assigns them to the [[ChannelSection.channels]] property.
    */
   public async fetchChannels (parts?: ChannelParts) {
     if (!this.channelIds) {

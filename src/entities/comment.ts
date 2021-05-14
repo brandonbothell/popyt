@@ -118,7 +118,7 @@ export class YTComment {
 
   /**
    * Replies directed to the comment. If the comment was fetched from a video,
-   * then this will be partially filled. You'll need to use Comment#fetchReplies
+   * then this will be partially filled. You'll need to use [[Comment.fetchReplies]]
    * to get all of the replies, though.
    */
   public replies: YTComment[]
