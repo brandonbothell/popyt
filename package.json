@@ -47,7 +47,7 @@
     "gulp-sourcemaps": "3.0.0",
     "gulp-typescript": "5.0.1",
     "merge2": "1.4.1",
-    "mocha": "8.3.2",
+    "mocha": "8.4.0",
     "nyc": "15.1.0",
     "source-map-support": "0.5.19",
     "ts-node": "9.1.1",
