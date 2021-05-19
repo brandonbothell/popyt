@@ -41,7 +41,7 @@
     "dotenv": "9.0.2",
     "eslint": "7.26.0",
     "eslint-plugin-import": "2.23.2",
-    "eslint-plugin-jsdoc": "34.8.0",
+    "eslint-plugin-jsdoc": "34.8.1",
     "fs-nextra": "0.5.1",
     "gulp": "4.0.2",
     "gulp-sourcemaps": "3.0.0",
