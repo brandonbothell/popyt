@@ -40,7 +40,7 @@
     "cross-env": "7.0.3",
     "dotenv": "9.0.2",
     "eslint": "7.26.0",
-    "eslint-plugin-import": "2.23.2",
+    "eslint-plugin-import": "2.23.3",
     "eslint-plugin-jsdoc": "34.8.2",
     "fs-nextra": "0.5.1",
     "gulp": "4.0.2",
