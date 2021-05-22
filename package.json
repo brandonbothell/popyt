@@ -39,7 +39,7 @@
     "coveralls": "3.1.0",
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
-    "eslint": "7.26.0",
+    "eslint": "7.27.0",
     "eslint-plugin-import": "2.23.3",
     "eslint-plugin-jsdoc": "34.8.2",
     "fs-nextra": "0.5.1",
