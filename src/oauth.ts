@@ -127,20 +127,22 @@ export class OAuth {
 
   /**
    * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param text The new text content of the comment.
+   * Last tested 07/05/2021 17:40. PASSING
    * @param commentId The ID of the comment.
+   * @param text The new text content of the comment.
    */
-  public async editComment (text: string, commentId: string): Promise<YTComment> {
+  public async editComment (commentId: string, text: string): Promise<YTComment> {
     this.checkTokenAndThrow()
 
-    const data: typeof COMMENT_THREAD_DATA = JSON.parse(JSON.stringify(COMMENT_THREAD_DATA))
-    data.snippet.topLevelComment.snippet.textOriginal = text
+    const data: typeof COMMENT_DATA = JSON.parse(JSON.stringify(COMMENT_DATA))
+    data.snippet.textOriginal = text
     data.id = commentId
 
-    const result = await this.youtube._request.put('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
+    console.log(data)
+
+    const result = await this.youtube._request.put('comments', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
     const type = result.snippet.channelId ? 'channel' : 'video'
-    const comment = new YTComment(this.youtube, result.snippet.topLevelComment, type)
+    const comment = new YTComment(this.youtube, result, type)
 
     if (result.replies) {
       result.replies.comments.forEach(reply => {
@@ -150,25 +152,6 @@ export class OAuth {
     }
 
     return comment
-  }
-
-  /**
-   * Edits a [[YTComment]] reply.  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param commentId The ID of the reply to edit.
-   * @param text The text to edit the reply to.
-   * @param commentType What this comment is on - defaults to video.
-   * Required for [[YTComment.url]] to be correct.
-   */
-  public async editCommentReply (commentId: string, text: string) {
-    this.checkTokenAndThrow()
-
-    const data: typeof COMMENT_DATA = JSON.parse(JSON.stringify(COMMENT_DATA))
-    data.id = commentId
-    data.snippet.textOriginal = text
-
-    const response = await this.youtube._request.put('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, response, response.snippet.channelId ? 'channel' : 'video')
   }
 
   /**

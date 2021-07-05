@@ -64,7 +64,7 @@ describe('OAuth', () => {
   it('should edit comments', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.editComment(text, commentId)
+    const comment = await youtube.oauth.editComment(commentId, text)
 
     expect(comment.text.original).to.equal(text)
   })
@@ -81,7 +81,7 @@ describe('OAuth', () => {
   it('should edit comment replies', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.editCommentReply(commentReplyId, text)
+    const comment = await youtube.oauth.editComment(commentReplyId, text)
 
     expect(comment.text.original).to.equal(text)
   })
