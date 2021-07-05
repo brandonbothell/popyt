@@ -187,11 +187,7 @@ export class YTComment {
    */
   /* istanbul ignore next */
   public edit (text: string) {
-    if (this.data.snippet.parentId) {
-      return this.youtube.oauth.editCommentReply(this.id, text)
-    }
-
-    return this.youtube.oauth.editComment(text, this.id)
+    return this.youtube.oauth.editComment(this.id, text)
   }
 
   /**
