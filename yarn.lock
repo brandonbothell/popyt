@@ -398,10 +398,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/merge2@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@types/merge2/-/merge2-1.3.0.tgz#0152526e885184aead524698c42aeae5c85aa1e7"
-  integrity sha512-3xFWjsGhm5GCVlRrcrrVr9oapPxpbG5M3G/4JGF+Gra++7DWoeDOQphCEhyMpbpbptD3w/4PesYIMby/yHrzkQ==
+"@types/merge2@1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@types/merge2/-/merge2-1.3.1.tgz#e7c0b9d583581328e780a55cc847997f3f092686"
+  integrity sha512-aDA8WfZHU/J1OeQmrP+DfGrl1tb0cwNIuiiIqK3+S21gQ+aWg2n4OIvmFHpd2A4yQdZfjikC4XIYVNtX+b9qgg==
   dependencies:
     "@types/node" "*"
 
