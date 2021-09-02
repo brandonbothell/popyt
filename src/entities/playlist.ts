@@ -54,7 +54,11 @@ export class Playlist {
   /**
    * The videos in the playlist. Only available after calling [[Playlist.fetchVideos]].
    */
-  public videos: Video[]
+  public videos: {
+    results: Video[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   /**
    * The ID of the creator of the playlist.
@@ -144,8 +148,8 @@ export class Playlist {
    * Adds videos in this playlist to the `videos` property of this playlist.
    * @param maxResults Fetches all videos if <=0.
    */
-  public async fetchVideos (maxResults: number = 10, parts?: PlaylistItemParts) {
-    this.videos = await this.youtube.getPlaylistItems(this.id, maxResults, parts)
+  public async fetchVideos (maxResults: number = 10, parts?: PlaylistItemParts, pageToken?: string) {
+    this.videos = await this.youtube.getPlaylistItems(this.id, maxResults, parts, pageToken)
     return this.videos
   }
 
@@ -190,9 +194,9 @@ export class Playlist {
     const video = await this.youtube.oauth.addPlaylistItem(this.id, videoId, position, note)
 
     if (this.videos) {
-      this.videos.push(video)
+      this.videos.results.push(video)
     } else {
-      this.videos = [ video ]
+      this.videos = { results: [ video ], prevPageToken: undefined, nextPageToken: undefined }
     }
 
     return video
@@ -232,10 +236,10 @@ export class Playlist {
     await this.youtube.oauth.deletePlaylistItem(playlistItemId)
 
     if (this.videos) {
-      const index = this.videos.findIndex(v => v.data.id === playlistItemId)
+      const index = this.videos.results.findIndex(v => v.data.id === playlistItemId)
 
       if (index) {
-        this.videos.splice(index, 1)
+        this.videos.results.splice(index, 1)
       }
     }
   }

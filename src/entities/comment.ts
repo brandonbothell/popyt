@@ -121,7 +121,11 @@ export class YTComment {
    * then this will be partially filled. You'll need to use [[Comment.fetchReplies]]
    * to get all of the replies, though.
    */
-  public replies: YTComment[]
+  public replies: {
+    results: YTComment[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   constructor (youtube: YouTube, data: any, type: 'video' | 'channel') {
     this.youtube = youtube
@@ -167,16 +171,14 @@ export class YTComment {
     if (this.parentId) {
       this.url = 'https://youtube.com/' + (type === 'channel' ? `channel/${this.parentId}/discussion?lc=${this.id}` : `watch?v=${this.parentId}&lc=${this.id}`)
     }
-
-    this.replies = []
   }
 
   /**
    * Fetches replies to the comment.
    * @param maxResults The maximum amount of replies to fetch. Fetches all comments if <=0.
    */
-  public async fetchReplies (maxResults: number = 10, parts?: CommentParts) {
-    this.replies = await this.youtube.getCommentReplies(this.id, maxResults, parts)
+  public async fetchReplies (maxResults: number = 10, parts?: CommentParts, pageToken?: string) {
+    this.replies = await this.youtube.getCommentReplies(this.id, maxResults, parts, pageToken)
     return this.replies
   }
 

@@ -117,7 +117,11 @@ export class Channel {
   /**
    * The channel's comments. Only defined when [[Channel.fetchComments]] is called.
    */
-  public comments: YTComment[]
+  public comments: {
+    results: YTComment[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   /**
    * The URLs of all of this channel's featured channels. This property is broken for some channels.
@@ -128,17 +132,29 @@ export class Channel {
   /**
    * The channel's playlists. Only defined when [[Channel.fetchPlaylists]] is called.
    */
-  public playlists: Playlist[]
+  public playlists: {
+    results: Playlist[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   /**
    * The channel's subscriptions. Only defined when [[Channel.fetchSubscriptions]] is called.
    */
-  public subscriptions: Subscription[]
+  public subscriptions: {
+    results: Subscription[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   /**
    * The channel's sections. Only defined when [[Channel.fetchSections]] is called.
    */
-  public sections: ChannelSection[]
+  public sections: {
+    results: ChannelSection[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   /**
    * Only set if the channel is a search result.
@@ -275,9 +291,9 @@ export class Channel {
     const comment = await this.youtube.oauth.postComment(text, this.id)
 
     if (this.comments !== undefined) {
-      this.comments.push(comment)
+      this.comments.results.push(comment)
     } else {
-      this.comments = [ comment ]
+      this.comments = { results: [ comment ], prevPageToken: undefined, nextPageToken: undefined }
     }
 
     return comment
@@ -310,8 +326,8 @@ export class Channel {
    * Fetches the channel's discussion tab comments and assigns them to Channel.comments.
    * @param maxResults The maximum amount of comments to fetch
    */
-  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getChannelComments(this.id, maxResults, parts)
+  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts, pages: number = 1, pageToken?: string) {
+    this.comments = await this.youtube.getChannelComments(this.id, maxResults, parts, pages, pageToken)
     return this.comments
   }
 
@@ -319,8 +335,8 @@ export class Channel {
    * Fetches the channel's playlists and assigns them to Channel.playlists.
    * @param maxResults The maximum amount of playlists to fetch
    */
-  public async fetchPlaylists (maxResults: number = 10, parts?: PlaylistParts) {
-    this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults, parts)
+  public async fetchPlaylists (maxResults: number = 10, parts?: PlaylistParts, pages: number = 1, pageToken?: string) {
+    this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults, parts, pages, pageToken)
     return this.playlists
   }
 
@@ -329,16 +345,16 @@ export class Channel {
    * @param maxResults The maximum amount of subscriptions to fetch
    */
   /* istanbul ignore next */
-  public async fetchSubscriptions (maxResults: number = 10, parts?: SubscriptionParts) {
-    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults, parts)
+  public async fetchSubscriptions (maxResults: number = 10, parts?: SubscriptionParts, pages: number = 1, pageToken?: string) {
+    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults, parts, pages, pageToken)
     return this.subscriptions
   }
 
   /**
    * Fetches the channel's sections and assigns them to [[Channel.sections]].
    */
-  public async fetchSections (parts?: ChannelSectionParts) {
-    this.sections = await this.youtube.getChannelSections(this.id, parts)
+  public async fetchSections (parts?: ChannelSectionParts, pages: number = 1, pageToken?: string) {
+    this.sections = await this.youtube.getChannelSections(this.id, parts, pages, pageToken)
     return this.sections
   }
 

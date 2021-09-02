@@ -64,9 +64,10 @@ export class OAuth {
    * @param maxResults The maximum number of subscriptions to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
-  public getMySubscriptions (maxResults: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
+  public getMySubscriptions (maxResults: number = 10, parts?: SubscriptionParts) {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults, null, parts) as Promise<Subscription[]>
+    return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults, null, parts) as
+      Promise<{ results: Subscription[]; prevPageToken: string; nextPageToken: string }>
   }
 
   /**
@@ -75,9 +76,10 @@ export class OAuth {
    * @param maxResults The maximum number of playlists to fetch.
    * Fetches 10 by default. Set to a value <=0 to fetch all.
    */
-  public getMyPlaylists (maxResults: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
+  public getMyPlaylists (maxResults: number = 10, parts?: PlaylistParts) {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults, null, parts) as Promise<Playlist[]>
+    return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults, null, parts) as
+      Promise<{ results: Playlist[]; prevPageToken: string; nextPageToken: string }>
   }
 
   /**
@@ -147,7 +149,12 @@ export class OAuth {
     if (result.replies) {
       result.replies.comments.forEach(reply => {
         const created = new YTComment(this.youtube, reply, type)
-        comment.replies.push(created)
+
+        if (comment.replies) {
+          comment.replies.results.push(created)
+        } else {
+          comment.replies = { results: [ created ], prevPageToken: undefined, nextPageToken: undefined }
+        }
       })
     }
 
@@ -860,6 +867,7 @@ export class OAuth {
    */
   public getVideoAbuseReportReasons () {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'videoAbuseReportReasons', false) as Promise<VideoAbuseReportReason[]>
+    return GenericService.getPaginatedItems(this.youtube, 'videoAbuseReportReasons', false) as
+      Promise<{ results: VideoAbuseReportReason[]; prevPageToken: string; nextPageToken: string }>
   }
 }

@@ -9,5 +9,8 @@ export type PaginatedItemsEndpoints = 'playlistItems' | 'playlists' | 'playlists
 /**
  * @ignore
  */
-export type PaginatedItemsReturns = Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[] | Language[] |
-  Region[] | ChannelSection[] | Caption[]
+export type PaginatedItemsReturns = {
+  results: Video[] | YTComment[] | Playlist[] | Subscription[] | VideoCategory[] | VideoAbuseReportReason[] | Language[] | Region[] | ChannelSection[] | Caption[]
+  prevPageToken?: string
+  nextPageToken?: string
+ }

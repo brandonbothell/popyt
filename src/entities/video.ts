@@ -136,7 +136,11 @@ export class Video {
   /**
    * The video's comments. Only defined when [[Video.fetchComments]] is called.
    */
-  public comments: YTComment[]
+  public comments: {
+    results: YTComment[]
+    prevPageToken: string
+    nextPageToken: string
+  }
 
   /**
    * The number of comments on the video.
@@ -265,10 +269,10 @@ export class Video {
   public async postComment (text: string) {
     const comment = await this.youtube.oauth.postComment(text, this.channel.id, this.id)
 
-    if (this.comments !== undefined) {
-      this.comments.push(comment)
+    if (this.comments) {
+      this.comments.results.push(comment)
     } else {
-      this.comments = [ comment ]
+      this.comments = { results: [ comment ], prevPageToken: undefined, nextPageToken: undefined }
     }
 
     return comment
@@ -287,8 +291,8 @@ export class Video {
    * Fetches the video's comments and assigns them to [[Video.comments]].
    * @param maxResults The maximum amount of comments to fetch
    */
-  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getVideoComments(this.id, maxResults, parts)
+  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts, pageToken?: string) {
+    this.comments = await this.youtube.getVideoComments(this.id, maxResults, parts, pageToken)
     return this.comments
   }
 

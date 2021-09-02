@@ -64,7 +64,7 @@ export class GenericService {
 
   /* istanbul ignore next */
   public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = 10,
-    subId?: string, parts?: string[]):
+    subId?: string, parts?: string[], pages: number = 1, pageToken?: string):
   Promise<PaginatedItemsReturns> {
     if (!mine && (id === undefined || id === null) &&
       !([ 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions', 'videoCategories' ].includes(endpoint))) {
@@ -76,7 +76,7 @@ export class GenericService {
       return Promise.reject(`${endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
-    const cached = Cache.get(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}`)
+    const cached = Cache.get(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}/${pageToken}/${pages}`)
 
     if (youtube._shouldCache && cached) {
       return cached
@@ -162,25 +162,34 @@ export class GenericService {
       options.maxResults = full ? max : maxResults
     }
 
+    if (pageToken) {
+      options.pageToken = pageToken
+    }
+
     let results
-    let pages = -1
+    let totalPages = 0
+    let pagesRead = 0
     let shouldReturn = !full
 
-    for (let i = 1; i < (pages > 0 ? pages : 3); i++) {
+    for (let i = 1; i <= (totalPages || 1); i++) {
       results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
 
       if (results.items.length === 0) {
-        return []
+        return { results: [] }
       }
 
-      if (pages < 1) {
-        pages = results.pageInfo ? results.pageInfo.totalResults / results.pageInfo.resultsPerPage : 0
+      if (!totalPages) {
+        totalPages = results.pageInfo ? results.pageInfo.totalResults / results.pageInfo.resultsPerPage : 0
 
-        if (pages <= 1) {
+        if (totalPages <= 1) {
           shouldReturn = true
         }
 
-        pages = Math.floor(pages)
+        totalPages = Math.floor(totalPages)
+      }
+
+      if (++pagesRead === pages) {
+        shouldReturn = true
       }
 
       for (let i = 0; i < results.items.length; i++) {
@@ -197,7 +206,7 @@ export class GenericService {
         if (item.replies) {
           item.replies.comments.forEach(reply => {
             const created = new YTComment(youtube, reply, commentType)
-            comment.replies.push(created)
+            comment.replies.results.push(created)
           })
         }
       }
@@ -205,13 +214,13 @@ export class GenericService {
       if (results.nextPageToken && !shouldReturn) {
         options.pageToken = results.nextPageToken
       } else {
-        return items
+        return { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
       }
     }
 
-    youtube._cache(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}`, items)
+    youtube._cache(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}/${pageToken}/${pages}`, items)
 
-    return items
+    return { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
   }
 
   /* istanbul ignore next */
