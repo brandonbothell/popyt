@@ -16,7 +16,7 @@ describe('Creation of the YouTube instance', () => {
   })
 
   it('should fail with no token', () => {
-    let err: string
+    let err = ''
 
     try {
       new YouTube('', '')

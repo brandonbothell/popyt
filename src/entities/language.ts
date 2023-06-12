@@ -27,7 +27,7 @@ export class Language {
   /**
    * Whether or not this is a full language object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this language.
@@ -49,7 +49,7 @@ export class Language {
    */
   public name: string
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -67,15 +67,11 @@ export class Language {
     const language = data
 
     this.id = language.id
-    this.full = true
 
     /* istanbul ignore next */
     if (language.snippet) {
       this.hl = language.snippet.hl
       this.name = language.snippet.name
-    } else {
-      /* istanbul ignore next */
-      this.full = false
     }
   }
 }

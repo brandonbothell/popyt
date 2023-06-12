@@ -20,7 +20,7 @@ describe('Regions', () => {
   })
 
   it('should throw an error on invalid type', () => {
-    let error: string = null
+    let error = ''
 
     try {
       new Region(youtube, { kind: 'invalid' })

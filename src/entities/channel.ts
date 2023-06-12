@@ -164,9 +164,10 @@ export class Channel {
     selfDeclaredMadeForKids: boolean
   }
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = false) {
     this.youtube = youtube
     this.data = data
+    this.full = full
 
     this._init(data)
   }
@@ -175,9 +176,10 @@ export class Channel {
    * @ignore
    */
   private _init (data: any) {
+    const channel = data
+
     /* istanbul ignore next */
-    if (data.kind === 'youtube#channel' && (!data.status || data.status.isLinked)) {
-      const channel = data
+    if (data.kind === 'youtube#channel') {
 
       this.id = channel.id
 
@@ -185,8 +187,6 @@ export class Channel {
       if (channel.snippet) {
         this.country = channel.snippet.country
         this.language = channel.snippet.defaultLanguage
-      } else {
-        this.full = false
       }
 
       /* istanbul ignore next */
@@ -199,8 +199,6 @@ export class Channel {
         } else {
           this.subCount = -1
         }
-      } else {
-        this.full = false
       }
 
       if (channel.status) {
@@ -208,8 +206,6 @@ export class Channel {
           madeForKids: channel.status.madeForKids,
           selfDeclaredMadeForKids: channel.status.selfDeclaredMadeForKids
         }
-      } else {
-        this.full = false
       }
 
       /* istanbul ignore next */
@@ -235,31 +231,26 @@ export class Channel {
           this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
             channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
         }
-      } else {
-        this.full = false
       }
-    } else if (data.kind === 'youtube#searchResult') {
-      this.full = false
-      this.id = data.id.channelId
+    } else if (channel.kind === 'youtube#searchResult') {
+      this.id = channel.id?.channelId ?? channel.snippet?.channelId
 
       /* istanbul ignore next */
-      if (data.snippet) {
+      if (channel.snippet) {
         // Impossible to test
         /* istanbul ignore next */
-        this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
+        this.liveStatus = channel.snippet.liveBroadcastContent !== 'none' ? channel.snippet.liveBroadcastContent : false
       }
     } else {
-      throw new Error(`Invalid channel type: ${data.kind}`)
+      throw new Error(`Invalid channel type: ${channel.kind}`)
     }
 
     /* istanbul ignore next */
-    if (data.snippet) {
-      this.profilePictures = data.snippet.thumbnails
-      this.dateCreated = new Date(data.snippet.publishedAt)
-      this.name = data.snippet.title
-      this.about = data.snippet.description
-    } else {
-      this.full = false
+    if (channel.snippet) {
+      this.profilePictures = channel.snippet.thumbnails
+      this.dateCreated = new Date(channel.snippet.publishedAt)
+      this.name = channel.snippet.title
+      this.about = channel.snippet.description
     }
 
     this.url = `https://youtube.com/channel/${this.id}`

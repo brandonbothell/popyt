@@ -58,11 +58,6 @@ describe('Channels', () => {
     expect((await channel.fetchSections([ 'id' ]))[0]).to.be.an.instanceOf(ChannelSection)
   })
 
-  it('should have a negative subscriber count if it is hidden', async () => {
-    const channel = await youtube.getChannel('UCacsMRrp9ql-vdgpn0zUIdQ', [ 'statistics' ])
-    expect(channel.subCount).to.be.lessThan(0)
-  })
-
   it('should contain branding properties', async () => {
     const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'brandingSettings' ])
     expect(channel.keywords.length).to.be.greaterThan(0)

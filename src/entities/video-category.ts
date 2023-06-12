@@ -27,7 +27,7 @@ export class VideoCategory {
   /**
    * Whether or not this is a full category object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this category.
@@ -54,7 +54,7 @@ export class VideoCategory {
    */
   public assignable: boolean
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -72,16 +72,12 @@ export class VideoCategory {
     const category = data
 
     this.id = category.id
-    this.full = true
 
     /* istanbul ignore next */
     if (category.snippet) {
       this.channelId = category.snippet.channelId
       this.title = category.snippet.title
       this.assignable = category.snippet.assignable
-    } else {
-      /* istanbul ignore next */
-      this.full = false
     }
   }
 

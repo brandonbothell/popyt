@@ -28,7 +28,7 @@ export class ChannelSection {
   /**
    * Whether or not this a full channel section object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this channel section.
@@ -46,11 +46,6 @@ export class ChannelSection {
   public type: ChannelSectionType
 
   /**
-   * The style of this channel section.
-   */
-  public style: 'horizontalRow' | 'verticalList'
-
-  /**
    * The ID of the channel that created this channel section.
    */
   public channelId: string
@@ -61,16 +56,6 @@ export class ChannelSection {
   public position: number
 
   /**
-   * The language of the title of this channel section.
-   */
-  public language: string
-
-  /**
-   * The localized name of this channel section if the `hl` parameter was used when fetching it.
-   */
-  public localizedName: string
-
-  /**
    * The IDs of the playlists in this channel section. Undefined if there aren't any.
    */
   public playlistIds?: string[]
@@ -79,41 +64,6 @@ export class ChannelSection {
    * The IDs of the channels in this channel section. Undefined if there aren't any.
    */
   public channelIds?: string[]
-
-  /**
-   * The localizations of the channel section.
-   */
-  public localizations?: {
-    /**
-     * The language of the localized title. A [BCP-47](http://www.rfc-editor.org/rfc/bcp/bcp47.txt) language code.
-     */
-    [key: string]: {
-      /**
-       * The localized title.
-       */
-      title: string
-    }
-  }
-
-  /**
-   * The targeting settings of the channel section.
-   */
-  public targeting?: {
-    /**
-     * The languages for which the channel section is visible.
-     */
-    languages: string[]
-
-    /**
-     * The regions where the channel section is visible.
-     */
-    regions: string[]
-
-    /**
-     * The countries where the channel section is visible.
-     */
-    countries: string[]
-  }
 
   /**
    * The playlists in the channel section. Only available after calling [[ChannelSection.fetchPlaylists]].
@@ -130,7 +80,7 @@ export class ChannelSection {
    */
   public id: string
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -155,34 +105,12 @@ export class ChannelSection {
       this.channelId = section.snippet.channelId
       this.name = section.snippet.title
       this.position = section.snippet.position
-      this.language = section.snippet.defaultLanguage
-      this.style = section.snippet.style
-      /* istanbul ignore next */
-      this.localizedName = section.snippet.localized ? section.snippet.localized.title : undefined
-    } else {
-      this.full = false
     }
 
     /* istanbul ignore next */
     if (section.contentDetails) {
       this.playlistIds = section.contentDetails.playlists
       this.channelIds = section.contentDetails.channels
-    } else {
-      this.full = false
-    }
-
-    /* istanbul ignore next */
-    if (section.localizations) {
-      this.localizations = section.localizations
-    } else {
-      this.full = false
-    }
-
-    /* istanbul ignore next */
-    if (section.targeting) {
-      this.targeting = section.targeting
-    } else {
-      this.full = false
     }
   }
 

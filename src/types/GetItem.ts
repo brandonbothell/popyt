@@ -1,4 +1,4 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, ChannelSection, Caption } from '..'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, ChannelSection, Caption, Region, Language, VideoAbuseReportReason } from '..'
 
 /**
  * @ignore

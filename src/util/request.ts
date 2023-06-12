@@ -1,6 +1,6 @@
 import { request as https } from 'https'
 import { IncomingMessage, RequestOptions, OutgoingMessage } from 'http'
-import { parse as parseUrl } from 'url'
+import { URL } from 'url'
 
 /**
  * @ignore
@@ -129,12 +129,12 @@ export class Request {
   }
 
   private parseUrlToOptions (url: string, type: 'POST' | 'PUT' | 'GET' | 'DELETE', contentType: string): RequestOptions {
-    const parsed = parseUrl(url)
+    const parsed = new URL(url)
 
     return {
       hostname: parsed.hostname,
       port: parsed.port ? parsed.port : 443,
-      path: parsed.path,
+      path: parsed.pathname + parsed.search,
       method: type,
       headers: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -165,10 +165,6 @@ export class Request {
         })
 
         res.on('end', () => {
-          if (res.statusCode === 404) {
-            return reject(new Error('Not found'))
-          }
-
           // no content
           if (res.statusCode === 204) {
             return resolve(undefined)
@@ -178,7 +174,7 @@ export class Request {
             return resolve(Buffer.from(data))
           }
 
-          if (!res.headers['content-type'].startsWith('application/json')) {
+          if (res.statusCode !== 404 && !res.headers['content-type'].startsWith('application/json')) {
             return reject('Unexpected content type: ' + res.headers['content-type'] + '\nData: ' + data)
           }
 
@@ -187,11 +183,13 @@ export class Request {
           try {
             parsed = JSON.parse(data)
           } catch(err) {
-            return reject('Error parsing JSON response: ' + data)
+            return reject(new Error(res.statusCode === 404 ? 'Not found' : 'Error parsing JSON response: ' + data))
           }
 
           if (parsed.error) {
             return reject(new Error(parsed.error.message))
+          } else if (res.statusCode === 404) {
+            return reject('Not found')
           }
 
           return resolve(parsed)

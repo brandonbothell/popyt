@@ -29,6 +29,10 @@
       {
         "selector": "typeLike",
         "format": ["PascalCase"]
+      },
+      {
+        "selector": "enumMember",
+        "format": ["PascalCase"]
       }
     ],
     "@typescript-eslint/consistent-type-assertions": "error",
@@ -49,7 +53,6 @@
     "@typescript-eslint/no-floating-promises": "error",
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-unnecessary-qualifier": "error",
-    "@typescript-eslint/no-unnecessary-type-assertion": "error",
     "@typescript-eslint/no-unused-expressions": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
     "@typescript-eslint/quotes": [

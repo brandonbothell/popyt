@@ -117,7 +117,7 @@ describe('OAuth', () => {
 
   it('should set thumbnails', async () => {
     if (!thumbnailVideoId) {
-      expect(false).to.equal('The environment variable YOUTUBE_THUMBNAIL_VIDEO_ID must be set for this test to be ran!')
+      expect.fail('The environment variable YOUTUBE_THUMBNAIL_VIDEO_ID must be set for this test to be ran!')
     }
 
     const image = readFileSync('./test/data/image.jpg')
@@ -125,7 +125,7 @@ describe('OAuth', () => {
     const youtube = new YouTube(key, token)
     const thumbnails = await youtube.oauth.setThumbnail(thumbnailVideoId, { type: 'jpeg', data: image })
 
-    expect(thumbnails.default.url).to.be.a('string')
+    expect(thumbnails.default?.url).to.be.a('string')
   })
 
   it('should set all available properties of abuse reasons', async () => {
@@ -140,7 +140,7 @@ describe('OAuth', () => {
 
   it('should throw an error on invalid type of abuse reasons', () => {
     const youtube = new YouTube(key, token)
-    let error: string = null
+    let error = ''
 
     try {
       new VideoAbuseReportReason(youtube, { kind: 'invalid' })
@@ -250,7 +250,7 @@ describe('OAuth', () => {
     const youtube = new YouTube(key, token)
     const section = await youtube.oauth.addChannelSection('multipleChannels', 'horizontalRow', 'Testing woot', 'en_US',
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      null, [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ], { de_DE: { title: 'Test juchhu' } }, { languages: [ 'en_US', 'de_DE' ] })
+      undefined, [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ], { de_DE: { title: 'Test juchhu' } }, { languages: [ 'en_US', 'de_DE' ] })
     sectionId = section.id
 
     expect(section.type).to.equal('multipleChannels')
@@ -260,14 +260,14 @@ describe('OAuth', () => {
     expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw').and.contain('UCS5Oz6CHmeoF7vSad0qqXfw')
     expect(section.language).to.equal('en_US')
     expect(section.localizations).to.haveOwnProperty('de')
-    expect(section.targeting.languages).to.contain('en').and.contain('de')
+    expect(section.targeting?.languages).to.contain('en').and.contain('de')
   })
 
   it('should work with updating channel sections', async () => {
     const youtube = new YouTube(key, token)
     const section = await youtube.oauth.updateChannelSection(sectionId, 'multiplePlaylists', 'verticalList', 'Test...', 1, 'de_DE',
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ], null, { en_US: { title: 'Testing...' } }, { languages: [ 'en_US', 'de_DE' ] })
+      [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ], undefined, { en_US: { title: 'Testing...' } }, { languages: [ 'en_US', 'de_DE' ] })
 
     expect(section.type).to.equal('multiplePlaylists')
     expect(section.style).to.equal('verticalList')
@@ -276,7 +276,7 @@ describe('OAuth', () => {
     expect(section.playlistIds).to.contain('PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74').and.contain('PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6')
     expect(section.language).to.equal('de')
     expect(section.localizations).to.haveOwnProperty('en')
-    expect(section.targeting.languages).to.contain('en').and.contain('de')
+    expect(section.targeting?.languages).to.contain('en').and.contain('de')
   })
 
   it('should work with deleting channel sections', async () => {
@@ -285,6 +285,10 @@ describe('OAuth', () => {
   })
 
   it('should get caption tracks of videos', async () => {
+    if (!captionVideoId) {
+      expect.fail('The environment variable YOUTUBE_CAPTION_VIDEO_ID must be set for this test to be ran!')
+    }
+
     const youtube = new YouTube(key, token)
     const tracks = await youtube.oauth.getCaptions(captionVideoId)
     const track = await youtube.oauth.getCaption(captionVideoId, tracks[0].id)
@@ -322,6 +326,10 @@ describe('OAuth', () => {
   })
 
   it('should upload caption tracks', async () => {
+    if (!captionVideoId) {
+      expect.fail('The environment variable YOUTUBE_CAPTION_VIDEO_ID must be set for this test to be ran!')
+    }
+
     const youtube = new YouTube(key, token)
     const track = await youtube.oauth.uploadCaption(captionVideoId, 'en_US', 'Main', captionTrack, false)
 

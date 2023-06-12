@@ -28,11 +28,9 @@ export class Subscription {
   public youtube: YouTube
 
   /**
-   * Whether or not this is a full subscription object.  
-   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
+   * Whether or not this is a full subscription object.
    */
-  /* istanbul ignore next */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this subscription.
@@ -138,7 +136,7 @@ export class Subscription {
   /* istanbul ignore next */
   public activities: 'all' | 'uploads'
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -156,7 +154,6 @@ export class Subscription {
     const subscription = data
 
     this.id = subscription.id
-    this.full = true
 
     /* istanbul ignore next */
     if (subscription.snippet) {
@@ -174,9 +171,6 @@ export class Subscription {
         thumbnails: null
       }
       this.thumbnails = subscription.snippet.thumbnails
-    } else {
-      /* istanbul ignore next */
-      this.full = false
     }
 
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
@@ -187,8 +181,6 @@ export class Subscription {
         total: subscription.contentDetails.totalItemCount
       }
       this.activities = subscription.contentDetails.activityType
-    } else {
-      this.full = false
     }
 
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
@@ -197,8 +189,6 @@ export class Subscription {
       this.subscriber.name = subscription.subscriberSnippet.title
       this.subscriber.description = subscription.subscriberSnippet.description
       this.subscriber.thumbnails = subscription.subscriberSnippet.thumbnails
-    } else {
-      this.full = false
     }
   }
 

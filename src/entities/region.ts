@@ -27,7 +27,7 @@ export class Region {
   /**
    * Whether or not this is a full region object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this region.
@@ -49,7 +49,7 @@ export class Region {
    */
   public name: string
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -65,17 +65,12 @@ export class Region {
     }
 
     const region = data
-
     this.id = region.id
-    this.full = true
 
     /* istanbul ignore next */
     if (region.snippet) {
       this.gl = region.snippet.gl
       this.name = region.snippet.name
-    } else {
-      /* istanbul ignore next */
-      this.full = false
     }
   }
 }

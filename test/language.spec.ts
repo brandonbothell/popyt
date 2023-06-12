@@ -20,7 +20,7 @@ describe('Languages', () => {
   })
 
   it('should throw an error on invalid type', () => {
-    let error: string = null
+    let error = ''
 
     try {
       new Language(youtube, { kind: 'invalid' })

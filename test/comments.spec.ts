@@ -17,12 +17,11 @@ describe('Comments', () => {
     expect(comments[0]).to.be.an.instanceOf(YTComment)
   })
 
-  it('should work with valid channels with comments', async () => {
-    const comments = await youtube.getChannelComments('UC6mi9rp7vRYninucP61qOjg', 1)
-    const allComments = await youtube.getChannelComments('UC6mi9rp7vRYninucP61qOjg')
-
-    expect(comments[0]).to.be.an.instanceOf(YTComment)
-    expect(allComments.length).to.be.gte(comments.length)
+  // Youtube has REMOVED the discussion tab from channels
+  it('shouldn\'t work with valid channels with comments', async () => {
+    expect(await youtube.getChannelComments('UC6mi9rp7vRYninucP61qOjg').catch(error => {
+      return error.message
+    })).to.include('The API server failed to successfully process the request.')
   })
 
   it('should work with fetching from a video object', async () => {
@@ -33,12 +32,13 @@ describe('Comments', () => {
     expect(video.comments[0].id).to.equal(comments[0].id)
   })
 
+  // Youtube has REMOVED the discussion tab from channels
   it('should work with fetching from a channel object', async () => {
     const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
-    const comments = await channel.fetchComments(1, [ 'id' ])
 
-    expect(comments[0]).to.be.an.instanceOf(YTComment)
-    expect(channel.comments[0].id).to.equal(comments[0].id)
+    expect(await channel.fetchComments(1, [ 'id' ]).catch(error => {
+      return error.message
+    })).to.include('The API server failed to successfully process the request.')
   })
 
   it('should not work with valid videos with comments disabled', async () => {
@@ -51,7 +51,7 @@ describe('Comments', () => {
   it('should not work with invalid videos', async () => {
     expect(await youtube.getVideoComments('JSFSFDKFaVeryFakeVideoID').catch(error => {
       return error.message
-    })).to.equal('Not found')
+    })).to.equal('The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter could not be found.')
   })
 
   it('should return an array with a length of <= maxResults', async () => {
@@ -74,10 +74,14 @@ describe('Comments', () => {
   })
 
   it('should have a correct URL', async () => {
-    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).fetchComments()).find(c => c.id === 'Ugyv3oMTx4CLRXS-9BZ4AaABAg')
-    const channelComment = (await (await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])).fetchComments()).find(c => c.id === 'UgjH7gcaETIe4HgCoAEC')
+    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).fetchComments())[0]
+    // const channelComment = (await (await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])).fetchComments())[0]
 
-    expect(videoComment.url).to.equal('https://youtube.com/watch?v=Lq1D8PFnjWY&lc=Ugyv3oMTx4CLRXS-9BZ4AaABAg')
-    expect(channelComment.url).to.equal('https://youtube.com/channel/UC6mi9rp7vRYninucP61qOjg/discussion?lc=UgjH7gcaETIe4HgCoAEC')
+    if (!videoComment) {
+      expect.fail('Failed to find a comment to test')
+    }
+
+    expect(videoComment.url).to.equal('https://youtube.com/watch?v=Lq1D8PFnjWY&lc=' + videoComment.id)
+    // expect(channelComment.url).to.equal('https://youtube.com/channel/UC6mi9rp7vRYninucP61qOjg/discussion?lc=' + channelComment.id)
   })
 })
