@@ -18,7 +18,8 @@ import YouTube,
   VideoUpdateResource,
   ChannelBrandingSettings,
   ChannelSectionType,
-  Caption
+  Caption,
+  PaginatedItemType
 } from '.'
 import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA, CAPTION_DATA } from './constants'
 import { GenericService } from './services'
@@ -66,7 +67,7 @@ export class OAuth {
    */
   public getMySubscriptions (maxResults: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'subscriptions', true, null, maxResults, null, parts) as Promise<Subscription[]>
+    return GenericService.getPaginatedItems(this.youtube, PaginatedItemType.Subscriptions, true, null, maxResults, null, parts) as Promise<Subscription[]>
   }
 
   /**
@@ -77,7 +78,7 @@ export class OAuth {
    */
   public getMyPlaylists (maxResults: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'playlists:channel', true, null, maxResults, null, parts) as Promise<Playlist[]>
+    return GenericService.getPaginatedItems(this.youtube, PaginatedItemType.Playlists, true, null, maxResults, null, parts) as Promise<Playlist[]>
   }
 
   /**
@@ -104,7 +105,7 @@ export class OAuth {
 
     const result = await this.youtube._request.post('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
     const type = result.snippet.channelId ? 'channel' : 'video'
-    return new YTComment(this.youtube, result.snippet.topLevelComment, type)
+    return new YTComment(this.youtube, result.snippet.topLevelComment, true, type)
   }
 
   /**
@@ -122,7 +123,7 @@ export class OAuth {
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, response, response.snippet.channelId ? 'channel' : 'video')
+    return new YTComment(this.youtube, response, true, response.snippet.channelId ? 'channel' : 'video')
   }
 
   /**
@@ -142,11 +143,11 @@ export class OAuth {
 
     const result = await this.youtube._request.put('comments', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
     const type = result.snippet.channelId ? 'channel' : 'video'
-    const comment = new YTComment(this.youtube, result, type)
+    const comment = new YTComment(this.youtube, result, true, type)
 
     if (result.replies) {
       result.replies.comments.forEach(reply => {
-        const created = new YTComment(this.youtube, reply, type)
+        const created = new YTComment(this.youtube, reply, true, type)
         comment.replies.push(created)
       })
     }
@@ -860,6 +861,6 @@ export class OAuth {
    */
   public getVideoAbuseReportReasons () {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, 'videoAbuseReportReasons', false) as Promise<VideoAbuseReportReason[]>
+    return GenericService.getPaginatedItems(this.youtube, PaginatedItemType.VideoAbuseReportReasons, false) as Promise<VideoAbuseReportReason[]>
   }
 }
