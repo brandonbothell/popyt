@@ -36,7 +36,7 @@ export class Video {
   public data: any
 
   /**
-   * Whether or not this is a full video object.
+   * Whether or not this is a full video object (would it be the same if we ran [[Video.fetch()]] under the same conditions as last time?).
    */
   public full: boolean
 
@@ -175,9 +175,10 @@ export class Video {
    */
   public captions: Caption[]
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = false) {
     this.youtube = youtube
     this.data = data
+    this.full = full
 
     this._init(data)
   }
@@ -194,8 +195,6 @@ export class Video {
         this._length = Parser.parseIsoDuration(video.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
         this.seconds = this._length.seconds
-      } else {
-        this.full = false
       }
 
       /* istanbul ignore next */
@@ -204,17 +203,13 @@ export class Video {
         this.dislikes = Number(video.statistics.dislikeCount)
         this.views = Number(video.statistics.viewCount)
         this.commentCount = Number(video.statistics.commentCount)
-      } else {
-        this.full = false
       }
 
       this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
-      this.full = false
       this.id = data.snippet.resourceId.videoId
       this.private = data.snippet.title === 'Private video'
     } else if (data.kind === 'youtube#searchResult') {
-      this.full = false
       this.id = data.id.videoId
     } else {
       throw new Error(`Invalid video type: ${data.kind}`)
@@ -235,8 +230,6 @@ export class Video {
       /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
       this.category = data.snippet.categoryId
-    } else {
-      this.full = false
     }
 
     /* istanbul ignore next */
@@ -246,8 +239,6 @@ export class Video {
         madeForKids: data.status.madeForKids,
         selfDeclaredMadeForKids: data.status.selfDeclaredMadeForKids
       }
-    } else {
-      this.full = false
     }
 
     this.url = `https://youtube.com/watch?v=${this.id}`

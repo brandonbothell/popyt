@@ -30,7 +30,7 @@ export class VideoAbuseReportReason {
   /**
    * Whether or not this is a full reason object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this reason.
@@ -52,7 +52,7 @@ export class VideoAbuseReportReason {
    */
   public secondaryReasons: { id: string; label: string }[]
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -70,15 +70,11 @@ export class VideoAbuseReportReason {
     const reason = data
 
     this.id = reason.id
-    this.full = true
 
     /* istanbul ignore next */
     if (reason.snippet) {
       this.label = reason.snippet.label
       this.secondaryReasons = reason.snippet.secondaryReasons
-    } else {
-      /* istanbul ignore next */
-      this.full = false
     }
   }
 }

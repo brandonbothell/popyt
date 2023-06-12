@@ -3,8 +3,26 @@ import { Video, YTComment, Playlist, Subscription, VideoCategory, VideoAbuseRepo
 /**
  * @ignore
  */
-export type PaginatedItemsEndpoints = 'playlistItems' | 'playlists' | 'playlists:channel' | 'commentThreads' | 'commentThreads:video' | 'commentThreads:channel' |
+export type PaginatedItemsEndpoints = 'playlistItems' | 'playlists' | 'commentThreads' | 'commentThreads:video' | 'commentThreads:channel' |
   'comments' | 'subscriptions' | 'videoCategories' | 'videoAbuseReportReasons' | 'i18nLanguages' | 'i18nRegions' | 'channelSections' | 'captions'
+
+/**
+ * @ignore
+ */
+export enum PaginatedItemType {
+  VideoCategories,
+  VideoAbuseReportReasons,
+  Languages,
+  Regions,
+  PlaylistItems,
+  VideoComments,
+  ChannelComments,
+  CommentReplies,
+  Captions,
+  Playlists,
+  Subscriptions,
+  ChannelSections
+}
 
 /**
  * @ignore

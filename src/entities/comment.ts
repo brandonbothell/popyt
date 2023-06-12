@@ -36,7 +36,7 @@ export class YTComment {
   /**
    * Whether or not this a full comment object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The comment's author.
@@ -112,7 +112,7 @@ export class YTComment {
    * Either the ID of the video that it is commenting on, the ID of the
    * comment it is replying to, or the ID of the channel it is commenting
    * on.
-   * Undefined whenever the comment is fetched directly using the ID.
+   * Undefined whenever the comment is fetched directly using its ID.
    */
   public parentId: string
 
@@ -123,7 +123,7 @@ export class YTComment {
    */
   public replies: YTComment[]
 
-  constructor (youtube: YouTube, data: any, type: 'video' | 'channel') {
+  constructor (youtube: YouTube, data: any, full = true, type: 'video' | 'channel') {
     this.youtube = youtube
     this.data = data
 
@@ -158,8 +158,6 @@ export class YTComment {
       this.datePublished = comment.snippet.publishedAt
       this.dateEdited = comment.snippet.updatedAt
       this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
-    } else {
-      this.full = false
     }
 
     this.id = comment.id

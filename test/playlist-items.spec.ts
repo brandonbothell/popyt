@@ -12,7 +12,7 @@ describe('Playlist items', () => {
   it('should reject if the playlist isn\'t found', async () => {
     expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID').catch(error => {
       return error.message
-    })).to.equal('Not found')
+    })).to.equal('The playlist identified with the request\'s <code>playlistId</code> parameter cannot be found.')
   })
 
   it('should reject if maxResults is > 50', async () => {

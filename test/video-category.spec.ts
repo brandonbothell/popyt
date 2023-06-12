@@ -28,7 +28,7 @@ describe('Video categories', () => {
   })
 
   it('should throw an error on invalid type', () => {
-    let error: string = null
+    let error = ''
 
     try {
       new VideoCategory(youtube, { kind: 'invalid' })

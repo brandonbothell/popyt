@@ -13,9 +13,9 @@ let channelId: string
 
 describe('Subscriptions', () => {
   it('should set all available properties', async () => {
-    const subscription = (await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1))[0]
+    const subscription = (await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', 1))[0]
 
-    expect(subscription.full).to.equal(false)
+    expect(subscription.full).to.equal(true)
     await subscription.fetch()
 
     expect(subscription.id).to.be.a('string')
@@ -34,7 +34,7 @@ describe('Subscriptions', () => {
   })
 
   it('should throw an error on invalid type', () => {
-    let error: string = null
+    let error = ''
 
     try {
       new Subscription(youtube, { kind: 'invalid' })
@@ -46,17 +46,17 @@ describe('Subscriptions', () => {
   })
 
   it('should work with valid channels with subscriptions', async () => {
-    const subscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', 1, [ 'id' ])
-    const tenSubscriptions = await youtube.getChannelSubscriptions('UCacsMRrp9ql-vdgpn0zUIdQ', undefined, [ 'id' ])
+    const subscriptions = await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', 1, [ 'id' ])
+    const tenSubscriptions = await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', undefined, [ 'id' ])
 
     expect(subscriptions[0]).to.be.an.instanceOf(Subscription)
     expect(tenSubscriptions.length).to.be.gte(subscriptions.length)
   })
 
   it('should work when fetching by channels', async () => {
-    const subscription = await youtube.getSubscriptionByChannels('UCacsMRrp9ql-vdgpn0zUIdQ', channelId, [ 'snippet' ])
+    const subscription = await youtube.getSubscriptionByChannels('UC-bUmR394K0xQBPJifDgXww', channelId, [ 'snippet' ])
 
-    expect(subscription.subscriber.id).to.equal('UCacsMRrp9ql-vdgpn0zUIdQ')
+    expect(subscription.subscriber.id).to.equal('UC-bUmR394K0xQBPJifDgXww')
     expect(subscription.channel.id).to.equal(channelId)
   })
 })

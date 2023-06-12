@@ -11,7 +11,7 @@ if (!apiKey) {
 
 describe('Captions', () => {
   it('should set all available properties', async () => {
-    const caption = new Caption(null, {
+    const caption = new Caption(youtube, {
       kind: 'youtube#caption',
       id: 'ntWkkGS08UHTMx0fznJZWEzbapg-mRyAFgHHbWSPj7dbvy48tY7fdA==',
       snippet: {
@@ -49,7 +49,7 @@ describe('Captions', () => {
   })
 
   it('should throw an error on invalid type', () => {
-    let error: string = null
+    let error = ''
 
     try {
       new Caption(youtube, { kind: 'invalid' })

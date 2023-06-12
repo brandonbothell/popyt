@@ -58,7 +58,7 @@ describe('Searching', () => {
   })
 
   it('should work with multiple types', async () => {
-    const data = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 10))
+    const data = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 25))
 
     expect(data.results.find(r => r instanceof Video)).to.not.equal(undefined)
     expect(data.results.find(r => r instanceof Playlist)).to.not.equal(undefined)
@@ -66,7 +66,7 @@ describe('Searching', () => {
   })
 
   it('should work with fetching videos of a channel', async () => {
-    const video = (await youtube.searchVideos('bukkit', 10, null, null, 'UC6mi9rp7vRYninucP61qOjg')).results[0]
+    const video = (await youtube.searchVideos('bukkit', 10, undefined, undefined, 'UC6mi9rp7vRYninucP61qOjg')).results[0]
     expect(video.channel.id).to.equal('UC6mi9rp7vRYninucP61qOjg')
     expect(video.channel.name).to.be.a('string')
   })

@@ -1,7 +1,7 @@
 import YouTube,
 { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 import { Cache, Parser } from '../util'
-import { ItemTypes, ItemReturns, PaginatedItemsEndpoints, PaginatedItemsReturns } from '../types'
+import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType } from '../types'
 
 /**
  * @ignore
@@ -13,7 +13,7 @@ export class GenericService {
       return Promise.reject('Type must be a video, channel, playlist, comment, subscription, video category, or channel section.')
     }
 
-    if (!mine && (id === undefined || id === null)) {
+    if (!mine && id == null) {
       return Promise.reject('Items must either specify an ID or the \'mine\' parameter.')
     }
 
@@ -21,10 +21,9 @@ export class GenericService {
       return Promise.reject(`${type.endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
-    const cached = Cache.get(`get://${type.endpoint}/${id ? id : 'mine'}`)
-
-    if (youtube._shouldCache && cached) {
-      return cached
+    if (youtube._shouldCache) {
+      const cached = Cache.get(`get://${type.endpoint}/${id ? id : 'mine'}`)
+      if (cached) return cached
     }
 
     const params: {
@@ -52,34 +51,38 @@ export class GenericService {
     let endResult: ItemReturns
 
     if (type === YTComment) {
-      endResult = new type(youtube, result.items[0], result.items[0].snippet.channelId ? 'channel' : 'video')
+      endResult = new type(youtube, result.items[0], true, result.items[0].snippet.channelId ? 'channel' : 'video')
     } else {
-      endResult = new (type as typeof Video)(youtube, result.items[0])
+      endResult = new (type as typeof Video)(youtube, result.items[0], true)
     }
 
-    youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
+    endResult.full = true
+
+    if (youtube._shouldCache) youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
 
     return endResult
   }
 
   /* istanbul ignore next */
-  public static async getPaginatedItems (youtube: YouTube, endpoint: PaginatedItemsEndpoints, mine: boolean, id?: string, maxResults: number = 10,
+  public static async getPaginatedItems (youtube: YouTube, type: PaginatedItemType, mine: boolean, id?: string, maxResults: number = 10,
     subId?: string, parts?: string[]):
   Promise<PaginatedItemsReturns> {
-    if (!mine && (id === undefined || id === null) &&
-      !([ 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions', 'videoCategories' ].includes(endpoint))) {
-      return Promise.reject(`${endpoint} must either specify an ID or the 'mine' parameter.`)
+    const name = PaginatedItemType[type] as keyof typeof PaginatedItemType
+
+    // These four types in the PaginatedItemTypes enum don't require any sort of identification parameter
+    if (!mine && id == null &&
+      ![ 'VideoCategories', 'VideoAbuseReportReasons', 'Languages', 'Regions' ].includes(name)) {
+      return Promise.reject(`${name} must either specify an ID or the 'mine' parameter.`)
     }
 
-    if (mine && (endpoint.startsWith('comment') ||
-    [ 'playlistItems', 'videoCategories', 'videoAbuseReportReasons', 'i18nLanguages', 'i18nRegions', 'captions' ].includes(endpoint))) {
-      return Promise.reject(`${endpoint} cannot be filtered by the 'mine' parameter.`)
+    // These three types in the PaginatedItemTypes enum are the only to be filtered by the 'mine' parameter
+    if (mine && ![ 'Playlists', 'Subscriptions', 'ChannelSections' ].includes(name)) {
+      return Promise.reject(`${name} cannot be filtered by the 'mine' parameter.`)
     }
 
-    const cached = Cache.get(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}`)
-
-    if (youtube._shouldCache && cached) {
-      return cached
+    if (youtube._shouldCache) {
+      const cached = Cache.get(`getpage://${type}/${id ? id : 'mine'}/${maxResults}`)
+      if (cached) return cached
     }
 
     let items = []
@@ -101,58 +104,119 @@ export class GenericService {
       part: parts ? parts.join(',') : 'snippet'
     }
 
+    let endpoint: string
     let max: number
     let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language |
       typeof Region | typeof ChannelSection | typeof Caption
     let commentType: 'video' | 'channel'
 
-    if (endpoint === 'playlistItems') {
-      max = 50
-      clazz = Video
-      options.playlistId = id
-      if (subId) options.videoId = subId
-      if (!options.part.includes('snippet')) options.part += ',snippet'
-    } else if (endpoint.startsWith('commentThreads')) {
-      max = 100
-      clazz = YTComment
+    // MUST specify endpoint and clazz values, and most likely need a max as well
+    switch (type) {
+      case PaginatedItemType.PlaylistItems:
+        endpoint = 'playlistItems'
+        max = 50
+        clazz = Video
+        options.playlistId = id
+        if (!options.part.includes('snippet')) options.part += ',snippet'
+        if (subId) options.videoId = subId
+        break
 
-      const [, type ] = endpoint.split(':') as ('video' | 'channel')[]
+      case PaginatedItemType.VideoComments:
+        commentType = 'video'
+        // falls through
 
-      commentType = type ? type : 'video'
-      endpoint = 'commentThreads'
-      options[`${type}Id`] = id
-      options.textFormat = 'plainText'
-      options.part = 'snippet'
-    } else if (endpoint === 'comments') {
-      max = 100
-      clazz = YTComment
-      options.parentId = id
-      options.part = 'snippet'
-    } else if (endpoint === 'playlists:channel') {
-      max = 50
-      clazz = Playlist
-      endpoint = 'playlists'
-      if (mine) options.mine = mine; else options.channelId = id
-    } else if (endpoint === 'subscriptions') {
-      max = 50
-      clazz = Subscription
-      if (mine) options.mine = mine; else options.channelId = id
-    } else if (endpoint === 'videoCategories') {
-      clazz = VideoCategory
-      options.regionCode = youtube.region
-      options.hl = youtube.language
-    } else if (endpoint === 'videoAbuseReportReasons' || endpoint === 'i18nLanguages' || endpoint === 'i18nRegions') {
-      clazz = endpoint === 'videoAbuseReportReasons' ? VideoAbuseReportReason : (endpoint === 'i18nLanguages' ? Language : Region)
-      options.hl = youtube.language
-    } else if (endpoint === 'channelSections') {
-      clazz = ChannelSection
-      if (mine) options.mine = mine; else options.channelId = id
-    } else if (endpoint === 'captions') {
-      clazz = Caption
-      options.videoId = id
-    } else {
-      return Promise.reject('Unknown item type ' + endpoint)
+      case PaginatedItemType.ChannelComments:
+        if (!commentType) commentType = 'channel'
+
+        endpoint = 'commentThreads'
+        max = 100
+        clazz = YTComment
+        options[`${commentType}Id`] = id
+        if (!options.part.includes('snippet')) options.part += ',snippet'
+        options.textFormat = 'plainText'
+        break
+
+      case PaginatedItemType.CommentReplies:
+        endpoint = 'comments'
+        max = 100
+        clazz = YTComment
+        options.parentId = id
+        if (!options.part.includes('snippet')) options.part += ',snippet'
+        break
+
+      case PaginatedItemType.Playlists:
+        endpoint = 'playlists'
+        clazz = Playlist
+        // falls through
+
+      case PaginatedItemType.Subscriptions:
+        if (!endpoint) endpoint = 'subscriptions'
+        if (!clazz) clazz = Subscription
+
+        max = 50
+        // falls through
+
+      case PaginatedItemType.ChannelSections:
+        if (!endpoint) endpoint = 'channelSections'
+        if (!clazz) clazz = ChannelSection
+
+        if (mine) options.mine = mine; else options.channelId = id
+        break
+
+      case PaginatedItemType.VideoCategories:
+        endpoint = 'videoCategories'
+        clazz = VideoCategory
+        options.regionCode = youtube.region
+        // falls through
+
+      case PaginatedItemType.VideoAbuseReportReasons:
+        if (!endpoint) endpoint = 'videoAbuseReportReasons'
+        if (!clazz) clazz = VideoAbuseReportReason
+        // falls through
+
+      case PaginatedItemType.Languages:
+        if (!endpoint) endpoint = 'i18nLanguages'
+        if (!clazz) clazz = Language
+        // falls through
+
+      case PaginatedItemType.Regions:
+        if (!endpoint) endpoint = 'i18nRegions'
+        if (!clazz) clazz = Region
+        options.hl = youtube.language
+        break
+
+      case PaginatedItemType.Captions:
+        endpoint = 'captions'
+        clazz = Caption
+        options.videoId = id
+        break
+
+      default:
+        return Promise.reject('Unknown item type: ' + type)
     }
+
+    // if (endpoint === 'playlistItems') {
+
+    // } else if (endpoint.startsWith('commentThreads')) {
+
+    // } else if (endpoint === 'comments') {
+
+    // } else if (endpoint === 'playlists') {
+
+    // } else if (endpoint === 'subscriptions') {
+
+    // } else if (endpoint === 'videoCategories') {
+
+    // } else if (endpoint === 'videoAbuseReportReasons' || endpoint === 'i18nLanguages' || endpoint === 'i18nRegions') {
+
+    // } else if (endpoint === 'channelSections') {
+    //   clazz = ChannelSection
+    //   if (mine) options.mine = mine; else options.channelId = id
+    // } else if (endpoint === 'captions') {
+
+    // } else {
+    //   return Promise.reject('Unknown item type ' + endpoint)
+    // }
 
     if (max && maxResults > max) {
       return Promise.reject(`Max results must be ${max} or below for ${endpoint}`)
@@ -188,15 +252,15 @@ export class GenericService {
         let comment: YTComment
 
         if (item.snippet && item.snippet.topLevelComment) {
-          comment = new YTComment(youtube, item.snippet.topLevelComment, commentType)
+          comment = new YTComment(youtube, item.snippet.topLevelComment, false, commentType)
           items.push(comment)
         } else {
-          items.push(new clazz(youtube, item, commentType))
+          items.push(new clazz(youtube, item, false, commentType))
         }
 
         if (item.replies) {
           item.replies.comments.forEach(reply => {
-            const created = new YTComment(youtube, reply, commentType)
+            const created = new YTComment(youtube, reply, false, commentType)
             comment.replies.push(created)
           })
         }
@@ -209,7 +273,7 @@ export class GenericService {
       }
     }
 
-    youtube._cache(`get://${endpoint}/${id ? id : 'mine'}/${maxResults}`, items)
+    if (youtube._shouldCache) youtube._cache(`getpage://${endpoint}/${id ? id : 'mine'}/${maxResults}`, items)
 
     return items
   }

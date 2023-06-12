@@ -27,7 +27,7 @@ export class Caption {
   /**
    * Whether or not this is a full caption track object.
    */
-  public full: boolean
+  public full = true
 
   /**
    * The raw data of this caption track.
@@ -106,7 +106,7 @@ export class Caption {
   /* istanbul ignore next */
   public failureReason?: 'processingFailed' | 'unknownFormat' | 'unsupportedFormat'
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -124,7 +124,6 @@ export class Caption {
     const caption = data
 
     this.id = caption.id
-    this.full = true
 
     /* istanbul ignore next */
     if (caption.snippet) {
@@ -141,9 +140,6 @@ export class Caption {
       this.autoSynced = caption.snippet.isAutoSynced
       this.status = caption.snippet.status
       this.failureReason = caption.snippet.failureReason
-    } else {
-      /* istanbul ignore next */
-      this.full = false
     }
   }
 

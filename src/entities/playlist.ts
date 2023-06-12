@@ -1,4 +1,4 @@
-import { YouTube, Video, Thumbnail } from '..'
+import { YouTube, Video, Thumbnail, PaginatedItemType } from '..'
 import { GenericService } from '../services'
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
 
@@ -97,9 +97,10 @@ export class Playlist {
    */
   public tags: string[]
 
-  constructor (youtube: YouTube, data: any) {
+  constructor (youtube: YouTube, data: any, full = false) {
     this.youtube = youtube
     this.data = data
+    this.full = full
 
     this._init(data)
   }
@@ -108,9 +109,9 @@ export class Playlist {
    * @ignore
    */
   private _init (data: any) {
-    if (data.kind === 'youtube#playlist') {
-      const playlist = data
+    const playlist = data
 
+    if (data.kind === 'youtube#playlist') {
       this.id = playlist.id
       /* istanbul ignore next */
       this.tags = playlist.snippet ? playlist.snippet.tags : undefined
@@ -119,22 +120,19 @@ export class Playlist {
       /* istanbul ignore next */
       this.embedHtml = playlist.player ? playlist.player.embedHtml : undefined
     } else if (data.kind === 'youtube#searchResult') {
-      this.full = false
       this.id = data.id.playlistId
     } else {
       throw new Error(`Invalid playlist type: ${data.kind}`)
     }
 
     /* istanbul ignore next */
-    if (data.snippet) {
-      this.tags = data.snippet.tags
-      this.title = data.snippet.title
-      this.description = data.snippet.description
-      this.creatorId = data.snippet.channelId
-      this.dateCreated = new Date(data.snippet.publishedAt)
-      this.thumbnails = data.snippet.thumbnails
-    } else {
-      this.full = false
+    if (playlist.snippet) {
+      this.tags = playlist.snippet.tags
+      this.title = playlist.snippet.title
+      this.description = playlist.snippet.description
+      this.creatorId = playlist.snippet.channelId
+      this.dateCreated = new Date(playlist.snippet.publishedAt)
+      this.thumbnails = playlist.snippet.thumbnails
     }
 
     this.url = `https://youtube.com/playlist?list=${this.id}`
@@ -209,7 +207,7 @@ export class Playlist {
   /* istanbul ignore next */
   public async updateVideo (videoResolvable: string | Video, position?: number, note?: string, itemId?: string) {
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
-    const playlistItemId = itemId ? itemId : (await GenericService.getPaginatedItems(this.youtube, 'playlistItems', false, this.id, 1, videoId))[0].id
+    const playlistItemId = itemId ?? (await GenericService.getPaginatedItems(this.youtube, PaginatedItemType.PlaylistItems, false, this.id, 1, videoId))[0].id
 
     return this.youtube.oauth.updatePlaylistItem(playlistItemId, this.id, videoId, position, note)
   }
@@ -217,24 +215,29 @@ export class Playlist {
   /**
    * Removes a [[Video]] from the playlist.
    * Must be using an access token with correct scopes.
-   * @param videoResolvable The URL, ID, or Title of the video. Must specify this or `itemId`.
-   * @param itemId The playlist item ID if you have it. Must specify this or `videoResolvable`.
+   * @param videoResolvable The URL, ID, or Title of the video.
    */
   /* istanbul ignore next */
-  public async removeVideo (videoResolvable?: string, itemId?: string) {
-    if (!videoResolvable && !itemId) {
-      return Promise.reject('Must specify either videoResolvable or itemId')
-    }
-
-    const playlistItemId = itemId ? itemId : (await GenericService.getPaginatedItems(this.youtube, 'playlistItems', false, this.id, 1,
+  public async removeVideo (videoResolvable: string) {
+    const playlistItemId = (await GenericService.getPaginatedItems(this.youtube, PaginatedItemType.PlaylistItems, false, this.id, 1,
       await GenericService.getId(this.youtube, videoResolvable, Video)))[0].id
 
+    return this.removeItem(playlistItemId)
+  }
+
+  /**
+   * Removes a [[Video]] from the playlist.
+   * Must be using an access token with correct scopes.
+   * @param playlistItemId The playlist item ID (not the same as video id. See [[Playlist.removeVideo()]]).
+   */
+  /* istanbul ignore next */
+  public async removeItem (playlistItemId: string) {
     await this.youtube.oauth.deletePlaylistItem(playlistItemId)
 
     if (this.videos) {
       const index = this.videos.findIndex(v => v.data.id === playlistItemId)
 
-      if (index) {
+      if (index >= 0) {
         this.videos.splice(index, 1)
       }
     }
