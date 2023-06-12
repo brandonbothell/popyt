@@ -195,29 +195,6 @@ export class GenericService {
         return Promise.reject('Unknown item type: ' + type)
     }
 
-    // if (endpoint === 'playlistItems') {
-
-    // } else if (endpoint.startsWith('commentThreads')) {
-
-    // } else if (endpoint === 'comments') {
-
-    // } else if (endpoint === 'playlists') {
-
-    // } else if (endpoint === 'subscriptions') {
-
-    // } else if (endpoint === 'videoCategories') {
-
-    // } else if (endpoint === 'videoAbuseReportReasons' || endpoint === 'i18nLanguages' || endpoint === 'i18nRegions') {
-
-    // } else if (endpoint === 'channelSections') {
-    //   clazz = ChannelSection
-    //   if (mine) options.mine = mine; else options.channelId = id
-    // } else if (endpoint === 'captions') {
-
-    // } else {
-    //   return Promise.reject('Unknown item type ' + endpoint)
-    // }
-
     if (max && maxResults > max) {
       return Promise.reject(`Max results must be ${max} or below for ${endpoint}`)
     }
