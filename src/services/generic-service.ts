@@ -1,7 +1,7 @@
 import YouTube,
 { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 import { Cache, Parser } from '../util'
-import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType } from '../types'
+import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions } from '../types'
 
 /**
  * @ignore
@@ -10,7 +10,7 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string, parts?: string[]): Promise<ItemReturns> {
     if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
-      return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated `)
+      return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`)
     }
 
     if (!mine && id == null) {
@@ -57,10 +57,18 @@ export class GenericService {
     return endResult
   }
 
+  /**
+   * 
+   * @param maxPerPage Leave undefined or set to < 1 to fetch the maximum allowed by the API for any given type.
+   * @param pages Number of pages to fetch from the API. Set to < 1 to fetch all of them. Defaults to 1.
+   * @param pageToken The page to start at (retrieved from the return value of a previous call to this function)
+   * 
+   * @returns An object containing the array of instantiated entities as well as possible next and previous page tokens.
+   */
   /* istanbul ignore next */
-  public static async getPaginatedItems (youtube: YouTube, type: PaginatedItemType, mine: boolean, id?: string, maxResults: number = 10,
-    subId?: string, parts?: string[]):
+  public static async getPaginatedItems ({ youtube, type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts }: PaginatedItemOptions):
   Promise<PaginatedItemsReturns> {
+
     const name = PaginatedItemType[type] as keyof typeof PaginatedItemType
 
     // These four types in the PaginatedItemTypes enum don't require any sort of identification parameter
@@ -75,11 +83,10 @@ export class GenericService {
     }
 
     if (youtube._shouldCache) {
-      const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${maxResults}`)
+      const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${pages < 1 ? maxPerPage : 0}/${pages}/${pageToken}`)
       if (cached) return cached
     }
 
-    const fetchAll = maxResults <= 0
     const options: {
       part: string
       maxResults?: number
@@ -188,42 +195,55 @@ export class GenericService {
     }
 
     if (maxForEndpoint !== undefined) {
-      if (maxResults > maxForEndpoint) {
-        return Promise.reject(`Max results must be ${maxForEndpoint} or below for ${endpoint}`)
-      }
-
-      options.maxResults = fetchAll ? maxForEndpoint : maxResults
+      if (pages < 1 || maxPerPage < 1) options.maxResults = maxForEndpoint
+      else if (maxPerPage > maxForEndpoint) return Promise.reject(`Max results must be ${maxForEndpoint} or below for ${endpoint}`)
+      else options.maxResults = maxPerPage
     }
 
-    const items: InstanceType<typeof clazz>[] = []
+    if (pageToken) options.pageToken = pageToken
+
+    if (pages < 1) {
+      pages = Infinity
+    }
+
+    const toReturn: PaginatedItemsReturns = {
+      results: []
+    }
+
+    let pagesFetched = 0
     let apiResponse: any
-    let shouldBreak = fetchAll ? false : true
 
     while (true) {
       apiResponse = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
 
       if (!apiResponse.items?.length) {
+        if (apiResponse.prevPageToken) toReturn.prevPageToken = apiResponse.prevPageToken
         break
       }
 
+      pagesFetched++
+
       for (const data of apiResponse.items) {
         if (data.kind === 'youtube#commentThread') {
-          items.push(new YTComment(youtube, data.snippet.topLevelComment, true, data.replies))
+          toReturn.results.push(new YTComment(youtube, data.snippet.topLevelComment, true, data.replies))
         } else {
-          items.push(new clazz(youtube, data, false))
+          toReturn.results.push(new clazz(youtube, data, false))
         }
       }
 
-      if (shouldBreak || !apiResponse.nextPageToken) {
+      if (pagesFetched >= pages || !apiResponse.nextPageToken) {
+        if (apiResponse.prevPageToken) toReturn.prevPageToken = apiResponse.prevPageToken
+        if (apiResponse.nextPageToken) toReturn.nextPageToken = apiResponse.nextPageToken
+
         break
       }
 
       options.pageToken = apiResponse.nextPageToken
     }
 
-    if (youtube._shouldCache) youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxResults}`, items)
+    if (youtube._shouldCache) youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage}/${pages}/${pageToken}`, toReturn)
 
-    return items as PaginatedItemsReturns
+    return toReturn
   }
 
   /* istanbul ignore next */

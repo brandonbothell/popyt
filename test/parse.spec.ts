@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import { YouTube, Video } from '../src'
+import { YouTube, Video, Channel, Playlist, YTComment } from '../src'
 import { Parser } from '../src/util'
 import { youtube } from './setup-instance'
 
@@ -102,5 +102,12 @@ describe('Getting/Parsing', () => {
     expect(parsed.video).to.equal(null)
     expect(parsed.channel).to.equal(null)
     expect(parsed.playlist).to.equal(null)
+  })
+
+  it('should throw an error if kind is wrong', () => {
+    expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
+    expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')
+    expect(() => new YTComment(youtube, { kind: 'notakind' })).to.throw('Invalid comment type: notakind')
+    expect(() => new Playlist(youtube, { kind: 'notakind' })).to.throw('Invalid playlist type: notakind')
   })
 })

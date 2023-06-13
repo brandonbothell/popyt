@@ -10,15 +10,16 @@ export class SearchService {
     channelId?: string, fields?: string, category?: string, onlyEmbeddable: boolean = false, eventType?: 'completed' | 'live' | 'upcoming',
     videoType?: 'any' | 'episode' | 'movie'):
   Promise<{ results: (Video | Channel | Playlist)[]; prevPageToken: string; nextPageToken: string }> {
-    const type = types.map(t => t.endpoint.substring(0, t.endpoint.length - 1)).join(',')
-    const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
 
-    if (youtube._shouldCache && cached) {
-      return cached
+    const type = types.map(t => t.name.toLowerCase()).join(',')
+
+    if (youtube._shouldCache) {
+      const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
+      if (cached) return cached
     }
 
     if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be greater than 0 and less than or equal to 50')
+      return Promise.reject('Max results must be between 1 and 50 for search queries')
     }
 
     const data: {

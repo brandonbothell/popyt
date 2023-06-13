@@ -276,10 +276,10 @@ export class Video {
 
   /**
    * Fetches the video's comments and assigns them to [[Video.comments]].
-   * @param maxResults The maximum amount of comments to fetch
+   * @param pages The number of pages of comments to fetch.
    */
-  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getVideoComments(this.id, maxResults, parts)
+  public async fetchComments (pages?: number, parts?: CommentThreadParts) {
+    this.comments = await this.youtube.getVideoComments(this.id, { pages }, parts)
     return this.comments
   }
 

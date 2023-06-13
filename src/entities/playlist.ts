@@ -140,10 +140,10 @@ export class Playlist {
 
   /**
    * Adds videos in this playlist to the `videos` property of this playlist.
-   * @param maxResults Fetches all videos if <=0.
+   * @param pages The number of pages of videos to fetch.
    */
-  public async fetchVideos (maxResults: number = 10, parts?: PlaylistItemParts) {
-    this.videos = await this.youtube.getPlaylistItems(this.id, maxResults, parts)
+  public async fetchVideos (pages?: number, parts?: PlaylistItemParts) {
+    this.videos = await this.youtube.getPlaylistItems(this.id, { pages }, parts)
     return this.videos
   }
 
@@ -207,7 +207,7 @@ export class Playlist {
   /* istanbul ignore next */
   public async updateVideo (videoResolvable: string | Video, position?: number, note?: string, itemId?: string) {
     const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
-    const playlistItemId = itemId ?? (await GenericService.getPaginatedItems(this.youtube, PaginatedItemType.PlaylistItems, false, this.id, 1, videoId))[0].id
+    const playlistItemId = itemId ?? (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: videoId }))[0].id
 
     return this.youtube.oauth.updatePlaylistItem(playlistItemId, this.id, videoId, position, note)
   }
@@ -219,8 +219,7 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async removeVideo (videoResolvable: string) {
-    const playlistItemId = (await GenericService.getPaginatedItems(this.youtube, PaginatedItemType.PlaylistItems, false, this.id, 1,
-      await GenericService.getId(this.youtube, videoResolvable, Video)))[0].id
+    const playlistItemId = (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: await GenericService.getId(this.youtube, videoResolvable, Video) }))[0].id
 
     return this.removeItem(playlistItemId)
   }

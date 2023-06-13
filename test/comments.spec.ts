@@ -13,7 +13,7 @@ describe('Comments', () => {
   it('should work with valid videos with comments and replies', async () => {
     YTComment.part = 'id'
 
-    const comments = await youtube.getVideoComments('Lq1D8PFnjWY', 1)
+    const comments = await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 })
     expect(comments[0]).to.be.an.instanceOf(YTComment)
   })
 
@@ -54,12 +54,12 @@ describe('Comments', () => {
     })).to.equal('The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter could not be found.')
   })
 
-  it('should return an array with a length of <= maxResults', async () => {
-    expect((await youtube.getVideoComments('Lq1D8PFnjWY', 1, [ 'id' ])).length).to.be.lessThan(2)
+  it('should return an array with a length of <= maxPerPage', async () => {
+    expect((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, [ 'id' ])).length).to.be.lessThan(2)
   })
 
   it('should work with fetching replies', async () => {
-    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', 1, [ 'id' ]))[0].fetchReplies())).to.be.an.instanceOf(Array)
+    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, [ 'id' ]))[0].fetchReplies())).to.be.an.instanceOf(Array)
   })
 
   it('should be individually gettable', async () => {

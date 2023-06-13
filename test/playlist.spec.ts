@@ -49,8 +49,8 @@ describe('Playlists', () => {
     expect(playlist.videos.length).to.be.lte(10)
   })
 
-  it('should work with fetching channel playlists with maxResults', async () => {
-    const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', 5, [ 'id' ])
+  it('should work with fetching channel playlists with maxPerPage', async () => {
+    const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', { maxPerPage: 5 }, [ 'id' ])
 
     expect(playlists.length).to.equal(5)
     expect(playlists[0]).to.be.an.instanceOf(Playlist)

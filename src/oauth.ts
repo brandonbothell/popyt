@@ -62,23 +62,25 @@ export class OAuth {
   /**
    * Gets the authorized user's [[Subscription]]s.  
    * Last tested 05/18/2020 11:48. PASSING
-   * @param maxResults The maximum number of subscriptions to fetch.
-   * Fetches 10 by default. Set to a value <=0 to fetch all.
+   * @param maxPerPage The maximum number of subscriptions to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    */
-  public getMySubscriptions (maxResults: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
+  public getMySubscriptions (maxPerPage: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, PaginatedItemType.Subscriptions, true, null, maxResults, null, parts) as Promise<Subscription[]>
+    return GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Subscriptions, mine: true, id: null, maxPerPage, subId: null, parts }) as Promise<Subscription[]>
   }
 
   /**
    * Gets the authorized user's [[Playlist]]s.  
    * Last tested 05/18/2020 11:48. PASSING
-   * @param maxResults The maximum number of playlists to fetch.
-   * Fetches 10 by default. Set to a value <=0 to fetch all.
+   * @param maxPerPage The maximum number of playlists to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    */
-  public getMyPlaylists (maxResults: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
+  public getMyPlaylists (maxPerPage: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, PaginatedItemType.Playlists, true, null, maxResults, null, parts) as Promise<Playlist[]>
+    return GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Playlists, mine: true, id: null, maxPerPage, subId: null, parts }) as Promise<Playlist[]>
   }
 
   /**
@@ -858,6 +860,6 @@ export class OAuth {
    */
   public getVideoAbuseReportReasons () {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems(this.youtube, PaginatedItemType.VideoAbuseReportReasons, false) as Promise<VideoAbuseReportReason[]>
+    return GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.VideoAbuseReportReasons, mine: false }) as Promise<VideoAbuseReportReason[]>
   }
 }

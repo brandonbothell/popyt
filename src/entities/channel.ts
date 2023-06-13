@@ -1,4 +1,4 @@
-import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings } from '..'
+import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions } from '..'
 import { ChannelParts, ChannelSectionParts, CommentThreadParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
 
 /**
@@ -299,31 +299,31 @@ export class Channel {
 
   /**
    * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
-   * Fetches the channel's discussion tab comments and assigns them to Channel.comments.
-   * @param maxResults The maximum amount of comments to fetch
+   * Fetches the channel's discussion tab comments and assigns them to [[Channel.comments]].
+   * @param pages The number of pages of comments to fetch. Defaults to 1.
    */
   /* istanbul ignore next */
-  public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getChannelComments(this.id, maxResults, parts)
+  public async fetchComments (pages?: number, parts?: CommentThreadParts) {
+    this.comments = await this.youtube.getChannelComments(this.id, { pages }, parts)
     return this.comments
   }
 
   /**
-   * Fetches the channel's playlists and assigns them to Channel.playlists.
+   * Fetches the channel's playlists and assigns them to [[Channel.playlists]].
    * @param maxResults The maximum amount of playlists to fetch
    */
-  public async fetchPlaylists (maxResults: number = 10, parts?: PlaylistParts) {
-    this.playlists = await this.youtube.getChannelPlaylists(this.id, maxResults, parts)
+  public async fetchPlaylists (pages?: number, parts?: PlaylistParts) {
+    this.playlists = await this.youtube.getChannelPlaylists(this.id, { pages }, parts)
     return this.playlists
   }
 
   /**
-   * Fetches the channel's subscriptions and assigns them to Channel.subscriptions.
-   * @param maxResults The maximum amount of subscriptions to fetch
+   * Fetches the channel's subscriptions and assigns them to [[Channel.subscriptions]].
+   * @param pages The number of pages of subscriptions to fetch. Defaults to 1.
    */
   /* istanbul ignore next */
-  public async fetchSubscriptions (maxResults: number = 10, parts?: SubscriptionParts) {
-    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, maxResults, parts)
+  public async fetchSubscriptions (pages?: number, parts?: SubscriptionParts) {
+    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, { pages }, parts)
     return this.subscriptions
   }
 
