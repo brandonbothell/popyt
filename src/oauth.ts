@@ -66,7 +66,7 @@ export class OAuth {
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
-  public async getMySubscriptions (maxPerPage: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
+  public async getMySubscriptions (maxPerPage?: number, parts?: SubscriptionParts): Promise<Subscription[]> {
     this.checkTokenAndThrow()
     return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Subscriptions, mine: true, maxPerPage, parts })).results as Subscription[]
   }
@@ -78,7 +78,7 @@ export class OAuth {
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
-  public async getMyPlaylists (maxPerPage: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
+  public async getMyPlaylists (maxPerPage?: number, parts?: PlaylistParts): Promise<Playlist[]> {
     this.checkTokenAndThrow()
     return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Playlists, mine: true, maxPerPage, parts })).results as Playlist[]
   }

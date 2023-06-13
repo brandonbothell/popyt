@@ -132,6 +132,7 @@ export class GenericService {
         clazz = YTComment
         options[`${commentType}Id`] = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
+        if (!options.part.includes('replies')) options.part += ',replies'
         options.textFormat = 'plainText'
         break
 
@@ -225,7 +226,7 @@ export class GenericService {
 
       for (const data of apiResponse.items) {
         if (data.kind === 'youtube#commentThread') {
-          toReturn.results.push(new YTComment(youtube, data.snippet.topLevelComment, true, data.replies))
+          toReturn.results.push(new YTComment(youtube, data.snippet.topLevelComment, true, data.replies?.comments))
         } else {
           toReturn.results.push(new clazz(youtube, data, false))
         }
