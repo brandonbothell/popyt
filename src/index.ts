@@ -235,11 +235,11 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` videos in a [[Playlist]]. Used mostly internally with [[Playlist.fetchVideos]].
+   * Get `maxPerPage * pages` videos in a [[Playlist]]. Used mostly internally with [[Playlist.fetchVideos]].
    * @param playlistResolvable The URL, ID, or Title of the playlist.
-   * @param maxPerPage The maximum number of videos to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the videos to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial video objects.
    */
@@ -250,11 +250,11 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` [[YTComment]]s from a [[Video]]. Used mostly internally with [[Video.fetchComments]].
+   * Get `maxPerPage * pages` [[YTComment]]s from a [[Video]]. Used mostly internally with [[Video.fetchComments]].
    * @param videoResolvable The URL, ID, or Title of the video.
-   * @param maxPerPage The maximum number of comments to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
@@ -267,11 +267,11 @@ export class YouTube {
   /**
    * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
    * 
-   * Get `maxResults` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with [[Channel.fetchComments]].
+   * Get `maxPerPage * pages` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with [[Channel.fetchComments]].
    * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param maxPerPage The maximum number of comments to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
@@ -282,11 +282,11 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with [[Channel.fetchPlaylists]].
+   * Get `maxPerPage * pages` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with [[Channel.fetchPlaylists]].
    * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param maxPerPage The maximum number of playlists to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the playlists to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial playlist objects.
    */
@@ -297,11 +297,11 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with [[Channel.fetchSubscriptions]].
+   * Get `maxPerPage * pages` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with [[Channel.fetchSubscriptions]].
    * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param maxPerPage The maximum number of subscriptions to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the subscriptions to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial subscription objects.
    */
@@ -312,11 +312,11 @@ export class YouTube {
   }
 
   /**
-   * Get `maxResults` replies to a [[YTComment]]. Used mostly internally with [[Comment.fetchReplies]].
+   * Get `maxPerPage * pages` replies to a [[YTComment]]. Used mostly internally with [[Comment.fetchReplies]].
    * @param commentId The ID of the comment to get replies from.
-   * @param maxPerPage The maximum number of comments to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the replies to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */

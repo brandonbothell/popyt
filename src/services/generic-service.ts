@@ -288,7 +288,8 @@ export class GenericService {
       id = await youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: 'channel',
-        part: 'id', maxResults: 1
+        part: 'id',
+        maxResults: 1
       }, youtube.token, youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.channelId : undefined) : undefined)
     } else if (type === Playlist && input.includes(' ')) {
       id = await youtube._request.api('search', {

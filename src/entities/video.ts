@@ -276,7 +276,7 @@ export class Video {
 
   /**
    * Fetches the video's comments and assigns them to [[Video.comments]].
-   * @param pages The number of pages of comments to fetch.
+   * @param pages The number of pages of comments to fetch. Defaults to 1. Set <1 to fetch all items.
    */
   public async fetchComments (pages?: number, parts?: CommentThreadParts) {
     this.comments = await this.youtube.getVideoComments(this.id, { pages }, parts)

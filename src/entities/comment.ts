@@ -189,7 +189,7 @@ export class YTComment {
 
   /**
    * Fetches replies to the comment.
-   * @param pages The number of pages of comments to fetch.
+   * @param pages The number of pages of comments to fetch. Defaults to 1. Set <1 to fetch all items.
    */
   public async fetchReplies (pages?: number, parts?: CommentParts) {
     this.replies = await this.youtube.getCommentReplies(this.id, { pages }, parts)

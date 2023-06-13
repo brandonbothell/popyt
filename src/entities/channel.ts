@@ -300,7 +300,7 @@ export class Channel {
   /**
    * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
    * Fetches the channel's discussion tab comments and assigns them to [[Channel.comments]].
-   * @param pages The number of pages of comments to fetch. Defaults to 1.
+   * @param pages The number of pages of comments to fetch. Defaults to 1. Set <1 to fetch all items.
    */
   /* istanbul ignore next */
   public async fetchComments (pages?: number, parts?: CommentThreadParts) {
@@ -310,7 +310,7 @@ export class Channel {
 
   /**
    * Fetches the channel's playlists and assigns them to [[Channel.playlists]].
-   * @param maxResults The maximum amount of playlists to fetch
+   * @param pages The number of pages of playlists to fetch. Defaults to 1. Set <1 to fetch all items.
    */
   public async fetchPlaylists (pages?: number, parts?: PlaylistParts) {
     this.playlists = await this.youtube.getChannelPlaylists(this.id, { pages }, parts)
@@ -319,7 +319,7 @@ export class Channel {
 
   /**
    * Fetches the channel's subscriptions and assigns them to [[Channel.subscriptions]].
-   * @param pages The number of pages of subscriptions to fetch. Defaults to 1.
+   * @param pages The number of pages of subscriptions to fetch. Defaults to 1. Set <1 to fetch all items.
    */
   /* istanbul ignore next */
   public async fetchSubscriptions (pages?: number, parts?: SubscriptionParts) {

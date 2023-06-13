@@ -33,20 +33,20 @@ describe('Playlists', () => {
     expect(await playlist.fetch([ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
-  it('should work with fetching maxResults videos', async () => {
+  it('should work with fetching a page of videos', async () => {
     const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
-    const videos = await playlist.fetchVideos(1, [ 'id' ])
+    const videos = await playlist.fetchVideos(undefined, [ 'id' ])
 
-    expect(videos[0]).to.be.an.instanceOf(Video)
-    expect(playlist.videos[0].id).to.equal(videos[0].id)
+    expect(videos.length).to.equal(50)
+    expect(playlist.videos.length).to.equal(50)
   })
 
   it('should work with fetching all videos', async () => {
     const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
-    const videos = await playlist.fetchVideos(undefined, [ 'id' ])
+    const videos = await playlist.fetchVideos(0, [ 'id' ])
 
-    expect(videos.length).to.be.lte(10)
-    expect(playlist.videos.length).to.be.lte(10)
+    expect(videos.length).to.be.greaterThan(50)
+    expect(playlist.videos.length).to.be.greaterThan(50)
   })
 
   it('should work with fetching channel playlists with maxPerPage', async () => {
