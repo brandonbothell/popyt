@@ -66,9 +66,9 @@ export class OAuth {
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
-  public getMySubscriptions (maxPerPage: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
+  public async getMySubscriptions (maxPerPage: number = 10, parts?: SubscriptionParts): Promise<Subscription[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Subscriptions, mine: true, id: null, maxPerPage, subId: null, parts }) as Promise<Subscription[]>
+    return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Subscriptions, mine: true, maxPerPage, parts })).results as Subscription[]
   }
 
   /**
@@ -78,9 +78,9 @@ export class OAuth {
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
-  public getMyPlaylists (maxPerPage: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
+  public async getMyPlaylists (maxPerPage: number = 10, parts?: PlaylistParts): Promise<Playlist[]> {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Playlists, mine: true, id: null, maxPerPage, subId: null, parts }) as Promise<Playlist[]>
+    return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Playlists, mine: true, maxPerPage, parts })).results as Playlist[]
   }
 
   /**
@@ -632,37 +632,27 @@ export class OAuth {
    * Adds a [[ChannelSection]] to the authorized user's [[Channel]].  
    * Last tested 05/24/2020 10:11. PASSING
    * @param type The type of channel section.
-   * @param style The style of the channel section.
    * @param name The name of the channel section.
    * @param position The position of the channel section on the channel homepage.
-   * @param language The default language of the channel section.
    * @param playlistsResolvable Any playlists in the channel section.
    * @param channelsResolvable Any channels in the channel section.
-   * @param localizations Translations of the channel section's title.
-   * @param targeting Targeting data for the channel section.
    */
-  public async addChannelSection (type: ChannelSectionType, style: 'horizontalRow' | 'verticalList', name?: string, language?: string,
-    playlistsResolvable?: (string | Playlist)[], channelsResolvable?: (string | Channel)[], localizations?: { [key: string]: { title: string } },
-    targeting?: { countries?: string[]; languages?: string[]; regions?: string[] }): Promise<ChannelSection> {
+  public async addChannelSection (type: ChannelSectionType, name?: string, position?: number, playlistsResolvable?: (string | Playlist)[],
+    channelsResolvable?: (string | Channel)[]): Promise<ChannelSection> {
     this.checkTokenAndThrow()
 
     const data: typeof CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(CHANNEL_SECTION_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
 
     data.snippet.type = type
-    data.snippet.style = style
 
     if (name) data.snippet.title = name
-    if (language) data.snippet.defaultLanguage = language
+    if (position) data.snippet.position = position
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
     if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => GenericService.getId(this.youtube, v, Playlist)))
     if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => GenericService.getId(this.youtube, v, Channel)))
-    if (localizations) data.localizations = localizations
-    if (targeting) data.targeting = targeting
 
     if (playlistsResolvable || channelsResolvable) parts.push('contentDetails')
-    if (localizations) parts.push('localizations')
-    if (targeting) parts.push('targeting')
 
     const response = await this.youtube._request.post('channelSections', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
     return new ChannelSection(this.youtube, response)
@@ -684,9 +674,8 @@ export class OAuth {
    * @param localizations Translations of the channel section's title.
    * @param targeting Targeting data for the channel section.
    */
-  public async updateChannelSection (id: string, type: ChannelSectionType, style: 'horizontalRow' | 'verticalList', name?: string, position?: number, language?: string,
-    playlistsResolvable?: (string | Playlist)[], channelsResolvable?: (string | Channel)[], localizations?: { [key: string]: { title: string } },
-    targeting?: { countries?: string[]; languages?: string[]; regions?: string[] }): Promise<ChannelSection> {
+  public async updateChannelSection (id: string, type: ChannelSectionType, name?: string, position?: number, playlistsResolvable?: (string | Playlist)[],
+    channelsResolvable?: (string | Channel)[]): Promise<ChannelSection> {
     this.checkTokenAndThrow()
 
     const data: typeof CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(CHANNEL_SECTION_DATA))
@@ -694,20 +683,14 @@ export class OAuth {
 
     data.id = id
     data.snippet.type = type
-    data.snippet.style = style
 
     if (name) data.snippet.title = name
     if (position) data.snippet.position = position
-    if (language) data.snippet.defaultLanguage = language
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
     if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => GenericService.getId(this.youtube, v, Playlist)))
     if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => GenericService.getId(this.youtube, v, Channel)))
-    if (localizations) data.localizations = localizations
-    if (targeting) data.targeting = targeting
 
     if (playlistsResolvable || channelsResolvable) parts.push('contentDetails')
-    if (localizations) parts.push('localizations')
-    if (targeting) parts.push('targeting')
 
     const response = await this.youtube._request.put('channelSections', { part: parts.join(',') }, JSON.stringify(data), null, this.youtube.accessToken)
     return new ChannelSection(this.youtube, response)
@@ -858,8 +841,8 @@ export class OAuth {
    * Gets a list of [[VideoAbuseReportReason]]s.
    * Last tested 05/18/2020 11:48. PASSING
    */
-  public getVideoAbuseReportReasons () {
+  public async getVideoAbuseReportReasons () {
     this.checkTokenAndThrow()
-    return GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.VideoAbuseReportReasons, mine: false }) as Promise<VideoAbuseReportReason[]>
+    return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.VideoAbuseReportReasons })).results as VideoAbuseReportReason[]
   }
 }

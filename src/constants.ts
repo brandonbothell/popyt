@@ -149,29 +149,16 @@ export const CHANNEL_SECTION_DATA: {
   id?: string
   snippet: {
     type: ChannelSectionType
-    style: 'horizontalRow' | 'verticalList'
     title?: string
     position?: number
-    defaultLanguage?: string
   }
   contentDetails?: {
     playlists?: string[]
     channels?: string[]
   }
-  localizations?: {
-    [key: string]: {
-      title: string
-    }
-  }
-  targeting?: {
-    countries?: string[]
-    languages?: string[]
-    regions?: string[]
-  }
 } = {
   snippet: {
-    type: undefined,
-    style: undefined
+    type: undefined
   }
 }
 
