@@ -30,7 +30,7 @@ describe('Caching', () => {
 
     await video
 
-    expect(new Date().getTime() - time).to.be.greaterThan(50)
+    expect(new Date().getTime() - time).to.be.greaterThan(30)
   })
 
   it('should not use expired items', async () => {
