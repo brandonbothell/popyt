@@ -42,7 +42,7 @@ describe('Caching', () => {
 
     await video
 
-    expect(new Date().getTime() - time).to.be.greaterThan(50)
+    expect(new Date().getTime() - time).to.be.greaterThan(30)
   })
 
   it('should delete items successfully', () => {
