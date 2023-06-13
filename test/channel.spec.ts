@@ -38,9 +38,9 @@ describe('Channels', () => {
     expect(await channel.fetchVideos([ 'id' ])).to.be.an.instanceOf(Playlist)
   })
 
-  it('should work with fetching playlists with maxResults', async () => {
+  it('should work with fetching pages of playlists', async () => {
     const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])
-    expect((await channel.fetchPlaylists(5, [ 'id' ]))[0]).to.be.an.instanceOf(Playlist)
+    expect((await channel.fetchPlaylists(2, [ 'id' ]))[0]).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching playlists', async () => {
@@ -48,7 +48,7 @@ describe('Channels', () => {
     expect((await channel.fetchPlaylists(undefined, [ 'id' ]))[0]).to.be.an.instanceOf(Playlist)
   })
 
-  it('should work with fetching subscriptions with maxResults', async () => {
+  it('should work with fetching pages of subscriptions', async () => {
     const channel = await youtube.getChannel('UCg4XK-l40KZD7fLi12pJ1YA', [ 'id' ])
     expect((await channel.fetchSubscriptions(1, [ 'id' ]))[0]).to.be.an.instanceOf(Subscription)
   })

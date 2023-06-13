@@ -140,7 +140,7 @@ export class Playlist {
 
   /**
    * Adds videos in this playlist to the `videos` property of this playlist.
-   * @param pages The number of pages of videos to fetch.
+   * @param pages The number of pages of videos to fetch. Defaults to 1. Set <1 to fetch all items.
    */
   public async fetchVideos (pages?: number, parts?: PlaylistItemParts) {
     this.videos = await this.youtube.getPlaylistItems(this.id, { pages }, parts)
