@@ -10,7 +10,7 @@ export class GenericService {
   /* istanbul ignore next */
   public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string, parts?: string[]): Promise<ItemReturns> {
     if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
-      return Promise.reject('Type must be a video, channel, playlist, comment, subscription, video category, or channel section.')
+      return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated `)
     }
 
     if (!mine && id == null) {
@@ -48,13 +48,7 @@ export class GenericService {
       return Promise.reject('Item not found')
     }
 
-    let endResult: ItemReturns
-
-    if (type === YTComment) {
-      endResult = new type(youtube, result.items[0], true, result.items[0].snippet.channelId ? 'channel' : 'video')
-    } else {
-      endResult = new (type as typeof Video)(youtube, result.items[0], true)
-    }
+    let endResult: ItemReturns = new (type)(youtube, result.items[0], true)
 
     endResult.full = true
 
@@ -81,13 +75,11 @@ export class GenericService {
     }
 
     if (youtube._shouldCache) {
-      const cached = Cache.get(`getpage://${type}/${id ? id : 'mine'}/${maxResults}`)
+      const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${maxResults}`)
       if (cached) return cached
     }
 
-    let items = []
-
-    const full = maxResults <= 0
+    const fetchAll = maxResults <= 0
     const options: {
       part: string
       maxResults?: number
@@ -105,7 +97,7 @@ export class GenericService {
     }
 
     let endpoint: string
-    let max: number
+    let maxForEndpoint: number
     let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language |
       typeof Region | typeof ChannelSection | typeof Caption
     let commentType: 'video' | 'channel'
@@ -114,7 +106,7 @@ export class GenericService {
     switch (type) {
       case PaginatedItemType.PlaylistItems:
         endpoint = 'playlistItems'
-        max = 50
+        maxForEndpoint = 50
         clazz = Video
         options.playlistId = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
@@ -129,7 +121,7 @@ export class GenericService {
         if (!commentType) commentType = 'channel'
 
         endpoint = 'commentThreads'
-        max = 100
+        maxForEndpoint = 100
         clazz = YTComment
         options[`${commentType}Id`] = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
@@ -138,7 +130,7 @@ export class GenericService {
 
       case PaginatedItemType.CommentReplies:
         endpoint = 'comments'
-        max = 100
+        maxForEndpoint = 100
         clazz = YTComment
         options.parentId = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
@@ -153,7 +145,7 @@ export class GenericService {
         if (!endpoint) endpoint = 'subscriptions'
         if (!clazz) clazz = Subscription
 
-        max = 50
+        maxForEndpoint = 50
         // falls through
 
       case PaginatedItemType.ChannelSections:
@@ -195,64 +187,43 @@ export class GenericService {
         return Promise.reject('Unknown item type: ' + type)
     }
 
-    if (max && maxResults > max) {
-      return Promise.reject(`Max results must be ${max} or below for ${endpoint}`)
-    }
-
-    if (max) {
-      options.maxResults = full ? max : maxResults
-    }
-
-    let results
-    let pages = -1
-    let shouldReturn = !full
-
-    for (let i = 1; i < (pages > 0 ? pages : 3); i++) {
-      results = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
-
-      if (results.items.length === 0) {
-        return []
+    if (maxForEndpoint !== undefined) {
+      if (maxResults > maxForEndpoint) {
+        return Promise.reject(`Max results must be ${maxForEndpoint} or below for ${endpoint}`)
       }
 
-      if (pages < 1) {
-        pages = results.pageInfo ? results.pageInfo.totalResults / results.pageInfo.resultsPerPage : 0
+      options.maxResults = fetchAll ? maxForEndpoint : maxResults
+    }
 
-        if (pages <= 1) {
-          shouldReturn = true
-        }
+    const items: InstanceType<typeof clazz>[] = []
+    let apiResponse: any
+    let shouldBreak = fetchAll ? false : true
 
-        pages = Math.floor(pages)
+    while (true) {
+      apiResponse = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
+
+      if (!apiResponse.items?.length) {
+        break
       }
 
-      for (let i = 0; i < results.items.length; i++) {
-        const item = results.items[i]
-        let comment: YTComment
-
-        if (item.snippet && item.snippet.topLevelComment) {
-          comment = new YTComment(youtube, item.snippet.topLevelComment, false, commentType)
-          items.push(comment)
+      for (const data of apiResponse.items) {
+        if (data.kind === 'youtube#commentThread') {
+          items.push(new YTComment(youtube, data.snippet.topLevelComment, true, data.replies))
         } else {
-          items.push(new clazz(youtube, item, false, commentType))
-        }
-
-        if (item.replies) {
-          item.replies.comments.forEach(reply => {
-            const created = new YTComment(youtube, reply, false, commentType)
-            comment.replies.push(created)
-          })
+          items.push(new clazz(youtube, data, false))
         }
       }
 
-      if (results.nextPageToken && !shouldReturn) {
-        options.pageToken = results.nextPageToken
-      } else {
-        return items
+      if (shouldBreak || !apiResponse.nextPageToken) {
+        break
       }
+
+      options.pageToken = apiResponse.nextPageToken
     }
 
-    if (youtube._shouldCache) youtube._cache(`getpage://${endpoint}/${id ? id : 'mine'}/${maxResults}`, items)
+    if (youtube._shouldCache) youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxResults}`, items)
 
-    return items
+    return items as PaginatedItemsReturns
   }
 
   /* istanbul ignore next */

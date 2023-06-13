@@ -298,9 +298,11 @@ export class Channel {
   }
 
   /**
+   * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
    * Fetches the channel's discussion tab comments and assigns them to Channel.comments.
    * @param maxResults The maximum amount of comments to fetch
    */
+  /* istanbul ignore next */
   public async fetchComments (maxResults: number = 10, parts?: CommentThreadParts) {
     this.comments = await this.youtube.getChannelComments(this.id, maxResults, parts)
     return this.comments
