@@ -8,7 +8,7 @@ import { Cache, Request } from './util'
 import { OAuth } from './oauth'
 import { SearchService, GenericService, SubscriptionService } from './services'
 import { VideoParts, ChannelParts, ChannelSectionParts, CommentParts, CommentThreadParts, PlaylistItemParts, PlaylistParts, SubscriptionParts } from './types/Parts'
-import { PaginatedItemType } from './types'
+import { PageOptions, PaginatedItemType } from './types'
 
 export * from './entities'
 export * from './types'
@@ -237,72 +237,92 @@ export class YouTube {
   /**
    * Get `maxResults` videos in a [[Playlist]]. Used mostly internally with [[Playlist.fetchVideos]].
    * @param playlistResolvable The URL, ID, or Title of the playlist.
-   * @param maxResults The maximum amount of videos to get from the playlist. If <=0, returns all videos in the playlist.
+   * @param maxPerPage The maximum number of videos to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    * @param parts The parts of the videos to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial video objects.
    */
-  public async getPlaylistItems (playlistResolvable: string | Playlist, maxResults: number = 10, parts?: PlaylistItemParts) {
+  public async getPlaylistItems (playlistResolvable: string | Playlist, pageOptions?: PageOptions, parts?: PlaylistItemParts) {
     const playlistId = await GenericService.getId(this, playlistResolvable, Playlist)
-    return GenericService.getPaginatedItems(this, PaginatedItemType.PlaylistItems, false, playlistId, maxResults, null, parts) as Promise<Video[]>
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.PlaylistItems, id: playlistId, ...pageOptions, parts })).results as Video[]
   }
 
   /**
    * Get `maxResults` [[YTComment]]s from a [[Video]]. Used mostly internally with [[Video.fetchComments]].
    * @param videoResolvable The URL, ID, or Title of the video.
-   * @param maxResults The maximum amount of comments to get from the video. If <=0, returns all comments on the video.
+   * @param maxPerPage The maximum number of comments to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public async getVideoComments (videoResolvable: string | Video, maxResults: number = 10, parts?: CommentThreadParts) {
+  public async getVideoComments (videoResolvable: string | Video, pageOptions?: PageOptions, parts?: CommentThreadParts) {
     const videoId = await GenericService.getId(this, videoResolvable, Video)
-    return GenericService.getPaginatedItems(this, PaginatedItemType.VideoComments, false, videoId, maxResults, null, parts) as Promise<YTComment[]>
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts })).results as YTComment[]
   }
 
   /**
+   * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
+   * 
    * Get `maxResults` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with [[Channel.fetchComments]].
    * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param maxResults The maximum amount of comments to get from the channel. If <=0, returns all comments on the channel.
+   * @param maxPerPage The maximum number of comments to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public async getChannelComments (channelResolvable: string | Channel, maxResults: number = 10, parts?: CommentThreadParts) {
+  public async getChannelComments (channelResolvable: string | Channel, pageOptions?: PageOptions, parts?: CommentThreadParts) {
     const channelId = await GenericService.getId(this, channelResolvable, Channel)
-    return GenericService.getPaginatedItems(this, PaginatedItemType.ChannelComments, false, channelId, maxResults, null, parts) as Promise<YTComment[]>
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.ChannelComments, id: channelId, ...pageOptions, parts })).results as YTComment[]
   }
 
   /**
    * Get `maxResults` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with [[Channel.fetchPlaylists]].
    * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param maxResults The maximum amount of playlists to get from the channel. If <=0, returns all playlists.
+   * @param maxPerPage The maximum number of playlists to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    * @param parts The parts of the playlists to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial playlist objects.
    */
-  public async getChannelPlaylists (channelResolvable: string | Channel, maxResults: number = 10, parts?: PlaylistParts) {
+  public async getChannelPlaylists (channelResolvable: string | Channel, pageOptions?: PageOptions, parts?: PlaylistParts) {
     const channelId = await GenericService.getId(this, channelResolvable, Channel)
-    return GenericService.getPaginatedItems(this, PaginatedItemType.Playlists, false, channelId, maxResults, null, parts) as Promise<Playlist[]>
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.Playlists, id: channelId, ...pageOptions, parts })).results as Playlist[]
   }
 
   /**
    * Get `maxResults` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with [[Channel.fetchSubscriptions]].
    * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param maxResults The maximum amount of subscriptions to get from the channel. If <=0, returns all subscriptions.
+   * @param maxPerPage The maximum number of subscriptions to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    * @param parts The parts of the subscriptions to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial subscription objects.
    */
-  public async getChannelSubscriptions (channelResolvable: string | Channel, maxResults: number = 10, parts?: SubscriptionParts) {
+  public async getChannelSubscriptions (channelResolvable: string | Channel, pageOptions?: PageOptions, parts?: SubscriptionParts) {
     const channelId = await GenericService.getId(this, channelResolvable, Channel)
-    return GenericService.getPaginatedItems(this, PaginatedItemType.Subscriptions, false, channelId, maxResults, null, parts) as Promise<Subscription[]>
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.Subscriptions, id: channelId, ...pageOptions, parts })).results as Subscription[]
   }
 
   /**
    * Get `maxResults` replies to a [[YTComment]]. Used mostly internally with [[Comment.fetchReplies]].
    * @param commentId The ID of the comment to get replies from.
-   * @param maxResults The maximum amount of replies to get. Gets all replies if <=0.
+   * @param maxPerPage The maximum number of comments to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
    * @param parts The parts of the replies to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public getCommentReplies (commentId: string, maxResults: number = 10, parts?: CommentParts) {
-    return GenericService.getPaginatedItems(this, PaginatedItemType.CommentReplies, false, commentId, maxResults, null, parts) as Promise<YTComment[]>
+  public async getCommentReplies (commentId: string, pageOptions?: PageOptions, parts?: CommentParts) {
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.CommentReplies, id: commentId, ...pageOptions, parts })).results as YTComment[]
   }
 
   /**
@@ -313,29 +333,29 @@ export class YouTube {
    */
   public async getChannelSections (channelResolvable: string | Channel, parts?: ChannelSectionParts) {
     const channelId = await GenericService.getId(this, channelResolvable, Channel)
-    return GenericService.getPaginatedItems(this, PaginatedItemType.ChannelSections, false, channelId, null, null, parts) as Promise<ChannelSection[]>
+    return (await GenericService.getPaginatedItems(
+      { youtube: this, type: PaginatedItemType.ChannelSections, id: channelId, parts })).results as ChannelSection[]
   }
 
   /**
    * Get the list of categories in `this.region`.
-   * @param all Whether or not to get all categories (otherwise just gets a page).
    */
-  public getCategories (all: boolean = false) {
-    return GenericService.getPaginatedItems(this, PaginatedItemType.VideoCategories, false, null, all ? -1 : 100) as Promise<VideoCategory[]>
+  public async getCategories () {
+    return (await GenericService.getPaginatedItems({ youtube: this, type: PaginatedItemType.VideoCategories })).results as VideoCategory[]
   }
 
   /**
    * Get a list of languages that YouTube supports.
    */
-  public getLanguages () {
-    return GenericService.getPaginatedItems(this, PaginatedItemType.Languages, false, null) as Promise<Language[]>
+  public async getLanguages () {
+    return (await GenericService.getPaginatedItems({ youtube: this, type: PaginatedItemType.Languages })).results as Language[]
   }
 
   /**
    * Get a list of regions that YouTube supports.
    */
-  public getRegions () {
-    return GenericService.getPaginatedItems(this, PaginatedItemType.Regions, false, null) as Promise<Region[]>
+  public async getRegions () {
+    return (await GenericService.getPaginatedItems({ youtube: this, type: PaginatedItemType.Regions })).results as Region[]
   }
 }
 

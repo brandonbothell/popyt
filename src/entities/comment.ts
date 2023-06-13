@@ -189,10 +189,10 @@ export class YTComment {
 
   /**
    * Fetches replies to the comment.
-   * @param maxResults The maximum amount of replies to fetch. Fetches all comments if <=0.
+   * @param pages The number of pages of comments to fetch.
    */
-  public async fetchReplies (maxResults: number = 10, parts?: CommentParts) {
-    this.replies = await this.youtube.getCommentReplies(this.id, maxResults, parts)
+  public async fetchReplies (pages?: number, parts?: CommentParts) {
+    this.replies = await this.youtube.getCommentReplies(this.id, { pages }, parts)
     return this.replies
   }
 

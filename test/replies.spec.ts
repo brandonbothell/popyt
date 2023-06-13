@@ -21,8 +21,8 @@ describe('Replies', () => {
     expect((await youtube.getCommentReplies('0')).length).to.equal(0)
   })
 
-  it('should return an array with a length of <= maxResults', async () => {
-    expect((await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg', 1)).length).to.be.lessThan(2)
+  it('should return an array with a length of <= maxPerPage', async () => {
+    expect((await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg', { maxPerPage: 1 })).length).to.be.lessThan(2)
   })
 
   it('should have the ID of the comment it replied to', async () => {

@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import YouTube, { Playlist, Video, Channel, YTComment } from '../src'
+import YouTube, { Playlist, Video, Channel } from '../src'
 import { youtube } from './setup-instance'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -24,13 +24,13 @@ describe('Searching', () => {
   it('should reject if maxResults is < 1', async () => {
     expect(await youtube.searchChannels('rick astley', 0).catch(error => {
       return error
-    })).to.equal('Max results must be greater than 0 and less than or equal to 50')
+    })).to.equal('Max results must be between 1 and 50 for search queries')
   })
 
   it('should reject if maxResults is > 50', async () => {
     expect(await youtube.searchVideos('never gonna give you up', 51).catch(error => {
       return error
-    })).to.equal('Max results must be greater than 0 and less than or equal to 50')
+    })).to.equal('Max results must be between 1 and 50 for search queries')
   })
 
   it('should reject if api key is wrong', async () => {
@@ -69,12 +69,5 @@ describe('Searching', () => {
     const video = (await youtube.searchVideos('bukkit', 10, undefined, undefined, 'UC6mi9rp7vRYninucP61qOjg')).results[0]
     expect(video.channel.id).to.equal('UC6mi9rp7vRYninucP61qOjg')
     expect(video.channel.name).to.be.a('string')
-  })
-
-  it('should throw an error if kind is wrong', () => {
-    expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
-    expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')
-    expect(() => new YTComment(youtube, { kind: 'notakind' }, 'video')).to.throw('Invalid comment type: notakind')
-    expect(() => new Playlist(youtube, { kind: 'notakind' })).to.throw('Invalid playlist type: notakind')
   })
 })

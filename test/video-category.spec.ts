@@ -13,12 +13,11 @@ let categoryId: string
 
 describe('Video categories', () => {
   it('should set all available properties', async () => {
-    let category = (await youtube.getCategories(false))[0]
+    let category = (await youtube.getCategories())[0]
 
     expect(category.full).to.equal(true)
 
     categoryId = category.id
-    category = (await youtube.getCategories(true))[0]
     await category.fetch()
 
     expect(category.id).to.be.a('string')
