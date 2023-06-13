@@ -33,7 +33,7 @@ describe('Comments', () => {
   })
 
   // Youtube has REMOVED the discussion tab from channels
-  it('should work with fetching from a channel object', async () => {
+  it('should not work with fetching from a channel object', async () => {
     const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
 
     expect(await channel.fetchComments(1, [ 'id' ]).catch(error => {
@@ -66,11 +66,13 @@ describe('Comments', () => {
     expect(await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')).to.be.an.instanceOf(YTComment)
   })
 
-  it('should have a parent ID of its video', async () => {
+  it('should have the ID of its video', async () => {
     const video = await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])
     const comments = await video.fetchComments(1, [ 'snippet' ])
 
-    expect(comments[0].parentId).to.equal('Lq1D8PFnjWY')
+    expect(comments[0].videoId).to.equal('Lq1D8PFnjWY')
+    // expect(comments[0].channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
+    expect(comments[0].channelId).to.equal(undefined) // broken in the API!
   })
 
   it('should have a correct URL', async () => {

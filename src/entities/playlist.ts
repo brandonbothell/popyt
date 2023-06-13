@@ -228,7 +228,7 @@ export class Playlist {
   /**
    * Removes a [[Video]] from the playlist.
    * Must be using an access token with correct scopes.
-   * @param playlistItemId The playlist item ID (not the same as video id. See [[Playlist.removeVideo()]]).
+   * @param playlistItemId The playlist item ID (not the same as video id. See [[Playlist.removeVideo]]).
    */
   /* istanbul ignore next */
   public async removeItem (playlistItemId: string) {

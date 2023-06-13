@@ -36,7 +36,7 @@ export class Video {
   public data: any
 
   /**
-   * Whether or not this is a full video object (would it be the same if we ran [[Video.fetch()]] under the same conditions as last time?).
+   * Whether or not this is a full video object (would it be the same if we ran [[Video.fetch]] under the same conditions as last time?).
    */
   public full: boolean
 

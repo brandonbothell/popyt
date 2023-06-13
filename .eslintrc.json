@@ -107,7 +107,7 @@
     "new-parens": "error",
     "no-caller": "error",
     "no-cond-assign": "error",
-    "no-constant-condition": "error",
+    "no-constant-condition": [ "error", { "checkLoops": false } ],
     "no-control-regex": "error",
     "no-duplicate-case": "error",
     "no-duplicate-imports": "error",

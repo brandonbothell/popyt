@@ -1,4 +1,4 @@
-import { YouTube } from '..'
+import { Channel, Video, YouTube } from '..'
 import { CommentParts } from '../types/Parts'
 
 export class YTComment {
@@ -109,12 +109,19 @@ export class YTComment {
   public dateEdited: Date
 
   /**
-   * Either the ID of the video that it is commenting on, the ID of the
-   * comment it is replying to, or the ID of the channel it is commenting
-   * on.
-   * Undefined whenever the comment is fetched directly using its ID.
+   * The ID of the channel that uploaded the video this comment is on, if any.
    */
-  public parentId: string
+  public channelId?: string
+
+  /**
+   * The ID of the video that this comment is on, if any.
+   */
+  public videoId?: string
+
+  /**
+   * If this comment is a reply, then this is the ID of the comment it is replying to.
+   */
+  public parentCommentId?: string
 
   /**
    * Replies directed to the comment. If the comment was fetched from a video,
@@ -123,17 +130,18 @@ export class YTComment {
    */
   public replies: YTComment[]
 
-  constructor (youtube: YouTube, data: any, full = true, type: 'video' | 'channel') {
+  constructor (youtube: YouTube, data: any, full = true, replies?: any[]) {
     this.youtube = youtube
     this.data = data
+    if (replies) this.data.replies = replies
 
-    this._init(data, type)
+    this._init(data, replies)
   }
 
   /**
    * @ignore
    */
-  private _init (data: any, type: 'video' | 'channel') {
+  private _init (data: any, replies?: any[]) {
     if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)
     }
@@ -145,28 +153,38 @@ export class YTComment {
       this.author = {
         username: comment.snippet.authorDisplayName,
         avatar: comment.snippet.authorProfileImageUrl,
-        channelId: comment.snippet.authorChannelId.value,
+        channelId: comment.snippet.authorChannelId?.value,
         channelUrl: comment.snippet.authorChannelUrl
       }
+
       this.text = {
         displayed: comment.snippet.textDisplay,
         original: comment.snippet.textOriginal
       }
+
       this.rateable = comment.snippet.canRate
       this.popular = comment.snippet.likeCount >= 100
       this.likes = comment.snippet.likeCount
       this.datePublished = comment.snippet.publishedAt
       this.dateEdited = comment.snippet.updatedAt
-      this.parentId = comment.snippet.parentId ? comment.snippet.parentId : comment.snippet.videoId ? comment.snippet.videoId : comment.snippet.channelId
-    }
+      this.channelId = comment.snippet.channelId
+      this.videoId = comment.snippet.videoId
+      this.parentCommentId = comment.snippet.parentId
 
-    this.id = comment.id
-
-    if (this.parentId) {
-      this.url = 'https://youtube.com/' + (type === 'channel' ? `channel/${this.parentId}/discussion?lc=${this.id}` : `watch?v=${this.parentId}&lc=${this.id}`)
+      if (comment.snippet.videoId) {
+        this.url = `https://youtube.com/watch?v=${comment.snippet.videoId}&lc=${comment.id}`
+      }
     }
 
     this.replies = []
+
+    if (replies) {
+      for (const replyData of replies) {
+        this.replies.push(new YTComment(this.youtube, replyData))
+      }
+    }
+
+    this.id = comment.id
   }
 
   /**

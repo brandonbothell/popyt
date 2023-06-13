@@ -25,10 +25,10 @@ describe('Replies', () => {
     expect((await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg', 1)).length).to.be.lessThan(2)
   })
 
-  it('should have a parent ID of the comment it replied to', async () => {
+  it('should have the ID of the comment it replied to', async () => {
     const comment = await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
     const replies = await comment.fetchReplies(1)
 
-    expect(replies[0].parentId).to.equal('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
+    expect(replies[0].parentCommentId).to.equal('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
   })
 })

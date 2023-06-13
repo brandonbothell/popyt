@@ -104,8 +104,7 @@ export class OAuth {
     }
 
     const result = await this.youtube._request.post('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    const type = result.snippet.channelId ? 'channel' : 'video'
-    return new YTComment(this.youtube, result.snippet.topLevelComment, true, type)
+    return new YTComment(this.youtube, result.snippet.topLevelComment, true)
   }
 
   /**
@@ -113,7 +112,6 @@ export class OAuth {
    * Last tested 05/18/2020 11:48. PASSING
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
-   * @param commentType What this comment is on - defaults to video.
    * Required for [[YTComment.url]] to be correct.
    */
   public async replyToComment (commentId: string, text: string) {
@@ -123,7 +121,7 @@ export class OAuth {
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, response, true, response.snippet.channelId ? 'channel' : 'video')
+    return new YTComment(this.youtube, response, true)
   }
 
   /**
@@ -142,12 +140,11 @@ export class OAuth {
     console.log(data)
 
     const result = await this.youtube._request.put('comments', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    const type = result.snippet.channelId ? 'channel' : 'video'
-    const comment = new YTComment(this.youtube, result, true, type)
+    const comment = new YTComment(this.youtube, result, true)
 
     if (result.replies) {
       result.replies.comments.forEach(reply => {
-        const created = new YTComment(this.youtube, reply, true, type)
+        const created = new YTComment(this.youtube, reply, true)
         comment.replies.push(created)
       })
     }
