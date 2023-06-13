@@ -14,7 +14,10 @@ describe('Comments', () => {
     YTComment.part = 'id'
 
     const comments = await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 })
+
     expect(comments[0]).to.be.an.instanceOf(YTComment)
+    expect(comments[0].replies.length).to.be.greaterThan(0)
+    expect(comments[0].replies[0].parentCommentId).to.equal(comments[0].id)
   })
 
   // Youtube has REMOVED the discussion tab from channels
