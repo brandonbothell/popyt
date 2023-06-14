@@ -150,5 +150,11 @@
     ],
     "use-isnan": "error",
     "valid-typeof": "error"
-  }
+  },
+  "overrides": [
+    {
+      "extends": [ "plugin:@typescript-eslint/disable-type-checked" ],
+      "files": [ "./gulpfile.ts" ]
+    }
+  ]
 }
