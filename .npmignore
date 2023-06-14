@@ -14,3 +14,4 @@ renovate.json
 .nycrc
 .nyc_output/
 .coveralls.yml
+.env

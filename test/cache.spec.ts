@@ -2,8 +2,9 @@ import 'mocha'
 import { expect } from 'chai'
 import { YouTube } from '../src'
 import { Cache } from '../src/util/caching'
+import { youtube } from './setup-instance'
 
-const apiKey = process.env.YOUTUBE_API_KEY
+const apiKey = youtube.token
 
 if (!apiKey) {
   throw new Error('No API key')
