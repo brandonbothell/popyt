@@ -7,9 +7,12 @@
   "types": "typings/index.d.ts",
   "scripts": {
     "test": "mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --parallel --recursive \"./test/!(oauth).spec.ts\" --timeout 10000",
-    "coverage": "tsc && cross-env NODE_ENV=test nyc yarn test && cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
+    "coverage": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test",
     "docs": "gulp typedoc",
     "lint": "eslint src/**/*.ts test/**/*.ts"
+  },
+  "nyc": {
+    "include": "src"
   },
   "author": "jasonhaxstuff",
   "license": "Unlicense",
@@ -35,7 +38,6 @@
     "@typescript-eslint/eslint-plugin": "5.59.11",
     "@typescript-eslint/parser": "5.59.11",
     "chai": "4.3.7",
-    "coveralls": "3.1.1",
     "cross-env": "7.0.3",
     "dotenv": "16.1.4",
     "eslint": "8.42.0",

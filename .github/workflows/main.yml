@@ -10,7 +10,7 @@ jobs:
     - uses: actions/setup-node@v2.4.0
       with:
         node-version: '20.3.0'
-    - name: Install Deps
+    - name: Install dependencies
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
@@ -25,10 +25,15 @@ jobs:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         yarn tsc
-    - name: Test
+    - name: Test and generate coverage
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         yarn coverage
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        directory: ./coverage/
+        files: ./coverage-final.json
