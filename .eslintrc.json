@@ -5,7 +5,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": [ "tsconfig.json", "test/tsconfig.eslint.json" ],
+    "project": [ "tsconfig.json", "tsconfig.utils.json" ],
     "sourceType": "module"
   },
   "plugins": [
@@ -150,11 +150,5 @@
     ],
     "use-isnan": "error",
     "valid-typeof": "error"
-  },
-  "overrides": [
-    {
-      "extends": [ "plugin:@typescript-eslint/disable-type-checked" ],
-      "files": [ "./gulpfile.ts" ]
-    }
-  ]
+  }
 }

@@ -38,7 +38,7 @@ async function docs () {
     await fsn.copyFileAtomic('docs-resources/js/global.js', 'docs/docs/assets/js/global.js')
     await fsn.copyFileAtomic('docs-resources/css/dark.css', 'docs/docs/assets/css/dark.css')
   } else {
-    Promise.reject('An error occured while converting the TypeDoc app to a project')
+    return Promise.reject('An error occured while converting the TypeDoc app to a project')
   }
 }
 
