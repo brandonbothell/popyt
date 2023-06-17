@@ -63,5 +63,6 @@
   },
   "repository": {
     "url": "https://github.com/jasonhaxstuff/popyt.git"
-  }
+  },
+  "packageManager": "yarn@3.6.0"
 }
