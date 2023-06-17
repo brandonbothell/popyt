@@ -15,3 +15,4 @@ renovate.json
 .nyc_output/
 .coveralls.yml
 .env
+.yarn/
