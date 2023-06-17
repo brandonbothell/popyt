@@ -27,7 +27,7 @@ jobs:
     - name: Publish Package
       uses: borales/actions-yarn@v4
       with:
-        cmd: publish
+        cmd: npm publish
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Build Docs
