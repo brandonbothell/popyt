@@ -9,8 +9,6 @@ typings/
 .env
 .ionide
 .fake
-docs/
-.yarnrc
 
 .yarn/*
 !.yarn/patches

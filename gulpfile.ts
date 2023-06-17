@@ -23,25 +23,26 @@ async function build () {
   ])
 }
 
-async function docs () {
+/* async function docs () {
   const app = new TypeDoc.Application()
 
   app.options.addReader(new TypeDoc.TSConfigReader())
-  app.bootstrap()
+  app.options.addReader(new TypeDoc.TypeDocReader())
+  await app.bootstrapWithPlugins()
 
   const project = app.convert()
 
   if (project) {
-    await app.generateDocs(project, 'docs/docs')
+    await app.generateDocs(project, 'docusaurus/docs/api')
 
-    await fsn.createFile('docs/.nojekyll')
+    await fsn.createFile('docusaurus/docs/.nojekyll')
     await fsn.copyFileAtomic('docs-resources/js/global.js', 'docs/docs/assets/js/global.js')
     await fsn.copyFileAtomic('docs-resources/css/dark.css', 'docs/docs/assets/css/dark.css')
   } else {
     return Promise.reject('An error occured while converting the TypeDoc app to a project')
   }
-}
+} */
 
-gulp.task('typedoc', docs)
+// gulp.task('typedoc', docs)
 gulp.task('default', build)
 gulp.task('build', build)

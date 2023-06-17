@@ -17,7 +17,7 @@ jobs:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         yarn
-    - name: Build Typings and Documentation
+    - name: Build Typings
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
@@ -32,12 +32,12 @@ jobs:
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
-        yarn docs
+        yarn docs:build
     - name: Publish Docs
-      uses: JamesIves/github-pages-deploy-action@v4.4.2
-      with:
-        token: ${{ secrets.GIT_ACCESS_TOKEN }}
-        branch: gh-pages
-        folder: docs
-        commit-message: 'docs: CI build'
-        git-config-email: shadowmanguyyt@gmail.com
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GIT_USER: brandonbothell
+        GIT_PASS: ${{ secrets.GIT_ACCESS_TOKEN }}
+        CURRENT_BRANCH: master
+      run: |
+        yarn docs:publish

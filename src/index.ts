@@ -1,6 +1,5 @@
 /**
- * @packageDocumentation
- * @module Public
+ * @module Library Exports
  */
 
 import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection } from './entities'
