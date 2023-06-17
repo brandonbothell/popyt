@@ -11,26 +11,30 @@ jobs:
       with:
         node-version: '20.3.0'
     - name: Install dependencies
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install # will run `yarn install` command
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn
     - name: Lint
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: lint
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn lint
     - name: Build
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: tsc
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn tsc
     - name: Test and generate coverage
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: coverage
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn coverage
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:

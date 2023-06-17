@@ -13,31 +13,35 @@ jobs:
       with:
         node-version: '20.3.0'
     - name: Install Deps
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install # will run `yarn install` command
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn
     - name: Build Typings
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: gulp
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn gulp
     - name: Publish Package
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: publish
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        echo Publishing to npm...
-        yarn publish
     - name: Build Docs
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: docs:build
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn docs:build
     - name: Publish Docs
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: docs:publish
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GIT_USER: brandonbothell
         GIT_PASS: ${{ secrets.GIT_ACCESS_TOKEN }}
         CURRENT_BRANCH: master
-      run: |
-        yarn docs:publish
