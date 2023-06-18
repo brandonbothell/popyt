@@ -25,7 +25,7 @@ A language.
 
 #### Defined in
 
-[entities/language.ts:52](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L52)
+[entities/language.ts:52](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L52)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The raw data of this language.
 
 #### Defined in
 
-[entities/language.ts:35](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L35)
+[entities/language.ts:35](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L35)
 
 ___
 
@@ -49,7 +49,7 @@ Whether or not this is a full language object.
 
 #### Defined in
 
-[entities/language.ts:30](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L30)
+[entities/language.ts:30](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L30)
 
 ___
 
@@ -61,7 +61,7 @@ The language code that uniquely identifies the language.
 
 #### Defined in
 
-[entities/language.ts:45](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L45)
+[entities/language.ts:45](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L45)
 
 ___
 
@@ -73,7 +73,7 @@ The ID of this language.
 
 #### Defined in
 
-[entities/language.ts:40](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L40)
+[entities/language.ts:40](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L40)
 
 ___
 
@@ -85,7 +85,7 @@ The language's name.
 
 #### Defined in
 
-[entities/language.ts:50](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L50)
+[entities/language.ts:50](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L50)
 
 ___
 
@@ -97,7 +97,7 @@ The YouTube object that created this language object.
 
 #### Defined in
 
-[entities/language.ts:25](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L25)
+[entities/language.ts:25](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L25)
 
 ___
 
@@ -109,7 +109,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/language.ts:10](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L10)
+[entities/language.ts:10](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L10)
 
 ___
 
@@ -121,7 +121,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/language.ts:20](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L20)
+[entities/language.ts:20](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L20)
 
 ___
 
@@ -133,4 +133,4 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/language.ts:15](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/language.ts#L15)
+[entities/language.ts:15](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/language.ts#L15)

@@ -1,7 +1,5 @@
 import YouTube from '../src'
-import { config as dotenv } from 'dotenv'
-
-dotenv()
+import 'dotenv/config'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 

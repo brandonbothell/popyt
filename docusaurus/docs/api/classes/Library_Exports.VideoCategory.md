@@ -25,7 +25,7 @@ A YouTube [[Video]] category.
 
 #### Defined in
 
-[entities/video-category.ts:57](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L57)
+[entities/video-category.ts:57](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L57)
 
 ## Properties
 
@@ -37,7 +37,7 @@ Whether or not videos can be associated with the category.
 
 #### Defined in
 
-[entities/video-category.ts:55](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L55)
+[entities/video-category.ts:55](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L55)
 
 ___
 
@@ -49,7 +49,7 @@ The [[Channel]] that created the category.
 
 #### Defined in
 
-[entities/video-category.ts:45](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L45)
+[entities/video-category.ts:45](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L45)
 
 ___
 
@@ -61,7 +61,7 @@ The raw data of this category.
 
 #### Defined in
 
-[entities/video-category.ts:35](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L35)
+[entities/video-category.ts:35](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L35)
 
 ___
 
@@ -73,7 +73,7 @@ Whether or not this is a full category object.
 
 #### Defined in
 
-[entities/video-category.ts:30](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L30)
+[entities/video-category.ts:30](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L30)
 
 ___
 
@@ -85,7 +85,7 @@ The ID of this category.
 
 #### Defined in
 
-[entities/video-category.ts:40](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L40)
+[entities/video-category.ts:40](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L40)
 
 ___
 
@@ -97,7 +97,7 @@ The category's title.
 
 #### Defined in
 
-[entities/video-category.ts:50](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L50)
+[entities/video-category.ts:50](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L50)
 
 ___
 
@@ -109,7 +109,7 @@ The YouTube object that created this category object.
 
 #### Defined in
 
-[entities/video-category.ts:25](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L25)
+[entities/video-category.ts:25](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L25)
 
 ___
 
@@ -121,7 +121,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/video-category.ts:10](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L10)
+[entities/video-category.ts:10](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L10)
 
 ___
 
@@ -133,7 +133,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/video-category.ts:20](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L20)
+[entities/video-category.ts:20](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L20)
 
 ___
 
@@ -145,7 +145,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/video-category.ts:15](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L15)
+[entities/video-category.ts:15](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L15)
 
 ## Methods
 
@@ -162,7 +162,7 @@ Only useful if `this.full` is false, or if you want updated category info.
 
 #### Defined in
 
-[entities/video-category.ts:88](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L88)
+[entities/video-category.ts:88](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L88)
 
 ___
 
@@ -178,4 +178,4 @@ Fetches the channel associated with this category.
 
 #### Defined in
 
-[entities/video-category.ts:96](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/entities/video-category.ts#L96)
+[entities/video-category.ts:96](https://github.com/brandonbothell/popyt/blob/3a8e552/src/entities/video-category.ts#L96)

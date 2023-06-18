@@ -2105,7 +2105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-classic@npm:2.4.1, @docusaurus/theme-classic@npm:^2.4.1":
+"@docusaurus/theme-classic@npm:2.4.1":
   version: 2.4.1
   resolution: "@docusaurus/theme-classic@npm:2.4.1"
   dependencies:
@@ -2205,7 +2205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/types@npm:2.4.1, @docusaurus/types@npm:^2.4.1":
+"@docusaurus/types@npm:2.4.1":
   version: 2.4.1
   resolution: "@docusaurus/types@npm:2.4.1"
   dependencies:
@@ -2426,7 +2426,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:^1.6.22":
+"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
@@ -2719,7 +2719,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/docusaurus@npm:^1.0.5":
+"@tsconfig/docusaurus@npm:1.0.7":
   version: 1.0.7
   resolution: "@tsconfig/docusaurus@npm:1.0.7"
   checksum: 8f5b14005d90b2008f10daf03a5edec86d2a7603e5641c579ea936a5c2d165a8c3007a72254fc4c2adb0554d73062f52bb97b30ff818f01c9215957822f3c4db
@@ -2911,7 +2911,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.3.1":
+"@types/node@npm:*, @types/node@npm:20.3.1":
   version: 20.3.1
   resolution: "@types/node@npm:20.3.1"
   checksum: 63a393ab6d947be17320817b35d7277ef03728e231558166ed07ee30b09fd7c08861be4d746f10fdc63ca7912e8cd023939d4eab887ff6580ff704ff24ed810c
@@ -2992,14 +2992,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
-  version: 18.2.12
-  resolution: "@types/react@npm:18.2.12"
+"@types/react@npm:17.0.2":
+  version: 17.0.2
+  resolution: "@types/react@npm:17.0.2"
   dependencies:
     "@types/prop-types": "*"
-    "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: ad85a7eadaf1b35cfeee9f715b39311420ff46d46e0650377d918b3f888c2e47416037da4a765e1dccd3d1916abd54c105a3bee803c971ba56c955a7768ce976
+  checksum: a5198857165feddcbfc7d33e3322460ac62b8894d702414496a825b0c82272911ec33a42ef7c9d623a59308070eef4dfee6ff834b0674aa3f87eeb644196ee3b
   languageName: node
   linkType: hard
 
@@ -3025,13 +3024,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 2aa50cbf1d1f0cf8541ef1787f94c7442e58e63900afd3b45c354e4140ed5efc5cf26fca8eb9df9970a74c7ea582293ae2083271bd046dedf4c3cc2689a40892
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:*":
-  version: 0.16.3
-  resolution: "@types/scheduler@npm:0.16.3"
-  checksum: 2b0aec39c24268e3ce938c5db2f2e77f5c3dd280e05c262d9c2fe7d890929e4632a6b8e94334017b66b45e4f92a5aa42ba3356640c2a1175fa37bef2f5200767
   languageName: node
   linkType: hard
 
@@ -4156,7 +4148,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.2.1":
+"clsx@npm:1.2.1, clsx@npm:^1.2.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -4891,7 +4883,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-typedoc@npm:^0.19.2":
+"docusaurus-plugin-typedoc@npm:0.19.2":
   version: 0.19.2
   resolution: "docusaurus-plugin-typedoc@npm:0.19.2"
   peerDependencies:
@@ -4908,18 +4900,20 @@ __metadata:
     "@docusaurus/core": 2.4.1
     "@docusaurus/module-type-aliases": 2.4.1
     "@docusaurus/preset-classic": 2.4.1
-    "@docusaurus/theme-classic": ^2.4.1
-    "@docusaurus/types": ^2.4.1
-    "@mdx-js/react": ^1.6.22
-    "@tsconfig/docusaurus": ^1.0.5
-    "@types/node": ^20.3.1
-    clsx: ^1.2.1
-    docusaurus-plugin-typedoc: ^0.19.2
-    prism-react-renderer: ^1.3.5
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    typedoc: ^0.24.8
-    typedoc-plugin-markdown: ^3.15.3
+    "@docusaurus/theme-classic": 2.4.1
+    "@docusaurus/theme-common": 2.4.1
+    "@docusaurus/types": 2.4.1
+    "@mdx-js/react": 1.6.22
+    "@tsconfig/docusaurus": 1.0.7
+    "@types/node": 20.3.1
+    "@types/react": 17.0.2
+    clsx: 1.2.1
+    docusaurus-plugin-typedoc: 0.19.2
+    prism-react-renderer: 1.3.5
+    react: 17.0.2
+    react-dom: 17.0.2
+    typedoc: 0.24.8
+    typedoc-plugin-markdown: 3.15.3
     typescript: 5.1.3
   languageName: unknown
   linkType: soft
@@ -8621,7 +8615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prism-react-renderer@npm:^1.3.5":
+"prism-react-renderer@npm:1.3.5, prism-react-renderer@npm:^1.3.5":
   version: 1.3.5
   resolution: "prism-react-renderer@npm:1.3.5"
   peerDependencies:
@@ -8861,7 +8855,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
+"react-dom@npm:17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -9006,7 +9000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
+"react@npm:17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:
@@ -10304,7 +10298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-plugin-markdown@npm:^3.15.3":
+"typedoc-plugin-markdown@npm:3.15.3":
   version: 3.15.3
   resolution: "typedoc-plugin-markdown@npm:3.15.3"
   dependencies:
@@ -10315,7 +10309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.24.8":
+"typedoc@npm:0.24.8":
   version: 0.24.8
   resolution: "typedoc@npm:0.24.8"
   dependencies:

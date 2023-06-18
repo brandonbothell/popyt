@@ -54,7 +54,7 @@ Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 #### Defined in
 
-[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Banners.ts#L1)
+[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Banners.ts#L1)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/BrandingSettings.ts#L1)
+[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/BrandingSettings.ts#L1)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L17)
+[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L17)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L36)
+[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L36)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/ChannelSectionType.ts#L1)
+[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/ChannelSectionType.ts#L1)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L32)
+[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L32)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L40)
+[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L40)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:36](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/GetPaginatedItems.ts#L36)
+[types/GetPaginatedItems.ts:36](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/GetPaginatedItems.ts#L36)
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L38)
+[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L38)
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L30)
+[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L30)
 
 ___
 
@@ -184,7 +184,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L34)
+[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L34)
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Thumbnail.ts#L1)
+[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Thumbnail.ts#L1)
 
 ___
 
@@ -212,7 +212,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/Parts.ts#L1)
+[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/Parts.ts#L1)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/types/VideoUpdateResource.ts#L1)
+[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/3a8e552/src/types/VideoUpdateResource.ts#L1)
 
 ___
 
@@ -263,4 +263,4 @@ ___
 
 #### Defined in
 
-[index.ts:361](https://github.com/brandonbothell/popyt/blob/39a0f6f/src/index.ts#L361)
+[index.ts:361](https://github.com/brandonbothell/popyt/blob/3a8e552/src/index.ts#L361)

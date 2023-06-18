@@ -9,16 +9,19 @@ Playlists are lists of videos and a some metadata including a title, description
 If you haven't already, check out [the introduction](../intro).
 
 ## Fetch your first playlist
-<font size="2.5"><b><a href="https://runkit.com/brandonbothell/fetch-a-playlist">Try this on RunKit</a></b></font>
 
-```js
-const playlistById = youtube.getPlaylist('PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
+import RunkitCodeBlock from '@site/src/components/RunkitCodeBlock'
+
+<RunkitCodeBlock
+  language="js"
+  runkitUrl="https://runkit.com/brandonbothell/fetch-a-playlist">
+{`const playlistById = youtube.getPlaylist('PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
 const playlistByUrl = youtube.getPlaylist('https://www.youtube.com/playlist?list=PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
 const playlistByTitleSearch = youtube.getPlaylist('Never Gonna Give You Up Parodies')
-
-console.log(`Playlist title: ${playlistById.title}`)
-console.log(`Playlist length: ${playlistById.length} videos`)
-```
+\n
+console.log(\`Playlist title: $\{playlistById.title}\`)
+console.log(\`Playlist length: $\{playlistById.length} videos\`)`}
+</RunkitCodeBlock>
 
 :::tip CHILD OBJECTS MUST BE FETCHED EXPLICITLY
 
@@ -28,9 +31,9 @@ Instead, you can fetch them as you need them using convenient methods right on t
 :::
 
 ## Fetch a playlist's videos
-:::tip PROPERTIES AREN'T GUARANTEED
+:::caution PROPERTIES AREN'T GUARANTEED
 
-Playlists are unique because they contain[playlist items](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation) rather than videos.
+Playlists are unique because they contain [playlist items](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation) rather than videos.
 
 :::
 

@@ -2561,19 +2561,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:2.3.0":
-  version: 2.3.0
-  resolution: "@mdx-js/react@npm:2.3.0"
-  dependencies:
-    "@types/mdx": ^2.0.0
-    "@types/react": ">=16"
-  peerDependencies:
-    react: ">=16"
-  checksum: f45fe779556e6cd9a787f711274480e0638b63c460f192ebdcd77cc07ffa61e23c98cb46dd46e577093e1cb4997a232a848d1fb0ba850ae204422cf603add524
-  languageName: node
-  linkType: hard
-
-"@mdx-js/react@npm:^1.6.22":
+"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
@@ -3125,13 +3113,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdx@npm:^2.0.0":
-  version: 2.0.5
-  resolution: "@types/mdx@npm:2.0.5"
-  checksum: 1069baff0b2d0fb0bc724748e2386af626cc30f8ef99e680afb4dee566ed0aeabd31cea774212a7033f491e594a0acc234116078b252cba94ac413f91eb585a3
-  languageName: node
-  linkType: hard
-
 "@types/merge2@npm:1.4.1":
   version: 1.4.1
   resolution: "@types/merge2@npm:1.4.1"
@@ -3197,13 +3178,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prismjs@npm:^1.26.0":
-  version: 1.26.0
-  resolution: "@types/prismjs@npm:1.26.0"
-  checksum: cd5e7a6214c1f4213ec512a5fcf6d8fe37a56b813fc57ac95b5ff5ee074742bfdbd2f2730d9fd985205bf4586728e09baa97023f739e5aa1c9735a7c1ecbd11a
-  languageName: node
-  linkType: hard
-
 "@types/prop-types@npm:*":
   version: 15.7.5
   resolution: "@types/prop-types@npm:15.7.5"
@@ -3257,7 +3231,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16":
+"@types/react@npm:*":
   version: 18.2.12
   resolution: "@types/react@npm:18.2.12"
   dependencies:
@@ -3265,6 +3239,16 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: ad85a7eadaf1b35cfeee9f715b39311420ff46d46e0650377d918b3f888c2e47416037da4a765e1dccd3d1916abd54c105a3bee803c971ba56c955a7768ce976
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:17.0.2":
+  version: 17.0.2
+  resolution: "@types/react@npm:17.0.2"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: a5198857165feddcbfc7d33e3322460ac62b8894d702414496a825b0c82272911ec33a42ef7c9d623a59308070eef4dfee6ff834b0674aa3f87eeb644196ee3b
   languageName: node
   linkType: hard
 
@@ -5634,7 +5618,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-typedoc@npm:0.19.2, docusaurus-plugin-typedoc@npm:^0.19.2":
+"docusaurus-plugin-typedoc@npm:0.19.2":
   version: 0.19.2
   resolution: "docusaurus-plugin-typedoc@npm:0.19.2"
   peerDependencies:
@@ -5652,15 +5636,17 @@ __metadata:
     "@docusaurus/module-type-aliases": 2.4.1
     "@docusaurus/preset-classic": 2.4.1
     "@docusaurus/theme-classic": 2.4.1
+    "@docusaurus/theme-common": 2.4.1
     "@docusaurus/types": 2.4.1
-    "@mdx-js/react": 2.3.0
+    "@mdx-js/react": 1.6.22
     "@tsconfig/docusaurus": 1.0.7
     "@types/node": 20.3.1
+    "@types/react": 17.0.2
     clsx: 1.2.1
     docusaurus-plugin-typedoc: 0.19.2
-    prism-react-renderer: 2.0.5
-    react: 18.2.0
-    react-dom: 18.2.0
+    prism-react-renderer: 1.3.5
+    react: 17.0.2
+    react-dom: 17.0.2
     typedoc: 0.24.8
     typedoc-plugin-markdown: 3.15.3
     typescript: 5.1.3
@@ -9823,7 +9809,6 @@ __metadata:
     "@typescript-eslint/parser": 5.59.11
     chai: 4.3.7
     cross-env: 7.0.3
-    docusaurus-plugin-typedoc: ^0.19.2
     dotenv: 16.3.1
     eslint: 8.43.0
     eslint-plugin-import: 2.27.5
@@ -9832,8 +9817,6 @@ __metadata:
     nyc: 15.1.0
     source-map-support: 0.5.21
     ts-node: 10.9.1
-    typedoc: 0.24.8
-    typedoc-plugin-markdown: ^3.15.3
     typescript: 5.1.3
   languageName: unknown
   linkType: soft
@@ -10314,19 +10297,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prism-react-renderer@npm:2.0.5":
-  version: 2.0.5
-  resolution: "prism-react-renderer@npm:2.0.5"
-  dependencies:
-    "@types/prismjs": ^1.26.0
-    clsx: ^1.2.1
-  peerDependencies:
-    react: ">=16.0.0"
-  checksum: 9cd7e1fcf1e758e230f46af2f069a47bbfe55d0209312b329aba40e7e9b18f6763352bf08fc9d89ab7622f1d7a4663e01d2ff964f721ea734e8f901e4f0cd87e
-  languageName: node
-  linkType: hard
-
-"prism-react-renderer@npm:^1.3.5":
+"prism-react-renderer@npm:1.3.5, prism-react-renderer@npm:^1.3.5":
   version: 1.3.5
   resolution: "prism-react-renderer@npm:1.3.5"
   peerDependencies:
@@ -10575,15 +10546,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
+"react-dom@npm:17.0.2":
+  version: 17.0.2
+  resolution: "react-dom@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
-    scheduler: ^0.23.0
+    object-assign: ^4.1.1
+    scheduler: ^0.20.2
   peerDependencies:
-    react: ^18.2.0
-  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+    react: 17.0.2
+  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
   languageName: node
   linkType: hard
 
@@ -10719,12 +10691,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:17.0.2":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+    object-assign: ^4.1.1
+  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
   languageName: node
   linkType: hard
 
@@ -11204,12 +11177,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
+"scheduler@npm:^0.20.2":
+  version: 0.20.2
+  resolution: "scheduler@npm:0.20.2"
   dependencies:
     loose-envify: ^1.1.0
-  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
+    object-assign: ^4.1.1
+  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 
@@ -12307,7 +12281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-plugin-markdown@npm:3.15.3, typedoc-plugin-markdown@npm:^3.15.3":
+"typedoc-plugin-markdown@npm:3.15.3":
   version: 3.15.3
   resolution: "typedoc-plugin-markdown@npm:3.15.3"
   dependencies:
