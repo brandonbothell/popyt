@@ -10,7 +10,8 @@
     "coverage": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test",
     "docs:build": "yarn workspace docusaurus build",
     "docs:publish": "yarn workspace docusaurus deploy",
-    "lint": "eslint src/**/*.ts test/**/*.ts"
+    "lint": "eslint src/**/*.ts test/**/*.ts",
+    "build": "tsc"
   },
   "nyc": {
     "include": "src"
@@ -48,11 +49,6 @@
     "eslint": "8.43.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsdoc": "46.2.6",
-    "fs-nextra": "0.5.1",
-    "gulp": "4.0.2",
-    "gulp-sourcemaps": "3.0.0",
-    "gulp-typescript": "6.0.0-alpha.1",
-    "merge2": "1.4.1",
     "mocha": "10.2.0",
     "nyc": "15.1.0",
     "source-map-support": "0.5.21",
