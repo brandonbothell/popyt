@@ -22,10 +22,10 @@ jobs:
         cmd: install # will run `yarn install` command
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Build Typings
+    - name: Build Source and Typings
       uses: borales/actions-yarn@v4
       with:
-        cmd: gulp
+        cmd: build
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish Package
