@@ -47,12 +47,18 @@ export default function CodeBlock ({
       <div style={{
         textAlign: 'start',
         marginBottom: '16px'
-      }}><text fontSize="2.75"><b><a href={runkitUrl} target='_blank'> Try this on <Svg role="img" style={{
-          width: '15',
-          height: '15',
-          verticalAlign: 'middle',
-          marginRight: '1px'
-        }} />RunKit</a></b></text></div>
+      }}><text fontSize="2.75"><b><a href={runkitUrl} target='_blank'> Try this on <RunkitText /></a></b></text></div>
     </div>
+  )
+}
+
+export function RunkitText (): JSX.Element {
+  return (
+    <text><Svg role="img" style={{
+      width: '15',
+      height: '15',
+      verticalAlign: 'middle',
+      marginRight: '1px'
+    }} />RunKit</text>
   )
 }

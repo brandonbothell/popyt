@@ -12,7 +12,7 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 
 # Examples
 ## See the [5-minute tutorial](https://brandonbothell.github.io/popyt/docs/tutorial/intro).
-Here are some basic methods:
+Here are some basic methods ([try it on Runkit](https://runkit.com/brandonbothell/fetch-a-video)):
 
 Instantiate the object:
 

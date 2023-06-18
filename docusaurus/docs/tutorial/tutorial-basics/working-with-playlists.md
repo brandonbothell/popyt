@@ -1,12 +1,15 @@
 ---
 sidebar_position: 1
 ---
+import { RunkitText } from '@site/src/components/RunkitCodeBlock'
 
 # Working with Playlists
 Playlists are lists of videos and a some metadata including a title, description, etc. They have some unique behaviors, especially pertaining to the completeness of videos fetched from these objects.
 
-## Check the intro
-If you haven't already, check out [the introduction](../intro).
+## Getting started
+If you haven't already, check out [the introduction](../intro).  
+Check out the <b><a href='https://runkit.com/brandonbothell/fetch-a-playlist' target='_blank'><RunkitText /></a></b> for a quick **example
+that you can run online and download**.
 
 ## Fetch your first playlist
 
