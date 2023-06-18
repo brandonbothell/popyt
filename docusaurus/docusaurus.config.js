@@ -38,11 +38,10 @@ const config = {
     [
       'docusaurus-plugin-typedoc',
       {
-        sidebar: {
-          categoryLabel: 'API Documentation',
-          position: 10
-        },
-        includeExtension: false
+        includeExtension: false,
+        frontmatter: {
+          title: 'Documentation'
+        }
       }
     ]
   ],

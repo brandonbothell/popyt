@@ -8,29 +8,5 @@
   "markedOptions": {
     "gfm": true,
     "tables": true
-  },
-  // "outline": [{
-  //   "Main classes": {
-  //     "Public data (YouTube)": "classes/public.youtube",
-  //     "Private data (OAuth)": "classes/oauth.oauth-1"
-  //   },
-  //   "Entities": {
-  //     "Overview": "modules/entities",
-  //     "Captions": "classes/entities.caption",
-  //     "Channel Sections": "classes/entities.channelsection",
-  //     "Channels": "classes/entities.channel",
-  //     "Comments": "classes/entities.ytcomment",
-  //     "Languages": "classes/entities.language",
-  //     "Playlists": "classes/entities.playlist",
-  //     "Regions": "classes/entities.region",
-  //     "Subscriptions": "classes/entities.subscription",
-  //     "Video Abuse Report Reasons": "classes/entities.videoabusereportreason",
-  //     "Video categories": "classes/entities.videocategory",
-  //     "Videos": "classes/entities.video"
-  //   },
-  //   "Other": {
-  //     "All exports (including types)": "modules/public"
-  //   }
-  // }],
-  // "customCss": "assets/css/dark.css"
+  }
 }

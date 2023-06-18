@@ -4,7 +4,6 @@ docs/
 coverage/
 tsconfig.json
 .vscode/
-gulpfile.ts
 desktop.ini
 CHANGELOG.md
 renovate.json

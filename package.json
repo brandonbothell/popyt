@@ -10,6 +10,8 @@
     "coverage": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test",
     "docs:build": "yarn workspace docusaurus build",
     "docs:publish": "yarn workspace docusaurus deploy",
+    "docs:serve": "yarn workspace docusaurus serve",
+    "docs:test": "yarn workspace docusaurus start",
     "lint": "eslint src/**/*.ts test/**/*.ts",
     "build": "tsc"
   },

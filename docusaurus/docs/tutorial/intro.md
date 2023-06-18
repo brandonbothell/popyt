@@ -8,7 +8,9 @@ Let's discover **Popyt in less than 5 minutes**.
 
 ## Getting started
 
-Get started by **creating a new YouTube object**.
+Get started by [creating a new Node.JS project](https://docs.npmjs.com/cli/v9/commands/npm-init#examples) and running `npm install popyt`.  
+Check out the **[RunKit](https://runkit.com/brandonbothell/fetch-a-video)** for a quick example
+that you can run online and copy-paste.
 
 ### What you'll need
 
@@ -33,6 +35,7 @@ It is not recommended to place an API key directly in your code. Instead, use an
 Here are a few examples of retrieving data, but check the documentation for everything else:
 
 Get a video by ID:
+<font size="2.5"><b><a href="https://runkit.com/brandonbothell/fetch-a-video">Try this on RunKit</a></b></font>
 
 ```js
 const video = await youtube.getVideo('dQw4w9WgXcQ')
@@ -58,8 +61,8 @@ console.log(video.title)
 Search videos:
 
 ```js
-const videos = await youtube.searchVideos('never gonna give you up', 12)
-console.log(videos.map(v => v.title).join('\n')) // array of 12 partial video objects
+const search = await youtube.searchVideos('never gonna give you up', 12)
+console.log(search.results.map(v => v.title).join('\n')) // array of 12 partial video objects
 ```
 
 ## Retrieving private data

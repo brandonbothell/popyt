@@ -1,4 +1,4 @@
-# popyt
+# Popyt
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
 [![GitHub issues](https://img.shields.io/github/issues/jasonhaxstuff/popyt.svg)](https://github.com/jasonhaxstuff/popyt/issues)

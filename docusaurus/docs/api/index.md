@@ -1,12 +1,12 @@
 ---
 id: "index"
-title: "popyt"
+title: "Documentation"
 sidebar_label: "Readme"
 sidebar_position: 0
 custom_edit_url: null
 ---
 
-# popyt
+# Getting Started
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
 [![GitHub issues](https://img.shields.io/github/issues/jasonhaxstuff/popyt.svg)](https://github.com/jasonhaxstuff/popyt/issues)
@@ -18,11 +18,19 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![Downloads](https://img.shields.io/npm/dt/popyt.svg)](https://www.npmjs.com/package/popyt)
 [![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
 
-# Examples
-## See the [main class documentation](https://brandonbothell.github.io/popyt/docs/api/classes/Library_Exports.YouTube).
+## Examples
+
+:::tip QUESTION? CHECK THE DOCS
+
+See the [main class documentation](./api/classes/Library_Exports.YouTube)
+or the [tutorial](./tutorial/intro) to get started.
+
+:::
+
 Here are some basic methods:
 
 Instantiate the object:
+<font size="2.5"><b><a href="https://runkit.com/brandonbothell/fetch-a-video">Try this on RunKit</a></b></font>
 
 ```js
 const { YouTube } = require('popyt')
@@ -68,9 +76,9 @@ console.log(videos) // array of 12 partial video objects
 
 Note: This wrapper does not implement every feature of the YouTube API. If you would like anything added, feel free to open an issue. The limits imposed by the wrapper are not imposed by YouTube.
 
-# Development/Contributing
-## Before committing:
+## Development/Contributing
 
+Before committing:
 * Run `yarn lint`.
 * Run `yarn coverage` or `npm run coverage` to check if you've added enough tests. It should display 100% statement, line, and branch coverage.
 * Also, make sure that every test passes.
