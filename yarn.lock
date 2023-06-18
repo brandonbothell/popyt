@@ -2561,16 +2561,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:^1.6.22":
-  version: 1.6.22
-  resolution: "@mdx-js/react@npm:1.6.22"
-  peerDependencies:
-    react: ^16.13.1 || ^17.0.0
-  checksum: bc84bd514bc127f898819a0c6f1a6915d9541011bd8aefa1fcc1c9bea8939f31051409e546bdec92babfa5b56092a16d05ef6d318304ac029299df5181dc94c8
-  languageName: node
-  linkType: hard
-
-"@mdx-js/react@npm:^2.3.0":
+"@mdx-js/react@npm:2.3.0":
   version: 2.3.0
   resolution: "@mdx-js/react@npm:2.3.0"
   dependencies:
@@ -2579,6 +2570,15 @@ __metadata:
   peerDependencies:
     react: ">=16"
   checksum: f45fe779556e6cd9a787f711274480e0638b63c460f192ebdcd77cc07ffa61e23c98cb46dd46e577093e1cb4997a232a848d1fb0ba850ae204422cf603add524
+  languageName: node
+  linkType: hard
+
+"@mdx-js/react@npm:^1.6.22":
+  version: 1.6.22
+  resolution: "@mdx-js/react@npm:1.6.22"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0
+  checksum: bc84bd514bc127f898819a0c6f1a6915d9541011bd8aefa1fcc1c9bea8939f31051409e546bdec92babfa5b56092a16d05ef6d318304ac029299df5181dc94c8
   languageName: node
   linkType: hard
 
@@ -4793,7 +4793,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.2.1":
+"clsx@npm:1.2.1, clsx@npm:^1.2.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -5653,14 +5653,14 @@ __metadata:
     "@docusaurus/preset-classic": 2.4.1
     "@docusaurus/theme-classic": 2.4.1
     "@docusaurus/types": 2.4.1
-    "@mdx-js/react": ^2.3.0
+    "@mdx-js/react": 2.3.0
     "@tsconfig/docusaurus": 1.0.7
     "@types/node": 20.3.1
-    clsx: ^1.2.1
+    clsx: 1.2.1
     docusaurus-plugin-typedoc: 0.19.2
-    prism-react-renderer: ^2.0.5
-    react: ^18.2.0
-    react-dom: ^18.2.0
+    prism-react-renderer: 2.0.5
+    react: 18.2.0
+    react-dom: 18.2.0
     typedoc: 0.24.8
     typedoc-plugin-markdown: 3.15.3
     typescript: 5.1.3
@@ -10314,16 +10314,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prism-react-renderer@npm:^1.3.5":
-  version: 1.3.5
-  resolution: "prism-react-renderer@npm:1.3.5"
-  peerDependencies:
-    react: ">=0.14.9"
-  checksum: c18806dcbc4c0b4fd6fd15bd06b4f7c0a6da98d93af235c3e970854994eb9b59e23315abb6cfc29e69da26d36709a47e25da85ab27fed81b6812f0a52caf6dfa
-  languageName: node
-  linkType: hard
-
-"prism-react-renderer@npm:^2.0.5":
+"prism-react-renderer@npm:2.0.5":
   version: 2.0.5
   resolution: "prism-react-renderer@npm:2.0.5"
   dependencies:
@@ -10332,6 +10323,15 @@ __metadata:
   peerDependencies:
     react: ">=16.0.0"
   checksum: 9cd7e1fcf1e758e230f46af2f069a47bbfe55d0209312b329aba40e7e9b18f6763352bf08fc9d89ab7622f1d7a4663e01d2ff964f721ea734e8f901e4f0cd87e
+  languageName: node
+  linkType: hard
+
+"prism-react-renderer@npm:^1.3.5":
+  version: 1.3.5
+  resolution: "prism-react-renderer@npm:1.3.5"
+  peerDependencies:
+    react: ">=0.14.9"
+  checksum: c18806dcbc4c0b4fd6fd15bd06b4f7c0a6da98d93af235c3e970854994eb9b59e23315abb6cfc29e69da26d36709a47e25da85ab27fed81b6812f0a52caf6dfa
   languageName: node
   linkType: hard
 
@@ -10575,7 +10575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.2.0":
+"react-dom@npm:18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -10719,7 +10719,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.2.0":
+"react@npm:18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
