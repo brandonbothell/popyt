@@ -58,7 +58,7 @@ jobs:
         files: ./coverage/coverage-final.json
     - name: Commit dependency files
       run: |
-        git add .yarn/ .pnp.* yarn.lock
+        git add .yarn/ .pnp.* yarn.lock docusaurus/.yarn/ docusaurus/.pnp.* docusaurus/yarn.lock
         git commit -m "chore(deps): update lockfile and package cache"
     - name: Push dependency files
       uses: ad-m/github-push-action@v0.6.0

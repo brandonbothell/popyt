@@ -23,7 +23,6 @@ export default function CodeBlockJSX ({
     <Container
       as="pre"
       tabIndex={0}
-      noMargin={false}
       className={clsx(styles.codeBlockStandalone, 'thin-scrollbar', className)}>
       <code className={styles.codeBlockLines}>{children}</code>
     </Container>
