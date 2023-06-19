@@ -184,7 +184,7 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async addVideo (videoResolvable: string | Video, position?: number, note?: string) {
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const video = await this.youtube.oauth.addPlaylistItem(this.id, videoId, position, note)
 
     if (this.videos) {
@@ -206,8 +206,9 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async updateVideo (videoResolvable: string | Video, position?: number, note?: string, itemId?: string) {
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
-    const playlistItemId = itemId ?? (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: videoId }))[0].id
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
+    const playlistItemId = itemId ??
+      (await this.youtube._genericService.getPaginatedItems({ type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: videoId }))[0].id
 
     return this.youtube.oauth.updatePlaylistItem(playlistItemId, this.id, videoId, position, note)
   }
@@ -219,7 +220,13 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async removeVideo (videoResolvable: string) {
-    const playlistItemId = (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: await GenericService.getId(this.youtube, videoResolvable, Video) }))[0].id
+    const playlistItemId = (this.youtube._genericService.getPaginatedItems({
+      type: PaginatedItemType.PlaylistItems,
+      mine: false,
+      id: this.id,
+      maxPerPage: 1,
+      subId: await this.youtube._genericService.getId(videoResolvable, Video)
+    }))[0].id
 
     return this.removeItem(playlistItemId)
   }

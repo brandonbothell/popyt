@@ -6,11 +6,13 @@ import { Cache } from '../util'
  * @ignore
  */
 export class SubscriptionService {
+  constructor (private youtube: YouTube) {}
+
   /* istanbul ignore next */
-  public static async getSubscriptionByChannels (youtube: YouTube, subscriberId: string, channelId: string, parts?: SubscriptionParts): Promise<Subscription> {
+  public async getSubscriptionByChannels (subscriberId: string, channelId: string, parts?: SubscriptionParts): Promise<Subscription> {
     const cached = Cache.get(`sub_by_channels://"${subscriberId}"/"${channelId}"`)
 
-    if (youtube._shouldCache && cached) {
+    if (this.youtube._shouldCache && cached) {
       return cached
     }
 
@@ -26,16 +28,16 @@ export class SubscriptionService {
       maxResults: 1
     }
 
-    const results = await youtube._request.api('subscriptions', data, youtube.token, youtube.accessToken)
+    const results = await this.youtube._request.api('subscriptions', data, this.youtube.token, this.youtube.accessToken)
 
     if (results.items.length === 0) {
       return Promise.reject('Subscription not found')
     }
 
-    const toReturn = new Subscription(youtube, results.items[0])
+    const toReturn = new Subscription(this.youtube, results.items[0])
 
-    if (youtube._shouldCache && youtube._cacheSearches) {
-      youtube._cache(`sub_by_channels://"${subscriberId}"/"${channelId}"`, toReturn)
+    if (this.youtube._shouldCache && this.youtube._cacheSearches) {
+      this.youtube._cache(`sub_by_channels://"${subscriberId}"/"${channelId}"`, toReturn)
     }
 
     return toReturn

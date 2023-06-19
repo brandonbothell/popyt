@@ -1,14 +1,16 @@
 import YouTube,
 { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 import { Cache, Parser } from '../util'
-import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions } from '../types'
+import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType } from '../types'
 
 /**
  * @ignore
  */
 export class GenericService {
+  constructor (private youtube: YouTube) {}
+
   /* istanbul ignore next */
-  public static async getItem (youtube: YouTube, type: ItemTypes, mine: boolean, id?: string, parts?: string[]): Promise<ItemReturns> {
+  public async getItem (type: ItemTypes, mine: boolean, id?: string, parts?: string[]): Promise<ItemReturns> {
     if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
       return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`)
     }
@@ -21,7 +23,7 @@ export class GenericService {
       return Promise.reject(`${type.endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
-    if (youtube._shouldCache) {
+    if (this.youtube._shouldCache) {
       const cached = Cache.get(`get://${type.endpoint}/${id ? id : 'mine'}`)
       if (cached) return cached
     }
@@ -39,20 +41,20 @@ export class GenericService {
     }
 
     if (type === VideoCategory) {
-      params.hl = youtube.language
+      params.hl = this.youtube.language
     }
 
-    const result = await youtube._request.api(type.endpoint, params, youtube.token, youtube.accessToken)
+    const result = await this.youtube._request.api(type.endpoint, params, this.youtube.token, this.youtube.accessToken)
 
     if (!result.items || result.items.length === 0) {
       return Promise.reject('Item not found')
     }
 
-    let endResult: ItemReturns = new (type)(youtube, result.items[0], true)
+    let endResult: ItemReturns = new (type)(this.youtube, result.items[0], true)
 
     endResult.full = true
 
-    if (youtube._shouldCache) youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
+    if (this.youtube._shouldCache) this.youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
 
     return endResult
   }
@@ -66,8 +68,8 @@ export class GenericService {
    * @returns An object containing the array of instantiated entities as well as possible next and previous page tokens.
    */
   /* istanbul ignore next */
-  public static async getPaginatedItems ({ youtube, type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts }: PaginatedItemOptions):
-  Promise<PaginatedItemsReturns> {
+  public async getPaginatedItems ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts }: PaginatedItemOptions):
+  Promise<PaginatedItemsReturns<PaginatedType>> {
 
     const name = PaginatedItemType[type] as keyof typeof PaginatedItemType
 
@@ -82,7 +84,7 @@ export class GenericService {
       return Promise.reject(`${name} cannot be filtered by the 'mine' parameter.`)
     }
 
-    if (youtube._shouldCache) {
+    if (this.youtube._shouldCache) {
       const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${pages < 1 ? maxPerPage : 0}/${pages}/${pageToken}`)
       if (cached) return cached
     }
@@ -166,7 +168,7 @@ export class GenericService {
       case PaginatedItemType.VideoCategories:
         endpoint = 'videoCategories'
         clazz = VideoCategory
-        options.regionCode = youtube.region
+        options.regionCode = this.youtube.region
         // falls through
 
       case PaginatedItemType.VideoAbuseReportReasons:
@@ -182,7 +184,7 @@ export class GenericService {
       case PaginatedItemType.Regions:
         if (!endpoint) endpoint = 'i18nRegions'
         if (!clazz) clazz = Region
-        options.hl = youtube.language
+        options.hl = this.youtube.language
         break
 
       case PaginatedItemType.Captions:
@@ -197,25 +199,48 @@ export class GenericService {
 
     if (maxForEndpoint !== undefined) {
       if (pages < 1 || maxPerPage < 1) options.maxResults = maxForEndpoint
-      else if (maxPerPage > maxForEndpoint) return Promise.reject(`Max results must be ${maxForEndpoint} or below for ${endpoint}`)
+      else if (maxPerPage > maxForEndpoint) return Promise.reject(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`)
       else options.maxResults = maxPerPage
     }
-
-    if (pageToken) options.pageToken = pageToken
 
     if (pages < 1) {
       pages = Infinity
     }
 
-    const toReturn: PaginatedItemsReturns = {
-      results: []
+    if (pageToken) options.pageToken = pageToken
+
+    const toReturn = await this.fetchPages(pages, endpoint, options, clazz)
+
+    if (this.youtube._shouldCache) {
+      this.youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage}/${pages}/${pageToken}`, toReturn)
+    }
+
+    return toReturn
+  }
+
+  /**
+   * 
+   * @param pages 
+   * @param endpoint 
+   * @param clazz Most endpoints only return one type of entity, set this to that entity.
+   * If endpoint is `search`, then leave undefined.
+   * @param options 
+   * @returns 
+   */
+  /* istanbul ignore next */
+  public async fetchPages (pages: number, endpoint: string, options: { part: string; maxResults?: number; hl?: string; [key: string]: any }, clazz?: PaginatedType) {
+    if (!clazz && endpoint !== 'search') {
+      return Promise.reject('Endpoints other than search must specify an entity class')
+    }
+
+    const toReturn: PaginatedItemsReturns<PaginatedType> = {
+      items: []
     }
 
     let pagesFetched = 0
-    let apiResponse: any
 
     while (true) {
-      apiResponse = await youtube._request.api(endpoint, options, youtube.token, youtube.accessToken)
+      const apiResponse = await this.youtube._request.api(endpoint, options, this.youtube.token, this.youtube.accessToken)
 
       if (!apiResponse.items?.length) {
         if (apiResponse.prevPageToken) toReturn.prevPageToken = apiResponse.prevPageToken
@@ -225,10 +250,18 @@ export class GenericService {
       pagesFetched++
 
       for (const data of apiResponse.items) {
-        if (data.kind === 'youtube#commentThread') {
-          toReturn.results.push(new YTComment(youtube, data.snippet.topLevelComment, true, data.replies?.comments))
+        if (endpoint === 'search') {
+          if (data.id.videoId) {
+            toReturn.items.push(new Video(this.youtube, data))
+          } else if (data.id.channelId) {
+            toReturn.items.push(new Channel(this.youtube, data))
+          } else if (data.id.playlistId) {
+            toReturn.items.push(new Playlist(this.youtube, data))
+          }
+        } else if (data.kind === 'youtube#commentThread') {
+          toReturn.items.push(new YTComment(this.youtube, data.snippet.topLevelComment, true, data.replies?.comments))
         } else {
-          toReturn.results.push(new clazz(youtube, data, false))
+          toReturn.items.push(new clazz(this.youtube, data, false))
         }
       }
 
@@ -242,19 +275,16 @@ export class GenericService {
       options.pageToken = apiResponse.nextPageToken
     }
 
-    if (youtube._shouldCache) youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage}/${pages}/${pageToken}`, toReturn)
-
     return toReturn
   }
 
   /* istanbul ignore next */
-  public static async getId (youtube: YouTube, input: string | Video | Channel | Playlist, type: typeof Video | typeof Channel | typeof Playlist): Promise<string> {
+  public async getId (input: string | Video | Channel | Playlist, type: typeof Video | typeof Channel | typeof Playlist): Promise<string> {
     let id: string = null
 
-    const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
-
-    if (cached) {
-      return cached
+    if (this.youtube._shouldCache) {
+      const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
+      if (cached) return cached
     }
 
     const cachedEntity: Video | Channel | Playlist | YTComment = Cache.get(`get://${type.endpoint}/${input}`)
@@ -268,16 +298,29 @@ export class GenericService {
     }
 
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
-      id = Parser.parseUrl(input)[type.name.toLowerCase()]
+      const parsedUrl = Parser.parseUrl(input)
 
-      // Custom channel URLs don't work that well
-      if (type === Channel && id && !id.startsWith('UC')) {
-        id = await youtube._request.api('search', {
-          q: encodeURIComponent(id),
-          type: 'channel',
-          part: 'id',
-          maxResults: 1
-        }, youtube.token, youtube.accessToken).then(r => r.items[0] ? r.items[0].id.channelId : undefined)
+      if (type === Channel && parsedUrl.channel) {
+        if (parsedUrl.channel.id && !parsedUrl.channel.id.startsWith('UC')) {
+          // Custom channel URLs don't work that well
+          id = await this.youtube._request.api('search', {
+            q: encodeURIComponent(id),
+            type: 'channel',
+            part: 'id',
+            maxResults: 1
+          }, this.youtube.token, this.youtube.accessToken).then(r => r.items[0]?.id.channelId)
+        } else if (parsedUrl.channel.username) {
+          // but the new usernames work perfectly
+          id = await this.youtube._request.api('channels', {
+            q: encodeURIComponent(id),
+            part: 'id',
+            forUsername: parsedUrl.channel.username
+          }, this.youtube.token, this.youtube.accessToken).then(r => r.items[0]?.id)
+        }
+      }
+
+      if (id === null || id === undefined || id === '') {
+        id = parsedUrl[type.name.toLowerCase() as 'video' | 'playlist' | 'channel'].id
       }
     }
 
@@ -286,33 +329,33 @@ export class GenericService {
     }
 
     if (type === Channel && (!input.startsWith('UC') || input.includes(' '))) {
-      id = await youtube._request.api('search', {
+      id = await this.youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: 'channel',
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.channelId : undefined) : undefined)
+      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.channelId : undefined) : undefined)
     } else if (type === Playlist && input.includes(' ')) {
-      id = await youtube._request.api('search', {
+      id = await this.youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: 'playlist',
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.playlistId : undefined) : undefined)
+      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.playlistId : undefined) : undefined)
     } else if (type === Video && (input.length < 11 || input.includes(' '))) {
-      id = await youtube._request.api('search', {
+      id = await this.youtube._request.api('search', {
         q: encodeURIComponent(input),
         type: 'video',
         part: 'id',
         maxResults: 1
-      }, youtube.token, youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.videoId : undefined) : undefined)
+      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.videoId : undefined) : undefined)
     }
 
     if (id === null || id === undefined || id === '') {
       id = input
     }
 
-    youtube._cache(`get_id://${type.endpoint}/${input}`, id)
+    if (this.youtube._shouldCache) this.youtube._cache(`get_id://${type.endpoint}/${input}`, id)
 
     return id
   }

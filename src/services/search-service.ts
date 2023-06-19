@@ -1,28 +1,39 @@
-import YouTube, { Video, Channel, Playlist } from '..'
+import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns } from '..'
 import { Cache } from '../util'
 
 /**
  * @ignore
  */
 export class SearchService {
+  constructor (private youtube: YouTube) {}
+
   /* istanbul ignore next */
-  public static async search (youtube: YouTube, types: (typeof Video | typeof Channel | typeof Playlist)[], searchTerm: string, maxResults: number = 10, pageToken?: string,
-    channelId?: string, fields?: string, category?: string, onlyEmbeddable: boolean = false, eventType?: 'completed' | 'live' | 'upcoming',
-    videoType?: 'any' | 'episode' | 'movie'):
-  Promise<{ results: (Video | Channel | Playlist)[]; prevPageToken: string; nextPageToken: string }> {
+  public async search<T extends SearchType = SearchType> (
+    { // search options
+      // @ts-ignore Default values, please chill TypeScript
+      types = [Video, Channel, Playlist], searchTerm, fields,
+      // page options
+      pages = 1, maxPerPage = 10, pageToken, ...otherFilters
+    }: GenericSearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
 
     const type = types.map(t => t.name.toLowerCase()).join(',')
 
-    if (youtube._shouldCache) {
-      const cached = Cache.get(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`)
+    if (this.youtube._shouldCache) {
+      const cached = Cache.get(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/"${pageToken}"`)
       if (cached) return cached
     }
 
-    if (maxResults < 1 || maxResults > 50) {
-      return Promise.reject('Max results must be between 1 and 50 for search queries')
+    if (maxPerPage < 1) {
+      return Promise.reject('Max per page must be above 0')
     }
 
-    const data: {
+    if (maxPerPage > 50) {
+      return Promise.reject('Max per page must be 50 or below for searches')
+    }
+
+    if (pages < 1) pages = 1
+
+    const options: {
       q: string
       fields: string
       maxResults: number
@@ -35,57 +46,36 @@ export class SearchService {
       category?: string
       eventType?: string
       videoType?: string
+      videoCaption?: string
+      location?: string
+      locationRadius?: string
     } = {
       q: encodeURIComponent(searchTerm),
       fields: encodeURIComponent(fields ||
-        'prevPageToken,nextPageToken,items(kind,id,snippet(title,description,thumbnails,publishedAt,channelId,channelTitle,liveBroadcastContent))'),
-      maxResults,
+        '*'),
+      maxResults: maxPerPage,
       part: 'snippet',
       type,
-      regionCode: youtube.region
+      regionCode: this.youtube.region
     }
 
-    if (channelId) {
-      data.channelId = channelId
-    }
+    if (pageToken) options.pageToken = pageToken
 
-    if (pageToken) {
-      data.pageToken = pageToken
-    }
+    const searchFilters = otherFilters as any
 
-    if (category) {
-      data.category = category
-    }
+    if (searchFilters.channelId) options.channelId = searchFilters.channelId
+    if (searchFilters.categoryId) options.category = searchFilters.categoryId
+    if (searchFilters.eventType) options.eventType = searchFilters.eventType
+    if (searchFilters.videoType) options.videoType = searchFilters.videoType
+    if (searchFilters.videoCaption) options.videoCaption = searchFilters.videoCaption
+    if (searchFilters.location) options.location = searchFilters.location
+    if (searchFilters.locationRadius) options.locationRadius = searchFilters.locationRadius
+    if (searchFilters.videoEmbeddable) options.videoEmbeddable = 'true'
 
-    if (eventType) {
-      data.eventType = eventType
-    }
+    const toReturn = await this.youtube._genericService.fetchPages(pages, 'search', options)
 
-    if (onlyEmbeddable) {
-      data.videoEmbeddable = 'true'
-    }
-
-    if (videoType) {
-      data.videoType = videoType
-    }
-
-    const results = await youtube._request.api('search', data, youtube.token, youtube.accessToken)
-    const items = []
-
-    results.items.forEach(item => {
-      if (item.id.videoId) {
-        items.push(new Video(youtube, item))
-      } else if (item.id.channelId) {
-        items.push(new Channel(youtube, item))
-      } else if (item.id.playlistId) {
-        items.push(new Playlist(youtube, item))
-      }
-    })
-
-    const toReturn = { results: items, prevPageToken: results.prevPageToken, nextPageToken: results.nextPageToken }
-
-    if (youtube._shouldCache && youtube._cacheSearches) {
-      youtube._cache(`search://${type}/"${searchTerm}"/${maxResults}/"${pageToken}"`, toReturn)
+    if (this.youtube._shouldCache && this.youtube._cacheSearches) {
+      this.youtube._cache(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/"${pageToken}"`, toReturn)
     }
 
     return toReturn

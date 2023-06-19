@@ -11,26 +11,26 @@ if (!apiKey) {
 
 describe('Searching', () => {
   it('should default to 10 results', async () => {
-    expect((await youtube.searchVideos('never gonna give you up')).results.length).to.equal(10)
-    expect((await youtube.searchChannels('rick astley')).results.length).to.equal(10)
-    expect((await youtube.searchPlaylists('music')).results.length).to.equal(10)
-    expect((await youtube.search([ Video, Channel, Playlist ], 'vevo')).results.length).to.equal(10)
+    expect((await youtube.searchVideos('never gonna give you up')).items.length).to.equal(10)
+    expect((await youtube.searchChannels('rick astley')).items.length).to.equal(10)
+    expect((await youtube.searchPlaylists('music')).items.length).to.equal(10)
+    expect((await youtube.search('vevo', { searchFilters: { types: [ Video, Channel, Playlist ] } })).items.length).to.equal(10)
   }).timeout(20000)
 
   it('should return an array', async () => {
-    expect((await youtube.searchPlaylists('music')).results).to.be.instanceOf(Array)
+    expect((await youtube.searchPlaylists('music')).items).to.be.instanceOf(Array)
   })
 
   it('should reject if maxResults is < 1', async () => {
-    expect(await youtube.searchChannels('rick astley', 0).catch(error => {
+    expect(await youtube.searchChannels('rick astley', { pageOptions: { maxPerPage: 0 } }).catch(error => {
       return error
-    })).to.equal('Max results must be between 1 and 50 for search queries')
+    })).to.equal('Max per page must be above 0')
   })
 
   it('should reject if maxResults is > 50', async () => {
-    expect(await youtube.searchVideos('never gonna give you up', 51).catch(error => {
+    expect(await youtube.searchVideos('never gonna give you up', { pageOptions: { maxPerPage: 51 } }).catch(error => {
       return error
-    })).to.equal('Max results must be between 1 and 50 for search queries')
+    })).to.equal('Max per page must be 50 or below for searches')
   })
 
   it('should reject if api key is wrong', async () => {
@@ -41,7 +41,7 @@ describe('Searching', () => {
   })
 
   it('should set what it can with search results', async () => {
-    const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
+    const channel = (await youtube.searchChannels('rick astley', undefined)).items[0]
 
     expect(channel.id).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
     expect(channel.country).to.equal(undefined)
@@ -51,23 +51,27 @@ describe('Searching', () => {
   })
 
   it('should be able to fetch videos of a channel search result', async () => {
-    const channel = (await youtube.searchChannels('rick astley', 1)).results[0]
+    const channel = (await youtube.searchChannels('rick astley', { pageOptions: { maxPerPage: 1 } })).items[0]
     const videos = await channel.fetchVideos([ 'id' ])
 
     expect(videos).to.be.an.instanceOf(Playlist)
   })
 
-  it('should work with multiple types', async () => {
-    const data = (await youtube.search([ Video, Playlist, Channel ], 'vevo', 50))
+  it('should work with multiple types by default', async () => {
+    const data = (await youtube.search('vevo', { pageOptions: { maxPerPage: 50 } }))
 
-    expect(data.results.find(r => r instanceof Video)).to.not.equal(undefined)
-    expect(data.results.find(r => r instanceof Playlist)).to.not.equal(undefined)
-    expect(data.results.find(r => r instanceof Channel)).to.not.equal(undefined)
+    expect(data.items.find(r => r instanceof Video)).to.not.equal(undefined)
+    expect(data.items.find(r => r instanceof Playlist)).to.not.equal(undefined)
+    expect(data.items.find(r => r instanceof Channel)).to.not.equal(undefined)
   })
 
   it('should work with fetching videos of a channel', async () => {
-    const video = (await youtube.searchVideos('bukkit', 10, undefined, undefined, 'UC6mi9rp7vRYninucP61qOjg')).results[0]
+    const video = (await youtube.searchVideos('bukkit', { searchFilters: { channelId: 'UC6mi9rp7vRYninucP61qOjg' }, pageOptions: { maxPerPage: 1 } })).items[0]
     expect(video.channel.id).to.equal('UC6mi9rp7vRYninucP61qOjg')
     expect(video.channel.name).to.be.a('string')
+  })
+
+  it('should return an array with a size of pages * maxPerPage', async () => {
+    expect((await youtube.search('gaming moments', { pageOptions: { pages: 3, maxPerPage: 6 } })).items.length).to.equal(18)
   })
 })

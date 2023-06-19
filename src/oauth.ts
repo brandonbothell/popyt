@@ -55,7 +55,7 @@ export class OAuth {
    */
   public getMe (parts?: ChannelParts): Promise<Channel> {
     this.checkTokenAndThrow()
-    return GenericService.getItem(this.youtube, Channel, true, null, parts) as Promise<Channel>
+    return this.youtube._genericService.getItem(Channel, true, null, parts) as Promise<Channel>
   }
 
   /**
@@ -67,7 +67,7 @@ export class OAuth {
    */
   public async getMySubscriptions (maxPerPage?: number, parts?: SubscriptionParts): Promise<Subscription[]> {
     this.checkTokenAndThrow()
-    return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Subscriptions, mine: true, maxPerPage, parts })).results as Subscription[]
+    return (await this.youtube._genericService.getPaginatedItems({ type: PaginatedItemType.Subscriptions, mine: true, maxPerPage, parts })).items as Subscription[]
   }
 
   /**
@@ -79,7 +79,7 @@ export class OAuth {
    */
   public async getMyPlaylists (maxPerPage?: number, parts?: PlaylistParts): Promise<Playlist[]> {
     this.checkTokenAndThrow()
-    return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.Playlists, mine: true, maxPerPage, parts })).results as Playlist[]
+    return (await this.youtube._genericService.getPaginatedItems({ type: PaginatedItemType.Playlists, mine: true, maxPerPage, parts })).items as Playlist[]
   }
 
   /**
@@ -93,8 +93,8 @@ export class OAuth {
   public async postComment (text: string, channelResolvable: string | Channel, videoResolvable?: string): Promise<YTComment> {
     this.checkTokenAndThrow()
 
-    const channelId = await GenericService.getId(this.youtube, channelResolvable, Channel)
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const channelId = await this.youtube._genericService.getId(channelResolvable, Channel)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const data: typeof COMMENT_THREAD_DATA = JSON.parse(JSON.stringify(COMMENT_THREAD_DATA))
 
     data.snippet.topLevelComment.snippet.textOriginal = text
@@ -105,7 +105,7 @@ export class OAuth {
     }
 
     const result = await this.youtube._request.post('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, result.snippet.topLevelComment, true)
+    return new YTComment(result.snippet.topLevelComment, true)
   }
 
   /**
@@ -122,7 +122,7 @@ export class OAuth {
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, response, true)
+    return new YTComment(response, true)
   }
 
   /**
@@ -141,11 +141,11 @@ export class OAuth {
     console.log(data)
 
     const result = await this.youtube._request.put('comments', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    const comment = new YTComment(this.youtube, result, true)
+    const comment = new YTComment(result, true)
 
     if (result.replies) {
       result.replies.comments.forEach(reply => {
-        const created = new YTComment(this.youtube, reply, true)
+        const created = new YTComment(reply, true)
         comment.replies.push(created)
       })
     }
@@ -208,7 +208,7 @@ export class OAuth {
   public async subscribeToChannel (channelResolvable: string | Channel): Promise<Subscription> {
     this.checkTokenAndThrow()
 
-    const channelId = await GenericService.getId(this.youtube, channelResolvable, Channel)
+    const channelId = await this.youtube._genericService.getId(channelResolvable, Channel)
     const data: typeof SUBSCRIPTION_DATA = JSON.parse(JSON.stringify(SUBSCRIPTION_DATA))
 
     data.snippet.resourceId.channelId = channelId
@@ -236,7 +236,7 @@ export class OAuth {
   public async rateVideo (videoResolvable: string | Video, rating: 'like' | 'dislike' | 'none'): Promise<void> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     return this.youtube._request.post('videos/rate', { id: videoId, rating }, null, null, this.youtube.accessToken)
   }
 
@@ -248,7 +248,7 @@ export class OAuth {
   public async getMyRatings (videoResolvables: (string | Video)[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
     this.checkTokenAndThrow()
 
-    const videoIds = await Promise.all(videoResolvables.map(videoResolvable => GenericService.getId(this.youtube, videoResolvable, Video)))
+    const videoIds = await Promise.all(videoResolvables.map(videoResolvable => this.youtube._genericService.getId(videoResolvable, Video)))
     const cached = Cache.get(`get://videos/getRating/${JSON.stringify(videoIds)}`)
 
     if (this.youtube._shouldCache && cached) {
@@ -273,7 +273,7 @@ export class OAuth {
   public async reportAbuse (videoResolvable: string | Video, reasonId: string, secondaryReasonId?: string, comments?: string, language?: string): Promise<void> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const data: {
       videoId: string
       reasonId: string
@@ -300,7 +300,7 @@ export class OAuth {
   public async deleteVideo (videoResolvable: string | Video): Promise<void> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     return this.youtube._request.delete('videos', { id: videoId }, null, this.youtube.accessToken)
   }
 
@@ -353,7 +353,7 @@ export class OAuth {
   public async setThumbnail (videoResolvable: string | Video, image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const response = await this.youtube._upload.imagePost('thumbnails/set', image.data, image.type, { videoId }, null, this.youtube.accessToken)
 
     return response.items[0]
@@ -408,7 +408,7 @@ export class OAuth {
     localizations?: {[language: string]: { title: string; description: string }}): Promise<Playlist> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
+    const id = await this.youtube._genericService.getId(playlistResolvable, Playlist)
     const data: typeof PLAYLIST_DATA = JSON.parse(JSON.stringify(PLAYLIST_DATA))
     const parts: string[] = [ 'id', 'player', 'snippet' ]
 
@@ -436,7 +436,7 @@ export class OAuth {
   public async deletePlaylist (playlistResolvable: string | Playlist): Promise<void> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
+    const id = await this.youtube._genericService.getId(playlistResolvable, Playlist)
     return this.youtube._request.delete('playlists', { id }, null, this.youtube.accessToken)
   }
 
@@ -452,8 +452,8 @@ export class OAuth {
   public async addPlaylistItem (playlistResolvable: string | Playlist, videoResolvable: string | Video, position?: number, note?: string): Promise<Video> {
     this.checkTokenAndThrow()
 
-    const playlistId = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const playlistId = await this.youtube._genericService.getId(playlistResolvable, Playlist)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
 
     const data: typeof PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
@@ -485,8 +485,8 @@ export class OAuth {
   public async updatePlaylistItem (id: string, playlistResolvable: string | Playlist, videoResolvable: string | Video, position?: number, note?: string): Promise<Video> {
     this.checkTokenAndThrow()
 
-    const playlistId = await GenericService.getId(this.youtube, playlistResolvable, Playlist)
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const playlistId = await this.youtube._genericService.getId(playlistResolvable, Playlist)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
 
     const data: typeof PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
@@ -525,7 +525,7 @@ export class OAuth {
   public async updateChannelBranding (channelResolvable: string | Channel, brandingSettings: ChannelBrandingSettings): Promise<Channel> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
+    const id = await this.youtube._genericService.getId(channelResolvable, Channel)
     const data: typeof CHANNEL_DATA = JSON.parse(JSON.stringify(CHANNEL_DATA))
 
     data.id = id
@@ -546,7 +546,7 @@ export class OAuth {
   public async updateChannelLocalizations (channelResolvable: string | Channel, localizations: { [key: string]: { title: string; description: string } }): Promise<Channel> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
+    const id = await this.youtube._genericService.getId(channelResolvable, Channel)
     const data: typeof CHANNEL_DATA = JSON.parse(JSON.stringify(CHANNEL_DATA))
 
     data.id = id
@@ -565,7 +565,7 @@ export class OAuth {
   public async setChannelMadeForKids (channelResolvable: string | Channel, madeForKids: boolean): Promise<Channel> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
+    const id = await this.youtube._genericService.getId(channelResolvable, Channel)
     const data: typeof CHANNEL_DATA = JSON.parse(JSON.stringify(CHANNEL_DATA))
 
     data.id = id
@@ -589,7 +589,7 @@ export class OAuth {
   public async setChannelWatermark (channelResolvable: string | Channel, type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Buffer, imageType: 'png' | 'jpeg'): Promise<void> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
+    const id = await this.youtube._genericService.getId(channelResolvable, Channel)
     const data: typeof WATERMARK_DATA = JSON.parse(JSON.stringify(WATERMARK_DATA))
 
     data.timing = {
@@ -609,7 +609,7 @@ export class OAuth {
   public async unsetChannelWatermark (channelResolvable: string | Channel): Promise<void> {
     this.checkTokenAndThrow()
 
-    const id = await GenericService.getId(this.youtube, channelResolvable, Channel)
+    const id = await this.youtube._genericService.getId(channelResolvable, Channel)
     return this.youtube._request.post('watermarks/unset', { channelId: id }, null, null, this.youtube.accessToken)
   }
 
@@ -648,8 +648,8 @@ export class OAuth {
     if (name) data.snippet.title = name
     if (position) data.snippet.position = position
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
-    if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => GenericService.getId(this.youtube, v, Playlist)))
-    if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => GenericService.getId(this.youtube, v, Channel)))
+    if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => this.youtube._genericService.getId(v, Playlist)))
+    if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => this.youtube._genericService.getId(v, Channel)))
 
     if (playlistsResolvable || channelsResolvable) parts.push('contentDetails')
 
@@ -686,8 +686,8 @@ export class OAuth {
     if (name) data.snippet.title = name
     if (position) data.snippet.position = position
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
-    if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => GenericService.getId(this.youtube, v, Playlist)))
-    if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => GenericService.getId(this.youtube, v, Channel)))
+    if (playlistsResolvable) data.contentDetails.playlists = await Promise.all(playlistsResolvable.map(v => this.youtube._genericService.getId(v, Playlist)))
+    if (channelsResolvable) data.contentDetails.channels = await Promise.all(channelsResolvable.map(v => this.youtube._genericService.getId(v, Channel)))
 
     if (playlistsResolvable || channelsResolvable) parts.push('contentDetails')
 
@@ -714,7 +714,7 @@ export class OAuth {
   public async getCaption (videoResolvable: string | Video, captionId: string): Promise<Caption> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const data = await this.youtube._request.api('captions', { videoId, id: captionId, part: 'snippet' }, null, this.youtube.accessToken)
 
     if (!data.items || data.items.length === 0) {
@@ -732,7 +732,7 @@ export class OAuth {
   public async getCaptions (videoResolvable: string | Video): Promise<Caption[]> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const data = await this.youtube._request.api('captions', { videoId, part: 'snippet' }, null, this.youtube.accessToken)
 
     if (!data.items || data.items.length === 0) {
@@ -754,7 +754,7 @@ export class OAuth {
   public async uploadCaption (videoResolvable: string | Video, language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
     this.checkTokenAndThrow()
 
-    const videoId = await GenericService.getId(this.youtube, videoResolvable, Video)
+    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const data: typeof CAPTION_DATA = JSON.parse(JSON.stringify(CAPTION_DATA))
 
     data.snippet = {
@@ -842,6 +842,6 @@ export class OAuth {
    */
   public async getVideoAbuseReportReasons () {
     this.checkTokenAndThrow()
-    return (await GenericService.getPaginatedItems({ youtube: this.youtube, type: PaginatedItemType.VideoAbuseReportReasons })).results as VideoAbuseReportReason[]
+    return (await this.youtube._genericService.getPaginatedItems({ type: PaginatedItemType.VideoAbuseReportReasons })).items as VideoAbuseReportReason[]
   }
 }

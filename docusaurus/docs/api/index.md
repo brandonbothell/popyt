@@ -6,6 +6,8 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
+import RunkitCodeBlock from '@site/src/components/RunkitCodeBlock'
+
 # Getting Started
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
@@ -30,12 +32,13 @@ or the [tutorial](./tutorial/intro) to get started.
 Here are some basic methods:
 
 Instantiate the object:
-<font size="2.5"><b><a href="https://runkit.com/brandonbothell/fetch-a-video">Try this on RunKit</a></b></font>
 
-```js
-const { YouTube } = require('popyt')
-const youtube = new YouTube(apiKey)
-```
+<RunkitCodeBlock
+  language="js"
+  runkitUrl="https://runkit.com/brandonbothell/fetch-a-video">
+  {`const { YouTube } = require('popyt')
+const youtube = new YouTube(apiKey)`}
+</RunkitCodeBlock>
 
 Instantiate the object without caching:
 

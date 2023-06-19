@@ -1,11 +1,11 @@
 import { parse } from 'url'
-import { ISODuration } from '../types'
+import { ISODuration, ParsedUrl } from '../types'
 
 /**
  * @ignore
  */
 export class Parser {
-  public static parseUrl (url: string): { video: string; playlist: string; channel: string } {
+  public static parseUrl (url: string): ParsedUrl {
     url = url.startsWith('https://www.') ? url :
       (url.startsWith('www.') ? `https://${url}` :
         (url.startsWith('https://') ? `${url.substring(0, 8)}www.${url.substring(8)}` : `https://www.${url}`))
@@ -24,39 +24,48 @@ export class Parser {
 
         if (parsed.pathname === '/watch') {
           if (!parsed.query.v || !idRegex.test(parsed.query.v as string)) {
-            return { video: null, playlist: null, channel: null }
+            return {}
           }
 
-          const response: { video: string; playlist: string; channel: string } = { video: parsed.query.v as string, playlist: null, channel: null }
+          const toReturn: ParsedUrl = { video: { id: parsed.query.v as string } }
 
           if (parsed.query.list) {
-            response.playlist = parsed.query.list as string
+            toReturn.playlist = { id: parsed.query.list as string }
           }
 
-          return response
+          return toReturn
         } else if (parsed.pathname === '/playlist') {
           if (!parsed.query.list || !idRegex.test(parsed.query.list as string)) {
-            return { video: null, playlist: null, channel: null }
+            return {}
           }
 
-          return { playlist: parsed.query.list as string, video: null, channel: null }
+          return { playlist: { id: parsed.query.list as string } }
         } else if (parsed.pathname.startsWith('/channel/') || parsed.pathname.startsWith('/c/')) {
           const id = parsed.pathname.replace('/channel/', '').replace('/c/', '')
 
           if (!id || !idRegex.test(id)) {
-            return { video: null, playlist: null, channel: null }
+            return {}
           }
 
-          return { channel: id, video: null, playlist: null }
+          return { channel: { id } }
+        } else if (parsed.pathname.startsWith('/@')) {
+          const username = parsed.pathname.replace('/@', '')
+
+          if (!username || !idRegex.test(username)) {
+            return {}
+          }
+
+          return { channel: { username: username } }
         }
 
-        return { video: null, playlist: null, channel: null }
+        return {}
       }
       case 'www.youtu.be':
       case 'youtu.be':
-        return { video: /^\/[a-zA-Z0-9-_]+$/.test(parsed.pathname) ? parsed.pathname.slice(1) : null, playlist: null, channel: null }
+        const isValidId = /^\/[a-zA-Z0-9-_]+$/.test(parsed.pathname)
+        return isValidId ? { video: { id: parsed.pathname.slice(1) } } : {}
       default:
-        return { video: null, playlist: null, channel: null }
+        return {}
     }
   }
 
