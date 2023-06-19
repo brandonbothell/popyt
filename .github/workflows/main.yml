@@ -1,6 +1,9 @@
 name: Test
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
 
 jobs:
   lint-and-test:
@@ -10,12 +13,6 @@ jobs:
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'
-    - name: Install dependencies
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: install # will run `yarn install` command
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Lint
       uses: borales/actions-yarn@v4
       with:

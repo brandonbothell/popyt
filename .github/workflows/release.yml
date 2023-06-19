@@ -16,12 +16,6 @@ jobs:
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'
-    - name: Install Deps
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: install # will run `yarn install` command
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Build Source and Typings
       uses: borales/actions-yarn@v4
       with:
