@@ -12,7 +12,7 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Checkout and Set Git User
       run: |
           git config --global user.name "Brandon Bothell"
@@ -62,12 +62,12 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
-    - name: Commit dependency files
-      run: |
-        git add .yarn/ .pnp.* yarn.lock docusaurus/.yarn/ docusaurus/.pnp.* docusaurus/yarn.lock
-        git commit -m "chore(deps): update lockfile and package cache"
-    - name: Push dependency files
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.GIT_ACCESS_TOKEN }}
-        branch: ${{ github.ref }}
+    # - name: Commit dependency files
+    #   run: |
+    #     git add .yarn/ .pnp.* yarn.lock docusaurus/.yarn/ docusaurus/.pnp.* docusaurus/yarn.lock
+    #     git commit -m "chore(deps): update lockfile and package cache"
+    # - name: Push dependency files
+    #   uses: ad-m/github-push-action@v0.6.0
+    #   with:
+    #     github_token: ${{ secrets.GIT_ACCESS_TOKEN }}
+    #     branch: ${{ github.ref }}
