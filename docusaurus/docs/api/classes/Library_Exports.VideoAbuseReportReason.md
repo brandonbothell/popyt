@@ -25,7 +25,7 @@ A YouTube [[Video]] abuse report reason.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:55](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L55)
+[entities/video-abuse-report-reason.ts:55](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L55)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The raw data of this reason.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:38](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L38)
+[entities/video-abuse-report-reason.ts:38](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L38)
 
 ___
 
@@ -49,7 +49,7 @@ Whether or not this is a full reason object.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:33](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L33)
+[entities/video-abuse-report-reason.ts:33](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L33)
 
 ___
 
@@ -61,7 +61,7 @@ The ID of this reason.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:43](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L43)
+[entities/video-abuse-report-reason.ts:43](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L43)
 
 ___
 
@@ -73,7 +73,7 @@ The label text of this reason.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:48](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L48)
+[entities/video-abuse-report-reason.ts:48](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L48)
 
 ___
 
@@ -85,7 +85,7 @@ A list of secondary reasons associated with the reason, if any are available.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:53](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L53)
+[entities/video-abuse-report-reason.ts:53](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L53)
 
 ___
 
@@ -97,7 +97,7 @@ The YouTube object that created this reason object.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:28](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L28)
+[entities/video-abuse-report-reason.ts:28](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L28)
 
 ___
 
@@ -109,7 +109,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:13](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L13)
+[entities/video-abuse-report-reason.ts:13](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L13)
 
 ___
 
@@ -121,7 +121,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:23](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L23)
+[entities/video-abuse-report-reason.ts:23](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L23)
 
 ___
 
@@ -133,4 +133,4 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/video-abuse-report-reason.ts:18](https://github.com/brandonbothell/popyt/blob/6336d2d/src/entities/video-abuse-report-reason.ts#L18)
+[entities/video-abuse-report-reason.ts:18](https://github.com/brandonbothell/popyt/blob/f2a9a66/src/entities/video-abuse-report-reason.ts#L18)

@@ -20,6 +20,12 @@ jobs:
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'
+    - name: Clean yarn cache
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: cache clean
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Install dependencies and update lockfile
       uses: borales/actions-yarn@v4
       with:
