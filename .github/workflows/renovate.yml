@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Checkout and Set Git User
-      run: |
-          git config --global user.name "Brandon Bothell"
-          git config --global user.email "bothellbrandon@gmail.com"
+    # - name: Checkout and Set Git User
+    #   run: |
+    #       git config --global user.name "Brandon Bothell"
+    #       git config --global user.email "bothellbrandon@gmail.com"
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'
@@ -50,12 +50,12 @@ jobs:
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Commit dependency files
-      run: |
-        git add .yarn/ .pnp.* yarn.lock docusaurus/.yarn/ docusaurus/.pnp.* docusaurus/yarn.lock
-        git commit -m "chore(deps): update lockfile and package cache"
-    - name: Push dependency files
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.GIT_ACCESS_TOKEN }}
-        branch: ${{ github.ref }}
+    # - name: Commit dependency files
+    #   run: |
+    #     git add .yarn/ .pnp.* yarn.lock docusaurus/.yarn/ docusaurus/.pnp.* docusaurus/yarn.lock
+    #     git commit -m "chore(deps): update lockfile and package cache"
+    # - name: Push dependency files
+    #   uses: ad-m/github-push-action@v0.6.0
+    #   with:
+    #     github_token: ${{ secrets.GIT_ACCESS_TOKEN }}
+    #     branch: ${{ github.ref }}
