@@ -64,7 +64,7 @@ describe('Searching', () => {
       data.items.find(r => r instanceof Video),
       data.items.find(r => r instanceof Playlist),
       data.items.find(r => r instanceof Channel)
-    ].length).to.be.greaterThanOrEqual(2) // playlists aren't that favored by the youtube algorithm
+    ].filter(r => r !== undefined).length).to.be.greaterThanOrEqual(2) // playlists aren't that favored by the youtube algorithm
   })
 
   it('should work with fetching videos of a channel', async () => {
