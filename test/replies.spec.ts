@@ -12,7 +12,6 @@ if (!apiKey) {
 
 describe('Replies', () => {
   it('should work with valid comments with replies', async () => {
-    console.log(Cache['cache'])
     const replies = await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
     expect(replies[0]).to.be.instanceOf(YTComment)
 

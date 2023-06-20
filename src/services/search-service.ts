@@ -57,7 +57,7 @@ export class SearchService {
 
     if (pageToken) options.pageToken = pageToken
 
-    const searchFilters = otherFilters as any as SearchFilters<T>
+    const searchFilters = otherFilters as unknown as SearchFilters<T>
 
     if ('channelId' in searchFilters) options.channelId = searchFilters.channelId
     if ('videoCategoryId' in searchFilters) options.videoCategoryId = searchFilters.videoCategoryId
