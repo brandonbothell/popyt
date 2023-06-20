@@ -44,4 +44,4 @@ jobs:
         cmd: test
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
