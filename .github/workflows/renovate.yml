@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       uses: borales/actions-yarn@v4
       with:
-        cmd: install --no-immutable
+        cmd: install
     - name: Lint
       uses: borales/actions-yarn@v4
       with:
