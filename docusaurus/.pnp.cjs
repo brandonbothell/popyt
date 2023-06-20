@@ -40,7 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.13"],\
             ["clsx", "npm:1.2.1"],\
             ["docusaurus-plugin-typedoc", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:0.19.2"],\
-            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.3.5"],\
+            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.0.5"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:18.2.0"],\
             ["typedoc", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:0.24.8"],\
@@ -3617,7 +3617,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.21"],\
             ["nprogress", "npm:0.2.0"],\
             ["postcss", "npm:8.4.24"],\
-            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.3.5"],\
+            ["prism-react-renderer", "virtual:85f8d49bb1e159bc052e0b809c525d5a61ba997a69463bb03a85c9b3db19cb70ce1cfafeaf3bf50c6e6a0c562e3da4937d360f8fe8f38cf120c410912408f004#npm:1.3.5"],\
             ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:18.2.0"],\
@@ -3660,7 +3660,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-router-config", "npm:5.0.7"],\
             ["clsx", "npm:1.2.1"],\
             ["parse-numeric-range", "npm:1.3.0"],\
-            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.3.5"],\
+            ["prism-react-renderer", "virtual:85f8d49bb1e159bc052e0b809c525d5a61ba997a69463bb03a85c9b3db19cb70ce1cfafeaf3bf50c6e6a0c562e3da4937d360f8fe8f38cf120c410912408f004#npm:1.3.5"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:18.2.0"],\
             ["tslib", "npm:2.5.3"],\
@@ -4778,6 +4778,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-parse5-npm-5.0.3-d544890715-d6b7495cb1.zip/node_modules/@types/parse5/",\
           "packageDependencies": [\
             ["@types/parse5", "npm:5.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/prismjs", [\
+        ["npm:1.26.0", {\
+          "packageLocation": "./.yarn/cache/@types-prismjs-npm-1.26.0-e89ec94ae4-cd5e7a6214.zip/node_modules/@types/prismjs/",\
+          "packageDependencies": [\
+            ["@types/prismjs", "npm:1.26.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7225,7 +7234,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.2.13"],\
             ["clsx", "npm:1.2.1"],\
             ["docusaurus-plugin-typedoc", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:0.19.2"],\
-            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.3.5"],\
+            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.0.5"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:18.2.0"],\
             ["typedoc", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:0.24.8"],\
@@ -11904,11 +11913,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.3.5", {\
-          "packageLocation": "./.yarn/__virtual__/prism-react-renderer-virtual-6e9f79bf40/0/cache/prism-react-renderer-npm-1.3.5-5891d32b72-c18806dcbc.zip/node_modules/prism-react-renderer/",\
+        ["npm:2.0.5", {\
+          "packageLocation": "./.yarn/cache/prism-react-renderer-npm-2.0.5-191e1517ae-9cd7e1fcf1.zip/node_modules/prism-react-renderer/",\
           "packageDependencies": [\
-            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.3.5"],\
+            ["prism-react-renderer", "npm:2.0.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:85f8d49bb1e159bc052e0b809c525d5a61ba997a69463bb03a85c9b3db19cb70ce1cfafeaf3bf50c6e6a0c562e3da4937d360f8fe8f38cf120c410912408f004#npm:1.3.5", {\
+          "packageLocation": "./.yarn/__virtual__/prism-react-renderer-virtual-35d6b792ae/0/cache/prism-react-renderer-npm-1.3.5-5891d32b72-c18806dcbc.zip/node_modules/prism-react-renderer/",\
+          "packageDependencies": [\
+            ["prism-react-renderer", "virtual:85f8d49bb1e159bc052e0b809c525d5a61ba997a69463bb03a85c9b3db19cb70ce1cfafeaf3bf50c6e6a0c562e3da4937d360f8fe8f38cf120c410912408f004#npm:1.3.5"],\
             ["@types/react", "npm:18.2.13"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.0.5", {\
+          "packageLocation": "./.yarn/__virtual__/prism-react-renderer-virtual-62e99b166f/0/cache/prism-react-renderer-npm-2.0.5-191e1517ae-9cd7e1fcf1.zip/node_modules/prism-react-renderer/",\
+          "packageDependencies": [\
+            ["prism-react-renderer", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.0.5"],\
+            ["@types/prismjs", "npm:1.26.0"],\
+            ["@types/react", "npm:18.2.13"],\
+            ["clsx", "npm:1.2.1"],\
             ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
