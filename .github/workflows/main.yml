@@ -18,20 +18,14 @@ jobs:
       uses: borales/actions-yarn@v4
       with:
         cmd: lint
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Build typings (type check)
       uses: borales/actions-yarn@v4
       with:
         cmd: build
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Test build of documentatation
       uses: borales/actions-yarn@v4
       with:
         cmd: docs:build
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   test:
     name: Test and upload coverage
     runs-on: ubuntu-latest
@@ -46,7 +40,6 @@ jobs:
         cmd: coverage
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
