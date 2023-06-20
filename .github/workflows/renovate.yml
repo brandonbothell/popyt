@@ -7,6 +7,7 @@ on:
     paths:
       - 'package.json'
       - '.github/**/*.yml'
+  workflow_dispatch:
 
 jobs:
   lint-and-test:
