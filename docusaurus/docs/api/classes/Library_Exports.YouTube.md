@@ -27,7 +27,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:87](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L87)
+[index.ts:87](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L87)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:61](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L61)
+[index.ts:61](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L61)
 
 ___
 
@@ -49,7 +49,7 @@ The language for the API to respond in. See [[YouTube.getLanguages]].
 
 #### Defined in
 
-[index.ts:71](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L71)
+[index.ts:71](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L71)
 
 ___
 
@@ -61,7 +61,7 @@ Methods requiring an OAuth token.
 
 #### Defined in
 
-[index.ts:66](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L66)
+[index.ts:66](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L66)
 
 ___
 
@@ -73,7 +73,7 @@ The region for the API cater responses to. See [[YouTube.getRegions]].
 
 #### Defined in
 
-[index.ts:76](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L76)
+[index.ts:76](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L76)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[index.ts:59](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L59)
+[index.ts:59](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L59)
 
 ## Methods
 
@@ -99,7 +99,7 @@ Get the list of categories in `this.region`.
 
 #### Defined in
 
-[index.ts:353](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L353)
+[index.ts:353](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L353)
 
 ___
 
@@ -121,7 +121,7 @@ Get a [[VideoCategory]] object from the ID of a category.
 
 #### Defined in
 
-[index.ts:221](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L221)
+[index.ts:221](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L221)
 
 ___
 
@@ -146,7 +146,7 @@ Meant mostly for getting by URL or ID.
 
 #### Defined in
 
-[index.ts:183](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L183)
+[index.ts:183](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L183)
 
 ___
 
@@ -176,7 +176,7 @@ Partial comment objects.
 
 #### Defined in
 
-[index.ts:288](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L288)
+[index.ts:288](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L288)
 
 ___
 
@@ -202,7 +202,7 @@ Partial playlist objects.
 
 #### Defined in
 
-[index.ts:303](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L303)
+[index.ts:303](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L303)
 
 ___
 
@@ -225,7 +225,7 @@ Get a [[ChannelSection]] object from the ID of a section.
 
 #### Defined in
 
-[index.ts:230](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L230)
+[index.ts:230](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L230)
 
 ___
 
@@ -250,7 +250,7 @@ Partial channel section objects.
 
 #### Defined in
 
-[index.ts:344](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L344)
+[index.ts:344](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L344)
 
 ___
 
@@ -276,7 +276,7 @@ Partial subscription objects.
 
 #### Defined in
 
-[index.ts:318](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L318)
+[index.ts:318](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L318)
 
 ___
 
@@ -299,7 +299,7 @@ Get a [[Comment]] object from the ID of a comment.
 
 #### Defined in
 
-[index.ts:204](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L204)
+[index.ts:204](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L204)
 
 ___
 
@@ -325,7 +325,7 @@ Partial comment objects.
 
 #### Defined in
 
-[index.ts:333](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L333)
+[index.ts:333](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L333)
 
 ___
 
@@ -341,7 +341,7 @@ Get a list of languages that YouTube supports.
 
 #### Defined in
 
-[index.ts:360](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L360)
+[index.ts:360](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L360)
 
 ___
 
@@ -365,7 +365,7 @@ Meant mostly for getting by URL or ID.
 
 #### Defined in
 
-[index.ts:194](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L194)
+[index.ts:194](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L194)
 
 ___
 
@@ -391,7 +391,7 @@ Partial video objects.
 
 #### Defined in
 
-[index.ts:256](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L256)
+[index.ts:256](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L256)
 
 ___
 
@@ -407,7 +407,7 @@ Get a list of regions that YouTube supports.
 
 #### Defined in
 
-[index.ts:367](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L367)
+[index.ts:367](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L367)
 
 ___
 
@@ -430,7 +430,7 @@ Get a [[Subscription]] object from the ID of a subscription.
 
 #### Defined in
 
-[index.ts:213](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L213)
+[index.ts:213](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L213)
 
 ___
 
@@ -454,7 +454,7 @@ Get a [[Subscription]] object from the subscriber and channel of a subscription.
 
 #### Defined in
 
-[index.ts:240](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L240)
+[index.ts:240](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L240)
 
 ___
 
@@ -478,7 +478,7 @@ Meant mostly for getting by URL or ID.
 
 #### Defined in
 
-[index.ts:171](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L171)
+[index.ts:171](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L171)
 
 ___
 
@@ -504,13 +504,13 @@ Partial comment objects.
 
 #### Defined in
 
-[index.ts:271](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L271)
+[index.ts:271](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L271)
 
 ___
 
 ### search
 
-▸ **search**<`T`\>(`searchTerm`, `searchOptions?`): `Promise`<`PaginatedItemsReturns`<`T`\>\>
+▸ **search**<`T`\>(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<`T`\>\>
 
 Search supported entities on YouTube.
 
@@ -525,21 +525,21 @@ Search supported entities on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<`T`\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to 10 items and 1 page. Max 50 per page. |
+| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<`T`\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<`PaginatedItemsReturns`<`T`\>\>
+`Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<`T`\>\>
 
 #### Defined in
 
-[index.ts:128](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L128)
+[index.ts:128](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L128)
 
 ___
 
 ### searchChannels
 
-▸ **searchChannels**(`searchTerm`, `searchOptions?`): `Promise`<`PaginatedItemsReturns`<typeof [`Channel`](Library_Exports.Channel)\>\>
+▸ **searchChannels**(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<typeof [`Channel`](Library_Exports.Channel)\>\>
 
 Search channels on YouTube.
 
@@ -548,21 +548,21 @@ Search channels on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<typeof [`Channel`](Library_Exports.Channel)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to 10 items and 1 page. Max 50 per page. |
+| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<typeof [`Channel`](Library_Exports.Channel)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<`PaginatedItemsReturns`<typeof [`Channel`](Library_Exports.Channel)\>\>
+`Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<typeof [`Channel`](Library_Exports.Channel)\>\>
 
 #### Defined in
 
-[index.ts:150](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L150)
+[index.ts:150](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L150)
 
 ___
 
 ### searchPlaylists
 
-▸ **searchPlaylists**(`searchTerm`, `searchOptions?`): `Promise`<`PaginatedItemsReturns`<typeof [`Playlist`](Library_Exports.Playlist)\>\>
+▸ **searchPlaylists**(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<typeof [`Playlist`](Library_Exports.Playlist)\>\>
 
 Search playlists on YouTube.
 
@@ -571,21 +571,21 @@ Search playlists on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<typeof [`Playlist`](Library_Exports.Playlist)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to 10 items and 1 page. Max 50 per page. |
+| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<typeof [`Playlist`](Library_Exports.Playlist)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<`PaginatedItemsReturns`<typeof [`Playlist`](Library_Exports.Playlist)\>\>
+`Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<typeof [`Playlist`](Library_Exports.Playlist)\>\>
 
 #### Defined in
 
-[index.ts:161](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L161)
+[index.ts:161](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L161)
 
 ___
 
 ### searchVideos
 
-▸ **searchVideos**(`searchTerm`, `searchOptions?`): `Promise`<`PaginatedItemsReturns`<typeof [`Video`](Library_Exports.Video)\>\>
+▸ **searchVideos**(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<typeof [`Video`](Library_Exports.Video)\>\>
 
 Search videos on YouTube.
 
@@ -594,12 +594,12 @@ Search videos on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<typeof [`Video`](Library_Exports.Video)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to 10 items and 1 page. Max 50 per page. |
+| `searchOptions?` | [`SearchOptions`](../modules/Library_Exports#searchoptions)<typeof [`Video`](Library_Exports.Video)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<`PaginatedItemsReturns`<typeof [`Video`](Library_Exports.Video)\>\>
+`Promise`<[`PaginatedItemsReturns`](../modules/Library_Exports#paginateditemsreturns)<typeof [`Video`](Library_Exports.Video)\>\>
 
 #### Defined in
 
-[index.ts:139](https://github.com/brandonbothell/popyt/blob/96fc0a8/src/index.ts#L139)
+[index.ts:139](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L139)
