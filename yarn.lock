@@ -3242,13 +3242,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.2":
-  version: 17.0.2
-  resolution: "@types/react@npm:17.0.2"
+"@types/react@npm:17.0.62":
+  version: 17.0.62
+  resolution: "@types/react@npm:17.0.62"
   dependencies:
     "@types/prop-types": "*"
+    "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: a5198857165feddcbfc7d33e3322460ac62b8894d702414496a825b0c82272911ec33a42ef7c9d623a59308070eef4dfee6ff834b0674aa3f87eeb644196ee3b
+  checksum: 428a5aff44824ef504e9a9259b5894fe44a5db1c344b536990f07e132900ff5b34cbef0be77a84f30f37be1f88fc8b56dce328f568de8d65de3bfe414c05b2e1
   languageName: node
   linkType: hard
 
@@ -5641,7 +5642,7 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@tsconfig/docusaurus": 1.0.7
     "@types/node": 20.3.1
-    "@types/react": 17.0.2
+    "@types/react": 17.0.62
     clsx: 1.2.1
     docusaurus-plugin-typedoc: 0.19.2
     prism-react-renderer: 1.3.5
