@@ -35,11 +35,11 @@ describe('Caching', () => {
   })
 
   it('should not use expired items', async () => {
-    const youtube = new YouTube(apiKey, undefined, { cacheTTL: 0.01, cacheCheckInterval: 0.009 })
+    const youtube = new YouTube(apiKey, undefined, { cacheTTL: 0.001, cacheCheckInterval: 0.009 })
     await youtube.getVideo('dQw4w9WgXcQ')
 
-    const video = youtube.getVideo('dQw4w9WgXcQ')
     const time = new Date().getTime()
+    const video = youtube.getVideo('dQw4w9WgXcQ')
 
     await video
 
