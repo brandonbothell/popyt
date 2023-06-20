@@ -37,3 +37,9 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
+    - name: Test build of documentatation
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: docs:build
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

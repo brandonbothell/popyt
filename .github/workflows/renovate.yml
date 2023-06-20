@@ -20,18 +20,6 @@ jobs:
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'
-    - name: Clean yarn cache
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: cache clean
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Install dependencies and update lockfile
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: install # will run `yarn install` command
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Lint
       uses: borales/actions-yarn@v4
       with:
@@ -44,30 +32,16 @@ jobs:
         cmd: build
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Build Docs
+    - name: Test build of documentation
       uses: borales/actions-yarn@v4
       with:
         cmd: docs:build
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Test and generate coverage
+    - name: Run unit tests
       uses: borales/actions-yarn@v4
       with:
-        cmd: coverage
+        cmd: test
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./coverage/coverage-final.json
-    # - name: Commit dependency files
-    #   run: |
-    #     git add .yarn/ .pnp.* yarn.lock docusaurus/.yarn/ docusaurus/.pnp.* docusaurus/yarn.lock
-    #     git commit -m "chore(deps): update lockfile and package cache"
-    # - name: Push dependency files
-    #   uses: ad-m/github-push-action@v0.6.0
-    #   with:
-    #     github_token: ${{ secrets.GIT_ACCESS_TOKEN }}
-    #     branch: ${{ github.ref }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }
