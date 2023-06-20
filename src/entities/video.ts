@@ -1,8 +1,8 @@
-import { YouTube, VideoUpdateResource, Caption } from '..'
-import { Thumbnail, ISODuration, PageOptions } from '../types'
-import { YTComment } from './comment'
 import { Parser } from '../util'
 import { CommentThreadParts, VideoParts } from '../types/Parts'
+import { Thumbnail, ISODuration, PageOptions } from '../types'
+import { YouTube, VideoUpdateResource, Caption } from '..'
+import { YTComment } from './comment'
 
 /**
  * A YouTube video.

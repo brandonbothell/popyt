@@ -1,5 +1,5 @@
-import { YouTube, Playlist, Channel, ChannelSectionType } from '..'
 import { ChannelParts, ChannelSectionParts, PlaylistParts } from '../types/Parts'
+import { YouTube, Playlist, Channel, ChannelSectionType } from '..'
 
 /**
  * A YouTube [[Channel]] section.

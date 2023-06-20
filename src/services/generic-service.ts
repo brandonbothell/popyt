@@ -1,7 +1,7 @@
-import YouTube,
-{ Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 import { Cache, Parser } from '../util'
 import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType } from '../types'
+import YouTube,
+{ Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 
 /**
  * @ignore

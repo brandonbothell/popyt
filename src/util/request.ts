@@ -1,6 +1,6 @@
+import { URL } from 'url'
 import { request as https } from 'https'
 import { IncomingMessage, RequestOptions, OutgoingMessage } from 'http'
-import { URL } from 'url'
 
 /**
  * @ignore

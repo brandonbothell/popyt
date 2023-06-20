@@ -1,5 +1,5 @@
-import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters } from '..'
 import { Cache } from '../util'
+import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters } from '..'
 
 /**
  * @ignore

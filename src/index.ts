@@ -2,12 +2,12 @@
  * @module Library Exports
  */
 
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection } from './entities'
 import { Cache, Request } from './util'
-import { OAuth } from './oauth'
-import { SearchService, GenericService, SubscriptionService } from './services'
 import { VideoParts, ChannelParts, ChannelSectionParts, CommentParts, CommentThreadParts, PlaylistItemParts, PlaylistParts, SubscriptionParts } from './types/Parts'
 import { PageOptions, PaginatedItemType, PaginatedItemsReturns, SearchOptions, SearchType } from './types'
+import { SearchService, GenericService, SubscriptionService } from './services'
+import { OAuth } from './oauth'
+import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection } from './entities'
 
 export * from './entities'
 export * from './types'

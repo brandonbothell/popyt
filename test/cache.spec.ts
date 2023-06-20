@@ -1,8 +1,8 @@
 import 'mocha'
-import { expect } from 'chai'
-import { YouTube } from '../src'
 import { Cache } from '../src/util/caching'
+import { YouTube } from '../src'
 import { youtube } from './setup-instance'
+import { expect } from 'chai'
 
 const apiKey = youtube.token
 

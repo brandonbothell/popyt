@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { isValidElement, type ReactNode } from 'react'
+import type { Props } from '@theme/CodeBlock'
+import Svg from '@site/static/img/runkit_logo.svg'
 import useIsBrowser from '@docusaurus/useIsBrowser'
 import ElementContent from './Content/Element'
 import StringContent from './/Content/String'
-import type { Props } from '@theme/CodeBlock'
-import Svg from '@site/static/img/runkit_logo.svg'
+import React, { isValidElement, type ReactNode } from 'react'
 
 /**
  * Best attempt to make the children a plain string so it is copyable. If there

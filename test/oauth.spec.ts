@@ -1,7 +1,7 @@
 import 'mocha'
-import { expect } from 'chai'
-import { YouTube, VideoAbuseReportReason, Caption } from '../src'
 import { readFileSync } from 'fs'
+import { YouTube, VideoAbuseReportReason, Caption } from '../src'
+import { expect } from 'chai'
 
 const key = process.env.YOUTUBE_API_KEY
 const token = process.env.YOUTUBE_ACCESS_TOKEN

@@ -1,6 +1,5 @@
-import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions } from '..'
-import { GenericService } from '../services'
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
+import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions } from '..'
 
 /**
  * A YouTube playlist.

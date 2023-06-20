@@ -5,6 +5,9 @@
  * @module OAuth
  */
 
+import { Cache } from './util'
+import { ChannelParts, PlaylistParts, SubscriptionParts } from './types/Parts'
+import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA, CAPTION_DATA } from './constants'
 import YouTube,
 {
   YTComment,
@@ -20,10 +23,6 @@ import YouTube,
   Caption,
   PaginatedItemType
 } from '.'
-import { COMMENT_THREAD_DATA, SUBSCRIPTION_DATA, PLAYLIST_DATA, PLAYLIST_ITEM_DATA, COMMENT_DATA, WATERMARK_DATA, CHANNEL_DATA, CHANNEL_SECTION_DATA, CAPTION_DATA } from './constants'
-import { GenericService } from './services'
-import { ChannelParts, PlaylistParts, SubscriptionParts } from './types/Parts'
-import { Cache } from './util'
 
 /**
  * All methods requiring an OAuth access token.

@@ -1,6 +1,6 @@
-import YouTube, { Subscription } from '..'
-import { SubscriptionParts } from '../types/Parts'
 import { Cache } from '../util'
+import { SubscriptionParts } from '../types/Parts'
+import YouTube, { Subscription } from '..'
 
 /**
  * @ignore

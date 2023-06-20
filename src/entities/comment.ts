@@ -1,5 +1,5 @@
-import { Channel, PageOptions, Video, YouTube } from '..'
 import { CommentParts } from '../types/Parts'
+import { PageOptions, YouTube } from '..'
 
 export class YTComment {
   /**

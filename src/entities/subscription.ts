@@ -1,6 +1,6 @@
-import YouTube from '..'
-import { Thumbnail } from '../types'
 import { SubscriptionParts } from '../types/Parts'
+import { Thumbnail } from '../types'
+import YouTube from '..'
 
 /**
  * A YouTube subscription.

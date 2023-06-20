@@ -1,5 +1,5 @@
-import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions } from '..'
 import { ChannelParts, ChannelSectionParts, CommentThreadParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
+import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions } from '..'
 
 /**
  * A YouTube channel.

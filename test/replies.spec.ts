@@ -1,8 +1,7 @@
 import 'mocha'
-import { expect } from 'chai'
 import { YTComment } from '../src'
 import { youtube } from './setup-instance'
-import { Cache } from '../src/util'
+import { expect } from 'chai'
 
 const apiKey = process.env.YOUTUBE_API_KEY
 

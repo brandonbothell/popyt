@@ -1,4 +1,4 @@
-import YouTube, { Video, Channel, YTComment, Playlist, Subscription, VideoCategory, VideoAbuseReportReason, Language, Region, ChannelSection, Caption } from '..'
+import { Video, Channel, YTComment, Playlist, Subscription, VideoCategory, VideoAbuseReportReason, Language, Region, ChannelSection, Caption } from '..'
 
 /**
  * @ignore
