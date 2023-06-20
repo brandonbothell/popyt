@@ -3,6 +3,7 @@ src/
 docs/
 coverage/
 tsconfig.json
+tsconfig.utils.json
 .vscode/
 desktop.ini
 CHANGELOG.md
