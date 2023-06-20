@@ -54,8 +54,8 @@ console.log(video)
 Search videos:
 
 ```js
-const videos = await youtube.searchVideos('never gonna give you up', 12)
-console.log(videos) // array of 12 partial video objects
+const search = await youtube.searchVideos('never gonna give you up')
+console.log(search.results.map(v => v.title).join('\n')) // titles of 50 beautiful videos
 ```
 
 Note: This wrapper does not implement every feature of the YouTube API. If you would like anything added, feel free to open an issue. The limits imposed by the wrapper are not imposed by YouTube.
