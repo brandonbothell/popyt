@@ -43,7 +43,7 @@ describe('Playlists', () => {
 
   it('should work with fetching all videos', async () => {
     const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
-    const videos = await playlist.fetchVideos(0, [ 'id' ])
+    const videos = await playlist.fetchVideos({ pages: 0 }, [ 'id' ])
 
     expect(videos.length).to.be.greaterThan(50)
     expect(playlist.videos.length).to.be.greaterThan(50)

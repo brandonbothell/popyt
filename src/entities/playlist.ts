@@ -1,4 +1,4 @@
-import { YouTube, Video, Thumbnail, PaginatedItemType } from '..'
+import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions } from '..'
 import { GenericService } from '../services'
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
 
@@ -140,10 +140,13 @@ export class Playlist {
 
   /**
    * Adds videos in this playlist to the `videos` property of this playlist.
-   * @param pages The number of pages of videos to fetch. Defaults to 1. Set <1 to fetch all items.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
+   * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
-  public async fetchVideos (pages?: number, parts?: PlaylistItemParts) {
-    this.videos = await this.youtube.getPlaylistItems(this.id, { pages }, parts)
+  public async fetchVideos (pageOptions?: PageOptions, parts?: PlaylistItemParts) {
+    this.videos = await this.youtube.getPlaylistItems(this.id, pageOptions, parts)
     return this.videos
   }
 

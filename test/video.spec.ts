@@ -35,6 +35,6 @@ describe('Videos', () => {
 
   it('should work with fetching video comments', async () => {
     const video = await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])
-    expect(await video.fetchComments(1, [ 'id' ])).to.be.an.instanceOf(Array)
+    expect(await video.fetchComments({ pages: 1 }, [ 'id' ])).to.be.an.instanceOf(Array)
   })
 })

@@ -1,5 +1,5 @@
 import { YouTube, VideoUpdateResource, Caption } from '..'
-import { Thumbnail, ISODuration } from '../types'
+import { Thumbnail, ISODuration, PageOptions } from '../types'
 import { YTComment } from './comment'
 import { Parser } from '../util'
 import { CommentThreadParts, VideoParts } from '../types/Parts'
@@ -276,10 +276,13 @@ export class Video {
 
   /**
    * Fetches the video's comments and assigns them to [[Video.comments]].
-   * @param pages The number of pages of comments to fetch. Defaults to 1. Set <1 to fetch all items.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
+   * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
-  public async fetchComments (pages?: number, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getVideoComments(this.id, { pages }, parts)
+  public async fetchComments (pageOptions?: PageOptions, parts?: CommentThreadParts) {
+    this.comments = await this.youtube.getVideoComments(this.id, pageOptions, parts)
     return this.comments
   }
 

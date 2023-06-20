@@ -310,20 +310,26 @@ export class Channel {
 
   /**
    * Fetches the channel's playlists and assigns them to [[Channel.playlists]].
-   * @param pages The number of pages of playlists to fetch. Defaults to 1. Set <1 to fetch all items.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
+   * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
-  public async fetchPlaylists (pages?: number, parts?: PlaylistParts) {
-    this.playlists = await this.youtube.getChannelPlaylists(this.id, { pages }, parts)
+  public async fetchPlaylists (pageOptions?: PageOptions, parts?: PlaylistParts) {
+    this.playlists = await this.youtube.getChannelPlaylists(this.id, pageOptions, parts)
     return this.playlists
   }
 
   /**
    * Fetches the channel's subscriptions and assigns them to [[Channel.subscriptions]].
-   * @param pages The number of pages of subscriptions to fetch. Defaults to 1. Set <1 to fetch all items.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
+   * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
   /* istanbul ignore next */
-  public async fetchSubscriptions (pages?: number, parts?: SubscriptionParts) {
-    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, { pages }, parts)
+  public async fetchSubscriptions (pageOptions?: PageOptions, parts?: SubscriptionParts) {
+    this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, pageOptions, parts)
     return this.subscriptions
   }
 

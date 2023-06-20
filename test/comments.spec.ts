@@ -29,7 +29,7 @@ describe('Comments', () => {
 
   it('should work with fetching from a video object', async () => {
     const video = await youtube.getVideo('Lq1D8PFnjWY')
-    const comments = await video.fetchComments(1)
+    const comments = await video.fetchComments({ pages: 1 })
 
     expect(comments[0]).to.be.an.instanceOf(YTComment)
     expect(video.comments[0].id).to.equal(comments[0].id)
@@ -71,7 +71,7 @@ describe('Comments', () => {
 
   it('should have the ID of its video', async () => {
     const video = await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])
-    const comments = await video.fetchComments(1, [ 'snippet' ])
+    const comments = await video.fetchComments({ maxPerPage: 1 }, [ 'snippet' ])
 
     expect(comments[0].videoId).to.equal('Lq1D8PFnjWY')
     // expect(comments[0].channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')

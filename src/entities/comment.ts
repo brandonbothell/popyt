@@ -1,4 +1,4 @@
-import { Channel, Video, YouTube } from '..'
+import { Channel, PageOptions, Video, YouTube } from '..'
 import { CommentParts } from '../types/Parts'
 
 export class YTComment {
@@ -189,10 +189,13 @@ export class YTComment {
 
   /**
    * Fetches replies to the comment.
-   * @param pages The number of pages of comments to fetch. Defaults to 1. Set <1 to fetch all items.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
+   * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
-  public async fetchReplies (pages?: number, parts?: CommentParts) {
-    this.replies = await this.youtube.getCommentReplies(this.id, { pages }, parts)
+  public async fetchReplies (pageOptions?: PageOptions, parts?: CommentParts) {
+    this.replies = await this.youtube.getCommentReplies(this.id, pageOptions, parts)
     return this.replies
   }
 
