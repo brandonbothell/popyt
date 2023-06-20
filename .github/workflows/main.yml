@@ -6,7 +6,8 @@ on:
       - 'master'
 
 jobs:
-  lint-and-test:
+  lint:
+    name: Lint and type check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,12 +20,26 @@ jobs:
         cmd: lint
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Build
+    - name: Build typings (type check)
       uses: borales/actions-yarn@v4
       with:
         cmd: build
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Test build of documentatation
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: docs:build
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  test:
+    name: Test and upload coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3.6.0
+      with:
+        node-version: '20.3.0'
     - name: Test and generate coverage
       uses: borales/actions-yarn@v4
       with:
@@ -37,9 +52,3 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
-    - name: Test build of documentatation
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: docs:build
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

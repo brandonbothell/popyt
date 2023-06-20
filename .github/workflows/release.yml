@@ -5,29 +5,18 @@ on:
     types: [released]
 
 jobs:
-  publish:
+  publish-docs:
+    name: Publish documenation
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Checkout and Set Git User
+    - name: Set git user
       run: |
           git config --global user.name "Brandon Bothell"
           git config --global user.email "bothellbrandon@gmail.com"
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'
-    - name: Build Source and Typings
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: build
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - name: Publish Package
-      uses: borales/actions-yarn@v4
-      with:
-        cmd: npm publish
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Build Docs
       uses: borales/actions-yarn@v4
       with:
@@ -43,3 +32,23 @@ jobs:
         GIT_USER: brandonbothell
         GIT_PASS: ${{ secrets.GIT_ACCESS_TOKEN }}
         CURRENT_BRANCH: master
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3.6.0
+      with:
+        node-version: '20.3.0'
+    - name: Build Source and Typings
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: build
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish Package
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: npm publish
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    
