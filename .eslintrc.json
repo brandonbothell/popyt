@@ -3,15 +3,26 @@
     "es6": true,
     "node": true
   },
+  "extends": [
+    "plugin:import/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": [ "tsconfig.json", "tsconfig.utils.json" ],
     "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "unused-imports"
   ],
   "rules": {
+    "import/no-unresolved": [ 0 ],
+    "import/order": ["error", {
+      "alphabetize": {
+        "order": "desc"
+      }
+    }],
+    "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/naming-convention": ["error",
       {
