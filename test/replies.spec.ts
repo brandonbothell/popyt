@@ -27,7 +27,7 @@ describe('Replies', () => {
 
   it('should have the ID of the comment it replied to', async () => {
     const comment = await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
-    const replies = await comment.fetchReplies(1)
+    const replies = await comment.fetchReplies({ maxPerPage: 1 })
 
     expect(replies[0].parentCommentId).to.equal('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
   })
