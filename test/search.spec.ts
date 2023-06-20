@@ -1,6 +1,6 @@
 import 'mocha'
 import { expect } from 'chai'
-import YouTube, { Playlist, Video, Channel } from '../src'
+import YouTube, { Playlist, Video, Channel, PaginatedItemsReturns } from '../src'
 import { youtube } from './setup-instance'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -10,15 +10,31 @@ if (!apiKey) {
 }
 
 describe('Searching', () => {
-  it('should default to 10 results', async () => {
-    expect((await youtube.searchVideos('never gonna give you up')).items.length).to.equal(10)
-    expect((await youtube.searchChannels('rick astley')).items.length).to.equal(10)
-    expect((await youtube.searchPlaylists('music')).items.length).to.equal(10)
-    expect((await youtube.search('vevo', { searchFilters: { types: [ Video, Channel, Playlist ] } })).items.length).to.equal(10)
+  let defaultPlaylistsSearch: PaginatedItemsReturns<typeof Playlist>
+  let defaultChannelsSearch: PaginatedItemsReturns<typeof Channel>
+  let defaultVideosSearch: PaginatedItemsReturns<typeof Video>
+  let videoChannelSearch: PaginatedItemsReturns<typeof Video | typeof Channel>
+
+  before(async () => {
+    defaultPlaylistsSearch = await youtube.searchPlaylists('music')
+    defaultChannelsSearch = await youtube.searchChannels('rick astley')
+    defaultVideosSearch = await youtube.searchVideos('never gonna give you up')
+    videoChannelSearch = await youtube.search('vevo', { searchFilters: { types: [ Video, Channel ] } })
+
+    defaultPlaylistsSearch = await youtube.searchPlaylists('music')
+    defaultChannelsSearch = await youtube.searchChannels('rick astley')
+    defaultVideosSearch = await youtube.searchVideos('never gonna give you up')
+    videoChannelSearch = await youtube.search('vevo', { searchFilters: { types: [ Video, Channel ] } })
+  })
+
+  it('should default to 50 results', async () => {
+    expect(defaultVideosSearch.items.length + defaultChannelsSearch.items.length + defaultPlaylistsSearch.items.length).to.equal(50 + 50 + 50)
+    expect(videoChannelSearch.items.length).to.equal(50)
   }).timeout(20000)
 
-  it('should return an array', async () => {
-    expect((await youtube.searchPlaylists('music')).items).to.be.instanceOf(Array)
+  it('should return an object with page token and results', async () => {
+    expect(defaultPlaylistsSearch.items).to.be.instanceOf(Array)
+    expect(defaultPlaylistsSearch.nextPageToken).to.be.a('string')
   })
 
   it('should reject if maxResults is < 1', async () => {
@@ -41,7 +57,7 @@ describe('Searching', () => {
   })
 
   it('should set what it can with search results', async () => {
-    const channel = (await youtube.searchChannels('rick astley', undefined)).items[0]
+    const channel = defaultChannelsSearch.items[0]
 
     expect(channel.id).to.equal('UCuAXFkgsw1L7xaCfnd5JJOw')
     expect(channel.country).to.equal(undefined)
@@ -51,19 +67,19 @@ describe('Searching', () => {
   })
 
   it('should be able to fetch videos of a channel search result', async () => {
-    const channel = (await youtube.searchChannels('rick astley', { pageOptions: { maxPerPage: 1 } })).items[0]
+    const channel = defaultChannelsSearch.items[0]
     const videos = await channel.fetchVideos([ 'id' ])
 
     expect(videos).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with multiple types by default', async () => {
-    const data = (await youtube.search('vevo', { pageOptions: { maxPerPage: 50 } }))
+    const search = await youtube.search('vevo')
 
     expect([
-      data.items.find(r => r instanceof Video),
-      data.items.find(r => r instanceof Playlist),
-      data.items.find(r => r instanceof Channel)
+      search.items.find(r => r instanceof Video),
+      search.items.find(r => r instanceof Playlist),
+      search.items.find(r => r instanceof Channel)
     ].filter(r => r !== undefined).length).to.be.greaterThanOrEqual(2) // playlists aren't that favored by the youtube algorithm
   })
 

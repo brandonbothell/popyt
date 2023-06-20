@@ -85,7 +85,7 @@ export class GenericService {
     }
 
     if (this.youtube._shouldCache) {
-      const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${pages < 1 ? maxPerPage : 0}/${pages}/${pageToken}`)
+      const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`)
       if (cached) return cached
     }
 
@@ -212,7 +212,7 @@ export class GenericService {
     const toReturn = await this.fetchPages(pages, endpoint, options, clazz)
 
     if (this.youtube._shouldCache) {
-      this.youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage}/${pages}/${pageToken}`, toReturn)
+      this.youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`, toReturn)
     }
 
     return toReturn

@@ -1,4 +1,4 @@
-import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns } from '..'
+import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters } from '..'
 import { Cache } from '../util'
 
 /**
@@ -9,17 +9,16 @@ export class SearchService {
 
   /* istanbul ignore next */
   public async search<T extends SearchType = SearchType> (
-    { // search options
-      // @ts-ignore Default values, please chill TypeScript
-      types = [Video, Channel, Playlist], searchTerm, fields,
-      // page options
-      pages = 1, maxPerPage = 10, pageToken, ...otherFilters
+    { // page options
+      pages = 1, maxPerPage = 50, pageToken,
+      // search options
+      types = [Video, Channel, Playlist] as T[], searchTerm, ...otherFilters
     }: GenericSearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
 
     const type = types.map(t => t.name.toLowerCase()).join(',')
 
     if (this.youtube._shouldCache) {
-      const cached = Cache.get(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/"${pageToken}"`)
+      const cached = Cache.get(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/${pageToken}/${JSON.stringify(otherFilters)}`)
       if (cached) return cached
     }
 
@@ -35,7 +34,6 @@ export class SearchService {
 
     const options: {
       q: string
-      fields: string
       maxResults: number
       part: string
       type: string
@@ -43,7 +41,7 @@ export class SearchService {
       channelId?: string
       pageToken?: string
       videoEmbeddable?: string
-      category?: string
+      videoCategoryId?: string
       eventType?: string
       videoType?: string
       videoCaption?: string
@@ -51,8 +49,6 @@ export class SearchService {
       locationRadius?: string
     } = {
       q: encodeURIComponent(searchTerm),
-      fields: encodeURIComponent(fields ||
-        '*'),
       maxResults: maxPerPage,
       part: 'snippet',
       type,
@@ -61,21 +57,21 @@ export class SearchService {
 
     if (pageToken) options.pageToken = pageToken
 
-    const searchFilters = otherFilters as any
+    const searchFilters = otherFilters as any as SearchFilters<T>
 
-    if (searchFilters.channelId) options.channelId = searchFilters.channelId
-    if (searchFilters.categoryId) options.category = searchFilters.categoryId
-    if (searchFilters.eventType) options.eventType = searchFilters.eventType
-    if (searchFilters.videoType) options.videoType = searchFilters.videoType
-    if (searchFilters.videoCaption) options.videoCaption = searchFilters.videoCaption
-    if (searchFilters.location) options.location = searchFilters.location
-    if (searchFilters.locationRadius) options.locationRadius = searchFilters.locationRadius
-    if (searchFilters.videoEmbeddable) options.videoEmbeddable = 'true'
+    if ('channelId' in searchFilters) options.channelId = searchFilters.channelId
+    if ('videoCategoryId' in searchFilters) options.videoCategoryId = searchFilters.videoCategoryId
+    if ('eventType' in searchFilters) options.eventType = searchFilters.eventType
+    if ('videoType' in searchFilters) options.videoType = searchFilters.videoType
+    if ('videoCaption' in searchFilters) options.videoCaption = searchFilters.videoCaption
+    if ('location' in searchFilters) options.location = searchFilters.location
+    if ('locationRadius' in searchFilters) options.locationRadius = searchFilters.locationRadius
+    if ('channelId' in searchFilters) options.videoEmbeddable = 'true'
 
     const toReturn = await this.youtube._genericService.fetchPages(pages, 'search', options)
 
     if (this.youtube._shouldCache && this.youtube._cacheSearches) {
-      this.youtube._cache(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/"${pageToken}"`, toReturn)
+      this.youtube._cache(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/${pageToken}/${JSON.stringify(otherFilters)}`, toReturn)
     }
 
     return toReturn

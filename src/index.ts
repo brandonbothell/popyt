@@ -123,7 +123,7 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.
-   * Defaults to 10 items and 1 page. Max 50 per page.
+   * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
   public async search<T extends SearchType = SearchType> (searchTerm: string, searchOptions?: SearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
     return this._searchService.search({ searchTerm, ...searchOptions?.searchFilters, ...searchOptions?.pageOptions })
@@ -134,7 +134,7 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.
-   * Defaults to 10 items and 1 page. Max 50 per page.
+   * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
   public async searchVideos (searchTerm: string, searchOptions?: SearchOptions<typeof Video>) {
     return this.search(searchTerm, { searchFilters: { ...searchOptions?.searchFilters, types: [Video] }, pageOptions: searchOptions?.pageOptions })
@@ -145,7 +145,7 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.
-   * Defaults to 10 items and 1 page. Max 50 per page.
+   * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
   public async searchChannels (searchTerm: string, searchOptions?: SearchOptions<typeof Channel>) {
     return this.search(searchTerm, { searchFilters: { ...searchOptions?.searchFilters, types: [Channel] }, pageOptions: searchOptions?.pageOptions })
@@ -156,7 +156,7 @@ export class YouTube {
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.
-   * Defaults to 10 items and 1 page. Max 50 per page.
+   * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
   public async searchPlaylists (searchTerm: string, searchOptions?: SearchOptions<typeof Playlist>) {
     return this.search(searchTerm, { searchFilters: { ...searchOptions?.searchFilters, types: [Playlist] }, pageOptions: searchOptions?.pageOptions })

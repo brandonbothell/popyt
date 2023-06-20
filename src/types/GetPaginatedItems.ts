@@ -38,9 +38,6 @@ export type PageOptions = {
   pageToken?: string
 }
 
-/**
- * @ignore
- */
 export type PaginatedItemsReturns<T extends PaginatedType> = {
   items: InstanceType<T>[]
   prevPageToken?: string
@@ -53,7 +50,6 @@ export type SearchType = typeof Video | typeof Playlist | typeof Channel
 
 export type SearchFilters<T extends SearchType = SearchType> = {
   types?: T[]
-  fields?: string
 } &
   (T extends typeof Video ? VideoSearchOptions :
   T extends typeof Playlist ? PlaylistSearchOptions :
