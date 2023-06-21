@@ -54,20 +54,26 @@ export type SearchType = typeof Video | typeof Playlist | typeof Channel
 
 export type SearchFilters<T extends SearchType = SearchType> = {
   types?: T[]
+  order?: 'date' | 'rating' | 'relevance' | 'title' | 'videoCount' | 'viewCount'
 } &
   (T extends typeof Video ? VideoSearchOptions :
   T extends typeof Playlist ? PlaylistSearchOptions :
   T extends typeof Channel ? ChannelSearchOptions : {})
 
-export type SearchOptions<T extends SearchType = SearchType> = {
+export type GenericSearchOptions<T extends SearchType = SearchType> = {
   searchFilters?: SearchFilters<T>
+  pageOptions?: PageOptions
+}
+
+export type EntitySearchOptions<T extends SearchType = SearchType> = {
+  searchFilters?: Omit<SearchFilters<T>, 'types'>
   pageOptions?: PageOptions
 }
 
 /**
  * @ignore
  */
-export type GenericSearchOptions<T extends SearchType = SearchType> = SearchFilters<T> & PageOptions & {
+export type InternalSearchOptions<T extends SearchType = SearchType> = SearchFilters<T> & PageOptions & {
   searchTerm: string
 }
 

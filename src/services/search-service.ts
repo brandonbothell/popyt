@@ -1,5 +1,5 @@
 import { Cache } from '../util'
-import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters, VideoCategory } from '..'
+import YouTube, { Video, Channel, Playlist, InternalSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters, VideoCategory } from '..'
 
 /**
  * @ignore
@@ -13,7 +13,7 @@ export class SearchService {
       pages = 1, maxPerPage = 50, pageToken,
       // search options
       types = [Video, Channel, Playlist] as T[], searchTerm, ...otherFilters
-    }: GenericSearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
+    }: InternalSearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
 
     const type = types.map(t => t.name.toLowerCase()).join(',')
 
@@ -47,6 +47,7 @@ export class SearchService {
       videoCaption?: string
       location?: string
       locationRadius?: string
+      order?: string
     } = {
       q: encodeURIComponent(searchTerm),
       maxResults: maxPerPage,
@@ -66,6 +67,7 @@ export class SearchService {
     if ('videoCaption' in searchFilters) options.videoCaption = searchFilters.videoCaption
     if ('location' in searchFilters) options.location = searchFilters.location
     if ('locationRadius' in searchFilters) options.locationRadius = searchFilters.locationRadius
+    if ('order' in searchFilters) options.order = searchFilters.order
     if ('videoEmbeddable' in searchFilters) options.videoEmbeddable = 'true'
 
     const toReturn = await this.youtube._genericService.fetchPages(pages, 'search', options)

@@ -4,7 +4,7 @@
 
 import { Cache, Request } from './util'
 import { VideoParts, ChannelParts, ChannelSectionParts, CommentParts, CommentThreadParts, PlaylistItemParts, PlaylistParts, SubscriptionParts } from './types/Parts'
-import { ChannelResolvable, CommentResolvable, PageOptions, PaginatedItemType, PaginatedItemsReturns, PlaylistResolvable, SearchOptions, SearchType, VideoResolvable } from './types'
+import { ChannelResolvable, CommentResolvable, EntitySearchOptions, PageOptions, PaginatedItemType, PaginatedItemsReturns, PlaylistResolvable, GenericSearchOptions, SearchType, VideoResolvable } from './types'
 import { SearchService, GenericService, SubscriptionService } from './services'
 import { OAuth } from './oauth'
 import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection } from './entities'
@@ -125,7 +125,7 @@ export class YouTube {
    * the number of pages, maximum number of results per page, and starting page token.
    * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
-  public async search<T extends SearchType = SearchType> (searchTerm: string, searchOptions?: SearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
+  public async search<T extends SearchType = SearchType> (searchTerm: string, searchOptions?: GenericSearchOptions<T>): Promise<PaginatedItemsReturns<T>> {
     return this._searchService.search({ searchTerm, ...searchOptions?.searchFilters, ...searchOptions?.pageOptions })
   }
 
@@ -136,7 +136,7 @@ export class YouTube {
    * the number of pages, maximum number of results per page, and starting page token.
    * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
-  public async searchVideos (searchTerm: string, searchOptions?: SearchOptions<typeof Video>) {
+  public async searchVideos (searchTerm: string, searchOptions?: EntitySearchOptions<typeof Video>) {
     return this.search(searchTerm, { searchFilters: { ...searchOptions?.searchFilters, types: [Video] }, pageOptions: searchOptions?.pageOptions })
   }
 
@@ -147,7 +147,7 @@ export class YouTube {
    * the number of pages, maximum number of results per page, and starting page token.
    * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
-  public async searchChannels (searchTerm: string, searchOptions?: SearchOptions<typeof Channel>) {
+  public async searchChannels (searchTerm: string, searchOptions?: EntitySearchOptions<typeof Channel>) {
     return this.search(searchTerm, { searchFilters: { ...searchOptions?.searchFilters, types: [Channel] }, pageOptions: searchOptions?.pageOptions })
   }
 
@@ -158,7 +158,7 @@ export class YouTube {
    * the number of pages, maximum number of results per page, and starting page token.
    * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
-  public async searchPlaylists (searchTerm: string, searchOptions?: SearchOptions<typeof Playlist>) {
+  public async searchPlaylists (searchTerm: string, searchOptions?: EntitySearchOptions<typeof Playlist>) {
     return this.search(searchTerm, { searchFilters: { ...searchOptions?.searchFilters, types: [Playlist] }, pageOptions: searchOptions?.pageOptions })
   }
 
