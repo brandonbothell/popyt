@@ -164,6 +164,8 @@ export class YTComment {
 
     const comment = data
 
+    this.id = comment.id
+
     /* istanbul ignore next */
     if (comment.snippet) {
       this.author = {
@@ -188,12 +190,10 @@ export class YTComment {
       if (comment.snippet.channelId) this.channelId = comment.snippet.channelId
       if (comment.snippet.videoId) this.videoId = comment.snippet.videoId
 
-      if (comment.snippet.videoId) {
-        this.url = `https://youtube.com/watch?v=${comment.snippet.videoId}&lc=${comment.id}`
+      if (this.videoId) {
+        this.url = `https://youtube.com/watch?v=${this.videoId}&lc=${this.id}`
       }
     }
-
-    this.id = comment.id
   }
 
   /**
