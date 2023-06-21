@@ -25,7 +25,7 @@ A caption track.
 
 #### Defined in
 
-[entities/caption.ts:109](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L109)
+[entities/caption.ts:109](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L109)
 
 ## Properties
 
@@ -37,7 +37,7 @@ Whether the audio is a commentary/descriptive (alternate audio tracks), the prim
 
 #### Defined in
 
-[entities/caption.ts:70](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L70)
+[entities/caption.ts:70](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L70)
 
 ___
 
@@ -49,7 +49,7 @@ Whether or not this caption track has been autosynced to the audio by YouTube.
 
 #### Defined in
 
-[entities/caption.ts:95](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L95)
+[entities/caption.ts:95](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L95)
 
 ___
 
@@ -61,7 +61,7 @@ Whether or not this caption track is for the deaf/hard of hearing.
 
 #### Defined in
 
-[entities/caption.ts:75](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L75)
+[entities/caption.ts:75](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L75)
 
 ___
 
@@ -73,7 +73,7 @@ The raw data of this caption track.
 
 #### Defined in
 
-[entities/caption.ts:35](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L35)
+[entities/caption.ts:35](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L35)
 
 ___
 
@@ -85,7 +85,7 @@ Whether or not this caption track is a draft. If so, it won't be shown to users.
 
 #### Defined in
 
-[entities/caption.ts:90](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L90)
+[entities/caption.ts:90](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L90)
 
 ___
 
@@ -97,7 +97,7 @@ Whether or not this caption track is written at a third-grade level (for languag
 
 #### Defined in
 
-[entities/caption.ts:85](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L85)
+[entities/caption.ts:85](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L85)
 
 ___
 
@@ -105,11 +105,11 @@ ___
 
 • `Optional` **failureReason**: ``"processingFailed"`` \| ``"unknownFormat"`` \| ``"unsupportedFormat"``
 
-If [[Caption.status]] is `failed`, then this is populated with the reason failure.
+If [Caption.status](./Library_Exports.Caption#status) is `failed`, then this is populated with the reason failure.
 
 #### Defined in
 
-[entities/caption.ts:107](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L107)
+[entities/caption.ts:107](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L107)
 
 ___
 
@@ -121,7 +121,7 @@ Whether or not this is a full caption track object.
 
 #### Defined in
 
-[entities/caption.ts:30](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L30)
+[entities/caption.ts:30](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L30)
 
 ___
 
@@ -133,7 +133,7 @@ The ID of this caption track.
 
 #### Defined in
 
-[entities/caption.ts:40](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L40)
+[entities/caption.ts:40](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L40)
 
 ___
 
@@ -145,7 +145,7 @@ The kind of caption track this is (automatic speech recognition, forced due to f
 
 #### Defined in
 
-[entities/caption.ts:55](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L55)
+[entities/caption.ts:55](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L55)
 
 ___
 
@@ -157,7 +157,7 @@ The language that this caption track is written in.
 
 #### Defined in
 
-[entities/caption.ts:60](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L60)
+[entities/caption.ts:60](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L60)
 
 ___
 
@@ -169,7 +169,7 @@ Whether or not this caption track uses large text for the vision-impaired.
 
 #### Defined in
 
-[entities/caption.ts:80](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L80)
+[entities/caption.ts:80](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L80)
 
 ___
 
@@ -181,7 +181,7 @@ When this caption track was last updated.
 
 #### Defined in
 
-[entities/caption.ts:50](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L50)
+[entities/caption.ts:50](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L50)
 
 ___
 
@@ -193,7 +193,7 @@ The name of this caption track.
 
 #### Defined in
 
-[entities/caption.ts:65](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L65)
+[entities/caption.ts:65](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L65)
 
 ___
 
@@ -205,7 +205,7 @@ The processing status of the caption track.
 
 #### Defined in
 
-[entities/caption.ts:100](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L100)
+[entities/caption.ts:100](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L100)
 
 ___
 
@@ -213,11 +213,11 @@ ___
 
 • **videoId**: `string`
 
-The ID of the [[Video]] that this caption track is for.
+The ID of the [Video](./Library_Exports.Video#) that this caption track is for.
 
 #### Defined in
 
-[entities/caption.ts:45](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L45)
+[entities/caption.ts:45](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L45)
 
 ___
 
@@ -229,7 +229,7 @@ The YouTube object that created this caption track object.
 
 #### Defined in
 
-[entities/caption.ts:25](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L25)
+[entities/caption.ts:25](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L25)
 
 ___
 
@@ -241,7 +241,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/caption.ts:10](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L10)
+[entities/caption.ts:10](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L10)
 
 ___
 
@@ -253,7 +253,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/caption.ts:20](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L20)
+[entities/caption.ts:20](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L20)
 
 ___
 
@@ -265,7 +265,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/caption.ts:15](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L15)
+[entities/caption.ts:15](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L15)
 
 ## Methods
 
@@ -282,7 +282,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/caption.ts:185](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L185)
+[entities/caption.ts:185](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L185)
 
 ___
 
@@ -306,7 +306,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/caption.ts:176](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L176)
+[entities/caption.ts:176](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L176)
 
 ___
 
@@ -324,7 +324,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/caption.ts:152](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L152)
+[entities/caption.ts:152](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L152)
 
 ___
 
@@ -348,4 +348,4 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/caption.ts:164](https://github.com/brandonbothell/popyt/blob/99c3131/src/entities/caption.ts#L164)
+[entities/caption.ts:164](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/caption.ts#L164)

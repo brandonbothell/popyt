@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L41)
+[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L41)
 
 ## Properties
 
@@ -34,7 +34,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:35](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L35)
+[oauth.ts:35](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L35)
 
 ## Methods
 
@@ -42,7 +42,7 @@ Use `YouTube.oauth` to access these methods.
 
 ▸ **addChannelSection**(`type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
-Adds a [[ChannelSection]] to the authorized user's [[Channel]].  
+Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized user's [Channel](./Library_Exports.Channel#).  
 Last tested 05/24/2020 10:11. PASSING
 
 #### Parameters
@@ -61,7 +61,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:639](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L639)
+[oauth.ts:640](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L640)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **addPlaylistItem**(`playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`<[`Video`](Library_Exports.Video)\>
 
-Adds a [[Video]] to a [[Playlist]].  
+Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -89,7 +89,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:452](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L452)
+[oauth.ts:452](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L452)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **createPlaylist**(`title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`<[`Playlist`](Library_Exports.Playlist)\>
 
-Creates a [[Playlist]].  
+Creates a [Playlist](./Library_Exports.Playlist#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -117,7 +117,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:372](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L372)
+[oauth.ts:372](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L372)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 ▸ **deleteCaption**(`id`): `Promise`<`void`\>
 
-Deletes a [[Caption]] track.  
+Deletes a [Caption](./Library_Exports.Caption#) track.  
 Last tested 06/11/2020 04:50. PASSING
 
 #### Parameters
@@ -140,7 +140,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:834](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L834)
+[oauth.ts:835](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L835)
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 ▸ **deleteChannelSection**(`id`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
-Deletes a [[ChannelSection]].
+Deletes a [ChannelSection](./Library_Exports.ChannelSection#).
 Last tested 05/24/2020 10:11. PASSING
 
 #### Parameters
@@ -163,7 +163,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:703](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L703)
+[oauth.ts:704](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L704)
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 ▸ **deleteComment**(`id`): `Promise`<`void`\>
 
-Deletes a [[YTComment]].  
+Deletes a [YTComment](./Library_Exports.YTComment#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -186,7 +186,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:197](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L197)
+[oauth.ts:197](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L197)
 
 ___
 
@@ -194,7 +194,7 @@ ___
 
 ▸ **deletePlaylist**(`playlistResolvable`): `Promise`<`void`\>
 
-Deletes a [[Playlist]].  
+Deletes a [Playlist](./Library_Exports.Playlist#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -209,7 +209,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:436](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L436)
+[oauth.ts:436](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L436)
 
 ___
 
@@ -232,7 +232,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:512](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L512)
+[oauth.ts:512](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L512)
 
 ___
 
@@ -240,7 +240,7 @@ ___
 
 ▸ **deleteVideo**(`videoResolvable`): `Promise`<`void`\>
 
-Deletes a [[Video]].
+Deletes a [Video](./Library_Exports.Video#).
 Last tested NEVER
 
 #### Parameters
@@ -255,7 +255,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:300](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L300)
+[oauth.ts:300](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L300)
 
 ___
 
@@ -263,7 +263,7 @@ ___
 
 ▸ **downloadCaption**(`id`, `format?`, `language?`): `Promise`<`Buffer`\>
 
-Downloads a [[Caption]] track.  
+Downloads a [Caption](./Library_Exports.Caption#) track.  
 Last tested 06/11/2020 04:50. PASSING
 
 #### Parameters
@@ -280,7 +280,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:810](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L810)
+[oauth.ts:811](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L811)
 
 ___
 
@@ -288,7 +288,7 @@ ___
 
 ▸ **editComment**(`commentId`, `text`): `Promise`<[`YTComment`](Library_Exports.YTComment)\>
 
-Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
+Edit a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
 Last tested 07/05/2021 17:40. PASSING
 
 #### Parameters
@@ -304,7 +304,7 @@ Last tested 07/05/2021 17:40. PASSING
 
 #### Defined in
 
-[oauth.ts:136](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L136)
+[oauth.ts:136](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L136)
 
 ___
 
@@ -312,7 +312,7 @@ ___
 
 ▸ **getCaption**(`videoResolvable`, `captionId`): `Promise`<[`Caption`](Library_Exports.Caption)\>
 
-Get a [[Caption]] object from the ID of the caption.  
+Get a [Caption](./Library_Exports.Caption#) object from the ID of the caption.  
 Last tested 06/11/2020 04:50. PASSING
 
 #### Parameters
@@ -328,7 +328,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:714](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L714)
+[oauth.ts:715](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L715)
 
 ___
 
@@ -336,7 +336,7 @@ ___
 
 ▸ **getCaptions**(`videoResolvable`): `Promise`<[`Caption`](Library_Exports.Caption)[]\>
 
-Gets the [[Caption]]s of a [[Video]]. Used mostly internally with [[Video.fetchCaptions]].  
+Gets the [Caption](./Library_Exports.Caption#)s of a [Video](./Library_Exports.Video#). Used mostly internally with [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).  
 Last tested 06/11/2020 04:50. PASSING
 
 #### Parameters
@@ -351,7 +351,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:732](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L732)
+[oauth.ts:733](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L733)
 
 ___
 
@@ -359,7 +359,7 @@ ___
 
 ▸ **getMe**(`parts?`): `Promise`<[`Channel`](Library_Exports.Channel)\>
 
-Gets the authorized user's [[Channel]].  
+Gets the authorized user's [Channel](./Library_Exports.Channel#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -374,7 +374,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:58](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L58)
+[oauth.ts:58](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L58)
 
 ___
 
@@ -382,7 +382,7 @@ ___
 
 ▸ **getMyPlaylists**(`maxPerPage?`, `parts?`): `Promise`<[`Playlist`](Library_Exports.Playlist)[]\>
 
-Gets the authorized user's [[Playlist]]s.  
+Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -398,7 +398,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L82)
+[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L82)
 
 ___
 
@@ -406,7 +406,7 @@ ___
 
 ▸ **getMyRatings**(`videoResolvables`): `Promise`<{ `rating`: ``"none"`` \| ``"like"`` \| ``"dislike"`` \| ``"unspecified"`` ; `videoId`: `string`  }[]\>
 
-Retrieve your rating on a [[Video]].  
+Retrieve your rating on a [Video](./Library_Exports.Video#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -421,7 +421,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:248](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L248)
+[oauth.ts:248](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L248)
 
 ___
 
@@ -429,7 +429,7 @@ ___
 
 ▸ **getMySubscriptions**(`maxPerPage?`, `parts?`): `Promise`<[`Subscription`](Library_Exports.Subscription)[]\>
 
-Gets the authorized user's [[Subscription]]s.  
+Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -445,7 +445,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:70](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L70)
+[oauth.ts:70](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L70)
 
 ___
 
@@ -453,7 +453,7 @@ ___
 
 ▸ **getVideoAbuseReportReasons**(): `Promise`<[`VideoAbuseReportReason`](Library_Exports.VideoAbuseReportReason)[]\>
 
-Gets a list of [[VideoAbuseReportReason]]s.
+Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason#)s.
 Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
@@ -462,7 +462,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:843](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L843)
+[oauth.ts:844](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L844)
 
 ___
 
@@ -470,7 +470,7 @@ ___
 
 ▸ **markCommentAsSpam**(`commentId`): `Promise`<`void`\>
 
-Marks a [[YTComment]] as spam.  
+Marks a [YTComment](./Library_Exports.YTComment#) as spam.  
 Last tested NEVER
 
 #### Parameters
@@ -485,7 +485,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:161](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L161)
+[oauth.ts:161](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L161)
 
 ___
 
@@ -493,7 +493,7 @@ ___
 
 ▸ **postComment**(`text`, `channelResolvable`, `videoResolvable?`): `Promise`<[`YTComment`](Library_Exports.YTComment)\>
 
-Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
+Post a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -510,7 +510,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:95](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L95)
+[oauth.ts:95](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L95)
 
 ___
 
@@ -518,7 +518,7 @@ ___
 
 ▸ **rateVideo**(`videoResolvable`, `rating`): `Promise`<`void`\>
 
-Like, dislike, or remove a rating from a [[Video]].
+Like, dislike, or remove a rating from a [Video](./Library_Exports.Video#).
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -534,7 +534,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:236](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L236)
+[oauth.ts:236](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L236)
 
 ___
 
@@ -542,7 +542,7 @@ ___
 
 ▸ **replyToComment**(`commentId`, `text`): `Promise`<[`YTComment`](Library_Exports.YTComment)\>
 
-Replies to a [[YTComment]].  
+Replies to a [YTComment](./Library_Exports.YTComment#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -550,7 +550,7 @@ Last tested 05/18/2020 11:48. PASSING
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `commentId` | `string` | The ID of the comment to reply to. |
-| `text` | `string` | The text to reply with. Required for [[YTComment.url]] to be correct. |
+| `text` | `string` | The text to reply with. Required for [YTComment.url](./Library_Exports.YTComment#url) to be correct. |
 
 #### Returns
 
@@ -558,7 +558,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:120](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L120)
+[oauth.ts:120](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L120)
 
 ___
 
@@ -566,7 +566,7 @@ ___
 
 ▸ **reportAbuse**(`videoResolvable`, `reasonId`, `secondaryReasonId?`, `comments?`, `language?`): `Promise`<`void`\>
 
-Report a [[Video]] for abuse.  
+Report a [Video](./Library_Exports.Video#) for abuse.  
 Last tested NEVER
 
 #### Parameters
@@ -585,7 +585,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:273](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L273)
+[oauth.ts:273](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L273)
 
 ___
 
@@ -609,7 +609,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:565](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L565)
+[oauth.ts:565](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L565)
 
 ___
 
@@ -637,7 +637,7 @@ Last tested 05/19/2020 18:07. PASSING
 
 #### Defined in
 
-[oauth.ts:589](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L589)
+[oauth.ts:589](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L589)
 
 ___
 
@@ -645,7 +645,7 @@ ___
 
 ▸ **setCommentModerationStatus**(`commentId`, `moderationStatus`, `banAuthor?`): `Promise`<`void`\>
 
-Sets the moderation status of a [[YTComment]]  
+Sets the moderation status of a [YTComment](./Library_Exports.YTComment#)  
 Last tested NEVER
 
 #### Parameters
@@ -662,7 +662,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:173](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L173)
+[oauth.ts:173](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L173)
 
 ___
 
@@ -670,7 +670,7 @@ ___
 
 ▸ **setThumbnail**(`videoResolvable`, `image`): `Promise`<{ `default?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `high?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `maxres?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `medium?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `standard?`: [`Thumbnail`](../modules/Library_Exports#thumbnail)  }\>
 
-Sets a new [[Thumbnail]] for a [[Video]].  
+Sets a new [Thumbnail](../modules/Library_Exports#thumbnail) for a [Video](./Library_Exports.Video).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -688,7 +688,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:353](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L353)
+[oauth.ts:353](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L353)
 
 ___
 
@@ -696,7 +696,7 @@ ___
 
 ▸ **subscribeToChannel**(`channelResolvable`): `Promise`<[`Subscription`](Library_Exports.Subscription)\>
 
-Subscribe to a [[Channel]].  
+Subscribe to a [Channel](./Library_Exports.Channel#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -713,7 +713,7 @@ A partial subscription object.
 
 #### Defined in
 
-[oauth.ts:208](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L208)
+[oauth.ts:208](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L208)
 
 ___
 
@@ -736,7 +736,7 @@ Last tested 05/18/2020 18:23. PASSING
 
 #### Defined in
 
-[oauth.ts:609](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L609)
+[oauth.ts:609](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L609)
 
 ___
 
@@ -744,7 +744,7 @@ ___
 
 ▸ **unsubscribeFromChannel**(`subscriptionId`): `Promise`<`void`\>
 
-Unsubscribe from a [[Channel]].  
+Unsubscribe from a [Channel](./Library_Exports.Channel#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -759,7 +759,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:225](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L225)
+[oauth.ts:225](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L225)
 
 ___
 
@@ -767,7 +767,7 @@ ___
 
 ▸ **updateCaption**(`id`, `track?`, `draft?`): `Promise`<[`Caption`](Library_Exports.Caption)\>
 
-Edits a [[Caption]] track.  
+Edits a [Caption](./Library_Exports.Caption#) track.  
 **If your request does not specify a value for a property that already has a value,
 the property's existing value will be deleted.**  
 Last tested 06/11/2020 04:50. PASSING
@@ -786,7 +786,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:780](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L780)
+[oauth.ts:781](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L781)
 
 ___
 
@@ -812,7 +812,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:525](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L525)
+[oauth.ts:525](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L525)
 
 ___
 
@@ -838,7 +838,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:546](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L546)
+[oauth.ts:546](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L546)
 
 ___
 
@@ -846,7 +846,7 @@ ___
 
 ▸ **updateChannelSection**(`id`, `type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
-Updates a [[ChannelSection]].
+Updates a [ChannelSection](./Library_Exports.ChannelSection#).
 **If your request does not specify a value for a property that already has a value,
 the property's existing value will be deleted.**  
 Last tested 05/24/2020 10:11. PASSING
@@ -868,7 +868,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:676](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L676)
+[oauth.ts:677](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L677)
 
 ___
 
@@ -876,7 +876,7 @@ ___
 
 ▸ **updatePlaylist**(`playlistResolvable`, `title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`<[`Playlist`](Library_Exports.Playlist)\>
 
-Updates a [[Playlist]].  
+Updates a [Playlist](./Library_Exports.Playlist#).  
 **If your request does not specify a value for a property that already has a value,
 the property's existing value will be deleted.**  
 Last tested 05/18/2020 11:48. PASSING
@@ -899,7 +899,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:407](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L407)
+[oauth.ts:407](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L407)
 
 ___
 
@@ -930,7 +930,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:485](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L485)
+[oauth.ts:485](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L485)
 
 ___
 
@@ -938,7 +938,7 @@ ___
 
 ▸ **updateVideo**(`video`): `Promise`<[`Video`](Library_Exports.Video)\>
 
-Updates a [[Video]].  
+Updates a [Video](./Library_Exports.Video#).  
 **If your request does not specify a value for a property that already has a value,
 the property's existing value will be deleted.**  
 Last tested NEVER
@@ -955,7 +955,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L314)
+[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L314)
 
 ___
 
@@ -963,7 +963,7 @@ ___
 
 ▸ **uploadCaption**(`videoResolvable`, `language`, `name`, `track`, `draft?`): `Promise`<[`Caption`](Library_Exports.Caption)\>
 
-Uploads a [[Caption]] track for a [[Video]].  
+Uploads a [Caption](./Library_Exports.Caption#) track for a [Video](./Library_Exports.Video#).  
 Last tested 06/11/2020 04:50. PASSING
 
 #### Parameters
@@ -982,7 +982,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:754](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L754)
+[oauth.ts:755](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L755)
 
 ___
 
@@ -1006,8 +1006,9 @@ Last tested 05/20/2020 03:17. PASSING
 `Promise`<`string`\>
 
 The URL of the uploaded banner, used as
-[[BrandingSettings.image.bannerExternalUrl]] in [[OAuth.updateChannelBranding]]
+[`BrandingSettings.image.bannerExternalUrl`](../modules/Library_Exports#channelbrandingsettings)
+in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
 
 #### Defined in
 
-[oauth.ts:623](https://github.com/brandonbothell/popyt/blob/99c3131/src/oauth.ts#L623)
+[oauth.ts:624](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L624)

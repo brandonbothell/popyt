@@ -20,14 +20,14 @@ The main class used to interact with the YouTube API. Use this.
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `token?` | `string` | `undefined` | Your YouTube Data API v3 token. Don't share this with anybody. It could be an API key or an OAuth 2.0 token. |
-| `accessToken?` | `string` | `undefined` | A Google OAuth 2.0 access token. Used for [[YouTube.oauth]] methods. |
+| `accessToken?` | `string` | `undefined` | A Google OAuth 2.0 access token. Used for [`YouTube.oauth`](#oauth) methods. |
 | `options` | [`YouTubeOptions`](../modules/Library_Exports#youtubeoptions) | `undefined` | Caching options. Recommended to change. |
-| `language` | `string` | `'en_US'` | The language for the API to respond in. See [[YouTube.getLanguages]]. |
-| `region` | `string` | `'US'` | The region for the API cater responses to. See [[YouTube.getRegions]]. |
+| `language` | `string` | `'en_US'` | The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages). |
+| `region` | `string` | `'US'` | The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions).. |
 
 #### Defined in
 
-[index.ts:87](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L87)
+[index.ts:87](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L87)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:61](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L61)
+[index.ts:61](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L61)
 
 ___
 
@@ -45,11 +45,11 @@ ___
 
 • **language**: `string`
 
-The language for the API to respond in. See [[YouTube.getLanguages]].
+The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages).
 
 #### Defined in
 
-[index.ts:71](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L71)
+[index.ts:71](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L71)
 
 ___
 
@@ -61,7 +61,7 @@ Methods requiring an OAuth token.
 
 #### Defined in
 
-[index.ts:66](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L66)
+[index.ts:66](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L66)
 
 ___
 
@@ -69,11 +69,11 @@ ___
 
 • **region**: `string`
 
-The region for the API cater responses to. See [[YouTube.getRegions]].
+The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions).
 
 #### Defined in
 
-[index.ts:76](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L76)
+[index.ts:76](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L76)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[index.ts:59](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L59)
+[index.ts:59](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L59)
 
 ## Methods
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **getCategories**(): `Promise`<[`VideoCategory`](Library_Exports.VideoCategory)[]\>
 
-Get the list of categories in `this.region`.
+Get the list of video categories in [`this.region`](#region)`.
 
 #### Returns
 
@@ -99,7 +99,7 @@ Get the list of categories in `this.region`.
 
 #### Defined in
 
-[index.ts:337](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L337)
+[index.ts:343](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L343)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 ▸ **getCategory**(`categoryId`): `Promise`<[`VideoCategory`](Library_Exports.VideoCategory)\>
 
-Get a [[VideoCategory]] object from the ID of a category.
+Get a [`VideoCategory`](./Library_Exports.VideoCategory) object from the ID of a category.
 
 #### Parameters
 
@@ -121,7 +121,7 @@ Get a [[VideoCategory]] object from the ID of a category.
 
 #### Defined in
 
-[index.ts:220](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L220)
+[index.ts:220](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L220)
 
 ___
 
@@ -129,7 +129,7 @@ ___
 
 ▸ **getChannel**<`T`\>(`channelResolvable`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Channel`](Library_Exports.Channel)\>, typeof [`Channel`](Library_Exports.Channel)\>\>
 
-Get a [[Channel]] object from the URL, ID, or search query of a channel.
+Get a [`Channel`](./Library_Exports.Channel) object from the URL, ID, or search query of a channel.
 **Beware**, support for old custom channel URLs is shoddy.
 Consider migrating to [the new @ system.](https://support.google.com/youtube/answer/2657968?hl=en)
 
@@ -152,7 +152,7 @@ Consider migrating to [the new @ system.](https://support.google.com/youtube/ans
 
 #### Defined in
 
-[index.ts:182](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L182)
+[index.ts:182](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L182)
 
 ___
 
@@ -160,7 +160,8 @@ ___
 
 ▸ **getChannelPlaylists**(`channelResolvable`, `pageOptions?`, `parts?`): `Promise`<[`Playlist`](Library_Exports.Playlist)[]\>
 
-Get `maxPerPage * pages` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with [[Channel.fetchPlaylists]].
+Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Playlist`](./Library_Exports.Playlist)s.
+Used mostly internally with [`Channel.fetchPlaylists()`](./Library_Exports.Channel#fetchplaylists).
 
 #### Parameters
 
@@ -178,7 +179,7 @@ Partial playlist objects.
 
 #### Defined in
 
-[index.ts:286](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L286)
+[index.ts:289](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L289)
 
 ___
 
@@ -186,7 +187,7 @@ ___
 
 ▸ **getChannelSection**(`sectionId`, `parts?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
-Get a [[ChannelSection]] object from the ID of a section.
+Get a [`ChannelSection`](./Library_Exports.ChannelSection) object from the ID of a section.
 
 #### Parameters
 
@@ -201,7 +202,7 @@ Get a [[ChannelSection]] object from the ID of a section.
 
 #### Defined in
 
-[index.ts:229](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L229)
+[index.ts:229](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L229)
 
 ___
 
@@ -209,7 +210,8 @@ ___
 
 ▸ **getChannelSections**(`channelResolvable`, `parts?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
 
-Gets the [[ChannelSection]]s of a [[Channel]]. Used mostly internally with [[Channel.fetchSections]].
+Gets the [`ChannelSection`](./Library_Exports.ChannelSection)s of a [`Channel`](./Library_Exports.Channel).
+Used mostly internally with [`Channel.fetchSections`](./Library_Exports.Channel#fetchsections).
 
 #### Parameters
 
@@ -226,7 +228,7 @@ Partial channel section objects.
 
 #### Defined in
 
-[index.ts:328](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L328)
+[index.ts:334](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L334)
 
 ___
 
@@ -234,7 +236,8 @@ ___
 
 ▸ **getChannelSubscriptions**(`channelResolvable`, `pageOptions?`, `parts?`): `Promise`<[`Subscription`](Library_Exports.Subscription)[]\>
 
-Get `maxPerPage * pages` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with [[Channel.fetchSubscriptions]].
+Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Subscription`](./Library_Exports.Subscription)s.
+Used mostly internally with [`Channel.fetchSubscriptions()`](./Library_Exports.Channel#fetchsubscriptions).
 
 #### Parameters
 
@@ -252,7 +255,7 @@ Partial subscription objects.
 
 #### Defined in
 
-[index.ts:301](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L301)
+[index.ts:305](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L305)
 
 ___
 
@@ -260,7 +263,7 @@ ___
 
 ▸ **getComment**<`T`\>(`commentId`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`YTComment`](Library_Exports.YTComment)\>\>
 
-Get a [[Comment]] object from the ID of a comment.
+Get a [`Comment`](./Library_Exports.YTComment) object from the ID of a comment.
 
 #### Type parameters
 
@@ -281,7 +284,7 @@ Get a [[Comment]] object from the ID of a comment.
 
 #### Defined in
 
-[index.ts:203](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L203)
+[index.ts:203](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L203)
 
 ___
 
@@ -289,7 +292,8 @@ ___
 
 ▸ **getCommentReplies**(`commentResolvable`, `pageOptions?`, `parts?`): `Promise`<[`YTComment`](Library_Exports.YTComment)[]\>
 
-Get `maxPerPage * pages` replies to a [[YTComment]]. Used mostly internally with [[Comment.fetchReplies]].
+Get `maxPerPage * pages` replies to a [`Comment`](./Library_Exports.YTComment).
+Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.YTComment#fetchreplies).
 
 #### Parameters
 
@@ -307,7 +311,7 @@ Partial comment objects.
 
 #### Defined in
 
-[index.ts:316](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L316)
+[index.ts:321](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L321)
 
 ___
 
@@ -323,7 +327,7 @@ Get a list of languages that YouTube supports.
 
 #### Defined in
 
-[index.ts:344](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L344)
+[index.ts:350](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L350)
 
 ___
 
@@ -331,7 +335,7 @@ ___
 
 ▸ **getPlaylist**<`T`\>(`playlistResolvable`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Playlist`](Library_Exports.Playlist)\>, typeof [`Playlist`](Library_Exports.Playlist)\>\>
 
-Get a [[Playlist]] object from the URL, ID, or search query of a playlist.
+Get a [`Playlist`](./Library_Exports.Playlist) object from the URL, ID, or search query of a playlist.
 Meant mostly for getting by URL or ID.
 
 #### Type parameters
@@ -353,7 +357,7 @@ Meant mostly for getting by URL or ID.
 
 #### Defined in
 
-[index.ts:193](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L193)
+[index.ts:193](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L193)
 
 ___
 
@@ -361,7 +365,8 @@ ___
 
 ▸ **getPlaylistItems**(`playlistResolvable`, `pageOptions?`, `parts?`): `Promise`<[`Video`](Library_Exports.Video)[]\>
 
-Get `maxPerPage * pages` videos in a [[Playlist]]. Used mostly internally with [[Playlist.fetchVideos]].
+Get `maxPerPage * pages` videos in a [`Playlist`](./Library_Exports.Playlist).
+Used mostly internally with [`Playlist.fetchVideos()`](./Library_Exports.Playlist#fetchvideos).
 
 #### Parameters
 
@@ -379,7 +384,7 @@ Partial video objects.
 
 #### Defined in
 
-[index.ts:256](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L256)
+[index.ts:257](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L257)
 
 ___
 
@@ -395,7 +400,7 @@ Get a list of regions that YouTube supports.
 
 #### Defined in
 
-[index.ts:351](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L351)
+[index.ts:357](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L357)
 
 ___
 
@@ -403,7 +408,7 @@ ___
 
 ▸ **getSubscription**(`subscriptionId`, `parts?`): `Promise`<[`Subscription`](Library_Exports.Subscription)\>
 
-Get a [[Subscription]] object from the ID of a subscription.
+Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a subscription.
 
 #### Parameters
 
@@ -418,7 +423,7 @@ Get a [[Subscription]] object from the ID of a subscription.
 
 #### Defined in
 
-[index.ts:212](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L212)
+[index.ts:212](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L212)
 
 ___
 
@@ -426,7 +431,7 @@ ___
 
 ▸ **getSubscriptionByChannels**(`subscriberResolvable`, `channelResolvable`, `parts?`): `Promise`<[`Subscription`](Library_Exports.Subscription)\>
 
-Get a [[Subscription]] object from the subscriber and channel of a subscription.
+Get a [`Subscription`](./Library_Exports.Subscription) object from the subscriber and channel of a subscription.
 Channels can be passed in the form of ID, URL, or search query.
 
 #### Parameters
@@ -443,7 +448,7 @@ Channels can be passed in the form of ID, URL, or search query.
 
 #### Defined in
 
-[index.ts:240](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L240)
+[index.ts:240](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L240)
 
 ___
 
@@ -451,7 +456,7 @@ ___
 
 ▸ **getVideo**<`T`\>(`videoResolvable`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Video`](Library_Exports.Video)\>, typeof [`Video`](Library_Exports.Video)\>\>
 
-Get a [[Video]] object from the URL, ID, or search query of a video.
+Get a [`Video`](./Library_Exports.Video) object from the URL, ID, or search query of a video.
 
 #### Type parameters
 
@@ -472,7 +477,7 @@ Get a [[Video]] object from the URL, ID, or search query of a video.
 
 #### Defined in
 
-[index.ts:170](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L170)
+[index.ts:170](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L170)
 
 ___
 
@@ -480,7 +485,8 @@ ___
 
 ▸ **getVideoComments**(`videoResolvable`, `pageOptions?`, `order?`, `parts?`): `Promise`<[`YTComment`](Library_Exports.YTComment)[]\>
 
-Get `maxPerPage * pages` [[YTComment]]s from a [[Video]]. Used mostly internally with [[Video.fetchComments]].
+Get `maxPerPage * pages` [`Comment`](./Library_Exports.YTComment)s from a [`Video`](./Library_Exports.Video).
+Used mostly internally with [`Video.fetchComments()`](./Library_Exports.Video#fetchcomments).
 
 #### Parameters
 
@@ -499,7 +505,7 @@ Partial comment objects.
 
 #### Defined in
 
-[index.ts:271](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L271)
+[index.ts:273](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L273)
 
 ___
 
@@ -528,7 +534,7 @@ Search supported entities on YouTube.
 
 #### Defined in
 
-[index.ts:128](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L128)
+[index.ts:128](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L128)
 
 ___
 
@@ -551,7 +557,7 @@ Search channels on YouTube.
 
 #### Defined in
 
-[index.ts:150](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L150)
+[index.ts:150](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L150)
 
 ___
 
@@ -574,7 +580,7 @@ Search playlists on YouTube.
 
 #### Defined in
 
-[index.ts:161](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L161)
+[index.ts:161](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L161)
 
 ___
 
@@ -597,4 +603,4 @@ Search videos on YouTube.
 
 #### Defined in
 
-[index.ts:139](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L139)
+[index.ts:139](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L139)

@@ -85,7 +85,7 @@ export class OAuth {
   }
 
   /**
-   * Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+   * Post a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
    * Last tested 05/18/2020 11:48. PASSING
    * @param text The text content of the comment.
    * @param channelResolvable The channel to post the comment on.
@@ -128,7 +128,7 @@ export class OAuth {
   }
 
   /**
-   * Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+   * Edit a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
    * Last tested 07/05/2021 17:40. PASSING
    * @param commentId The ID of the comment.
    * @param text The new text content of the comment.
@@ -345,7 +345,7 @@ export class OAuth {
   }
 
   /**
-   * Sets a new [Thumbnail](./Library_Exports.Thumbnail#) for a [Video](./Library_Exports.Video#).  
+   * Sets a new [Thumbnail](../modules/Library_Exports#thumbnail) for a [Video](./Library_Exports.Video).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvable The video to set the thumbnail for.
    * @param image The image data and type to upload.
@@ -618,7 +618,8 @@ export class OAuth {
    * Last tested 05/20/2020 03:17. PASSING
    * @param image The channel banner to upload.
    * @returns The URL of the uploaded banner, used as
-   * [[BrandingSettings.image.bannerExternalUrl]] in [OAuth.updateChannelBranding](./Library_Exports.OAuth#updateChannelBranding)
+   * [`BrandingSettings.image.bannerExternalUrl`](../modules/Library_Exports#channelbrandingsettings)
+   * in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
    */
   public async uploadChannelBanner (image: { data: Buffer; type: 'png' | 'jpeg' }): Promise<string> {
     this.checkTokenAndThrow()
