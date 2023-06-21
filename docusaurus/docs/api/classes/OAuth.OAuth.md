@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:38](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L38)
+[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L41)
 
 ## Properties
 
@@ -34,7 +34,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:32](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L32)
+[oauth.ts:35](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L35)
 
 ## Methods
 
@@ -52,8 +52,8 @@ Last tested 05/24/2020 10:11. PASSING
 | `type` | [`ChannelSectionType`](../modules/Library_Exports#channelsectiontype) | The type of channel section. |
 | `name?` | `string` | The name of the channel section. |
 | `position?` | `number` | The position of the channel section on the channel homepage. |
-| `playlistsResolvable?` | (`string` \| [`Playlist`](Library_Exports.Playlist))[] | Any playlists in the channel section. |
-| `channelsResolvable?` | (`string` \| [`Channel`](Library_Exports.Channel))[] | Any channels in the channel section. |
+| `playlistsResolvable?` | [`PlaylistResolvable`](../modules/Library_Exports#playlistresolvable)[] | Any playlists in the channel section. |
+| `channelsResolvable?` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable)[] | Any channels in the channel section. |
 
 #### Returns
 
@@ -61,7 +61,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:636](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L636)
+[oauth.ts:639](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L639)
 
 ___
 
@@ -76,8 +76,8 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `playlistResolvable` | `string` \| [`Playlist`](Library_Exports.Playlist) | The playlist to add the video to. |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The video to add to the playlist. |
+| `playlistResolvable` | [`PlaylistResolvable`](../modules/Library_Exports#playlistresolvable) | The playlist to add the video to. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video to add to the playlist. |
 | `position?` | `number` | The position to add the video in. Defaults to the end. |
 | `note?` | `string` | A user-generated note on the video. |
 
@@ -89,7 +89,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:449](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L449)
+[oauth.ts:452](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L452)
 
 ___
 
@@ -117,7 +117,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:369](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L369)
+[oauth.ts:372](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L372)
 
 ___
 
@@ -140,7 +140,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:831](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L831)
+[oauth.ts:834](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L834)
 
 ___
 
@@ -163,7 +163,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:700](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L700)
+[oauth.ts:703](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L703)
 
 ___
 
@@ -186,7 +186,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:194](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L194)
+[oauth.ts:197](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L197)
 
 ___
 
@@ -201,7 +201,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `playlistResolvable` | `string` \| [`Playlist`](Library_Exports.Playlist) | The playlist to delete. |
+| `playlistResolvable` | [`PlaylistResolvable`](../modules/Library_Exports#playlistresolvable) | The playlist to delete. |
 
 #### Returns
 
@@ -209,7 +209,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:433](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L433)
+[oauth.ts:436](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L436)
 
 ___
 
@@ -232,7 +232,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:509](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L509)
+[oauth.ts:512](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L512)
 
 ___
 
@@ -247,7 +247,7 @@ Last tested NEVER
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The video to delete. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video to delete. |
 
 #### Returns
 
@@ -255,7 +255,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:297](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L297)
+[oauth.ts:300](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L300)
 
 ___
 
@@ -280,7 +280,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:807](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L807)
+[oauth.ts:810](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L810)
 
 ___
 
@@ -304,7 +304,7 @@ Last tested 07/05/2021 17:40. PASSING
 
 #### Defined in
 
-[oauth.ts:133](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L133)
+[oauth.ts:136](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L136)
 
 ___
 
@@ -319,7 +319,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The Title, URL, or ID of the video to get the caption from. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The Title, URL, or ID of the video to get the caption from. |
 | `captionId` | `string` | The ID of the caption. |
 
 #### Returns
@@ -328,7 +328,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:711](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L711)
+[oauth.ts:714](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L714)
 
 ___
 
@@ -343,7 +343,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The Title, URL, or ID of the video to get the captions from. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The Title, URL, or ID of the video to get the captions from. |
 
 #### Returns
 
@@ -351,7 +351,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:729](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L729)
+[oauth.ts:732](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L732)
 
 ___
 
@@ -374,7 +374,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:55](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L55)
+[oauth.ts:58](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L58)
 
 ___
 
@@ -398,7 +398,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:79](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L79)
+[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L82)
 
 ___
 
@@ -413,7 +413,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvables` | (`string` \| [`Video`](Library_Exports.Video))[] | The video(s) to retrieve your rating from. |
+| `videoResolvables` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable)[] | The video(s) to retrieve your rating from. |
 
 #### Returns
 
@@ -421,7 +421,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:245](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L245)
+[oauth.ts:248](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L248)
 
 ___
 
@@ -445,7 +445,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:67](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L67)
+[oauth.ts:70](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L70)
 
 ___
 
@@ -462,7 +462,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:840](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L840)
+[oauth.ts:843](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L843)
 
 ___
 
@@ -485,7 +485,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:158](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L158)
+[oauth.ts:161](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L161)
 
 ___
 
@@ -501,7 +501,7 @@ Last tested 05/18/2020 11:48. PASSING
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `text` | `string` | The text content of the comment. |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to post the comment on. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to post the comment on. |
 | `videoResolvable?` | `string` | The video of the channel to post the comment on. If falsey, the comment will be posted to the channel discussion. |
 
 #### Returns
@@ -510,7 +510,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:92](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L92)
+[oauth.ts:95](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L95)
 
 ___
 
@@ -525,7 +525,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The video to rate. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video to rate. |
 | `rating` | ``"none"`` \| ``"like"`` \| ``"dislike"`` | The rating to give the video. |
 
 #### Returns
@@ -534,7 +534,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:233](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L233)
+[oauth.ts:236](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L236)
 
 ___
 
@@ -558,7 +558,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:117](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L117)
+[oauth.ts:120](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L120)
 
 ___
 
@@ -573,7 +573,7 @@ Last tested NEVER
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The video to report. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video to report. |
 | `reasonId` | `string` | The reason for reporting. (IDs can be found [here](https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list)) |
 | `secondaryReasonId?` | `string` | An optional second reason for reporting. |
 | `comments?` | `string` | Any additional information. |
@@ -585,7 +585,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:270](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L270)
+[oauth.ts:273](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L273)
 
 ___
 
@@ -600,7 +600,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to update. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to update. |
 | `madeForKids` | `boolean` | Whether or not the channel is made for kids. |
 
 #### Returns
@@ -609,7 +609,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:562](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L562)
+[oauth.ts:565](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L565)
 
 ___
 
@@ -624,7 +624,7 @@ Last tested 05/19/2020 18:07. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to set the watermark for. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to set the watermark for. |
 | `type` | ``"fromStart"`` \| ``"fromEnd"`` | The timing type of the watermark. |
 | `offset` | `number` | The offset, in milliseconds, from the start/end of the video to display the watermark from. |
 | `duration` | `number` | The duration, in millseconds, to display the watermark for. |
@@ -637,7 +637,7 @@ Last tested 05/19/2020 18:07. PASSING
 
 #### Defined in
 
-[oauth.ts:586](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L586)
+[oauth.ts:589](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L589)
 
 ___
 
@@ -662,7 +662,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:170](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L170)
+[oauth.ts:173](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L173)
 
 ___
 
@@ -677,7 +677,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The video to set the thumbnail for. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video to set the thumbnail for. |
 | `image` | `Object` | The image data and type to upload. |
 | `image.data` | `Buffer` | - |
 | `image.type` | ``"jpeg"`` \| ``"png"`` | - |
@@ -688,7 +688,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:350](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L350)
+[oauth.ts:353](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L353)
 
 ___
 
@@ -703,7 +703,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to subscribe to. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to subscribe to. |
 
 #### Returns
 
@@ -713,7 +713,7 @@ A partial subscription object.
 
 #### Defined in
 
-[oauth.ts:205](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L205)
+[oauth.ts:208](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L208)
 
 ___
 
@@ -728,7 +728,7 @@ Last tested 05/18/2020 18:23. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to unset the watermark from. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to unset the watermark from. |
 
 #### Returns
 
@@ -736,7 +736,7 @@ Last tested 05/18/2020 18:23. PASSING
 
 #### Defined in
 
-[oauth.ts:606](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L606)
+[oauth.ts:609](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L609)
 
 ___
 
@@ -759,7 +759,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:222](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L222)
+[oauth.ts:225](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L225)
 
 ___
 
@@ -786,7 +786,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:777](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L777)
+[oauth.ts:780](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L780)
 
 ___
 
@@ -803,7 +803,7 @@ Last tested NEVER
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to update the branding settings of. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to update the branding settings of. |
 | `brandingSettings` | [`ChannelBrandingSettings`](../modules/Library_Exports#channelbrandingsettings) | The new branding settings. |
 
 #### Returns
@@ -812,7 +812,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:522](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L522)
+[oauth.ts:525](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L525)
 
 ___
 
@@ -829,7 +829,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `channelResolvable` | `string` \| [`Channel`](Library_Exports.Channel) | The channel to update the localizations of. |
+| `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to update the localizations of. |
 | `localizations` | `Object` | The new localizations. |
 
 #### Returns
@@ -838,7 +838,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:543](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L543)
+[oauth.ts:546](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L546)
 
 ___
 
@@ -859,8 +859,8 @@ Last tested 05/24/2020 10:11. PASSING
 | `type` | [`ChannelSectionType`](../modules/Library_Exports#channelsectiontype) | The type of channel section. |
 | `name?` | `string` | The name of the channel section. |
 | `position?` | `number` | The position of the channel section on the channel homepage. |
-| `playlistsResolvable?` | (`string` \| [`Playlist`](Library_Exports.Playlist))[] | Any playlists in the channel section. |
-| `channelsResolvable?` | (`string` \| [`Channel`](Library_Exports.Channel))[] | Any channels in the channel section. |
+| `playlistsResolvable?` | [`PlaylistResolvable`](../modules/Library_Exports#playlistresolvable)[] | Any playlists in the channel section. |
+| `channelsResolvable?` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable)[] | Any channels in the channel section. |
 
 #### Returns
 
@@ -868,7 +868,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:673](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L673)
+[oauth.ts:676](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L676)
 
 ___
 
@@ -885,7 +885,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `playlistResolvable` | `string` \| [`Playlist`](Library_Exports.Playlist) | The playlist to update. |
+| `playlistResolvable` | [`PlaylistResolvable`](../modules/Library_Exports#playlistresolvable) | The playlist to update. |
 | `title` | `string` | A title for the playlist. |
 | `description?` | `string` | A description of the playlist. |
 | `privacy?` | ``"private"`` \| ``"public"`` \| ``"unlisted"`` | Whether the video is private, public, or unlisted. |
@@ -899,7 +899,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:404](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L404)
+[oauth.ts:407](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L407)
 
 ___
 
@@ -917,8 +917,8 @@ Last tested 05/18/2020 11:48. PASSING
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `id` | `string` | The ID of the playlist item to edit. |
-| `playlistResolvable` | `string` \| [`Playlist`](Library_Exports.Playlist) | The playlist that the video is in. |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | The video that's in the playlist. |
+| `playlistResolvable` | [`PlaylistResolvable`](../modules/Library_Exports#playlistresolvable) | The playlist that the video is in. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video that's in the playlist. |
 | `position?` | `number` | The position to change the playlist item's to. |
 | `note?` | `string` | The note to change the playlist item's to. |
 
@@ -930,7 +930,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:482](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L482)
+[oauth.ts:485](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L485)
 
 ___
 
@@ -955,7 +955,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:311](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L311)
+[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L314)
 
 ___
 
@@ -970,7 +970,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `videoResolvable` | `string` \| [`Video`](Library_Exports.Video) | `undefined` | The video to add the caption track to. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | `undefined` | The video to add the caption track to. |
 | `language` | `string` | `undefined` | The language that the caption track is in. |
 | `name` | `string` | `undefined` | The name of the caption track. |
 | `track` | `Buffer` | `undefined` | The caption track to upload. |
@@ -982,7 +982,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:751](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L751)
+[oauth.ts:754](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L754)
 
 ___
 
@@ -1010,4 +1010,4 @@ The URL of the uploaded banner, used as
 
 #### Defined in
 
-[oauth.ts:620](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/oauth.ts#L620)
+[oauth.ts:623](https://github.com/brandonbothell/popyt/blob/2cfe584/src/oauth.ts#L623)

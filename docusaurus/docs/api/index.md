@@ -35,7 +35,7 @@ Instantiate the object:
 
 <CodeSandboxBlock
   language="js"
-  url="https://codesandbox.io/p/sandbox/polished-fast-jmqlfq?file=%2Findex.js%3A4%2C1">
+  url="https://codesandbox.io/p/sandbox/fetch-videos-from-youtube-jmqlfq">
   {`const { YouTube } = require('popyt')
 const youtube = new YouTube(apiKey)`}
 </CodeSandboxBlock>

@@ -8,14 +8,14 @@ Playlists are lists of videos and a some metadata including a title, description
 
 ## Getting started
 If you haven't already, check out [the introduction](../intro).  
-Check out the <b><a href='https://runkit.com/brandonbothell/fetch-a-playlist' target='_blank'><CodeSandboxText /></a></b> for a quick **example
+Check out the <b><a href='https://codesandbox.io/p/sandbox/fetch-playlists-from-youtube-x6jwck' target='_blank'><CodeSandboxText /></a></b> for a quick **example
 that you can run online and download**.
 
 ## Fetch your first playlist
 
 <CodeSandboxBlock
   language="js"
-  url="https://runkit.com/brandonbothell/fetch-a-playlist">
+  url="https://codesandbox.io/p/sandbox/fetch-playlists-from-youtube-x6jwck">
 {`const playlistById = youtube.getPlaylist('PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
 const playlistByUrl = youtube.getPlaylist('https://www.youtube.com/playlist?list=PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
 const playlistByTitleSearch = youtube.getPlaylist('Never Gonna Give You Up Parodies')
