@@ -281,8 +281,8 @@ export class Video {
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
-  public async fetchComments (pageOptions?: PageOptions, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getVideoComments(this.id, pageOptions, parts)
+  public async fetchComments (pageOptions?: PageOptions, order?: 'time' | 'relevance', parts?: CommentThreadParts) {
+    this.comments = await this.youtube.getVideoComments(this.id, pageOptions, order, parts)
     return this.comments
   }
 

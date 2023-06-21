@@ -20,28 +20,12 @@ describe('Comments', () => {
     expect(comments[0].replies[0].parentCommentId).to.equal(comments[0].id)
   })
 
-  // Youtube has REMOVED the discussion tab from channels
-  it('shouldn\'t work with valid channels with comments', async () => {
-    expect(await youtube.getChannelComments('UC6mi9rp7vRYninucP61qOjg').catch(error => {
-      return error.message
-    })).to.include('The API server failed to successfully process the request.')
-  })
-
   it('should work with fetching from a video object', async () => {
     const video = await youtube.getVideo('Lq1D8PFnjWY')
     const comments = await video.fetchComments({ pages: 1 })
 
     expect(comments[0]).to.be.an.instanceOf(YTComment)
     expect(video.comments[0].id).to.equal(comments[0].id)
-  })
-
-  // Youtube has REMOVED the discussion tab from channels
-  it('should not work with fetching from a channel object', async () => {
-    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
-
-    expect(await channel.fetchComments(1, [ 'id' ]).catch(error => {
-      return error.message
-    })).to.include('The API server failed to successfully process the request.')
   })
 
   it('should not work with valid videos with comments disabled', async () => {
@@ -58,11 +42,11 @@ describe('Comments', () => {
   })
 
   it('should return an array with a length of <= maxPerPage', async () => {
-    expect((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, [ 'id' ])).length).to.be.lessThan(2)
+    expect((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ])).length).to.be.lessThan(2)
   })
 
   it('should work with fetching replies', async () => {
-    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, [ 'id' ]))[0].fetchReplies())).to.be.an.instanceOf(Array)
+    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ]))[0].fetchReplies())).to.be.an.instanceOf(Array)
   })
 
   it('should be individually gettable', async () => {
@@ -70,10 +54,10 @@ describe('Comments', () => {
   })
 
   it('should have the ID of its video', async () => {
-    const video = await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])
-    const comments = await video.fetchComments({ maxPerPage: 1 }, [ 'snippet' ])
+    const video = await youtube.getVideo('KOJj092zklc', [ 'id' ])
+    const comments = await video.fetchComments({ maxPerPage: 1 }, 'relevance', [ 'snippet' ])
 
-    expect(comments[0].videoId).to.equal('Lq1D8PFnjWY')
+    expect(comments[0].videoId).to.equal('KOJj092zklc')
     // expect(comments[0].channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
     expect(comments[0].channelId).to.equal(undefined) // broken in the API!
   })

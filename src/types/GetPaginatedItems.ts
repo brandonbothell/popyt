@@ -15,7 +15,6 @@ export enum PaginatedItemType {
   Regions,
   PlaylistItems,
   VideoComments,
-  ChannelComments,
   CommentReplies,
   Captions,
   Playlists,
@@ -34,6 +33,11 @@ export type PaginatedItemOptions = {
   id?: string
   subId?: string
   parts?: string[]
+
+  /**
+   * Only valid for comments
+   */
+  order?: 'time' | 'relevance'
 } & PageOptions
 
 export type PageOptions = {

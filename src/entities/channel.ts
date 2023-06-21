@@ -1,5 +1,5 @@
-import { ChannelParts, ChannelSectionParts, CommentThreadParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
-import { YouTube, Playlist, Thumbnail, YTComment, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions } from '..'
+import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
+import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions } from '..'
 
 /**
  * A YouTube channel.
@@ -18,7 +18,7 @@ export class Channel {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,commentCount,viewCount,hiddenSubscriberCount),' +
+  public static fields = 'items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,viewCount,hiddenSubscriberCount),' +
     'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),' +
     'status(isLinked,madeForKids,selfDeclaredMadeForKids))'
 
@@ -109,17 +109,6 @@ export class Channel {
   public subCount: number
 
   /**
-   * This channel's comment count.
-   * @deprecated See https://developers.google.com/youtube/v3/docs/channels#statistics.commentCount
-   */
-  public commentCount: number
-
-  /**
-   * The channel's comments. Only defined when [[Channel.fetchComments]] is called.
-   */
-  public comments: YTComment[]
-
-  /**
    * The URLs of all of this channel's featured channels. This property is broken for some channels.
    */
   /* istanbul ignore next */
@@ -192,7 +181,6 @@ export class Channel {
       /* istanbul ignore next */
       if (channel.statistics) {
         this.views = Number(channel.statistics.viewCount)
-        this.commentCount = Number(channel.statistics.commentCount)
 
         if (!channel.statistics.hiddenSubscriberCount) {
           this.subCount = Number(channel.statistics.subscriberCount)
@@ -257,24 +245,6 @@ export class Channel {
   }
 
   /**
-   * Posts a comment on the channel's discussion tab.
-   * Must be using an access token with correct scopes.
-   * @param text The text of the comment.
-   */
-  /* istanbul ignore next */
-  public async postComment (text: string) {
-    const comment = await this.youtube.oauth.postComment(text, this.id)
-
-    if (this.comments !== undefined) {
-      this.comments.push(comment)
-    } else {
-      this.comments = [ comment ]
-    }
-
-    return comment
-  }
-
-  /**
    * Fetches this channel and reassigns this object to the new channel object.
    * Only useful if `this.full` is false, or if you want updated channel info.
    */
@@ -295,17 +265,6 @@ export class Channel {
     this.videos = videos
 
     return this.videos
-  }
-
-  /**
-   * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
-   * Fetches the channel's discussion tab comments and assigns them to [[Channel.comments]].
-   * @param pages The number of pages of comments to fetch. Defaults to 1. Set <1 to fetch all items.
-   */
-  /* istanbul ignore next */
-  public async fetchComments (pages?: number, parts?: CommentThreadParts) {
-    this.comments = await this.youtube.getChannelComments(this.id, { pages }, parts)
-    return this.comments
   }
 
   /**

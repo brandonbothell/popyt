@@ -68,7 +68,7 @@ export class GenericService {
    * @returns An object containing the array of instantiated entities as well as possible next and previous page tokens.
    */
   /* istanbul ignore next */
-  public async getPaginatedItems ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts }: PaginatedItemOptions):
+  public async getPaginatedItems ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts, ...otherFilters }: PaginatedItemOptions):
   Promise<PaginatedItemsReturns<PaginatedType>> {
 
     const name = PaginatedItemType[type] as keyof typeof PaginatedItemType
@@ -101,6 +101,7 @@ export class GenericService {
       pageToken?: string
       mine?: boolean
       hl?: string
+      order?: string
     } = {
       part: parts ? parts.join(',') : 'snippet'
     }
@@ -118,23 +119,20 @@ export class GenericService {
         maxForEndpoint = 50
         clazz = Video
         options.playlistId = id
+
         if (!options.part.includes('snippet')) options.part += ',snippet'
         if (subId) options.videoId = subId
         break
 
       case PaginatedItemType.VideoComments:
         commentType = 'video'
-        // falls through
-
-      case PaginatedItemType.ChannelComments:
-        if (!commentType) commentType = 'channel'
-
         endpoint = 'commentThreads'
         maxForEndpoint = 100
         clazz = YTComment
         options[`${commentType}Id`] = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
         if (!options.part.includes('replies')) options.part += ',replies'
+        if (otherFilters.order) options.order = otherFilters.order
         options.textFormat = 'plainText'
         break
 
@@ -259,7 +257,7 @@ export class GenericService {
             toReturn.items.push(new Playlist(this.youtube, data))
           }
         } else if (data.kind === 'youtube#commentThread') {
-          toReturn.items.push(new YTComment(this.youtube, data.snippet.topLevelComment, true, data.replies?.comments))
+          toReturn.items.push(new YTComment(this.youtube, data, true))
         } else {
           toReturn.items.push(new clazz(this.youtube, data, false))
         }

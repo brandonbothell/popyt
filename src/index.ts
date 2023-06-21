@@ -268,27 +268,10 @@ export class YouTube {
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public async getVideoComments (videoResolvable: VideoResolvable, pageOptions?: PageOptions, parts?: CommentThreadParts) {
+  public async getVideoComments (videoResolvable: VideoResolvable, pageOptions?: PageOptions, order?: 'time' | 'relevance', parts?: CommentThreadParts) {
     const videoId = await this._genericService.getId(videoResolvable, Video)
     return (await this._genericService.getPaginatedItems(
-      { type: PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts })).items as YTComment[]
-  }
-
-  /**
-   * @deprecated See https://support.google.com/youtube/thread/130882091?hl=en&msgid=131295194
-   * 
-   * Get `maxPerPage * pages` [[YTComment]]s from a [[Channel]]'s discussion tab. Used mostly internally with [[Channel.fetchComments]].
-   * @param channelResolvable The Username, URL, or ID of the channel.
-   * @param pageOptions The number of pages and maximum number of items per page.
-   * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
-   * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
-   * @returns Partial comment objects.
-   */
-  public async getChannelComments (channelResolvable: ChannelResolvable, pageOptions?: PageOptions, parts?: CommentThreadParts) {
-    const channelId = await this._genericService.getId(channelResolvable, Channel)
-    return (await this._genericService.getPaginatedItems(
-      { type: PaginatedItemType.ChannelComments, id: channelId, ...pageOptions, parts })).items as YTComment[]
+      { type: PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts, order })).items as YTComment[]
   }
 
   /**

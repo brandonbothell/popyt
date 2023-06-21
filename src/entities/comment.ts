@@ -128,21 +128,37 @@ export class YTComment {
    * then this will be partially filled. You'll need to use [[Comment.fetchReplies]]
    * to get all of the replies, though.
    */
-  public replies: YTComment[]
+  public replies: YTComment[] = []
 
-  constructor (youtube: YouTube, data: any, full = true, replies?: any[]) {
+  /**
+   * If this comment was fetched from a video, then this is the number of replies on it.
+   */
+  public replyCount?: number
+
+  constructor (youtube: YouTube, data: any, full = true) {
     this.youtube = youtube
     this.data = data
-    if (replies) this.data.replies = replies
 
-    this._init(data, replies)
+    this._init(data)
   }
 
   /**
    * @ignore
    */
-  private _init (data: any, replies?: any[]) {
-    if (data.kind !== 'youtube#comment') {
+  private _init (data: any) {
+    if (data.kind === 'youtube#commentThread') {
+      this.replyCount = data.snippet.totalReplyCount
+      this.videoId = data.snippet.videoId
+      this.channelId = data.snippet.channelId
+
+      if (data.replies) {
+        for (const replyData of data.replies.comments) {
+          this.replies.push(new YTComment(this.youtube, replyData))
+        }
+      }
+
+      data = data.snippet.topLevelComment
+    } else if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)
     }
 
@@ -167,20 +183,13 @@ export class YTComment {
       this.likes = comment.snippet.likeCount
       this.datePublished = comment.snippet.publishedAt
       this.dateEdited = comment.snippet.updatedAt
-      this.channelId = comment.snippet.channelId
-      this.videoId = comment.snippet.videoId
       this.parentCommentId = comment.snippet.parentId
+
+      if (comment.snippet.channelId) this.channelId = comment.snippet.channelId
+      if (comment.snippet.videoId) this.videoId = comment.snippet.videoId
 
       if (comment.snippet.videoId) {
         this.url = `https://youtube.com/watch?v=${comment.snippet.videoId}&lc=${comment.id}`
-      }
-    }
-
-    this.replies = []
-
-    if (replies) {
-      for (const replyData of replies) {
-        this.replies.push(new YTComment(this.youtube, replyData))
       }
     }
 

@@ -63,7 +63,6 @@ describe('Searching', () => {
     expect(channel.country).to.equal(undefined)
     expect(channel.language).to.equal(undefined)
     expect(channel.views).to.equal(undefined)
-    expect(channel.comments).to.equal(undefined)
   })
 
   it('should be able to fetch videos of a channel search result', async () => {

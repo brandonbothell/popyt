@@ -107,7 +107,7 @@ export class OAuth {
     }
 
     const result = await this.youtube._request.post('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YTComment(this.youtube, result.snippet.topLevelComment, true)
+    return new YTComment(this.youtube, result, true)
   }
 
   /**
