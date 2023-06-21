@@ -75,6 +75,11 @@ describe('Getting/Parsing', () => {
     expect(shortUrl.video?.id).to.equal('dQw4w9WgXcQ')
     expect(shortUrl.channel).to.equal(undefined)
 
+    const shortUrlWithWww = Parser.parseUrl('https://www.youtu.be/dQw4w9WgXcQ')
+    expect(shortUrlWithWww.playlist).to.equal(undefined)
+    expect(shortUrlWithWww.video?.id).to.equal('dQw4w9WgXcQ')
+    expect(shortUrlWithWww.channel).to.equal(undefined)
+
     const shortUrlWithoutId = Parser.parseUrl('https://youtu.be')
     expect(shortUrlWithoutId.playlist).to.equal(undefined)
     expect(shortUrlWithoutId.video).to.equal(undefined)
