@@ -54,7 +54,7 @@ Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 #### Defined in
 
-[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Banners.ts#L1)
+[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Banners.ts#L1)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/BrandingSettings.ts#L1)
+[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/BrandingSettings.ts#L1)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L17)
+[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L17)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:94](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L94)
+[types/GetPaginatedItems.ts:94](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L94)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L36)
+[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L36)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/ChannelSectionType.ts#L1)
+[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/ChannelSectionType.ts#L1)
 
 ___
 
@@ -143,7 +143,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L32)
+[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L32)
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L40)
+[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L40)
 
 ___
 
@@ -171,7 +171,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:35](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L35)
+[types/GetPaginatedItems.ts:35](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L35)
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:41](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L41)
+[types/GetPaginatedItems.ts:41](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L41)
 
 ___
 
@@ -205,7 +205,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:21](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L21)
+[types/GetPaginatedItems.ts:21](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L21)
 
 ___
 
@@ -227,7 +227,7 @@ ___
 
 #### Defined in
 
-[types/Util.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Util.ts#L1)
+[types/Util.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Util.ts#L1)
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L38)
+[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L38)
 
 ___
 
@@ -247,7 +247,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L30)
+[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L30)
 
 ___
 
@@ -263,7 +263,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:90](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L90)
+[types/GetPaginatedItems.ts:90](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L90)
 
 ___
 
@@ -279,7 +279,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:51](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L51)
+[types/GetPaginatedItems.ts:51](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L51)
 
 ___
 
@@ -302,7 +302,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:58](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L58)
+[types/GetPaginatedItems.ts:58](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L58)
 
 ___
 
@@ -312,7 +312,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:49](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L49)
+[types/GetPaginatedItems.ts:49](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L49)
 
 ___
 
@@ -322,7 +322,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L34)
+[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L34)
 
 ___
 
@@ -340,7 +340,7 @@ ___
 
 #### Defined in
 
-[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Thumbnail.ts#L1)
+[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Thumbnail.ts#L1)
 
 ___
 
@@ -350,7 +350,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/Parts.ts#L1)
+[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/Parts.ts#L1)
 
 ___
 
@@ -373,7 +373,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:70](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/GetPaginatedItems.ts#L70)
+[types/GetPaginatedItems.ts:70](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/GetPaginatedItems.ts#L70)
 
 ___
 
@@ -405,7 +405,7 @@ ___
 
 #### Defined in
 
-[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/eaea722/src/types/VideoUpdateResource.ts#L1)
+[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/types/VideoUpdateResource.ts#L1)
 
 ___
 
@@ -424,4 +424,4 @@ ___
 
 #### Defined in
 
-[index.ts:372](https://github.com/brandonbothell/popyt/blob/eaea722/src/index.ts#L372)
+[index.ts:372](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/index.ts#L372)

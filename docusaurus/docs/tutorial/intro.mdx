@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-import RunkitCodeBlock, { RunkitText } from '@site/src/components/RunkitCodeBlock'
+import CodeSandboxBlock, { CodeSandboxText } from '@site/src/components/CodeSandboxBlock'
 
 # Tutorial Intro
 
@@ -9,9 +9,16 @@ Let's discover **Popyt in less than 5 minutes**.
 
 ## Getting started
 
-Get started by [creating a new Node.JS project](https://docs.npmjs.com/cli/v9/commands/npm-init#examples) and running `npm install popyt`.  
-Check out the <b><a href='https://runkit.com/brandonbothell/fetch-a-video' target='_blank'><RunkitText /></a></b> for a quick **example
-that you can run online and download**.
+Get started by [creating a new Node.JS project](https://docs.npmjs.com/cli/v9/commands/npm-init#examples) and running `npm install popyt`.
+
+<i><text style={{
+  fontSize: '20px'
+}}>OR</text></i>
+<br/><br/>
+
+Check out the <b><a href='https://codesandbox.io/p/sandbox/fetch-videos-from-youtube-jmqlfq' target='_blank'><CodeSandboxText /></a></b> for a quick **example
+that you can run online and fork on GitHub**.  
+Click **Fork** in the top right, press `CTRL+K` and type "environment" to set the `YOUTUBE_API_KEY` environment variable, and then try Popyt right from your browser.
 
 ### What you'll need
 
@@ -37,12 +44,12 @@ Here are a few examples of retrieving data, but check [the documentation](../api
 
 Get a video by ID:
 
-<RunkitCodeBlock
+<CodeSandboxBlock
   language="js"
-  runkitUrl="https://runkit.com/brandonbothell/fetch-a-video">
+  url="https://codesandbox.io/p/sandbox/fetch-videos-from-youtube-jmqlfq">
   {`const video = await youtube.getVideo('dQw4w9WgXcQ')
 console.log(video.title)`}
-</RunkitCodeBlock>
+</CodeSandboxBlock>
 
 You can do the same thing with playlists, channels, and comments by replacing Video with any of them.
 

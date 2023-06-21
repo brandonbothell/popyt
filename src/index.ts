@@ -4,7 +4,7 @@
 
 import { Cache, Request } from './util'
 import { VideoParts, ChannelParts, ChannelSectionParts, CommentParts, CommentThreadParts, PlaylistItemParts, PlaylistParts, SubscriptionParts } from './types/Parts'
-import { PageOptions, PaginatedItemType, PaginatedItemsReturns, SearchOptions, SearchType } from './types'
+import { ChannelResolvable, CommentResolvable, PageOptions, PaginatedItemType, PaginatedItemsReturns, PlaylistResolvable, SearchOptions, SearchType, VideoResolvable } from './types'
 import { SearchService, GenericService, SubscriptionService } from './services'
 import { OAuth } from './oauth'
 import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, Language, Region, ChannelSection } from './entities'
@@ -163,35 +163,34 @@ export class YouTube {
   }
 
   /**
-   * Get a [[Video]] object from the URL, ID, or Title of a video.
-   * Meant mostly for getting by URL or ID.
-   * @param videoResolvable The URL, ID, or Title of the video.
+   * Get a [[Video]] object from the URL, ID, or search query of a video.
+   * @param videoResolvable The URL, ID, or search query of the video.
    * @param parts The parts of the video to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getVideo (videoResolvable: string | Video, parts?: VideoParts) {
+  public async getVideo (videoResolvable: VideoResolvable, parts?: VideoParts) {
     const id = await this._genericService.getId(videoResolvable, Video)
     return this._genericService.getItem(Video, false, id, parts) as Promise<Video>
   }
 
   /**
-   * Get a [[Channel]] object from the Username, URL or ID of a channel.
-   * Meant mostly for getting by URL or ID.  
-   * **Beware**, custom channel URLs may not work.
-   * @param channelResolvable The Username, URL or ID of the channel.
+   * Get a [[Channel]] object from the URL, ID, or search query of a channel.
+   * **Beware**, support for old custom channel URLs is shoddy.
+   * Consider migrating to [the new @ system.](https://support.google.com/youtube/answer/2657968?hl=en)
+   * @param channelResolvable The URL, ID, or search query of the channel.
    * @param parts The parts of the channel to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getChannel (channelResolvable: string | Channel, parts?: ChannelParts) {
+  public async getChannel (channelResolvable: ChannelResolvable, parts?: ChannelParts) {
     const id = await this._genericService.getId(channelResolvable, Channel)
     return this._genericService.getItem(Channel, false, id, parts) as Promise<Channel>
   }
 
   /**
-   * Get a [[Playlist]] object from the URL, ID, or Title of a playlist.
+   * Get a [[Playlist]] object from the URL, ID, or search query of a playlist.
    * Meant mostly for getting by URL or ID.
-   * @param playlistResolvable The URL, ID, or Title of the playlist.
+   * @param playlistResolvable The URL, ID, or search query of the playlist.
    * @param parts The parts of the playlist to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getPlaylist (playlistResolvable: string | Playlist, parts?: PlaylistParts) {
+  public async getPlaylist (playlistResolvable: PlaylistResolvable, parts?: PlaylistParts) {
     const id = await this._genericService.getId(playlistResolvable, Playlist)
     return this._genericService.getItem(Playlist, false, id, parts) as Promise<Playlist>
   }
@@ -233,11 +232,12 @@ export class YouTube {
 
   /**
    * Get a [[Subscription]] object from the subscriber and channel of a subscription.
+   * Channels can be passed in the form of ID, URL, or search query.
    * @param subscriberResolvable A resolvable channel that is the subscriber.
    * @param channelResolvable A resolvable channel that is the channel being subscribed to.
    * @param parts The parts of the subscription to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getSubscriptionByChannels (subscriberResolvable: string | Channel, channelResolvable: string | Channel, parts?: SubscriptionParts) {
+  public async getSubscriptionByChannels (subscriberResolvable: ChannelResolvable, channelResolvable: ChannelResolvable, parts?: SubscriptionParts) {
     const subscriberId = await this._genericService.getId(subscriberResolvable, Channel)
     const channelId = await this._genericService.getId(channelResolvable, Channel)
 
@@ -253,7 +253,7 @@ export class YouTube {
    * @param parts The parts of the videos to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial video objects.
    */
-  public async getPlaylistItems (playlistResolvable: string | Playlist, pageOptions?: PageOptions, parts?: PlaylistItemParts) {
+  public async getPlaylistItems (playlistResolvable: PlaylistResolvable, pageOptions?: PageOptions, parts?: PlaylistItemParts) {
     const playlistId = await this._genericService.getId(playlistResolvable, Playlist)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.PlaylistItems, id: playlistId, ...pageOptions, parts })).items as Video[]
@@ -268,7 +268,7 @@ export class YouTube {
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public async getVideoComments (videoResolvable: string | Video, pageOptions?: PageOptions, parts?: CommentThreadParts) {
+  public async getVideoComments (videoResolvable: VideoResolvable, pageOptions?: PageOptions, parts?: CommentThreadParts) {
     const videoId = await this._genericService.getId(videoResolvable, Video)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts })).items as YTComment[]
@@ -285,7 +285,7 @@ export class YouTube {
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public async getChannelComments (channelResolvable: string | Channel, pageOptions?: PageOptions, parts?: CommentThreadParts) {
+  public async getChannelComments (channelResolvable: ChannelResolvable, pageOptions?: PageOptions, parts?: CommentThreadParts) {
     const channelId = await this._genericService.getId(channelResolvable, Channel)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.ChannelComments, id: channelId, ...pageOptions, parts })).items as YTComment[]
@@ -300,7 +300,7 @@ export class YouTube {
    * @param parts The parts of the playlists to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial playlist objects.
    */
-  public async getChannelPlaylists (channelResolvable: string | Channel, pageOptions?: PageOptions, parts?: PlaylistParts) {
+  public async getChannelPlaylists (channelResolvable: ChannelResolvable, pageOptions?: PageOptions, parts?: PlaylistParts) {
     const channelId = await this._genericService.getId(channelResolvable, Channel)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.Playlists, id: channelId, ...pageOptions, parts })).items as Playlist[]
@@ -315,7 +315,7 @@ export class YouTube {
    * @param parts The parts of the subscriptions to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial subscription objects.
    */
-  public async getChannelSubscriptions (channelResolvable: string | Channel, pageOptions?: PageOptions, parts?: SubscriptionParts) {
+  public async getChannelSubscriptions (channelResolvable: ChannelResolvable, pageOptions?: PageOptions, parts?: SubscriptionParts) {
     const channelId = await this._genericService.getId(channelResolvable, Channel)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.Subscriptions, id: channelId, ...pageOptions, parts })).items as Subscription[]
@@ -330,7 +330,8 @@ export class YouTube {
    * @param parts The parts of the replies to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial comment objects.
    */
-  public async getCommentReplies (commentId: string, pageOptions?: PageOptions, parts?: CommentParts) {
+  public async getCommentReplies (commentResolvable: CommentResolvable, pageOptions?: PageOptions, parts?: CommentParts) {
+    const commentId = await this._genericService.getId(commentResolvable, YTComment)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.CommentReplies, id: commentId, ...pageOptions, parts })).items as YTComment[]
   }
@@ -341,7 +342,7 @@ export class YouTube {
    * @param parts The parts of the channel sections to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial channel section objects.
    */
-  public async getChannelSections (channelResolvable: string | Channel, parts?: ChannelSectionParts) {
+  public async getChannelSections (channelResolvable: ChannelResolvable, parts?: ChannelSectionParts) {
     const channelId = await this._genericService.getId(channelResolvable, Channel)
     return (await this._genericService.getPaginatedItems(
       { type: PaginatedItemType.ChannelSections, id: channelId, parts })).items as ChannelSection[]

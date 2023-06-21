@@ -1,5 +1,5 @@
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
-import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions } from '..'
+import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions, VideoResolvable } from '..'
 
 /**
  * A YouTube playlist.
@@ -180,12 +180,12 @@ export class Playlist {
   /**
    * Adds a [[Video]] to the playlist.
    * Must be using an access token with correct scopes.
-   * @param videoResolvable The URL, ID, or Title of the video.
+   * @param videoResolvable The URL, ID, or search query of the video.
    * @param position The zero-based position to insert the video in.
    * @param note A note on the video.
    */
   /* istanbul ignore next */
-  public async addVideo (videoResolvable: string | Video, position?: number, note?: string) {
+  public async addVideo (videoResolvable: VideoResolvable, position?: number, note?: string) {
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const video = await this.youtube.oauth.addPlaylistItem(this.id, videoId, position, note)
 
@@ -201,13 +201,13 @@ export class Playlist {
   /**
    * Updates a [[Video]] in the playlist.
    * Must be using an access token with correct scopes.
-   * @param videoResolvable The URL, ID, or Title of the video.
+   * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    * @param position The zero-based position to move the video to.
    * @param note A new note on the video.
    * @param itemId The playlist item ID if you have it.
    */
   /* istanbul ignore next */
-  public async updateVideo (videoResolvable: string | Video, position?: number, note?: string, itemId?: string) {
+  public async updateVideo (videoResolvable: VideoResolvable, position?: number, note?: string, itemId?: string) {
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
     const playlistItemId = itemId ??
       (await this.youtube._genericService.getPaginatedItems({ type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: videoId }))[0].id
@@ -218,10 +218,10 @@ export class Playlist {
   /**
    * Removes a [[Video]] from the playlist.
    * Must be using an access token with correct scopes.
-   * @param videoResolvable The URL, ID, or Title of the video.
+   * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    */
   /* istanbul ignore next */
-  public async removeVideo (videoResolvable: string) {
+  public async removeVideo (videoResolvable: VideoResolvable) {
     const playlistItemId = (this.youtube._genericService.getPaginatedItems({
       type: PaginatedItemType.PlaylistItems,
       mine: false,

@@ -1,30 +1,28 @@
 ---
 sidebar_position: 1
 ---
-import { RunkitText } from '@site/src/components/RunkitCodeBlock'
+import CodeSandboxBlock, { CodeSandboxText } from '@site/src/components/CodeSandboxBlock'
 
 # Working with Playlists
 Playlists are lists of videos and a some metadata including a title, description, etc. They have some unique behaviors, especially pertaining to the completeness of videos fetched from these objects.
 
 ## Getting started
 If you haven't already, check out [the introduction](../intro).  
-Check out the <b><a href='https://runkit.com/brandonbothell/fetch-a-playlist' target='_blank'><RunkitText /></a></b> for a quick **example
+Check out the <b><a href='https://runkit.com/brandonbothell/fetch-a-playlist' target='_blank'><CodeSandboxText /></a></b> for a quick **example
 that you can run online and download**.
 
 ## Fetch your first playlist
 
-import RunkitCodeBlock from '@site/src/components/RunkitCodeBlock'
-
-<RunkitCodeBlock
+<CodeSandboxBlock
   language="js"
-  runkitUrl="https://runkit.com/brandonbothell/fetch-a-playlist">
+  url="https://runkit.com/brandonbothell/fetch-a-playlist">
 {`const playlistById = youtube.getPlaylist('PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
 const playlistByUrl = youtube.getPlaylist('https://www.youtube.com/playlist?list=PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
 const playlistByTitleSearch = youtube.getPlaylist('Never Gonna Give You Up Parodies')
 \n
 console.log(\`Playlist title: $\{playlistById.title}\`)
 console.log(\`Playlist length: $\{playlistById.length} videos\`)`}
-</RunkitCodeBlock>
+</CodeSandboxBlock>
 
 :::tip CHILD OBJECTS MUST BE FETCHED EXPLICITLY
 

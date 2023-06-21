@@ -1,5 +1,5 @@
 import { Cache } from '../util'
-import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters } from '..'
+import YouTube, { Video, Channel, Playlist, GenericSearchOptions, SearchType, PaginatedItemsReturns, SearchFilters, VideoCategory } from '..'
 
 /**
  * @ignore
@@ -59,14 +59,14 @@ export class SearchService {
 
     const searchFilters = otherFilters as unknown as SearchFilters<T>
 
-    if ('channelId' in searchFilters) options.channelId = searchFilters.channelId
-    if ('videoCategoryId' in searchFilters) options.videoCategoryId = searchFilters.videoCategoryId
+    if ('channel' in searchFilters) options.channelId = await this.youtube._genericService.getId(searchFilters.channel, Channel)
+    if ('videoCategory' in searchFilters) options.videoCategoryId = await this.youtube._genericService.getId(searchFilters.videoCategory, VideoCategory)
     if ('eventType' in searchFilters) options.eventType = searchFilters.eventType
     if ('videoType' in searchFilters) options.videoType = searchFilters.videoType
     if ('videoCaption' in searchFilters) options.videoCaption = searchFilters.videoCaption
     if ('location' in searchFilters) options.location = searchFilters.location
     if ('locationRadius' in searchFilters) options.locationRadius = searchFilters.locationRadius
-    if ('channelId' in searchFilters) options.videoEmbeddable = 'true'
+    if ('videoEmbeddable' in searchFilters) options.videoEmbeddable = 'true'
 
     const toReturn = await this.youtube._genericService.fetchPages(pages, 'search', options)
 

@@ -1,68 +1,59 @@
-import { parse } from 'url'
+import { URL } from 'url'
 import { ISODuration, ParsedUrl } from '../types'
 
 /**
  * @ignore
  */
 export class Parser {
-  public static parseUrl (url: string): ParsedUrl {
-    url = url.startsWith('https://www.') ? url :
-      (url.startsWith('www.') ? `https://${url}` :
-        (url.startsWith('https://') ? `${url.substring(0, 8)}www.${url.substring(8)}` : `https://www.${url}`))
+  public static readonly idRegex = /^[a-z0-9-_]+$/i
 
-    const parsed = parse(url, true)
+  public static parseUrl (url: string): ParsedUrl {
+    if (!/^https?:\/\//i.test(url)) {
+      url = `https://${url}`
+    }
+
+    let parsed: URL
+
+    try {
+      parsed = new URL(url)
+    } catch (_) {
+      return {}
+    }
 
     switch (parsed.hostname) {
       case 'www.youtube.com':
       case 'youtube.com':
-      case 'm.youtube.com': {
-        const idRegex = /^[a-zA-Z0-9-_]+$/
-
+      case 'm.youtube.com':
         if (parsed.pathname.endsWith('/')) {
           parsed.pathname = parsed.pathname.substring(0, parsed.pathname.length - 1)
         }
 
+        const toReturn: ParsedUrl = {}
+
         if (parsed.pathname === '/watch') {
-          if (!parsed.query.v || !idRegex.test(parsed.query.v as string)) {
-            return {}
-          }
+          const videoId = parsed.searchParams.get('v')
+          const playlistId = parsed.searchParams.get('list')
 
-          const toReturn: ParsedUrl = { video: { id: parsed.query.v as string } }
-
-          if (parsed.query.list) {
-            toReturn.playlist = { id: parsed.query.list as string }
-          }
-
-          return toReturn
+          if (videoId && Parser.idRegex.test(videoId)) toReturn.video = { id: videoId }
+          if (playlistId && Parser.idRegex.test(playlistId)) toReturn.playlist = { id: playlistId }
         } else if (parsed.pathname === '/playlist') {
-          if (!parsed.query.list || !idRegex.test(parsed.query.list as string)) {
-            return {}
-          }
+          const playlistId = parsed.searchParams.get('list')
 
-          return { playlist: { id: parsed.query.list as string } }
+          if (playlistId && Parser.idRegex.test(playlistId)) toReturn.playlist = { id: playlistId }
         } else if (parsed.pathname.startsWith('/channel/') || parsed.pathname.startsWith('/c/')) {
-          const id = parsed.pathname.replace('/channel/', '').replace('/c/', '')
+          const channelId = parsed.pathname.replace('/channel/', '').replace('/c/', '')
 
-          if (!id || !idRegex.test(id)) {
-            return {}
-          }
-
-          return { channel: { id } }
+          if (channelId && Parser.idRegex.test(channelId)) toReturn.channel = { id: channelId }
         } else if (parsed.pathname.startsWith('/@')) {
-          const username = parsed.pathname.replace('/@', '')
+          const channelUsername = parsed.pathname.replace('/@', '')
 
-          if (!username || !idRegex.test(username)) {
-            return {}
-          }
-
-          return { channel: { username: username } }
+          if (channelUsername && Parser.idRegex.test(channelUsername)) toReturn.channel = { username: channelUsername }
         }
 
-        return {}
-      }
+        return toReturn
       case 'www.youtu.be':
       case 'youtu.be':
-        const isValidId = /^\/[a-zA-Z0-9-_]+$/.test(parsed.pathname)
+        const isValidId = Parser.idRegex.test(parsed.pathname.slice(1))
         return isValidId ? { video: { id: parsed.pathname.slice(1) } } : {}
       default:
         return {}

@@ -84,7 +84,7 @@ describe('Searching', () => {
   })
 
   it('should work with fetching videos of a channel', async () => {
-    const video = (await youtube.searchVideos('bukkit', { searchFilters: { channelId: 'UC6mi9rp7vRYninucP61qOjg' }, pageOptions: { maxPerPage: 1 } })).items[0]
+    const video = (await youtube.searchVideos('bukkit', { searchFilters: { channel: 'UC6mi9rp7vRYninucP61qOjg' }, pageOptions: { maxPerPage: 1 } })).items[0]
     expect(video.channel.id).to.equal('UC6mi9rp7vRYninucP61qOjg')
     expect(video.channel.name).to.be.a('string')
   })

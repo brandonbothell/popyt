@@ -1,5 +1,5 @@
 import { Cache, Parser } from '../util'
-import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType } from '../types'
+import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType, Resolvable } from '../types'
 import YouTube,
 { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 
@@ -279,29 +279,31 @@ export class GenericService {
   }
 
   /* istanbul ignore next */
-  public async getId (input: string | Video | Channel | Playlist, type: typeof Video | typeof Channel | typeof Playlist): Promise<string> {
-    let id: string = null
+  public async getId (input: string | InstanceType<Resolvable>,
+    type: Resolvable): Promise<string> {
+
+    if (typeof input !== 'string') {
+      return input.id
+    }
 
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
       if (cached) return cached
     }
 
-    const cachedEntity: Video | Channel | Playlist | YTComment = Cache.get(`get://${type.endpoint}/${input}`)
-
-    if (cachedEntity && cachedEntity.id) {
-      return cachedEntity.id
+    // types that resolve only by class or ID
+    if ([ VideoCategory, YTComment ].includes(type as any)) {
+      return input
     }
 
-    if (typeof input !== 'string') {
-      return input.id
-    }
+    let id: string = null
 
+    // Resolve from URL
     if (input.includes('youtube.com') || input.includes('youtu.be')) {
       const parsedUrl = Parser.parseUrl(input)
 
       if (type === Channel && parsedUrl.channel) {
-        if (parsedUrl.channel.id && !parsedUrl.channel.id.startsWith('UC')) {
+        if (parsedUrl.channel.id && !parsedUrl.channel.id.startsWith('UC') && !parsedUrl.channel.id.startsWith('HC')) {
           // Custom channel URLs don't work that well
           id = await this.youtube._request.api('search', {
             q: encodeURIComponent(id),
@@ -328,27 +330,31 @@ export class GenericService {
       return id
     }
 
-    if (type === Channel && (!input.startsWith('UC') || input.includes(' '))) {
+    // Resolve from search query
+    let isSearchQuery = input.includes(' ')
+
+    // Reasoning for these constraints: https://webapps.stackexchange.com/a/101153
+    switch (type) {
+      case Channel:
+        if (input.length !== 24 || !input.startsWith('UC') && !input.startsWith('HC')) isSearchQuery = true
+        break
+      case Video:
+        if (input.length !== 11) isSearchQuery = true
+        break
+      case Playlist:
+        if (input.length < 24 || input.length > 34) isSearchQuery = true
+        break
+    }
+
+    if (isSearchQuery) {
+      const typeName = type.name.toLowerCase()
+
       id = await this.youtube._request.api('search', {
         q: encodeURIComponent(input),
-        type: 'channel',
+        type: typeName,
         part: 'id',
         maxResults: 1
-      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.channelId : undefined) : undefined)
-    } else if (type === Playlist && input.includes(' ')) {
-      id = await this.youtube._request.api('search', {
-        q: encodeURIComponent(input),
-        type: 'playlist',
-        part: 'id',
-        maxResults: 1
-      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.playlistId : undefined) : undefined)
-    } else if (type === Video && (input.length < 11 || input.includes(' '))) {
-      id = await this.youtube._request.api('search', {
-        q: encodeURIComponent(input),
-        type: 'video',
-        part: 'id',
-        maxResults: 1
-      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id.videoId : undefined) : undefined)
+      }, this.youtube.token, this.youtube.accessToken).then(r => r.items ? (r.items.length > 0 ? r.items[0].id[`${typeName}Id`] : undefined) : undefined)
     }
 
     if (id === null || id === undefined || id === '') {

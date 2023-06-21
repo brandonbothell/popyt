@@ -1,4 +1,9 @@
 import { Video, Channel, YTComment, Playlist, Subscription, VideoCategory, VideoAbuseReportReason, Language, Region, ChannelSection, Caption } from '..'
+import { ChannelResolvable, VideoCategoryResolvable } from './Resolvable'
+
+const PAGINATED_CLASSES = [
+  VideoCategory, VideoAbuseReportReason, Language, Region, Video, YTComment, Caption, Playlist, Subscription, ChannelSection, Channel
+]
 
 /**
  * @ignore
@@ -18,8 +23,7 @@ export enum PaginatedItemType {
   ChannelSections
 }
 
-export type PaginatedType = typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language | typeof Region | typeof Video | typeof YTComment |
-  typeof Caption | typeof Playlist | typeof Subscription | typeof ChannelSection | typeof Channel
+export type PaginatedType = typeof PAGINATED_CLASSES[number]
 
 /**
  * @ignore
@@ -68,8 +72,8 @@ export type GenericSearchOptions<T extends SearchType = SearchType> = SearchFilt
 }
 
 export type VideoSearchOptions = {
-  channelId?: string
-  videoCategoryId?: string
+  channel?: ChannelResolvable
+  videoCategory?: VideoCategoryResolvable
   videoEmbeddable?: boolean
   eventType?: 'completed' | 'live' | 'upcoming'
   videoType?: 'any' | 'episode' | 'movie'
@@ -88,7 +92,7 @@ export type VideoSearchOptions = {
 }
 
 export type PlaylistSearchOptions = {
-  channelId?: string
+  channel?: ChannelResolvable
 }
 
 export type ChannelSearchOptions = {

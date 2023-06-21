@@ -109,6 +109,14 @@ describe('Getting/Parsing', () => {
     expect(parsed.playlist).to.equal(undefined)
   })
 
+  it('shouldn\'t work with non-urls', () => {
+    const parsed = Parser.parseUrl('Wait, this is not a URL...')
+
+    expect(parsed.video).to.equal(undefined)
+    expect(parsed.channel).to.equal(undefined)
+    expect(parsed.playlist).to.equal(undefined)
+  })
+
   it('should throw an error if kind is wrong', () => {
     expect(() => new Video(youtube, { kind: 'notakind' })).to.throw('Invalid video type: notakind')
     expect(() => new Channel(youtube, { kind: 'notakind' })).to.throw('Invalid channel type: notakind')

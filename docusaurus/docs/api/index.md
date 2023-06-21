@@ -6,7 +6,7 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
-import RunkitCodeBlock from '@site/src/components/RunkitCodeBlock'
+import CodeSandboxBlock from '@site/src/components/CodeSandboxBlock'
 
 # Getting Started
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
@@ -33,12 +33,12 @@ Here are some basic methods:
 
 Instantiate the object:
 
-<RunkitCodeBlock
+<CodeSandboxBlock
   language="js"
-  runkitUrl="https://runkit.com/brandonbothell/fetch-a-video">
+  url="https://codesandbox.io/p/sandbox/polished-fast-jmqlfq?file=%2Findex.js%3A4%2C1">
   {`const { YouTube } = require('popyt')
 const youtube = new YouTube(apiKey)`}
-</RunkitCodeBlock>
+</CodeSandboxBlock>
 
 Instantiate the object without caching:
 
@@ -73,8 +73,8 @@ console.log(video)
 Search videos:
 
 ```js
-const videos = await youtube.searchVideos('never gonna give you up')
-console.log(videos.map(v => v.title).join('\n')) // titles of 50 beautiful videos
+const search = await youtube.searchVideos('never gonna give you up')
+console.log(search.items.map(v => v.title).join('\n')) // titles of 50 beautiful videos
 ```
 
 Note: This wrapper does not implement every feature of the YouTube API. If you would like anything added, feel free to open an issue. The limits imposed by the wrapper are not imposed by YouTube.

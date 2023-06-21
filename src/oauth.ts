@@ -21,7 +21,10 @@ import YouTube,
   ChannelBrandingSettings,
   ChannelSectionType,
   Caption,
-  PaginatedItemType
+  PaginatedItemType,
+  PlaylistResolvable,
+  ChannelResolvable,
+  VideoResolvable
 } from '.'
 
 /**
@@ -89,7 +92,7 @@ export class OAuth {
    * @param videoResolvable The video of the channel to post the comment on.
    * If falsey, the comment will be posted to the channel discussion.
    */
-  public async postComment (text: string, channelResolvable: string | Channel, videoResolvable?: string): Promise<YTComment> {
+  public async postComment (text: string, channelResolvable: ChannelResolvable, videoResolvable?: string): Promise<YTComment> {
     this.checkTokenAndThrow()
 
     const channelId = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -202,7 +205,7 @@ export class OAuth {
    * @param channelResolvable The channel to subscribe to.
    * @returns A partial subscription object.
    */
-  public async subscribeToChannel (channelResolvable: string | Channel): Promise<Subscription> {
+  public async subscribeToChannel (channelResolvable: ChannelResolvable): Promise<Subscription> {
     this.checkTokenAndThrow()
 
     const channelId = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -230,7 +233,7 @@ export class OAuth {
    * @param videoResolvable The video to rate.
    * @param rating The rating to give the video.
    */
-  public async rateVideo (videoResolvable: string | Video, rating: 'like' | 'dislike' | 'none'): Promise<void> {
+  public async rateVideo (videoResolvable: VideoResolvable, rating: 'like' | 'dislike' | 'none'): Promise<void> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
@@ -242,7 +245,7 @@ export class OAuth {
    * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvables The video(s) to retrieve your rating from.
    */
-  public async getMyRatings (videoResolvables: (string | Video)[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
+  public async getMyRatings (videoResolvables: (VideoResolvable)[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
     this.checkTokenAndThrow()
 
     const videoIds = await Promise.all(videoResolvables.map(videoResolvable => this.youtube._genericService.getId(videoResolvable, Video)))
@@ -267,7 +270,7 @@ export class OAuth {
    * @param comments Any additional information.
    * @param language The language that the reporter speaks.
    */
-  public async reportAbuse (videoResolvable: string | Video, reasonId: string, secondaryReasonId?: string, comments?: string, language?: string): Promise<void> {
+  public async reportAbuse (videoResolvable: VideoResolvable, reasonId: string, secondaryReasonId?: string, comments?: string, language?: string): Promise<void> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
@@ -294,7 +297,7 @@ export class OAuth {
    * Last tested NEVER
    * @param videoResolvable The video to delete.
    */
-  public async deleteVideo (videoResolvable: string | Video): Promise<void> {
+  public async deleteVideo (videoResolvable: VideoResolvable): Promise<void> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
@@ -347,7 +350,7 @@ export class OAuth {
    * @param videoResolvable The video to set the thumbnail for.
    * @param image The image data and type to upload.
    */
-  public async setThumbnail (videoResolvable: string | Video, image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
+  public async setThumbnail (videoResolvable: VideoResolvable, image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
@@ -401,7 +404,7 @@ export class OAuth {
    * @param language The language of the playlist's default title and description.
    * @param localizations Translated titles and descriptions.
    */
-  public async updatePlaylist (playlistResolvable: string | Playlist, title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
+  public async updatePlaylist (playlistResolvable: PlaylistResolvable, title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
     localizations?: {[language: string]: { title: string; description: string }}): Promise<Playlist> {
     this.checkTokenAndThrow()
 
@@ -430,7 +433,7 @@ export class OAuth {
    * Last tested 05/18/2020 11:48. PASSING
    * @param playlistResolvable The playlist to delete.
    */
-  public async deletePlaylist (playlistResolvable: string | Playlist): Promise<void> {
+  public async deletePlaylist (playlistResolvable: PlaylistResolvable): Promise<void> {
     this.checkTokenAndThrow()
 
     const id = await this.youtube._genericService.getId(playlistResolvable, Playlist)
@@ -446,7 +449,7 @@ export class OAuth {
    * @param note A user-generated note on the video.
    * @returns A partial video object.
    */
-  public async addPlaylistItem (playlistResolvable: string | Playlist, videoResolvable: string | Video, position?: number, note?: string): Promise<Video> {
+  public async addPlaylistItem (playlistResolvable: PlaylistResolvable, videoResolvable: VideoResolvable, position?: number, note?: string): Promise<Video> {
     this.checkTokenAndThrow()
 
     const playlistId = await this.youtube._genericService.getId(playlistResolvable, Playlist)
@@ -479,7 +482,7 @@ export class OAuth {
    * @param note The note to change the playlist item's to.
    * @returns A partial video object.
    */
-  public async updatePlaylistItem (id: string, playlistResolvable: string | Playlist, videoResolvable: string | Video, position?: number, note?: string): Promise<Video> {
+  public async updatePlaylistItem (id: string, playlistResolvable: PlaylistResolvable, videoResolvable: VideoResolvable, position?: number, note?: string): Promise<Video> {
     this.checkTokenAndThrow()
 
     const playlistId = await this.youtube._genericService.getId(playlistResolvable, Playlist)
@@ -519,7 +522,7 @@ export class OAuth {
    * @param channelResolvable The channel to update the branding settings of.
    * @param brandingSettings The new branding settings.
    */
-  public async updateChannelBranding (channelResolvable: string | Channel, brandingSettings: ChannelBrandingSettings): Promise<Channel> {
+  public async updateChannelBranding (channelResolvable: ChannelResolvable, brandingSettings: ChannelBrandingSettings): Promise<Channel> {
     this.checkTokenAndThrow()
 
     const id = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -540,7 +543,7 @@ export class OAuth {
    * @param channelResolvable The channel to update the localizations of.
    * @param localizations The new localizations.
    */
-  public async updateChannelLocalizations (channelResolvable: string | Channel, localizations: { [key: string]: { title: string; description: string } }): Promise<Channel> {
+  public async updateChannelLocalizations (channelResolvable: ChannelResolvable, localizations: { [key: string]: { title: string; description: string } }): Promise<Channel> {
     this.checkTokenAndThrow()
 
     const id = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -559,7 +562,7 @@ export class OAuth {
    * @param channelResolvable The channel to update.
    * @param madeForKids Whether or not the channel is made for kids.
    */
-  public async setChannelMadeForKids (channelResolvable: string | Channel, madeForKids: boolean): Promise<Channel> {
+  public async setChannelMadeForKids (channelResolvable: ChannelResolvable, madeForKids: boolean): Promise<Channel> {
     this.checkTokenAndThrow()
 
     const id = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -583,7 +586,7 @@ export class OAuth {
    * @param duration The duration, in millseconds, to display the watermark for.
    * @param image The watermark image.
    */
-  public async setChannelWatermark (channelResolvable: string | Channel, type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Buffer, imageType: 'png' | 'jpeg'): Promise<void> {
+  public async setChannelWatermark (channelResolvable: ChannelResolvable, type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Buffer, imageType: 'png' | 'jpeg'): Promise<void> {
     this.checkTokenAndThrow()
 
     const id = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -603,7 +606,7 @@ export class OAuth {
    * Last tested 05/18/2020 18:23. PASSING
    * @param channelResolvable The channel to unset the watermark from.
    */
-  public async unsetChannelWatermark (channelResolvable: string | Channel): Promise<void> {
+  public async unsetChannelWatermark (channelResolvable: ChannelResolvable): Promise<void> {
     this.checkTokenAndThrow()
 
     const id = await this.youtube._genericService.getId(channelResolvable, Channel)
@@ -633,8 +636,8 @@ export class OAuth {
    * @param playlistsResolvable Any playlists in the channel section.
    * @param channelsResolvable Any channels in the channel section.
    */
-  public async addChannelSection (type: ChannelSectionType, name?: string, position?: number, playlistsResolvable?: (string | Playlist)[],
-    channelsResolvable?: (string | Channel)[]): Promise<ChannelSection> {
+  public async addChannelSection (type: ChannelSectionType, name?: string, position?: number, playlistsResolvable?: (PlaylistResolvable)[],
+    channelsResolvable?: (ChannelResolvable)[]): Promise<ChannelSection> {
     this.checkTokenAndThrow()
 
     const data: typeof CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(CHANNEL_SECTION_DATA))
@@ -670,8 +673,8 @@ export class OAuth {
    * @param localizations Translations of the channel section's title.
    * @param targeting Targeting data for the channel section.
    */
-  public async updateChannelSection (id: string, type: ChannelSectionType, name?: string, position?: number, playlistsResolvable?: (string | Playlist)[],
-    channelsResolvable?: (string | Channel)[]): Promise<ChannelSection> {
+  public async updateChannelSection (id: string, type: ChannelSectionType, name?: string, position?: number, playlistsResolvable?: (PlaylistResolvable)[],
+    channelsResolvable?: (ChannelResolvable)[]): Promise<ChannelSection> {
     this.checkTokenAndThrow()
 
     const data: typeof CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(CHANNEL_SECTION_DATA))
@@ -708,7 +711,7 @@ export class OAuth {
    * @param videoResolvable The Title, URL, or ID of the video to get the caption from.
    * @param captionId The ID of the caption.
    */
-  public async getCaption (videoResolvable: string | Video, captionId: string): Promise<Caption> {
+  public async getCaption (videoResolvable: VideoResolvable, captionId: string): Promise<Caption> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
@@ -726,7 +729,7 @@ export class OAuth {
    * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the captions from.
    */
-  public async getCaptions (videoResolvable: string | Video): Promise<Caption[]> {
+  public async getCaptions (videoResolvable: VideoResolvable): Promise<Caption[]> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
@@ -748,7 +751,7 @@ export class OAuth {
    * @param track The caption track to upload.
    * @param draft Whether or not the caption track is a draft. If it is, it isn't visible to users.
    */
-  public async uploadCaption (videoResolvable: string | Video, language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
+  public async uploadCaption (videoResolvable: VideoResolvable, language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
     this.checkTokenAndThrow()
 
     const videoId = await this.youtube._genericService.getId(videoResolvable, Video)

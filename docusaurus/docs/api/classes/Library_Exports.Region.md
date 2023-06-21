@@ -25,7 +25,7 @@ A region.
 
 #### Defined in
 
-[entities/region.ts:52](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L52)
+[entities/region.ts:52](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L52)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The raw data of this region.
 
 #### Defined in
 
-[entities/region.ts:35](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L35)
+[entities/region.ts:35](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L35)
 
 ___
 
@@ -49,7 +49,7 @@ Whether or not this is a full region object.
 
 #### Defined in
 
-[entities/region.ts:30](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L30)
+[entities/region.ts:30](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L30)
 
 ___
 
@@ -61,7 +61,7 @@ The country code that uniquely identifies the region.
 
 #### Defined in
 
-[entities/region.ts:45](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L45)
+[entities/region.ts:45](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L45)
 
 ___
 
@@ -73,7 +73,7 @@ The ID of this region.
 
 #### Defined in
 
-[entities/region.ts:40](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L40)
+[entities/region.ts:40](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L40)
 
 ___
 
@@ -85,7 +85,7 @@ The region's name.
 
 #### Defined in
 
-[entities/region.ts:50](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L50)
+[entities/region.ts:50](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L50)
 
 ___
 
@@ -97,7 +97,7 @@ The YouTube object that created this region object.
 
 #### Defined in
 
-[entities/region.ts:25](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L25)
+[entities/region.ts:25](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L25)
 
 ___
 
@@ -109,7 +109,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/region.ts:10](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L10)
+[entities/region.ts:10](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L10)
 
 ___
 
@@ -121,7 +121,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/region.ts:20](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L20)
+[entities/region.ts:20](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L20)
 
 ___
 
@@ -133,4 +133,4 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/region.ts:15](https://github.com/brandonbothell/popyt/blob/eaea722/src/entities/region.ts#L15)
+[entities/region.ts:15](https://github.com/brandonbothell/popyt/blob/f3b9f3d/src/entities/region.ts#L15)
