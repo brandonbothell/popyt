@@ -1,12 +1,7 @@
 import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, ChannelSection, Caption } from '..'
 
-/**
- * @ignore
- */
-export type ItemTypes = typeof Video | typeof Channel | typeof Playlist | typeof YTComment | typeof Subscription | typeof VideoCategory | typeof ChannelSection |
-  typeof Caption
+const GETTABLE_CLASSES = [ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, ChannelSection, Caption ]
 
-/**
- * @ignore
- */
-export type ItemReturns = Video | Channel | Playlist | YTComment | Subscription | VideoCategory | ChannelSection | Caption
+export type ItemTypes = typeof GETTABLE_CLASSES[number]
+
+export type ItemReturns<T extends string | string[], K extends ItemTypes> = T extends string[] ? InstanceType<K>[] : InstanceType<K>

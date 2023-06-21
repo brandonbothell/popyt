@@ -1,5 +1,5 @@
 import { Cache, Parser } from '../util'
-import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType, Resolvable } from '../types'
+import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType, ResolvableClass, Resolvable, ResolveReturn } from '../types'
 import YouTube,
 { Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 
@@ -10,12 +10,12 @@ export class GenericService {
   constructor (private youtube: YouTube) {}
 
   /* istanbul ignore next */
-  public async getItem (type: ItemTypes, mine: boolean, id?: string, parts?: string[]): Promise<ItemReturns> {
+  public async getItem<T extends string | string[], K extends ItemTypes> (type: K, mine: boolean, id?: T, parts?: string[]): Promise<ItemReturns<T, K>> {
     if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
       return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`)
     }
 
-    if (!mine && id == null) {
+    if (!mine && !id) {
       return Promise.reject('Items must either specify an ID or the \'mine\' parameter.')
     }
 
@@ -23,40 +23,48 @@ export class GenericService {
       return Promise.reject(`${type.endpoint} cannot be filtered by the 'mine' parameter.`)
     }
 
+    let idString: string
+
+    if (typeof id === 'string') idString = id
+    else if (id !== undefined && Array.isArray(id)) idString = id.join(',')
+
     if (this.youtube._shouldCache) {
-      const cached = Cache.get(`get://${type.endpoint}/${id ? id : 'mine'}`)
+      const cached = Cache.get(`get://${type.endpoint}/${idString ? idString : 'mine'}`)
       if (cached) return cached
     }
 
-    const params: {
+    const options: {
       id?: string
-      mine?: string
+      mine?: boolean
       fields: string
       part: string
       hl?: string
     } = {
-      [id ? 'id' : 'mine']: id ? id : mine,
       fields: encodeURIComponent(type.fields),
       part: type === YTComment ? 'snippet' : parts ? parts.join(',') : type.part
     }
 
+    if (id) options.id = idString
+    if (mine) options.mine = mine
+
     if (type === VideoCategory) {
-      params.hl = this.youtube.language
+      options.hl = this.youtube.language
     }
 
-    const result = await this.youtube._request.api(type.endpoint, params, this.youtube.token, this.youtube.accessToken)
+    const result: {
+      items: any[]
+    } = await this.youtube._request.api(type.endpoint, options, this.youtube.token, this.youtube.accessToken)
 
     if (!result.items || result.items.length === 0) {
       return Promise.reject('Item not found')
     }
 
-    let endResult: ItemReturns = new (type)(this.youtube, result.items[0], true)
+    let endResult: ItemReturns<string | string[], ItemTypes> = result.items.map(item => new (type)(this.youtube, item, true))
+    if (endResult.length === 1) endResult = endResult[0]
 
-    endResult.full = true
+    if (this.youtube._shouldCache) this.youtube._cache(`get://${type.endpoint}/${id ? idString : 'mine'}`, endResult)
 
-    if (this.youtube._shouldCache) this.youtube._cache(`get://${type.endpoint}/${id ? id : 'mine'}`, endResult)
-
-    return endResult
+    return endResult as ItemReturns<T, K>
   }
 
   /**
@@ -277,13 +285,44 @@ export class GenericService {
   }
 
   /* istanbul ignore next */
-  public async getId (input: string | InstanceType<Resolvable>,
-    type: Resolvable): Promise<string> {
+  public async getId<T extends Resolvable<K> | Resolvable<K>[], K extends ResolvableClass> (input: T, type: K):
+  Promise<ResolveReturn<T, K>> {
 
-    if (typeof input !== 'string') {
-      return input.id
+    const inputIsArray = Array.isArray(input)
+
+    if (!inputIsArray) {
+      if (typeof input === 'string') return this.resolveString(input, type) as Promise<ResolveReturn<T, K>>
+      else return input.id as ResolveReturn<T, K>
     }
 
+    const resolutions: (string | Promise<string>)[] = new Array(input.length) // either the ID or the input if resolution failed
+    const resolvableStrings: { [resolutionIndex: number]: string } = {} // could be ID, URL, or search query
+
+    let preresolvedIdCount = 0
+
+    for (let i = 0; i < input.length; i++) {
+      const resolvable = input[i]
+
+      if (typeof resolvable === 'string') resolvableStrings[i] = resolvable
+      else {
+        resolutions[i] = resolvable.id
+        preresolvedIdCount++
+      }
+    }
+
+    // if all IDs are known, we can return
+    if (preresolvedIdCount === input.length) {
+      return resolutions as ResolveReturn<T, K>
+    }
+
+    for (const resolutionIndex in resolvableStrings) {
+      resolutions[resolutionIndex] = this.resolveString(resolvableStrings[resolutionIndex], type)
+    }
+
+    return Promise.all(resolutions) as Promise<ResolveReturn<T, K>>
+  }
+
+  public async resolveString (input: string, type: ResolvableClass): Promise<string> {
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
       if (cached) return cached
@@ -359,7 +398,7 @@ export class GenericService {
       id = input
     }
 
-    if (this.youtube._shouldCache) this.youtube._cache(`get_id://${type.endpoint}/${input}`, id)
+    this.youtube._cache(`get_id://${type.endpoint}/${input}`, id)
 
     return id
   }

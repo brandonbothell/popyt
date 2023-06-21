@@ -66,12 +66,12 @@ export class YouTube {
   public oauth: OAuth
 
   /**
-   * The language for the API to respond in. See [[YouTube.getLanguages]].
+   * The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages).
    */
   public language: string
 
   /**
-   * The region for the API cater responses to. See [[YouTube.getRegions]].
+   * The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions).
    */
   public region: string
 
@@ -79,10 +79,10 @@ export class YouTube {
    *
    * @param token Your YouTube Data API v3 token. Don't share this with anybody.
    * It could be an API key or an OAuth 2.0 token.
-   * @param accessToken A Google OAuth 2.0 access token. Used for [[YouTube.oauth]] methods.
+   * @param accessToken A Google OAuth 2.0 access token. Used for [`YouTube.oauth`](#oauth) methods.
    * @param options Caching options. Recommended to change.
-   * @param language The language for the API to respond in. See [[YouTube.getLanguages]].
-   * @param region The region for the API cater responses to. See [[YouTube.getRegions]].
+   * @param language The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages).
+   * @param region The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions)..
    */
   constructor (token?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
     language: string = 'en_US', region: string = 'US') {
@@ -163,75 +163,75 @@ export class YouTube {
   }
 
   /**
-   * Get a [[Video]] object from the URL, ID, or search query of a video.
+   * Get a [`Video`](./Library_Exports.Video) object from the URL, ID, or search query of a video.
    * @param videoResolvable The URL, ID, or search query of the video.
    * @param parts The parts of the video to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getVideo (videoResolvable: VideoResolvable, parts?: VideoParts) {
+  public async getVideo<T extends VideoResolvable | VideoResolvable[]> (videoResolvable: T, parts?: VideoParts) {
     const id = await this._genericService.getId(videoResolvable, Video)
-    return this._genericService.getItem(Video, false, id, parts) as Promise<Video>
+    return this._genericService.getItem(Video, false, id, parts)
   }
 
   /**
-   * Get a [[Channel]] object from the URL, ID, or search query of a channel.
+   * Get a [`Channel`](./Library_Exports.Channel) object from the URL, ID, or search query of a channel.
    * **Beware**, support for old custom channel URLs is shoddy.
    * Consider migrating to [the new @ system.](https://support.google.com/youtube/answer/2657968?hl=en)
    * @param channelResolvable The URL, ID, or search query of the channel.
    * @param parts The parts of the channel to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getChannel (channelResolvable: ChannelResolvable, parts?: ChannelParts) {
+  public async getChannel<T extends ChannelResolvable | ChannelResolvable[]> (channelResolvable: T, parts?: ChannelParts) {
     const id = await this._genericService.getId(channelResolvable, Channel)
-    return this._genericService.getItem(Channel, false, id, parts) as Promise<Channel>
+    return this._genericService.getItem(Channel, false, id, parts)
   }
 
   /**
-   * Get a [[Playlist]] object from the URL, ID, or search query of a playlist.
+   * Get a [`Playlist`](./Library_Exports.Playlist) object from the URL, ID, or search query of a playlist.
    * Meant mostly for getting by URL or ID.
    * @param playlistResolvable The URL, ID, or search query of the playlist.
    * @param parts The parts of the playlist to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getPlaylist (playlistResolvable: PlaylistResolvable, parts?: PlaylistParts) {
+  public async getPlaylist<T extends PlaylistResolvable | PlaylistResolvable[]> (playlistResolvable: T, parts?: PlaylistParts) {
     const id = await this._genericService.getId(playlistResolvable, Playlist)
-    return this._genericService.getItem(Playlist, false, id, parts) as Promise<Playlist>
+    return this._genericService.getItem(Playlist, false, id, parts)
   }
 
   /**
-   * Get a [[Comment]] object from the ID of a comment.
+   * Get a [`Comment`](./Library_Exports.Comment) object from the ID of a comment.
    * @param commentId The ID of the comment.
    * @param parts The parts of the comment to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getComment (commentId: string, parts?: CommentParts) {
-    return this._genericService.getItem(YTComment, false, commentId, parts) as Promise<YTComment>
+  public async getComment<T extends string | string[]> (commentId: T, parts?: CommentParts) {
+    return this._genericService.getItem(YTComment, false, commentId, parts)
   }
 
   /**
-   * Get a [[Subscription]] object from the ID of a subscription.
+   * Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a subscription.
    * @param subscriptionId The ID of the subscription.
    * @param parts The parts of the subscription to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getSubscription (subscriptionId: string, parts?: SubscriptionParts) {
+  public async getSubscription (subscriptionId: string | string[], parts?: SubscriptionParts) {
     return this._genericService.getItem(Subscription, false, subscriptionId, parts) as Promise<Subscription>
   }
 
   /**
-   * Get a [[VideoCategory]] object from the ID of a category.
+   * Get a [`VideoCategory`](./Library_Exports.VideoCategory) object from the ID of a category.
    * @param categoryId The ID of the category.
    */
-  public async getCategory (categoryId: string) {
+  public async getCategory (categoryId: string | string[]) {
     return this._genericService.getItem(VideoCategory, false, categoryId) as Promise<VideoCategory>
   }
 
   /**
-   * Get a [[ChannelSection]] object from the ID of a section.
+   * Get a [`ChannelSection`](./Library_Exports.ChannelSection) object from the ID of a section.
    * @param categoryId The ID of the section.
    * @param parts The parts of the channel section to fetch (saves quota if you aren't using certain properties!)
    */
-  public async getChannelSection (sectionId: string, parts?: ChannelSectionParts) {
+  public async getChannelSection (sectionId: string | string[], parts?: ChannelSectionParts) {
     return this._genericService.getItem(ChannelSection, false, sectionId, parts) as Promise<ChannelSection>
   }
 
   /**
-   * Get a [[Subscription]] object from the subscriber and channel of a subscription.
+   * Get a [`Subscription`](./Library_Exports.Subscription) object from the subscriber and channel of a subscription.
    * Channels can be passed in the form of ID, URL, or search query.
    * @param subscriberResolvable A resolvable channel that is the subscriber.
    * @param channelResolvable A resolvable channel that is the channel being subscribed to.
@@ -245,7 +245,8 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` videos in a [[Playlist]]. Used mostly internally with [[Playlist.fetchVideos]].
+   * Get `maxPerPage * pages` videos in a [`Playlist`](./Library_Exports.Playlist).
+   * Used mostly internally with [`Playlist.fetchVideos()`](./Library_Exports.Playlist#fetchvideos).
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
@@ -260,7 +261,8 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` [[YTComment]]s from a [[Video]]. Used mostly internally with [[Video.fetchComments]].
+   * Get `maxPerPage * pages` [`Comment`](./Library_Exports.YTComment)s from a [`Video`](./Library_Exports.Video).
+   * Used mostly internally with [`Video.fetchComments()`](./Library_Exports.Video#fetchcomments).
    * @param videoResolvable The URL, ID, or Title of the video.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
@@ -275,7 +277,8 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` of a [[Channel]]'s [[Playlist]]s. Used mostly internally with [[Channel.fetchPlaylists]].
+   * Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Playlist`](./Library_Exports.Playlist)s.
+   * Used mostly internally with [`Channel.fetchPlaylists()`](./Library_Exports.Channel#fetchplaylists).
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
@@ -290,7 +293,8 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` of a [[Channel]]'s [[Subscription]]s. Used mostly internally with [[Channel.fetchSubscriptions]].
+   * Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Subscription`](./Library_Exports.Subscription)s.
+   * Used mostly internally with [`Channel.fetchSubscriptions()`](./Library_Exports.Channel#fetchsubscriptions).
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
@@ -305,7 +309,8 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` replies to a [[YTComment]]. Used mostly internally with [[Comment.fetchReplies]].
+   * Get `maxPerPage * pages` replies to a [`Comment`](./Library_Exports.YTComment).
+   * Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.Comment#fetchreplies).
    * @param commentId The ID of the comment to get replies from.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
@@ -320,7 +325,8 @@ export class YouTube {
   }
 
   /**
-   * Gets the [[ChannelSection]]s of a [[Channel]]. Used mostly internally with [[Channel.fetchSections]].
+   * Gets the [`ChannelSection`](./Library_Exports.ChannelSection)s of a [`Channel`](./Library_Exports.Channel).
+   * Used mostly internally with [`Channel.fetchSections`](./Library_Exports.Channel#fetchsections).
    * @param channelResolvable The Username, URL, or ID of the channel to get the sections from.
    * @param parts The parts of the channel sections to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial channel section objects.
@@ -332,7 +338,7 @@ export class YouTube {
   }
 
   /**
-   * Get the list of categories in `this.region`.
+   * Get the list of video categories in [`this.region`](#region)`.
    */
   public async getCategories () {
     return (await this._genericService.getPaginatedItems({ type: PaginatedItemType.VideoCategories })).items as VideoCategory[]

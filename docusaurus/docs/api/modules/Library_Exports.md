@@ -54,7 +54,7 @@ Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 #### Defined in
 
-[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Banners.ts#L1)
+[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Banners.ts#L1)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/BrandingSettings.ts#L1)
+[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/BrandingSettings.ts#L1)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L17)
+[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L17)
 
 ___
 
@@ -109,7 +109,7 @@ A URL, ID, search query, or object of a channel.
 
 #### Defined in
 
-[types/Resolvable.ts:23](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Resolvable.ts#L23)
+[types/Resolvable.ts:30](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Resolvable.ts#L30)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:98](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L98)
+[types/GetPaginatedItems.ts:108](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L108)
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L36)
+[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L36)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/ChannelSectionType.ts#L1)
+[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/ChannelSectionType.ts#L1)
 
 ___
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L32)
+[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L32)
 
 ___
 
@@ -167,7 +167,7 @@ An ID or object of a comment.
 
 #### Defined in
 
-[types/Resolvable.ts:33](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Resolvable.ts#L33)
+[types/Resolvable.ts:40](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Resolvable.ts#L40)
 
 ___
 
@@ -177,7 +177,80 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L40)
+[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L40)
+
+___
+
+### EntitySearchOptions
+
+Ƭ **EntitySearchOptions**<`T`\>: `Object`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`SearchType`](Library_Exports#searchtype) = [`SearchType`](Library_Exports#searchtype) |
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `pageOptions?` | [`PageOptions`](Library_Exports#pageoptions) |
+| `searchFilters?` | `Omit`<[`SearchFilters`](Library_Exports#searchfilters)<`T`\>, ``"types"``\> |
+
+#### Defined in
+
+[types/GetPaginatedItems.ts:72](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L72)
+
+___
+
+### GenericSearchOptions
+
+Ƭ **GenericSearchOptions**<`T`\>: `Object`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`SearchType`](Library_Exports#searchtype) = [`SearchType`](Library_Exports#searchtype) |
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `pageOptions?` | [`PageOptions`](Library_Exports#pageoptions) |
+| `searchFilters?` | [`SearchFilters`](Library_Exports#searchfilters)<`T`\> |
+
+#### Defined in
+
+[types/GetPaginatedItems.ts:67](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L67)
+
+___
+
+### ItemReturns
+
+Ƭ **ItemReturns**<`T`, `K`\>: `T` extends `string`[] ? `InstanceType`<`K`\>[] : `InstanceType`<`K`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `string` \| `string`[] |
+| `K` | extends [`ItemTypes`](Library_Exports#itemtypes) |
+
+#### Defined in
+
+[types/GetItem.ts:7](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetItem.ts#L7)
+
+___
+
+### ItemTypes
+
+Ƭ **ItemTypes**: typeof `GETTABLE_CLASSES`[`number`]
+
+#### Defined in
+
+[types/GetItem.ts:5](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetItem.ts#L5)
 
 ___
 
@@ -195,7 +268,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:39](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L39)
+[types/GetPaginatedItems.ts:43](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L43)
 
 ___
 
@@ -219,7 +292,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:45](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L45)
+[types/GetPaginatedItems.ts:49](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L49)
 
 ___
 
@@ -229,7 +302,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:26](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L26)
+[types/GetPaginatedItems.ts:25](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L25)
 
 ___
 
@@ -251,7 +324,7 @@ ___
 
 #### Defined in
 
-[types/Util.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Util.ts#L1)
+[types/Util.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Util.ts#L1)
 
 ___
 
@@ -261,7 +334,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L38)
+[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L38)
 
 ___
 
@@ -271,7 +344,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L30)
+[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L30)
 
 ___
 
@@ -283,7 +356,7 @@ A URL, ID, search query, or object of a playlist.
 
 #### Defined in
 
-[types/Resolvable.ts:18](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Resolvable.ts#L18)
+[types/Resolvable.ts:25](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Resolvable.ts#L25)
 
 ___
 
@@ -299,13 +372,29 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:94](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L94)
+[types/GetPaginatedItems.ts:104](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L104)
+
+___
+
+### Resolvable
+
+Ƭ **Resolvable**<`T`\>: `string` \| `InstanceType`<`T`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `ResolvableClass` |
+
+#### Defined in
+
+[types/Resolvable.ts:5](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Resolvable.ts#L5)
 
 ___
 
 ### SearchFilters
 
-Ƭ **SearchFilters**<`T`\>: { `types?`: `T`[]  } & `T` extends typeof [`Video`](../classes/Library_Exports.Video) ? [`VideoSearchOptions`](Library_Exports#videosearchoptions) : `T` extends typeof [`Playlist`](../classes/Library_Exports.Playlist) ? [`PlaylistSearchOptions`](Library_Exports#playlistsearchoptions) : `T` extends typeof [`Channel`](../classes/Library_Exports.Channel) ? [`ChannelSearchOptions`](Library_Exports#channelsearchoptions) : {}
+Ƭ **SearchFilters**<`T`\>: { `order?`: ``"date"`` \| ``"rating"`` \| ``"relevance"`` \| ``"title"`` \| ``"videoCount"`` \| ``"viewCount"`` ; `types?`: `T`[]  } & `T` extends typeof [`Video`](../classes/Library_Exports.Video) ? [`VideoSearchOptions`](Library_Exports#videosearchoptions) : `T` extends typeof [`Playlist`](../classes/Library_Exports.Playlist) ? [`PlaylistSearchOptions`](Library_Exports#playlistsearchoptions) : `T` extends typeof [`Channel`](../classes/Library_Exports.Channel) ? [`ChannelSearchOptions`](Library_Exports#channelsearchoptions) : {}
 
 #### Type parameters
 
@@ -315,30 +404,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:55](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L55)
-
-___
-
-### SearchOptions
-
-Ƭ **SearchOptions**<`T`\>: `Object`
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`SearchType`](Library_Exports#searchtype) = [`SearchType`](Library_Exports#searchtype) |
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `pageOptions?` | [`PageOptions`](Library_Exports#pageoptions) |
-| `searchFilters?` | [`SearchFilters`](Library_Exports#searchfilters)<`T`\> |
-
-#### Defined in
-
-[types/GetPaginatedItems.ts:62](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L62)
+[types/GetPaginatedItems.ts:59](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L59)
 
 ___
 
@@ -348,7 +414,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:53](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L53)
+[types/GetPaginatedItems.ts:57](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L57)
 
 ___
 
@@ -358,7 +424,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L34)
+[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L34)
 
 ___
 
@@ -376,7 +442,7 @@ ___
 
 #### Defined in
 
-[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Thumbnail.ts#L1)
+[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Thumbnail.ts#L1)
 
 ___
 
@@ -388,7 +454,7 @@ An ID or object of a video category.
 
 #### Defined in
 
-[types/Resolvable.ts:28](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Resolvable.ts#L28)
+[types/Resolvable.ts:35](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Resolvable.ts#L35)
 
 ___
 
@@ -398,7 +464,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Parts.ts#L1)
+[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Parts.ts#L1)
 
 ___
 
@@ -410,7 +476,7 @@ A URL, ID, search query, or object of a video.
 
 #### Defined in
 
-[types/Resolvable.ts:13](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/Resolvable.ts#L13)
+[types/Resolvable.ts:20](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/Resolvable.ts#L20)
 
 ___
 
@@ -433,7 +499,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:74](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/GetPaginatedItems.ts#L74)
+[types/GetPaginatedItems.ts:84](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/GetPaginatedItems.ts#L84)
 
 ___
 
@@ -465,7 +531,7 @@ ___
 
 #### Defined in
 
-[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/2cfe584/src/types/VideoUpdateResource.ts#L1)
+[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/99c3131/src/types/VideoUpdateResource.ts#L1)
 
 ___
 
@@ -484,4 +550,4 @@ ___
 
 #### Defined in
 
-[index.ts:373](https://github.com/brandonbothell/popyt/blob/2cfe584/src/index.ts#L373)
+[index.ts:356](https://github.com/brandonbothell/popyt/blob/99c3131/src/index.ts#L356)

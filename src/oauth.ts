@@ -52,7 +52,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [[Channel]].  
+   * Gets the authorized user's [Channel](./Library_Exports.Channel#).  
    * Last tested 05/18/2020 11:48. PASSING
    */
   public getMe (parts?: ChannelParts): Promise<Channel> {
@@ -61,7 +61,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [[Subscription]]s.  
+   * Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
    * Last tested 05/18/2020 11:48. PASSING
    * @param maxPerPage The maximum number of subscriptions to fetch per page.
    * Fetches the maximum allowed by the API by default.
@@ -73,7 +73,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [[Playlist]]s.  
+   * Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.  
    * Last tested 05/18/2020 11:48. PASSING
    * @param maxPerPage The maximum number of playlists to fetch per page.
    * Fetches the maximum allowed by the API by default.
@@ -85,7 +85,7 @@ export class OAuth {
   }
 
   /**
-   * Post a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
+   * Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
    * Last tested 05/18/2020 11:48. PASSING
    * @param text The text content of the comment.
    * @param channelResolvable The channel to post the comment on.
@@ -111,11 +111,11 @@ export class OAuth {
   }
 
   /**
-   * Replies to a [[YTComment]].  
+   * Replies to a [YTComment](./Library_Exports.YTComment#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
-   * Required for [[YTComment.url]] to be correct.
+   * Required for [YTComment.url](./Library_Exports.YTComment#url) to be correct.
    */
   public async replyToComment (commentId: string, text: string) {
     this.checkTokenAndThrow()
@@ -128,7 +128,7 @@ export class OAuth {
   }
 
   /**
-   * Edit a [[Comment]] on a [[Video]] or [[Channel]] discussion.  
+   * Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
    * Last tested 07/05/2021 17:40. PASSING
    * @param commentId The ID of the comment.
    * @param text The new text content of the comment.
@@ -154,7 +154,7 @@ export class OAuth {
   }
 
   /**
-   * Marks a [[YTComment]] as spam.  
+   * Marks a [YTComment](./Library_Exports.YTComment#) as spam.  
    * Last tested NEVER
    * @param commentId The ID of the comment to mark as spam.
    */
@@ -164,7 +164,7 @@ export class OAuth {
   }
 
   /**
-   * Sets the moderation status of a [[YTComment]]  
+   * Sets the moderation status of a [YTComment](./Library_Exports.YTComment#)  
    * Last tested NEVER
    * @param commentId The ID of the comment to set the moderation status of.
    * @param moderationStatus The moderation status to set the comment to.
@@ -190,7 +190,7 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [[YTComment]].  
+   * Deletes a [YTComment](./Library_Exports.YTComment#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the comment to delete.
    */
@@ -200,7 +200,7 @@ export class OAuth {
   }
 
   /**
-   * Subscribe to a [[Channel]].  
+   * Subscribe to a [Channel](./Library_Exports.Channel#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param channelResolvable The channel to subscribe to.
    * @returns A partial subscription object.
@@ -218,7 +218,7 @@ export class OAuth {
   }
 
   /**
-   * Unsubscribe from a [[Channel]].  
+   * Unsubscribe from a [Channel](./Library_Exports.Channel#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param channelId The channel to unsubscribe from.
    */
@@ -228,7 +228,7 @@ export class OAuth {
   }
 
   /**
-   * Like, dislike, or remove a rating from a [[Video]].
+   * Like, dislike, or remove a rating from a [Video](./Library_Exports.Video#).
    * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvable The video to rate.
    * @param rating The rating to give the video.
@@ -241,7 +241,7 @@ export class OAuth {
   }
 
   /**
-   * Retrieve your rating on a [[Video]].  
+   * Retrieve your rating on a [Video](./Library_Exports.Video#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvables The video(s) to retrieve your rating from.
    */
@@ -262,7 +262,7 @@ export class OAuth {
   }
 
   /**
-   * Report a [[Video]] for abuse.  
+   * Report a [Video](./Library_Exports.Video#) for abuse.  
    * Last tested NEVER
    * @param videoResolvable The video to report.
    * @param reasonId The reason for reporting. (IDs can be found [here](https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list))
@@ -293,7 +293,7 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [[Video]].
+   * Deletes a [Video](./Library_Exports.Video#).
    * Last tested NEVER
    * @param videoResolvable The video to delete.
    */
@@ -305,7 +305,7 @@ export class OAuth {
   }
 
   /**
-   * Updates a [[Video]].  
+   * Updates a [Video](./Library_Exports.Video#).  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * Last tested NEVER
@@ -345,7 +345,7 @@ export class OAuth {
   }
 
   /**
-   * Sets a new [[Thumbnail]] for a [[Video]].  
+   * Sets a new [Thumbnail](./Library_Exports.Thumbnail#) for a [Video](./Library_Exports.Video#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvable The video to set the thumbnail for.
    * @param image The image data and type to upload.
@@ -360,7 +360,7 @@ export class OAuth {
   }
 
   /**
-   * Creates a [[Playlist]].  
+   * Creates a [Playlist](./Library_Exports.Playlist#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param title A title for the playlist.
    * @param description A description of the playlist.
@@ -392,7 +392,7 @@ export class OAuth {
   }
 
   /**
-   * Updates a [[Playlist]].  
+   * Updates a [Playlist](./Library_Exports.Playlist#).  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * Last tested 05/18/2020 11:48. PASSING
@@ -429,7 +429,7 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [[Playlist]].  
+   * Deletes a [Playlist](./Library_Exports.Playlist#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param playlistResolvable The playlist to delete.
    */
@@ -441,7 +441,7 @@ export class OAuth {
   }
 
   /**
-   * Adds a [[Video]] to a [[Playlist]].  
+   * Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param playlistResolvable The playlist to add the video to.
    * @param videoResolvable The video to add to the playlist.
@@ -618,7 +618,7 @@ export class OAuth {
    * Last tested 05/20/2020 03:17. PASSING
    * @param image The channel banner to upload.
    * @returns The URL of the uploaded banner, used as
-   * [[BrandingSettings.image.bannerExternalUrl]] in [[OAuth.updateChannelBranding]]
+   * [[BrandingSettings.image.bannerExternalUrl]] in [OAuth.updateChannelBranding](./Library_Exports.OAuth#updateChannelBranding)
    */
   public async uploadChannelBanner (image: { data: Buffer; type: 'png' | 'jpeg' }): Promise<string> {
     this.checkTokenAndThrow()
@@ -628,7 +628,7 @@ export class OAuth {
   }
 
   /**
-   * Adds a [[ChannelSection]] to the authorized user's [[Channel]].  
+   * Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized user's [Channel](./Library_Exports.Channel#).  
    * Last tested 05/24/2020 10:11. PASSING
    * @param type The type of channel section.
    * @param name The name of the channel section.
@@ -658,7 +658,7 @@ export class OAuth {
   }
 
   /**
-   * Updates a [[ChannelSection]].
+   * Updates a [ChannelSection](./Library_Exports.ChannelSection#).
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * Last tested 05/24/2020 10:11. PASSING
@@ -696,7 +696,7 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [[ChannelSection]].
+   * Deletes a [ChannelSection](./Library_Exports.ChannelSection#).
    * Last tested 05/24/2020 10:11. PASSING
    * @param id The ID of the channel section.
    */
@@ -706,7 +706,7 @@ export class OAuth {
   }
 
   /**
-   * Get a [[Caption]] object from the ID of the caption.  
+   * Get a [Caption](./Library_Exports.Caption#) object from the ID of the caption.  
    * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the caption from.
    * @param captionId The ID of the caption.
@@ -725,7 +725,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the [[Caption]]s of a [[Video]]. Used mostly internally with [[Video.fetchCaptions]].  
+   * Gets the [Caption](./Library_Exports.Caption#)s of a [Video](./Library_Exports.Video#). Used mostly internally with [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).  
    * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the captions from.
    */
@@ -743,7 +743,7 @@ export class OAuth {
   }
 
   /**
-   * Uploads a [[Caption]] track for a [[Video]].  
+   * Uploads a [Caption](./Library_Exports.Caption#) track for a [Video](./Library_Exports.Video#).  
    * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The video to add the caption track to.
    * @param language The language that the caption track is in.
@@ -769,7 +769,7 @@ export class OAuth {
   }
 
   /**
-   * Edits a [[Caption]] track.  
+   * Edits a [Caption](./Library_Exports.Caption#) track.  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * Last tested 06/11/2020 04:50. PASSING
@@ -801,7 +801,7 @@ export class OAuth {
   }
 
   /**
-   * Downloads a [[Caption]] track.  
+   * Downloads a [Caption](./Library_Exports.Caption#) track.  
    * Last tested 06/11/2020 04:50. PASSING
    * @param id The ID of the caption track to download.
    * @param format The file format to download the track in.
@@ -827,7 +827,7 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [[Caption]] track.  
+   * Deletes a [Caption](./Library_Exports.Caption#) track.  
    * Last tested 06/11/2020 04:50. PASSING
    * @param id The ID of the caption track to delete.
    */
@@ -837,7 +837,7 @@ export class OAuth {
   }
 
   /**
-   * Gets a list of [[VideoAbuseReportReason]]s.
+   * Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason#)s.
    * Last tested 05/18/2020 11:48. PASSING
    */
   public async getVideoAbuseReportReasons () {

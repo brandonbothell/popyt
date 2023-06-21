@@ -2,7 +2,7 @@ import { ChannelParts, ChannelSectionParts, PlaylistParts } from '../types/Parts
 import { YouTube, Playlist, Channel, ChannelSectionType } from '..'
 
 /**
- * A YouTube [[Channel]] section.
+ * A YouTube [Channel](./Library_Exports.Channel#) section.
  */
 export class ChannelSection {
   /**
@@ -66,12 +66,12 @@ export class ChannelSection {
   public channelIds?: string[]
 
   /**
-   * The playlists in the channel section. Only available after calling [[ChannelSection.fetchPlaylists]].
+   * The playlists in the channel section. Only available after calling [ChannelSection.fetchPlaylists](./Library_Exports.ChannelSection#fetchPlaylists).
    */
   public playlists?: Playlist[]
 
   /**
-   * The channels in the channel section. Only available after calling [[ChannelSection.fetchChannels]].
+   * The channels in the channel section. Only available after calling [ChannelSection.fetchChannels](./Library_Exports.ChannelSection#fetchChannels).
    */
   public channels?: Channel[]
 
@@ -115,7 +115,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches this channel section and reassigns this object to the new channel section object.
+   * Fetches this channel section from the API and reassigns this object to the new channel section object.
    * Only useful if `this.full` is false, or if you want updated channel section info.
    */
   public async fetch (parts?: ChannelSectionParts) {
@@ -124,7 +124,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's playlists and assigns them to the [[ChannelSection.playlists]] property.
+   * Fetches the channel section's playlists from the API and assigns them to the [ChannelSection.playlists](./Library_Exports.ChannelSection#playlists) property.
    */
   public async fetchPlaylists (parts?: PlaylistParts) {
     if (!this.playlistIds) {
@@ -142,7 +142,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's channels and assigns them to the [[ChannelSection.channels]] property.
+   * Fetches the channel section's channels from the API and assigns them to the [ChannelSection.channels](./Library_Exports.ChannelSection#channels) property.
    */
   public async fetchChannels (parts?: ChannelParts) {
     if (!this.channelIds) {

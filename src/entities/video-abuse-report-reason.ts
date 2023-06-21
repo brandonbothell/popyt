@@ -4,7 +4,7 @@
 import YouTube from '..'
 
 /**
- * A YouTube [[Video]] abuse report reason.
+ * A YouTube [Video](./Library_Exports.Video#) abuse report reason.
  */
 export class VideoAbuseReportReason {
   /**

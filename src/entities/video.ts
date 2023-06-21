@@ -36,7 +36,7 @@ export class Video {
   public data: any
 
   /**
-   * Whether or not this is a full video object (would it be the same if we ran [[Video.fetch]] under the same conditions as last time?).
+   * Whether or not this is a full video object (would it be the same if we ran [Video.fetch](./Library_Exports.Video#fetch) under the same conditions as last time?).
    */
   public full: boolean
 
@@ -134,7 +134,7 @@ export class Video {
   public private: boolean
 
   /**
-   * The video's comments. Only defined when [[Video.fetchComments]] is called.
+   * The video's comments. Only defined when [Video.fetchComments](./Library_Exports.Video#fetchComments) is called.
    */
   public comments: YTComment[]
 
@@ -171,7 +171,7 @@ export class Video {
   }
 
   /**
-   * The caption data associated with this video. Only available after running [[Video.fetchCaptions]].
+   * The caption data associated with this video. Only available after running [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).
    */
   public captions: Caption[]
 
@@ -266,7 +266,7 @@ export class Video {
   }
 
   /**
-   * Fetches this video and reassigns this object to the new video object.
+   * Fetches this video from the API and reassigns this object to the new video object.
    * Only useful if `this.full` is false, or if you want updated video info.
    */
   public async fetch (parts?: VideoParts) {
@@ -275,7 +275,7 @@ export class Video {
   }
 
   /**
-   * Fetches the video's comments and assigns them to [[Video.comments]].
+   * Fetches the video's comments from the API and assigns them to [Video.comments](./Library_Exports.Video#comments).
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
@@ -370,7 +370,7 @@ export class Video {
   }
 
   /**
-   * Fetches the captions for the video.
+   * Fetches the captions for the video from the API.
    * Must be using an access token with correct scopes.
    */
   /* istanbul ignore next */

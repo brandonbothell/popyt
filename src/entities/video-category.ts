@@ -1,7 +1,7 @@
 import YouTube from '..'
 
 /**
- * A YouTube [[Video]] category.
+ * A YouTube [Video](./Library_Exports.Video#) category.
  */
 export class VideoCategory {
   /**
@@ -40,7 +40,7 @@ export class VideoCategory {
   public id: string
 
   /**
-   * The [[Channel]] that created the category.
+   * The [Channel](./Library_Exports.Channel#) that created the category.
    */
   public channelId: string
 
@@ -82,7 +82,7 @@ export class VideoCategory {
   }
 
   /**
-   * Fetches this category and reassigns this object to the new category object.
+   * Fetches this category from the API and reassigns this object to the new category object.
    * Only useful if `this.full` is false, or if you want updated category info.
    */
   public async fetch () {
@@ -91,7 +91,7 @@ export class VideoCategory {
   }
 
   /**
-   * Fetches the channel associated with this category.
+   * Fetches the channel associated with this category from the API.
    */
   public getChannel () {
     return this.youtube.getChannel(this.channelId)

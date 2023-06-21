@@ -48,7 +48,7 @@ export class Subscription {
   public dateSubscribed: Date
 
   /**
-   * Information on the [[Channel]] that the user subscribed to.
+   * Information on the [Channel](./Library_Exports.Channel#) that the user subscribed to.
    */
   public channel: {
     /**
@@ -193,7 +193,7 @@ export class Subscription {
   }
 
   /**
-   * Fetches this subscription and reassigns this object to the new subscription object.
+   * Fetches this subscription from the API and reassigns this object to the new subscription object.
    * Only useful if `this.full` is false, or if you want updated subscription info.  
    * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */

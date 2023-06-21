@@ -99,7 +99,7 @@ export class Channel {
   public keywords: string[]
 
   /**
-   * The channel's uploads. Only available after calling [[Channel.fetchVideos]]
+   * The channel's uploads. Only available after calling [Channel.fetchVideos](./Library_Exports.Channel#fetchVideos)
    */
   public videos: Playlist
 
@@ -115,17 +115,17 @@ export class Channel {
   public featuredChannels: string[]
 
   /**
-   * The channel's playlists. Only defined when [[Channel.fetchPlaylists]] is called.
+   * The channel's playlists. Only defined when [Channel.fetchPlaylists](./Library_Exports.Channel#fetchPlaylists) is called.
    */
   public playlists: Playlist[]
 
   /**
-   * The channel's subscriptions. Only defined when [[Channel.fetchSubscriptions]] is called.
+   * The channel's subscriptions. Only defined when [Channel.fetchSubscriptions](./Library_Exports.Channel#fetchSubscriptions) is called.
    */
   public subscriptions: Subscription[]
 
   /**
-   * The channel's sections. Only defined when [[Channel.fetchSections]] is called.
+   * The channel's sections. Only defined when [Channel.fetchSections](./Library_Exports.Channel#fetchSections) is called.
    */
   public sections: ChannelSection[]
 
@@ -245,7 +245,7 @@ export class Channel {
   }
 
   /**
-   * Fetches this channel and reassigns this object to the new channel object.
+   * Fetches this channel from the API and reassigns this object to the new channel object.
    * Only useful if `this.full` is false, or if you want updated channel info.
    */
   public async fetch (parts?: ChannelParts) {
@@ -254,21 +254,21 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's playlist of uploads and assigns it to the [[Channel.videos]] property.
+   * Fetches the channel's playlist of uploads from the API and assigns it to the [Channel.videos](./Library_Exports.Channel#videos) property.
    */
   public async fetchVideos (parts?: PlaylistParts) {
     if (!(this.data.contentDetails)) {
       await this.fetch([ 'contentDetails' ])
     }
 
-    const videos = await this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists.uploads, parts)
+    const videos = await this.youtube.getPlaylist(this.data.contentDetails.relatedPlaylists?.uploads as string, parts)
     this.videos = videos
 
     return this.videos
   }
 
   /**
-   * Fetches the channel's playlists and assigns them to [[Channel.playlists]].
+   * Fetches the channel's playlists from the API and assigns them to [Channel.playlists](./Library_Exports.Channel#playlists).
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
@@ -280,7 +280,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's subscriptions and assigns them to [[Channel.subscriptions]].
+   * Fetches the channel's subscriptions from the API and assigns them to [Channel.subscriptions](./Library_Exports.Channel#subscriptions).
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
@@ -293,7 +293,7 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's sections and assigns them to [[Channel.sections]].
+   * Fetches the channel's sections from the API and assigns them to [Channel.sections](./Library_Exports.Channel#sections).
    */
   public async fetchSections (parts?: ChannelSectionParts) {
     this.sections = await this.youtube.getChannelSections(this.id, parts)

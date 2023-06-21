@@ -16,6 +16,13 @@ describe('Channels', () => {
     })).to.equal('Item not found')
   })
 
+  it('should work with multiple different resolutions at once', async () => {
+    const result = await youtube.getChannel([ 'UCBR8-60-B28hp2BmDPdntcQ', 'youtube.com/c/UC6mi9rp7vRYninucP61qOjg', 'gaming shorts' ], [ 'id' ])
+
+    expect(result.length).to.equal(3)
+    expect(result[0]).to.be.an.instanceOf(Channel)
+  })
+
   it('should work with proper IDs', async () => {
     expect(await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id', 'contentDetails', 'brandingSettings' ])).to.be.an.instanceOf(Channel)
   })

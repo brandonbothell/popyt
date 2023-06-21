@@ -51,7 +51,11 @@ export class Playlist {
   public description: string
 
   /**
-   * The videos in the playlist. Only available after calling [[Playlist.fetchVideos]].
+   * The videos in the playlist. Only available after calling [`Playlist.fetchVideos()`](#fetchvideos).  
+   * **These are partial**, meaning they are missing some data.
+   * See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
+   * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to fetch the full objects while not spamming your quota
+   * like you would using a loop.
    */
   public videos: Video[]
 
@@ -138,7 +142,11 @@ export class Playlist {
   }
 
   /**
-   * Adds videos in this playlist to the `videos` property of this playlist.
+   * Fetches the videos in this playlist from the API and adds them to the `videos` property.  
+   * **These are partial**, meaning they are missing some data.
+   * See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
+   * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to fetch the full objects while not spamming your quota
+   * like you would using a loop.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
@@ -150,7 +158,7 @@ export class Playlist {
   }
 
   /**
-   * Fetches this playlist and reassigns this object to the new playlist object.
+   * Fetches this playlist from the API and reassigns this object to the new playlist object.
    * Only useful if `this.full` is false, or if you want updated playlist info.
    */
   public async fetch (parts?: PlaylistParts) {
@@ -178,7 +186,7 @@ export class Playlist {
   }
 
   /**
-   * Adds a [[Video]] to the playlist.
+   * Adds a [Video](./Library_Exports.Video#) to the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or search query of the video.
    * @param position The zero-based position to insert the video in.
@@ -199,7 +207,7 @@ export class Playlist {
   }
 
   /**
-   * Updates a [[Video]] in the playlist.
+   * Updates a [Video](./Library_Exports.Video#) in the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    * @param position The zero-based position to move the video to.
@@ -216,7 +224,7 @@ export class Playlist {
   }
 
   /**
-   * Removes a [[Video]] from the playlist.
+   * Removes a [Video](./Library_Exports.Video#) from the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    */
@@ -234,9 +242,9 @@ export class Playlist {
   }
 
   /**
-   * Removes a [[Video]] from the playlist.
+   * Removes a [Video](./Library_Exports.Video#) from the playlist.
    * Must be using an access token with correct scopes.
-   * @param playlistItemId The playlist item ID (not the same as video id. See [[Playlist.removeVideo]]).
+   * @param playlistItemId The playlist item ID (not the same as video id. See [Playlist.removeVideo](./Library_Exports.Playlist#removeVideo)).
    */
   /* istanbul ignore next */
   public async removeItem (playlistItemId: string) {

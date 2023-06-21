@@ -16,6 +16,16 @@ describe('Playlists', () => {
     })).to.equal('Item not found')
   })
 
+  it('should work with multiple different resolutions at once', async () => {
+    const result = await youtube.getPlaylist(
+      [ 'PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', 'youtube.com/playlist?list=PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI', 'gaming shorts' ],
+      [ 'id' ]
+    )
+
+    expect(result.length).to.equal(3)
+    expect(result[0]).to.be.an.instanceOf(Playlist)
+  })
+
   it('should work with proper IDs', async () => {
     expect(await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])).to.be.an.instanceOf(Playlist)
   })

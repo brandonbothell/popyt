@@ -16,6 +16,13 @@ describe('Videos', () => {
     })).to.equal('Item not found')
   })
 
+  it('should work with multiple different resolutions at once', async () => {
+    const result = await youtube.getVideo([ 'Lq1D8PFnjWY', 'youtu.be/I_P15yU0EsY', 'how to youtube' ], [ 'id' ])
+
+    expect(result.length).to.equal(3)
+    expect(result[0]).to.be.an.instanceOf(Video)
+  })
+
   it('should work with proper IDs', async () => {
     expect(await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).to.be.an.instanceOf(Video)
   })
