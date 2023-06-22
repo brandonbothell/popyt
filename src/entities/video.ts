@@ -2,7 +2,7 @@ import { Parser } from '../util'
 import { CommentThreadParts, VideoParts } from '../types/Parts'
 import { Thumbnail, ISODuration, PageOptions } from '../types'
 import { YouTube, VideoUpdateResource, Caption } from '..'
-import { YTComment } from './comment'
+import { Comment } from './comment'
 
 /**
  * A YouTube video.
@@ -136,7 +136,7 @@ export class Video {
   /**
    * The video's comments. Only defined when [Video.fetchComments](./Library_Exports.Video#fetchComments) is called.
    */
-  public comments: YTComment[]
+  public comments: Comment[]
 
   /**
    * The number of comments on the video.

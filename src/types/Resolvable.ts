@@ -1,6 +1,6 @@
-import { Channel, Playlist, Video, VideoCategory, YTComment } from '..'
+import { Channel, Playlist, Video, VideoCategory, Comment } from '..'
 
-const RESOLVABLE_CLASSES = [ Video, Playlist, Channel, VideoCategory, YTComment ]
+const RESOLVABLE_CLASSES = [ Video, Playlist, Channel, VideoCategory, Comment ]
 
 export type Resolvable<T extends ResolvableClass> = string | InstanceType<T>
 
@@ -37,4 +37,4 @@ export type VideoCategoryResolvable = string | VideoCategory
 /**
  * An ID or object of a comment.
  */
-export type CommentResolvable = string | YTComment
+export type CommentResolvable = string | Comment

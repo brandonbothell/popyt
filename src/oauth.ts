@@ -79,7 +79,7 @@ export class OAuth {
    * @param videoResolvable The video of the channel to post the comment on.
    * If falsey, the comment will be posted to the channel discussion.
    */
-  public async postComment (text: string, channelResolvable: YT.ChannelResolvable, videoResolvable?: string): Promise<YT.YTComment> {
+  public async postComment (text: string, channelResolvable: YT.ChannelResolvable, videoResolvable?: string): Promise<YT.Comment> {
     this.checkTokenAndThrow()
 
     const channelId = await this.youtube._genericService.getId(channelResolvable, YT.Channel)
@@ -94,7 +94,7 @@ export class OAuth {
     }
 
     const result = await this.youtube._request.post('commentThreads', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YT.YTComment(this.youtube, result, true)
+    return new YT.Comment(this.youtube, result, true)
   }
 
   /**
@@ -111,7 +111,7 @@ export class OAuth {
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.youtube._request.post('comments', { part: 'id,snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    return new YT.YTComment(this.youtube, response, true)
+    return new YT.Comment(this.youtube, response, true)
   }
 
   /**
@@ -120,7 +120,7 @@ export class OAuth {
    * @param commentId The ID of the comment.
    * @param text The new text content of the comment.
    */
-  public async editComment (commentId: string, text: string): Promise<YT.YTComment> {
+  public async editComment (commentId: string, text: string): Promise<YT.Comment> {
     this.checkTokenAndThrow()
 
     const data: typeof Data.COMMENT_DATA = JSON.parse(JSON.stringify(Data.COMMENT_DATA))
@@ -128,11 +128,11 @@ export class OAuth {
     data.id = commentId
 
     const result = await this.youtube._request.put('comments', { part: 'snippet' }, JSON.stringify(data), null, this.youtube.accessToken)
-    const comment = new YT.YTComment(this.youtube, result, true)
+    const comment = new YT.Comment(this.youtube, result, true)
 
     if (result.replies) {
       result.replies.comments.forEach(reply => {
-        const created = new YT.YTComment(this.youtube, reply, true)
+        const created = new YT.Comment(this.youtube, reply, true)
         comment.replies.push(created)
       })
     }

@@ -1,7 +1,7 @@
 import { CommentParts } from '../types/Parts'
 import { PageOptions, YouTube } from '..'
 
-export class YTComment {
+export class Comment {
   /**
    * The name of the endpoint used for this entity.
    */
@@ -128,7 +128,7 @@ export class YTComment {
    * then this will be partially filled. You'll need to use [Comment.fetchReplies](./Library_Exports.YTComment#fetchReplies)
    * to get all of the replies, though.
    */
-  public replies: YTComment[] = []
+  public replies: Comment[] = []
 
   /**
    * If this comment was fetched from a video, then this is the number of replies on it.
@@ -153,7 +153,7 @@ export class YTComment {
 
       if (data.replies) {
         for (const replyData of data.replies.comments) {
-          this.replies.push(new YTComment(this.youtube, replyData))
+          this.replies.push(new Comment(this.youtube, replyData))
         }
       }
 

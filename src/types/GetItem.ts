@@ -1,6 +1,6 @@
-import { Video, Channel, Playlist, YTComment, Subscription, VideoCategory, ChannelSection, Caption } from '..'
+import { Video, Channel, Playlist, Comment, Subscription, VideoCategory, ChannelSection, Caption } from '..'
 
-const GETTABLE_CLASSES = [ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, ChannelSection, Caption ]
+const GETTABLE_CLASSES = [ Video, Channel, Playlist, Comment, Subscription, VideoCategory, ChannelSection, Caption ]
 
 export type ItemTypes = typeof GETTABLE_CLASSES[number]
 

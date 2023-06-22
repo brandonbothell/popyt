@@ -1,7 +1,7 @@
 import { Cache, Parser } from '../util'
 import { ItemTypes, ItemReturns, PaginatedItemsReturns, PaginatedItemType, PaginatedItemOptions, PaginatedType, ResolvableClass, Resolvable, ResolveReturn } from '../types'
 import YouTube,
-{ Video, Channel, Playlist, YTComment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
+{ Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 
 /**
  * @ignore
@@ -11,7 +11,7 @@ export class GenericService {
 
   /* istanbul ignore next */
   public async getItem<T extends string | string[], K extends ItemTypes> (type: K, mine: boolean, id?: T, parts?: string[]): Promise<ItemReturns<T, K>> {
-    if (!([ Video, Channel, Playlist, YTComment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
+    if (!([ Video, Channel, Playlist, Comment, Subscription, VideoCategory, VideoAbuseReportReason, ChannelSection, Caption ].includes(type))) {
       return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`)
     }
 
@@ -41,7 +41,7 @@ export class GenericService {
       hl?: string
     } = {
       fields: encodeURIComponent(type.fields),
-      part: type === YTComment ? 'snippet' : parts ? parts.join(',') : type.part
+      part: type === Comment ? 'snippet' : parts ? parts.join(',') : type.part
     }
 
     if (id) options.id = idString
@@ -116,7 +116,7 @@ export class GenericService {
 
     let endpoint: string
     let maxForEndpoint: number
-    let clazz: typeof Video | typeof YTComment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language |
+    let clazz: typeof Video | typeof Comment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language |
       typeof Region | typeof ChannelSection | typeof Caption
     let commentType: 'video' | 'channel'
 
@@ -136,7 +136,7 @@ export class GenericService {
         commentType = 'video'
         endpoint = 'commentThreads'
         maxForEndpoint = 100
-        clazz = YTComment
+        clazz = Comment
         options[`${commentType}Id`] = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
         if (!options.part.includes('replies')) options.part += ',replies'
@@ -147,7 +147,7 @@ export class GenericService {
       case PaginatedItemType.CommentReplies:
         endpoint = 'comments'
         maxForEndpoint = 100
-        clazz = YTComment
+        clazz = Comment
         options.parentId = id
         if (!options.part.includes('snippet')) options.part += ',snippet'
         break
@@ -265,7 +265,7 @@ export class GenericService {
             toReturn.items.push(new Playlist(this.youtube, data))
           }
         } else if (data.kind === 'youtube#commentThread') {
-          toReturn.items.push(new YTComment(this.youtube, data, true))
+          toReturn.items.push(new Comment(this.youtube, data, true))
         } else {
           toReturn.items.push(new clazz(this.youtube, data, false))
         }
@@ -330,7 +330,7 @@ export class GenericService {
     }
 
     // types that resolve only by class or ID
-    if ([ VideoCategory, YTComment ].includes(type as any)) {
+    if ([ VideoCategory, Comment ].includes(type as any)) {
       return input
     }
 

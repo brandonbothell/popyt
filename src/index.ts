@@ -201,7 +201,7 @@ export class YouTube {
    * @param parts The parts of the comment to fetch (saves quota if you aren't using certain properties!)
    */
   public async getComment<T extends string | string[]> (commentId: T, parts?: Part.CommentParts) {
-    return this._genericService.getItem(Entity.YTComment, false, commentId, parts)
+    return this._genericService.getItem(Entity.Comment, false, commentId, parts)
   }
 
   /**
@@ -275,7 +275,7 @@ export class YouTube {
 
     const videoId = await this._genericService.getId(videoResolvable, Entity.Video)
     return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts, order })).items as Entity.YTComment[]
+      { type: T.PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts, order })).items as Entity.Comment[]
   }
 
   /**
@@ -321,9 +321,9 @@ export class YouTube {
    * @returns Partial comment objects.
    */
   public async getCommentReplies (commentResolvable: T.CommentResolvable, pageOptions?: T.PageOptions, parts?: Part.CommentParts) {
-    const commentId = await this._genericService.getId(commentResolvable, Entity.YTComment)
+    const commentId = await this._genericService.getId(commentResolvable, Entity.Comment)
     return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.CommentReplies, id: commentId, ...pageOptions, parts })).items as Entity.YTComment[]
+      { type: T.PaginatedItemType.CommentReplies, id: commentId, ...pageOptions, parts })).items as Entity.Comment[]
   }
 
   /**
