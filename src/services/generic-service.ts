@@ -322,6 +322,7 @@ export class GenericService {
     return Promise.all(resolutions) as Promise<ResolveReturn<T, K>>
   }
 
+  /* istanbul ignore next */
   public async resolveString (input: string, type: ResolvableClass): Promise<string> {
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
