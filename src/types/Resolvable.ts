@@ -1,13 +1,14 @@
-import { Channel, Playlist, Video, VideoCategory, Comment } from '..'
+import { Channel, Playlist, Video, VideoCategory, Comment, PaginatedType } from '..'
 
 const RESOLVABLE_CLASSES = [ Video, Playlist, Channel, VideoCategory, Comment ]
 
-export type Resolvable<T extends ResolvableClass> = string | InstanceType<T>
+export type Resolvable<T extends PaginatedType> = string | InstanceType<T>
 
 /**
  * @ignore
  */
-export type ResolveReturn<T extends Resolvable<K> | Resolvable<K>[], K extends ResolvableClass> = T extends Resolvable<K>[] ? string[] : string
+export type ResolveReturn<T extends Resolvable<K> | Resolvable<K>[], K extends ResolvableClass> =
+  T extends Resolvable<K>[] ? Resolvable<K>[] : Resolvable<K>
 
 /**
  * @ignore

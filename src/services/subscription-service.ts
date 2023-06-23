@@ -16,7 +16,7 @@ export class SubscriptionService {
       return cached
     }
 
-    const data: {
+    const options: {
       part: string
       forChannelId: string
       channelId: string
@@ -28,7 +28,7 @@ export class SubscriptionService {
       maxResults: 1
     }
 
-    const results = await this.youtube._request.api('subscriptions', data, this.youtube.token, this.youtube.accessToken)
+    const results = await this.youtube._request.get('subscriptions', { params: options, auth: this.youtube.auth })
 
     if (results.items.length === 0) {
       return Promise.reject('Subscription not found')

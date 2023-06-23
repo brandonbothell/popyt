@@ -34,12 +34,12 @@ export class YouTube {
   /**
    * @ignore
    */
-  public _request = new Request('https://www.googleapis.com/youtube/v3')
+  public _request = new Request('https://www.googleapis.com/youtube/v3/')
 
   /**
    * @ignore
    */
-  public _upload = new Request('https://www.googleapis.com/upload/youtube/v3')
+  public _upload = new Request('https://www.googleapis.com/upload/youtube/v3/')
 
   /**
    * @ignore
@@ -54,11 +54,19 @@ export class YouTube {
   /**
    * @ignore
    */
+  public _channelService = new Service.ChannelService(this)
+
+  /**
+   * @ignore
+   */
+  public _resolutionService = new Service.ResolutionService(this)
+
+  /**
+   * @ignore
+   */
   public _genericService = new Service.GenericService(this)
 
-  public token: string
-
-  public accessToken: string
+  public auth: T.Authorization = {}
 
   /**
    * Methods requiring an OAuth token.
@@ -77,20 +85,19 @@ export class YouTube {
 
   /**
    *
-   * @param token Your YouTube Data API v3 token. Don't share this with anybody.
-   * It could be an API key or an OAuth 2.0 token.
+   * @param apiKey Your YouTube Data API v3 key. Don't share this with anybody.
    * @param accessToken A Google OAuth 2.0 access token. Used for [`YouTube.oauth`](#oauth) methods.
    * @param options Caching options. Recommended to change.
    * @param language The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages).
    * @param region The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions)..
    */
-  constructor (token?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
+  constructor (apiKey?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
     language: string = 'en_US', region: string = 'US') {
-    this.token = token
-    this.accessToken = accessToken
+    this.auth.apiKey = apiKey
+    this.auth.accessToken = accessToken
 
-    if (!this.accessToken && !this.token) {
-      throw new TypeError('Must include one of token or access token whenever constructing the YouTube object.')
+    if (!this.auth.accessToken && !this.auth.apiKey) {
+      throw new TypeError('Must include one of api key or access token whenever constructing the YouTube object.')
     }
 
     this.oauth = new OAuth(this)
@@ -125,7 +132,8 @@ export class YouTube {
    * the number of pages, maximum number of results per page, and starting page token.
    * Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like.
    */
-  public async search<T extends T.SearchType = T.SearchType> (searchTerm: string, searchOptions?: T.GenericSearchOptions<T>): Promise<T.PaginatedItemsReturns<T>> {
+  public async search<T extends T.SearchType = T.SearchType> (searchTerm: string, searchOptions?: T.GenericSearchOptions<T>):
+  Promise<T.PaginatedResponse<InstanceType<T>>> {
     return this._searchService.search({ searchTerm, ...searchOptions?.searchFilters, ...searchOptions?.pageOptions })
   }
 
@@ -168,20 +176,20 @@ export class YouTube {
    * @param parts The parts of the video to fetch (saves quota if you aren't using certain properties!)
    */
   public async getVideo<T extends T.VideoResolvable | T.VideoResolvable[]> (videoResolvable: T, parts?: Part.VideoParts) {
-    const id = await this._genericService.getId(videoResolvable, Entity.Video)
-    return this._genericService.getItem(Entity.Video, false, id, parts)
+    const video = await this._resolutionService.resolve(videoResolvable, Entity.Video)
+    return this._genericService.getItem(Entity.Video, false, video, parts)
   }
 
   /**
-   * Get a [`Channel`](./Library_Exports.Channel) object from the URL, ID, or search query of a channel.
+   * Get a [`Channel`](./Library_Exports.Channel) object from the URL, ID, search query, or handle of a channel.
    * **Beware**, support for old custom channel URLs is shoddy.
    * Consider migrating to [the new @ system.](https://support.google.com/youtube/answer/2657968?hl=en)
-   * @param channelResolvable The URL, ID, or search query of the channel.
+   * @param channelResolvable The URL, ID, search query, or handle of the channel.
    * @param parts The parts of the channel to fetch (saves quota if you aren't using certain properties!)
    */
   public async getChannel<T extends T.ChannelResolvable | T.ChannelResolvable[]> (channelResolvable: T, parts?: Part.ChannelParts) {
-    const id = await this._genericService.getId(channelResolvable, Entity.Channel)
-    return this._genericService.getItem(Entity.Channel, false, id, parts)
+    const channel = await this._resolutionService.resolve(channelResolvable, Entity.Channel)
+    return this._genericService.getItem(Entity.Channel, false, channel, parts)
   }
 
   /**
@@ -191,8 +199,8 @@ export class YouTube {
    * @param parts The parts of the playlist to fetch (saves quota if you aren't using certain properties!)
    */
   public async getPlaylist<T extends T.PlaylistResolvable | T.PlaylistResolvable[]> (playlistResolvable: T, parts?: Part.PlaylistParts) {
-    const id = await this._genericService.getId(playlistResolvable, Entity.Playlist)
-    return this._genericService.getItem(Entity.Playlist, false, id, parts)
+    const playlist = await this._resolutionService.resolve(playlistResolvable, Entity.Playlist)
+    return this._genericService.getItem(Entity.Playlist, false, playlist, parts)
   }
 
   /**
@@ -230,6 +238,10 @@ export class YouTube {
     return this._genericService.getItem(Entity.ChannelSection, false, sectionId, parts)
   }
 
+  public async getChannelByUsername (username: string, parts?: Part.ChannelParts) {
+    return this._channelService.getChannelByUsername(username, parts)
+  }
+
   /**
    * Get a [`Subscription`](./Library_Exports.Subscription) object from the subscriber and channel of a subscription.
    * Channels can be passed in the form of ID, URL, or search query.
@@ -238,10 +250,10 @@ export class YouTube {
    * @param parts The parts of the subscription to fetch (saves quota if you aren't using certain properties!)
    */
   public async getSubscriptionByChannels (subscriberResolvable: T.ChannelResolvable, channelResolvable: T.ChannelResolvable, parts?: Part.SubscriptionParts) {
-    const subscriberId = await this._genericService.getId(subscriberResolvable, Entity.Channel)
-    const channelId = await this._genericService.getId(channelResolvable, Entity.Channel)
+    const subscriberAndChannel = (await this._resolutionService.resolve([ subscriberResolvable, channelResolvable ], Entity.Channel))
+      .map(channel => typeof channel === 'string' ? channel : channel.id)
 
-    return this._subscriptionService.getSubscriptionByChannels(subscriberId, channelId, parts)
+    return this._subscriptionService.getSubscriptionByChannels(subscriberAndChannel[0], subscriberAndChannel[1], parts)
   }
 
   /**
@@ -252,12 +264,13 @@ export class YouTube {
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the videos to fetch (saves quota if you aren't using certain properties!)
-   * @returns Partial video objects.
+   * @returns An object containing page token information for future requests and ***partial* video objects**.
    */
   public async getPlaylistItems (playlistResolvable: T.PlaylistResolvable, pageOptions?: T.PageOptions, parts?: Part.PlaylistItemParts) {
-    const playlistId = await this._genericService.getId(playlistResolvable, Entity.Playlist)
-    return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.PlaylistItems, id: playlistId, ...pageOptions, parts })).items as Entity.Video[]
+    const playlist = await this._resolutionService.resolve(playlistResolvable, Entity.Playlist)
+    return this._genericService.getPaginatedItems<Entity.Video>(
+      { type: T.PaginatedItemType.PlaylistItems, id: typeof playlist === 'string' ? playlist : playlist.id, ...pageOptions, parts }
+    )
   }
 
   /**
@@ -268,14 +281,14 @@ export class YouTube {
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
-   * @returns Partial comment objects.
+   * @returns An object containing page token information for future requests and **comment objects**.
    */
   public async getVideoComments (videoResolvable: T.VideoResolvable, pageOptions?: T.PageOptions,
     order?: 'time' | 'relevance', parts?: Part.CommentThreadParts) {
 
-    const videoId = await this._genericService.getId(videoResolvable, Entity.Video)
-    return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.VideoComments, id: videoId, ...pageOptions, parts, order })).items as Entity.Comment[]
+    const video = await this._resolutionService.resolve(videoResolvable, Entity.Video)
+    return this._genericService.getPaginatedItems<Entity.Comment>(
+      { type: T.PaginatedItemType.VideoComments, id: typeof video === 'string' ? video : video.id, ...pageOptions, parts, order })
   }
 
   /**
@@ -286,12 +299,12 @@ export class YouTube {
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the playlists to fetch (saves quota if you aren't using certain properties!)
-   * @returns Partial playlist objects.
+   * @returns An object containing page token information for future requests and **playlist objects**.
    */
   public async getChannelPlaylists (channelResolvable: T.ChannelResolvable, pageOptions?: T.PageOptions, parts?: Part.PlaylistParts) {
-    const channelId = await this._genericService.getId(channelResolvable, Entity.Channel)
-    return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.Playlists, id: channelId, ...pageOptions, parts })).items as Entity.Playlist[]
+    const channel = await this._resolutionService.resolve(channelResolvable, Entity.Channel)
+    return this._genericService.getPaginatedItems<Entity.Playlist>(
+      { type: T.PaginatedItemType.Playlists, id: typeof channel === 'string' ? channel : channel.id, ...pageOptions, parts })
   }
 
   /**
@@ -302,12 +315,12 @@ export class YouTube {
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the subscriptions to fetch (saves quota if you aren't using certain properties!)
-   * @returns Partial subscription objects.
+   * @returns An object containing page token information for future requests and **subscription objects**.
    */
   public async getChannelSubscriptions (channelResolvable: T.ChannelResolvable, pageOptions?: T.PageOptions, parts?: Part.SubscriptionParts) {
-    const channelId = await this._genericService.getId(channelResolvable, Entity.Channel)
-    return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.Subscriptions, id: channelId, ...pageOptions, parts })).items as Entity.Subscription[]
+    const channel = await this._resolutionService.resolve(channelResolvable, Entity.Channel)
+    return this._genericService.getPaginatedItems<Entity.Subscription>(
+      { type: T.PaginatedItemType.Subscriptions, id: typeof channel === 'string' ? channel : channel.id, ...pageOptions, parts })
   }
 
   /**
@@ -318,12 +331,12 @@ export class YouTube {
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the replies to fetch (saves quota if you aren't using certain properties!)
-   * @returns Partial comment objects.
+   * @returns An object containing page token information for future requests and **comment objects**.
    */
   public async getCommentReplies (commentResolvable: T.CommentResolvable, pageOptions?: T.PageOptions, parts?: Part.CommentParts) {
-    const commentId = await this._genericService.getId(commentResolvable, Entity.Comment)
-    return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.CommentReplies, id: commentId, ...pageOptions, parts })).items as Entity.Comment[]
+    const comment = await this._resolutionService.resolve(commentResolvable, Entity.Comment)
+    return this._genericService.getPaginatedItems<Entity.Comment>(
+      { type: T.PaginatedItemType.CommentReplies, id: typeof comment === 'string' ? comment : comment.id, ...pageOptions, parts })
   }
 
   /**
@@ -334,9 +347,9 @@ export class YouTube {
    * @returns Partial channel section objects.
    */
   public async getChannelSections (channelResolvable: T.ChannelResolvable, parts?: Part.ChannelSectionParts) {
-    const channelId = await this._genericService.getId(channelResolvable, Entity.Channel)
-    return (await this._genericService.getPaginatedItems(
-      { type: T.PaginatedItemType.ChannelSections, id: channelId, parts })).items as Entity.ChannelSection[]
+    const channel = await this._resolutionService.resolve(channelResolvable, Entity.Channel)
+    return (await this._genericService.getPaginatedItems<Entity.ChannelSection>(
+      { type: T.PaginatedItemType.ChannelSections, id: typeof channel === 'string' ? channel : channel.id, parts })).items
   }
 
   /**

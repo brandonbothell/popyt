@@ -5,9 +5,15 @@ import { ISODuration, ParsedUrl } from '../types'
  * @ignore
  */
 export class Parser {
-  public static readonly idRegex = /^[a-z0-9-_]+$/i
+  public static readonly youtubeUrlRegex = new RegExp(/^(https?:\/\/|https?:\/\/)?([a-z0-9]+\.)*(youtube\.com|youtu\.be)(:[0-9]{1,5})?(\/.*)?$/i)
+  public static readonly channelIdRegex = new RegExp(/^(?:UC|HC)[a-z0-9-_]{22}$/i)
+  public static readonly usernameRegex = new RegExp(/^@[a-z0-9_\-.]{3,30}$/i)
+  public static readonly idRegex = new RegExp(/^[a-z0-9-_]+$/i)
 
-  public static parseUrl (url: string): ParsedUrl {
+  /**
+   * @returns False if parsing the URL failed
+   */
+  public static parseUrl (url: string): ParsedUrl | false {
     if (!/^https?:\/\//i.test(url)) {
       url = `https://${url}`
     }
@@ -17,7 +23,7 @@ export class Parser {
     try {
       parsed = new URL(url)
     } catch (_) {
-      return {}
+      return false
     }
 
     switch (parsed.hostname) {
@@ -43,11 +49,14 @@ export class Parser {
         } else if (parsed.pathname.startsWith('/channel/') || parsed.pathname.startsWith('/c/')) {
           const channelId = parsed.pathname.replace('/channel/', '').replace('/c/', '')
 
-          if (channelId && Parser.idRegex.test(channelId)) toReturn.channel = { id: channelId }
+          if (channelId && Parser.channelIdRegex.test(channelId)) toReturn.channel = { id: channelId }
+          // legacy custom channel URL
+          else if (channelId) toReturn.channel = { searchQuery: channelId }
+        // custom channel handle
         } else if (parsed.pathname.startsWith('/@')) {
-          const channelUsername = parsed.pathname.replace('/@', '')
+          const channelUsername = parsed.pathname.replace('/', '')
 
-          if (channelUsername && Parser.idRegex.test(channelUsername)) toReturn.channel = { username: channelUsername }
+          if (channelUsername && Parser.usernameRegex.test(channelUsername)) toReturn.channel = { username: channelUsername.slice(1) }
         }
 
         return toReturn

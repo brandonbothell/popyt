@@ -1,5 +1,5 @@
 import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
-import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions } from '..'
+import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions, PaginatedResponse, Image } from '..'
 
 /**
  * A YouTube channel.
@@ -117,12 +117,12 @@ export class Channel {
   /**
    * The channel's playlists. Only defined when [Channel.fetchPlaylists](./Library_Exports.Channel#fetchPlaylists) is called.
    */
-  public playlists: Playlist[]
+  public playlists: PaginatedResponse<Playlist>
 
   /**
    * The channel's subscriptions. Only defined when [Channel.fetchSubscriptions](./Library_Exports.Channel#fetchSubscriptions) is called.
    */
-  public subscriptions: Subscription[]
+  public subscriptions: PaginatedResponse<Subscription>
 
   /**
    * The channel's sections. Only defined when [Channel.fetchSections](./Library_Exports.Channel#fetchSections) is called.
@@ -350,8 +350,8 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   /* istanbul ignore next */
-  public setWatermark (type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Buffer, imageType: 'png' | 'jpeg') {
-    return this.youtube.oauth.setChannelWatermark(this.id, type, offset, duration, image, imageType)
+  public setWatermark (type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Image) {
+    return this.youtube.oauth.setChannelWatermark(this.id, type, offset, duration, image)
   }
 
   /**

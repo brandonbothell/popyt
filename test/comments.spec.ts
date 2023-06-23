@@ -1,5 +1,5 @@
 import 'mocha'
-import { YTComment } from '../src'
+import { Comment } from '../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -11,21 +11,21 @@ if (!apiKey) {
 
 describe('Comments', () => {
   it('should work with valid videos with comments and replies', async () => {
-    YTComment.part = 'id'
+    Comment.part = 'id'
 
-    const comments = await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 })
+    const comments = (await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 })).items
 
-    expect(comments[0]).to.be.an.instanceOf(YTComment)
-    expect(comments[0].replies.length).to.be.greaterThan(0)
-    expect(comments[0].replies[0].parentCommentId).to.equal(comments[0].id)
+    expect(comments[0]).to.be.an.instanceOf(Comment)
+    expect(comments[0].replies.items.length).to.be.greaterThan(0)
+    expect(comments[0].replies.items[0].parentCommentId).to.equal(comments[0].id)
   })
 
   it('should work with fetching from a video object', async () => {
     const video = await youtube.getVideo('Lq1D8PFnjWY')
-    const comments = await video.fetchComments({ pages: 1 })
+    const comments = (await video.fetchComments({ pages: 1 })).items
 
-    expect(comments[0]).to.be.an.instanceOf(YTComment)
-    expect(video.comments[0].id).to.equal(comments[0].id)
+    expect(comments[0]).to.be.an.instanceOf(Comment)
+    expect(video.comments.items[0].id).to.equal(comments[0].id)
   })
 
   it('should not work with valid videos with comments disabled', async () => {
@@ -42,28 +42,30 @@ describe('Comments', () => {
   })
 
   it('should return an array with a length of <= maxPerPage', async () => {
-    expect((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ])).length).to.be.lessThan(2)
+    expect((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ])).items.length).to.be.lessThan(2)
   })
 
   it('should work with fetching replies', async () => {
-    expect(await ((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ]))[0].fetchReplies())).to.be.an.instanceOf(Array)
+    expect((await (
+      await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ])
+    ).items[0].fetchReplies()).items).to.be.an.instanceOf(Array)
   })
 
   it('should be individually gettable', async () => {
-    expect(await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')).to.be.an.instanceOf(YTComment)
+    expect(await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')).to.be.an.instanceOf(Comment)
   })
 
   it('should have the ID of its video', async () => {
     const video = await youtube.getVideo('KOJj092zklc', [ 'id' ])
-    const comments = await video.fetchComments({ maxPerPage: 1 }, 'relevance', [ 'snippet' ])
+    const comment = (await video.fetchComments({ maxPerPage: 1 }, 'relevance', [ 'snippet' ])).items[0]
 
-    expect(comments[0].videoId).to.equal('KOJj092zklc')
+    expect(comment.videoId).to.equal('KOJj092zklc')
     // expect(comments[0].channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
-    expect(comments[0].channelId).to.equal(undefined) // broken in the API!
+    expect(comment.channelId).to.equal(undefined) // broken in the API!
   })
 
   it('should have a correct URL', async () => {
-    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).fetchComments())[0]
+    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).fetchComments()).items[0]
     // const channelComment = (await (await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])).fetchComments())[0]
 
     if (!videoComment) {

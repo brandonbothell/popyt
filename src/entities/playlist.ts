@@ -1,5 +1,5 @@
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
-import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions, VideoResolvable } from '..'
+import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions, VideoResolvable, PaginatedResponse } from '..'
 
 /**
  * A YouTube playlist.
@@ -57,7 +57,7 @@ export class Playlist {
    * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to fetch the full objects while not spamming your quota
    * like you would using a loop.
    */
-  public videos: Video[]
+  public videos: PaginatedResponse<Video>
 
   /**
    * The ID of the creator of the playlist.
@@ -194,16 +194,13 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async addVideo (videoResolvable: VideoResolvable, position?: number, note?: string) {
-    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
-    const video = await this.youtube.oauth.addPlaylistItem(this.id, videoId, position, note)
+    const videoId = await this.youtube._resolutionService.resolve(videoResolvable, Video)
+    const playlistItem = await this.youtube.oauth.addPlaylistItem(this, videoId, position, note)
 
-    if (this.videos) {
-      this.videos.push(video)
-    } else {
-      this.videos = [ video ]
-    }
+    if (this.videos) this.videos.items.push(playlistItem)
+    else this.videos = { items: [ playlistItem ] }
 
-    return video
+    return playlistItem
   }
 
   /**
@@ -216,11 +213,17 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async updateVideo (videoResolvable: VideoResolvable, position?: number, note?: string, itemId?: string) {
-    const videoId = await this.youtube._genericService.getId(videoResolvable, Video)
-    const playlistItemId = itemId ??
-      (await this.youtube._genericService.getPaginatedItems({ type: PaginatedItemType.PlaylistItems, mine: false, id: this.id, maxPerPage: 1, subId: videoId }))[0].id
+    const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
+    const playlistItemId = itemId ?? (await this.youtube._genericService.getPaginatedItems({
+      type: PaginatedItemType.PlaylistItems,
+      mine: false,
+      id: this.id,
+      maxPerPage: 1,
+      subId: typeof video === 'string' ? video : video.id
+    })
+    )[0].id
 
-    return this.youtube.oauth.updatePlaylistItem(playlistItemId, this.id, videoId, position, note)
+    return this.youtube.oauth.updatePlaylistItem(playlistItemId, this, video, position, note)
   }
 
   /**
@@ -230,12 +233,13 @@ export class Playlist {
    */
   /* istanbul ignore next */
   public async removeVideo (videoResolvable: VideoResolvable) {
+    const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
     const playlistItemId = (this.youtube._genericService.getPaginatedItems({
       type: PaginatedItemType.PlaylistItems,
       mine: false,
       id: this.id,
       maxPerPage: 1,
-      subId: await this.youtube._genericService.getId(videoResolvable, Video)
+      subId: typeof video === 'string' ? video : video.id
     }))[0].id
 
     return this.removeItem(playlistItemId)
@@ -244,17 +248,17 @@ export class Playlist {
   /**
    * Removes a [Video](./Library_Exports.Video#) from the playlist.
    * Must be using an access token with correct scopes.
-   * @param playlistItemId The playlist item ID (not the same as video id. See [Playlist.removeVideo](./Library_Exports.Playlist#removeVideo)).
+   * @param playlistItemId The playlist item ID (not the same as video ID; see [`Playlist.removeVideo()`](./Library_Exports.Playlist#removeVideo)).
    */
   /* istanbul ignore next */
   public async removeItem (playlistItemId: string) {
     await this.youtube.oauth.deletePlaylistItem(playlistItemId)
 
     if (this.videos) {
-      const index = this.videos.findIndex(v => v.data.id === playlistItemId)
+      const index = this.videos.items.findIndex(v => v.data.id === playlistItemId)
 
       if (index >= 0) {
-        this.videos.splice(index, 1)
+        this.videos.items.splice(index, 1)
       }
     }
   }

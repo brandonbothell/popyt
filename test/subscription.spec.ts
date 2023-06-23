@@ -13,7 +13,7 @@ let channelId: string
 
 describe('Subscriptions', () => {
   it('should set all available properties', async () => {
-    const subscription = (await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', { maxPerPage: 1 }))[0]
+    const subscription = (await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', { maxPerPage: 1 })).items[0]
 
     expect(subscription.full).to.equal(true)
     await subscription.fetch()
@@ -49,8 +49,8 @@ describe('Subscriptions', () => {
     const subscriptions = await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', { maxPerPage: 1 }, [ 'id' ])
     const allSubscriptions = await youtube.getChannelSubscriptions('UC-bUmR394K0xQBPJifDgXww', undefined, [ 'id' ])
 
-    expect(subscriptions[0]).to.be.an.instanceOf(Subscription)
-    expect(allSubscriptions.length).to.be.gte(subscriptions.length)
+    expect(subscriptions.items[0]).to.be.an.instanceOf(Subscription)
+    expect(allSubscriptions.items.length).to.be.gte(subscriptions.items.length)
   })
 
   it('should work when fetching by channels', async () => {

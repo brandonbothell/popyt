@@ -1,5 +1,5 @@
 import { CommentParts } from '../types/Parts'
-import { PageOptions, YouTube } from '..'
+import { PageOptions, PaginatedResponse, YouTube } from '..'
 
 export class Comment {
   /**
@@ -128,7 +128,7 @@ export class Comment {
    * then this will be partially filled. You'll need to use [Comment.fetchReplies](./Library_Exports.YTComment#fetchReplies)
    * to get all of the replies, though.
    */
-  public replies: Comment[] = []
+  public replies: PaginatedResponse<Comment>
 
   /**
    * If this comment was fetched from a video, then this is the number of replies on it.
@@ -151,10 +151,9 @@ export class Comment {
       this.videoId = data.snippet.videoId
       this.channelId = data.snippet.channelId
 
-      if (data.replies) {
-        for (const replyData of data.replies.comments) {
-          this.replies.push(new Comment(this.youtube, replyData))
-        }
+      if (data.replies && data.replies.comments?.length > 0) {
+        if (!this.replies) this.replies = { items: [] }
+        for (const replyData of data.replies.comments) this.replies.items.push(new Comment(this.youtube, replyData))
       }
 
       data = data.snippet.topLevelComment

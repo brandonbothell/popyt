@@ -45,29 +45,29 @@ describe('Playlists', () => {
 
   it('should work with fetching a page of videos', async () => {
     const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
-    const videos = await playlist.fetchVideos(undefined, [ 'id' ])
+    const videos = (await playlist.fetchVideos(undefined, [ 'id' ])).items
 
     expect(videos.length).to.equal(50)
-    expect(playlist.videos.length).to.equal(50)
+    expect(playlist.videos.items.length).to.equal(50)
   })
 
   it('should work with fetching all videos', async () => {
     const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
-    const videos = await playlist.fetchVideos({ pages: 0 }, [ 'id' ])
+    const videos = (await playlist.fetchVideos({ pages: 0 }, [ 'id' ])).items
 
     expect(videos.length).to.be.greaterThan(50)
-    expect(playlist.videos.length).to.be.greaterThan(50)
+    expect(playlist.videos.items.length).to.be.greaterThan(50)
   })
 
   it('should work with fetching channel playlists with maxPerPage', async () => {
-    const playlists = await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', { maxPerPage: 5 }, [ 'id' ])
+    const playlists = (await youtube.getChannelPlaylists('UCBR8-60-B28hp2BmDPdntcQ', { maxPerPage: 5 }, [ 'id' ])).items
 
     expect(playlists.length).to.equal(5)
     expect(playlists[0]).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with fetching channel playlists', async () => {
-    const playlists = await youtube.getChannelPlaylists('UC6mi9rp7vRYninucP61qOjg')
-    expect(playlists[0]).to.be.an.instanceOf(Playlist)
+    const playlist = (await youtube.getChannelPlaylists('UC6mi9rp7vRYninucP61qOjg')).items[0]
+    expect(playlist).to.be.an.instanceOf(Playlist)
   })
 })

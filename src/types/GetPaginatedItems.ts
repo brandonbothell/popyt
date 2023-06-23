@@ -24,6 +24,8 @@ export enum PaginatedItemType {
 
 export type PaginatedType = typeof PAGINATED_CLASSES[number]
 
+export type PaginatedInstance = InstanceType<PaginatedType>
+
 /**
  * @ignore
  */
@@ -40,14 +42,32 @@ export type PaginatedItemOptions = {
   order?: 'time' | 'relevance'
 } & PageOptions
 
+/**
+ * @ignore
+ */
+export type PaginatedRequestParams = {
+  part: string
+  maxResults?: number
+  videoId?: string
+  parentId?: string
+  textFormat?: string
+  playlistId?: string
+  channelId?: string
+  regionCode?: string
+  pageToken?: string
+  mine?: boolean
+  hl?: string
+  order?: string
+}
+
 export type PageOptions = {
   pages?: number
   maxPerPage?: number
   pageToken?: string
 }
 
-export type PaginatedItemsReturns<T extends PaginatedType> = {
-  items: InstanceType<T>[]
+export type PaginatedResponse<T extends PaginatedInstance> = {
+  items: T[]
   prevPageToken?: string
   nextPageToken?: string
 }

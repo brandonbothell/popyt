@@ -2,46 +2,37 @@
  * @ignore
  */
 export class Cache {
-  private static cache: { [key: string]: CacheItem } = {}
+  private static map: Map<string, CacheItem> = new Map()
 
-  public static set (name: string | number, value: any, ttl: number) {
-    this.cache[name] = { v: value, t: ttl }
+  public static set (name: string, value: any, ttl: number) {
+    Cache.map.set(name, { v: value, t: ttl })
   }
 
-  public static get (name: string | number): any {
-    const item = this.cache[name]
+  public static get (name: string): any {
+    const item = Cache.map.get(name)
 
-    if (item === undefined || (item.t > 0 && new Date().getTime() >= item.t)) {
-      this._delete(name)
+    if (!item || (item.t > 0 && new Date().getTime() >= item.t)) {
+      Cache._delete(name)
       return undefined
     }
 
-    return this.cache[name].v
+    return item.v
   }
 
   public static checkTTLs () {
-    for (const itemName in this.cache) {
-      const item = this.cache[itemName]
-      const time = new Date().getTime()
+    const time = new Date().getTime()
 
-      if (item.t <= 0) {
-        return
-      }
+    for (const [ name, value ] of Cache.map.entries()) {
+      const timeToDelete = value.t
 
-      if (time >= item.t) {
-        delete this.cache[itemName]
+      if (timeToDelete > 0 && time >= timeToDelete) {
+        Cache.map.delete(name)
       }
     }
   }
 
-  public static _delete (name: string | number) {
-    const item = this.cache[name]
-
-    if (!item) {
-      return
-    }
-
-    delete this.cache[name]
+  public static _delete (name: string) {
+    Cache.map.delete(name)
   }
 }
 

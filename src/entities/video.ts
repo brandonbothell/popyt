@@ -1,6 +1,6 @@
 import { Parser } from '../util'
 import { CommentThreadParts, VideoParts } from '../types/Parts'
-import { Thumbnail, ISODuration, PageOptions } from '../types'
+import { Thumbnail, ISODuration, PageOptions, PaginatedResponse } from '../types'
 import { YouTube, VideoUpdateResource, Caption } from '..'
 import { Comment } from './comment'
 
@@ -136,7 +136,7 @@ export class Video {
   /**
    * The video's comments. Only defined when [Video.fetchComments](./Library_Exports.Video#fetchComments) is called.
    */
-  public comments: Comment[]
+  public comments: PaginatedResponse<Comment>
 
   /**
    * The number of comments on the video.
@@ -256,11 +256,8 @@ export class Video {
   public async postComment (text: string) {
     const comment = await this.youtube.oauth.postComment(text, this.channel.id, this.id)
 
-    if (this.comments !== undefined) {
-      this.comments.push(comment)
-    } else {
-      this.comments = [ comment ]
-    }
+    if (!this.comments) this.comments = { items: [ comment ] }
+    else this.comments.items.push(comment)
 
     return comment
   }
