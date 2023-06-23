@@ -238,10 +238,6 @@ export class YouTube {
     return this._genericService.getItem(Entity.ChannelSection, false, sectionId, parts)
   }
 
-  public async getChannelByUsername (username: string, parts?: Part.ChannelParts) {
-    return this._channelService.getChannelByUsername(username, parts)
-  }
-
   /**
    * Get a [`Subscription`](./Library_Exports.Subscription) object from the subscriber and channel of a subscription.
    * Channels can be passed in the form of ID, URL, or search query.

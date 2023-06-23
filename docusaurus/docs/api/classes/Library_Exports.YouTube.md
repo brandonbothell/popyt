@@ -27,7 +27,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:94](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L94)
+[index.ts:94](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L94)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:69](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L69)
+[index.ts:69](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L69)
 
 ___
 
@@ -49,7 +49,7 @@ The language for the API to respond in. See [`YouTube.getLanguages()`](#getlangu
 
 #### Defined in
 
-[index.ts:79](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L79)
+[index.ts:79](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L79)
 
 ___
 
@@ -61,7 +61,7 @@ Methods requiring an OAuth token.
 
 #### Defined in
 
-[index.ts:74](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L74)
+[index.ts:74](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L74)
 
 ___
 
@@ -73,7 +73,7 @@ The region for the API cater responses to. See [`YouTube.getRegions()`](#getregi
 
 #### Defined in
 
-[index.ts:84](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L84)
+[index.ts:84](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L84)
 
 ## Methods
 
@@ -89,7 +89,7 @@ Get the list of video categories in [`this.region`](#region)`.
 
 #### Defined in
 
-[index.ts:358](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L358)
+[index.ts:354](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L354)
 
 ___
 
@@ -117,7 +117,7 @@ Get a [`VideoCategory`](./Library_Exports.VideoCategory) object from the ID of a
 
 #### Defined in
 
-[index.ts:228](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L228)
+[index.ts:228](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L228)
 
 ___
 
@@ -148,28 +148,7 @@ Consider migrating to [the new @ system.](https://support.google.com/youtube/ans
 
 #### Defined in
 
-[index.ts:190](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L190)
-
-___
-
-### getChannelByUsername
-
-▸ **getChannelByUsername**(`username`, `parts?`): `Promise`<[`Channel`](Library_Exports.Channel)\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `username` | `string` |
-| `parts?` | [`ChannelParts`](../modules/Library_Exports#channelparts) |
-
-#### Returns
-
-`Promise`<[`Channel`](Library_Exports.Channel)\>
-
-#### Defined in
-
-[index.ts:241](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L241)
+[index.ts:190](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L190)
 
 ___
 
@@ -196,7 +175,7 @@ An object containing page token information for future requests and **playlist o
 
 #### Defined in
 
-[index.ts:304](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L304)
+[index.ts:300](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L300)
 
 ___
 
@@ -225,7 +204,7 @@ Get a [`ChannelSection`](./Library_Exports.ChannelSection) object from the ID of
 
 #### Defined in
 
-[index.ts:237](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L237)
+[index.ts:237](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L237)
 
 ___
 
@@ -251,7 +230,7 @@ Partial channel section objects.
 
 #### Defined in
 
-[index.ts:349](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L349)
+[index.ts:345](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L345)
 
 ___
 
@@ -278,7 +257,7 @@ An object containing page token information for future requests and **subscripti
 
 #### Defined in
 
-[index.ts:320](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L320)
+[index.ts:316](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L316)
 
 ___
 
@@ -307,7 +286,7 @@ Get a [`Comment`](./Library_Exports.Comment) object from the ID of a comment.
 
 #### Defined in
 
-[index.ts:211](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L211)
+[index.ts:211](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L211)
 
 ___
 
@@ -334,7 +313,7 @@ An object containing page token information for future requests and **comment ob
 
 #### Defined in
 
-[index.ts:336](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L336)
+[index.ts:332](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L332)
 
 ___
 
@@ -350,7 +329,7 @@ Get a list of languages that YouTube supports.
 
 #### Defined in
 
-[index.ts:365](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L365)
+[index.ts:361](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L361)
 
 ___
 
@@ -380,7 +359,7 @@ Meant mostly for getting by URL or ID.
 
 #### Defined in
 
-[index.ts:201](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L201)
+[index.ts:201](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L201)
 
 ___
 
@@ -407,7 +386,7 @@ An object containing page token information for future requests and ***partial* 
 
 #### Defined in
 
-[index.ts:269](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L269)
+[index.ts:265](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L265)
 
 ___
 
@@ -423,7 +402,7 @@ Get a list of regions that YouTube supports.
 
 #### Defined in
 
-[index.ts:372](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L372)
+[index.ts:368](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L368)
 
 ___
 
@@ -452,7 +431,7 @@ Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a s
 
 #### Defined in
 
-[index.ts:220](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L220)
+[index.ts:220](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L220)
 
 ___
 
@@ -477,7 +456,7 @@ Channels can be passed in the form of ID, URL, or search query.
 
 #### Defined in
 
-[index.ts:252](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L252)
+[index.ts:248](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L248)
 
 ___
 
@@ -506,7 +485,7 @@ Get a [`Video`](./Library_Exports.Video) object from the URL, ID, or search quer
 
 #### Defined in
 
-[index.ts:178](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L178)
+[index.ts:178](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L178)
 
 ___
 
@@ -534,7 +513,7 @@ An object containing page token information for future requests and **comment ob
 
 #### Defined in
 
-[index.ts:286](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L286)
+[index.ts:282](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L282)
 
 ___
 
@@ -563,7 +542,7 @@ Search supported entities on YouTube.
 
 #### Defined in
 
-[index.ts:135](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L135)
+[index.ts:135](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L135)
 
 ___
 
@@ -586,7 +565,7 @@ Search channels on YouTube.
 
 #### Defined in
 
-[index.ts:158](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L158)
+[index.ts:158](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L158)
 
 ___
 
@@ -609,7 +588,7 @@ Search playlists on YouTube.
 
 #### Defined in
 
-[index.ts:169](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L169)
+[index.ts:169](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L169)
 
 ___
 
@@ -632,4 +611,4 @@ Search videos on YouTube.
 
 #### Defined in
 
-[index.ts:147](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L147)
+[index.ts:147](https://github.com/brandonbothell/popyt/blob/b4e3354/src/index.ts#L147)

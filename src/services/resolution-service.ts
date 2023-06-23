@@ -106,7 +106,7 @@ export class ResolutionService {
       return { searchQuery: parsedChannel.searchQuery }
     } else if (parsedChannel?.username) {
       // But the new usernames (/@CustomUsername) work perfectly
-      const channel = await this.youtube.getChannelByUsername(parsedChannel.username) as InstanceType<T>
+      const channel = await this.youtube._channelService.getChannelByUsername(parsedChannel.username) as InstanceType<T>
       if (channel) return { resolution: channel }
     }
 
