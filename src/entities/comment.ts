@@ -125,7 +125,7 @@ export class Comment {
 
   /**
    * Replies directed to the comment. If the comment was fetched from a video,
-   * then this will be partially filled. You'll need to use [Comment.fetchReplies](./Library_Exports.YTComment#fetchReplies)
+   * then this will be partially filled. You'll need to use [Comment.fetchReplies](./Library_Exports.Comment#fetchReplies)
    * to get all of the replies, though.
    */
   public replies: PaginatedResponse<Comment>

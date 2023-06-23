@@ -6,11 +6,16 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
+## Enumerations
+
+- [HttpMethod](../enums/Library_Exports.HttpMethod)
+
 ## Classes
 
 - [Caption](../classes/Library_Exports.Caption)
 - [Channel](../classes/Library_Exports.Channel)
 - [ChannelSection](../classes/Library_Exports.ChannelSection)
+- [Comment](../classes/Library_Exports.Comment)
 - [Language](../classes/Library_Exports.Language)
 - [Playlist](../classes/Library_Exports.Playlist)
 - [Region](../classes/Library_Exports.Region)
@@ -18,7 +23,6 @@ custom_edit_url: null
 - [Video](../classes/Library_Exports.Video)
 - [VideoAbuseReportReason](../classes/Library_Exports.VideoAbuseReportReason)
 - [VideoCategory](../classes/Library_Exports.VideoCategory)
-- [YTComment](../classes/Library_Exports.YTComment)
 - [YouTube](../classes/Library_Exports.YouTube)
 
 ## References
@@ -28,6 +32,23 @@ custom_edit_url: null
 Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 ## Type Aliases
+
+### Authorization
+
+Ƭ **Authorization**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `accessToken?` | `string` |
+| `apiKey?` | `string` |
+
+#### Defined in
+
+[types/Util.ts:32](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Util.ts#L32)
+
+___
 
 ### Banners
 
@@ -54,7 +75,7 @@ Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 #### Defined in
 
-[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Banners.ts#L1)
+[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Banners.ts#L1)
 
 ___
 
@@ -87,7 +108,7 @@ ___
 
 #### Defined in
 
-[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/BrandingSettings.ts#L1)
+[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/BrandingSettings.ts#L1)
 
 ___
 
@@ -97,7 +118,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L17)
+[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L17)
 
 ___
 
@@ -109,7 +130,7 @@ A URL, ID, search query, or object of a channel.
 
 #### Defined in
 
-[types/Resolvable.ts:30](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Resolvable.ts#L30)
+[types/Resolvable.ts:31](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Resolvable.ts#L31)
 
 ___
 
@@ -125,7 +146,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:108](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L108)
+[types/GetPaginatedItems.ts:128](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L128)
 
 ___
 
@@ -135,7 +156,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L36)
+[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L36)
 
 ___
 
@@ -145,7 +166,7 @@ ___
 
 #### Defined in
 
-[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/ChannelSectionType.ts#L1)
+[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/ChannelSectionType.ts#L1)
 
 ___
 
@@ -155,19 +176,19 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L32)
+[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L32)
 
 ___
 
 ### CommentResolvable
 
-Ƭ **CommentResolvable**: `string` \| [`YTComment`](../classes/Library_Exports.YTComment)
+Ƭ **CommentResolvable**: `string` \| [`Comment`](../classes/Library_Exports.Comment)
 
 An ID or object of a comment.
 
 #### Defined in
 
-[types/Resolvable.ts:40](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Resolvable.ts#L40)
+[types/Resolvable.ts:41](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Resolvable.ts#L41)
 
 ___
 
@@ -177,7 +198,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L40)
+[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L40)
 
 ___
 
@@ -200,7 +221,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:72](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L72)
+[types/GetPaginatedItems.ts:92](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L92)
 
 ___
 
@@ -223,34 +244,51 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:67](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L67)
+[types/GetPaginatedItems.ts:87](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L87)
+
+___
+
+### Image
+
+Ƭ **Image**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `Buffer` |
+| `type` | ``"jpeg"`` \| ``"png"`` |
+
+#### Defined in
+
+[types/Util.ts:34](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Util.ts#L34)
 
 ___
 
 ### ItemReturns
 
-Ƭ **ItemReturns**<`T`, `K`\>: `T` extends `string`[] ? `InstanceType`<`K`\>[] : `InstanceType`<`K`\>
+Ƭ **ItemReturns**<`T`, `K`\>: `T` extends `any`[] ? `InstanceType`<`K`\>[] : `InstanceType`<`K`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends `string` \| `string`[] |
+| `T` | extends `any` \| `any`[] |
 | `K` | extends [`ItemTypes`](Library_Exports#itemtypes) |
 
 #### Defined in
 
-[types/GetItem.ts:7](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetItem.ts#L7)
+[types/GetItem.ts:7](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetItem.ts#L7)
 
 ___
 
 ### ItemTypes
 
-Ƭ **ItemTypes**: typeof `GETTABLE_CLASSES`[`number`]
+Ƭ **ItemTypes**: typeof [`GETTABLE_CLASSES`](Library_Exports#gettable_classes)[`number`]
 
 #### Defined in
 
-[types/GetItem.ts:5](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetItem.ts#L5)
+[types/GetItem.ts:5](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetItem.ts#L5)
 
 ___
 
@@ -268,31 +306,41 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:43](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L43)
+[types/GetPaginatedItems.ts:63](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L63)
 
 ___
 
-### PaginatedItemsReturns
+### PaginatedInstance
 
-Ƭ **PaginatedItemsReturns**<`T`\>: `Object`
+Ƭ **PaginatedInstance**: `InstanceType`<[`PaginatedType`](Library_Exports#paginatedtype)\>
+
+#### Defined in
+
+[types/GetPaginatedItems.ts:27](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L27)
+
+___
+
+### PaginatedResponse
+
+Ƭ **PaginatedResponse**<`T`\>: `Object`
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`PaginatedType`](Library_Exports#paginatedtype) |
+| `T` | extends [`PaginatedInstance`](Library_Exports#paginatedinstance) |
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `items` | `InstanceType`<`T`\>[] |
+| `items` | `T`[] |
 | `nextPageToken?` | `string` |
 | `prevPageToken?` | `string` |
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:49](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L49)
+[types/GetPaginatedItems.ts:69](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L69)
 
 ___
 
@@ -302,29 +350,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:25](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L25)
-
-___
-
-### ParsedUrl
-
-Ƭ **ParsedUrl**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `channel?` | { `id?`: `string` ; `username?`: `string`  } |
-| `channel.id?` | `string` |
-| `channel.username?` | `string` |
-| `playlist?` | { `id?`: `string`  } |
-| `playlist.id?` | `string` |
-| `video?` | { `id?`: `string`  } |
-| `video.id?` | `string` |
-
-#### Defined in
-
-[types/Util.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Util.ts#L1)
+[types/GetPaginatedItems.ts:25](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L25)
 
 ___
 
@@ -334,7 +360,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L38)
+[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L38)
 
 ___
 
@@ -344,7 +370,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L30)
+[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L30)
 
 ___
 
@@ -356,7 +382,7 @@ A URL, ID, search query, or object of a playlist.
 
 #### Defined in
 
-[types/Resolvable.ts:25](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Resolvable.ts#L25)
+[types/Resolvable.ts:26](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Resolvable.ts#L26)
 
 ___
 
@@ -372,7 +398,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:104](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L104)
+[types/GetPaginatedItems.ts:124](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L124)
 
 ___
 
@@ -384,11 +410,11 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends `ResolvableClass` |
+| `T` | extends [`PaginatedType`](Library_Exports#paginatedtype) |
 
 #### Defined in
 
-[types/Resolvable.ts:5](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Resolvable.ts#L5)
+[types/Resolvable.ts:5](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Resolvable.ts#L5)
 
 ___
 
@@ -404,7 +430,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:59](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L59)
+[types/GetPaginatedItems.ts:79](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L79)
 
 ___
 
@@ -414,7 +440,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:57](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L57)
+[types/GetPaginatedItems.ts:77](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L77)
 
 ___
 
@@ -424,7 +450,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L34)
+[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L34)
 
 ___
 
@@ -442,7 +468,7 @@ ___
 
 #### Defined in
 
-[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Thumbnail.ts#L1)
+[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Thumbnail.ts#L1)
 
 ___
 
@@ -454,7 +480,7 @@ An ID or object of a video category.
 
 #### Defined in
 
-[types/Resolvable.ts:35](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Resolvable.ts#L35)
+[types/Resolvable.ts:36](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Resolvable.ts#L36)
 
 ___
 
@@ -464,7 +490,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Parts.ts#L1)
+[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Parts.ts#L1)
 
 ___
 
@@ -476,7 +502,7 @@ A URL, ID, search query, or object of a video.
 
 #### Defined in
 
-[types/Resolvable.ts:20](https://github.com/brandonbothell/popyt/blob/536c688/src/types/Resolvable.ts#L20)
+[types/Resolvable.ts:21](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/Resolvable.ts#L21)
 
 ___
 
@@ -499,7 +525,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:84](https://github.com/brandonbothell/popyt/blob/536c688/src/types/GetPaginatedItems.ts#L84)
+[types/GetPaginatedItems.ts:104](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetPaginatedItems.ts#L104)
 
 ___
 
@@ -531,7 +557,7 @@ ___
 
 #### Defined in
 
-[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/536c688/src/types/VideoUpdateResource.ts#L1)
+[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/VideoUpdateResource.ts#L1)
 
 ___
 
@@ -550,4 +576,14 @@ ___
 
 #### Defined in
 
-[index.ts:362](https://github.com/brandonbothell/popyt/blob/536c688/src/index.ts#L362)
+[index.ts:377](https://github.com/brandonbothell/popyt/blob/da3305c/src/index.ts#L377)
+
+## Variables
+
+### GETTABLE\_CLASSES
+
+• `Const` **GETTABLE\_CLASSES**: (typeof [`Video`](../classes/Library_Exports.Video) \| typeof [`Channel`](../classes/Library_Exports.Channel) \| typeof [`Playlist`](../classes/Library_Exports.Playlist) \| typeof [`Comment`](../classes/Library_Exports.Comment) \| typeof [`Subscription`](../classes/Library_Exports.Subscription) \| typeof [`VideoCategory`](../classes/Library_Exports.VideoCategory) \| typeof [`ChannelSection`](../classes/Library_Exports.ChannelSection) \| typeof [`Caption`](../classes/Library_Exports.Caption))[]
+
+#### Defined in
+
+[types/GetItem.ts:3](https://github.com/brandonbothell/popyt/blob/da3305c/src/types/GetItem.ts#L3)

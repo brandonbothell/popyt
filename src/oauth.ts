@@ -72,7 +72,7 @@ export class OAuth {
   }
 
   /**
-   * Post a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+   * Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
    * Last tested 05/18/2020 11:48. PASSING
    * @param text The text content of the comment.
    * @param channelResolvable The channel to post the comment on.
@@ -99,11 +99,11 @@ export class OAuth {
   }
 
   /**
-   * Replies to a [YTComment](./Library_Exports.YTComment#).  
+   * Replies to a [Comment](./Library_Exports.Comment#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
-   * Required for [YTComment.url](./Library_Exports.YTComment#url) to be correct.
+   * Required for [Comment.url](./Library_Exports.Comment#url) to be correct.
    */
   public async replyToComment (commentId: string, text: string) {
     this.checkTokenAndThrow()
@@ -120,7 +120,7 @@ export class OAuth {
   }
 
   /**
-   * Edit a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+   * Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
    * Last tested 07/05/2021 17:40. PASSING
    * @param commentId The ID of the comment.
    * @param text The new text content of the comment.
@@ -143,7 +143,7 @@ export class OAuth {
   }
 
   /**
-   * Marks a [YTComment](./Library_Exports.YTComment#) as spam.  
+   * Marks a [Comment](./Library_Exports.Comment#) as spam.  
    * Last tested NEVER
    * @param commentId The ID of the comment to mark as spam.
    */
@@ -156,7 +156,7 @@ export class OAuth {
   }
 
   /**
-   * Sets the moderation status of a [YTComment](./Library_Exports.YTComment#)  
+   * Sets the moderation status of a [Comment](./Library_Exports.Comment#)  
    * Last tested NEVER
    * @param commentId The ID of the comment to set the moderation status of.
    * @param moderationStatus The moderation status to set the comment to.
@@ -185,7 +185,7 @@ export class OAuth {
   }
 
   /**
-   * Deletes a [YTComment](./Library_Exports.YTComment#).  
+   * Deletes a [Comment](./Library_Exports.Comment#).  
    * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the comment to delete.
    */

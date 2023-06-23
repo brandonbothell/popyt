@@ -204,7 +204,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Comment`](./Library_Exports.YTComment) object from the ID of a comment.
+   * Get a [`Comment`](./Library_Exports.Comment) object from the ID of a comment.
    * @param commentId The ID of the comment.
    * @param parts The parts of the comment to fetch (saves quota if you aren't using certain properties!)
    */
@@ -274,7 +274,7 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` [`Comment`](./Library_Exports.YTComment)s from a [`Video`](./Library_Exports.Video).
+   * Get `maxPerPage * pages` [`Comment`](./Library_Exports.Comment)s from a [`Video`](./Library_Exports.Video).
    * Used mostly internally with [`Video.fetchComments()`](./Library_Exports.Video#fetchcomments).
    * @param videoResolvable The URL, ID, or Title of the video.
    * @param pageOptions The number of pages and maximum number of items per page.
@@ -324,8 +324,8 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` replies to a [`Comment`](./Library_Exports.YTComment).
-   * Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.YTComment#fetchreplies).
+   * Get `maxPerPage * pages` replies to a [`Comment`](./Library_Exports.Comment).
+   * Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.Comment#fetchreplies).
    * @param commentId The ID of the comment to get replies from.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  

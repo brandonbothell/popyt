@@ -25,7 +25,7 @@ A YouTube playlist.
 
 #### Defined in
 
-[entities/playlist.ts:103](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L103)
+[entities/playlist.ts:103](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L103)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The ID of the creator of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:65](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L65)
+[entities/playlist.ts:65](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L65)
 
 ___
 
@@ -49,7 +49,7 @@ The raw data of this playlist.
 
 #### Defined in
 
-[entities/playlist.ts:31](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L31)
+[entities/playlist.ts:31](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L31)
 
 ___
 
@@ -61,7 +61,7 @@ The date the playlist was created.
 
 #### Defined in
 
-[entities/playlist.ts:75](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L75)
+[entities/playlist.ts:75](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L75)
 
 ___
 
@@ -73,7 +73,7 @@ The description of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:51](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L51)
+[entities/playlist.ts:51](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L51)
 
 ___
 
@@ -85,7 +85,7 @@ An \<iframe\> tag that embeds a player that will play the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:96](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L96)
+[entities/playlist.ts:96](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L96)
 
 ___
 
@@ -97,7 +97,7 @@ Whether or not this is a full playlist object.
 
 #### Defined in
 
-[entities/playlist.ts:36](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L36)
+[entities/playlist.ts:36](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L36)
 
 ___
 
@@ -109,7 +109,7 @@ The ID of this playlist.
 
 #### Defined in
 
-[entities/playlist.ts:41](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L41)
+[entities/playlist.ts:41](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L41)
 
 ___
 
@@ -121,7 +121,7 @@ The number of items in the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:91](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L91)
+[entities/playlist.ts:91](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L91)
 
 ___
 
@@ -133,7 +133,7 @@ The tags of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:101](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L101)
+[entities/playlist.ts:101](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L101)
 
 ___
 
@@ -155,7 +155,7 @@ The thumbnails for the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:80](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L80)
+[entities/playlist.ts:80](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L80)
 
 ___
 
@@ -167,7 +167,7 @@ The title of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:46](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L46)
+[entities/playlist.ts:46](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L46)
 
 ___
 
@@ -179,13 +179,13 @@ The url of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:70](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L70)
+[entities/playlist.ts:70](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L70)
 
 ___
 
 ### videos
 
-• **videos**: [`Video`](Library_Exports.Video)[]
+• **videos**: [`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>
 
 The videos in the playlist. Only available after calling [`Playlist.fetchVideos()`](#fetchvideos).  
 **These are partial**, meaning they are missing some data.
@@ -195,7 +195,7 @@ like you would using a loop.
 
 #### Defined in
 
-[entities/playlist.ts:60](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L60)
+[entities/playlist.ts:60](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L60)
 
 ___
 
@@ -207,7 +207,7 @@ The YouTube object that created this playlist.
 
 #### Defined in
 
-[entities/playlist.ts:26](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L26)
+[entities/playlist.ts:26](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L26)
 
 ___
 
@@ -219,7 +219,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/playlist.ts:11](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L11)
+[entities/playlist.ts:11](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L11)
 
 ___
 
@@ -231,7 +231,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/playlist.ts:21](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L21)
+[entities/playlist.ts:21](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L21)
 
 ___
 
@@ -243,7 +243,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/playlist.ts:16](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L16)
+[entities/playlist.ts:16](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L16)
 
 ## Methods
 
@@ -268,7 +268,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:196](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L196)
+[entities/playlist.ts:196](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L196)
 
 ___
 
@@ -285,7 +285,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:267](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L267)
+[entities/playlist.ts:271](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L271)
 
 ___
 
@@ -308,13 +308,13 @@ Only useful if `this.full` is false, or if you want updated playlist info.
 
 #### Defined in
 
-[entities/playlist.ts:164](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L164)
+[entities/playlist.ts:164](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L164)
 
 ___
 
 ### fetchVideos
 
-▸ **fetchVideos**(`pageOptions?`, `parts?`): `Promise`<[`Video`](Library_Exports.Video)[]\>
+▸ **fetchVideos**(`pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>\>
 
 Fetches the videos in this playlist from the API and adds them to the `videos` property.  
 **These are partial**, meaning they are missing some data.
@@ -331,11 +331,11 @@ like you would using a loop.
 
 #### Returns
 
-`Promise`<[`Video`](Library_Exports.Video)[]\>
+`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>\>
 
 #### Defined in
 
-[entities/playlist.ts:155](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L155)
+[entities/playlist.ts:155](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L155)
 
 ___
 
@@ -350,7 +350,7 @@ Must be using an access token with correct scopes.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `playlistItemId` | `string` | The playlist item ID (not the same as video id. See [Playlist.removeVideo](./Library_Exports.Playlist#removeVideo)). |
+| `playlistItemId` | `string` | The playlist item ID (not the same as video ID; see [`Playlist.removeVideo()`](./Library_Exports.Playlist#removeVideo)). |
 
 #### Returns
 
@@ -358,7 +358,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:250](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L250)
+[entities/playlist.ts:254](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L254)
 
 ___
 
@@ -381,7 +381,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:232](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L232)
+[entities/playlist.ts:235](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L235)
 
 ___
 
@@ -411,7 +411,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[entities/playlist.ts:182](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L182)
+[entities/playlist.ts:182](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L182)
 
 ___
 
@@ -437,4 +437,4 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:218](https://github.com/brandonbothell/popyt/blob/536c688/src/entities/playlist.ts#L218)
+[entities/playlist.ts:215](https://github.com/brandonbothell/popyt/blob/da3305c/src/entities/playlist.ts#L215)

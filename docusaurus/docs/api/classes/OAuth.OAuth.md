@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L41)
+[oauth.ts:24](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L24)
 
 ## Properties
 
@@ -34,7 +34,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:35](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L35)
+[oauth.ts:18](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L18)
 
 ## Methods
 
@@ -61,7 +61,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:640](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L640)
+[oauth.ts:723](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L723)
 
 ___
 
@@ -89,7 +89,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:452](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L452)
+[oauth.ts:491](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L491)
 
 ___
 
@@ -117,7 +117,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:372](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L372)
+[oauth.ts:397](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L397)
 
 ___
 
@@ -140,7 +140,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:835](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L835)
+[oauth.ts:967](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L967)
 
 ___
 
@@ -163,22 +163,22 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:704](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L704)
+[oauth.ts:805](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L805)
 
 ___
 
 ### deleteComment
 
-▸ **deleteComment**(`id`): `Promise`<`void`\>
+▸ **deleteComment**(`commentId`): `Promise`<`void`\>
 
-Deletes a [YTComment](./Library_Exports.YTComment#).  
+Deletes a [Comment](./Library_Exports.Comment#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `id` | `string` | The ID of the comment to delete. |
+| Name | Type |
+| :------ | :------ |
+| `commentId` | `string` |
 
 #### Returns
 
@@ -186,7 +186,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:197](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L197)
+[oauth.ts:192](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L192)
 
 ___
 
@@ -209,7 +209,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:436](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L436)
+[oauth.ts:472](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L472)
 
 ___
 
@@ -232,7 +232,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:512](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L512)
+[oauth.ts:563](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L563)
 
 ___
 
@@ -255,7 +255,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:300](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L300)
+[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L314)
 
 ___
 
@@ -280,15 +280,15 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:811](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L811)
+[oauth.ts:943](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L943)
 
 ___
 
 ### editComment
 
-▸ **editComment**(`commentId`, `text`): `Promise`<[`YTComment`](Library_Exports.YTComment)\>
+▸ **editComment**(`commentId`, `text`): `Promise`<[`Comment`](Library_Exports.Comment)\>
 
-Edit a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
 Last tested 07/05/2021 17:40. PASSING
 
 #### Parameters
@@ -300,11 +300,11 @@ Last tested 07/05/2021 17:40. PASSING
 
 #### Returns
 
-`Promise`<[`YTComment`](Library_Exports.YTComment)\>
+`Promise`<[`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[oauth.ts:136](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L136)
+[oauth.ts:128](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L128)
 
 ___
 
@@ -328,7 +328,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:715](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L715)
+[oauth.ts:819](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L819)
 
 ___
 
@@ -351,7 +351,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:733](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L733)
+[oauth.ts:840](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L840)
 
 ___
 
@@ -374,7 +374,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:58](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L58)
+[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L41)
 
 ___
 
@@ -398,7 +398,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L82)
+[oauth.ts:67](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L67)
 
 ___
 
@@ -406,7 +406,7 @@ ___
 
 ▸ **getMyRatings**(`videoResolvables`): `Promise`<{ `rating`: ``"none"`` \| ``"like"`` \| ``"dislike"`` \| ``"unspecified"`` ; `videoId`: `string`  }[]\>
 
-Retrieve your rating on a [Video](./Library_Exports.Video#).  
+Retrieve your rating on [Videos](./Library_Exports.Video#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -421,7 +421,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:248](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L248)
+[oauth.ts:256](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L256)
 
 ___
 
@@ -445,7 +445,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:70](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L70)
+[oauth.ts:53](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L53)
 
 ___
 
@@ -462,7 +462,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:844](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L844)
+[oauth.ts:976](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L976)
 
 ___
 
@@ -470,7 +470,7 @@ ___
 
 ▸ **markCommentAsSpam**(`commentId`): `Promise`<`void`\>
 
-Marks a [YTComment](./Library_Exports.YTComment#) as spam.  
+Marks a [Comment](./Library_Exports.Comment#) as spam.  
 Last tested NEVER
 
 #### Parameters
@@ -485,15 +485,15 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:161](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L161)
+[oauth.ts:150](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L150)
 
 ___
 
 ### postComment
 
-▸ **postComment**(`text`, `channelResolvable`, `videoResolvable?`): `Promise`<[`YTComment`](Library_Exports.YTComment)\>
+▸ **postComment**(`text`, `channelResolvable`, `videoResolvable`): `Promise`<[`Comment`](Library_Exports.Comment)\>
 
-Post a [Comment](./Library_Exports.YTComment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -502,15 +502,15 @@ Last tested 05/18/2020 11:48. PASSING
 | :------ | :------ | :------ |
 | `text` | `string` | The text content of the comment. |
 | `channelResolvable` | [`ChannelResolvable`](../modules/Library_Exports#channelresolvable) | The channel to post the comment on. |
-| `videoResolvable?` | `string` | The video of the channel to post the comment on. If falsey, the comment will be posted to the channel discussion. |
+| `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video of the channel to post the comment on. If falsey, the comment will be posted to the channel discussion. |
 
 #### Returns
 
-`Promise`<[`YTComment`](Library_Exports.YTComment)\>
+`Promise`<[`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[oauth.ts:95](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L95)
+[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L82)
 
 ___
 
@@ -534,15 +534,15 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:236](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L236)
+[oauth.ts:241](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L241)
 
 ___
 
 ### replyToComment
 
-▸ **replyToComment**(`commentId`, `text`): `Promise`<[`YTComment`](Library_Exports.YTComment)\>
+▸ **replyToComment**(`commentId`, `text`): `Promise`<[`Comment`](Library_Exports.Comment)\>
 
-Replies to a [YTComment](./Library_Exports.YTComment#).  
+Replies to a [Comment](./Library_Exports.Comment#).  
 Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
@@ -550,15 +550,15 @@ Last tested 05/18/2020 11:48. PASSING
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `commentId` | `string` | The ID of the comment to reply to. |
-| `text` | `string` | The text to reply with. Required for [YTComment.url](./Library_Exports.YTComment#url) to be correct. |
+| `text` | `string` | The text to reply with. Required for [Comment.url](./Library_Exports.Comment#url) to be correct. |
 
 #### Returns
 
-`Promise`<[`YTComment`](Library_Exports.YTComment)\>
+`Promise`<[`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[oauth.ts:120](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L120)
+[oauth.ts:108](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L108)
 
 ___
 
@@ -585,7 +585,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:273](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L273)
+[oauth.ts:284](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L284)
 
 ___
 
@@ -609,13 +609,13 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:565](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L565)
+[oauth.ts:629](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L629)
 
 ___
 
 ### setChannelWatermark
 
-▸ **setChannelWatermark**(`channelResolvable`, `type`, `offset`, `duration`, `image`, `imageType`): `Promise`<`void`\>
+▸ **setChannelWatermark**(`channelResolvable`, `type`, `offset`, `duration`, `image`): `Promise`<`void`\>
 
 Sets a channel's watermark.  
 Last tested 05/19/2020 18:07. PASSING
@@ -628,8 +628,7 @@ Last tested 05/19/2020 18:07. PASSING
 | `type` | ``"fromStart"`` \| ``"fromEnd"`` | The timing type of the watermark. |
 | `offset` | `number` | The offset, in milliseconds, from the start/end of the video to display the watermark from. |
 | `duration` | `number` | The duration, in millseconds, to display the watermark for. |
-| `image` | `Buffer` | The watermark image. |
-| `imageType` | ``"jpeg"`` \| ``"png"`` | - |
+| `image` | [`Image`](../modules/Library_Exports#image) | The watermark image. |
 
 #### Returns
 
@@ -637,7 +636,7 @@ Last tested 05/19/2020 18:07. PASSING
 
 #### Defined in
 
-[oauth.ts:589](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L589)
+[oauth.ts:657](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L657)
 
 ___
 
@@ -645,7 +644,7 @@ ___
 
 ▸ **setCommentModerationStatus**(`commentId`, `moderationStatus`, `banAuthor?`): `Promise`<`void`\>
 
-Sets the moderation status of a [YTComment](./Library_Exports.YTComment#)  
+Sets the moderation status of a [Comment](./Library_Exports.Comment#)  
 Last tested NEVER
 
 #### Parameters
@@ -662,7 +661,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:173](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L173)
+[oauth.ts:165](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L165)
 
 ___
 
@@ -678,9 +677,7 @@ Last tested 05/18/2020 11:48. PASSING
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `videoResolvable` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable) | The video to set the thumbnail for. |
-| `image` | `Object` | The image data and type to upload. |
-| `image.data` | `Buffer` | - |
-| `image.type` | ``"jpeg"`` \| ``"png"`` | - |
+| `image` | [`Image`](../modules/Library_Exports#image) | The image data and type to upload. |
 
 #### Returns
 
@@ -688,7 +685,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:353](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L353)
+[oauth.ts:374](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L374)
 
 ___
 
@@ -713,7 +710,7 @@ A partial subscription object.
 
 #### Defined in
 
-[oauth.ts:208](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L208)
+[oauth.ts:206](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L206)
 
 ___
 
@@ -736,7 +733,7 @@ Last tested 05/18/2020 18:23. PASSING
 
 #### Defined in
 
-[oauth.ts:609](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L609)
+[oauth.ts:686](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L686)
 
 ___
 
@@ -759,7 +756,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:225](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L225)
+[oauth.ts:227](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L227)
 
 ___
 
@@ -786,7 +783,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:781](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L781)
+[oauth.ts:898](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L898)
 
 ___
 
@@ -812,7 +809,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:525](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L525)
+[oauth.ts:579](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L579)
 
 ___
 
@@ -838,7 +835,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:546](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L546)
+[oauth.ts:604](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L604)
 
 ___
 
@@ -868,7 +865,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:677](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L677)
+[oauth.ts:769](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L769)
 
 ___
 
@@ -899,7 +896,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:407](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L407)
+[oauth.ts:437](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L437)
 
 ___
 
@@ -930,7 +927,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:485](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L485)
+[oauth.ts:530](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L530)
 
 ___
 
@@ -955,7 +952,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L314)
+[oauth.ts:331](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L331)
 
 ___
 
@@ -982,7 +979,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:755](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L755)
+[oauth.ts:865](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L865)
 
 ___
 
@@ -997,9 +994,7 @@ Last tested 05/20/2020 03:17. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `image` | `Object` | The channel banner to upload. |
-| `image.data` | `Buffer` | - |
-| `image.type` | ``"jpeg"`` \| ``"png"`` | - |
+| `image` | [`Image`](../modules/Library_Exports#image) | The channel banner to upload. |
 
 #### Returns
 
@@ -1011,4 +1006,4 @@ in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
 
 #### Defined in
 
-[oauth.ts:624](https://github.com/brandonbothell/popyt/blob/536c688/src/oauth.ts#L624)
+[oauth.ts:704](https://github.com/brandonbothell/popyt/blob/da3305c/src/oauth.ts#L704)
