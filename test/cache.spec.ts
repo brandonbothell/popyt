@@ -1,7 +1,7 @@
 import 'mocha'
 import './setup-instance'
 
-import { Cache } from '../src/util/caching'
+import { Cache } from '../src/util/cache'
 import { YouTube } from '../src'
 import { expect } from 'chai'
 
