@@ -18,8 +18,11 @@ export class Channel {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails(relatedPlaylists(uploads)),statistics(subscriberCount,viewCount,hiddenSubscriberCount),' +
-    'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),brandingSettings(image,channel(keywords,featuredChannelsUrls)),' +
+  public static fields = 'items(kind,id,' +
+    'contentDetails(relatedPlaylists(uploads)),' +
+    'statistics(subscriberCount,viewCount,hiddenSubscriberCount),' +
+    'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),' +
+    'brandingSettings(image,channel(keywords,featuredChannelsUrls)),' +
     'status(isLinked,madeForKids,selfDeclaredMadeForKids))'
 
   /**

@@ -66,8 +66,9 @@ describe('Playlists', () => {
     expect(playlists[0]).to.be.an.instanceOf(Playlist)
   })
 
-  it('should work with fetching channel playlists', async () => {
-    const playlist = (await youtube.getChannelPlaylists('UC6mi9rp7vRYninucP61qOjg')).items[0]
+  it('should work with fetching channel playlists by object', async () => {
+    const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])
+    const playlist = (await youtube.getChannelPlaylists(channel)).items[0]
     expect(playlist).to.be.an.instanceOf(Playlist)
   })
 })

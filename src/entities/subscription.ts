@@ -1,4 +1,4 @@
-import { SubscriptionParts } from '../types/Parts'
+import { ChannelParts, SubscriptionParts } from '../types/Parts'
 import { Thumbnail } from '../types'
 import YouTube from '..'
 
@@ -19,8 +19,10 @@ export class Subscription {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,snippet(publishedAt,title,channelTitle,description,resourceId(channelId),channelId,thumbnails),' +
-    'contentDetails(newItemCount,totalItemCount,activityType),subscriberSnippet(title,description,thumbnails))'
+  public static fields = 'items(kind,id,' +
+    'snippet(publishedAt,title,channelTitle,description,resourceId(channelId),channelId,thumbnails),' +
+    'contentDetails(newItemCount,totalItemCount,activityType),' +
+    'subscriberSnippet(title,description,thumbnails))'
 
   /**
    * The YouTube object that created this subscription object.
@@ -86,17 +88,17 @@ export class Subscription {
     /**
      * The user's username.
      */
-    name: string
+    name?: string
 
     /**
      * The user's description.
      */
-    description: string
+    description?: string
 
     /**
      * Thumbnail images for the user's channel.
      */
-    thumbnails: {
+    thumbnails?: {
       default: Thumbnail
       medium: Thumbnail
       high: Thumbnail
@@ -160,16 +162,11 @@ export class Subscription {
       this.dateSubscribed = new Date(subscription.snippet.publishedAt)
       this.channel = {
         name: subscription.snippet.channelTitle || subscription.snippet.title,
-        id: subscription.snippet.resourceId.channelId
+        id: subscription.snippet.resourceId?.channelId
       }
       this.title = subscription.snippet.title
       this.description = subscription.snippet.description
-      this.subscriber = {
-        id: subscription.snippet.channelId,
-        name: null,
-        description: null,
-        thumbnails: null
-      }
+      this.subscriber = { id: subscription.snippet.channelId }
       this.thumbnails = subscription.snippet.thumbnails
     }
 
@@ -186,6 +183,7 @@ export class Subscription {
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
     /* istanbul ignore next */
     if (subscription.subscriberSnippet) {
+      if (!this.subscriber) this.subscriber = { id: subscription.subscriberSnippet.channelId }
       this.subscriber.name = subscription.subscriberSnippet.title
       this.subscriber.description = subscription.subscriberSnippet.description
       this.subscriber.thumbnails = subscription.subscriberSnippet.thumbnails
@@ -195,16 +193,29 @@ export class Subscription {
   /**
    * Fetches this subscription from the API and reassigns this object to the new subscription object.
    * Only useful if `this.full` is false, or if you want updated subscription info.  
-   * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
+   * **CURRENTLY NOT WORKING** unless the subscriber and channel properties are populated, see https://issuetracker.google.com/issues/288609601
    */
+  /* istanbul ignore next */
   public async fetch (parts?: SubscriptionParts) {
-    let subscription = await this.youtube.getSubscription(this.id, parts).catch((e: string) => e)
+    let subscription = await this.youtube.getSubscription(this.id, parts).catch((e: Error) => e.message)
 
-    /* istanbul ignore next */
     if (typeof subscription === 'string') {
-      subscription = await this.youtube.getSubscriptionByChannels(this.subscriber.id, this.channel.id)
+      if (this.subscriber && this.channel) subscription = await this.youtube.getSubscriptionByChannels(this.subscriber.id, this.channel.id, parts)
+      else return undefined
     }
 
-    return Object.assign(this, subscription)
+    return Object.assign(this, subscription as Subscription)
+  }
+
+  /* istanbul ignore next */
+  public async getChannel (parts?: ChannelParts) {
+    if (!this.channel) await this.fetch([ 'snippet' ])
+    return this.channel ? this.youtube.getChannel(this.channel.id, parts) : undefined
+  }
+
+  /* istanbul ignore next */
+  public async getSubscriber (parts?: ChannelParts) {
+    if (!this.subscriber) await this.fetch([ 'subscriberSnippet' ])
+    return this.subscriber ? this.youtube.getChannel(this.subscriber.id, parts) : undefined
   }
 }

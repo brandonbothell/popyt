@@ -1,13 +1,9 @@
 import 'mocha'
-import { Comment } from '../src'
+import { Comment, Video } from '../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
-const apiKey = process.env.YOUTUBE_API_KEY
-
-if (!apiKey) {
-  throw new Error('No API key')
-}
+let video: Video
 
 describe('Comments', () => {
   it('should work with valid videos with comments and replies', async () => {
@@ -21,7 +17,7 @@ describe('Comments', () => {
   })
 
   it('should work with fetching from a video object', async () => {
-    const video = await youtube.getVideo('Lq1D8PFnjWY')
+    video = await youtube.getVideo('Lq1D8PFnjWY')
     const comments = (await video.fetchComments({ pages: 1 })).items
 
     expect(comments[0]).to.be.an.instanceOf(Comment)
@@ -42,12 +38,12 @@ describe('Comments', () => {
   })
 
   it('should return an array with a length of <= maxPerPage', async () => {
-    expect((await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ])).items.length).to.be.lessThan(2)
+    expect((await youtube.getVideoComments(video, { maxPerPage: 1 }, undefined, [ 'id' ])).items.length).to.be.lessThan(2)
   })
 
   it('should work with fetching replies', async () => {
     expect((await (
-      await youtube.getVideoComments('Lq1D8PFnjWY', { maxPerPage: 1 }, undefined, [ 'id' ])
+      await youtube.getVideoComments(video, { maxPerPage: 1 }, undefined, [ 'id' ])
     ).items[0].fetchReplies()).items).to.be.an.instanceOf(Array)
   })
 
@@ -56,23 +52,20 @@ describe('Comments', () => {
   })
 
   it('should have the ID of its video', async () => {
-    const video = await youtube.getVideo('KOJj092zklc', [ 'id' ])
     const comment = (await video.fetchComments({ maxPerPage: 1 }, 'relevance', [ 'snippet' ])).items[0]
 
-    expect(comment.videoId).to.equal('KOJj092zklc')
+    expect(comment.videoId).to.equal(video.id)
     // expect(comments[0].channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
     expect(comment.channelId).to.equal(undefined) // broken in the API!
   })
 
   it('should have a correct URL', async () => {
-    const videoComment = (await (await youtube.getVideo('Lq1D8PFnjWY', [ 'id' ])).fetchComments()).items[0]
-    // const channelComment = (await (await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])).fetchComments())[0]
+    const videoComment = (await video.fetchComments()).items[0]
 
     if (!videoComment) {
       expect.fail('Failed to find a comment to test')
     }
 
     expect(videoComment.url).to.equal('https://youtube.com/watch?v=Lq1D8PFnjWY&lc=' + videoComment.id)
-    // expect(channelComment.url).to.equal('https://youtube.com/channel/UC6mi9rp7vRYninucP61qOjg/discussion?lc=' + channelComment.id)
   })
 })

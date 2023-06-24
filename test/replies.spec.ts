@@ -3,15 +3,12 @@ import { Comment } from '../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
-const apiKey = process.env.YOUTUBE_API_KEY
-
-if (!apiKey) {
-  throw new Error('No API key')
-}
-
 describe('Replies', () => {
+  let comment: Comment
+
   it('should work with valid comments with replies', async () => {
-    const replies = (await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg')).items
+    comment = await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg', [ 'id' ])
+    const replies = (await youtube.getCommentReplies(comment)).items
     expect(replies[0]).to.be.instanceOf(Comment)
   })
 
@@ -20,13 +17,12 @@ describe('Replies', () => {
   })
 
   it('should return an array with a length of <= maxPerPage', async () => {
-    expect((await youtube.getCommentReplies('Ugyv3oMTx4CLRXS-9BZ4AaABAg', { maxPerPage: 1 })).items.length).to.be.lessThan(2)
+    expect((await youtube.getCommentReplies(comment.id, { maxPerPage: 1 })).items.length).to.be.lessThan(2)
   })
 
   it('should have the ID of the comment it replied to', async () => {
-    const comment = await youtube.getComment('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
+    if (!comment) throw new Error('No comment to test on')
     const replies = (await comment.fetchReplies({ maxPerPage: 1 })).items
-
-    expect(replies[0].parentCommentId).to.equal('Ugyv3oMTx4CLRXS-9BZ4AaABAg')
+    expect(replies[0].parentCommentId).to.equal(comment.id)
   })
 })

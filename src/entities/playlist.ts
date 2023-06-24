@@ -13,12 +13,16 @@ export class Playlist {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,player'
+  public static part = 'snippet,contentDetails,player,status'
 
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,snippet(tags,title,description,channelId,publishedAt,thumbnails),contentDetails(itemCount),player(embedHtml))'
+  public static fields = 'items(kind,id,' +
+    'snippet(tags,title,description,channelId,publishedAt,thumbnails),' +
+    'contentDetails(itemCount),' +
+    'player(embedHtml),' +
+    'status(privacyStatus))'
 
   /**
    * The YouTube object that created this playlist.
@@ -100,6 +104,11 @@ export class Playlist {
    */
   public tags: string[]
 
+  /**
+   * Information on this playlist's privacy.
+   */
+  public privacy: 'private' | 'public' | 'unlisted'
+
   constructor (youtube: YouTube, data: any, full = false) {
     this.youtube = youtube
     this.data = data
@@ -116,12 +125,6 @@ export class Playlist {
 
     if (data.kind === 'youtube#playlist') {
       this.id = playlist.id
-      /* istanbul ignore next */
-      this.tags = playlist.snippet ? playlist.snippet.tags : undefined
-      /* istanbul ignore next */
-      this.length = playlist.contentDetails ? playlist.contentDetails.itemCount : undefined
-      /* istanbul ignore next */
-      this.embedHtml = playlist.player ? playlist.player.embedHtml : undefined
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.playlistId
     } else {
@@ -137,6 +140,10 @@ export class Playlist {
       this.dateCreated = new Date(playlist.snippet.publishedAt)
       this.thumbnails = playlist.snippet.thumbnails
     }
+
+    this.length = playlist.contentDetails?.itemCount
+    this.embedHtml = playlist.player?.embedHtml
+    this.privacy = playlist.status?.privacyStatus
 
     this.url = `https://youtube.com/playlist?list=${this.id}`
   }

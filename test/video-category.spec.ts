@@ -14,13 +14,10 @@ let categoryId: string
 describe('Video categories', () => {
   it('should set all available properties', async () => {
     let category = (await youtube.getCategories())[0]
-
-    expect(category.full).to.equal(true)
-
     categoryId = category.id
-    await category.fetch()
 
     expect(category.id).to.be.a('string')
+    expect(category.full).to.equal(true)
     expect(category.channelId).to.be.a('string')
     expect(category.title).to.be.a('string')
     expect(category.assignable).to.be.a('boolean')
@@ -39,7 +36,7 @@ describe('Video categories', () => {
   })
 
   it('should work with fetching categories directly', async () => {
-    const category = await youtube.getCategory(categoryId)
+    const category = await (await youtube.getCategory(categoryId)).fetch()
     expect(category.id).to.equal(categoryId)
   })
 

@@ -1,6 +1,10 @@
 import { OutgoingMessage, IncomingMessage } from 'http'
 import { RequestPart } from '../..'
 
+/**
+ * @ignore
+ */
+/* istanbul ignore next */
 export class Handler {
   public static request = {
     default (request: OutgoingMessage, data?: any) {
@@ -35,7 +39,7 @@ export class Handler {
 
   public static response = {
     default (response: IncomingMessage,
-      resolve: (value: Buffer | Record<string, any>) => void, reject: (reason: any) => void) {
+      resolve: (value: Buffer | Record<string, any> | string) => void, reject: (reason: any) => void) {
 
       let data = ''
 
@@ -53,6 +57,10 @@ export class Handler {
 
         if (response.headers['content-type'].startsWith('application/octet-stream')) {
           return resolve(Buffer.from(data))
+        }
+
+        if (response.headers['content-type'].startsWith('text/plain')) {
+          return resolve(data)
         }
 
         // parse if 404 not found just in case there's an error with more info

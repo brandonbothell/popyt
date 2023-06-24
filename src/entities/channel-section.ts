@@ -13,12 +13,12 @@ export class ChannelSection {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,localizations,targeting'
+  public static part = 'snippet,contentDetails'
 
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails,localizations,snippet,targeting)'
+  public static fields = 'items(kind,id,contentDetails,snippet)'
 
   /**
    * The YouTube object that created this channel section object.

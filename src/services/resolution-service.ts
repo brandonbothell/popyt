@@ -4,16 +4,16 @@ import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, Resol
 /**
  * @ignore
  */
+/* istanbul ignore next */
 export class ResolutionService {
   constructor (private youtube: YouTube) {}
 
-  /* istanbul ignore next */
   public async resolve<T extends Resolvable<K> | Resolvable<K>[], K extends ResolvableClass> (input: T, type: K):
   Promise<ResolveReturn<T, K>> {
 
     // A single item can be fast-tracked
     if (!Array.isArray(input)) {
-      if (typeof input !== 'string') return input.id as ResolveReturn<T, K>
+      if (typeof input !== 'string') return input as ResolveReturn<T, K>
       else return this.resolveStringToIdOrEntity(input, type) as Promise<ResolveReturn<T, K>>
     }
 
@@ -50,7 +50,6 @@ export class ResolutionService {
    * the new @ username URLs use fetches (much cheaper on quota).  
    * **Anything that isn't an ID, Entity, or Username URL returns the first result of a search query of `type`.**
    */
-  /* istanbul ignore next */
   public async resolveStringToIdOrEntity<T extends ResolvableClass> (input: string, type: T): Promise<Resolvable<T>> {
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`get_id://${type.endpoint}/${input}`)

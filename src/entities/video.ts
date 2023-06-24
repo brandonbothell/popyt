@@ -21,9 +21,11 @@ export class Video {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,contentDetails(duration),statistics(likeCount,dislikeCount,viewCount,commentCount),' +
-    'status(privacyStatus,madeForKids,selfDeclaredMadeForKids),snippet(title,description,thumbnails,tags,publishedAt,channelId,channelTitle,liveBroadcastContent,' +
-    'categoryId))'
+  public static fields = 'items(kind,id,' +
+    'contentDetails(duration),' +
+    'statistics(likeCount,dislikeCount,viewCount,commentCount),' +
+    'status(privacyStatus,madeForKids,selfDeclaredMadeForKids),' +
+    'snippet(title,description,thumbnails,tags,publishedAt,channelId,channelTitle,liveBroadcastContent,categoryId))'
 
   /**
    * YouTube object that created the video.
@@ -197,18 +199,9 @@ export class Video {
         this.seconds = this._length.seconds
       }
 
-      /* istanbul ignore next */
-      if (video.statistics) {
-        this.likes = Number(video.statistics.likeCount)
-        this.dislikes = Number(video.statistics.dislikeCount)
-        this.views = Number(video.statistics.viewCount)
-        this.commentCount = Number(video.statistics.commentCount)
-      }
-
       this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
-      this.id = data.snippet.resourceId.videoId
-      this.private = data.snippet.title === 'Private video'
+      this.id = data.snippet?.resourceId.videoId
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.videoId
     } else {
@@ -233,12 +226,20 @@ export class Video {
     }
 
     /* istanbul ignore next */
+    if (data.statistics) {
+      this.likes = Number(data.statistics.likeCount)
+      this.dislikes = Number(data.statistics.dislikeCount)
+      this.views = Number(data.statistics.viewCount)
+      this.commentCount = Number(data.statistics.commentCount)
+    }
+
+    /* istanbul ignore next */
     if (data.status) {
       this.private = data.status.privacyStatus === 'private'
-      this.kids = {
+      this.kids = 'madeForKids' in data.status ? {
         madeForKids: data.status.madeForKids,
         selfDeclaredMadeForKids: data.status.selfDeclaredMadeForKids
-      }
+      } : undefined
     }
 
     this.url = `https://youtube.com/watch?v=${this.id}`

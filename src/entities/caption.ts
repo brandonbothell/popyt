@@ -17,7 +17,7 @@ export class Caption {
   /**
    * The fields to request for this entity.
    */
-  public static fields = 'items(kind,id,snippet(*))'
+  public static fields = 'items(kind,id,snippet)'
 
   /**
    * The YouTube object that created this caption track object.

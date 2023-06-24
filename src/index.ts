@@ -213,7 +213,9 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a subscription.
+   * Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a subscription.  
+   * Fetching a subscription by ID is **CURRENTLY BROKEN** in the Public YouTube API,
+   * see https://issuetracker.google.com/issues/288609601
    * @param subscriptionId The ID of the subscription.
    * @param parts The parts of the subscription to fetch (saves quota if you aren't using certain properties!)
    */
@@ -248,7 +250,6 @@ export class YouTube {
   public async getSubscriptionByChannels (subscriberResolvable: T.ChannelResolvable, channelResolvable: T.ChannelResolvable, parts?: Part.SubscriptionParts) {
     const subscriberAndChannel = (await this._resolutionService.resolve([ subscriberResolvable, channelResolvable ], Entity.Channel))
       .map(channel => typeof channel === 'string' ? channel : channel.id)
-
     return this._subscriptionService.getSubscriptionByChannels(subscriberAndChannel[0], subscriberAndChannel[1], parts)
   }
 

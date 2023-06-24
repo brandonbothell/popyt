@@ -59,8 +59,11 @@ export class GenericService {
     const idString = idsToGet.join(',')
     let preresolvedCacheString = alreadyResolved.length ? alreadyResolved.map(r => r.id).join(',') : ''
 
+    let cacheKey: string
+
     if (this.youtube._shouldCache) {
-      const cached = Cache.get(`get://${type.endpoint}/${idString ? idString : 'mine'}/${preresolvedCacheString}`)
+      cacheKey = `get://${type.endpoint}/${id ? idString : 'mine'}/${preresolvedCacheString}/${parts?.join(',')}`
+      const cached = Cache.get(cacheKey)
       if (cached) return cached
     }
 
@@ -102,10 +105,7 @@ export class GenericService {
     }
 
     if (endResult.length === 1) endResult = endResult[0]
-
-    if (this.youtube._shouldCache) {
-      this.youtube._cache(`get://${type.endpoint}/${id ? idString : 'mine'}/${preresolvedCacheString}`, endResult)
-    }
+    if (this.youtube._shouldCache) this.youtube._cache(cacheKey, endResult)
 
     return endResult as ItemReturns<T, K>
   }
@@ -139,13 +139,16 @@ export class GenericService {
       return Promise.reject(`${name} cannot be filtered by the 'mine' parameter.`)
     }
 
+    let cacheKey: string
+
     if (this.youtube._shouldCache) {
-      const cached = Cache.get(`getpage://${type}/${mine}/${id}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`)
+      cacheKey = `getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`
+      const cached = Cache.get(cacheKey)
       if (cached) return cached
     }
 
     const options: PaginatedRequestParams = {
-      part: parts ? parts.join(',') : 'snippet'
+      part: parts?.join(',')
     }
 
     let endpoint: string
@@ -162,7 +165,7 @@ export class GenericService {
         clazz = Video
         options.playlistId = id
 
-        if (!options.part.includes('snippet')) options.part += ',snippet'
+        if (!options.part) options.part = 'snippet,contentDetails,status'
         if (subId) options.videoId = subId
         break
 
@@ -172,8 +175,7 @@ export class GenericService {
         maxForEndpoint = 100
         clazz = Comment
         options[`${commentType}Id`] = id
-        if (!options.part.includes('snippet')) options.part += ',snippet'
-        if (!options.part.includes('replies')) options.part += ',replies'
+        if (!options.part) options.part = 'snippet,replies'
         if (otherFilters.order) options.order = otherFilters.order
         options.textFormat = 'plainText'
         break
@@ -182,8 +184,8 @@ export class GenericService {
         endpoint = 'comments'
         maxForEndpoint = 100
         clazz = Comment
+        if (!options.part) options.part = 'snippet'
         options.parentId = id
-        if (!options.part.includes('snippet')) options.part += ',snippet'
         break
 
       case PaginatedItemType.Playlists:
@@ -237,6 +239,10 @@ export class GenericService {
         return Promise.reject('Unknown item type: ' + type)
     }
 
+    if (!options.part) {
+      options.part = clazz.part
+    }
+
     if (maxForEndpoint !== undefined) {
       if (pages < 1 || maxPerPage < 1) options.maxResults = maxForEndpoint
       else if (maxPerPage > maxForEndpoint) return Promise.reject(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`)
@@ -251,9 +257,7 @@ export class GenericService {
 
     const toReturn = await this.fetchPages(pages, endpoint, options, clazz) as PaginatedResponse<T>
 
-    if (this.youtube._shouldCache) {
-      this.youtube._cache(`getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`, toReturn)
-    }
+    if (this.youtube._shouldCache) this.youtube._cache(cacheKey, toReturn)
 
     return toReturn
   }

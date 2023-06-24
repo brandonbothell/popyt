@@ -1,7 +1,12 @@
+import { URL } from 'url'
 import { RequestOptions } from 'http'
 import { SearchParams, Authorization, HttpMethod } from '../..'
 import Request from '.'
 
+/**
+ * @ignore
+ */
+/* istanbul ignore next */
 export class Parser {
   constructor (private request: Request) {}
 
@@ -10,7 +15,7 @@ export class Parser {
   }
 
   public formUrl ({ subUrl, params, auth }: { subUrl: string; params?: SearchParams; auth?: Authorization }) {
-    const parsed = new URL(subUrl, this.request.baseUrl)
+    const parsed = subUrl ? new URL(subUrl, this.request.baseUrl) : new URL(this.request.baseUrl)
 
     if (auth?.apiKey && !auth.accessToken) params.key = auth.apiKey // if we have an access token (OAuth), there's no need for an API key.
     if (params) parsed.search = this.searchParamsToString(params)
@@ -31,7 +36,7 @@ export class Parser {
       method: httpMethod,
       headers: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        'Content-Type': contentType
+        'Content-Type': contentType, Accept: 'application/json'
       }
     }
 

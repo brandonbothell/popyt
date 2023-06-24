@@ -16,7 +16,8 @@ export class Comment {
    * The fields to request for this entity.
    */
   public static fields = 'items(kind,id,' +
-    'snippet(authorDisplayName,authorProfileImageUrl,authorChannelId,authorChannelUrl,textDisplay,textOriginal,parentId,videoId,channelId,canRate,likeCount,publishedAt,updatedAt))'
+    'snippet(authorDisplayName,authorProfileImageUrl,authorChannelId,authorChannelUrl,textDisplay,' +
+    'textOriginal,parentId,videoId,channelId,canRate,likeCount,publishedAt,updatedAt))'
 
   /**
    * The YouTube object used to create the comment.
@@ -109,7 +110,8 @@ export class Comment {
   public dateEdited: Date
 
   /**
-   * The ID of the channel that uploaded the video this comment is on, if any.
+   * The ID of the channel that uploaded the video this comment is on, if any.  
+   * **Currently broken**, [see here](https://issuetracker.google.com/issues/288239809).
    */
   public channelId?: string
 
@@ -147,16 +149,18 @@ export class Comment {
    */
   private _init (data: any) {
     if (data.kind === 'youtube#commentThread') {
-      this.replyCount = data.snippet.totalReplyCount
-      this.videoId = data.snippet.videoId
-      this.channelId = data.snippet.channelId
+      if (data.snippet) {
+        this.replyCount = data.snippet.totalReplyCount
+        this.videoId = data.snippet.videoId
+        this.channelId = data.snippet.channelId
+      }
 
       if (data.replies && data.replies.comments?.length > 0) {
         if (!this.replies) this.replies = { items: [] }
         for (const replyData of data.replies.comments) this.replies.items.push(new Comment(this.youtube, replyData))
       }
 
-      data = data.snippet.topLevelComment
+      if (data.snippet?.topLevelComment) data = data.snippet.topLevelComment
     } else if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)
     }
@@ -165,7 +169,6 @@ export class Comment {
 
     this.id = comment.id
 
-    /* istanbul ignore next */
     if (comment.snippet) {
       this.author = {
         username: comment.snippet.authorDisplayName,
@@ -186,6 +189,8 @@ export class Comment {
       this.dateEdited = comment.snippet.updatedAt
       this.parentCommentId = comment.snippet.parentId
 
+      // this property is broken in the API as of 06/24/2023: https://issuetracker.google.com/issues/288239809
+      /* istanbul ignore next */
       if (comment.snippet.channelId) this.channelId = comment.snippet.channelId
       if (comment.snippet.videoId) this.videoId = comment.snippet.videoId
 
