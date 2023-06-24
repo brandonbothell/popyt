@@ -177,6 +177,11 @@ export class Video {
    */
   public captions: Caption[]
 
+  /**
+   * If this video was fetched from a playlist, this can be populated with a user-created note about the video.
+   */
+  public note: string
+
   constructor (youtube: YouTube, data: any, full = false) {
     this.youtube = youtube
     this.data = data
@@ -190,18 +195,21 @@ export class Video {
    */
   private _init (data: any) {
     if (data.kind === 'youtube#video') {
-      const video = data
+      this.id = data.id
 
       /* istanbul ignore next */
-      if (video.contentDetails) {
-        this._length = Parser.parseIsoDuration(video.contentDetails.duration)
+      if (data.contentDetails) {
+        this._length = Parser.parseIsoDuration(data.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
         this.seconds = this._length.seconds
       }
-
-      this.id = video.id
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = data.snippet?.resourceId.videoId
+
+      if (data.contentDetails) {
+        this.note = data.contentDetails.note
+        this.datePublished = new Date(data.contentDetails.videoPublishedAt)
+      }
     } else if (data.kind === 'youtube#searchResult') {
       this.id = data.id.videoId
     } else {
@@ -210,11 +218,11 @@ export class Video {
 
     /* istanbul ignore next */
     if (data.snippet) {
+      if (!this.datePublished) this.datePublished = new Date(data.snippet.publishedAt)
       this.title = data.snippet.title
       this.description = data.snippet.description
       this.thumbnails = data.snippet.thumbnails
       this.tags = data.snippet.tags
-      this.datePublished = new Date(data.snippet.publishedAt)
       this.channel = {
         id: data.snippet.channelId || data.snippet.videoOwnerChannelId,
         name: data.snippet.channelTitle || data.snippet.videoOwnerChannelTitle

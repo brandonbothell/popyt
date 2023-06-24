@@ -4,15 +4,15 @@
 export class Cache {
   private static map: Map<string, CacheItem> = new Map()
 
-  public static set (name: string, value: any, ttl: number) {
-    Cache.map.set(name, { v: value, t: ttl })
+  public static set (key: string, value: any, ttl: number) {
+    Cache.map.set(key, { v: value, t: ttl })
   }
 
-  public static get (name: string): any {
-    const item = Cache.map.get(name)
+  public static get (key: string): any {
+    const item = Cache.map.get(key)
 
     if (!item || (item.t > 0 && new Date().getTime() >= item.t)) {
-      Cache._delete(name)
+      Cache._delete(key)
       return undefined
     }
 
