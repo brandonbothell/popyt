@@ -6,7 +6,7 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![GitHub license](https://img.shields.io/github/license/jasonhaxstuff/popyt.svg)](https://github.com/jasonhaxstuff/popyt/blob/master/LICENSE)
 [![Coverage status](https://codecov.io/gh/brandonbothell/popyt/branch/master/graph/badge.svg?token=OAV13MIW6S)](https://codecov.io/gh/brandonbothell/popyt)
 [![Actions status](https://github.com/jasonhaxstuff/popyt/workflows/Test/badge.svg)](https://github.com/jasonhaxstuff/popyt/actions)
-[![DeepScan grade](https://deepscan.io/api/teams/13038/projects/16072/branches/335663/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=13038&pid=16072&bid=335663)
+[![DeepScan grade](https://deepscan.io/api/teams/21522/projects/24946/branches/772144/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21522&pid=24946&bid=772144)
 [![Downloads](https://img.shields.io/npm/dt/popyt.svg)](https://www.npmjs.com/package/popyt)
 [![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
 
