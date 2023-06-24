@@ -206,6 +206,7 @@ export class Video {
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = data.snippet?.resourceId.videoId
 
+      /* istanbul ignore next */
       if (data.contentDetails) {
         this.note = data.contentDetails.note
         this.datePublished = new Date(data.contentDetails.videoPublishedAt)
