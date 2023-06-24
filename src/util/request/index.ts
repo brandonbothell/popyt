@@ -1,6 +1,6 @@
 import { request as https, RequestOptions } from 'https'
 import { OutgoingMessage } from 'http'
-import { DefaultRequestOptions, Image, RequestPart, Authorization, HttpMethod } from '../..'
+import { DefaultRequestOptions, Image, RequestPart, Authorization, HttpMethod, AuthorizationOptions } from '../..'
 import { Parser } from './parser'
 import { Handler } from './handler'
 
@@ -11,43 +11,54 @@ import { Handler } from './handler'
 export class Request {
   public baseUrl?: string
 
+  #auth?: Authorization
+
   private parser = new Parser(this)
 
-  constructor (baseUrl?: string) {
+  constructor (baseUrl?: string, authorization?: Authorization) {
     this.baseUrl = baseUrl
+    this.#auth = authorization
   }
 
-  public get (subUrl: string, { auth, params }: DefaultRequestOptions = {}) {
+  public get (subUrl: string, { authorizationOptions, params }: DefaultRequestOptions = {}) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
+
     return this._get(url, { auth })
   }
 
-  public post (subUrl: string, { auth, params, data }: DefaultRequestOptions & { data?: any } = {}) {
+  public post (subUrl: string, { authorizationOptions, params, data }: DefaultRequestOptions & { data?: any } = {}) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._post(url, { auth, data })
   }
 
-  public put (subUrl: string, { auth, params, data }: DefaultRequestOptions & { data?: any } = {}) {
+  public put (subUrl: string, { authorizationOptions, params, data }: DefaultRequestOptions & { data?: any } = {}) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._put(url, { auth, data })
   }
 
-  public delete (subUrl: string, { auth, params }: DefaultRequestOptions = {}) {
+  public delete (subUrl: string, { authorizationOptions, params }: DefaultRequestOptions = {}) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._delete(url, { auth })
   }
 
-  public imagePost (subUrl: string, { auth, params, image }: DefaultRequestOptions & { image: Image }) {
+  public imagePost (subUrl: string, { authorizationOptions, params, image }: DefaultRequestOptions & { image: Image }) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._post(url, { auth, data: image.data, contentType: `image/${image.type}` })
   }
 
-  public streamPut (subUrl: string, { auth, params, stream }: DefaultRequestOptions & { stream: Buffer }){
+  public streamPut (subUrl: string, { authorizationOptions, params, stream }: DefaultRequestOptions & { stream: Buffer }){
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._put(url, { auth, data: stream, contentType: 'application/octet-stream' })
   }
 
-  public multipartStreamPost (subUrl: string, { auth, params, parts }: DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
+  public multipartStreamPost (subUrl: string, { authorizationOptions, params, parts }: DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     const boundary = this.parser.generateBoundary()
 
@@ -61,9 +72,10 @@ export class Request {
     return this._multipart(HttpMethod.POST, url, boundary, parts, auth)
   }
 
-  public multipartImagePost (subUrl: string, { auth, params, parts, defaultImageType }: DefaultRequestOptions &
+  public multipartImagePost (subUrl: string, { authorizationOptions, params, parts, defaultImageType }: DefaultRequestOptions &
     { parts: RequestPart<string | Buffer>[]; defaultImageType?: 'jpeg' | 'png' | 'stream' }) {
 
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     const boundary = this.parser.generateBoundary()
 
@@ -88,7 +100,8 @@ export class Request {
     return this._multipart(HttpMethod.POST, url, boundary, parts, auth)
   }
 
-  public multipartStreamPut (subUrl: string, { auth, params, parts }: DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
+  public multipartStreamPut (subUrl: string, { authorizationOptions, params, parts }: DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
+    const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     const boundary = this.parser.generateBoundary()
 
@@ -99,6 +112,10 @@ export class Request {
     for (let i = 0; i < parts.length; i++) parts[i].contentType = i === 0 ? 'application/json' : 'application/octet-stream'
 
     return this._multipart(HttpMethod.PUT, url, boundary, parts, auth)
+  }
+
+  public setAuthorization (authorization: Authorization) {
+    this.#auth = authorization
   }
 
   /* ----- Private methods ----- */
@@ -138,6 +155,13 @@ export class Request {
     const options = this.parser.formRequestOptions(url, method, { contentType: `multipart/form-data; boundary=${boundary}`, accessToken: auth?.accessToken })
 
     return this.request(options, request => Handler.request.multipart(request, parts, boundary))
+  }
+
+  private getAuthorization (authorizationOptions?: AuthorizationOptions) {
+    return {
+      apiKey: authorizationOptions?.apiKey ? this.#auth?.apiKey : undefined,
+      accessToken: authorizationOptions?.accessToken ? this.#auth?.accessToken : undefined
+    }
   }
 }
 

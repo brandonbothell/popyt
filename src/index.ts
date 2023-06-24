@@ -34,12 +34,12 @@ export class YouTube {
   /**
    * @ignore
    */
-  public _request = new Request('https://www.googleapis.com/youtube/v3/')
+  public _request: Request
 
   /**
    * @ignore
    */
-  public _upload = new Request('https://www.googleapis.com/upload/youtube/v3/')
+  public _upload: Request
 
   /**
    * @ignore
@@ -66,7 +66,7 @@ export class YouTube {
    */
   public _genericService = new Service.GenericService(this)
 
-  public auth: T.Authorization = {}
+  #auth: T.Authorization = {}
 
   /**
    * Methods requiring an OAuth token.
@@ -93,13 +93,15 @@ export class YouTube {
    */
   constructor (apiKey?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
     language: string = 'en_US', region: string = 'US') {
-    this.auth.apiKey = apiKey
-    this.auth.accessToken = accessToken
+    this.#auth.apiKey = apiKey
+    this.#auth.accessToken = accessToken
 
-    if (!this.auth.accessToken && !this.auth.apiKey) {
+    if (!this.#auth.accessToken && !this.#auth.apiKey) {
       throw new TypeError('Must include one of api key or access token whenever constructing the YouTube object.')
     }
 
+    this._request = new Request('https://www.googleapis.com/youtube/v3/', this.#auth)
+    this._upload = new Request('https://www.googleapis.com/upload/youtube/v3/', this.#auth)
     this.oauth = new OAuth(this)
 
     this._shouldCache = options.cache
@@ -368,6 +370,14 @@ export class YouTube {
    */
   public async getRegions () {
     return (await this._genericService.getPaginatedItems({ type: T.PaginatedItemType.Regions })).items as Entity.Region[]
+  }
+
+  public hasAccessToken () {
+    return typeof this.#auth.accessToken === 'string' && this.#auth.accessToken
+  }
+
+  public setAuthorization (authorization: T.Authorization) {
+    this.#auth = authorization
   }
 }
 

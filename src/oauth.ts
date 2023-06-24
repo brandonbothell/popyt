@@ -29,7 +29,7 @@ export class OAuth {
    * @ignore
    */
   private checkTokenAndThrow () {
-    if (!this.youtube.auth.accessToken) {
+    if (!this.youtube.hasAccessToken()) {
       throw new Error('Must have an access token for OAuth related methods')
     }
   }
@@ -93,7 +93,7 @@ export class OAuth {
     const result = await this.youtube._request.post('commentThreads', {
       params: { part: 'snippet' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Comment(this.youtube, result, true)
   }
@@ -114,7 +114,7 @@ export class OAuth {
     const response = await this.youtube._request.post('comments', {
       params: { part: 'id,snippet' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Comment(this.youtube, response, true)
   }
@@ -135,7 +135,7 @@ export class OAuth {
     const result = await this.youtube._request.put('comments', {
       params: { part: 'snippet' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     const comment = new YT.Comment(this.youtube, result, true)
 
@@ -151,7 +151,7 @@ export class OAuth {
     this.checkTokenAndThrow()
     return this.youtube._request.post('comments/markAsSpam', {
       params: { id: commentId },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -180,7 +180,7 @@ export class OAuth {
 
     return this.youtube._request.post('comments/setModerationStatus', {
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -193,7 +193,7 @@ export class OAuth {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('comments', {
       params: { id: commentId },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -214,7 +214,7 @@ export class OAuth {
     const result = await this.youtube._request.post('subscriptions', {
       params: { part: 'snippet' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Subscription(this.youtube, result)
   }
@@ -228,7 +228,7 @@ export class OAuth {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('subscriptions', {
       params: { id: subscriptionId },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -244,7 +244,7 @@ export class OAuth {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, YT.Video)
     return this.youtube._request.post('videos/rate', {
       params: { id: typeof video === 'string' ? video : video.id, rating },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -265,7 +265,7 @@ export class OAuth {
 
     const response = await this.youtube._request.get('videos/getRating', {
       params: { id: videoIds.join(',') },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     this.youtube._cache(`get://videos/getRating/${JSON.stringify(videoIds)}`, response.items)
 
@@ -302,7 +302,7 @@ export class OAuth {
 
     return this.youtube._request.post('videos/reportAbuse', {
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -317,7 +317,7 @@ export class OAuth {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, YT.Video)
     return this.youtube._request.delete('videos', {
       params: { id: typeof video === 'string' ? video : video.id },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -360,7 +360,7 @@ export class OAuth {
     const response = await this.youtube._request.put('videos', {
       params: { part: parts.join(',') },
       data: JSON.stringify(video),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Video(this.youtube, response)
   }
@@ -378,7 +378,7 @@ export class OAuth {
     const response = await this.youtube._upload.imagePost('thumbnails/set', {
       params: { videoId: typeof video === 'string' ? video : video.id },
       image,
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
 
     return response.items[0]
@@ -416,7 +416,7 @@ export class OAuth {
     const response = await this.youtube._request.post('playlists', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Playlist(this.youtube, response)
   }
@@ -459,7 +459,7 @@ export class OAuth {
     const response = await this.youtube._request.put('playlists', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Playlist(this.youtube, response)
   }
@@ -475,7 +475,7 @@ export class OAuth {
     const playlist = await this.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
     return this.youtube._request.delete('playlists', {
       params: { id: typeof playlist === 'string' ? playlist : playlist.id },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -510,7 +510,7 @@ export class OAuth {
     const response = await this.youtube._request.post('playlistItems', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Video(this.youtube, response)
   }
@@ -550,7 +550,7 @@ export class OAuth {
     const response = await this.youtube._request.put('playlistItems', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Video(this.youtube, response)
   }
@@ -564,7 +564,7 @@ export class OAuth {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('playlistItems', {
       params: { id },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -588,7 +588,7 @@ export class OAuth {
     const response = await this.youtube._request.put('channels', {
       params: { part: 'brandingSettings' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Channel(this.youtube, response)
   }
@@ -615,7 +615,7 @@ export class OAuth {
     const response = await this.youtube._request.put('channels', {
       params: { part: 'localizations' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Channel(this.youtube, response)
   }
@@ -640,7 +640,7 @@ export class OAuth {
     const response = await this.youtube._request.put('channels', {
       params: { part: 'status' },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.Channel(this.youtube, response)
   }
@@ -669,7 +669,7 @@ export class OAuth {
     }
 
     return this.youtube._upload.multipartImagePost('watermarks/set', {
-      auth: { accessToken: this.youtube.auth.accessToken },
+      authorizationOptions: { accessToken: true },
       params: { channelId: typeof channel === 'string' ? channel : channel.id },
       parts: [
         { data: JSON.stringify(data) },
@@ -689,7 +689,7 @@ export class OAuth {
     const channel = await this.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
     return this.youtube._request.post('watermarks/unset', {
       params: { channelId: typeof channel === 'string' ? channel : channel.id },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -705,7 +705,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const response = await this.youtube._upload.imagePost('channelBanners/insert', {
-      auth: { accessToken: this.youtube.auth.accessToken },
+      authorizationOptions: { accessToken: true },
       image
     })
     return response.url
@@ -725,7 +725,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const resolvedPlaylists =
-      playlistsResolvable ? await Promise.all(playlistsResolvable?.map(v => this.youtube._resolutionService.resolve(v, YT.Playlist))) : undefined
+      playlistsResolvable ? await Promise.all(playlistsResolvable.map(v => this.youtube._resolutionService.resolve(v, YT.Playlist))) : undefined
     const resolvedChannels =
       channelsResolvable? await Promise.all(channelsResolvable.map(v => this.youtube._resolutionService.resolve(v, YT.Channel))) : undefined
 
@@ -745,7 +745,7 @@ export class OAuth {
     const response = await this.youtube._request.post('channelSections', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.ChannelSection(this.youtube, response)
   }
@@ -771,7 +771,7 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const resolvedPlaylists =
-      playlistsResolvable ? await Promise.all(playlistsResolvable?.map(v => this.youtube._resolutionService.resolve(v, YT.Playlist))) : undefined
+      playlistsResolvable ? await Promise.all(playlistsResolvable.map(v => this.youtube._resolutionService.resolve(v, YT.Playlist))) : undefined
     const resolvedChannels =
       channelsResolvable? await Promise.all(channelsResolvable.map(v => this.youtube._resolutionService.resolve(v, YT.Channel))) : undefined
 
@@ -792,7 +792,7 @@ export class OAuth {
     const response = await this.youtube._request.put('channelSections', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
     return new YT.ChannelSection(this.youtube, response)
   }
@@ -806,7 +806,7 @@ export class OAuth {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('channelSections', {
       params: { id },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
   }
 
@@ -822,7 +822,7 @@ export class OAuth {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, YT.Video)
     const data = await this.youtube._request.get('captions', {
       params: { part: 'snippet', videoId: typeof video === 'string' ? video : video.id, id: captionId },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
 
     if (!data.items || data.items.length === 0) {
@@ -843,7 +843,7 @@ export class OAuth {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, YT.Video)
     const data = await this.youtube._request.get('captions', {
       params: { part: 'snippet', videoId: typeof video === 'string' ? video : video.id },
-      auth: { accessToken: this.youtube.auth.accessToken }
+      authorizationOptions: { accessToken: true }
     })
 
     if (!data.items || data.items.length === 0) {
@@ -876,7 +876,7 @@ export class OAuth {
     }
 
     const response = await this.youtube._upload.multipartStreamPost('captions', {
-      auth: { accessToken: this.youtube.auth.accessToken },
+      authorizationOptions: { accessToken: true },
       params: { part: 'snippet' },
       parts: [
         { data: JSON.stringify(data) },
@@ -908,7 +908,7 @@ export class OAuth {
     if (track) {
       if (draft !== null) {
         response = await this.youtube._upload.multipartStreamPut('captions', {
-          auth: { accessToken: this.youtube.auth.accessToken },
+          authorizationOptions: { accessToken: true },
           params: { part: 'snippet' },
           parts: [
             { data: JSON.stringify(data) },
@@ -917,7 +917,7 @@ export class OAuth {
         })
       } else {
         response = await this.youtube._upload.streamPut('captions', {
-          auth: { accessToken: this.youtube.auth.accessToken },
+          authorizationOptions: { accessToken: true },
           params: { part: 'snippet' },
           stream: track
         })
@@ -926,7 +926,7 @@ export class OAuth {
       response = await this.youtube._request.put('captions', {
         params: { part: 'snippet' },
         data: JSON.stringify(data),
-        auth: { accessToken: this.youtube.auth.accessToken }
+        authorizationOptions: { accessToken: true }
       })
     }
 
@@ -956,7 +956,7 @@ export class OAuth {
       params.tlang = language
     }
 
-    return this.youtube._request.get(`captions/${id}`, { params, auth: { accessToken: this.youtube.auth.accessToken } })
+    return this.youtube._request.get(`captions/${id}`, { params, authorizationOptions: { accessToken: true } })
   }
 
   /**
@@ -966,7 +966,7 @@ export class OAuth {
    */
   public deleteCaption (id: string): Promise<void> {
     this.checkTokenAndThrow()
-    return this.youtube._request.delete('captions', { params: { id }, auth: this.youtube.auth })
+    return this.youtube._request.delete('captions', { params: { id }, authorizationOptions: { accessToken: true } })
   }
 
   /**

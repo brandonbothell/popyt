@@ -11,7 +11,7 @@ if (!apiKey) {
   throw new Error('No API key')
 }
 
-const request = new Request('https://www.googleapis.com/youtube/v3/')
+const request = new Request('https://www.googleapis.com/youtube/v3/', { apiKey })
 const testRequest = new Request('https://apichallenges.herokuapp.com/mirror/request/')
 
 describe('Requests', () => {
@@ -20,13 +20,13 @@ describe('Requests', () => {
       params: {
         id: 'dQw4w9WgXcQ',
         part: 'snippet'
-      }, auth: { apiKey } })
+      }, authorizationOptions: { apiKey: true } })
 
     const res2 = await request.get('videos', {
       params: {
         id: 'dQw4w9WgXcQ',
         part: 'snippet'
-      }, auth: { apiKey } })
+      }, authorizationOptions: { apiKey: true } })
 
     expect(res.id).to.equal(res2.id)
   })
@@ -55,7 +55,7 @@ describe('Requests', () => {
       params: {
         id: '',
         part: 'some'
-      }, auth: { apiKey } }).catch(e => e.message)
+      }, authorizationOptions: { apiKey: true } }).catch(e => e.message)
     expect(res).to.be.oneOf([ 'some', '\'some\'' ])
   })
 })

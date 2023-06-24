@@ -28,7 +28,7 @@ export class SubscriptionService {
       maxResults: 1
     }
 
-    const results = await this.youtube._request.get('subscriptions', { params: options, auth: this.youtube.auth })
+    const results = await this.youtube._request.get('subscriptions', { params: options, authorizationOptions: { apiKey: true } })
 
     if (results.items.length === 0) {
       return Promise.reject('Subscription not found')

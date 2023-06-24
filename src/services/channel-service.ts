@@ -20,7 +20,7 @@ export class ChannelService {
         part: parts ? parts.join(',') : Channel.part,
         forUsername: username
       },
-      auth: this.youtube.auth
+      authorizationOptions: { apiKey: true }
     })
 
     if (result.items.length === 0) {

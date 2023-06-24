@@ -87,7 +87,7 @@ export class GenericService {
 
     const result: {
       items: any[]
-    } = await this.youtube._request.get(type.endpoint, { params: options, auth: this.youtube.auth })
+    } = await this.youtube._request.get(type.endpoint, { params: options, authorizationOptions: { apiKey: true } })
 
     if (!result.items || result.items.length === 0) {
       return Promise.reject('Item not found')
@@ -283,7 +283,7 @@ export class GenericService {
     while (true) {
       const apiResponse = await this.youtube._request.get(endpoint, {
         params: options,
-        auth: this.youtube.auth
+        authorizationOptions: { apiKey: true }
       })
 
       if (!apiResponse.items?.length) {
