@@ -117,11 +117,11 @@ export class ResolutionService {
 
     // Reasoning for these constraints: https://webapps.stackexchange.com/a/101153
     switch (type) {
-      case Channel: isSearchQuery = input.length !== 24 || !input.startsWith('UC') && !input.startsWith('HC')
+      case Channel: isSearchQuery = isSearchQuery && (input.length !== 24 || !input.startsWith('UC') && !input.startsWith('HC'))
         break
-      case Video: isSearchQuery = input.length !== 11
+      case Video: isSearchQuery = isSearchQuery && input.length !== 11
         break
-      case Playlist: isSearchQuery = input.length < 24 || input.length > 34
+      case Playlist: isSearchQuery = isSearchQuery && (input.length < 24 || input.length > 34)
         break
       default: isSearchQuery = false
     }
