@@ -6,7 +6,6 @@ import Request from '.'
 /**
  * @ignore
  */
-/* istanbul ignore next */
 export class Parser {
   constructor (private request: Request) {}
 

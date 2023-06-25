@@ -7,7 +7,6 @@ import YouTube, { Video, Channel, Playlist, InternalSearchOptions, SearchType, P
 export class SearchService {
   constructor (private youtube: YouTube) {}
 
-  /* istanbul ignore next */
   public async search<T extends SearchType = SearchType> (
     { // page options
       pages = 1, maxPerPage = 50, pageToken,

@@ -4,7 +4,6 @@ import { RequestPart } from '../..'
 /**
  * @ignore
  */
-/* istanbul ignore next */
 export class Handler {
   public static request = {
     default (request: OutgoingMessage, data?: any) {

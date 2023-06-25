@@ -114,7 +114,6 @@ export class Channel {
   /**
    * The URLs of all of this channel's featured channels. This property is broken for some channels.
    */
-  /* istanbul ignore next */
   public featuredChannels: string[]
 
   /**
@@ -170,18 +169,15 @@ export class Channel {
   private _init (data: any) {
     const channel = data
 
-    /* istanbul ignore next */
     if (data.kind === 'youtube#channel') {
 
       this.id = channel.id
 
-      /* istanbul ignore next */
       if (channel.snippet) {
         this.country = channel.snippet.country
         this.language = channel.snippet.defaultLanguage
       }
 
-      /* istanbul ignore next */
       if (channel.statistics) {
         this.views = Number(channel.statistics.viewCount)
 
@@ -199,10 +195,8 @@ export class Channel {
         }
       }
 
-      /* istanbul ignore next */
       if (channel.brandingSettings) {
         // Unknown behavior
-        /* istanbul ignore next */
         if (channel.brandingSettings.channel) {
           this.keywords = []
 
@@ -218,7 +212,6 @@ export class Channel {
           }
 
           // Broken for many channels
-          /* istanbul ignore next */
           this.featuredChannels = channel.brandingSettings.channel.featuredChannelsUrls ?
             channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
         }
@@ -226,17 +219,14 @@ export class Channel {
     } else if (channel.kind === 'youtube#searchResult') {
       this.id = channel.id?.channelId ?? channel.snippet?.channelId
 
-      /* istanbul ignore next */
       if (channel.snippet) {
         // Impossible to test
-        /* istanbul ignore next */
         this.liveStatus = channel.snippet.liveBroadcastContent !== 'none' ? channel.snippet.liveBroadcastContent : false
       }
     } else {
       throw new Error(`Invalid channel type: ${channel.kind}`)
     }
 
-    /* istanbul ignore next */
     if (channel.snippet) {
       this.profilePictures = channel.snippet.thumbnails
       this.dateCreated = new Date(channel.snippet.publishedAt)
@@ -289,7 +279,6 @@ export class Channel {
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
-  /* istanbul ignore next */
   public async fetchSubscriptions (pageOptions?: PageOptions, parts?: SubscriptionParts) {
     this.subscriptions = await this.youtube.getChannelSubscriptions(this.id, pageOptions, parts)
     return this.subscriptions
@@ -307,7 +296,6 @@ export class Channel {
    * Subscribes to the channel.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public subscribe () {
     return this.youtube.oauth.subscribeToChannel(this.id)
   }
@@ -316,7 +304,6 @@ export class Channel {
    * Unsubscribes from the channel.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public unsubscribe () {
     return this.youtube.oauth.unsubscribeFromChannel(this.id)
   }
@@ -325,7 +312,6 @@ export class Channel {
    * Updates the channel's branding settings.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public updateBranding (branding: ChannelBrandingSettings) {
     return this.youtube.oauth.updateChannelBranding(this.id, branding)
   }
@@ -334,7 +320,6 @@ export class Channel {
    * Updates the channel's localizations.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public updateLocalizations (localizations: { [key: string]: { title: string; description: string } }) {
     return this.youtube.oauth.updateChannelLocalizations(this.id, localizations)
   }
@@ -343,7 +328,6 @@ export class Channel {
    * Sets whether or not the channel is made for kids.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public setMadeForKids (madeForKids: boolean) {
     return this.youtube.oauth.setChannelMadeForKids(this.id, madeForKids)
   }
@@ -352,7 +336,6 @@ export class Channel {
    * Sets the channel's watermark.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public setWatermark (type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Image) {
     return this.youtube.oauth.setChannelWatermark(this.id, type, offset, duration, image)
   }
@@ -361,7 +344,6 @@ export class Channel {
    * Unsets the channel's watermark.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public unsetWatermark () {
     return this.youtube.oauth.unsetChannelWatermark(this.id)
   }
@@ -370,7 +352,6 @@ export class Channel {
    * Uploads and sets the channel's banner.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public async setBanner (image: { data: Buffer; type: 'png' | 'jpeg' }) {
     if (!this.data.brandingSettings) {
       await this.fetch()

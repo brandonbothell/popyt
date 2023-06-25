@@ -15,7 +15,6 @@ export class GenericService {
 
   }
 
-  /* istanbul ignore next */
   public async getItem<T extends Resolvable<K> | Resolvable<K>[], K extends ItemTypes> (type: K, mine: boolean, id?: T, parts?: string[]):
   Promise<ItemReturns<T, K>> {
     if (!this._getItemAllowedTypes.has(type.name)) {
@@ -118,7 +117,6 @@ export class GenericService {
    * 
    * @returns An object containing the array of instantiated entities as well as possible next and previous page tokens.
    */
-  /* istanbul ignore next */
   public async getPaginatedItems<T extends PaginatedInstance = PaginatedInstance>
   ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts, ...otherFilters }: PaginatedItemOptions):
   Promise<PaginatedResponse<T>> {
@@ -266,7 +264,6 @@ export class GenericService {
    * @param clazz Most endpoints only return one type of entity, so set this to that entity.
    * If endpoint is `search`, then leave undefined.
    */
-  /* istanbul ignore next */
   public async fetchPages<T extends PaginatedType = PaginatedType> (pages: number, endpoint: string, options:
   { part: string; maxResults?: number; hl?: string; [key: string]: any }, clazz?: T): Promise<PaginatedResponse<InstanceType<T>>> {
 

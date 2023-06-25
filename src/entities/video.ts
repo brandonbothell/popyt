@@ -197,7 +197,6 @@ export class Video {
     if (data.kind === 'youtube#video') {
       this.id = data.id
 
-      /* istanbul ignore next */
       if (data.contentDetails) {
         this._length = Parser.parseIsoDuration(data.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
@@ -206,7 +205,6 @@ export class Video {
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = data.snippet?.resourceId.videoId
 
-      /* istanbul ignore next */
       if (data.contentDetails) {
         this.note = data.contentDetails.note
         this.datePublished = new Date(data.contentDetails.videoPublishedAt)
@@ -217,7 +215,6 @@ export class Video {
       throw new Error(`Invalid video type: ${data.kind}`)
     }
 
-    /* istanbul ignore next */
     if (data.snippet) {
       if (!this.datePublished) this.datePublished = new Date(data.snippet.publishedAt)
       this.title = data.snippet.title
@@ -229,12 +226,10 @@ export class Video {
         name: data.snippet.channelTitle || data.snippet.videoOwnerChannelTitle
       }
       // Impossible to test
-      /* istanbul ignore next */
       this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
       this.category = data.snippet.categoryId
     }
 
-    /* istanbul ignore next */
     if (data.statistics) {
       this.likes = Number(data.statistics.likeCount)
       this.dislikes = Number(data.statistics.dislikeCount)
@@ -242,7 +237,6 @@ export class Video {
       this.commentCount = Number(data.statistics.commentCount)
     }
 
-    /* istanbul ignore next */
     if (data.status) {
       this.private = data.status.privacyStatus === 'private'
       this.kids = 'madeForKids' in data.status ? {
@@ -262,7 +256,6 @@ export class Video {
    * Must be using an access token with correct scopes.
    * @param text The text of the comment.
    */
-  /* istanbul ignore next */
   public async postComment (text: string) {
     const comment = await this.youtube.oauth.postComment(text, this.channel.id, this.id)
 
@@ -297,7 +290,6 @@ export class Video {
    * Gets the user's rating on the video.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public async getRating (): Promise<'like' | 'dislike' | 'none' | 'unspecified'> {
     const response = await this.youtube.oauth.getMyRatings([ this.id ])
     return response[0].rating
@@ -307,7 +299,6 @@ export class Video {
    * Likes the video.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public like () {
     return this.youtube.oauth.rateVideo(this.id, 'like')
   }
@@ -316,7 +307,6 @@ export class Video {
    * Dislikes the video.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public dislike () {
     return this.youtube.oauth.rateVideo(this.id, 'dislike')
   }
@@ -325,7 +315,6 @@ export class Video {
    * Removes the user's like/dislike on the video.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public unrate () {
     return this.youtube.oauth.rateVideo(this.id, 'none')
   }
@@ -338,7 +327,6 @@ export class Video {
    * @param comments Any additional information.
    * @param language The language that the reporter speaks.
    */
-  /* istanbul ignore next */
   public reportAbuse (reasonId: string, secondaryReasonId?: string, comments?: string, language?: string) {
     return this.youtube.oauth.reportAbuse(this.id, reasonId, secondaryReasonId, comments, language)
   }
@@ -347,7 +335,6 @@ export class Video {
    * Deletes the video.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public delete () {
     return this.youtube.oauth.deleteVideo(this.id)
   }
@@ -359,7 +346,6 @@ export class Video {
    * the property's existing value will be deleted.**
    * @param video The updated video object.
    */
-  /* istanbul ignore next */
   public async update (video: VideoUpdateResource): Promise<Video> {
     const newVideo = await this.youtube.oauth.updateVideo(video)
     return Object.assign(this, { ...newVideo, full: true })
@@ -370,7 +356,6 @@ export class Video {
    * Must be using an access token with correct scopes.
    * @param image The image data and type to upload.
    */
-  /* istanbul ignore next */
   public async setThumbnail (image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
     const newThumbnails = await this.youtube.oauth.setThumbnail(this.id, image)
     return Object.assign(this.thumbnails, newThumbnails)
@@ -380,7 +365,6 @@ export class Video {
    * Fetches the captions for the video from the API.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public async fetchCaptions (): Promise<Caption[]> {
     this.captions = await this.youtube.oauth.getCaptions(this.id)
     return this.captions
@@ -394,7 +378,6 @@ export class Video {
    * @param track The caption track to upload.
    * @param draft Whether or not the track is a draft.
    */
-  /* istanbul ignore next */
   public async uploadCaption (language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
     const toReturn = await this.youtube.oauth.uploadCaption(this.id, language, name, track, draft)
     return toReturn
@@ -406,7 +389,6 @@ export class Video {
    * @param track The modified caption track to upload.
    * @param draft Whether or not the track is a draft.
    */
-  /* istanbul ignore next */
   public async updateCaption (track: Buffer, draft: boolean = null): Promise<Caption> {
     const toReturn = await this.youtube.oauth.updateCaption(this.id, track, draft)
     return toReturn

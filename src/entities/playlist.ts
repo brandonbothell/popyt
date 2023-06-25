@@ -131,7 +131,6 @@ export class Playlist {
       throw new Error(`Invalid playlist type: ${data.kind}`)
     }
 
-    /* istanbul ignore next */
     if (playlist.snippet) {
       this.tags = playlist.snippet.tags
       this.title = playlist.snippet.title
@@ -185,7 +184,6 @@ export class Playlist {
    * @param language The language of the playlist's default title and description.
    * @param localizations Translated titles and descriptions.
    */
-  /* istanbul ignore next */
   public async update (title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
     localizations?: {[language: string]: { title: string; description: string }}): Promise<Playlist> {
     const newPlaylist = await this.youtube.oauth.updatePlaylist(this.id, title, description, privacy, tags, language, localizations)
@@ -199,7 +197,6 @@ export class Playlist {
    * @param position The zero-based position to insert the video in.
    * @param note A note on the video.
    */
-  /* istanbul ignore next */
   public async addVideo (videoResolvable: VideoResolvable, position?: number, note?: string) {
     const videoId = await this.youtube._resolutionService.resolve(videoResolvable, Video)
     const playlistItem = await this.youtube.oauth.addPlaylistItem(this, videoId, position, note)
@@ -218,7 +215,6 @@ export class Playlist {
    * @param note A new note on the video.
    * @param itemId The playlist item ID if you have it.
    */
-  /* istanbul ignore next */
   public async updateVideo (videoResolvable: VideoResolvable, position?: number, note?: string, itemId?: string) {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
     const playlistItemId = itemId ?? (await this.youtube._genericService.getPaginatedItems({
@@ -238,7 +234,6 @@ export class Playlist {
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    */
-  /* istanbul ignore next */
   public async removeVideo (videoResolvable: VideoResolvable) {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
     const playlistItemId = (this.youtube._genericService.getPaginatedItems({
@@ -257,7 +252,6 @@ export class Playlist {
    * Must be using an access token with correct scopes.
    * @param playlistItemId The playlist item ID (not the same as video ID; see [`Playlist.removeVideo()`](./Library_Exports.Playlist#removeVideo)).
    */
-  /* istanbul ignore next */
   public async removeItem (playlistItemId: string) {
     await this.youtube.oauth.deletePlaylistItem(playlistItemId)
 
@@ -274,7 +268,6 @@ export class Playlist {
    * Deletes the playlist.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public delete () {
     return this.youtube.oauth.deletePlaylist(this.id)
   }

@@ -78,7 +78,6 @@ export class Subscription {
    * Information on the user that subscribed to the channel.  
    * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
-  /* istanbul ignore next */
   public subscriber: {
     /**
      * The user's ID.
@@ -118,7 +117,6 @@ export class Subscription {
    * Statistics on the items that the subscription points to.  
    * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
-  /* istanbul ignore next */
   public items: {
     /**
      * The number of new items in the subscription.
@@ -135,7 +133,6 @@ export class Subscription {
    * The activities that the user has subscribed to.  
    * **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
    */
-  /* istanbul ignore next */
   public activities: 'all' | 'uploads'
 
   constructor (youtube: YouTube, data: any, full = true) {
@@ -157,7 +154,6 @@ export class Subscription {
 
     this.id = subscription.id
 
-    /* istanbul ignore next */
     if (subscription.snippet) {
       this.dateSubscribed = new Date(subscription.snippet.publishedAt)
       this.channel = {
@@ -171,7 +167,6 @@ export class Subscription {
     }
 
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
-    /* istanbul ignore next */
     if (subscription.contentDetails) {
       this.items = {
         new: subscription.contentDetails.newItemCount,
@@ -181,7 +176,6 @@ export class Subscription {
     }
 
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
-    /* istanbul ignore next */
     if (subscription.subscriberSnippet) {
       if (!this.subscriber) this.subscriber = { id: subscription.subscriberSnippet.channelId }
       this.subscriber.name = subscription.subscriberSnippet.title
@@ -195,7 +189,6 @@ export class Subscription {
    * Only useful if `this.full` is false, or if you want updated subscription info.  
    * **CURRENTLY NOT WORKING** unless the subscriber and channel properties are populated, see https://issuetracker.google.com/issues/288609601
    */
-  /* istanbul ignore next */
   public async fetch (parts?: SubscriptionParts) {
     let subscription = await this.youtube.getSubscription(this.id, parts).catch((e: Error) => e.message)
 
@@ -207,13 +200,11 @@ export class Subscription {
     return Object.assign(this, subscription as Subscription)
   }
 
-  /* istanbul ignore next */
   public async getChannel (parts?: ChannelParts) {
     if (!this.channel) await this.fetch([ 'snippet' ])
     return this.channel ? this.youtube.getChannel(this.channel.id, parts) : undefined
   }
 
-  /* istanbul ignore next */
   public async getSubscriber (parts?: ChannelParts) {
     if (!this.subscriber) await this.fetch([ 'subscriberSnippet' ])
     return this.subscriber ? this.youtube.getChannel(this.subscriber.id, parts) : undefined

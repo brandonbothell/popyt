@@ -8,7 +8,6 @@ import YouTube, { Subscription } from '..'
 export class SubscriptionService {
   constructor (private youtube: YouTube) {}
 
-  /* istanbul ignore next */
   public async getSubscriptionByChannels (subscriberId: string, channelId: string, parts?: SubscriptionParts): Promise<Subscription> {
     const cached = Cache.get(`sub_by_channels://"${subscriberId}"/"${channelId}"`)
 

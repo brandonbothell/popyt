@@ -103,7 +103,6 @@ export class Caption {
    * If [Caption.status](./Library_Exports.Caption#status) is `failed`, then this is populated with the reason failure.
    */
   // Must fail for this property to be populated
-  /* istanbul ignore next */
   public failureReason?: 'processingFailed' | 'unknownFormat' | 'unsupportedFormat'
 
   constructor (youtube: YouTube, data: any, full = true) {
@@ -125,7 +124,6 @@ export class Caption {
 
     this.id = caption.id
 
-    /* istanbul ignore next */
     if (caption.snippet) {
       this.videoId = caption.snippet.videoId
       this.lastUpdated = new Date(caption.snippet.lastUpdated)
@@ -148,7 +146,6 @@ export class Caption {
    * Only useful if `this.full` is false, or if you want updated caption info.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public async fetch () {
     const caption = await this.youtube.oauth.getCaption(this.videoId, this.id)
     return Object.assign(this, caption)
@@ -160,7 +157,6 @@ export class Caption {
    * @param track The modified caption track to upload.
    * @param draft Whether or not the track is a draft.
    */
-  /* istanbul ignore next */
   public async update (track?: Buffer, draft: boolean = null): Promise<Caption> {
     const newCaption = await this.youtube.oauth.updateCaption(this.id, track, draft)
     return Object.assign(this, { ...newCaption, full: true })
@@ -172,7 +168,6 @@ export class Caption {
    * @param format The file format to download the track in.
    * @param language The language to download the track in.
    */
-  /* istanbul ignore next */
   public download (format?: 'sbv' | 'scc' | 'srt' | 'ttml' | 'vtt', language?: string) {
     return this.youtube.oauth.downloadCaption(this.id, format, language)
   }
@@ -181,7 +176,6 @@ export class Caption {
    * Deletes the caption.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public delete () {
     return this.youtube.oauth.deleteCaption(this.id)
   }

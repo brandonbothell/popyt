@@ -8,7 +8,6 @@ import YouTube, { Channel } from '..'
 export class ChannelService {
   constructor (private youtube: YouTube) {}
 
-  /* istanbul ignore next */
   public async getChannelByUsername (username: string, parts?: ChannelParts): Promise<Channel> {
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`channel_by_username://${username}`)

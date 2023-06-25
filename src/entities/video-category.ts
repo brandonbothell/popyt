@@ -73,7 +73,6 @@ export class VideoCategory {
 
     this.id = category.id
 
-    /* istanbul ignore next */
     if (category.snippet) {
       this.channelId = category.snippet.channelId
       this.title = category.snippet.title

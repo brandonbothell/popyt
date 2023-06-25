@@ -7,7 +7,6 @@ import { Handler } from './handler'
 /**
  * @ignore
  */
-/* istanbul ignore next */
 export class Request {
   public baseUrl?: string
 

@@ -67,7 +67,6 @@ export class Region {
     const region = data
     this.id = region.id
 
-    /* istanbul ignore next */
     if (region.snippet) {
       this.gl = region.snippet.gl
       this.name = region.snippet.name

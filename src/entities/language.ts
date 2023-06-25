@@ -68,7 +68,6 @@ export class Language {
 
     this.id = language.id
 
-    /* istanbul ignore next */
     if (language.snippet) {
       this.hl = language.snippet.hl
       this.name = language.snippet.name

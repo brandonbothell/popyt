@@ -99,7 +99,6 @@ export class ChannelSection {
 
     this.id = section.id
 
-    /* istanbul ignore next */
     if (section.snippet) {
       this.type = section.snippet.type
       this.channelId = section.snippet.channelId
@@ -107,7 +106,6 @@ export class ChannelSection {
       this.position = section.snippet.position
     }
 
-    /* istanbul ignore next */
     if (section.contentDetails) {
       this.playlistIds = section.contentDetails.playlists
       this.channelIds = section.contentDetails.channels

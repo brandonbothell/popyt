@@ -4,7 +4,6 @@ import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, Resol
 /**
  * @ignore
  */
-/* istanbul ignore next */
 export class ResolutionService {
   constructor (private youtube: YouTube) {}
 

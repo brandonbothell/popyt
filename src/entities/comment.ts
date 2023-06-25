@@ -190,7 +190,6 @@ export class Comment {
       this.parentCommentId = comment.snippet.parentId
 
       // this property is broken in the API as of 06/24/2023: https://issuetracker.google.com/issues/288239809
-      /* istanbul ignore next */
       if (comment.snippet.channelId) this.channelId = comment.snippet.channelId
       if (comment.snippet.videoId) this.videoId = comment.snippet.videoId
 
@@ -217,7 +216,6 @@ export class Comment {
    * Must be using an access token with correct scopes.
    * @param text The new text of the comment.
    */
-  /* istanbul ignore next */
   public edit (text: string) {
     return this.youtube.oauth.editComment(this.id, text)
   }
@@ -227,7 +225,6 @@ export class Comment {
    * Must be using an access token with correct scopes.
    * @param text The text of the reply.
    */
-  /* istanbul ignore next */
   public reply (text: string) {
     return this.youtube.oauth.replyToComment(this.id, text)
   }
@@ -236,7 +233,6 @@ export class Comment {
    * Marks the comment as spam.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public markAsSpam () {
     return this.youtube.oauth.markCommentAsSpam(this.id)
   }
@@ -248,7 +244,6 @@ export class Comment {
    * @param banAuthor Whether or not to ban the author of the comment from commenting again.
    * Defaults to false.
    */
-  /* istanbul ignore next */
   public setModerationStatus (status?: 'heldForReview' | 'published' | 'rejected', banAuthor: boolean = false) {
     return this.youtube.oauth.setCommentModerationStatus(this.id, status, banAuthor)
   }
@@ -257,7 +252,6 @@ export class Comment {
    * Deletes the comment.
    * Must be using an access token with correct scopes.
    */
-  /* istanbul ignore next */
   public delete () {
     return this.youtube.oauth.deleteComment(this.id)
   }

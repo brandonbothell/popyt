@@ -71,7 +71,6 @@ export class VideoAbuseReportReason {
 
     this.id = reason.id
 
-    /* istanbul ignore next */
     if (reason.snippet) {
       this.label = reason.snippet.label
       this.secondaryReasons = reason.snippet.secondaryReasons
