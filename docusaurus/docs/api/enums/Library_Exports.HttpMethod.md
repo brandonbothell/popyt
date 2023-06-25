@@ -15,7 +15,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[types/Util.ts:29](https://github.com/brandonbothell/popyt/blob/b4e3354/src/types/Util.ts#L29)
+[types/Util.ts:29](https://github.com/brandonbothell/popyt/blob/ce4770d/src/types/Util.ts#L29)
 
 ___
 
@@ -25,7 +25,7 @@ ___
 
 #### Defined in
 
-[types/Util.ts:26](https://github.com/brandonbothell/popyt/blob/b4e3354/src/types/Util.ts#L26)
+[types/Util.ts:26](https://github.com/brandonbothell/popyt/blob/ce4770d/src/types/Util.ts#L26)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[types/Util.ts:28](https://github.com/brandonbothell/popyt/blob/b4e3354/src/types/Util.ts#L28)
+[types/Util.ts:28](https://github.com/brandonbothell/popyt/blob/ce4770d/src/types/Util.ts#L28)
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 #### Defined in
 
-[types/Util.ts:27](https://github.com/brandonbothell/popyt/blob/b4e3354/src/types/Util.ts#L27)
+[types/Util.ts:27](https://github.com/brandonbothell/popyt/blob/ce4770d/src/types/Util.ts#L27)

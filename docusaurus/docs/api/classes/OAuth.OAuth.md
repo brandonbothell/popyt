@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:24](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L24)
+[oauth.ts:24](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L24)
 
 ## Properties
 
@@ -34,7 +34,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth.ts:18](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L18)
+[oauth.ts:18](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L18)
 
 ## Methods
 
@@ -61,7 +61,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:723](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L723)
+[oauth.ts:723](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L723)
 
 ___
 
@@ -89,7 +89,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:491](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L491)
+[oauth.ts:491](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L491)
 
 ___
 
@@ -117,7 +117,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:397](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L397)
+[oauth.ts:397](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L397)
 
 ___
 
@@ -140,7 +140,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:967](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L967)
+[oauth.ts:967](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L967)
 
 ___
 
@@ -163,7 +163,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:805](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L805)
+[oauth.ts:805](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L805)
 
 ___
 
@@ -186,7 +186,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:192](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L192)
+[oauth.ts:192](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L192)
 
 ___
 
@@ -209,7 +209,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:472](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L472)
+[oauth.ts:472](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L472)
 
 ___
 
@@ -232,7 +232,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:563](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L563)
+[oauth.ts:563](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L563)
 
 ___
 
@@ -255,7 +255,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L314)
+[oauth.ts:314](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L314)
 
 ___
 
@@ -280,7 +280,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:943](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L943)
+[oauth.ts:943](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L943)
 
 ___
 
@@ -304,7 +304,7 @@ Last tested 07/05/2021 17:40. PASSING
 
 #### Defined in
 
-[oauth.ts:128](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L128)
+[oauth.ts:128](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L128)
 
 ___
 
@@ -328,7 +328,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:819](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L819)
+[oauth.ts:819](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L819)
 
 ___
 
@@ -351,7 +351,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:840](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L840)
+[oauth.ts:840](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L840)
 
 ___
 
@@ -374,7 +374,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L41)
+[oauth.ts:41](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L41)
 
 ___
 
@@ -398,7 +398,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:67](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L67)
+[oauth.ts:67](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L67)
 
 ___
 
@@ -421,7 +421,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:256](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L256)
+[oauth.ts:256](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L256)
 
 ___
 
@@ -445,7 +445,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:53](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L53)
+[oauth.ts:53](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L53)
 
 ___
 
@@ -462,7 +462,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:976](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L976)
+[oauth.ts:976](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L976)
 
 ___
 
@@ -485,7 +485,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:150](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L150)
+[oauth.ts:150](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L150)
 
 ___
 
@@ -510,7 +510,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L82)
+[oauth.ts:82](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L82)
 
 ___
 
@@ -534,7 +534,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:241](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L241)
+[oauth.ts:241](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L241)
 
 ___
 
@@ -558,7 +558,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:108](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L108)
+[oauth.ts:108](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L108)
 
 ___
 
@@ -585,7 +585,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:284](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L284)
+[oauth.ts:284](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L284)
 
 ___
 
@@ -609,7 +609,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:629](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L629)
+[oauth.ts:629](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L629)
 
 ___
 
@@ -636,7 +636,7 @@ Last tested 05/19/2020 18:07. PASSING
 
 #### Defined in
 
-[oauth.ts:657](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L657)
+[oauth.ts:657](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L657)
 
 ___
 
@@ -661,7 +661,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:165](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L165)
+[oauth.ts:165](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L165)
 
 ___
 
@@ -685,7 +685,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:374](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L374)
+[oauth.ts:374](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L374)
 
 ___
 
@@ -710,7 +710,7 @@ A partial subscription object.
 
 #### Defined in
 
-[oauth.ts:206](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L206)
+[oauth.ts:206](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L206)
 
 ___
 
@@ -733,7 +733,7 @@ Last tested 05/18/2020 18:23. PASSING
 
 #### Defined in
 
-[oauth.ts:686](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L686)
+[oauth.ts:686](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L686)
 
 ___
 
@@ -756,7 +756,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:227](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L227)
+[oauth.ts:227](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L227)
 
 ___
 
@@ -783,7 +783,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:898](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L898)
+[oauth.ts:898](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L898)
 
 ___
 
@@ -809,7 +809,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:579](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L579)
+[oauth.ts:579](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L579)
 
 ___
 
@@ -835,7 +835,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth.ts:604](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L604)
+[oauth.ts:604](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L604)
 
 ___
 
@@ -865,7 +865,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth.ts:769](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L769)
+[oauth.ts:769](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L769)
 
 ___
 
@@ -896,7 +896,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth.ts:437](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L437)
+[oauth.ts:437](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L437)
 
 ___
 
@@ -927,7 +927,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth.ts:530](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L530)
+[oauth.ts:530](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L530)
 
 ___
 
@@ -952,7 +952,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth.ts:331](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L331)
+[oauth.ts:331](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L331)
 
 ___
 
@@ -979,7 +979,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth.ts:865](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L865)
+[oauth.ts:865](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L865)
 
 ___
 
@@ -1006,4 +1006,4 @@ in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
 
 #### Defined in
 
-[oauth.ts:704](https://github.com/brandonbothell/popyt/blob/b4e3354/src/oauth.ts#L704)
+[oauth.ts:704](https://github.com/brandonbothell/popyt/blob/ce4770d/src/oauth.ts#L704)
