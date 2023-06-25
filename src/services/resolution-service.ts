@@ -65,10 +65,10 @@ export class ResolutionService {
     let idOrSearchQuery = input
     let resolution: Resolvable<T>
 
-    // Try to resolve as a username (custom channel handle)
-    if (type === Channel && Parser.usernameRegex.test(input)) {
+    if (type === Channel && Parser.channelHandleRegex.test(input)) {
+      // Try to resolve as a username (custom channel handle)
       resolution = await this.youtube._channelService.getChannelByUsername(input) as Resolvable<T>
-    // Try to resolve as a URL
+      // Try to resolve as a URL
     } else if (Parser.youtubeUrlRegex.test(input)) {
       const resolvedUrl = await this.resolveUrl(input, type)
 
@@ -90,7 +90,8 @@ export class ResolutionService {
     return resolution
   }
 
-  public async resolveUrl<T extends ResolvableClass> (input: string, type: T): Promise<{ searchQuery?: string; resolution?: Resolvable<T> }> {
+  public async resolveUrl<T extends ResolvableClass> (input: string, type: T):
+  Promise<{ searchQuery?: string; resolution?: Resolvable<T> }> {
     const parsedUrl = Parser.parseUrl(input)
 
     if (!parsedUrl) return {}
@@ -113,22 +114,14 @@ export class ResolutionService {
   }
 
   public async resolveIdOrSearch<T extends ResolvableClass> (input: string, type: T) {
-    let isSearchQuery = !Parser.idRegex.test(input)
-
-    // Reasoning for these constraints: https://webapps.stackexchange.com/a/101153
-    switch (type) {
-      case Channel: isSearchQuery = isSearchQuery && (input.length !== 24 || !input.startsWith('UC') && !input.startsWith('HC'))
-        break
-      case Video: isSearchQuery = isSearchQuery && input.length !== 11
-        break
-      case Playlist: isSearchQuery = isSearchQuery && (input.length < 24 || input.length > 34)
-        break
-      default: isSearchQuery = false
+    if (type !== Channel && type !== Video && type !== Playlist) {
+      return input
     }
 
-    if (!isSearchQuery) return input
+    // Reasoning for these constraints: https://webapps.stackexchange.com/a/101153
+    const isId = Parser[`${type.name.toLowerCase()}IdRegex`].test(input)
 
-    return this.youtube.search(input, {
+    return isId ? input : this.youtube.search(input, {
       pageOptions: { maxPerPage: 1 },
       searchFilters: { types: [ type as SearchType ] }
     }).then(result => result.items.length ? result.items[0] : undefined) as InstanceType<T>
