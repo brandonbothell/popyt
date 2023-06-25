@@ -100,7 +100,7 @@ describe('Getting/Parsing', () => {
     expect(videoWithoutHttpsWww.video?.id).to.equal('dQw4w9WgXcQ')
     expect(videoWithoutHttpsWww.channel).to.equal(undefined)
 
-    const invalidUrl = Parser.parseUrl('https://github.com/jasonhaxstuff') as any
+    const invalidUrl = Parser.parseUrl('https://github.com/brandonbothell') as any
     expect(invalidUrl.playlist).to.equal(undefined)
     expect(invalidUrl.video).to.equal(undefined)
     expect(invalidUrl.channel).to.equal(undefined)

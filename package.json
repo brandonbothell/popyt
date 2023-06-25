@@ -22,7 +22,10 @@
   "workspaces": [
     "docusaurus"
   ],
-  "author": "jasonhaxstuff",
+  "author": {
+    "name" : "Brandon Bothell",
+    "email" : "bothellbrandon@gmail.com"
+  },
   "license": "Unlicense",
   "keywords": [
     "youtube",
