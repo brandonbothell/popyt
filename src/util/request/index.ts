@@ -23,7 +23,6 @@ export class Request {
   public get (subUrl: string, { authorizationOptions, params }: DefaultRequestOptions = {}) {
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
-
     return this._get(url, { auth })
   }
 
@@ -114,8 +113,19 @@ export class Request {
     return this._multipart(HttpMethod.PUT, url, boundary, parts, auth)
   }
 
+  /**
+   * Only changes values that you manually include
+   */
   public setAuthorization (authorization: Authorization) {
-    this.#auth = authorization
+    this.#auth = { ...this.#auth, ...authorization }
+  }
+
+  public hasAccessToken () {
+    return !!this.#auth?.accessToken
+  }
+
+  public hasApiKey () {
+    return !!this.#auth?.apiKey
   }
 
   /* ----- Private methods ----- */

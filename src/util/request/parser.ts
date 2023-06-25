@@ -17,7 +17,7 @@ export class Parser {
   public formUrl ({ subUrl, params, auth }: { subUrl: string; params?: SearchParams; auth?: Authorization }) {
     const parsed = subUrl ? new URL(subUrl, this.request.baseUrl) : new URL(this.request.baseUrl)
 
-    if (auth?.apiKey && !auth.accessToken) params.key = auth.apiKey // if we have an access token (OAuth), there's no need for an API key.
+    if (auth?.apiKey && !auth.accessToken) params = { ...params, key: auth.apiKey } // if we have an access token (OAuth), there's no need for an API key.
     if (params) parsed.search = this.searchParamsToString(params)
 
     return parsed

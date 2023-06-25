@@ -91,8 +91,9 @@ export class YouTube {
    * @param language The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages).
    * @param region The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions)..
    */
-  constructor (apiKey?: string, accessToken?: string, options: YouTubeOptions = { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
-    language: string = 'en_US', region: string = 'US') {
+  constructor (apiKey?: string, accessToken?: string, options: YouTubeOptions =
+  { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
+  language: string = 'en_US', region: string = 'US') {
     this.#auth.apiKey = apiKey
     this.#auth.accessToken = accessToken
 
@@ -100,7 +101,15 @@ export class YouTube {
       throw new TypeError('Must include one of api key or access token whenever constructing the YouTube object.')
     }
 
-    this._request = new Request('https://www.googleapis.com/youtube/v3/', this.#auth)
+    if (options.request) {
+      this._request = options.request
+      const authorizationOverwrite: T.Authorization = {}
+      if (!this._request.hasAccessToken()) authorizationOverwrite.accessToken = this.#auth.accessToken
+      if (!this._request.hasApiKey()) authorizationOverwrite.apiKey = this.#auth.apiKey
+      this._request.setAuthorization(authorizationOverwrite)
+    }
+
+    if (!this._request) this._request = new Request('https://www.googleapis.com/youtube/v3/', this.#auth)
     this._upload = new Request('https://www.googleapis.com/upload/youtube/v3/', this.#auth)
     this.oauth = new OAuth(this)
 
@@ -373,11 +382,12 @@ export class YouTube {
   }
 
   public hasAccessToken () {
-    return typeof this.#auth.accessToken === 'string' && this.#auth.accessToken
+    return !!this.#auth?.accessToken
   }
 
   public setAuthorization (authorization: T.Authorization) {
-    this.#auth = authorization
+    this.#auth = { ...this.#auth, ...authorization }
+    this._request.setAuthorization(this.#auth)
   }
 }
 
@@ -401,6 +411,11 @@ export type YouTubeOptions = {
    * Whether or not we should cache searches
    */
   cacheSearches?: boolean
+
+  /**
+   * A custom internal request object to use instead of the default one.
+   */
+  request?: Request
 }
 
 export default YouTube
