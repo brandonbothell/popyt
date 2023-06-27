@@ -3013,14 +3013,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/gulp@npm:4.0.11":
-  version: 4.0.11
-  resolution: "@types/gulp@npm:4.0.11"
+"@types/gulp@npm:4.0.12":
+  version: 4.0.12
+  resolution: "@types/gulp@npm:4.0.12"
   dependencies:
     "@types/undertaker": ">=1.2.6"
     "@types/vinyl-fs": "*"
     chokidar: ^3.3.1
-  checksum: 55b84c83bcbc55b20d3d4018dd229f46fbfa05d2b8852477bd88c3ae4ac2ee9a28c8767484bd052ecadbbb73007848655015006f9a4277d00b881f4d273670ed
+  checksum: a7535d60b5c5e4084df08537f613302780e1f4409874d6194ec42aa1f2d131298c911e2103a6a5c0ec24fadf279d465e8a3ae6e2a82e05ca71eabdcb3befe57e
   languageName: node
   linkType: hard
 
@@ -9830,7 +9830,7 @@ __metadata:
   dependencies:
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@types/chai": 4.3.5
-    "@types/gulp": 4.0.11
+    "@types/gulp": 4.0.12
     "@types/gulp-sourcemaps": 0.0.36
     "@types/merge2": 1.4.1
     "@types/mocha": 10.0.1
