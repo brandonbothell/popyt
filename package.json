@@ -41,7 +41,7 @@
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/chai": "4.3.5",
-    "@types/gulp": "4.0.12",
+    "@types/gulp": "4.0.13",
     "@types/gulp-sourcemaps": "0.0.36",
     "@types/merge2": "1.4.1",
     "@types/mocha": "10.0.1",
