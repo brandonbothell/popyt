@@ -8,10 +8,13 @@ import YouTube, { Channel } from '..'
 export class ChannelService {
   constructor (private youtube: YouTube) {}
 
+  /**
+   * @deprecated Currently broken, not implemented in the current API
+   */
   public async getChannelByUsername (username: string, parts?: ChannelParts): Promise<Channel> {
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`channel_by_username://${username}`)
-      return cached
+      if (cached) return cached
     }
 
     const result = await this.youtube._request.get('channels', {
@@ -22,8 +25,8 @@ export class ChannelService {
       authorizationOptions: { apiKey: true }
     })
 
-    if (result.items.length === 0) {
-      return Promise.reject('Channel not found')
+    if (!result.items?.length) {
+      return Promise.reject(new Error('Channel not found'))
     }
 
     const channel = new Channel(this.youtube, result.items[0], true)

@@ -358,7 +358,7 @@ export class Channel {
     }
 
     if (!this.data.brandingSettings) {
-      return Promise.reject('Unable to fetch channel branding settings')
+      return Promise.reject(new Error('Unable to fetch channel branding settings'))
     }
 
     if (!this.data.brandingSettings.image) {

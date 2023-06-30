@@ -13,15 +13,13 @@ let playlist: Playlist
 
 describe('Playlist items', () => {
   it('should reject if the playlist isn\'t found', async () => {
-    expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID').catch(error => {
-      return error.message
-    })).to.equal('The playlist identified with the request\'s <code>playlistId</code> parameter cannot be found.')
+    expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID')
+      .catch(error => error.message)).to.equal('The playlist identified with the request\'s <code>playlistId</code> parameter cannot be found.')
   })
 
   it('should reject if maxPerPage is > 50', async () => {
-    expect(await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', { maxPerPage: 51 }).catch(error => {
-      return error
-    })).to.equal('Max per page must be 50 or below for playlistItems')
+    expect(await youtube.getPlaylistItems('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', { maxPerPage: 51 })
+      .catch(error => error.message)).to.equal('Max per page must be 50 or below for playlistItems')
   })
 
   it('should return an array with a length of <= maxPerPage <= 50', async () => {

@@ -22,11 +22,11 @@ export class SearchService {
     }
 
     if (maxPerPage < 1) {
-      return Promise.reject('Max per page must be above 0')
+      return Promise.reject(new Error('Max per page must be above 0'))
     }
 
     if (maxPerPage > 50) {
-      return Promise.reject('Max per page must be 50 or below for searches')
+      return Promise.reject(new Error('Max per page must be 50 or below for searches'))
     }
 
     if (pages < 1) pages = 1

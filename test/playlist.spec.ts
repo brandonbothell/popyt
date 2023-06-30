@@ -11,9 +11,7 @@ if (!apiKey) {
 
 describe('Playlists', () => {
   it('should reject if the playlist isn\'t found', async () => {
-    expect(await youtube.getPlaylist('JSDJFSFaVeryFakePlaylist').catch(error => {
-      return error
-    })).to.equal('Item not found')
+    expect(await youtube.getPlaylist('JSDJFSFaVeryFakePlaylist').catch(error => error.message)).to.equal('Item not found')
   })
 
   it('should work with multiple different resolutions at once', async () => {

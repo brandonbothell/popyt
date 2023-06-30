@@ -66,7 +66,7 @@ export class ResolutionService {
 
     if (type === Channel && Parser.channelHandleRegex.test(input)) {
       // Try to resolve as a username (custom channel handle)
-      resolution = await this.youtube._channelService.getChannelByUsername(input) as Resolvable<T>
+      resolution = await this.youtube._channelService.getChannelByUsername(input.slice(1)) as Resolvable<T>
       // Try to resolve as a URL
     } else if (Parser.youtubeUrlRegex.test(input)) {
       const resolvedUrl = await this.resolveUrl(input, type)

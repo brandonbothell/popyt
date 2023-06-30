@@ -11,9 +11,7 @@ if (!apiKey) {
 
 describe('Videos', () => {
   it('should reject if the video isn\'t found', async () => {
-    expect(await youtube.getVideo('ASDADASaVeryFakeVideo').catch(error => {
-      return error
-    })).to.equal('Item not found')
+    expect(await youtube.getVideo('ASDADASaVeryFakeVideo').catch(error => error.message)).to.equal('Item not found')
   })
 
   it('should work with multiple different resolutions at once', async () => {

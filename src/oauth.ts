@@ -257,10 +257,10 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     const videoIds = await Promise.all(videoResolvables.map(videoResolvable => this.youtube._resolutionService.resolve(videoResolvable, YT.Video)))
-    const cached = Cache.get(`get://videos/getRating/${JSON.stringify(videoIds)}`)
 
-    if (this.youtube._shouldCache && cached) {
-      return cached
+    if (this.youtube._shouldCache) {
+      const cached = Cache.get(`get://videos/getRating/${JSON.stringify(videoIds)}`)
+      if (cached) return cached
     }
 
     const response = await this.youtube._request.get('videos/getRating', {
@@ -353,9 +353,7 @@ export class OAuth {
 
     if (video.localizations) parts.push('localizations')
 
-    if (parts.length === 0) {
-      return this.youtube.getVideo(video.id)
-    }
+    if (!parts.length) return this.youtube.getVideo(video.id)
 
     const response = await this.youtube._request.put('videos', {
       params: { part: parts.join(',') },
@@ -825,8 +823,8 @@ export class OAuth {
       authorizationOptions: { accessToken: true }
     })
 
-    if (!data.items || data.items.length === 0) {
-      return Promise.reject('Caption not found')
+    if (!data.items?.length) {
+      return Promise.reject(new Error('Caption not found'))
     }
 
     return new YT.Caption(this.youtube, data.items[0])
@@ -846,8 +844,8 @@ export class OAuth {
       authorizationOptions: { accessToken: true }
     })
 
-    if (!data.items || data.items.length === 0) {
-      return Promise.reject('Captions not found')
+    if (!data.items?.length) {
+      return Promise.reject(new Error('Captions not found'))
     }
 
     return data.items.map(caption => new YT.Caption(this.youtube, caption))

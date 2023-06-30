@@ -18,15 +18,15 @@ export class GenericService {
   public async getItem<T extends Resolvable<K> | Resolvable<K>[], K extends ItemTypes> (type: K, mine: boolean, id?: T, parts?: string[]):
   Promise<ItemReturns<T, K>> {
     if (!this._getItemAllowedTypes.has(type.name)) {
-      return Promise.reject(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`)
+      return Promise.reject(new Error(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`))
     }
 
     if (mine && !this._getMineAllowed.has(type.name)) {
-      return Promise.reject(`${type.name}s cannot be filtered by the 'mine' parameter.`)
+      return Promise.reject(new Error(`${type.name}s cannot be filtered by the 'mine' parameter.`))
     }
 
     if (!mine && !id) {
-      return Promise.reject('Items must either specify an ID or the \'mine\' parameter.')
+      return Promise.reject(new Error('Items must either specify an ID or the \'mine\' parameter.'))
     }
 
     let alreadyResolvedCount = 0
@@ -88,13 +88,13 @@ export class GenericService {
       items: any[]
     } = await this.youtube._request.get(type.endpoint, { params: options, authorizationOptions: { apiKey: true } })
 
-    if (!result.items || result.items.length === 0) {
-      return Promise.reject('Item not found')
+    if (!result.items?.length) {
+      return Promise.reject(new Error('Item not found'))
     }
 
     let endResult: ItemReturns<string | string[], ItemTypes>
 
-    if (alreadyResolved.length === 0) endResult = await Promise.all(result.items.map(async item => new (type)(this.youtube, await item, true)))
+    if (!alreadyResolved.length) endResult = await Promise.all(result.items.map(async item => new (type)(this.youtube, await item, true)))
     else {
       for (const item of result.items) {
         alreadyResolved[alreadyResolved.findIndex(value => value === undefined)] = new (type)(this.youtube, item, true) as InstanceType<K>
@@ -129,12 +129,12 @@ export class GenericService {
         name !== 'VideoAbuseReportReasons' &&
         name !== 'Languages' &&
         name !== 'Regions') {
-      return Promise.reject(`${name} must either specify an ID or the 'mine' parameter.`)
+      return Promise.reject(new Error(`${name} must either specify an ID or the 'mine' parameter.`))
     }
 
     // These three types in the PaginatedItemTypes enum are the only to be filtered by the 'mine' parameter
     if (mine && name !== 'Playlists' && name !== 'Subscriptions' && name !== 'ChannelSections') {
-      return Promise.reject(`${name} cannot be filtered by the 'mine' parameter.`)
+      return Promise.reject(new Error(`${name} cannot be filtered by the 'mine' parameter.`))
     }
 
     let cacheKey: string
@@ -234,7 +234,7 @@ export class GenericService {
         break
 
       default:
-        return Promise.reject('Unknown item type: ' + type)
+        return Promise.reject(new TypeError('Unknown item type: ' + type))
     }
 
     if (!options.part) {
@@ -243,7 +243,7 @@ export class GenericService {
 
     if (maxForEndpoint !== undefined) {
       if (pages < 1 || maxPerPage < 1) options.maxResults = maxForEndpoint
-      else if (maxPerPage > maxForEndpoint) return Promise.reject(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`)
+      else if (maxPerPage > maxForEndpoint) return Promise.reject(new Error(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`))
       else options.maxResults = maxPerPage
     }
 
@@ -268,7 +268,7 @@ export class GenericService {
   { part: string; maxResults?: number; hl?: string; [key: string]: any }, clazz?: T): Promise<PaginatedResponse<InstanceType<T>>> {
 
     if (!clazz && endpoint !== 'search') {
-      return Promise.reject('Endpoints other than search must specify an entity class')
+      return Promise.reject(new Error('Endpoints other than search must specify an entity class'))
     }
 
     const toReturn: PaginatedResponse<InstanceType<T>> = {

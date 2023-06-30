@@ -1,5 +1,5 @@
 import 'mocha'
-import YouTube, { Playlist, Video, Channel, PaginatedItemsReturns } from '../src'
+import YouTube, { Playlist, Video, Channel, PaginatedResponse } from '../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -10,10 +10,10 @@ if (!apiKey) {
 }
 
 describe('Searching', () => {
-  let defaultPlaylistsSearch: PaginatedItemsReturns<typeof Playlist>
-  let defaultChannelsSearch: PaginatedItemsReturns<typeof Channel>
-  let defaultVideosSearch: PaginatedItemsReturns<typeof Video>
-  let videoChannelSearch: PaginatedItemsReturns<typeof Video | typeof Channel>
+  let defaultPlaylistsSearch: PaginatedResponse<Playlist>
+  let defaultChannelsSearch: PaginatedResponse<Channel>
+  let defaultVideosSearch: PaginatedResponse<Video>
+  let videoChannelSearch: PaginatedResponse<Video | Channel>
 
   before(async () => {
     defaultPlaylistsSearch = await youtube.searchPlaylists('music')
@@ -21,10 +21,10 @@ describe('Searching', () => {
     defaultVideosSearch = await youtube.searchVideos('never gonna give you up')
     videoChannelSearch = await youtube.search('vevo', { searchFilters: { types: [ Video, Channel ] } })
 
-    defaultPlaylistsSearch = await youtube.searchPlaylists('music')
+    /* defaultPlaylistsSearch = await youtube.searchPlaylists('music')
     defaultChannelsSearch = await youtube.searchChannels('rick astley')
     defaultVideosSearch = await youtube.searchVideos('never gonna give you up')
-    videoChannelSearch = await youtube.search('vevo', { searchFilters: { types: [ Video, Channel ] } })
+    videoChannelSearch = await youtube.search('vevo', { searchFilters: { types: [ Video, Channel ] } }) */
   })
 
   it('should default to 50 results', async () => {
@@ -38,22 +38,18 @@ describe('Searching', () => {
   })
 
   it('should reject if maxResults is < 1', async () => {
-    expect(await youtube.searchChannels('rick astley', { pageOptions: { maxPerPage: 0 } }).catch(error => {
-      return error
-    })).to.equal('Max per page must be above 0')
+    expect(await youtube.searchChannels('rick astley', { pageOptions: { maxPerPage: 0 } })
+      .catch(error => error.message)).to.equal('Max per page must be above 0')
   })
 
   it('should reject if maxResults is > 50', async () => {
-    expect(await youtube.searchVideos('never gonna give you up', { pageOptions: { maxPerPage: 51 } }).catch(error => {
-      return error
-    })).to.equal('Max per page must be 50 or below for searches')
+    expect(await youtube.searchVideos('never gonna give you up', { pageOptions: { maxPerPage: 51 } })
+      .catch(error => error.message)).to.equal('Max per page must be 50 or below for searches')
   })
 
   it('should reject if api key is wrong', async () => {
     const youtube = new YouTube('asda')
-    expect(await youtube.searchVideos('la di da').catch(error => {
-      return error
-    })).to.be.an.instanceOf(Error)
+    expect(await youtube.searchVideos('la di da').catch(error => error)).to.be.an.instanceOf(Error)
   })
 
   it('should set what it can with search results', async () => {

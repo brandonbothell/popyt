@@ -9,10 +9,9 @@ export class SubscriptionService {
   constructor (private youtube: YouTube) {}
 
   public async getSubscriptionByChannels (subscriberId: string, channelId: string, parts?: SubscriptionParts): Promise<Subscription> {
-    const cached = Cache.get(`sub_by_channels://"${subscriberId}"/"${channelId}"`)
-
-    if (this.youtube._shouldCache && cached) {
-      return cached
+    if (this.youtube._shouldCache) {
+      const cached = Cache.get(`sub_by_channels://"${subscriberId}"/"${channelId}"`)
+      if (cached) return cached
     }
 
     const options: {
@@ -29,8 +28,8 @@ export class SubscriptionService {
 
     const results = await this.youtube._request.get('subscriptions', { params: options, authorizationOptions: { apiKey: true } })
 
-    if (results.items.length === 0) {
-      return Promise.reject('Subscription not found')
+    if (!results.items?.length) {
+      return Promise.reject(new Error('Subscription not found'))
     }
 
     const toReturn = new Subscription(this.youtube, results.items[0])

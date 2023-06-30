@@ -1,9 +1,14 @@
 import 'mocha'
+import './setup-instance'
 import { readFileSync } from 'fs'
-import { YouTube, VideoAbuseReportReason, Caption } from '../src'
+import { YouTube, VideoAbuseReportReason, Caption, Channel, Video } from '../src'
 import { expect } from 'chai'
 
-const key = process.env.YOUTUBE_API_KEY
+/**
+ * To test: https://developers.google.com/oauthplayground/#step1&apisSelect=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly%2Chttps%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload&url=https%3A%2F%2F&content_type=application%2Fjson&http_method=GET&useDefaultOauthCred=unchecked&oauthEndpointSelect=Google&oauthAuthEndpointValue=https%3A%2F%2Faccounts.google.com%2Fo%2Foauth2%2Fv2%2Fauth&oauthTokenEndpointValue=https%3A%2F%2Foauth2.googleapis.com%2Ftoken&includeCredentials=unchecked&accessTokenType=bearer&autoRefreshToken=unchecked&accessType=offline&prompt=consent&response_type=code&wrapLines=on
+ */
+
+const key = process.env.YOUTUBE_OAUTH_API_KEY
 const token = process.env.YOUTUBE_ACCESS_TOKEN
 const thumbnailVideoId = process.env.YOUTUBE_THUMBNAIL_VIDEO_ID
 const captionVideoId = process.env.YOUTUBE_CAPTION_VIDEO_ID
@@ -15,8 +20,7 @@ if (!key) {
 if (!token) {
   throw new Error('No access token')
 }
-
-let channelId: string
+let videoId: string // video from above channel to comment on
 
 let commentId: string
 let commentReplyId: string
@@ -30,10 +34,11 @@ let trackId: string
 let captionTrack: Buffer
 
 describe('OAuth', () => {
+  let channel: Channel
+
   it('should fetch my channel', async () => {
     const youtube = new YouTube(key, token)
-    const channel = await youtube.oauth.getMe([ 'id' ])
-    channelId = channel.id
+    channel = await youtube.oauth.getMe([ 'id' ])
 
     expect(channel.id).to.be.a('string')
   })
@@ -52,13 +57,22 @@ describe('OAuth', () => {
     expect(playlist.id).to.be.a('string')
   })
 
+  let uploads: Video[]
+
+  it('should fetch my uploads', async () => {
+    const youtube = new YouTube(key, token)
+    uploads = (await youtube.getPlaylistItems(channel.data.contentDetails.relatedPlaylists?.uploads)).items
+
+    expect(uploads.length).to.be.greaterThan(0)
+  })
+
   it('should post comments', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.postComment(text, channelId)
+    const comment = await youtube.oauth.postComment(text, channel.id, uploads[0].id)
     commentId = comment.id
 
-    expect(comment.channelId).to.equal(channelId)
+    expect(comment.datePublished.getDay()).to.equal(new Date().getDay())
   })
 
   it('should edit comments', async () => {
@@ -200,42 +214,42 @@ describe('OAuth', () => {
   it('should set channel watermarks', async () => {
     const youtube = new YouTube(key, token)
 
-    if (!channelId) {
-      channelId = (await youtube.oauth.getMe()).id
+    if (!channel.id) {
+      channel.id = (await youtube.oauth.getMe()).id
     }
 
-    await youtube.oauth.setChannelWatermark(channelId, 'fromStart', 3000, 10000, readFileSync('./test/data/watermark.png'), 'png')
+    await youtube.oauth.setChannelWatermark(channel.id, 'fromStart', 3000, 10000, { data: readFileSync('./test/data/watermark.png'), type: 'png' })
   })
 
   it('should unset channel watermarks', async () => {
     const youtube = new YouTube(key, token)
 
-    if (!channelId) {
-      channelId = (await youtube.oauth.getMe()).id
+    if (!channel.id) {
+      channel.id = (await youtube.oauth.getMe()).id
     }
 
-    await youtube.oauth.unsetChannelWatermark(channelId)
+    await youtube.oauth.unsetChannelWatermark(channel.id)
   })
 
   it('should update channel localizations', async () => {
     const youtube = new YouTube(key, token)
 
-    if (!channelId) {
-      channelId = (await youtube.oauth.getMe()).id
+    if (!channel.id) {
+      channel.id = (await youtube.oauth.getMe()).id
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    await youtube.oauth.updateChannelLocalizations(channelId, { de_DE: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
+    await youtube.oauth.updateChannelLocalizations(channel.id, { de_DE: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
   })
 
   it('should update a channel\'s made for kids status', async () => {
     const youtube = new YouTube(key, token)
 
-    if (!channelId) {
-      channelId = (await youtube.oauth.getMe()).id
+    if (!channel) {
+      channel = await youtube.oauth.getMe()
     }
 
-    const channel = await youtube.oauth.setChannelMadeForKids(channelId, false)
+    channel = await youtube.oauth.setChannelMadeForKids(channel.id, false)
     expect(channel.kids.selfDeclaredMadeForKids).to.equal(false)
   })
 
@@ -253,7 +267,7 @@ describe('OAuth', () => {
 
     expect(section.type).to.equal('multipleChannels')
     expect(section.name).to.equal('Testing woot')
-    expect(section.channelId).to.equal(channelId)
+    expect(section.channelId).to.equal(channel.id)
     expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw').and.contain('UCS5Oz6CHmeoF7vSad0qqXfw')
   })
 
