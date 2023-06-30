@@ -11,7 +11,7 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
 
 # Examples
-## See the [5-minute tutorial](https://brandonbothell.github.io/popyt/docs/tutorial/intro).
+## Try out the [5-minute tutorial](https://brandonbothell.github.io/popyt/docs/tutorial/intro) or the [example project](https://github.com/brandonbothell/popyt-example).
 Here are some basic methods ([try it on CodeSandbox](https://codesandbox.io/p/sandbox/fetch-videos-from-youtube-jmqlfq)):
 
 Instantiate the object:
