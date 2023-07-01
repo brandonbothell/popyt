@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/tsconfig", "npm:0.0.0-5601"],\
             ["@docusaurus/types", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.4.1"],\
             ["@mdx-js/react", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.6.22"],\
-            ["@tsconfig/docusaurus", "npm:1.0.7"],\
+            ["@tsconfig/docusaurus", "npm:2.0.0"],\
             ["@types/node", "npm:20.3.3"],\
             ["@types/react", "npm:18.2.14"],\
             ["clsx", "npm:1.2.1"],\
@@ -4539,10 +4539,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@tsconfig/docusaurus", [\
-        ["npm:1.0.7", {\
-          "packageLocation": "./.yarn/cache/@tsconfig-docusaurus-npm-1.0.7-ec406f6070-8f5b14005d.zip/node_modules/@tsconfig/docusaurus/",\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@tsconfig-docusaurus-npm-2.0.0-da2ccd3c83-39adca336d.zip/node_modules/@tsconfig/docusaurus/",\
           "packageDependencies": [\
-            ["@tsconfig/docusaurus", "npm:1.0.7"]\
+            ["@tsconfig/docusaurus", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7238,7 +7238,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/tsconfig", "npm:0.0.0-5601"],\
             ["@docusaurus/types", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.4.1"],\
             ["@mdx-js/react", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.6.22"],\
-            ["@tsconfig/docusaurus", "npm:1.0.7"],\
+            ["@tsconfig/docusaurus", "npm:2.0.0"],\
             ["@types/node", "npm:20.3.3"],\
             ["@types/react", "npm:18.2.14"],\
             ["clsx", "npm:1.2.1"],\
