@@ -20,7 +20,6 @@ if (!key) {
 if (!token) {
   throw new Error('No access token')
 }
-let videoId: string // video from above channel to comment on
 
 let commentId: string
 let commentReplyId: string
