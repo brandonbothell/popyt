@@ -64,5 +64,5 @@
   "repository": {
     "url": "https://github.com/brandonbothell/popyt.git"
   },
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@3.6.1"
 }
