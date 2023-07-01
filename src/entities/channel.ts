@@ -313,7 +313,7 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public updateBranding (branding: ChannelBrandingSettings) {
-    return this.youtube.oauth.updateChannelBranding(this.id, branding)
+    return this.youtube.oauth.channels.updateChannelBranding(this.id, branding)
   }
 
   /**
@@ -321,7 +321,8 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public updateLocalizations (localizations: { [key: string]: { title: string; description: string } }) {
-    return this.youtube.oauth.updateChannelLocalizations(this.id, localizations)
+    return this.youtube.oauth.channels.updateChannelLocalizations(
+      this.id, localizations)
   }
 
   /**
@@ -329,7 +330,7 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public setMadeForKids (madeForKids: boolean) {
-    return this.youtube.oauth.setChannelMadeForKids(this.id, madeForKids)
+    return this.youtube.oauth.channels.setChannelMadeForKids(this.id, madeForKids)
   }
 
   /**
@@ -337,7 +338,8 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public setWatermark (type: 'fromStart' | 'fromEnd', offset: number, duration: number, image: Image) {
-    return this.youtube.oauth.setChannelWatermark(this.id, type, offset, duration, image)
+    return this.youtube.oauth.channels.setChannelWatermark(
+      this.id, type, offset, duration, image)
   }
 
   /**
@@ -345,7 +347,7 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public unsetWatermark () {
-    return this.youtube.oauth.unsetChannelWatermark(this.id)
+    return this.youtube.oauth.channels.unsetChannelWatermark(this.id)
   }
 
   /**
@@ -365,7 +367,9 @@ export class Channel {
       this.data.brandingSettings.image = {}
     }
 
-    this.data.brandingSettings.image.bannerExternalUrl = await this.youtube.oauth.uploadChannelBanner(image)
-    return this.youtube.oauth.updateChannelBranding(this.id, this.data.brandingSettings)
+    this.data.brandingSettings.image.bannerExternalUrl =
+      await this.youtube.oauth.channels.uploadChannelBanner(image)
+    return this.youtube.oauth.channels.updateChannelBranding(
+      this.id, this.data.brandingSettings)
   }
 }
