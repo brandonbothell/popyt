@@ -186,7 +186,8 @@ export class Playlist {
    */
   public async update (title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
     localizations?: {[language: string]: { title: string; description: string }}): Promise<Playlist> {
-    const newPlaylist = await this.youtube.oauth.updatePlaylist(this.id, title, description, privacy, tags, language, localizations)
+    const newPlaylist = await this.youtube.oauth.playlists.updatePlaylist(
+      this.id, title, description, privacy, tags, language, localizations)
     return Object.assign(this, { ...newPlaylist, full: true })
   }
 
@@ -199,7 +200,8 @@ export class Playlist {
    */
   public async addVideo (videoResolvable: VideoResolvable, position?: number, note?: string) {
     const videoId = await this.youtube._resolutionService.resolve(videoResolvable, Video)
-    const playlistItem = await this.youtube.oauth.addPlaylistItem(this, videoId, position, note)
+    const playlistItem = await this.youtube.oauth.playlists.addPlaylistItem(
+      this, videoId, position, note)
 
     if (this.videos) this.videos.items.push(playlistItem)
     else this.videos = { items: [ playlistItem ] }
@@ -226,7 +228,8 @@ export class Playlist {
     })
     )[0].id
 
-    return this.youtube.oauth.updatePlaylistItem(playlistItemId, this, video, position, note)
+    return this.youtube.oauth.playlists.updatePlaylistItem(
+      playlistItemId, this, video, position, note)
   }
 
   /**
@@ -253,7 +256,7 @@ export class Playlist {
    * @param playlistItemId The playlist item ID (not the same as video ID; see [`Playlist.removeVideo()`](./Library_Exports.Playlist#removeVideo)).
    */
   public async removeItem (playlistItemId: string) {
-    await this.youtube.oauth.deletePlaylistItem(playlistItemId)
+    await this.youtube.oauth.playlists.deletePlaylistItem(playlistItemId)
 
     if (this.videos) {
       const index = this.videos.items.findIndex(v => v.data.id === playlistItemId)
@@ -269,6 +272,6 @@ export class Playlist {
    * Must be using an access token with correct scopes.
    */
   public delete () {
-    return this.youtube.oauth.deletePlaylist(this.id)
+    return this.youtube.oauth.playlists.deletePlaylist(this.id)
   }
 }

@@ -171,7 +171,8 @@ describe('OAuth', () => {
 
   it('should work with creating playlists', async () => {
     const youtube = new YouTube(key, token)
-    const playlist = await youtube.oauth.createPlaylist('Some playlist', 'An awesome playlist!', 'unlisted', [ 'awesome', 'cool' ], 'en_US',
+    const playlist = await youtube.oauth.playlists.createPlaylist(
+      'Some playlist', 'An awesome playlist!', 'unlisted', [ 'awesome', 'cool' ], 'en_US',
       // eslint-disable-next-line @typescript-eslint/naming-convention
       { de_DE: { title: 'Einige Wiedergabelisten', description: 'Eine tolle Wiedergabeliste!' } })
     playlistId = playlist.id
@@ -182,7 +183,8 @@ describe('OAuth', () => {
 
   it('should work with updating playlists', async () => {
     const youtube = new YouTube(key, token)
-    const playlist = await youtube.oauth.updatePlaylist(playlistId, 'Other playlist', 'An awesome playlist...')
+    const playlist = await youtube.oauth.playlists.updatePlaylist(
+      playlistId, 'Other playlist', 'An awesome playlist...')
 
     expect(playlist.title).to.equal('Other playlist')
     expect(playlist.description).to.equal('An awesome playlist...')
@@ -190,7 +192,8 @@ describe('OAuth', () => {
 
   it('should work with adding playlist items', async () => {
     const youtube = new YouTube(key, token)
-    const video = await youtube.oauth.addPlaylistItem(playlistId, 'dQw4w9WgXcQ', 0, 'A fantastic song!')
+    const video = await youtube.oauth.playlists.addPlaylistItem(
+      playlistId, 'dQw4w9WgXcQ', 0, 'A fantastic song!')
     playlistItemId = video.data.id
 
     expect(video.id).to.equal('dQw4w9WgXcQ')
@@ -199,7 +202,8 @@ describe('OAuth', () => {
 
   it('should work with updating playlist items', async () => {
     const youtube = new YouTube(key, token)
-    const video = await youtube.oauth.updatePlaylistItem(playlistItemId, playlistId, 'dQw4w9WgXcQ', 0, 'A fantastic song...')
+    const video = await youtube.oauth.playlists.updatePlaylistItem(
+      playlistItemId, playlistId, 'dQw4w9WgXcQ', 0, 'A fantastic song...')
 
     expect(video.data.contentDetails.note).to.equal('A fantastic song...')
     expect(video.data.kind).to.equal('youtube#playlistItem')
@@ -207,12 +211,12 @@ describe('OAuth', () => {
 
   it('should work with deleting playlist items', async () => {
     const youtube = new YouTube(key, token)
-    await youtube.oauth.deletePlaylistItem(playlistItemId)
+    await youtube.oauth.playlists.deletePlaylistItem(playlistItemId)
   })
 
   it('should work with deleting playlists', async () => {
     const youtube = new YouTube(key, token)
-    await youtube.oauth.deletePlaylist(playlistId)
+    await youtube.oauth.playlists.deletePlaylist(playlistId)
   })
 
   it('should set channel watermarks', async () => {
@@ -222,7 +226,8 @@ describe('OAuth', () => {
       channel.id = (await youtube.oauth.getMe()).id
     }
 
-    await youtube.oauth.setChannelWatermark(channel.id, 'fromStart', 3000, 10000, { data: readFileSync('./test/data/watermark.png'), type: 'png' })
+    await youtube.oauth.setChannelWatermark(channel.id, 'fromStart', 3000, 10000,
+      { data: readFileSync('./test/data/watermark.png'), type: 'png' })
   })
 
   it('should unset channel watermarks', async () => {
@@ -243,7 +248,8 @@ describe('OAuth', () => {
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    await youtube.oauth.updateChannelLocalizations(channel.id, { de_DE: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
+    await youtube.oauth.updateChannelLocalizations(channel.id, { de_DE:
+      { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
   })
 
   it('should update a channel\'s made for kids status', async () => {
@@ -266,24 +272,29 @@ describe('OAuth', () => {
 
   it('should work with adding channel sections', async () => {
     const youtube = new YouTube(key, token)
-    const section = await youtube.oauth.addChannelSection('multipleChannels', 'Testing woot', undefined, undefined, [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ])
+    const section = await youtube.oauth.addChannelSection('multipleChannels',
+      'Testing woot', undefined, undefined,
+      [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ])
     sectionId = section.id
 
     expect(section.type).to.equal('multipleChannels')
     expect(section.name).to.equal('Testing woot')
     expect(section.channelId).to.equal(channel.id)
-    expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw').and.contain('UCS5Oz6CHmeoF7vSad0qqXfw')
+    expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw')
+      .and.contain('UCS5Oz6CHmeoF7vSad0qqXfw')
   })
 
   it('should work with updating channel sections', async () => {
     const youtube = new YouTube(key, token)
-    const section = await youtube.oauth.updateChannelSection(sectionId, 'multiplePlaylists', 'Test...', 1,
+    const section = await youtube.oauth.updateChannelSection(sectionId,
+      'multiplePlaylists', 'Test...', 1,
       [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ])
 
     expect(section.type).to.equal('multiplePlaylists')
     expect(section.name).to.equal('Test...')
     expect(section.position).to.equal(1)
-    expect(section.playlistIds).to.contain('PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74').and.contain('PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6')
+    expect(section.playlistIds).to.contain('PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74')
+      .and.contain('PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6')
   })
 
   it('should work with deleting channel sections', async () => {
