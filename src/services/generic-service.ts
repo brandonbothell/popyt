@@ -1,6 +1,6 @@
 import { ItemTypes, ItemReturns, PaginatedResponse, PaginatedItemType, PaginatedItemOptions,
   PaginatedType, Resolvable, PaginatedInstance, PaginatedRequestParams } from '../types'
-import { Cache } from '../oauth'
+import { Cache } from '../util'
 import YouTube,
 { Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 

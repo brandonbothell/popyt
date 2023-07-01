@@ -1,4 +1,4 @@
-import { Parser } from '../oauth'
+import { Parser } from '../util'
 import { CommentThreadParts, VideoParts } from '../types/Parts'
 import { Thumbnail, ISODuration, PageOptions, PaginatedResponse } from '../types'
 import { YouTube, VideoUpdateResource, Caption } from '..'
@@ -257,7 +257,7 @@ export class Video {
    * @param text The text of the comment.
    */
   public async postComment (text: string) {
-    const comment = await this.youtube.oauth.postComment(text, this.channel.id, this.id)
+    const comment = await this.youtube.oauth.comments.postComment(text, this.channel.id, this.id)
 
     if (!this.comments) this.comments = { items: [ comment ] }
     else this.comments.items.push(comment)

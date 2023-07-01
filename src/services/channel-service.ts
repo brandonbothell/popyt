@@ -1,5 +1,5 @@
 import { ChannelParts } from '../types/Parts'
-import { Cache } from '../oauth'
+import { Cache } from '../util'
 import YouTube, { Channel } from '..'
 
 /**

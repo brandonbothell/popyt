@@ -217,7 +217,7 @@ export class Comment {
    * @param text The new text of the comment.
    */
   public edit (text: string) {
-    return this.youtube.oauth.editComment(this.id, text)
+    return this.youtube.oauth.comments.editComment(this.id, text)
   }
 
   /**
@@ -226,7 +226,7 @@ export class Comment {
    * @param text The text of the reply.
    */
   public reply (text: string) {
-    return this.youtube.oauth.replyToComment(this.id, text)
+    return this.youtube.oauth.comments.replyToComment(this.id, text)
   }
 
   /**
@@ -234,7 +234,7 @@ export class Comment {
    * Must be using an access token with correct scopes.
    */
   public markAsSpam () {
-    return this.youtube.oauth.markCommentAsSpam(this.id)
+    return this.youtube.oauth.comments.markCommentAsSpam(this.id)
   }
 
   /**
@@ -245,7 +245,7 @@ export class Comment {
    * Defaults to false.
    */
   public setModerationStatus (status?: 'heldForReview' | 'published' | 'rejected', banAuthor: boolean = false) {
-    return this.youtube.oauth.setCommentModerationStatus(this.id, status, banAuthor)
+    return this.youtube.oauth.comments.setCommentModerationStatus(this.id, status, banAuthor)
   }
 
   /**
@@ -253,6 +253,6 @@ export class Comment {
    * Must be using an access token with correct scopes.
    */
   public delete () {
-    return this.youtube.oauth.deleteComment(this.id)
+    return this.youtube.oauth.comments.deleteComment(this.id)
   }
 }
