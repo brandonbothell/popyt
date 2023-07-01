@@ -1,4 +1,4 @@
-import { Cache } from '../oauth'
+import { Cache } from '../util'
 import YouTube, { Video, Channel, Playlist, InternalSearchOptions, SearchType, PaginatedResponse, SearchFilters, VideoCategory } from '..'
 
 /**

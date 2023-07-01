@@ -1,5 +1,5 @@
 import { SubscriptionParts } from '../types/Parts'
-import { Cache } from '../oauth'
+import { Cache } from '../util'
 import YouTube, { Subscription } from '..'
 
 /**
