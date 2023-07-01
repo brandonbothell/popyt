@@ -226,8 +226,8 @@ describe('OAuth', () => {
       channel.id = (await youtube.oauth.getMe()).id
     }
 
-    await youtube.oauth.setChannelWatermark(channel.id, 'fromStart', 3000, 10000,
-      { data: readFileSync('./test/data/watermark.png'), type: 'png' })
+    await youtube.oauth.channels.setChannelWatermark(channel.id, 'fromStart', 3000,
+      10000, { data: readFileSync('./test/data/watermark.png'), type: 'png' })
   })
 
   it('should unset channel watermarks', async () => {
@@ -237,7 +237,7 @@ describe('OAuth', () => {
       channel.id = (await youtube.oauth.getMe()).id
     }
 
-    await youtube.oauth.unsetChannelWatermark(channel.id)
+    await youtube.oauth.channels.unsetChannelWatermark(channel.id)
   })
 
   it('should update channel localizations', async () => {
@@ -248,7 +248,7 @@ describe('OAuth', () => {
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    await youtube.oauth.updateChannelLocalizations(channel.id, { de_DE:
+    await youtube.oauth.channels.updateChannelLocalizations(channel.id, { de_DE:
       { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
   })
 
@@ -259,21 +259,22 @@ describe('OAuth', () => {
       channel = await youtube.oauth.getMe()
     }
 
-    channel = await youtube.oauth.setChannelMadeForKids(channel.id, false)
+    channel = await youtube.oauth.channels.setChannelMadeForKids(channel.id, false)
     expect(channel.kids.selfDeclaredMadeForKids).to.equal(false)
   })
 
   it('should upload channel banners', async () => {
     const youtube = new YouTube(key, token)
-    const url = await youtube.oauth.uploadChannelBanner({ type: 'png', data: readFileSync('./test/data/banner.png') })
+    const url = await youtube.oauth.channels.uploadChannelBanner(
+      { type: 'png', data: readFileSync('./test/data/banner.png') })
 
     expect(url).to.be.a('string')
   })
 
   it('should work with adding channel sections', async () => {
     const youtube = new YouTube(key, token)
-    const section = await youtube.oauth.addChannelSection('multipleChannels',
-      'Testing woot', undefined, undefined,
+    const section = await youtube.oauth.channels.addChannelSection(
+      'multipleChannels', 'Testing woot', undefined, undefined,
       [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ])
     sectionId = section.id
 
@@ -286,7 +287,7 @@ describe('OAuth', () => {
 
   it('should work with updating channel sections', async () => {
     const youtube = new YouTube(key, token)
-    const section = await youtube.oauth.updateChannelSection(sectionId,
+    const section = await youtube.oauth.channels.updateChannelSection(sectionId,
       'multiplePlaylists', 'Test...', 1,
       [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ])
 
@@ -299,7 +300,7 @@ describe('OAuth', () => {
 
   it('should work with deleting channel sections', async () => {
     const youtube = new YouTube(key, token)
-    await youtube.oauth.deleteChannelSection(sectionId)
+    await youtube.oauth.channels.deleteChannelSection(sectionId)
   })
 
   it('should get caption tracks of videos', async () => {
