@@ -37,7 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/types", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.4.1"],\
             ["@mdx-js/react", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.6.22"],\
             ["@tsconfig/docusaurus", "npm:1.0.7"],\
-            ["@types/node", "npm:20.3.2"],\
+            ["@types/node", "npm:20.3.3"],\
             ["@types/react", "npm:18.2.14"],\
             ["clsx", "npm:1.2.1"],\
             ["docusaurus-plugin-typedoc", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:0.19.2"],\
@@ -4773,10 +4773,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:20.3.2", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-20.3.2-e93bcb71b8-5929ce2b9b.zip/node_modules/@types/node/",\
+        ["npm:20.3.3", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.3.3-aac92e0a89-7a0d008004.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:20.3.2"]\
+            ["@types/node", "npm:20.3.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7239,7 +7239,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/types", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:2.4.1"],\
             ["@mdx-js/react", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:1.6.22"],\
             ["@tsconfig/docusaurus", "npm:1.0.7"],\
-            ["@types/node", "npm:20.3.2"],\
+            ["@types/node", "npm:20.3.3"],\
             ["@types/react", "npm:18.2.14"],\
             ["clsx", "npm:1.2.1"],\
             ["docusaurus-plugin-typedoc", "virtual:b84c161d1cc88defaae9ba773bd22a2b658290941c4ca837294e8592d46ffb9dce3236b84a80eb258ed92fcfcf5f5b157224159865784af00748bb954283fec6#npm:0.19.2"],\
