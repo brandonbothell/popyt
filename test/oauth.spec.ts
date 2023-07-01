@@ -110,11 +110,11 @@ describe('OAuth', () => {
   it('should (un)subscribe to channels', async () => {
     const youtube = new YouTube(key, token)
     const channel = 'UCBR8-60-B28hp2BmDPdntcQ'
-    const subscription = await youtube.oauth.subscribeToChannel(channel)
+    const subscription = await youtube.oauth.channels.subscribeToChannel(channel)
 
     expect(subscription.channel.id).to.equal(channel)
 
-    await youtube.oauth.unsubscribeFromChannel(subscription.id)
+    await youtube.oauth.channels.unsubscribeFromChannel(subscription.id)
   })
 
   it('should rate videos', async () => {
@@ -148,7 +148,7 @@ describe('OAuth', () => {
 
   it('should set all available properties of abuse reasons', async () => {
     const youtube = new YouTube(key, token)
-    const reason = (await youtube.oauth.getVideoAbuseReportReasons())[0]
+    const reason = (await youtube.oauth.videos.getVideoAbuseReportReasons())[0]
 
     expect(reason.full).to.equal(true)
     expect(reason.id).to.be.a('string')

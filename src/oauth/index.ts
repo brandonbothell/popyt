@@ -7,7 +7,6 @@
  */
 
 import * as Part from '../types/Parts'
-import * as Data from '../constants'
 import YouTube, * as YT from '..'
 import { OAuthVideos } from './videos'
 import { OAuthPlaylists } from './playlists'
@@ -75,6 +74,27 @@ export class OAuth {
   }
 
   /**
+   * Gets the authorized user's uploads.  
+   * These are **partial [Video](./Library_Exports.Video) objects**,
+   * meaning they are missing some data. See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
+   * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to
+   * fetch the full objects while not spamming your quota like you would using a loop.  
+   * Last tested NEVER
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch all.
+   * @param parts The parts of the videos to fetch.
+   */
+  public async getMyUploads (pageOptions: YT.PageOptions, parts?: Part.PlaylistItemParts) {
+    const channel = await this.getMe()
+    if (!channel.data.contentDetails) await channel.fetch([ 'contentDetails' ])
+
+    return this.youtube.getPlaylistItems(
+      channel.data.contentDetails.relatedPlaylists?.uploads as string,
+      pageOptions, parts)
+  }
+
+  /**
    * Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
    * Last tested 05/18/2020 11:48. PASSING
    * @param maxPerPage The maximum number of subscriptions to fetch per page.
@@ -100,50 +120,6 @@ export class OAuth {
 
     const result = await this.youtube._genericService.getPaginatedItems({ type: YT.PaginatedItemType.Playlists, mine: true, maxPerPage, parts })
     return result.items as YT.Playlist[]
-  }
-
-  /**
-   * Subscribe to a [Channel](./Library_Exports.Channel#).  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param channelResolvable The channel to subscribe to.
-   * @returns A partial subscription object.
-   */
-  public async subscribeToChannel (channelResolvable: YT.ChannelResolvable): Promise<YT.Subscription> {
-    this.checkTokenAndThrow()
-
-    const channel = await this.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
-    const data: typeof Data.SUBSCRIPTION_DATA = JSON.parse(JSON.stringify(Data.SUBSCRIPTION_DATA))
-
-    data.snippet.resourceId.channelId = typeof channel === 'string' ? channel : channel.id
-
-    const result = await this.youtube._request.post('subscriptions', {
-      params: { part: 'snippet' },
-      data: JSON.stringify(data),
-      authorizationOptions: { accessToken: true }
-    })
-    return new YT.Subscription(this.youtube, result)
-  }
-
-  /**
-   * Unsubscribe from a [Channel](./Library_Exports.Channel#).  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param channelId The channel to unsubscribe from.
-   */
-  public unsubscribeFromChannel (subscriptionId: string): Promise<void> {
-    this.checkTokenAndThrow()
-    return this.youtube._request.delete('subscriptions', {
-      params: { id: subscriptionId },
-      authorizationOptions: { accessToken: true }
-    })
-  }
-
-  /**
-   * Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason#)s.
-   * Last tested 05/18/2020 11:48. PASSING
-   */
-  public async getVideoAbuseReportReasons () {
-    this.checkTokenAndThrow()
-    return (await this.youtube._genericService.getPaginatedItems({ type: YT.PaginatedItemType.VideoAbuseReportReasons })).items as YT.VideoAbuseReportReason[]
   }
 }
 

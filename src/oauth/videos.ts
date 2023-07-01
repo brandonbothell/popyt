@@ -158,4 +158,13 @@ export class OAuthVideos {
 
     return response.items[0]
   }
+
+  /**
+   * Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason#)s.
+   * Last tested 05/18/2020 11:48. PASSING
+   */
+  public async getVideoAbuseReportReasons () {
+    this.oauth.checkTokenAndThrow()
+    return (await this.oauth.youtube._genericService.getPaginatedItems({ type: YT.PaginatedItemType.VideoAbuseReportReasons })).items as YT.VideoAbuseReportReason[]
+  }
 }
