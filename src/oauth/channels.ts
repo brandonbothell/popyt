@@ -250,4 +250,39 @@ export class OAuthChannels {
       authorizationOptions: { accessToken: true }
     })
   }
+
+  /**
+   * Subscribe to a [Channel](./Library_Exports.Channel#).  
+   * Last tested 05/18/2020 11:48. PASSING
+   * @param channelResolvable The channel to subscribe to.
+   * @returns A partial subscription object.
+   */
+  public async subscribeToChannel (channelResolvable: YT.ChannelResolvable): Promise<YT.Subscription> {
+    this.oauth.checkTokenAndThrow()
+
+    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const data: typeof Data.SUBSCRIPTION_DATA = JSON.parse(JSON.stringify(Data.SUBSCRIPTION_DATA))
+
+    data.snippet.resourceId.channelId = typeof channel === 'string' ? channel : channel.id
+
+    const result = await this.oauth.youtube._request.post('subscriptions', {
+      params: { part: 'snippet' },
+      data: JSON.stringify(data),
+      authorizationOptions: { accessToken: true }
+    })
+    return new YT.Subscription(this.oauth.youtube, result)
+  }
+
+  /**
+   * Unsubscribe from a [Channel](./Library_Exports.Channel#).  
+   * Last tested 05/18/2020 11:48. PASSING
+   * @param channelId The channel to unsubscribe from.
+   */
+  public unsubscribeFromChannel (subscriptionId: string): Promise<void> {
+    this.oauth.checkTokenAndThrow()
+    return this.oauth.youtube._request.delete('subscriptions', {
+      params: { id: subscriptionId },
+      authorizationOptions: { accessToken: true }
+    })
+  }
 }

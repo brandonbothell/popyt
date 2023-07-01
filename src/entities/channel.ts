@@ -297,7 +297,7 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public subscribe () {
-    return this.youtube.oauth.subscribeToChannel(this.id)
+    return this.youtube.oauth.channels.subscribeToChannel(this.id)
   }
 
   /**
@@ -305,7 +305,7 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public unsubscribe () {
-    return this.youtube.oauth.unsubscribeFromChannel(this.id)
+    return this.youtube.oauth.channels.unsubscribeFromChannel(this.id)
   }
 
   /**
