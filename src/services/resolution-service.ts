@@ -1,4 +1,4 @@
-import { Cache, Parser } from '../util'
+import { Cache, Parser } from '../oauth'
 import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, ResolveReturn, SearchType, Video, VideoCategory } from '..'
 
 /**
