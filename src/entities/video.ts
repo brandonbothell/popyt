@@ -366,7 +366,7 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public async fetchCaptions (): Promise<Caption[]> {
-    this.captions = await this.youtube.oauth.getCaptions(this.id)
+    this.captions = await this.youtube.oauth.captions.getCaptions(this.id)
     return this.captions
   }
 
@@ -379,7 +379,7 @@ export class Video {
    * @param draft Whether or not the track is a draft.
    */
   public async uploadCaption (language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
-    const toReturn = await this.youtube.oauth.uploadCaption(this.id, language, name, track, draft)
+    const toReturn = await this.youtube.oauth.captions.uploadCaption(this.id, language, name, track, draft)
     return toReturn
   }
 
@@ -390,7 +390,7 @@ export class Video {
    * @param draft Whether or not the track is a draft.
    */
   public async updateCaption (track: Buffer, draft: boolean = null): Promise<Caption> {
-    const toReturn = await this.youtube.oauth.updateCaption(this.id, track, draft)
+    const toReturn = await this.youtube.oauth.captions.updateCaption(this.id, track, draft)
     return toReturn
   }
 }

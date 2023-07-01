@@ -147,7 +147,7 @@ export class Caption {
    * Must be using an access token with correct scopes.
    */
   public async fetch () {
-    const caption = await this.youtube.oauth.getCaption(this.videoId, this.id)
+    const caption = await this.youtube.oauth.captions.getCaption(this.videoId, this.id)
     return Object.assign(this, caption)
   }
 
@@ -158,7 +158,7 @@ export class Caption {
    * @param draft Whether or not the track is a draft.
    */
   public async update (track?: Buffer, draft: boolean = null): Promise<Caption> {
-    const newCaption = await this.youtube.oauth.updateCaption(this.id, track, draft)
+    const newCaption = await this.youtube.oauth.captions.updateCaption(this.id, track, draft)
     return Object.assign(this, { ...newCaption, full: true })
   }
 
@@ -169,7 +169,7 @@ export class Caption {
    * @param language The language to download the track in.
    */
   public download (format?: 'sbv' | 'scc' | 'srt' | 'ttml' | 'vtt', language?: string) {
-    return this.youtube.oauth.downloadCaption(this.id, format, language)
+    return this.youtube.oauth.captions.downloadCaption(this.id, format, language)
   }
 
   /**
@@ -177,6 +177,6 @@ export class Caption {
    * Must be using an access token with correct scopes.
    */
   public delete () {
-    return this.youtube.oauth.deleteCaption(this.id)
+    return this.youtube.oauth.captions.deleteCaption(this.id)
   }
 }
