@@ -1,4 +1,4 @@
-import { Parser } from '../util'
+import { Parser } from '../oauth'
 import { CommentThreadParts, VideoParts } from '../types/Parts'
 import { Thumbnail, ISODuration, PageOptions, PaginatedResponse } from '../types'
 import { YouTube, VideoUpdateResource, Caption } from '..'

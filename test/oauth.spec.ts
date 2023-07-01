@@ -61,7 +61,8 @@ describe('OAuth', () => {
 
   it('should fetch my uploads', async () => {
     const youtube = new YouTube(key, token)
-    uploads = (await youtube.getPlaylistItems(channel.data.contentDetails.relatedPlaylists?.uploads)).items
+    uploads = (await youtube.getPlaylistItems(
+      channel.data.contentDetails.relatedPlaylists?.uploads)).items
 
     expect(uploads.length).to.be.greaterThan(0)
   })
@@ -69,7 +70,8 @@ describe('OAuth', () => {
   it('should post comments', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.postComment(text, channel.id, uploads[0].id)
+    const comment = await youtube.oauth.comments.postComment(
+      text, channel.id, uploads[0].id)
     commentId = comment.id
 
     expect(comment.datePublished.getDay()).to.equal(new Date().getDay())
@@ -78,7 +80,7 @@ describe('OAuth', () => {
   it('should edit comments', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.editComment(commentId, text)
+    const comment = await youtube.oauth.comments.editComment(commentId, text)
 
     expect(comment.text.original).to.equal(text)
   })
@@ -86,7 +88,7 @@ describe('OAuth', () => {
   it('should post comment replies', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.replyToComment(commentId, text)
+    const comment = await youtube.oauth.comments.replyToComment(commentId, text)
     commentReplyId = comment.id
 
     expect(comment.parentCommentId).to.equal(commentId)
@@ -95,14 +97,14 @@ describe('OAuth', () => {
   it('should edit comment replies', async () => {
     const youtube = new YouTube(key, token)
     const text = `testing ${new Date()}`
-    const comment = await youtube.oauth.editComment(commentReplyId, text)
+    const comment = await youtube.oauth.comments.editComment(commentReplyId, text)
 
     expect(comment.text.original).to.equal(text)
   })
 
   it('should delete comments', async () => {
     const youtube = new YouTube(key, token)
-    await youtube.oauth.deleteComment(commentId)
+    await youtube.oauth.comments.deleteComment(commentId)
   })
 
   it('should (un)subscribe to channels', async () => {
