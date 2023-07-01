@@ -291,7 +291,7 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public async getRating (): Promise<'like' | 'dislike' | 'none' | 'unspecified'> {
-    const response = await this.youtube.oauth.getMyRatings([ this.id ])
+    const response = await this.youtube.oauth.videos.getMyRatings([ this.id ])
     return response[0].rating
   }
 
@@ -300,7 +300,7 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public like () {
-    return this.youtube.oauth.rateVideo(this.id, 'like')
+    return this.youtube.oauth.videos.rateVideo(this.id, 'like')
   }
 
   /**
@@ -308,7 +308,7 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public dislike () {
-    return this.youtube.oauth.rateVideo(this.id, 'dislike')
+    return this.youtube.oauth.videos.rateVideo(this.id, 'dislike')
   }
 
   /**
@@ -316,7 +316,7 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public unrate () {
-    return this.youtube.oauth.rateVideo(this.id, 'none')
+    return this.youtube.oauth.videos.rateVideo(this.id, 'none')
   }
 
   /**
@@ -328,7 +328,7 @@ export class Video {
    * @param language The language that the reporter speaks.
    */
   public reportAbuse (reasonId: string, secondaryReasonId?: string, comments?: string, language?: string) {
-    return this.youtube.oauth.reportAbuse(this.id, reasonId, secondaryReasonId, comments, language)
+    return this.youtube.oauth.videos.reportAbuse(this.id, reasonId, secondaryReasonId, comments, language)
   }
 
   /**
@@ -336,7 +336,7 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public delete () {
-    return this.youtube.oauth.deleteVideo(this.id)
+    return this.youtube.oauth.videos.deleteVideo(this.id)
   }
 
   /**
@@ -347,7 +347,7 @@ export class Video {
    * @param video The updated video object.
    */
   public async update (video: VideoUpdateResource): Promise<Video> {
-    const newVideo = await this.youtube.oauth.updateVideo(video)
+    const newVideo = await this.youtube.oauth.videos.updateVideo(video)
     return Object.assign(this, { ...newVideo, full: true })
   }
 
@@ -357,7 +357,7 @@ export class Video {
    * @param image The image data and type to upload.
    */
   public async setThumbnail (image: { type: 'jpeg' | 'png'; data: Buffer }): Promise<typeof Video.prototype.thumbnails> {
-    const newThumbnails = await this.youtube.oauth.setThumbnail(this.id, image)
+    const newThumbnails = await this.youtube.oauth.videos.setThumbnail(this.id, image)
     return Object.assign(this.thumbnails, newThumbnails)
   }
 

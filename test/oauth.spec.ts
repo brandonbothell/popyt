@@ -120,13 +120,14 @@ describe('OAuth', () => {
   it('should rate videos', async () => {
     const youtube = new YouTube(key, token)
 
-    await youtube.oauth.rateVideo('E6UTz_Doic8', 'like')
-    await youtube.oauth.rateVideo('E6UTz_Doic8', 'none')
+    await youtube.oauth.videos.rateVideo('E6UTz_Doic8', 'like')
+    await youtube.oauth.videos.rateVideo('E6UTz_Doic8', 'none')
   })
 
   it('should retrieve ratings on videos', async () => {
     const youtube = new YouTube(key, token)
-    const rating = (await youtube.oauth.getMyRatings([ 'E6UTz_Doic8' ]))[0].rating
+    const rating =
+      (await youtube.oauth.videos.getMyRatings([ 'E6UTz_Doic8' ]))[0].rating
 
     expect(rating).to.equal('none')
   })
@@ -139,7 +140,8 @@ describe('OAuth', () => {
     const image = readFileSync('./test/data/image.jpg')
 
     const youtube = new YouTube(key, token)
-    const thumbnails = await youtube.oauth.setThumbnail(thumbnailVideoId, { type: 'jpeg', data: image })
+    const thumbnails = await youtube.oauth.videos.setThumbnail(
+      thumbnailVideoId, { type: 'jpeg', data: image })
 
     expect(thumbnails.default?.url).to.be.a('string')
   })
