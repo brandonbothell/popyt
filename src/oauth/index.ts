@@ -10,6 +10,7 @@ import * as Part from '../types/Parts'
 import * as Data from '../constants'
 import YouTube, * as YT from '..'
 import { OAuthVideos } from './videos'
+import { OAuthPlaylists } from './playlists'
 import { OAuthComments } from './comments'
 
 /**
@@ -28,6 +29,12 @@ export class OAuth {
    * All OAuth methods related to [videos](./Library_Exports.Video)/video ratings.
    */
   public videos = new OAuthVideos(this)
+
+  /**
+   * All OAuth methods related to
+   * [playlists](./Library_Exports.Playlist)/playlist items.
+   */
+  public playlists = new OAuthPlaylists(this)
 
   /**
    * 
@@ -114,190 +121,6 @@ export class OAuth {
     this.checkTokenAndThrow()
     return this.youtube._request.delete('subscriptions', {
       params: { id: subscriptionId },
-      authorizationOptions: { accessToken: true }
-    })
-  }
-
-  /**
-   * Creates a [Playlist](./Library_Exports.Playlist#).  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param title A title for the playlist.
-   * @param description A description of the playlist.
-   * @param privacy Whether the video is private, public, or unlisted.
-   * @param tags Tags pertaining to the playlist.
-   * @param language The language of the playlist's default title and description.
-   * @param localizations Translated titles and descriptions.
-   */
-  public async createPlaylist (title: string, description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
-    localizations?: {[language: string]: { title: string; description: string }}): Promise<YT.Playlist> {
-
-    this.checkTokenAndThrow()
-
-    const data: typeof Data.PLAYLIST_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_DATA))
-    const parts: string[] = [ 'id', 'player' ]
-
-    data.snippet = { title }
-    data.snippet.defaultLanguage = language ? language : this.youtube.language
-
-    if (description) data.snippet.description = description
-    if (privacy) data.status = { privacyStatus: privacy }
-    if (tags) data.snippet.tags = tags.join(',')
-    if (localizations) data.localizations = localizations
-
-    if (privacy) parts.push('status')
-    if (localizations) parts.push('localizations')
-
-    const response = await this.youtube._request.post('playlists', {
-      params: { part: parts.join(',') },
-      data: JSON.stringify(data),
-      authorizationOptions: { accessToken: true }
-    })
-    return new YT.Playlist(this.youtube, response)
-  }
-
-  /**
-   * Updates a [Playlist](./Library_Exports.Playlist#).  
-   * **If your request does not specify a value for a property that already has a value,
-   * the property's existing value will be deleted.**  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param playlistResolvable The playlist to update.
-   * @param title A title for the playlist.
-   * @param description A description of the playlist.
-   * @param privacy Whether the video is private, public, or unlisted.
-   * @param tags Tags pertaining to the playlist.
-   * @param language The language of the playlist's default title and description.
-   * @param localizations Translated titles and descriptions.
-   */
-  public async updatePlaylist (playlistResolvable: YT.PlaylistResolvable, title: string,
-    description?: string, privacy?: 'private' | 'public' | 'unlisted', tags?: string[], language?: string,
-    localizations?: {[language: string]: { title: string; description: string }}): Promise<YT.Playlist> {
-
-    this.checkTokenAndThrow()
-
-    const playlist = await this.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
-    const data: typeof Data.PLAYLIST_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_DATA))
-    const parts: string[] = [ 'id', 'player', 'snippet' ]
-
-    data.id = typeof playlist === 'string' ? playlist : playlist.id
-    data.snippet = { title }
-    data.snippet.defaultLanguage = language ? language : this.youtube.language
-
-    if (description) data.snippet.description = description
-    if (privacy) data.status = { privacyStatus: privacy }
-    if (tags) data.snippet.tags = tags.join(',')
-    if (localizations) data.localizations = localizations
-
-    if (privacy) parts.push('status')
-    if (localizations) parts.push('localizations')
-
-    const response = await this.youtube._request.put('playlists', {
-      params: { part: parts.join(',') },
-      data: JSON.stringify(data),
-      authorizationOptions: { accessToken: true }
-    })
-    return new YT.Playlist(this.youtube, response)
-  }
-
-  /**
-   * Deletes a [Playlist](./Library_Exports.Playlist#).  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param playlistResolvable The playlist to delete.
-   */
-  public async deletePlaylist (playlistResolvable: YT.PlaylistResolvable): Promise<void> {
-    this.checkTokenAndThrow()
-
-    const playlist = await this.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
-    return this.youtube._request.delete('playlists', {
-      params: { id: typeof playlist === 'string' ? playlist : playlist.id },
-      authorizationOptions: { accessToken: true }
-    })
-  }
-
-  /**
-   * Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param playlistResolvable The playlist to add the video to.
-   * @param videoResolvable The video to add to the playlist.
-   * @param position The position to add the video in. Defaults to the end.
-   * @param note A user-generated note on the video.
-   * @returns A partial video object.
-   */
-  public async addPlaylistItem (playlistResolvable: YT.PlaylistResolvable, videoResolvable: YT.VideoResolvable,
-    position?: number, note?: string): Promise<YT.Video> {
-
-    this.checkTokenAndThrow()
-
-    const playlist = await this.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
-    const video = await this.youtube._resolutionService.resolve(videoResolvable, YT.Video)
-
-    const data: typeof Data.PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_ITEM_DATA))
-    const parts: string[] = [ 'id', 'snippet' ]
-
-    data.snippet.playlistId = typeof playlist === 'string' ? playlist : playlist.id
-    data.snippet.resourceId.videoId = typeof video === 'string' ? video : video.id
-
-    if (position) data.snippet.position = position
-    if (note) data.contentDetails = { note }
-
-    if (note) parts.push('contentDetails')
-
-    const response = await this.youtube._request.post('playlistItems', {
-      params: { part: parts.join(',') },
-      data: JSON.stringify(data),
-      authorizationOptions: { accessToken: true }
-    })
-    return new YT.Video(this.youtube, response)
-  }
-
-  /**
-   * Edits a playlist item.  
-   * **If your request does not specify a value for a property that already has a value,
-   * the property's existing value will be deleted.**  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param id The ID of the playlist item to edit.
-   * @param playlistResolvable The playlist that the video is in.
-   * @param videoResolvable The video that's in the playlist.
-   * @param position The position to change the playlist item's to.
-   * @param note The note to change the playlist item's to.
-   * @returns A partial video object.
-   */
-  public async updatePlaylistItem (id: string, playlistResolvable: YT.PlaylistResolvable,
-    videoResolvable: YT.VideoResolvable, position?: number, note?: string): Promise<YT.Video> {
-
-    this.checkTokenAndThrow()
-
-    const playlist = await this.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
-    const video = await this.youtube._resolutionService.resolve(videoResolvable, YT.Video)
-
-    const data: typeof Data.PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_ITEM_DATA))
-    const parts: string[] = [ 'id', 'snippet' ]
-
-    data.id = id
-    data.snippet.playlistId = typeof playlist === 'string' ? playlist : playlist.id
-    data.snippet.resourceId.videoId = typeof video === 'string' ? video : video.id
-
-    if (position) data.snippet.position = position
-    if (note) data.contentDetails = { note }
-
-    if (note) parts.push('contentDetails')
-
-    const response = await this.youtube._request.put('playlistItems', {
-      params: { part: parts.join(',') },
-      data: JSON.stringify(data),
-      authorizationOptions: { accessToken: true }
-    })
-    return new YT.Video(this.youtube, response)
-  }
-
-  /**
-   * Deletes a playlist item.  
-   * Last tested 05/18/2020 11:48. PASSING
-   * @param id The ID of the playlist item to delete.
-   */
-  public deletePlaylistItem (id: string): Promise<void> {
-    this.checkTokenAndThrow()
-    return this.youtube._request.delete('playlistItems', {
-      params: { id },
       authorizationOptions: { accessToken: true }
     })
   }
