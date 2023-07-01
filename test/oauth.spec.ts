@@ -309,8 +309,8 @@ describe('OAuth', () => {
     }
 
     const youtube = new YouTube(key, token)
-    const tracks = await youtube.oauth.getCaptions(captionVideoId)
-    const track = await youtube.oauth.getCaption(captionVideoId, tracks[0].id)
+    const tracks = await youtube.oauth.captions.getCaptions(captionVideoId)
+    const track = await youtube.oauth.captions.getCaption(captionVideoId, tracks[0].id)
 
     trackId = track.id
 
@@ -321,14 +321,14 @@ describe('OAuth', () => {
 
   it('should download caption tracks', async () => {
     const youtube = new YouTube(key, token)
-    captionTrack = await youtube.oauth.downloadCaption(trackId, 'sbv')
+    captionTrack = await youtube.oauth.captions.downloadCaption(trackId, 'sbv')
 
     expect(captionTrack).to.be.an.instanceOf(Buffer)
   })
 
   it('should update caption tracks', async () => {
     const youtube = new YouTube(key, token)
-    const track = await youtube.oauth.updateCaption(trackId, captionTrack, false)
+    const track = await youtube.oauth.captions.updateCaption(trackId, captionTrack, false)
 
     expect(track.draft).to.equal(false)
   })
@@ -341,7 +341,7 @@ describe('OAuth', () => {
       return
     }
 
-    await youtube.oauth.deleteCaption(trackId)
+    await youtube.oauth.captions.deleteCaption(trackId)
   })
 
   it('should upload caption tracks', async () => {
@@ -350,7 +350,8 @@ describe('OAuth', () => {
     }
 
     const youtube = new YouTube(key, token)
-    const track = await youtube.oauth.uploadCaption(captionVideoId, 'en_US', 'Main', captionTrack, false)
+    const track = await youtube.oauth.captions.uploadCaption(
+      captionVideoId, 'en_US', 'Main', captionTrack, false)
 
     expect(track.draft).to.equal(false)
     expect(track.name).to.equal('Main')
