@@ -85,7 +85,7 @@ export class OAuth {
    * Set pages to a value <=0 to fetch all.
    * @param parts The parts of the videos to fetch.
    */
-  public async getMyUploads (pageOptions: YT.PageOptions, parts?: Part.PlaylistItemParts) {
+  public async getMyUploads (pageOptions?: YT.PageOptions, parts?: Part.PlaylistItemParts) {
     const channel = await this.getMe()
     if (!channel.data.contentDetails) await channel.fetch([ 'contentDetails' ])
 

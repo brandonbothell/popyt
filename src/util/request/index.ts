@@ -25,37 +25,45 @@ export class Request {
     return this._get(url, { auth })
   }
 
-  public post (subUrl: string, { authorizationOptions, params, data }: DefaultRequestOptions & { data?: any } = {}) {
+  public post (subUrl: string,
+    { authorizationOptions, params, data, contentType }: DefaultRequestOptions & { data?: any; contentType: string } =
+    { contentType: 'application/json' }) {
+
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
-    return this._post(url, { auth, data })
+    return this._post(url, { auth, data, contentType })
   }
 
-  public put (subUrl: string, { authorizationOptions, params, data }: DefaultRequestOptions & { data?: any } = {}) {
+  public put (subUrl: string, { authorizationOptions, params, data, contentType }:
+  DefaultRequestOptions & { data?: any; contentType?: string } = {}) {
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
-    return this._put(url, { auth, data })
+    return this._put(url, { auth, data, contentType })
   }
 
-  public delete (subUrl: string, { authorizationOptions, params }: DefaultRequestOptions = {}) {
+  public delete (subUrl: string, { authorizationOptions, params }:
+  DefaultRequestOptions = {}) {
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._delete(url, { auth })
   }
 
-  public imagePost (subUrl: string, { authorizationOptions, params, image }: DefaultRequestOptions & { image: Image }) {
+  public imagePost (subUrl: string, { authorizationOptions, params, image }:
+  DefaultRequestOptions & { image: Image }) {
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._post(url, { auth, data: image.data, contentType: `image/${image.type}` })
   }
 
-  public streamPut (subUrl: string, { authorizationOptions, params, stream }: DefaultRequestOptions & { stream: Buffer }){
+  public streamPut (subUrl: string, { authorizationOptions, params, stream }:
+  DefaultRequestOptions & { stream: Buffer }){
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     return this._put(url, { auth, data: stream, contentType: 'application/octet-stream' })
   }
 
-  public multipartStreamPost (subUrl: string, { authorizationOptions, params, parts }: DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
+  public multipartStreamPost (subUrl: string, { authorizationOptions, params, parts }:
+  DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     const boundary = this.parser.generateBoundary()
@@ -65,12 +73,15 @@ export class Request {
     }
 
     // First part is JSON, the rest are streams
-    for (let i = 0; i < parts.length; i++) parts[i].contentType = i === 0 ? 'application/json' : 'application/octet-stream'
+    for (let i = 0; i < parts.length; i++) {
+      parts[i].contentType = i === 0 ? 'application/json' : 'application/octet-stream'
+    }
 
     return this._multipart(HttpMethod.POST, url, boundary, parts, auth)
   }
 
-  public multipartImagePost (subUrl: string, { authorizationOptions, params, parts, defaultImageType }: DefaultRequestOptions &
+  public multipartImagePost (subUrl: string,
+    { authorizationOptions, params, parts, defaultImageType }: DefaultRequestOptions &
     { parts: RequestPart<string | Buffer>[]; defaultImageType?: 'jpeg' | 'png' | 'stream' }) {
 
     const auth = this.getAuthorization(authorizationOptions)
@@ -98,7 +109,8 @@ export class Request {
     return this._multipart(HttpMethod.POST, url, boundary, parts, auth)
   }
 
-  public multipartStreamPut (subUrl: string, { authorizationOptions, params, parts }: DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
+  public multipartStreamPut (subUrl: string, { authorizationOptions, params, parts }:
+  DefaultRequestOptions & { parts: RequestPart<Buffer | string>[] }) {
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
     const boundary = this.parser.generateBoundary()

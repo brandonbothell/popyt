@@ -76,6 +76,7 @@ export class Handler {
         }
 
         if (parsed.error) {
+          console.log(parsed.error.errors)
           return reject(new Error(parsed.error.message))
         } else if (response.statusCode === 404) {
           return reject(new Error('HTTP status code 404 Not Found'))

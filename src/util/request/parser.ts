@@ -25,21 +25,27 @@ export class Parser {
   /**
    * Content type defaults to **application/json**
    */
-  public formRequestOptions (url: URL, httpMethod: keyof typeof HttpMethod, { contentType = 'application/json', accessToken }:
-  { contentType?: string; accessToken?: string }): RequestOptions {
+  public formRequestOptions (url: URL, httpMethod: keyof typeof HttpMethod,
+    { contentType, accessToken }:
+    { contentType?: string; accessToken?: string }): RequestOptions {
+
+    const headers = {}
+
+    // , Accept: 'application/json'
+    if (contentType) headers['Content-Type'] = contentType
+    // Default to json request data for POST and PUT methods
+    else if (httpMethod === 'POST' || httpMethod === 'PUT') {
+      headers['Content-Type'] = 'application/json'
+    }
+    if (accessToken) headers['Authorization'] = `Bearer ${accessToken}`
 
     const options: RequestOptions = {
       hostname: url.hostname,
       port: url.port ? url.port : 443,
       path: url.pathname + url.search,
       method: httpMethod,
-      headers: {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        'Content-Type': contentType, Accept: 'application/json'
-      }
+      headers
     }
-
-    if (accessToken) options.headers['Authorization'] = `Bearer ${accessToken}`
 
     return options
   }

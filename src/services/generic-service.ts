@@ -9,7 +9,7 @@ import YouTube,
  */
 export class GenericService {
   public readonly _getItemAllowedTypes = new Set([ Video, Channel, Playlist, Comment, Subscription, VideoCategory, ChannelSection, Caption ].map(c => c.name))
-  public readonly _getMineAllowed = new Set([ Playlist, Subscription, ChannelSection ].map(c => c.name))
+  public readonly _getMineAllowed = new Set([ Playlist, Subscription, ChannelSection, Channel ].map(c => c.name))
 
   constructor (private youtube: YouTube) {
 
@@ -84,9 +84,10 @@ export class GenericService {
       options.hl = this.youtube.language
     }
 
-    const result: {
-      items: any[]
-    } = await this.youtube._request.get(type.endpoint, { params: options, authorizationOptions: { apiKey: true } })
+    const result: { items?: any[] } = await this.youtube._request.get(type.endpoint, {
+      params: options,
+      authorizationOptions: { [options.mine ? 'accessToken' : 'apiKey']: true }
+    })
 
     if (!result.items?.length) {
       return Promise.reject(new Error('Item not found'))
@@ -280,7 +281,7 @@ export class GenericService {
     while (true) {
       const apiResponse = await this.youtube._request.get(endpoint, {
         params: options,
-        authorizationOptions: { apiKey: true }
+        authorizationOptions: { [options.mine ? 'accessToken' : 'apiKey']: true }
       })
 
       if (!apiResponse.items?.length) {
