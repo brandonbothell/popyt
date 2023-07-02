@@ -26,8 +26,8 @@ export class Request {
   }
 
   public post (subUrl: string,
-    { authorizationOptions, params, data, contentType }: DefaultRequestOptions & { data?: any; contentType: string } =
-    { contentType: 'application/json' }) {
+    { authorizationOptions, params, data, contentType }:
+    DefaultRequestOptions & { data?: any; contentType?: string } = {}) {
 
     const auth = this.getAuthorization(authorizationOptions)
     const url = this.parser.formUrl({ subUrl, params, auth })
