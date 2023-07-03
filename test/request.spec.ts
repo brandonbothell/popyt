@@ -38,7 +38,8 @@ describe('Requests', () => {
         data: testData
       }, {
         data: readFileSync(path.join(process.cwd(), 'package.json'))
-      }]
+      }],
+      accept: 'application/json'
     }).then(result => result.messageDetails)
 
     expect(result.startsWith('POST https://apichallenges.herokuapp.com/mirror/request/')).to.equal(true)

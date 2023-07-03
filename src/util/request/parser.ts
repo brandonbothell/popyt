@@ -26,8 +26,8 @@ export class Parser {
    * Content type defaults to **application/json**
    */
   public formRequestOptions (url: URL, httpMethod: keyof typeof HttpMethod,
-    { contentType, accessToken }:
-    { contentType?: string; accessToken?: string }): RequestOptions {
+    { contentType, accessToken, accept }:
+    { contentType?: string; accessToken?: string; accept?: string }): RequestOptions {
 
     const headers = {}
 
@@ -38,6 +38,7 @@ export class Parser {
       headers['Content-Type'] = 'application/json'
     }
     if (accessToken) headers['Authorization'] = `Bearer ${accessToken}`
+    if (accept) headers['Accept'] = accept
 
     const options: RequestOptions = {
       hostname: url.hostname,

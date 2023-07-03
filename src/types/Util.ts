@@ -23,6 +23,7 @@ export type RequestPart<T = any> = { data: T; contentType?: string }
 export type DefaultRequestOptions = {
   authorizationOptions?: AuthorizationOptions
   params?: SearchParams
+  accept?: string
 }
 
 export enum HttpMethod {
