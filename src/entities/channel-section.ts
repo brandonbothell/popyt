@@ -100,7 +100,7 @@ export class ChannelSection {
     this.id = section.id
 
     if (section.snippet) {
-      this.type = section.snippet.type
+      this.type = section.snippet.type.toLowerCase()
       this.channelId = section.snippet.channelId
       this.name = section.snippet.title
       this.position = section.snippet.position

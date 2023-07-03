@@ -30,31 +30,17 @@ describe('OAuth channels', () => {
   })
 
   it('should unset channel watermarks', async () => {
-
-    if (!channel.id) {
-      channel.id = (await youtube.oauth.getMe()).id
-    }
-
     await youtube.oauth.channels.unsetChannelWatermark(channel.id)
   })
 
-  it('should update channel localizations', async () => {
-
-    if (!channel.id) {
-      channel.id = (await youtube.oauth.getMe()).id
-    }
-
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    await youtube.oauth.channels.updateChannelLocalizations(channel.id, { de_DE:
-      { title: 'nicht brandon bothell', description: 'das ist sehr interresant' } })
+  // CURRENTLY BROKEN in the API
+  it('should fail to update channel localizations', async () => {
+    expect(await youtube.oauth.channels.updateChannelLocalizations(channel.id, {
+      de: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' }
+    }).catch(e => e.message)).to.equal('Request contains an invalid argument.')
   })
 
   it('should update a channel\'s made for kids status', async () => {
-
-    if (!channel) {
-      channel = await youtube.oauth.getMe()
-    }
-
     channel = await youtube.oauth.channels.setChannelMadeForKids(channel.id, false)
     expect(channel.kids.selfDeclaredMadeForKids).to.equal(false)
   })
@@ -68,11 +54,11 @@ describe('OAuth channels', () => {
 
   it('should work with adding channel sections', async () => {
     const section = await youtube.oauth.channels.addChannelSection(
-      'multipleChannels', 'Testing woot', undefined, undefined,
+      'multiplechannels', 'Testing woot', undefined, undefined,
       [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ])
     sectionId = section.id
 
-    expect(section.type).to.equal('multipleChannels')
+    expect(section.type).to.equal('multiplechannels')
     expect(section.name).to.equal('Testing woot')
     expect(section.channelId).to.equal(channel.id)
     expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw')
@@ -81,10 +67,11 @@ describe('OAuth channels', () => {
 
   it('should work with updating channel sections', async () => {
     const section = await youtube.oauth.channels.updateChannelSection(sectionId,
-      'multiplePlaylists', 'Test...', 1,
+      'multipleplaylists', 'Test...', 1,
       [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ])
+    sectionId = section.id
 
-    expect(section.type).to.equal('multiplePlaylists')
+    expect(section.type).to.equal('multipleplaylists')
     expect(section.name).to.equal('Test...')
     expect(section.position).to.equal(1)
     expect(section.playlistIds).to.contain('PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74')

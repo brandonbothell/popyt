@@ -15,7 +15,7 @@ export class VideoAbuseReportReason {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'id,snippet'
+  public static part = 'snippet'
 
   /**
    * The fields to request for this entity.

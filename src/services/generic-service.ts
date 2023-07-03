@@ -1,6 +1,6 @@
 import { Cache } from '../util'
 import { ItemTypes, ItemReturns, PaginatedResponse, PaginatedItemType, PaginatedItemOptions,
-  PaginatedType, Resolvable, PaginatedInstance, PaginatedRequestParams } from '../types'
+  PaginatedType, Resolvable, PaginatedInstance, PaginatedRequestParams, AuthorizationOptions } from '../types'
 import YouTube,
 { Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
 
@@ -119,8 +119,8 @@ export class GenericService {
    * @returns An object containing the array of instantiated entities as well as possible next and previous page tokens.
    */
   public async getPaginatedItems<T extends PaginatedInstance = PaginatedInstance>
-  ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts, ...otherFilters }: PaginatedItemOptions):
-  Promise<PaginatedResponse<T>> {
+  ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts, ...otherFilters }: PaginatedItemOptions,
+    auth?: AuthorizationOptions): Promise<PaginatedResponse<T>> {
 
     const name = PaginatedItemType[type] as keyof typeof PaginatedItemType
 
@@ -254,7 +254,7 @@ export class GenericService {
 
     if (pageToken) options.pageToken = pageToken
 
-    const toReturn = await this.fetchPages(pages, endpoint, options, clazz) as PaginatedResponse<T>
+    const toReturn = await this.fetchPages(pages, endpoint, options, clazz, auth) as PaginatedResponse<T>
 
     if (this.youtube._shouldCache) this.youtube._cache(cacheKey, toReturn)
 
@@ -266,7 +266,8 @@ export class GenericService {
    * If endpoint is `search`, then leave undefined.
    */
   public async fetchPages<T extends PaginatedType = PaginatedType> (pages: number, endpoint: string, options:
-  { part: string; maxResults?: number; hl?: string; [key: string]: any }, clazz?: T): Promise<PaginatedResponse<InstanceType<T>>> {
+  { part: string; maxResults?: number; hl?: string; [key: string]: any }, clazz?: T,
+  auth?: AuthorizationOptions): Promise<PaginatedResponse<InstanceType<T>>> {
 
     if (!clazz && endpoint !== 'search') {
       return Promise.reject(new Error('Endpoints other than search must specify an entity class'))
@@ -281,7 +282,7 @@ export class GenericService {
     while (true) {
       const apiResponse = await this.youtube._request.get(endpoint, {
         params: options,
-        authorizationOptions: { [options.mine ? 'accessToken' : 'apiKey']: true }
+        authorizationOptions: auth ?? { [options.mine ? 'accessToken' : 'apiKey']: true }
       })
 
       if (!apiResponse.items?.length) {

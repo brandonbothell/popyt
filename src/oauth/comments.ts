@@ -33,6 +33,7 @@ export class OAuthComments {
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
+
     return new YT.Comment(this.oauth.youtube, result, true)
   }
 

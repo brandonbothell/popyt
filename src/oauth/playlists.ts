@@ -25,7 +25,7 @@ export class OAuthPlaylists {
     this.oauth.checkTokenAndThrow()
 
     const data: typeof Data.PLAYLIST_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_DATA))
-    const parts: string[] = [ 'id', 'player' ]
+    const parts: string[] = [ 'id', 'player', 'snippet' ]
 
     data.snippet = { title }
     data.snippet.defaultLanguage = language ? language : this.oauth.youtube.language

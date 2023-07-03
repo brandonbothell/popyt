@@ -185,7 +185,7 @@ export class Comment {
       this.rateable = comment.snippet.canRate
       this.popular = comment.snippet.likeCount >= 100
       this.likes = comment.snippet.likeCount
-      this.datePublished = comment.snippet.publishedAt
+      this.datePublished = new Date(comment.snippet.publishedAt)
       this.dateEdited = comment.snippet.updatedAt
       this.parentCommentId = comment.snippet.parentId
 

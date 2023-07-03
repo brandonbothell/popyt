@@ -165,6 +165,9 @@ export class OAuthVideos {
    */
   public async getVideoAbuseReportReasons () {
     this.oauth.checkTokenAndThrow()
-    return (await this.oauth.youtube._genericService.getPaginatedItems({ type: YT.PaginatedItemType.VideoAbuseReportReasons })).items as YT.VideoAbuseReportReason[]
+    return (await this.oauth.youtube._genericService.getPaginatedItems(
+      { type: YT.PaginatedItemType.VideoAbuseReportReasons },
+      { accessToken: true })
+    ).items as YT.VideoAbuseReportReason[]
   }
 }

@@ -22,6 +22,7 @@ describe('OAuth', () => {
   })
 
   it('should work with updating playlists', async () => {
+    if (!playlistId) expect.fail('No playlist to test with')
     const playlist = await youtube.oauth.playlists.updatePlaylist(
       playlistId, 'Other playlist', 'An awesome playlist...')
 
@@ -30,6 +31,7 @@ describe('OAuth', () => {
   })
 
   it('should work with adding playlist items', async () => {
+    if (!playlistId) expect.fail('No playlist to test with')
     const video = await youtube.oauth.playlists.addPlaylistItem(
       playlistId, 'dQw4w9WgXcQ', 0, 'A fantastic song!')
     playlistItemId = video.data.id
@@ -39,18 +41,21 @@ describe('OAuth', () => {
   })
 
   it('should work with updating playlist items', async () => {
+    if (!playlistItemId) expect.fail('No playlist item to test with')
     const video = await youtube.oauth.playlists.updatePlaylistItem(
       playlistItemId, playlistId, 'dQw4w9WgXcQ', 0, 'A fantastic song...')
 
-    expect(video.data.contentDetails.note).to.equal('A fantastic song...')
+    expect(video.note).to.equal('A fantastic song...')
     expect(video.data.kind).to.equal('youtube#playlistItem')
   })
 
   it('should work with deleting playlist items', async () => {
+    if (!playlistItemId) expect.fail('No playlist item to test with')
     await youtube.oauth.playlists.deletePlaylistItem(playlistItemId)
   })
 
   it('should work with deleting playlists', async () => {
+    if (!playlistId) expect.fail('No playlist to test with')
     await youtube.oauth.playlists.deletePlaylist(playlistId)
   })
 })

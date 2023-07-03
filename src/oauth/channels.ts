@@ -36,6 +36,7 @@ export class OAuthChannels {
 
   /**
    * Updates a channel's localizations.
+   * **CURRENTLY BROKEN in the API**
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * Last tested 05/20/2020 02:58. PASSING
@@ -176,7 +177,7 @@ export class OAuthChannels {
     data.snippet.type = type
 
     if (name) data.snippet.title = name
-    if (position) data.snippet.position = position
+    if (position != null) data.snippet.position = position
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
     if (resolvedPlaylists) data.contentDetails.playlists = resolvedPlaylists.map(resolution => typeof resolution === 'string' ? resolution : resolution.id)
     if (resolvedChannels) data.contentDetails.channels = resolvedChannels.map(resolution => typeof resolution === 'string' ? resolution : resolution.id)
@@ -188,7 +189,19 @@ export class OAuthChannels {
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
-    return new YT.ChannelSection(this.oauth.youtube, response)
+
+    if (response.kind !== 'youtube#channelSection') {
+      return Promise.reject(new Error('Failed to create channel section'))
+    }
+
+    // For some reason the response is just the first channel section
+    // C'mon, YouTube
+    const channelSections = await this.oauth.youtube.getChannelSections(response.snippet.channelId)
+    const createdSection = channelSections.find(position == null ?
+      section => section.position === channelSections.length - 1 :
+      section => section.position === position)
+
+    return createdSection
   }
 
   /**

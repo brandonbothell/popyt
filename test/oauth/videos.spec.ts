@@ -37,7 +37,10 @@ describe('OAuth videos', () => {
   })
 
   it('should set all available properties of abuse reasons', async () => {
-    const reason = (await youtube.oauth.videos.getVideoAbuseReportReasons())[0]
+    const reasons = await youtube.oauth.videos.getVideoAbuseReportReasons()
+    const reason = reasons.find(reason => reason.secondaryReasons)
+
+    if (!reason) expect.fail('No full abuse reason to test with')
 
     expect(reason.full).to.equal(true)
     expect(reason.id).to.be.a('string')
