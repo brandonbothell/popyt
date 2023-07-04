@@ -10,6 +10,12 @@ import { OAuthComments } from './comments'
 import { OAuthChannels } from './channels'
 import { OAuthCaptions } from './captions'
 
+export * from './videos'
+export * from './playlists'
+export * from './comments'
+export * from './channels'
+export * from './captions'
+
 /**
  * All methods requiring an OAuth access token.
  * Use `YouTube.oauth` to access these methods.

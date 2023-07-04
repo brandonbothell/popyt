@@ -1,6 +1,6 @@
 {
   "name": "popyt",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "A very easy to use promise-based Youtube Data v3 API.",
   "homepage": "https://brandonbothell.github.io/popyt/",
   "main": "out/index.js",

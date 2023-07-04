@@ -26,6 +26,9 @@ export type DefaultRequestOptions = {
   accept?: string
 }
 
+/**
+ * @ignore
+ */
 export enum HttpMethod {
   GET,
   PUT,
@@ -33,7 +36,11 @@ export enum HttpMethod {
   DELETE
 }
 
-export type Authorization = { apiKey?: string; accessToken?: string }
+/**
+ * @ignore
+ */
 export type AuthorizationOptions = { apiKey?: boolean; accessToken?: boolean }
+
+export type Authorization = { apiKey?: string; accessToken?: string }
 
 export type Image = { type: 'jpeg' | 'png'; data: Buffer }
