@@ -4,8 +4,8 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![GitHub issues](https://img.shields.io/github/issues/brandonbothell/popyt.svg)](https://github.com/brandonbothell/popyt/issues)
 [![GitHub stars](https://img.shields.io/github/stars/brandonbothell/popyt.svg)](https://github.com/brandonbothell/popyt/stargazers)
 [![GitHub license](https://img.shields.io/github/license/brandonbothell/popyt.svg)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
-[![Coverage status](https://codecov.io/gh/brandonbothell/popyt/branch/master/graph/badge.svg?token=OAV13MIW6S)](https://codecov.io/gh/brandonbothell/popyt)
-[![Actions status](https://github.com/brandonbothell/popyt/workflows/Test/badge.svg)](https://github.com/brandonbothell/popyt/actions)
+[![Release coverage](https://codecov.io/gh/brandonbothell/popyt/commit/ba1d51425a9cb8429297ee02ae6e9fde8d01dd10/graph/badge.svg?token=OAV13MIW6S)](https://codecov.io/gh/brandonbothell/popyt)
+[![Actions status](https://github.com/brandonbothell/popyt/workflows/CI/badge.svg)](https://github.com/brandonbothell/popyt/actions)
 [![DeepScan grade](https://deepscan.io/api/teams/21522/projects/24946/branches/772144/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21522&pid=24946&bid=772144)
 [![Downloads](https://img.shields.io/npm/dt/popyt.svg)](https://www.npmjs.com/package/popyt)
 [![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
@@ -59,10 +59,3 @@ console.log(search.items.map(v => v.title).join('\n')) // titles of 50 beautiful
 ```
 
 Note: This wrapper does not implement every feature of the YouTube API. If you would like anything added, feel free to open an issue. The limits imposed by the wrapper are not imposed by YouTube.
-
-# Development/Contributing
-## Before committing:
-
-* Run `yarn lint`.
-* Run `yarn coverage` or `npm run coverage` to check if you've added enough tests. It should display 100% statement, line, and branch coverage.
-* Also, make sure that every test passes.

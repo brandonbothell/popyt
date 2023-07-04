@@ -1,6 +1,6 @@
-/* istanbul ignore file */
-/* We ignore this file because OAuth endpoints are too taxing to test;
-   They are instead manually tested. */
+/**
+ * @module OAuth
+ */
 
 import { Cache } from '../util'
 import OAuth from '../oauth'

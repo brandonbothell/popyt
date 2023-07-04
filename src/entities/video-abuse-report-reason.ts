@@ -1,6 +1,3 @@
-/* istanbul ignore file */
-/* OAuth */
-
 import YouTube from '..'
 
 /**
