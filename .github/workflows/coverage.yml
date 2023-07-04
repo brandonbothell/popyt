@@ -1,6 +1,10 @@
-name: Coverage
+name: Release Coverage
 
-on: [workflow_dispatch]
+on: 
+  push:
+    branches:
+      - 'release'
+  workflow_dispatch:
 
 jobs:
   test:
@@ -8,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: 'release'
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: '20.3.0'

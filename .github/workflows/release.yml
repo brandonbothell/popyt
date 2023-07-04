@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: 'release'
     - name: Set git user
       run: |
           git config --global user.name "Brandon Bothell"
