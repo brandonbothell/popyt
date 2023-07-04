@@ -1,4 +1,4 @@
-export type ChannelSectionType = Lowercase<'allPlaylists' | 'completedEvents' |
+export type ChannelSectionType = 'allPlaylists' | 'completedEvents' |
 'likedPlaylists' | 'likes' | 'liveEvents' | 'multipleChannels' | 'multiplePlaylists' |
 'popularUploads' | 'postedPlaylists' | 'postedVideos' | 'recentActivity' |
-'recentPosts' | 'recentUploads' | 'singlePlaylist' | 'subscriptions' | 'upcomingEvents'>
+'recentPosts' | 'recentUploads' | 'singlePlaylist' | 'subscriptions' | 'upcomingEvents'

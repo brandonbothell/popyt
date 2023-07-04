@@ -54,7 +54,7 @@ describe('OAuth channels', () => {
 
   it('should work with adding channel sections', async () => {
     const section = await youtube.oauth.channels.addChannelSection(
-      'multiplechannels', 'Testing woot', undefined, undefined,
+      'multipleChannels', 'Testing woot', undefined, undefined,
       [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ])
     sectionId = section.id
 
@@ -67,7 +67,7 @@ describe('OAuth channels', () => {
 
   it('should work with updating channel sections', async () => {
     const section = await youtube.oauth.channels.updateChannelSection(sectionId,
-      'multipleplaylists', 'Test...', 1,
+      'multiplePlaylists', 'Test...', 1,
       [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ])
     sectionId = section.id
 

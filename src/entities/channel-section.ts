@@ -43,7 +43,7 @@ export class ChannelSection {
   /**
    * The type of this channel section.
    */
-  public type: ChannelSectionType
+  public type: Lowercase<ChannelSectionType>
 
   /**
    * The ID of the channel that created this channel section.
