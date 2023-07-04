@@ -197,9 +197,11 @@ export class OAuthChannels {
     // For some reason the response is just the first channel section
     // C'mon, YouTube
     const channelSections = await this.oauth.youtube.getChannelSections(response.snippet.channelId)
-    const createdSection = channelSections.find(position == null ?
-      section => section.position === channelSections.length - 1 :
-      section => section.position === position)
+    const createdSection = position == null ?
+      // Highest position
+      channelSections.reduce((prev, next) => next.position > prev.position ? next : prev) :
+      // Matching position
+      channelSections.find(section => section.position === position)
 
     return createdSection
   }
