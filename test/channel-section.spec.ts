@@ -53,15 +53,15 @@ describe('Channel sections', () => {
   it('should fetch playlists', async () => {
     if (!sections) throw new Error('No channel section object to test with')
 
-    const section = sections.find(s => s.playlistIds)
-    const antiSection = sections.find(s => !s.playlistIds)
+    const section = sections.find(s => s.playlistIds || s.type === 'allplaylists')
+    const antiSection = sections.find(s => !s.playlistIds && s.type !== 'allplaylists')
 
     if (!section || !antiSection) {
       expect.fail('Not enough data to fully test function behavior')
     }
 
-    await section.fetchPlaylists([ 'id' ])
-    await antiSection.fetchPlaylists([ 'id' ])
+    await section.fetchPlaylists(undefined, [ 'id' ])
+    await antiSection.fetchPlaylists(undefined, [ 'id' ])
 
     expect(section.playlists![0]).to.be.an.instanceOf(Playlist)
     expect(antiSection.playlists).to.equal(undefined)

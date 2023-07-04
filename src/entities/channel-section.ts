@@ -1,5 +1,5 @@
-import { ChannelParts, ChannelSectionParts, PlaylistParts } from '../types/Parts'
-import { YouTube, Playlist, Channel, ChannelSectionType } from '..'
+import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
+import { YouTube, Playlist, Channel, ChannelSectionType, PageOptions, PaginatedResponse, Subscription } from '..'
 
 /**
  * A YouTube [Channel](./Library_Exports.Channel#) section.
@@ -76,6 +76,13 @@ export class ChannelSection {
   public channels?: Channel[]
 
   /**
+   * The subscriptions in the channel section.  
+   * Only valid if `ChannelSection.type` is `subscriptions`.
+   * Only available after calling [ChannelSection.fetchChannels()](./Library_Exports.ChannelSection#fetchChannels).
+   */
+  public subscriptions?: PaginatedResponse<Subscription>
+
+  /**
    * The ID of this channel section.
    */
   public id: string
@@ -106,10 +113,8 @@ export class ChannelSection {
       this.position = section.snippet.position
     }
 
-    if (section.contentDetails) {
-      this.playlistIds = section.contentDetails.playlists
-      this.channelIds = section.contentDetails.channels
-    }
+    if (section.contentDetails?.playlists) this.playlistIds = section.contentDetails.playlists
+    if (section.contentDetails?.channels) this.channelIds = section.contentDetails.channels
   }
 
   /**
@@ -124,18 +129,17 @@ export class ChannelSection {
   /**
    * Fetches the channel section's playlists from the API and assigns them to the [ChannelSection.playlists](./Library_Exports.ChannelSection#playlists) property.
    */
-  public async fetchPlaylists (parts?: PlaylistParts) {
+  public async fetchPlaylists (pageOptions?: PageOptions, parts?: PlaylistParts) {
+    if (this.type === 'allplaylists') {
+      this.playlists = (await this.youtube.getChannelPlaylists(this.channelId, pageOptions, parts)).items
+      return this.playlists
+    }
+
     if (!this.playlistIds) {
       return
     }
 
-    const playlists = []
-
-    for (let i = 0; i < this.playlistIds.length; i++) {
-      playlists.push(await this.youtube.getPlaylist(this.playlistIds[i], parts))
-    }
-
-    this.playlists = playlists
+    this.playlists = await this.youtube.getPlaylist(this.playlistIds, parts)
     return this.playlists
   }
 
@@ -155,5 +159,14 @@ export class ChannelSection {
 
     this.channels = channels
     return this.channels
+  }
+
+  public async fetchSubscriptions (pageOptions?: PageOptions, parts?: SubscriptionParts) {
+    if (this.type !== 'subscriptions') {
+      return
+    }
+
+    this.subscriptions = await this.youtube.getChannelSubscriptions(this.channelId, pageOptions, parts)
+    return this.subscriptions
   }
 }
