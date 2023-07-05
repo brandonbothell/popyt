@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L10)
+[oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L10)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L10)
+[oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L10)
 
 ## Methods
 
@@ -58,7 +58,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:165](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L165)
+[oauth/channels.ts:165](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L165)
 
 ___
 
@@ -81,7 +81,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:257](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L257)
+[oauth/channels.ts:257](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L257)
 
 ___
 
@@ -105,7 +105,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:71](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L71)
+[oauth/channels.ts:71](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L71)
 
 ___
 
@@ -132,7 +132,7 @@ Last tested 05/19/2020 18:07. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:99](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L99)
+[oauth/channels.ts:99](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L99)
 
 ___
 
@@ -157,7 +157,7 @@ A partial subscription object.
 
 #### Defined in
 
-[oauth/channels.ts:271](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L271)
+[oauth/channels.ts:271](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L271)
 
 ___
 
@@ -180,7 +180,7 @@ Last tested 05/18/2020 18:23. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:128](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L128)
+[oauth/channels.ts:128](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L128)
 
 ___
 
@@ -203,7 +203,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:292](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L292)
+[oauth/channels.ts:292](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L292)
 
 ___
 
@@ -229,7 +229,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L20)
+[oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L20)
 
 ___
 
@@ -256,7 +256,7 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:46](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L46)
+[oauth/channels.ts:46](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L46)
 
 ___
 
@@ -286,7 +286,7 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Defined in
 
-[oauth/channels.ts:221](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L221)
+[oauth/channels.ts:221](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L221)
 
 ___
 
@@ -313,4 +313,4 @@ in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
 
 #### Defined in
 
-[oauth/channels.ts:146](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/channels.ts#L146)
+[oauth/channels.ts:146](https://github.com/brandonbothell/popyt/blob/1e16df9/src/oauth/channels.ts#L146)
