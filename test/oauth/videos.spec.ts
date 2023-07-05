@@ -29,6 +29,7 @@ describe('OAuth videos', () => {
       expect.fail('The environment variable YOUTUBE_THUMBNAIL_VIDEO_ID must be set for this test to be ran!')
     }
 
+    video = await youtube.getVideo(thumbnailVideoId)
     const image = readFileSync('./test/data/image.jpg')
     const thumbnails = await video.setThumbnail({ type: 'jpeg', data: image })
 

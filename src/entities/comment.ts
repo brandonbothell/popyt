@@ -216,8 +216,8 @@ export class Comment {
    * Must be using an access token with correct scopes.
    * @param text The new text of the comment.
    */
-  public edit (text: string) {
-    const comment = this.youtube.oauth.comments.editComment(this.id, text)
+  public async edit (text: string) {
+    const comment = await this.youtube.oauth.comments.editComment(this.id, text)
     return Object.assign(this, comment)
   }
 
