@@ -217,7 +217,8 @@ export class Comment {
    * @param text The new text of the comment.
    */
   public edit (text: string) {
-    return this.youtube.oauth.comments.editComment(this.id, text)
+    const comment = this.youtube.oauth.comments.editComment(this.id, text)
+    return Object.assign(this, comment)
   }
 
   /**

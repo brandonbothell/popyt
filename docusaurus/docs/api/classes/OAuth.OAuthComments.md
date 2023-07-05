@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L10)
+[oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L10)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L10)
+[oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L10)
 
 ## Methods
 
@@ -54,7 +54,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/comments.ts:131](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L131)
+[oauth/comments.ts:131](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L131)
 
 ___
 
@@ -78,7 +78,7 @@ Last tested 07/05/2021 17:40. PASSING
 
 #### Defined in
 
-[oauth/comments.ts:67](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L67)
+[oauth/comments.ts:67](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L67)
 
 ___
 
@@ -101,7 +101,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/comments.ts:89](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L89)
+[oauth/comments.ts:89](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L89)
 
 ___
 
@@ -126,7 +126,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L20)
+[oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L20)
 
 ___
 
@@ -150,7 +150,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/comments.ts:47](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L47)
+[oauth/comments.ts:47](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L47)
 
 ___
 
@@ -175,4 +175,4 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/comments.ts:104](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/comments.ts#L104)
+[oauth/comments.ts:104](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/comments.ts#L104)

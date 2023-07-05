@@ -1,5 +1,5 @@
 import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
-import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions, PaginatedResponse, Image } from '..'
+import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions, PaginatedResponse, Image, SubscriptionResolvable } from '..'
 
 /**
  * A YouTube channel.
@@ -303,9 +303,19 @@ export class Channel {
   /**
    * Unsubscribes from the channel.
    * Must be using an access token with correct scopes.
-   */
-  public unsubscribe () {
-    return this.youtube.oauth.channels.unsubscribeFromChannel(this.id)
+   * @param subscriptionResolvable The ID or object of the subscription to remove, if you have it.
+   * @param myId The ID of the authorized channel, if you have it.
+  */
+  public async unsubscribe (subscriptionResolvable?: SubscriptionResolvable, myId?: string) {
+    const subscription = subscriptionResolvable ?
+      await this.youtube._resolutionService.resolve(subscriptionResolvable, Subscription) :
+      await this.youtube._subscriptionService.getSubscriptionByChannels(
+        myId ?? (await this.youtube.oauth.getMe()).id, this.id
+      )
+
+    return this.youtube.oauth.channels.unsubscribeFromChannel(
+      typeof subscription === 'string' ? subscription : subscription.id
+    )
   }
 
   /**

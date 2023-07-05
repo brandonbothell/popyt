@@ -1,6 +1,6 @@
 import 'mocha'
 import { readFileSync } from 'fs'
-import { VideoAbuseReportReason } from '../../src'
+import { Video, VideoAbuseReportReason } from '../../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -9,17 +9,18 @@ import { expect } from 'chai'
  */
 const thumbnailVideoId = process.env.YOUTUBE_THUMBNAIL_VIDEO_ID
 
+let video: Video
+
 describe('OAuth videos', () => {
   it('should rate videos', async () => {
-
-    await youtube.oauth.videos.rateVideo('E6UTz_Doic8', 'like')
-    await youtube.oauth.videos.rateVideo('E6UTz_Doic8', 'none')
+    video = await youtube.getVideo('E6UTz_Doic8')
+    await video.like()
+    await video.dislike()
+    await video.unrate()
   })
 
   it('should retrieve ratings on videos', async () => {
-    const rating =
-      (await youtube.oauth.videos.getMyRatings([ 'E6UTz_Doic8' ]))[0].rating
-
+    const rating = await video.getRating()
     expect(rating).to.equal('none')
   })
 
@@ -29,9 +30,7 @@ describe('OAuth videos', () => {
     }
 
     const image = readFileSync('./test/data/image.jpg')
-
-    const thumbnails = await youtube.oauth.videos.setThumbnail(
-      thumbnailVideoId, { type: 'jpeg', data: image })
+    const thumbnails = await video.setThumbnail({ type: 'jpeg', data: image })
 
     expect(thumbnails.default?.url).to.be.a('string')
   })

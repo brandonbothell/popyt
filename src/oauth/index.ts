@@ -99,21 +99,26 @@ export class OAuth {
   /**
    * Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
    * Last tested 05/18/2020 11:48. PASSING
-   * @param maxPerPage The maximum number of subscriptions to fetch per page.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
-  public async getMySubscriptions (maxPerPage?: number, parts?: Part.SubscriptionParts): Promise<YT.Subscription[]> {
+  public getMySubscriptions (pageOptions?: YT.PageOptions, parts?: Part.SubscriptionParts) {
     this.checkTokenAndThrow()
 
-    const results = await this.youtube._genericService.getPaginatedItems({ type: YT.PaginatedItemType.Subscriptions, mine: true, maxPerPage, parts })
-    return results.items as YT.Subscription[]
+    return this.youtube._genericService.getPaginatedItems<YT.Subscription>(
+      { type: YT.PaginatedItemType.Subscriptions, mine: true, parts, ...pageOptions }
+    )
   }
 
   /**
    * Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.  
    * Last tested 05/18/2020 11:48. PASSING
-   * @param maxPerPage The maximum number of playlists to fetch per page.
+   * @param pageOptions The number of pages and maximum number of items per page.
+   * Fetches the maximum number of items allowed by the API per page by default.  
+   * Set pages to a value <=0 to fetch
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
@@ -128,9 +133,6 @@ export class OAuth {
   /**
    * Gets the authorized user's [ChannelSection](./Library_Exports.ChannelSection)s.  
    * Last tested 05/18/2020 11:48. PASSING
-   * @param maxPerPage The maximum number of playlists to fetch per page.
-   * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
    */
   public async getMyChannelSections (parts?: Part.ChannelSectionParts) {
     this.checkTokenAndThrow()

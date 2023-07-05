@@ -1,5 +1,5 @@
 import { Cache, Parser } from '../util'
-import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, ResolveReturn, SearchType, Video, VideoCategory } from '..'
+import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, ResolveReturn, SearchType, Subscription, Video, VideoCategory } from '..'
 
 /**
  * @ignore
@@ -56,7 +56,7 @@ export class ResolutionService {
     }
 
     // types that resolve only by class or ID
-    if (type === VideoCategory || type === Comment) {
+    if (type === VideoCategory || type === Comment || type === Subscription) {
       return input
     }
 

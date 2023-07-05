@@ -14,12 +14,12 @@ describe('OAuth channels', () => {
   let channel: Channel
 
   it('should (un)subscribe to channels', async () => {
-    const channelId = 'UCBR8-60-B28hp2BmDPdntcQ'
-    const subscription = await youtube.oauth.channels.subscribeToChannel(channelId)
+    channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ')
+    const subscription = await channel.subscribe()
 
-    expect(subscription.channel.id).to.equal(channelId)
+    expect(subscription.channel.id).to.equal(channel.id)
 
-    await youtube.oauth.channels.unsubscribeFromChannel(subscription.id)
+    await channel.unsubscribe(subscription.id)
   })
 
   it('should set channel watermarks', async () => {

@@ -17,8 +17,8 @@ describe('OAuth', () => {
   })
 
   it('should fetch my subscriptions', async () => {
-    const subscription = (await youtube.oauth.getMySubscriptions(1, [ 'id' ]))[0]
-
+    const subscription =
+      (await youtube.oauth.getMySubscriptions({ pages: 1, maxPerPage: 1 }, [ 'id' ]))[0]
     expect(subscription.id).to.be.a('string')
   })
 

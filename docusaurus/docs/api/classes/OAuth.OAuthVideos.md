@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L10)
+[oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L10)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L10)
+[oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L10)
 
 ## Methods
 
@@ -54,7 +54,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/videos.ts:91](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L91)
+[oauth/videos.ts:91](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L91)
 
 ___
 
@@ -77,7 +77,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L33)
+[oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L33)
 
 ___
 
@@ -94,7 +94,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/videos.ts:166](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L166)
+[oauth/videos.ts:166](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L166)
 
 ___
 
@@ -118,7 +118,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L18)
+[oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L18)
 
 ___
 
@@ -145,7 +145,7 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/videos.ts:61](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L61)
+[oauth/videos.ts:61](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L61)
 
 ___
 
@@ -169,7 +169,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/videos.ts:149](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L149)
+[oauth/videos.ts:149](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L149)
 
 ___
 
@@ -194,4 +194,4 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/videos.ts:108](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/videos.ts#L108)
+[oauth/videos.ts:108](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/videos.ts#L108)

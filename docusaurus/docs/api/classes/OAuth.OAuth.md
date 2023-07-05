@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L56)
+[oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L56)
 
 ## Properties
 
@@ -36,7 +36,7 @@ All OAuth methods related to [captions](./Library_Exports.Caption).
 
 #### Defined in
 
-[oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L50)
+[oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L50)
 
 ___
 
@@ -48,7 +48,7 @@ All OAuth methods related to [channels](./Library_Exports.Channel).
 
 #### Defined in
 
-[oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L45)
+[oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L45)
 
 ___
 
@@ -60,7 +60,7 @@ All OAuth methods related to [comments](./Library_Exports.Comment).
 
 #### Defined in
 
-[oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L29)
+[oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L29)
 
 ___
 
@@ -73,7 +73,7 @@ All OAuth methods related to
 
 #### Defined in
 
-[oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L40)
+[oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L40)
 
 ___
 
@@ -85,7 +85,7 @@ All OAuth methods related to [videos](./Library_Exports.Video)/video ratings.
 
 #### Defined in
 
-[oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L34)
+[oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L34)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L24)
+[oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L24)
 
 ## Methods
 
@@ -118,13 +118,36 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/index.ts:73](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L73)
+[oauth/index.ts:73](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L73)
+
+___
+
+### getMyChannelSections
+
+▸ **getMyChannelSections**(`parts?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
+
+Gets the authorized user's [ChannelSection](./Library_Exports.ChannelSection)s.  
+Last tested 05/18/2020 11:48. PASSING
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `parts?` | [`ChannelSectionParts`](../modules/Library_Exports#channelsectionparts) |
+
+#### Returns
+
+`Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
+
+#### Defined in
+
+[oauth/index.ts:137](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L137)
 
 ___
 
 ### getMyPlaylists
 
-▸ **getMyPlaylists**(`maxPerPage?`, `parts?`): `Promise`<[`Playlist`](Library_Exports.Playlist)[]\>
+▸ **getMyPlaylists**(`pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
 
 Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.  
 Last tested 05/18/2020 11:48. PASSING
@@ -133,22 +156,22 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `maxPerPage?` | `number` | The maximum number of playlists to fetch per page. Fetches the maximum allowed by the API by default. Set to a value <=0 to fetch all. |
+| `pageOptions?` | [`PageOptions`](../modules/Library_Exports#pageoptions) | The number of pages and maximum number of items per page. Fetches the maximum number of items allowed by the API per page by default. Set pages to a value <=0 to fetch Fetches the maximum allowed by the API by default. Set to a value <=0 to fetch all. |
 | `parts?` | [`PlaylistParts`](../modules/Library_Exports#playlistparts) | - |
 
 #### Returns
 
-`Promise`<[`Playlist`](Library_Exports.Playlist)[]\>
+`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
 
 #### Defined in
 
-[oauth/index.ts:120](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L120)
+[oauth/index.ts:125](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L125)
 
 ___
 
 ### getMySubscriptions
 
-▸ **getMySubscriptions**(`maxPerPage?`, `parts?`): `Promise`<[`Subscription`](Library_Exports.Subscription)[]\>
+▸ **getMySubscriptions**(`pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>\>
 
 Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
 Last tested 05/18/2020 11:48. PASSING
@@ -157,16 +180,16 @@ Last tested 05/18/2020 11:48. PASSING
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `maxPerPage?` | `number` | The maximum number of subscriptions to fetch per page. Fetches the maximum allowed by the API by default. Set to a value <=0 to fetch all. |
+| `pageOptions?` | [`PageOptions`](../modules/Library_Exports#pageoptions) | The number of pages and maximum number of items per page. Fetches the maximum number of items allowed by the API per page by default. Set pages to a value <=0 to fetch Fetches the maximum allowed by the API by default. Set to a value <=0 to fetch all. |
 | `parts?` | [`SubscriptionParts`](../modules/Library_Exports#subscriptionparts) | - |
 
 #### Returns
 
-`Promise`<[`Subscription`](Library_Exports.Subscription)[]\>
+`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>\>
 
 #### Defined in
 
-[oauth/index.ts:106](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L106)
+[oauth/index.ts:108](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L108)
 
 ___
 
@@ -194,4 +217,4 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/index.ts:90](https://github.com/brandonbothell/popyt/blob/a9cf019/src/oauth/index.ts#L90)
+[oauth/index.ts:90](https://github.com/brandonbothell/popyt/blob/57ea7b2/src/oauth/index.ts#L90)

@@ -1,6 +1,8 @@
-import { Channel, Playlist, Video, VideoCategory, Comment, PaginatedType } from '..'
+import { Channel, Playlist, Video, VideoCategory, Comment, PaginatedType, Subscription } from '..'
 
-const RESOLVABLE_CLASSES = [ Video, Playlist, Channel, VideoCategory, Comment ]
+const RESOLVABLE_CLASSES = [
+  Video, Playlist, Channel, VideoCategory, Comment, Subscription
+]
 
 export type Resolvable<T extends PaginatedType> = string | InstanceType<T>
 
@@ -39,3 +41,8 @@ export type VideoCategoryResolvable = string | VideoCategory
  * An ID or object of a comment.
  */
 export type CommentResolvable = string | Comment
+
+/**
+ * An ID or object of a subscription.
+ */
+export type SubscriptionResolvable = string | Subscription

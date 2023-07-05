@@ -1,6 +1,6 @@
 import { Cache } from '../util'
 import { SubscriptionParts } from '../types/Parts'
-import YouTube, { Subscription } from '..'
+import YouTube, { AuthorizationOptions, Subscription } from '..'
 
 /**
  * @ignore
@@ -8,7 +8,9 @@ import YouTube, { Subscription } from '..'
 export class SubscriptionService {
   constructor (private youtube: YouTube) {}
 
-  public async getSubscriptionByChannels (subscriberId: string, channelId: string, parts?: SubscriptionParts): Promise<Subscription> {
+  public async getSubscriptionByChannels (subscriberId: string, channelId: string,
+    parts?: SubscriptionParts, auth?: AuthorizationOptions): Promise<Subscription> {
+
     if (this.youtube._shouldCache) {
       const cached = Cache.get(`sub_by_channels://"${subscriberId}"/"${channelId}"`)
       if (cached) return cached
@@ -26,7 +28,8 @@ export class SubscriptionService {
       maxResults: 1
     }
 
-    const results = await this.youtube._request.get('subscriptions', { params: options, authorizationOptions: { apiKey: true } })
+    const results = await this.youtube._request.get('subscriptions',
+      { params: options, authorizationOptions: auth ?? { apiKey: true } })
 
     if (!results.items?.length) {
       return Promise.reject(new Error('Subscription not found'))
