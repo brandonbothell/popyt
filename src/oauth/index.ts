@@ -117,11 +117,27 @@ export class OAuth {
    * Fetches the maximum allowed by the API by default.
    * Set to a value <=0 to fetch all.
    */
-  public async getMyPlaylists (maxPerPage?: number, parts?: Part.PlaylistParts): Promise<YT.Playlist[]> {
+  public getMyPlaylists (pageOptions?: YT.PageOptions, parts?: Part.PlaylistParts) {
     this.checkTokenAndThrow()
 
-    const result = await this.youtube._genericService.getPaginatedItems({ type: YT.PaginatedItemType.Playlists, mine: true, maxPerPage, parts })
-    return result.items as YT.Playlist[]
+    return this.youtube._genericService.getPaginatedItems<YT.Playlist>(
+      { type: YT.PaginatedItemType.Playlists, mine: true, parts, ...pageOptions }
+    )
+  }
+
+  /**
+   * Gets the authorized user's [ChannelSection](./Library_Exports.ChannelSection)s.  
+   * Last tested 05/18/2020 11:48. PASSING
+   * @param maxPerPage The maximum number of playlists to fetch per page.
+   * Fetches the maximum allowed by the API by default.
+   * Set to a value <=0 to fetch all.
+   */
+  public async getMyChannelSections (parts?: Part.ChannelSectionParts) {
+    this.checkTokenAndThrow()
+
+    return (await this.youtube._genericService.getPaginatedItems<YT.ChannelSection>(
+      { type: YT.PaginatedItemType.ChannelSections, mine: true, parts }
+    )).items
   }
 }
 
