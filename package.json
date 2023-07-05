@@ -67,7 +67,7 @@
     "typescript": "5.1.6"
   },
   "resolutions": {
-    "node-preload": "0.2.0"
+    "node-preload": "0.2.1"
   },
   "repository": {
     "url": "https://github.com/brandonbothell/popyt.git"

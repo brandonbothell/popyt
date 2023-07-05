@@ -12379,10 +12379,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["node-preload", [\
-        ["npm:0.2.0", {\
-          "packageLocation": "./.yarn/cache/node-preload-npm-0.2.0-03bea81181-3345d11d5a.zip/node_modules/node-preload/",\
+        ["npm:0.2.1", {\
+          "packageLocation": "./.yarn/cache/node-preload-npm-0.2.1-5b6aef1c8e-4586f91ac7.zip/node_modules/node-preload/",\
           "packageDependencies": [\
-            ["node-preload", "npm:0.2.0"],\
+            ["node-preload", "npm:0.2.1"],\
             ["process-on-spawn", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
@@ -12506,7 +12506,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["istanbul-lib-source-maps", "npm:4.0.1"],\
             ["istanbul-reports", "npm:3.1.5"],\
             ["make-dir", "npm:3.1.0"],\
-            ["node-preload", "npm:0.2.0"],\
+            ["node-preload", "npm:0.2.1"],\
             ["p-map", "npm:3.0.0"],\
             ["process-on-spawn", "npm:1.0.0"],\
             ["resolve-from", "npm:5.0.0"],\
