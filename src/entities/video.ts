@@ -16,16 +16,15 @@ export class Video {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,statistics,status'
+  public static part = 'snippet,contentDetails,statistics,status,recordingDetails,localizations'
 
   /**
    * The fields to request for this entity.
    */
   public static fields = 'items(kind,id,' +
-    'contentDetails(duration),' +
-    'statistics(likeCount,dislikeCount,viewCount,commentCount),' +
-    'status(privacyStatus,madeForKids,selfDeclaredMadeForKids),' +
-    'snippet(title,description,thumbnails,tags,publishedAt,channelId,channelTitle,liveBroadcastContent,categoryId))'
+    'contentDetails,recordingDetails,' +
+    'statistics,status,localizations,' +
+    'snippet)'
 
   /**
    * YouTube object that created the video.
@@ -77,6 +76,11 @@ export class Video {
    * The date the video was published.
    */
   public datePublished: Date
+
+  /**
+   * The date the video was recorded. This is specified by the uploader.
+   */
+  public dateRecorded: Date
 
   /**
    * Information on the channel that uploaded the video.
@@ -182,6 +186,16 @@ export class Video {
    */
   public note: string
 
+  /**
+   * The license this video falls under.
+   */
+  public license: 'creativeCommon' | 'youtube'
+
+  /**
+   * The localized titles and descriptions of this video, if any.
+   */
+  public localizations: { [language: string]: { title: string; description: string } }
+
   constructor (youtube: YouTube, data: any, full = false) {
     this.youtube = youtube
     this.data = data
@@ -196,11 +210,16 @@ export class Video {
   private _init (data: any) {
     if (data.kind === 'youtube#video') {
       this.id = data.id
+      this.localizations = data.localizations
 
       if (data.contentDetails) {
         this._length = Parser.parseIsoDuration(data.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
         this.seconds = this._length.seconds
+      }
+
+      if (data.recordingDetails?.recordingDate) {
+        this.dateRecorded = new Date(data.recordingDetails.recordingDate)
       }
     } else if (data.kind === 'youtube#playlistItem') {
       this.id = data.snippet?.resourceId.videoId
@@ -243,6 +262,7 @@ export class Video {
         madeForKids: data.status.madeForKids,
         selfDeclaredMadeForKids: data.status.selfDeclaredMadeForKids
       } : undefined
+      this.license = data.status.license
     }
 
     this.url = `https://youtube.com/watch?v=${this.id}`
@@ -346,8 +366,8 @@ export class Video {
    * the property's existing value will be deleted.**
    * @param video The updated video object.
    */
-  public async update (video: VideoUpdateResource): Promise<Video> {
-    const newVideo = await this.youtube.oauth.videos.updateVideo(video)
+  public async update (video: Omit<VideoUpdateResource, 'id'>): Promise<Video> {
+    const newVideo = await this.youtube.oauth.videos.updateVideo({ ...video, id: this.id })
     return Object.assign(this, { ...newVideo, full: true })
   }
 
@@ -380,17 +400,6 @@ export class Video {
    */
   public async uploadCaption (language: string, name: string, track: Buffer, draft: boolean = false): Promise<Caption> {
     const toReturn = await this.youtube.oauth.captions.uploadCaption(this.id, language, name, track, draft)
-    return toReturn
-  }
-
-  /**
-   * Updates a caption track of a video.
-   * Must be using an access token with correct scopes.
-   * @param track The modified caption track to upload.
-   * @param draft Whether or not the track is a draft.
-   */
-  public async updateCaption (track: Buffer, draft: boolean = null): Promise<Caption> {
-    const toReturn = await this.youtube.oauth.captions.updateCaption(this.id, track, draft)
     return toReturn
   }
 }

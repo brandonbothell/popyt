@@ -1,5 +1,5 @@
 import 'mocha'
-import { Caption } from '../../src'
+import { Caption, Video } from '../../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -9,6 +9,7 @@ import { expect } from 'chai'
 
 const captionVideoId = process.env.YOUTUBE_CAPTION_VIDEO_ID
 
+let video: Video
 let caption: Caption
 let captionId: string
 let track: Buffer
@@ -19,12 +20,14 @@ describe('OAuth captions', () => {
       expect.fail('The environment variable YOUTUBE_CAPTION_VIDEO_ID must be set for this test to be ran!')
     }
 
-    const captions = await youtube.oauth.captions.getCaptions(captionVideoId)
-    caption = captions[0]
+    video = await youtube.getVideo(captionVideoId)
+
+    await video.fetchCaptions()
+    caption = video.captions[0]
     captionId = caption.id
 
-    expect(captions).to.be.an('array')
-    expect(captions[0]).to.be.an.instanceOf(Caption)
+    expect(video.captions).to.be.an('array')
+    expect(video.captions[0]).to.be.an.instanceOf(Caption)
     expect(caption).to.be.an.instanceOf(Caption)
   })
 

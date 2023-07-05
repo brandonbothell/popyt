@@ -9,7 +9,7 @@ export type VideoUpdateResource = {
   }
   status?: {
     embeddable?: boolean
-    license?: string
+    license?: 'creativeCommon' | 'youtube'
     privacyStatus?: 'private' | 'public' | 'unlisted'
     publicStatsViewable?: boolean
     publishAt?: Date | string

@@ -11,6 +11,7 @@
     "test:all": "mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/**/*.spec.ts\" --timeout 10000",
     "coverage": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test",
     "coverage:all": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test:all",
+    "coverage:allhtml": "tsc && cross-env NODE_ENV=test nyc --reporter=lcov yarn test:all",
     "coverage:html": "tsc && cross-env NODE_ENV=test nyc --reporter=lcov yarn test",
     "coverage:text": "tsc && cross-env NODE_ENV=test nyc --reporter=text yarn test",
     "docs:build": "yarn workspace docusaurus build",
@@ -64,6 +65,9 @@
     "source-map-support": "0.5.21",
     "ts-node": "10.9.1",
     "typescript": "5.1.6"
+  },
+  "resolutions": {
+    "node-preload": "0.2.0"
   },
   "repository": {
     "url": "https://github.com/brandonbothell/popyt.git"

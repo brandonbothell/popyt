@@ -13,7 +13,7 @@ export class Channel {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,statistics,status,brandingSettings'
+  public static part = 'snippet,contentDetails,statistics,status,brandingSettings,localizations'
 
   /**
    * The fields to request for this entity.
@@ -23,7 +23,8 @@ export class Channel {
     'statistics(subscriberCount,viewCount,hiddenSubscriberCount),' +
     'snippet(title,description,thumbnails,publishedAt,country,defaultLanguage),' +
     'brandingSettings(image,channel(keywords,featuredChannelsUrls)),' +
-    'status(isLinked,madeForKids,selfDeclaredMadeForKids))'
+    'status(isLinked,madeForKids,selfDeclaredMadeForKids)' +
+    'localizations)'
 
   /**
    * The YouTube object that created this channel object.
@@ -132,6 +133,17 @@ export class Channel {
   public sections: ChannelSection[]
 
   /**
+   * The URL to the image used to generate YouTube banner images for
+   * this channel across all platforms.
+   */
+  public banner: string
+
+  /**
+   * The localized titles and descriptions of this channel, if any.
+   */
+  public localizations: { [language: string]: { title: string; description: string } }
+
+  /**
    * Only set if the channel is a search result.
    *
    * If the channel has an ongoing livestream, this is `live`.
@@ -170,8 +182,8 @@ export class Channel {
     const channel = data
 
     if (data.kind === 'youtube#channel') {
-
       this.id = channel.id
+      this.localizations = channel.localizations
 
       if (channel.snippet) {
         this.country = channel.snippet.country
@@ -196,6 +208,8 @@ export class Channel {
       }
 
       if (channel.brandingSettings) {
+        this.banner = channel.brandingSettings.image?.bannerExternalUrl
+
         // Unknown behavior
         if (channel.brandingSettings.channel) {
           this.keywords = []
@@ -322,25 +336,39 @@ export class Channel {
    * Updates the channel's branding settings.
    * Must be using an access token with correct scopes.
    */
-  public updateBranding (branding: ChannelBrandingSettings) {
-    return this.youtube.oauth.channels.updateChannelBranding(this.id, branding)
+  public async updateBranding (branding: ChannelBrandingSettings) {
+    if (!this.data.brandingSettings) await this.fetch([ 'brandingSettings' ])
+
+    if (!this.data.brandingSettings) {
+      return Promise.reject(new Error('Unable to fetch channel branding settings'))
+    }
+
+    const channel = await this.youtube.oauth.channels.updateChannelBranding(this.id, Object.assign(this.data.brandingSettings, branding))
+    return Object.assign(this, channel)
   }
 
   /**
    * Updates the channel's localizations.
    * Must be using an access token with correct scopes.
    */
-  public updateLocalizations (localizations: { [key: string]: { title: string; description: string } }) {
-    return this.youtube.oauth.channels.updateChannelLocalizations(
-      this.id, localizations)
+  public async updateLocalizations (localizations: { [key: string]: { title: string; description: string } }) {
+    if (!this.data.localizations) await this.fetch([ 'localizations' ])
+
+    if (!this.data.localizations) {
+      return Promise.reject(new Error('Failed to fetch channel localizations'))
+    }
+
+    return Object.assign(this,
+      await this.youtube.oauth.channels.updateChannelLocalizations(this.id, localizations))
   }
 
   /**
    * Sets whether or not the channel is made for kids.
    * Must be using an access token with correct scopes.
    */
-  public setMadeForKids (madeForKids: boolean) {
-    return this.youtube.oauth.channels.setChannelMadeForKids(this.id, madeForKids)
+  public async setMadeForKids (madeForKids: boolean) {
+    return Object.assign(this,
+      await this.youtube.oauth.channels.setChannelMadeForKids(this.id, madeForKids))
   }
 
   /**
@@ -365,21 +393,7 @@ export class Channel {
    * Must be using an access token with correct scopes.
    */
   public async setBanner (image: { data: Buffer; type: 'png' | 'jpeg' }) {
-    if (!this.data.brandingSettings) {
-      await this.fetch()
-    }
-
-    if (!this.data.brandingSettings) {
-      return Promise.reject(new Error('Unable to fetch channel branding settings'))
-    }
-
-    if (!this.data.brandingSettings.image) {
-      this.data.brandingSettings.image = {}
-    }
-
-    this.data.brandingSettings.image.bannerExternalUrl =
-      await this.youtube.oauth.channels.uploadChannelBanner(image)
-    return this.youtube.oauth.channels.updateChannelBranding(
-      this.id, this.data.brandingSettings)
+    const bannerExternalUrl = await this.youtube.oauth.channels.uploadChannelBanner(image)
+    return this.updateBranding({ image: { bannerExternalUrl } })
   }
 }

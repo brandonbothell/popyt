@@ -1,5 +1,5 @@
 import 'mocha'
-import { Playlist } from '../../src'
+import { Playlist, Video } from '../../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -43,18 +43,20 @@ describe('OAuth', () => {
     expect(video.data.kind).to.equal('youtube#playlistItem')
   })
 
+  let video: Video
+
   it('should work with updating playlist items', async () => {
     if (!playlist || !playlistItemId) expect.fail('No playlist/item to test with')
-    const video = await playlist.updateVideo('dQw4w9WgXcQ', 0,
+    video = await playlist.updateVideo('dQw4w9WgXcQ', 0,
       'A fantastic song...', playlistItemId)
 
     expect(video.note).to.equal('A fantastic song...')
     expect(video.data.kind).to.equal('youtube#playlistItem')
   })
 
-  it('should work with deleting playlist items', async () => {
-    if (!playlist || !playlistItemId) expect.fail('No playlist/item to test with')
-    await playlist.removeItem(playlistItemId)
+  it('should work with deleting playlist videos', async () => {
+    if (!playlist || !video) expect.fail('No playlist/video to test with')
+    await playlist.removeVideo(video)
   })
 
   it('should work with deleting playlists', async () => {

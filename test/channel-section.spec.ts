@@ -1,5 +1,5 @@
 import 'mocha'
-import { ChannelSection, Channel, Playlist } from '../src'
+import { ChannelSection, Channel, Playlist, Subscription } from '../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -9,16 +9,14 @@ if (!apiKey) {
   throw new Error('No API key')
 }
 
-let sections: ChannelSection[]
-
 describe('Channel sections', () => {
   let channel: Channel
 
   it('should set all available properties', async () => {
     channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
-    sections = await youtube.getChannelSections(channel.id)
+    await channel.fetchSections()
 
-    sections.forEach(section => {
+    channel.sections.forEach(section => {
       expect(section.full).to.equal(true)
 
       expect(section.id).to.be.a('string')
@@ -33,9 +31,8 @@ describe('Channel sections', () => {
   })
 
   it('should fetch channels', async () => {
-    sections = await youtube.getChannelSections(channel)
-    const section = sections.find(s => s.channelIds)
-    const antiSection = sections.find(s => !s.channelIds)
+    const section = channel.sections.find(s => s.channelIds)
+    const antiSection = channel.sections.find(s => !s.channelIds)
 
     if (!section || !antiSection) {
       expect.fail('Not enough data to fully test function behavior')
@@ -51,10 +48,10 @@ describe('Channel sections', () => {
   })
 
   it('should fetch playlists', async () => {
-    if (!sections) throw new Error('No channel section object to test with')
+    if (!channel?.sections) expect.fail('No channel/sections to test with')
 
-    const section = sections.find(s => s.playlistIds || s.type === 'allplaylists')
-    const antiSection = sections.find(s => !s.playlistIds && s.type !== 'allplaylists')
+    const section = channel.sections.find(s => s.playlistIds || s.type === 'allplaylists')
+    const antiSection = channel.sections.find(s => !s.playlistIds && s.type !== 'allplaylists')
 
     if (!section || !antiSection) {
       expect.fail('Not enough data to fully test function behavior')
@@ -67,11 +64,29 @@ describe('Channel sections', () => {
     expect(antiSection.playlists).to.equal(undefined)
   })
 
-  it('should work when fetching by channel section objects', async () => {
-    if (!sections?.length) throw new Error('No channel section object to test with')
-    const section = await youtube.getChannelSection(sections[0].id)
+  it('should fetch subscriptions', async () => {
+    const subsChannel = await youtube.getChannel('UCtLzXn558vm61TEdF2uJXwg', [ 'id' ])
+    await subsChannel.fetchSections()
 
-    expect(section.id).to.equal(sections[0].id)
+    const section = subsChannel.sections.find(s => s.type === 'subscriptions')
+    const antiSection = subsChannel.sections.find(s => s.type !== 'subscriptions')
+
+    if (!section || !antiSection) {
+      expect.fail('Not enough data to fully test function behavior')
+    }
+
+    await section.fetchSubscriptions(undefined, [ 'id' ])
+    await antiSection.fetchSubscriptions(undefined, [ 'id' ])
+
+    expect(section.subscriptions?.items[0]).to.be.an.instanceOf(Subscription)
+    expect(antiSection.subscriptions).to.equal(undefined)
+  })
+
+  it('should work when fetching by channel section objects', async () => {
+    if (!channel?.sections?.length) throw new Error('No channel section object to test with')
+    const section = await youtube.getChannelSection(channel.sections[0].id)
+
+    expect(section.id).to.equal(channel.sections[0].id)
   })
 
   it('should throw an error on invalid type', () => {

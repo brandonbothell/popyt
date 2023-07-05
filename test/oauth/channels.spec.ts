@@ -25,31 +25,35 @@ describe('OAuth channels', () => {
   it('should set channel watermarks', async () => {
     channel = await youtube.oauth.getMe()
 
-    await youtube.oauth.channels.setChannelWatermark(channel.id, 'fromStart', 3000,
-      10000, { data: readFileSync('./test/data/watermark.png'), type: 'png' })
+    await channel.setWatermark('fromStart', 3000, 10000,
+      { data: readFileSync('./test/data/watermark.png'), type: 'png' })
   })
 
   it('should unset channel watermarks', async () => {
-    await youtube.oauth.channels.unsetChannelWatermark(channel.id)
+    await channel.unsetWatermark()
   })
 
-  // CURRENTLY BROKEN in the API
-  it('should fail to update channel localizations', async () => {
-    expect(await youtube.oauth.channels.updateChannelLocalizations(channel.id, {
-      de: { title: 'nicht brandon bothell', description: 'das ist sehr interresant' }
-    }).catch(e => e.message)).to.equal('Request contains an invalid argument.')
+  it('should update channel localizations', async () => {
+    if (!channel) channel = await youtube.oauth.getMe()
+    await channel.updateLocalizations({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      de_DE: { title: 'brandon bothell', description: 'das ist sehr interresant' }
+    })
+
+    expect(channel.localizations?.de_DE?.title).to.equal('brandon bothell')
+    expect(channel.localizations?.de_DE?.description).to.equal('das ist sehr interresant')
   })
 
   it('should update a channel\'s made for kids status', async () => {
-    channel = await youtube.oauth.channels.setChannelMadeForKids(channel.id, false)
+    await channel.setMadeForKids(false)
     expect(channel.kids.selfDeclaredMadeForKids).to.equal(false)
   })
 
-  it('should upload channel banners', async () => {
-    const url = await youtube.oauth.channels.uploadChannelBanner(
+  it('should upload and set channel banners', async () => {
+    await channel.setBanner(
       { type: 'png', data: readFileSync('./test/data/banner.png') })
 
-    expect(url).to.be.a('string')
+    expect(channel.banner).to.be.a('string')
   })
 
   it('should work with adding channel sections', async () => {

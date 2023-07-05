@@ -16,8 +16,7 @@ describe('OAuth comments', () => {
   it('should post comments', async () => {
     const text = `testing ${new Date()}`
     const uploads = (await youtube.oauth.getMyUploads()).items
-    comment = await youtube.oauth.comments.postComment(
-      text, uploads[0].channel.id, uploads[0].id)
+    comment = await uploads[0].postComment(text)
     commentId = comment.id
 
     expect(comment.datePublished.getDay()).to.equal(new Date().getDay())

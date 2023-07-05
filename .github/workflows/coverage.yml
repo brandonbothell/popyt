@@ -26,7 +26,7 @@ jobs:
         YOUTUBE_OAUTH_API_KEY: ${{ secrets.YOUTUBE_OAUTH_API_KEY }}
         YOUTUBE_ACCESS_TOKEN: ${{ secrets.YOUTUBE_ACCESS_TOKEN }}
         YOUTUBE_CAPTION_VIDEO_ID: uSCIlsJXATc
-        YOUTUBE_THUMBNAIL_VIDEO_ID: uSCIlsJXATc
+        YOUTUBE_OAUTH_VIDEO_ID: uSCIlsJXATc
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
