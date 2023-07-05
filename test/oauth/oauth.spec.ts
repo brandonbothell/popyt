@@ -23,14 +23,15 @@ describe('OAuth', () => {
   })
 
   it('should fetch my playlists', async () => {
-    const playlist = (await youtube.oauth.getMyPlaylists({ maxPerPage: 1, pages: 1 }, [ 'id' ])).items[0]
+    const playlists = await youtube.oauth.getMyPlaylists({ pages: 1 }, [ 'id' ])
+    const playlist = playlists.items[0]
 
     expect(playlist.id).to.be.a('string')
   })
 
   it('should fetch my uploads', async () => {
     const uploads =
-      (await youtube.oauth.getMyUploads({ maxPerPage: 1, pages: 1 })).items
+      (await youtube.oauth.getMyUploads({ pages: 1 })).items
     expect(uploads.length).to.be.greaterThan(0)
   })
 })
