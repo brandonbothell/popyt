@@ -18,7 +18,7 @@ jobs:
     #   run: |
     #       git config --global user.name "Brandon Bothell"
     #       git config --global user.email "bothellbrandon@gmail.com"
-    - uses: actions/setup-node@v3.6.0
+    - uses: actions/setup-node@v3.7.0
       with:
         node-version: '20.3.0'
     - name: Install dependencies
