@@ -2918,10 +2918,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.3.3":
-  version: 20.3.3
-  resolution: "@types/node@npm:20.3.3"
-  checksum: 7a0d00800451ca8cd8df63a8cc218c697edadb3143bf46cd6afeb974542a6a1665c3679459be0016c29216ccfed6616b7e55851747527dfa71c5608d9157528c
+"@types/node@npm:20.4.0":
+  version: 20.4.0
+  resolution: "@types/node@npm:20.4.0"
+  checksum: 8ad632ee131611651fc5f4ac3a47427640e2492ab314fe1c4d0c3b97af71784ef48c53221d5f9922aab4724375dcb4f33137b3107ba2c356d9366216a31678aa
   languageName: node
   linkType: hard
 
@@ -4920,7 +4920,7 @@ __metadata:
     "@docusaurus/tsconfig": 0.0.0-5601
     "@docusaurus/types": 2.4.1
     "@mdx-js/react": 1.6.22
-    "@types/node": 20.3.3
+    "@types/node": 20.4.0
     "@types/react": 18.2.14
     clsx: 1.2.1
     docusaurus-plugin-typedoc: 0.19.2
