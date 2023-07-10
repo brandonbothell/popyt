@@ -14,7 +14,7 @@ export class Subscription {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,subscriberSnippet'
+  public static part = 'contentDetails,snippet,subscriberSnippet'
 
   /**
    * The fields to request for this entity.

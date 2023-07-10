@@ -202,9 +202,10 @@ export class GenericService {
         maxForEndpoint = 100
         clazz = Comment
         options[`${commentType}Id`] = id
+        options.textFormat = 'plainText'
+
         if (!options.part) options.part = 'snippet,replies'
         if (otherFilters.order) options.order = otherFilters.order
-        options.textFormat = 'plainText'
         break
 
       case PaginatedItemType.CommentReplies:
@@ -215,23 +216,28 @@ export class GenericService {
         options.parentId = id
         break
 
+      case PaginatedItemType.Captions:
+        endpoint = 'captions'
+        clazz = Caption
+        options.videoId = id
+        break
+
       case PaginatedItemType.Playlists:
         endpoint = 'playlists'
         clazz = Playlist
         // falls through
-
       case PaginatedItemType.Subscriptions:
         if (!endpoint) endpoint = 'subscriptions'
         if (!clazz) clazz = Subscription
 
         maxForEndpoint = 50
         // falls through
-
       case PaginatedItemType.ChannelSections:
         if (!endpoint) endpoint = 'channelSections'
         if (!clazz) clazz = ChannelSection
 
-        if (mine) options.mine = mine; else options.channelId = id
+        if (mine) options.mine = mine
+        else options.channelId = id
         break
 
       case PaginatedItemType.VideoCategories:
@@ -239,57 +245,40 @@ export class GenericService {
         clazz = VideoCategory
         options.regionCode = this.youtube.region
         // falls through
-
       case PaginatedItemType.VideoAbuseReportReasons:
         if (!endpoint) endpoint = 'videoAbuseReportReasons'
         if (!clazz) clazz = VideoAbuseReportReason
         // falls through
-
       case PaginatedItemType.Languages:
         if (!endpoint) endpoint = 'i18nLanguages'
         if (!clazz) clazz = Language
         // falls through
-
       case PaginatedItemType.Regions:
         if (!endpoint) endpoint = 'i18nRegions'
         if (!clazz) clazz = Region
-        options.hl = this.youtube.language
-        break
 
-      case PaginatedItemType.Captions:
-        endpoint = 'captions'
-        clazz = Caption
-        options.videoId = id
+        options.hl = this.youtube.language
         break
 
       default:
         return Promise.reject(new TypeError('Unknown item type: ' + type))
     }
 
-    if (!options.part) {
-      options.part = clazz.part
-    }
-
-    if (maxForEndpoint !== undefined) {
-      if (pages < 1 || maxPerPage < 1) options.maxResults = maxForEndpoint
-      else if (maxPerPage > maxForEndpoint) {
-        return Promise.reject(
-          new Error(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`))
-      } else options.maxResults = maxPerPage
-    }
-
-    if (pages < 1) {
-      pages = Infinity
-    }
-
+    if (!options.part) options.part = clazz.part
+    if (pages < 1) pages = Infinity
     if (pageToken) options.pageToken = pageToken
 
+    if (maxForEndpoint !== undefined) {
+      if (pages === Infinity || maxPerPage < 1) options.maxResults = maxForEndpoint
+      else if (maxPerPage <= maxForEndpoint) options.maxResults = maxPerPage
+      else {
+        return Promise.reject(
+          new Error(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`))
+      }
+    }
+
     // Caching handled here
-    const toReturn = await this.fetchPages(pages, endpoint, options, clazz, auth) as PaginatedResponse<T>
-
-    // if (this.youtube._shouldCache) this.youtube._cache(cacheKey, toReturn)
-
-    return toReturn
+    return this.fetchPages(pages, endpoint, options, clazz, auth) as Promise<PaginatedResponse<T>>
   }
 
   /**

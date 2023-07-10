@@ -75,12 +75,7 @@ export class SearchService {
     if ('order' in searchFilters) options.order = searchFilters.order
     if ('videoEmbeddable' in searchFilters) options.videoEmbeddable = 'true'
 
-    const toReturn = await this.youtube._genericService.fetchPages<T>(pages, 'search', options)
-
-    if (this.youtube._shouldCache && this.youtube._cacheSearches) {
-      this.youtube._cache(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/${pageToken}/${JSON.stringify(otherFilters)}`, toReturn)
-    }
-
-    return toReturn
+    // Caching handled here
+    return this.youtube._genericService.fetchPages<T>(pages, 'search', options)
   }
 }

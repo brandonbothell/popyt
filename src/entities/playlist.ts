@@ -13,7 +13,7 @@ export class Playlist {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,player,status'
+  public static part = 'contentDetails,player,snippet,status'
 
   /**
    * The fields to request for this entity.

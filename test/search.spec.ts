@@ -84,6 +84,17 @@ describe('Searching', () => {
     expect(video.channel.name).to.be.a('string')
   })
 
+  it('should work with caching', async () => {
+    let video: Video | Promise<PaginatedResponse<Video>> = youtube.searchVideos('bukkit', { searchFilters: { channel: 'UC6mi9rp7vRYninucP61qOjg' }, pageOptions: { maxPerPage: 1 } })
+    const time = new Date().getTime()
+
+    video = (await video).items[0]
+
+    expect(new Date().getTime() - time).to.be.lessThan(50)
+    expect(video.channel.id).to.equal('UC6mi9rp7vRYninucP61qOjg')
+    expect(video.channel.name).to.be.a('string')
+  })
+
   it('should return an array with a size of pages * maxPerPage', async () => {
     expect((await youtube.search('gaming moments', { pageOptions: { pages: 3, maxPerPage: 6 } })).items.length).to.equal(18)
   })

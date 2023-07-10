@@ -17,7 +17,7 @@ describe('Caching', () => {
 
     await youtube.getVideo('dQw4w9WgXcQ')
 
-    const video = youtube.getVideo('dQw4w9WgXcQ')
+    const video = youtube.getVideo('dQw4w9WgXcQ', [ 'contentDetails' ])
     const time = new Date().getTime()
 
     await video
