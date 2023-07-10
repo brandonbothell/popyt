@@ -16,7 +16,8 @@ export class ResolutionService {
       else return this.resolveStringToIdOrEntity(input, type) as Promise<ResolveReturn<T, K>>
     }
 
-    const resolutions: (Resolvable<K> | Promise<Resolvable<K>>)[] = new Array(input.length) // either the ID or the input if resolution failed
+    // either the ID or the input if resolution failed
+    const resolutions: (Resolvable<K> | Promise<Resolvable<K>>)[] = new Array(input.length).fill(undefined)
     const resolvableStrings: { [resolutionIndex: number]: string } = {} // could be ID, URL, or search query
 
     let preresolvedCount = 0
@@ -50,14 +51,14 @@ export class ResolutionService {
    * **Anything that isn't an ID, Entity, or Username URL returns the first result of a search query of `type`.**
    */
   public async resolveStringToIdOrEntity<T extends ResolvableClass> (input: string, type: T): Promise<Resolvable<T>> {
-    if (this.youtube._shouldCache) {
-      const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
-      if (cached) return cached
-    }
-
     // types that resolve only by class or ID
     if (type === VideoCategory || type === Comment || type === Subscription) {
       return input
+    }
+
+    if (this.youtube._shouldCache) {
+      const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
+      if (cached) return cached
     }
 
     // The search query or ID parameter for later (used for setting legacy custom channel URL search query)

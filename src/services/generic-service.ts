@@ -15,8 +15,11 @@ export class GenericService {
 
   }
 
-  public async getItem<T extends Resolvable<K> | Resolvable<K>[], K extends ItemTypes> (type: K, mine: boolean, id?: T, parts?: string[]):
-  Promise<ItemReturns<T, K>> {
+  public async getItem<T extends Resolvable<K> | Resolvable<K>[], K extends ItemTypes, M extends boolean = false>
+  (type: K, { mine, resolvableEntity }:
+  { mine?: M; resolvableEntity?: T }, parts?: string[]):
+  Promise<ItemReturns<T, K, M>> {
+
     if (!this._getItemAllowedTypes.has(type.name)) {
       return Promise.reject(new Error(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`))
     }
@@ -25,46 +28,64 @@ export class GenericService {
       return Promise.reject(new Error(`${type.name}s cannot be filtered by the 'mine' parameter.`))
     }
 
-    if (!mine && !id) {
+    if (!mine && !resolvableEntity) {
       return Promise.reject(new Error('Items must either specify an ID or the \'mine\' parameter.'))
     }
 
+    // Convert to array full of IDs and/or entity class instances
+    const resolvables: Resolvable<K>[] = mine ? [] : Array.isArray(resolvableEntity) ?
+      resolvableEntity :
+      [ resolvableEntity as Resolvable<K> ]
+
+    if (!mine && resolvables.length === 0) {
+      return Promise.reject(
+        new Error('The resolvableEntity parameter must include at least one item.')
+      )
+    }
+
+    // IDs
+    let resolvableStrings: string[]
+
+    // Instances of entity classes
+    let resolvedEntities: InstanceType<K>[]
     let alreadyResolvedCount = 0
-    const alreadyResolved: InstanceType<K>[] = []
-    const idsToGet: string[] = []
 
-    if (typeof id === 'string') idsToGet.push(id)
-    else if (Array.isArray(id)) {
-      for (let i = 0; i < id.length; i++) {
-        const entry = id[i]
+    for (let i = 0; i < resolvables.length; i++) {
+      const entry = resolvables[i]
 
-        if (typeof entry === 'string') {
-          idsToGet.push(entry)
+      // An ID
+      if (typeof entry === 'string') {
+        const cachedEntity = this.youtube._shouldCache ? Cache.getItem(type, entry, parts) : undefined
+
+        if (!cachedEntity) {
+          if (!resolvableStrings) resolvableStrings = []
+          resolvableStrings.push(entry)
+        // An instance we have cached and can just return
         } else {
-          if (alreadyResolved.length < i + 1) alreadyResolved.length = id.length
-          alreadyResolved[i] = entry
+          if (!resolvedEntities) resolvedEntities = new Array(resolvables.length).fill(undefined)
+          resolvedEntities[i] = cachedEntity as InstanceType<K>
           alreadyResolvedCount++
         }
+      // An instance that we can just return
+      } else if (entry instanceof type) {
+        if (!resolvedEntities) resolvedEntities = new Array(resolvables.length).fill(undefined)
+        resolvedEntities[i] = entry
+        alreadyResolvedCount++
+      } else {
+        return Promise.reject(new TypeError(
+          'The resolvableEntity parameter must be a string, array, or proper entity class.'
+        ))
       }
-
-      // If all of the items are entities, what are we even doing here?
-      if (alreadyResolvedCount === id.length) {
-        return alreadyResolved as ItemReturns<T, K>
-      }
-    } else if (id) {
-      return id as ItemReturns<T, K>
     }
 
-    const idString = idsToGet.join(',')
-    let preresolvedCacheString = alreadyResolved.length ? alreadyResolved.map(r => r.id).join(',') : ''
-
-    let cacheKey: string
-
-    if (this.youtube._shouldCache) {
-      cacheKey = `get://${type.endpoint}/${id ? idString : 'mine'}/${preresolvedCacheString}/${parts?.join(',')}`
-      const cached = Cache.get(cacheKey)
-      if (cached) return cached
+    // If all of the items are instances, what are we even doing here?
+    if (alreadyResolvedCount === resolvables.length) {
+      return (resolvedEntities.length === 1 ?
+        resolvedEntities[0] :
+        resolvedEntities) as ItemReturns<T, K, M>
     }
+
+    const idString = resolvableStrings?.join(',')
 
     const options: {
       id?: string
@@ -93,21 +114,28 @@ export class GenericService {
       return Promise.reject(new Error('Item not found'))
     }
 
-    let endResult: ItemReturns<string | string[], ItemTypes>
+    // All resolvable entries are strings (IDs, URLs, and search queries)
+    if (!resolvedEntities) {
+      resolvedEntities = result.items.map((item, index) =>
+        this.transformItemToCachedEntity(type, item, resolvables[index] as string, parts))
+    // Otherwise there are some entity objects to include
+    } else {
+      let resultIndex = 0
+      // All undefined indices should coorelate with a string value in resolvables[]
+      // and a result from the API
+      resolvedEntities = resolvedEntities.map((entity, index) =>
+        entity ?? this.transformItemToCachedEntity(type, result.items[resultIndex++],
+          resolvables[index] as string, parts))
 
-    if (!alreadyResolved.length) endResult = await Promise.all(result.items.map(async item => new (type)(this.youtube, await item, true)))
-    else {
-      for (const item of result.items) {
-        alreadyResolved[alreadyResolved.findIndex(value => value === undefined)] = new (type)(this.youtube, item, true) as InstanceType<K>
+      if (resultIndex < result.items.length - 1) {
+        return Promise.reject(new Error(`There are ${
+          result.items.length - resultIndex - 1} extra items in the response`))
       }
-
-      endResult = alreadyResolved
     }
 
-    if (endResult.length === 1) endResult = endResult[0]
-    if (this.youtube._shouldCache) this.youtube._cache(cacheKey, endResult)
-
-    return endResult as ItemReturns<T, K>
+    return (resolvedEntities.length === 1 ?
+      resolvedEntities[0] :
+      resolvedEntities) as ItemReturns<T, K, M>
   }
 
   /**
@@ -138,13 +166,13 @@ export class GenericService {
       return Promise.reject(new Error(`${name} cannot be filtered by the 'mine' parameter.`))
     }
 
-    let cacheKey: string
+    /* let cacheKey: string
 
     if (this.youtube._shouldCache) {
       cacheKey = `getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`
       const cached = Cache.get(cacheKey)
       if (cached) return cached
-    }
+    } */
 
     const options: PaginatedRequestParams = {
       part: parts?.join(',')
@@ -244,8 +272,10 @@ export class GenericService {
 
     if (maxForEndpoint !== undefined) {
       if (pages < 1 || maxPerPage < 1) options.maxResults = maxForEndpoint
-      else if (maxPerPage > maxForEndpoint) return Promise.reject(new Error(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`))
-      else options.maxResults = maxPerPage
+      else if (maxPerPage > maxForEndpoint) {
+        return Promise.reject(
+          new Error(`Max per page must be ${maxForEndpoint} or below for ${endpoint}`))
+      } else options.maxResults = maxPerPage
     }
 
     if (pages < 1) {
@@ -254,70 +284,118 @@ export class GenericService {
 
     if (pageToken) options.pageToken = pageToken
 
+    // Caching handled here
     const toReturn = await this.fetchPages(pages, endpoint, options, clazz, auth) as PaginatedResponse<T>
 
-    if (this.youtube._shouldCache) this.youtube._cache(cacheKey, toReturn)
+    // if (this.youtube._shouldCache) this.youtube._cache(cacheKey, toReturn)
 
     return toReturn
   }
 
   /**
+   * Caching handled here
    * @param clazz Most endpoints only return one type of entity, so set this to that entity.
    * If endpoint is `search`, then leave undefined.
    */
-  public async fetchPages<T extends PaginatedType = PaginatedType> (pages: number, endpoint: string, options:
-  { part: string; maxResults?: number; hl?: string; [key: string]: any }, clazz?: T,
-  auth?: AuthorizationOptions): Promise<PaginatedResponse<InstanceType<T>>> {
+  public async fetchPages<T extends PaginatedType = PaginatedType> (
+    pages: number, endpoint: string, options: PaginatedRequestParams, clazz?: T,
+    auth?: AuthorizationOptions):
+  Promise<PaginatedResponse<InstanceType<T>>> {
 
     if (!clazz && endpoint !== 'search') {
       return Promise.reject(new Error('Endpoints other than search must specify an entity class'))
     }
 
-    const toReturn: PaginatedResponse<InstanceType<T>> = {
+    let toReturn: PaginatedResponse<InstanceType<T>> = {
       items: []
     }
 
+    const cachedPages = this.youtube._shouldCache ?
+      Cache.getPages<InstanceType<T>>(endpoint, options, auth) :
+      undefined
+
     let pagesFetched = 0
 
+
     while (true) {
-      const apiResponse = await this.youtube._request.get(endpoint, {
-        params: options,
-        authorizationOptions: auth ?? { [options.mine ? 'accessToken' : 'apiKey']: true }
-      })
+      let page: PaginatedResponse<any>
 
-      if (!apiResponse.items?.length) {
-        if (apiResponse.prevPageToken) toReturn.prevPageToken = apiResponse.prevPageToken
-        break
-      }
+      if (this.youtube._shouldCache) {
+        page = cachedPages?.[pagesFetched]
 
-      pagesFetched++
-
-      for (const data of apiResponse.items) {
-        if (endpoint === 'search') {
-          if (data.id.videoId) {
-            toReturn.items.push(new Video(this.youtube, data) as InstanceType<T>)
-          } else if (data.id.channelId) {
-            toReturn.items.push(new Channel(this.youtube, data) as InstanceType<T>)
-          } else if (data.id.playlistId) {
-            toReturn.items.push(new Playlist(this.youtube, data) as InstanceType<T>)
-          }
-        } else if (data.kind === 'youtube#commentThread') {
-          toReturn.items.push(new Comment(this.youtube, data, true) as InstanceType<T>)
-        } else {
-          toReturn.items.push(new clazz(this.youtube, data, false) as InstanceType<T>)
+        // We have a cached page, use that
+        if (page) {
+          toReturn.items = toReturn.items.concat(page.items)
+          if (page.prevPageToken) toReturn.prevPageToken = page.prevPageToken
+          if (page.nextPageToken) toReturn.nextPageToken = page.nextPageToken
+          if (++pagesFetched >= pages || !page.nextPageToken) break
+          options.pageToken = toReturn.nextPageToken
+          continue
         }
       }
 
-      if (pagesFetched >= pages || !apiResponse.nextPageToken) {
-        if (apiResponse.prevPageToken) toReturn.prevPageToken = apiResponse.prevPageToken
-        if (apiResponse.nextPageToken) toReturn.nextPageToken = apiResponse.nextPageToken
+      // No cached page, request one from the API
+      page = await this.youtube._request.get(endpoint, {
+        params: options,
+        authorizationOptions: auth ?? { [options.mine ? 'accessToken' : 'apiKey']: true } })
+
+      // No more items found, return
+      if (!page.items?.length) {
+        if (page.prevPageToken) toReturn.prevPageToken = page.prevPageToken
+        break
+      }
+
+      const instances: InstanceType<T>[] = []
+
+      for (const data of page.items) {
+        if (endpoint === 'search') {
+          if (data.id.videoId) {
+            instances.push(new Video(this.youtube, data) as InstanceType<T>)
+          } else if (data.id.channelId) {
+            instances.push(new Channel(this.youtube, data) as InstanceType<T>)
+          } else if (data.id.playlistId) {
+            instances.push(new Playlist(this.youtube, data) as InstanceType<T>)
+          }
+        } else if (data.kind === 'youtube#commentThread') {
+          instances.push(new Comment(this.youtube, data, true) as InstanceType<T>)
+        } else {
+          instances.push(new clazz(this.youtube, data, false) as InstanceType<T>)
+        }
+      }
+
+      toReturn.items = toReturn.items.concat(instances)
+
+      const toCache: PaginatedResponse<InstanceType<T>> = {
+        items: instances
+      }
+
+      if (page.prevPageToken) toCache.prevPageToken = page.prevPageToken
+      if (page.nextPageToken) toCache.nextPageToken = page.nextPageToken
+
+      this.youtube._cachePage(endpoint, pagesFetched, options, auth, toCache)
+
+      if (++pagesFetched >= pages || !page.nextPageToken) {
+        if (page.prevPageToken) toReturn.prevPageToken = page.prevPageToken
+        if (page.nextPageToken) toReturn.nextPageToken = page.nextPageToken
 
         break
       }
 
-      options.pageToken = apiResponse.nextPageToken
+      options.pageToken = page.nextPageToken
     }
 
     return toReturn
+  }
+
+  private transformItemToCachedEntity<K extends ItemTypes>
+  (type: K, item: any, cacheString: string, parts?: string[]):
+  InstanceType<K> {
+    const entity = new (type)(this.youtube, item, true) as InstanceType<K>
+
+    if (this.youtube._shouldCache) {
+      this.youtube._cacheItem(type, cacheString, parts, entity)
+    }
+
+    return entity
   }
 }
