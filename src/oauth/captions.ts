@@ -10,7 +10,8 @@ export class OAuthCaptions {
   constructor (public oauth: OAuth) {}
 
   /**
-   * Get a [Caption](./Library_Exports.Caption#) object from the ID of the caption.  
+   * Get a [Caption](./Library_Exports.Caption#) object
+   * from the URL, ID, or search query of its video and the ID of the caption.  
    * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the caption from.
    * @param captionId The ID of the caption.
@@ -19,8 +20,13 @@ export class OAuthCaptions {
     this.oauth.checkTokenAndThrow()
 
     const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const params: { videoId: string; id?: string } =
+      { videoId: typeof video === 'string' ? video : video.id }
+
+    if (captionId) params.id = captionId
+
     const data = await this.oauth.youtube._request.get('captions', {
-      params: { part: 'snippet', videoId: typeof video === 'string' ? video : video.id, id: captionId },
+      params: { part: 'snippet', id: captionId },
       authorizationOptions: { accessToken: true }
     })
 

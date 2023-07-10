@@ -72,7 +72,7 @@ export class OAuth {
    */
   public getMe (parts?: Part.ChannelParts): Promise<YT.Channel> {
     this.checkTokenAndThrow()
-    return this.youtube._genericService.getItem(YT.Channel, true, null, parts) as Promise<YT.Channel>
+    return this.youtube._genericService.getItem(YT.Channel, { mine: true }, parts)
   }
 
   /**

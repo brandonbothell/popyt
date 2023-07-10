@@ -133,7 +133,35 @@ export class YouTube {
       return
     }
 
-    Cache.set(id, value, this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
+    Cache.set(id, value,
+      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
+  }
+
+  /**
+   * @ignore
+   */
+  public _cacheItem (type: T.ItemTypes, id: string, parts: string[] | undefined,
+    value: InstanceType<T.ItemTypes>) {
+    if (!this._shouldCache) {
+      return
+    }
+
+    Cache.setItem(type, id, parts, value,
+      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
+  }
+
+  /**
+   * @ignore
+   */
+  public _cachePage (endpoint: string, page: number, options: T.PaginatedRequestParams,
+    auth: T.AuthorizationOptions | undefined,
+    value: T.PaginatedResponse<T.PaginatedInstance>) {
+    if (!this._shouldCache) {
+      return
+    }
+
+    Cache.setPage(endpoint, page, options, auth, value,
+      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
   }
 
   /**
@@ -188,7 +216,7 @@ export class YouTube {
    */
   public async getVideo<T extends T.VideoResolvable | T.VideoResolvable[]> (videoResolvable: T, parts?: Part.VideoParts) {
     const video = await this._resolutionService.resolve(videoResolvable, Entity.Video)
-    return this._genericService.getItem(Entity.Video, false, video, parts)
+    return this._genericService.getItem(Entity.Video, { resolvableEntity: video }, parts)
   }
 
   /**
@@ -200,7 +228,7 @@ export class YouTube {
    */
   public async getChannel<T extends T.ChannelResolvable | T.ChannelResolvable[]> (channelResolvable: T, parts?: Part.ChannelParts) {
     const channel = await this._resolutionService.resolve(channelResolvable, Entity.Channel)
-    return this._genericService.getItem(Entity.Channel, false, channel, parts)
+    return this._genericService.getItem(Entity.Channel, { resolvableEntity: channel }, parts)
   }
 
   /**
@@ -211,7 +239,7 @@ export class YouTube {
    */
   public async getPlaylist<T extends T.PlaylistResolvable | T.PlaylistResolvable[]> (playlistResolvable: T, parts?: Part.PlaylistParts) {
     const playlist = await this._resolutionService.resolve(playlistResolvable, Entity.Playlist)
-    return this._genericService.getItem(Entity.Playlist, false, playlist, parts)
+    return this._genericService.getItem(Entity.Playlist, { resolvableEntity: playlist }, parts)
   }
 
   /**
@@ -220,7 +248,7 @@ export class YouTube {
    * @param parts The parts of the comment to fetch (saves quota if you aren't using certain properties!)
    */
   public async getComment<T extends string | string[]> (commentId: T, parts?: Part.CommentParts) {
-    return this._genericService.getItem(Entity.Comment, false, commentId, parts)
+    return this._genericService.getItem(Entity.Comment, { resolvableEntity: commentId }, parts)
   }
 
   /**
@@ -231,7 +259,7 @@ export class YouTube {
    * @param parts The parts of the subscription to fetch (saves quota if you aren't using certain properties!)
    */
   public async getSubscription<T extends string | string[]> (subscriptionId: T, parts?: Part.SubscriptionParts) {
-    return this._genericService.getItem(Entity.Subscription, false, subscriptionId, parts)
+    return this._genericService.getItem(Entity.Subscription, { resolvableEntity: subscriptionId }, parts)
   }
 
   /**
@@ -239,7 +267,7 @@ export class YouTube {
    * @param categoryId The ID of the category.
    */
   public async getCategory<T extends string | string[]> (categoryId: T) {
-    return this._genericService.getItem(Entity.VideoCategory, false, categoryId)
+    return this._genericService.getItem(Entity.VideoCategory, { resolvableEntity: categoryId })
   }
 
   /**
@@ -248,7 +276,7 @@ export class YouTube {
    * @param parts The parts of the channel section to fetch (saves quota if you aren't using certain properties!)
    */
   public async getChannelSection<T extends string | string[]> (sectionId: T, parts?: Part.ChannelSectionParts) {
-    return this._genericService.getItem(Entity.ChannelSection, false, sectionId, parts)
+    return this._genericService.getItem(Entity.ChannelSection, { resolvableEntity: sectionId }, parts)
   }
 
   /**

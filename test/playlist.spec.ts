@@ -42,8 +42,10 @@ describe('Playlists', () => {
   })
 
   it('should work with fetching a page of videos', async () => {
+    console.log('----- before page -----')
     const playlist = await youtube.getPlaylist('PLMC9KNkIncKvYin_USF1qoJQnIyMAfRxl', [ 'id' ])
     const videos = (await playlist.fetchVideos(undefined, [ 'id' ])).items
+    console.log('----- after page -----')
 
     expect(videos.length).to.equal(50)
     expect(playlist.videos.items.length).to.equal(50)
