@@ -34,6 +34,11 @@ export class YouTube {
   /**
    * @ignore
    */
+  public _cacheCheckInterval: number
+
+  /**
+   * @ignore
+   */
   public _request: Request
 
   /**
@@ -113,15 +118,16 @@ export class YouTube {
     this._upload = new Request('https://www.googleapis.com/upload/youtube/v3/', this.#auth)
     this.oauth = new OAuth(this)
 
-    this._shouldCache = options.cache
-    this._cacheSearches = options.cacheSearches
-    this._cacheTTL = options.cacheTTL
+    this._shouldCache = options.cache ?? true
+    this._cacheSearches = options.cacheSearches ?? true
+    this._cacheTTL = options.cacheTTL ?? 600
+    this._cacheCheckInterval = options.cacheCheckInterval ?? 600
 
     this.language = language
     this.region = region
 
-    if (options.cacheCheckInterval > 0) {
-      setInterval(Cache.checkTTLs, options.cacheCheckInterval * 1000)
+    if (this._cacheCheckInterval > 0) {
+      setInterval(Cache.checkTTLs, this._cacheCheckInterval * 1000)
     }
   }
 

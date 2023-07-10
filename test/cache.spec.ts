@@ -1,6 +1,7 @@
 import 'mocha'
 import './setup-instance'
 
+import { setTimeout } from 'timers/promises'
 import { Cache } from '../src/util/cache'
 import { YouTube } from '../src'
 import { expect } from 'chai'
@@ -36,13 +37,26 @@ describe('Caching', () => {
   })
 
   it('should not use expired items', async () => {
+    Cache.setTTLs(1) // for clearing previous test cache
+
     const youtube = new YouTube(apiKey, undefined, { cacheTTL: 0.001, cacheCheckInterval: 0.009 })
+    await setTimeout(20) // clearing previous test cache
+
     await youtube.getVideo('dQw4w9WgXcQ')
+    await setTimeout(20) // give enough time to clear cache
 
-    const time = new Date().getTime()
-    const video = youtube.getVideo('dQw4w9WgXcQ')
+    let time = new Date().getTime()
+    const video = await youtube.getVideo('dQw4w9WgXcQ')
 
-    await video
+    expect(new Date().getTime() - time).to.be.greaterThan(30)
+
+    await video.fetchComments()
+    await setTimeout(20)
+
+    time = new Date().getTime()
+    const comments = video.fetchComments()
+
+    await comments
 
     expect(new Date().getTime() - time).to.be.greaterThan(30)
   })
@@ -70,7 +84,7 @@ describe('Caching', () => {
     expect(Cache.get('test')).to.equal(undefined)
   })
 
-  it('should not cache if _shouldCalche is false', () => {
+  it('should not cache if _shouldCache is false', () => {
     const youtube = new YouTube(apiKey, undefined, { cache: false })
     youtube._cache('test', 'value')
 
