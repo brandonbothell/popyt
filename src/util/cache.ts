@@ -5,7 +5,7 @@ import { AuthorizationOptions, ItemTypes, PaginatedInstance, PaginatedRequestPar
  */
 export class Cache {
   private static map: Map<string, CacheItem> = new Map()
-  private static itemsMap: Map<string, CacheItem<InstanceType<ItemTypes>>> = new Map()
+  private static itemsMap: Map<string, CacheItem<InstanceType<ItemTypes>>[]> = new Map()
   private static pagesMap: Map<string, CacheItem<PaginatedResponse<PaginatedInstance>>[]> = new Map()
 
   public static set (key: string, value: any, ttl: number) {
@@ -25,17 +25,29 @@ export class Cache {
 
   public static setItem (type: ItemTypes, name: string, parts: string[] | undefined,
     value: InstanceType<ItemTypes>, ttl: number) {
-    Cache.itemsMap.set(`${type.name.toLowerCase()}/${name}/${parts?.join(',')}`,
-      { v: value, t: ttl })
+    const key = `${type.name.toLowerCase()}/${name}`
+    const cachedItems = Cache.itemsMap.get(key) ?? []
+
+    cachedItems.push({
+      v: value,
+      t: ttl,
+      p: parts ? parts?.sort()?.join(',') : type.part
+    })
+    Cache.itemsMap.set(key, cachedItems)
   }
 
   public static getItem (type: ItemTypes, name: string, parts?: string[]):
   InstanceType<ItemTypes> {
-    const key = `${type.name.toLowerCase()}/${name}/${parts?.join(',')}`
-    const item = Cache.itemsMap.get(key)
+    const key = `${type.name.toLowerCase()}/${name}`
+    const cachedItems = Cache.itemsMap.get(key)
+    const item = cachedItems?.find(parts ?
+      item => item.p?.startsWith(parts.sort().join(',')) :
+      item => item.p === type.part
+    )
 
-    if (!item || (item.t > 0 && new Date().getTime() >= item.t)) {
-      Cache._deleteItem(key)
+    if (!item) return undefined
+    if (item.t > 0 && new Date().getTime() >= item.t) {
+      Cache._deleteItem(key, item.p)
       return undefined
     }
 
@@ -52,7 +64,6 @@ export class Cache {
 
     if (page > toCache.length - 1) toCache.length = page + 1
     toCache[page] = { v: value, t: ttl }
-    console.log(`New page length: ${value.items.length}`)
 
     Cache.pagesMap.set(key, toCache)
   }
@@ -90,8 +101,6 @@ export class Cache {
 
     const toReturn: PaginatedResponse<T>[] = new Array(pages.length)
 
-    if (pages) console.log(`Number of pages from fetched: ${pages.length}`)
-
     for (let page = 0; page < pages.length; page++) {
       const item = pages[page]
 
@@ -118,11 +127,13 @@ export class Cache {
       }
     }
 
-    for (const [ key, value ] of Cache.itemsMap.entries()) {
-      const timeToDelete = value.t
+    for (const [ key, items ] of Cache.itemsMap.entries()) {
+      for (const item of items) {
+        const timeToDelete = item.t
 
-      if (timeToDelete > 0 && time >= timeToDelete) {
-        Cache.itemsMap.delete(key)
+        if (timeToDelete > 0 && time >= timeToDelete) {
+          Cache._deleteItem(key, item.p)
+        }
       }
     }
 
@@ -144,8 +155,21 @@ export class Cache {
     Cache.map.delete(key)
   }
 
-  public static _deleteItem (key: string) {
-    Cache.itemsMap.delete(key)
+  public static _deleteItem (key: string, parts?: string) {
+    const cachedItems = Cache.itemsMap.get(key)
+    const index = cachedItems?.findIndex(item => item.p === parts)
+
+    if (index === undefined || index < 0) return
+
+    cachedItems.splice(index, 1)
+
+    if (cachedItems.length === 0) {
+      Cache.itemsMap.delete(key)
+    } else {
+      Cache.itemsMap.set(key, cachedItems)
+    }
+
+    return cachedItems
   }
 
   /**
@@ -180,8 +204,12 @@ export class Cache {
 
 /**
  * @ignore
+ * v = Value  
+ * t = Time to live  
+ * p = Parts string (sorted!)
  */
 type CacheItem<T = any> = {
   v: T
   t: number
+  p?: string
 }

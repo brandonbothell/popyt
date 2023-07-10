@@ -13,7 +13,8 @@ export class Channel {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,statistics,status,brandingSettings,localizations'
+  public static part =
+    'brandingSettings,contentDetails,localizations,snippet,statistics,status'
 
   /**
    * The fields to request for this entity.

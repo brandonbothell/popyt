@@ -16,7 +16,8 @@ export class Video {
   /**
    * The parts to request for this entity.
    */
-  public static part = 'snippet,contentDetails,statistics,status,recordingDetails,localizations'
+  public static part =
+    'contentDetails,localizations,recordingDetails,snippet,statistics,status'
 
   /**
    * The fields to request for this entity.
