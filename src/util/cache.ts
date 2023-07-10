@@ -11,7 +11,8 @@ export class Cache {
   private static map: Map<string, CacheItem> = new Map()
 
   /** 
-   * List of items that are separated by which parts were requested from the API.
+   * Items mapped to IDs/URLs/search queries that are separated 
+   * by which parts were requested from the API.
    */
   private static itemsMap: Map<string, CacheItem<InstanceType<ItemTypes>>[]> = new Map()
 
@@ -147,11 +148,31 @@ export class Cache {
           if (!pages[page]) continue
 
           const timeToDelete = pages[page].t
-
           if (timeToDelete > 0 && time >= timeToDelete) {
             pages = Cache._deletePageByKey(part, key, page)
             page--
           }
+        }
+      }
+    }
+  }
+
+  public static setTTLs (ttl: number) {
+    for (const [ key, item ] of Cache.map.entries()) {
+      Cache.map.set(key, { ...item, t: ttl })
+    }
+
+    for (const [ key, items ] of Cache.itemsMap.entries()) {
+      Cache.itemsMap.set(key, items.map(i => ({ ...i, t: ttl })))
+    }
+
+    for (const cache of Cache.pagesMap.values()) {
+      for (let [ key, pages ] of cache.entries()) {
+        for (let page = 0; page < pages.length; page++) {
+          if (!pages[page]) continue
+
+          pages[page].t = ttl
+          cache.set(key, pages)
         }
       }
     }
