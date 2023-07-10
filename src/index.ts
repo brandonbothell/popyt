@@ -154,13 +154,13 @@ export class YouTube {
    * @ignore
    */
   public _cachePage (endpoint: string, page: number, options: T.PaginatedRequestParams,
-    auth: T.AuthorizationOptions | undefined,
-    value: T.PaginatedResponse<T.PaginatedInstance>) {
+    auth: T.AuthorizationOptions | undefined, parts: string[] | undefined,
+    type: T.PaginatedType | undefined, value: T.PaginatedResponse<T.PaginatedInstance>) {
     if (!this._shouldCache) {
       return
     }
 
-    Cache.setPage(endpoint, page, options, auth, value,
+    Cache.setPage(endpoint, page, options, auth, parts, type, value,
       this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
   }
 
