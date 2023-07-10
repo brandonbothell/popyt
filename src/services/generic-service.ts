@@ -278,7 +278,8 @@ export class GenericService {
     }
 
     // Caching handled here
-    return this.fetchPages(pages, endpoint, options, clazz, auth) as Promise<PaginatedResponse<T>>
+    return this.fetchPages(
+      pages, endpoint, options, clazz, auth, parts) as Promise<PaginatedResponse<T>>
   }
 
   /**
@@ -288,7 +289,7 @@ export class GenericService {
    */
   public async fetchPages<T extends PaginatedType = PaginatedType> (
     pages: number, endpoint: string, options: PaginatedRequestParams, clazz?: T,
-    auth?: AuthorizationOptions):
+    auth?: AuthorizationOptions, parts?: string[]):
   Promise<PaginatedResponse<InstanceType<T>>> {
 
     if (!clazz && endpoint !== 'search') {
@@ -300,7 +301,7 @@ export class GenericService {
     }
 
     const cachedPages = this.youtube._shouldCache ?
-      Cache.getPages<InstanceType<T>>(endpoint, options, auth) :
+      Cache.getPages<InstanceType<T>>(endpoint, options, auth, parts, clazz) :
       undefined
 
     let pagesFetched = 0
@@ -361,7 +362,8 @@ export class GenericService {
       if (page.prevPageToken) toCache.prevPageToken = page.prevPageToken
       if (page.nextPageToken) toCache.nextPageToken = page.nextPageToken
 
-      this.youtube._cachePage(endpoint, pagesFetched, options, auth, toCache)
+      this.youtube._cachePage(
+        endpoint, pagesFetched, options, auth, parts, clazz, toCache)
 
       if (++pagesFetched >= pages || !page.nextPageToken) {
         if (page.prevPageToken) toReturn.prevPageToken = page.prevPageToken
