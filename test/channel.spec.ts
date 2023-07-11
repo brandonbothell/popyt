@@ -1,5 +1,5 @@
 import 'mocha'
-import { Channel, Playlist, Subscription, ChannelSection } from '../src'
+import { Channel, Playlist, Subscription, ChannelSection, PaginatedResponse } from '../src'
 import { youtube } from './setup-instance'
 import { expect } from 'chai'
 
@@ -49,17 +49,33 @@ describe('Channels', () => {
 
   it('should work with fetching pages of playlists', async () => {
     const channel = await youtube.getChannel('UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])
-    expect((await channel.fetchPlaylists({ pages: 2 }, [ 'id' ])).items.length).to.equal(100)
+    expect((await channel.fetchPlaylists({ pages: 2 }, [ 'id' ]))
+      .items.length).to.equal(100)
   })
 
   it('should work with fetching playlists', async () => {
     const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
-    expect((await channel.fetchPlaylists(undefined, [ 'id' ])).items[0]).to.be.an.instanceOf(Playlist)
+    expect((await channel.fetchPlaylists(undefined, [ 'id', 'contentDetails' ]))
+      .items[0]).to.be.an.instanceOf(Playlist)
+  })
+
+  it('should work with caching playlists', async () => {
+    const channel = await youtube.getChannel('UC6mi9rp7vRYninucP61qOjg', [ 'id' ])
+    let playlist: Playlist | Promise<PaginatedResponse<Playlist>> =
+      channel.fetchPlaylists(undefined, [ 'contentDetails' ])
+    const time = new Date().getTime()
+
+    playlist = (await playlist).items[0]
+
+    expect(new Date().getTime() - time).to.be.lessThan(50)
+    expect(playlist).to.be.an.instanceOf(Playlist)
+    expect(playlist.length).to.be.a('number')
   })
 
   it('should work with fetching pages of subscriptions', async () => {
     const channel = await youtube.getChannel('UCg4XK-l40KZD7fLi12pJ1YA', [ 'id' ])
-    expect((await channel.fetchSubscriptions({ pages: 1 }, [ 'id' ])).items[0]).to.be.an.instanceOf(Subscription)
+    expect((await channel.fetchSubscriptions({ pages: 1 }, [ 'id' ]))
+      .items[0]).to.be.an.instanceOf(Subscription)
   })
 
   it('should work with fetching sections', async () => {
