@@ -1,4 +1,6 @@
-import { AuthorizationOptions, ItemTypes, PaginatedInstance, PaginatedRequestParams, PaginatedResponse, PaginatedType } from '..'
+import { AuthorizationOptions, ItemTypes, PaginatedInstance,
+  PaginatedRequestParams, PaginatedResponse, PaginatedType } from '..'
+import { findArrayFrom } from '.'
 
 /**
  * @ignore
@@ -11,13 +13,15 @@ export class Cache {
   private static map: Map<string, CacheItem> = new Map()
 
   /** 
-   * Items mapped to IDs/URLs/search queries that are separated 
-   * by which parts were requested from the API.
+   * Map of items that are separated by which parts were requested from the API and then
+   * their ID/URL/search query.
    */
-  private static itemsMap: Map<string, CacheItem<InstanceType<ItemTypes>>[]> = new Map()
+  private static itemsMap:
+  Map<string, Map<string, CacheItem<InstanceType<ItemTypes>>>> = new Map()
 
   /** 
-   * Map of pages of items that are separated by which parts were requested from the API.
+   * Map of pages of items that are separated by which parts were requested from the API
+   * and then a cache key generated from the request options.
    */
   private static pagesMap:
     Map<string, Map<string, CacheItem<PaginatedResponse<PaginatedInstance>>[]>> = new Map()
@@ -39,30 +43,25 @@ export class Cache {
 
   public static setItem (type: ItemTypes, name: string, parts: string[] | undefined,
     value: InstanceType<ItemTypes>, ttl: number) {
-    const key = `${type.name.toLowerCase()}/${name}`
-    const cachedItems = Cache.itemsMap.get(key) ?? []
+    const key = `${type.name.toLowerCase()}/${name}` // The item key string
+    const part = parts ? parts.sort().join(',') : type.part // The parts key string
+    const cachedWithSameParts = Cache.itemsMap.get(part) ?? // The parts map
+      Cache.itemsMap.set(part, new Map()).get(part)
 
-    cachedItems.push({
-      v: value,
-      t: ttl,
-      p: parts ? parts.sort().join(',') : type.part
-    })
-
-    Cache.itemsMap.set(key, cachedItems)
+    cachedWithSameParts.set(key, { v: value, t: ttl })
   }
 
   public static getItem (type: ItemTypes, name: string, parts?: string[]):
   InstanceType<ItemTypes> {
+    const part = parts ? parts.sort().join(',') : type.part
     const key = `${type.name.toLowerCase()}/${name}`
-    const cachedItems = Cache.itemsMap.get(key)
-    const item = cachedItems?.find(parts ?
-      item => item.p?.startsWith(parts.sort().join(',')) :
-      item => item.p === type.part
-    )
+
+    // Search for an item that has the same or more parts than we need
+    const item = Cache.findCachedItemWithParts(Cache.itemsMap, part, key)
 
     if (!item) return undefined
     if (item.t > 0 && new Date().getTime() >= item.t) {
-      Cache._deleteItem(key, item.p)
+      Cache._deleteItem(key, part)
       return undefined
     }
 
@@ -75,12 +74,12 @@ export class Cache {
     value: PaginatedResponse<PaginatedInstance>, ttl: number) {
 
     const part = parts ? parts.sort().join(',') : type?.part ?? 'default'
-    const cachedWithSameParts = Cache.pagesMap.get(part) ??
-      Cache.pagesMap.set(part, new Map()).get(part)
-
     const key = `${endpoint}/${
       JSON.stringify({ ...options, pageToken: undefined, part: undefined })}/${
       auth?.accessToken ?? false}/${auth?.apiKey ?? false}`
+
+    const cachedWithSameParts = Cache.pagesMap.get(part) ??
+      Cache.pagesMap.set(part, new Map()).get(part)
     const toCache = cachedWithSameParts.get(key) ?? []
 
     if (page > toCache.length - 1) toCache.length = page + 1
@@ -93,14 +92,13 @@ export class Cache {
     endpoint: string, options: PaginatedRequestParams,
     auth?: AuthorizationOptions, parts?: string[], type?: PaginatedType):
   PaginatedResponse<T>[] {
-    const part = parts ? parts.sort().join(',') : type?.part ?? 'default'
-    const cachedWithSameParts = Cache.pagesMap.get(part) ??
-      Cache.pagesMap.set(part, new Map()).get(part)
-
     const key = `${endpoint}/${
       JSON.stringify({ ...options, pageToken: undefined, part: undefined })}/${
       auth?.accessToken ?? false}/${auth?.apiKey ?? false}`
-    const pages = cachedWithSameParts.get(key)
+    const part = parts ? parts.sort().join(',') : type?.part ?? 'default'
+
+    // Search for a page that has the same or more parts than we need
+    const pages = Cache.findCachedItemWithParts(Cache.pagesMap, part, key)
 
     if (!pages) return undefined
 
@@ -121,6 +119,30 @@ export class Cache {
     return toReturn
   }
 
+  private static findCachedItemWithParts<T> (cache: Map<string, Map<string, T>>,
+    part: string, key: string): T {
+    let cachedWithSameParts = cache.get(part) // A map with matching parts
+    let item = cachedWithSameParts?.get(key) // A matching page with our parts
+
+    if (item) return item
+
+    let currentIndex = 0
+    const partKeys = Array.from(cache.keys())
+
+    while (!item) {
+      // Find a page that contains our data
+      const matchingPart = findArrayFrom(p => p.includes(part),
+        partKeys, currentIndex)
+      if (!matchingPart) break
+
+      currentIndex = matchingPart[0] + 1 // Increment index
+      cachedWithSameParts = cache.get(matchingPart[1])
+      item = cachedWithSameParts?.get(key)
+    }
+
+    return item
+  }
+
   public static checkTTLs () {
     const time = new Date().getTime()
 
@@ -132,12 +154,12 @@ export class Cache {
       }
     }
 
-    for (const [ key, items ] of Cache.itemsMap.entries()) {
-      for (const item of items) {
+    for (const [ part, cache ] of Cache.itemsMap.entries()) {
+      for (const [ key, item ] of cache.entries()) {
         const timeToDelete = item.t
 
         if (timeToDelete > 0 && time >= timeToDelete) {
-          Cache._deleteItem(key, item.p)
+          Cache._deleteItem(key, part)
         }
       }
     }
@@ -162,8 +184,10 @@ export class Cache {
       Cache.map.set(key, { ...item, t: ttl })
     }
 
-    for (const [ key, items ] of Cache.itemsMap.entries()) {
-      Cache.itemsMap.set(key, items.map(i => ({ ...i, t: ttl })))
+    for (const cache of Cache.itemsMap.values()) {
+      for (let [ key, item ] of cache.entries()) {
+        cache.set(key, { ...item, t: ttl })
+      }
     }
 
     for (const cache of Cache.pagesMap.values()) {
@@ -182,21 +206,12 @@ export class Cache {
     Cache.map.delete(key)
   }
 
-  public static _deleteItem (key: string, parts?: string) {
-    const cachedItems = Cache.itemsMap.get(key)
-    const index = cachedItems?.findIndex(item => item.p === parts)
+  public static _deleteItem (key: string, parts: string) {
+    const cachedWithSameParts = Cache.itemsMap.get(parts)
+    const cachedItem = cachedWithSameParts?.get(key)
 
-    if (index === undefined || index < 0) return
-
-    cachedItems.splice(index, 1)
-
-    if (cachedItems.length === 0) {
-      Cache.itemsMap.delete(key)
-    } else {
-      Cache.itemsMap.set(key, cachedItems)
-    }
-
-    return cachedItems
+    cachedWithSameParts?.delete(key)
+    return cachedItem
   }
 
   /**
@@ -245,5 +260,4 @@ export class Cache {
 type CacheItem<T = any> = {
   v: T
   t: number
-  p?: string
 }
