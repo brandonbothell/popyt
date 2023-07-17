@@ -23,7 +23,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[entities/comment.ts:140](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L140)
+[entities/comment.ts:140](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L140)
 
 ## Properties
 
@@ -44,7 +44,7 @@ The comment's author.
 
 #### Defined in
 
-[entities/comment.ts:45](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L45)
+[entities/comment.ts:45](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L45)
 
 ___
 
@@ -57,7 +57,7 @@ The ID of the channel that uploaded the video this comment is on, if any.
 
 #### Defined in
 
-[entities/comment.ts:116](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L116)
+[entities/comment.ts:116](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L116)
 
 ___
 
@@ -69,7 +69,7 @@ The raw data from the YouTube API of the comment.
 
 #### Defined in
 
-[entities/comment.ts:30](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L30)
+[entities/comment.ts:30](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L30)
 
 ___
 
@@ -82,7 +82,7 @@ posted.
 
 #### Defined in
 
-[entities/comment.ts:110](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L110)
+[entities/comment.ts:110](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L110)
 
 ___
 
@@ -94,7 +94,7 @@ The date the comment was published.
 
 #### Defined in
 
-[entities/comment.ts:104](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L104)
+[entities/comment.ts:104](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L104)
 
 ___
 
@@ -106,7 +106,7 @@ Whether or not this a full comment object.
 
 #### Defined in
 
-[entities/comment.ts:40](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L40)
+[entities/comment.ts:40](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L40)
 
 ___
 
@@ -118,7 +118,7 @@ The comment's unique YouTube ID.
 
 #### Defined in
 
-[entities/comment.ts:35](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L35)
+[entities/comment.ts:35](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L35)
 
 ___
 
@@ -130,7 +130,7 @@ The number of likes the comment has received.
 
 #### Defined in
 
-[entities/comment.ts:94](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L94)
+[entities/comment.ts:94](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L94)
 
 ___
 
@@ -142,7 +142,7 @@ If this comment is a reply, then this is the ID of the comment it is replying to
 
 #### Defined in
 
-[entities/comment.ts:126](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L126)
+[entities/comment.ts:126](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L126)
 
 ___
 
@@ -154,7 +154,7 @@ Either YouTube thinks it's popular, or it has at least 100 likes.
 
 #### Defined in
 
-[entities/comment.ts:89](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L89)
+[entities/comment.ts:89](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L89)
 
 ___
 
@@ -166,7 +166,7 @@ Whether or not you can like/dislike the comment.
 
 #### Defined in
 
-[entities/comment.ts:84](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L84)
+[entities/comment.ts:84](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L84)
 
 ___
 
@@ -180,7 +180,7 @@ to get all of the replies, though.
 
 #### Defined in
 
-[entities/comment.ts:133](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L133)
+[entities/comment.ts:133](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L133)
 
 ___
 
@@ -192,7 +192,7 @@ If this comment was fetched from a video, then this is the number of replies on 
 
 #### Defined in
 
-[entities/comment.ts:138](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L138)
+[entities/comment.ts:138](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L138)
 
 ___
 
@@ -211,7 +211,7 @@ The comment's content.
 
 #### Defined in
 
-[entities/comment.ts:70](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L70)
+[entities/comment.ts:70](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L70)
 
 ___
 
@@ -223,7 +223,7 @@ The url of the comment.
 
 #### Defined in
 
-[entities/comment.ts:99](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L99)
+[entities/comment.ts:99](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L99)
 
 ___
 
@@ -235,7 +235,7 @@ The ID of the video that this comment is on, if any.
 
 #### Defined in
 
-[entities/comment.ts:121](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L121)
+[entities/comment.ts:121](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L121)
 
 ___
 
@@ -247,7 +247,7 @@ The YouTube object used to create the comment.
 
 #### Defined in
 
-[entities/comment.ts:25](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L25)
+[entities/comment.ts:25](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L25)
 
 ___
 
@@ -259,7 +259,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/comment.ts:8](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L8)
+[entities/comment.ts:8](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L8)
 
 ___
 
@@ -271,7 +271,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/comment.ts:18](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L18)
+[entities/comment.ts:18](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L18)
 
 ___
 
@@ -283,7 +283,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/comment.ts:13](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L13)
+[entities/comment.ts:13](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L13)
 
 ## Methods
 
@@ -300,7 +300,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/comment.ts:256](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L256)
+[entities/comment.ts:256](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L256)
 
 ___
 
@@ -323,7 +323,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/comment.ts:219](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L219)
+[entities/comment.ts:219](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L219)
 
 ___
 
@@ -346,7 +346,7 @@ Fetches replies to the comment from the API.
 
 #### Defined in
 
-[entities/comment.ts:209](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L209)
+[entities/comment.ts:209](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L209)
 
 ___
 
@@ -363,7 +363,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/comment.ts:237](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L237)
+[entities/comment.ts:237](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L237)
 
 ___
 
@@ -386,7 +386,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/comment.ts:229](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L229)
+[entities/comment.ts:229](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L229)
 
 ___
 
@@ -410,4 +410,4 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/comment.ts:248](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/comment.ts#L248)
+[entities/comment.ts:248](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/comment.ts#L248)

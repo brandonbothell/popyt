@@ -7,9 +7,9 @@
 
 import React from 'react'
 import clsx from 'clsx'
-import { translate } from '@docusaurus/Translate'
-import type { Props } from '@theme/CodeBlock/WordWrapButton'
 import IconWordWrap from '@theme/Icon/WordWrap'
+import type { Props } from '@theme/CodeBlock/WordWrapButton'
+import { translate } from '@docusaurus/Translate'
 
 import styles from './styles.module.css'
 

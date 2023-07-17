@@ -7,8 +7,8 @@
 
 import React from 'react'
 import clsx from 'clsx'
-import Container from '../Container'
 import type { Props } from '@theme/CodeBlock/Content/Element'
+import Container from '../Container'
 
 import styles from './styles.module.css'
 

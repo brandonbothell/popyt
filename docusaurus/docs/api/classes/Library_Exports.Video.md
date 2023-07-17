@@ -25,7 +25,7 @@ A YouTube video.
 
 #### Defined in
 
-[entities/video.ts:185](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L185)
+[entities/video.ts:199](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L199)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The caption data associated with this video. Only available after running [Video
 
 #### Defined in
 
-[entities/video.ts:178](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L178)
+[entities/video.ts:182](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L182)
 
 ___
 
@@ -49,7 +49,7 @@ The video category associated with the video.
 
 #### Defined in
 
-[entities/video.ts:158](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L158)
+[entities/video.ts:162](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L162)
 
 ___
 
@@ -68,7 +68,7 @@ Information on the channel that uploaded the video.
 
 #### Defined in
 
-[entities/video.ts:84](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L84)
+[entities/video.ts:88](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L88)
 
 ___
 
@@ -80,7 +80,7 @@ The number of comments on the video.
 
 #### Defined in
 
-[entities/video.ts:146](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L146)
+[entities/video.ts:150](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L150)
 
 ___
 
@@ -92,7 +92,7 @@ The video's comments. Only defined when [Video.fetchComments](./Library_Exports.
 
 #### Defined in
 
-[entities/video.ts:141](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L141)
+[entities/video.ts:145](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L145)
 
 ___
 
@@ -104,7 +104,7 @@ The raw data of the video.
 
 #### Defined in
 
-[entities/video.ts:38](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L38)
+[entities/video.ts:37](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L37)
 
 ___
 
@@ -116,7 +116,19 @@ The date the video was published.
 
 #### Defined in
 
-[entities/video.ts:79](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L79)
+[entities/video.ts:78](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L78)
+
+___
+
+### dateRecorded
+
+• **dateRecorded**: `Date`
+
+The date the video was recorded. This is specified by the uploader.
+
+#### Defined in
+
+[entities/video.ts:83](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L83)
 
 ___
 
@@ -128,7 +140,7 @@ The description of the video.
 
 #### Defined in
 
-[entities/video.ts:58](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L58)
+[entities/video.ts:57](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L57)
 
 ___
 
@@ -140,7 +152,7 @@ The number of dislikes the video has.
 
 #### Defined in
 
-[entities/video.ts:122](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L122)
+[entities/video.ts:126](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L126)
 
 ___
 
@@ -152,7 +164,7 @@ Whether or not this is a full video object (would it be the same if we ran [Vide
 
 #### Defined in
 
-[entities/video.ts:43](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L43)
+[entities/video.ts:42](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L42)
 
 ___
 
@@ -164,7 +176,7 @@ The ID of the video.
 
 #### Defined in
 
-[entities/video.ts:48](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L48)
+[entities/video.ts:47](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L47)
 
 ___
 
@@ -183,7 +195,19 @@ Properties to do with videos made for children.
 
 #### Defined in
 
-[entities/video.ts:163](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L163)
+[entities/video.ts:167](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L167)
+
+___
+
+### license
+
+• **license**: ``"creativeCommon"`` \| ``"youtube"``
+
+The license this video falls under.
+
+#### Defined in
+
+[entities/video.ts:192](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L192)
 
 ___
 
@@ -195,7 +219,7 @@ The number of likes the video has.
 
 #### Defined in
 
-[entities/video.ts:117](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L117)
+[entities/video.ts:121](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L121)
 
 ___
 
@@ -209,7 +233,23 @@ If this is not a livestream, this is `false`.
 
 #### Defined in
 
-[entities/video.ts:153](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L153)
+[entities/video.ts:157](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L157)
+
+___
+
+### localizations
+
+• **localizations**: `Object`
+
+The localized titles and descriptions of this video, if any.
+
+#### Index signature
+
+▪ [language: `string`]: { `description`: `string` ; `title`: `string`  }
+
+#### Defined in
+
+[entities/video.ts:197](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L197)
 
 ___
 
@@ -221,7 +261,7 @@ The minutes of the video.
 
 #### Defined in
 
-[entities/video.ts:97](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L97)
+[entities/video.ts:101](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L101)
 
 ___
 
@@ -233,7 +273,7 @@ If this video was fetched from a playlist, this can be populated with a user-cre
 
 #### Defined in
 
-[entities/video.ts:183](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L183)
+[entities/video.ts:187](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L187)
 
 ___
 
@@ -249,7 +289,7 @@ if it is from a playlist & marked as private.
 
 #### Defined in
 
-[entities/video.ts:136](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L136)
+[entities/video.ts:140](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L140)
 
 ___
 
@@ -261,7 +301,7 @@ The seconds of the video.
 
 #### Defined in
 
-[entities/video.ts:102](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L102)
+[entities/video.ts:106](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L106)
 
 ___
 
@@ -273,7 +313,7 @@ The short url of the video, i.e. https://youtu.be/id
 
 #### Defined in
 
-[entities/video.ts:112](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L112)
+[entities/video.ts:116](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L116)
 
 ___
 
@@ -285,7 +325,7 @@ The tags of the video.
 
 #### Defined in
 
-[entities/video.ts:74](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L74)
+[entities/video.ts:73](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L73)
 
 ___
 
@@ -307,7 +347,7 @@ The thumbnails of the video.
 
 #### Defined in
 
-[entities/video.ts:63](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L63)
+[entities/video.ts:62](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L62)
 
 ___
 
@@ -319,7 +359,7 @@ The title of the video.
 
 #### Defined in
 
-[entities/video.ts:53](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L53)
+[entities/video.ts:52](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L52)
 
 ___
 
@@ -331,7 +371,7 @@ The url of the video.
 
 #### Defined in
 
-[entities/video.ts:107](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L107)
+[entities/video.ts:111](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L111)
 
 ___
 
@@ -343,7 +383,7 @@ The number of views the video has.
 
 #### Defined in
 
-[entities/video.ts:127](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L127)
+[entities/video.ts:131](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L131)
 
 ___
 
@@ -355,7 +395,7 @@ YouTube object that created the video.
 
 #### Defined in
 
-[entities/video.ts:33](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L33)
+[entities/video.ts:32](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L32)
 
 ___
 
@@ -367,7 +407,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/video.ts:14](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L14)
+[entities/video.ts:14](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L14)
 
 ___
 
@@ -379,19 +419,19 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/video.ts:24](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L24)
+[entities/video.ts:24](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L24)
 
 ___
 
 ### part
 
-▪ `Static` **part**: `string` = `'snippet,contentDetails,statistics,status'`
+▪ `Static` **part**: `string` = `'snippet,contentDetails,statistics,status,recordingDetails,localizations'`
 
 The parts to request for this entity.
 
 #### Defined in
 
-[entities/video.ts:19](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L19)
+[entities/video.ts:19](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L19)
 
 ## Methods
 
@@ -408,7 +448,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:338](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L338)
+[entities/video.ts:358](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L358)
 
 ___
 
@@ -425,7 +465,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:310](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L310)
+[entities/video.ts:330](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L330)
 
 ___
 
@@ -448,7 +488,7 @@ Only useful if `this.full` is false, or if you want updated video info.
 
 #### Defined in
 
-[entities/video.ts:272](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L272)
+[entities/video.ts:292](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L292)
 
 ___
 
@@ -465,7 +505,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:368](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L368)
+[entities/video.ts:388](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L388)
 
 ___
 
@@ -489,7 +529,7 @@ Fetches the video's comments from the API and assigns them to [Video.comments](.
 
 #### Defined in
 
-[entities/video.ts:284](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L284)
+[entities/video.ts:304](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L304)
 
 ___
 
@@ -506,7 +546,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:293](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L293)
+[entities/video.ts:313](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L313)
 
 ___
 
@@ -523,7 +563,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:302](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L302)
+[entities/video.ts:322](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L322)
 
 ___
 
@@ -546,7 +586,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:259](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L259)
+[entities/video.ts:279](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L279)
 
 ___
 
@@ -572,7 +612,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:330](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L330)
+[entities/video.ts:350](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L350)
 
 ___
 
@@ -597,7 +637,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:359](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L359)
+[entities/video.ts:379](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L379)
 
 ___
 
@@ -614,7 +654,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:318](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L318)
+[entities/video.ts:338](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L338)
 
 ___
 
@@ -631,7 +671,7 @@ the property's existing value will be deleted.**
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `video` | [`VideoUpdateResource`](../modules/Library_Exports#videoupdateresource) | The updated video object. |
+| `video` | `Omit`<[`VideoUpdateResource`](../modules/Library_Exports#videoupdateresource), ``"id"``\> | The updated video object. |
 
 #### Returns
 
@@ -639,31 +679,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[entities/video.ts:349](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L349)
-
-___
-
-### updateCaption
-
-▸ **updateCaption**(`track`, `draft?`): `Promise`<[`Caption`](Library_Exports.Caption)\>
-
-Updates a caption track of a video.
-Must be using an access token with correct scopes.
-
-#### Parameters
-
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `track` | `Buffer` | `undefined` | The modified caption track to upload. |
-| `draft` | `boolean` | `null` | Whether or not the track is a draft. |
-
-#### Returns
-
-`Promise`<[`Caption`](Library_Exports.Caption)\>
-
-#### Defined in
-
-[entities/video.ts:392](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L392)
+[entities/video.ts:369](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L369)
 
 ___
 
@@ -689,4 +705,4 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/video.ts:381](https://github.com/brandonbothell/popyt/blob/0039d31/src/entities/video.ts#L381)
+[entities/video.ts:401](https://github.com/brandonbothell/popyt/blob/6382922/src/entities/video.ts#L401)

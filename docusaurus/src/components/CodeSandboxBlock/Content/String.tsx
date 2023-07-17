@@ -6,8 +6,12 @@
  */
 
 import React from 'react'
+import Highlight, { defaultProps, type Language } from 'prism-react-renderer'
 import clsx from 'clsx'
-import { useThemeConfig, usePrismTheme } from '@docusaurus/theme-common'
+import WordWrapButton from '@theme/CodeBlock/WordWrapButton'
+import Line from '@theme/CodeBlock/Line'
+import CopyButton from '@theme/CodeBlock/CopyButton'
+import type { Props } from '@theme/CodeBlock/Content/String'
 import {
   parseCodeBlockTitle,
   parseLanguage,
@@ -15,12 +19,8 @@ import {
   containsLineNumbers,
   useCodeWordWrap
 } from '@docusaurus/theme-common/internal'
-import Highlight, { defaultProps, type Language } from 'prism-react-renderer'
-import Line from '@theme/CodeBlock/Line'
-import CopyButton from '@theme/CodeBlock/CopyButton'
-import WordWrapButton from '@theme/CodeBlock/WordWrapButton'
+import { useThemeConfig, usePrismTheme } from '@docusaurus/theme-common'
 import Container from '../Container'
-import type { Props } from '@theme/CodeBlock/Content/String'
 
 import styles from './styles.module.css'
 
