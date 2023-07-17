@@ -14,6 +14,10 @@ jobs:
     - uses: actions/setup-node@v3.7.0
       with:
         node-version: '20.3.0'
+    - name: Install unplugged dependencies
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install --immutable
     - name: Lint
       uses: borales/actions-yarn@v4
       with:

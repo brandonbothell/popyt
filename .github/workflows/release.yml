@@ -20,6 +20,10 @@ jobs:
     - uses: actions/setup-node@v3.7.0
       with:
         node-version: '20.3.0'
+    - name: Install unplugged dependencies
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install --immutable
     - name: Build Docs
       uses: borales/actions-yarn@v4
       with:
@@ -49,4 +53,3 @@ jobs:
         cmd: npm publish
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    
