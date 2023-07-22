@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/captions.ts:10](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L10)
+[oauth/captions.ts:10](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L10)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/captions.ts:10](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L10)
+[oauth/captions.ts:10](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L10)
 
 ## Methods
 
@@ -54,7 +54,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth/captions.ts:166](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L166)
+[oauth/captions.ts:166](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L166)
 
 ___
 
@@ -79,7 +79,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth/captions.ts:142](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L142)
+[oauth/captions.ts:142](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L142)
 
 ___
 
@@ -103,7 +103,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth/captions.ts:18](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L18)
+[oauth/captions.ts:18](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L18)
 
 ___
 
@@ -126,7 +126,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth/captions.ts:39](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L39)
+[oauth/captions.ts:39](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L39)
 
 ___
 
@@ -153,7 +153,7 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth/captions.ts:97](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L97)
+[oauth/captions.ts:97](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L97)
 
 ___
 
@@ -180,4 +180,4 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Defined in
 
-[oauth/captions.ts:64](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/captions.ts#L64)
+[oauth/captions.ts:64](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/captions.ts#L64)

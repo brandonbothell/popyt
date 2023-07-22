@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L10)
+[oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L10)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L10)
+[oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L10)
 
 ## Methods
 
@@ -59,7 +59,7 @@ A partial video object.
 
 #### Defined in
 
-[oauth/playlists.ts:116](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L116)
+[oauth/playlists.ts:116](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L116)
 
 ___
 
@@ -87,7 +87,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/playlists.ts:22](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L22)
+[oauth/playlists.ts:22](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L22)
 
 ___
 
@@ -110,7 +110,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/playlists.ts:97](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L97)
+[oauth/playlists.ts:97](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L97)
 
 ___
 
@@ -133,7 +133,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/playlists.ts:188](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L188)
+[oauth/playlists.ts:188](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L188)
 
 ___
 
@@ -164,7 +164,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/playlists.ts:62](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L62)
+[oauth/playlists.ts:62](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L62)
 
 ___
 
@@ -195,4 +195,4 @@ A partial video object.
 
 #### Defined in
 
-[oauth/playlists.ts:155](https://github.com/brandonbothell/popyt/blob/f59765a/src/oauth/playlists.ts#L155)
+[oauth/playlists.ts:155](https://github.com/brandonbothell/popyt/blob/beeaffb/src/oauth/playlists.ts#L155)
