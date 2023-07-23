@@ -12,8 +12,8 @@
 /.vscode/*.json              linguist-language=JSON5
 
 # Hide .yarn and docs from GitHub's language detection
-/.yarn/**                    linguist-vendored
-/docusaurus/docs/**          linguist-documentation
+/.yarn/**/*                  linguist-vendored
+/docusaurus/**/*             linguist-documentation
 
 # Don't change EOL of unplugged dependencies
-/.yarn/unplugged/**          eol=binary
+/.yarn/unplugged/**/*        eol=binary
