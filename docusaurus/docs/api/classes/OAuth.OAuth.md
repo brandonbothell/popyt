@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L56)
+[oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L56)
 
 ## Properties
 
@@ -36,7 +36,7 @@ All OAuth methods related to [captions](./Library_Exports.Caption).
 
 #### Defined in
 
-[oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L50)
+[oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L50)
 
 ___
 
@@ -48,7 +48,7 @@ All OAuth methods related to [channels](./Library_Exports.Channel).
 
 #### Defined in
 
-[oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L45)
+[oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L45)
 
 ___
 
@@ -60,7 +60,7 @@ All OAuth methods related to [comments](./Library_Exports.Comment).
 
 #### Defined in
 
-[oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L29)
+[oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L29)
 
 ___
 
@@ -73,7 +73,7 @@ All OAuth methods related to
 
 #### Defined in
 
-[oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L40)
+[oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L40)
 
 ___
 
@@ -85,7 +85,7 @@ All OAuth methods related to [videos](./Library_Exports.Video)/video ratings.
 
 #### Defined in
 
-[oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L34)
+[oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L34)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L24)
+[oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L24)
 
 ## Methods
 
@@ -118,7 +118,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/index.ts:73](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L73)
+[oauth/index.ts:73](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L73)
 
 ___
 
@@ -141,7 +141,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/index.ts:137](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L137)
+[oauth/index.ts:137](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L137)
 
 ___
 
@@ -165,7 +165,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/index.ts:125](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L125)
+[oauth/index.ts:125](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L125)
 
 ___
 
@@ -189,7 +189,7 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Defined in
 
-[oauth/index.ts:108](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L108)
+[oauth/index.ts:108](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L108)
 
 ___
 
@@ -217,4 +217,4 @@ Last tested NEVER
 
 #### Defined in
 
-[oauth/index.ts:90](https://github.com/brandonbothell/popyt/blob/365a9e9/src/oauth/index.ts#L90)
+[oauth/index.ts:90](https://github.com/brandonbothell/popyt/blob/67eb608/src/oauth/index.ts#L90)

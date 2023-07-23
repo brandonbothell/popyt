@@ -11,6 +11,7 @@
     "project": [ "tsconfig.json", "tsconfig.utils.json" ],
     "sourceType": "module"
   },
+  "ignorePatterns": [ "docusaurus/**/*.js" ],
   "plugins": [
     "@typescript-eslint",
     "unused-imports"

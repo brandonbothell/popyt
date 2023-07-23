@@ -1,7 +1,15 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
+  // Compiles docusaurus.config.ts, sidebars.ts, and babel.config.ts
   "extends": "@docusaurus/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "."
-  }
+    "baseUrl": ".",
+    "outDir": ".",
+    "noEmit": false,
+    "allowJs": false
+  },
+  "files": [
+    "./sidebars.ts",
+    "./docusaurus.config.ts",
+    "./babel.config.ts"
+  ]
 }

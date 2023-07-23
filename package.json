@@ -14,6 +14,7 @@
     "coverage:allhtml": "tsc && cross-env NODE_ENV=test nyc --reporter=lcov yarn test:all",
     "coverage:html": "tsc && cross-env NODE_ENV=test nyc --reporter=lcov yarn test",
     "coverage:text": "tsc && cross-env NODE_ENV=test nyc --reporter=text yarn test",
+    "docs:build:config": "yarn workspace docusaurus build:config",
     "docs:build": "yarn workspace docusaurus build",
     "docs:publish": "yarn workspace docusaurus deploy",
     "docs:serve": "yarn workspace docusaurus serve",

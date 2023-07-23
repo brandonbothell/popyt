@@ -1,11 +1,8 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+import lightCodeTheme from 'prism-react-renderer/themes/github'
+import darkCodeTheme from 'prism-react-renderer/themes/dracula'
+import { Config } from '@docusaurus/types'
 
-const lightCodeTheme = require('prism-react-renderer/themes/github')
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
-
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
   title: 'Popyt',
   tagline: 'A very easy to use Youtube Data API wrapper.',
   favicon: 'img/favicon.ico',

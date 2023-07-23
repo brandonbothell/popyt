@@ -3,6 +3,9 @@
 
 # Production
 /build
+docusaurus.config.js
+babel.config.js
+sidebars.js
 
 # Generated files
 .docusaurus
