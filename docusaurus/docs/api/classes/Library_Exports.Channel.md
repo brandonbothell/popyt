@@ -25,7 +25,7 @@ A YouTube channel.
 
 #### Defined in
 
-[entities/channel.ts:170](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L170)
+[entities/channel.ts:170](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L170)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The description of this channel.
 
 #### Defined in
 
-[entities/channel.ts:52](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L52)
+[entities/channel.ts:52](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L52)
 
 ___
 
@@ -50,7 +50,7 @@ this channel across all platforms.
 
 #### Defined in
 
-[entities/channel.ts:139](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L139)
+[entities/channel.ts:139](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L139)
 
 ___
 
@@ -62,7 +62,7 @@ The country this channel is based in.
 
 #### Defined in
 
-[entities/channel.ts:62](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L62)
+[entities/channel.ts:62](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L62)
 
 ___
 
@@ -74,7 +74,7 @@ This channel's custom URL, if they have one.
 
 #### Defined in
 
-[entities/channel.ts:72](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L72)
+[entities/channel.ts:72](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L72)
 
 ___
 
@@ -86,7 +86,7 @@ The raw data of this channel.
 
 #### Defined in
 
-[entities/channel.ts:42](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L42)
+[entities/channel.ts:42](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L42)
 
 ___
 
@@ -98,7 +98,7 @@ The date this channel was created.
 
 #### Defined in
 
-[entities/channel.ts:88](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L88)
+[entities/channel.ts:88](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L88)
 
 ___
 
@@ -110,7 +110,7 @@ The URLs of all of this channel's featured channels. This property is broken for
 
 #### Defined in
 
-[entities/channel.ts:118](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L118)
+[entities/channel.ts:118](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L118)
 
 ___
 
@@ -122,7 +122,7 @@ Whether or not this a full channel object.
 
 #### Defined in
 
-[entities/channel.ts:37](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L37)
+[entities/channel.ts:37](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L37)
 
 ___
 
@@ -134,7 +134,7 @@ The ID of this channel.
 
 #### Defined in
 
-[entities/channel.ts:57](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L57)
+[entities/channel.ts:57](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L57)
 
 ___
 
@@ -146,7 +146,7 @@ This channel's keywords.
 
 #### Defined in
 
-[entities/channel.ts:103](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L103)
+[entities/channel.ts:103](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L103)
 
 ___
 
@@ -165,7 +165,7 @@ Properties to do with videos made for children.
 
 #### Defined in
 
-[entities/channel.ts:158](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L158)
+[entities/channel.ts:158](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L158)
 
 ___
 
@@ -177,7 +177,7 @@ The default language for this channel's uploads.
 
 #### Defined in
 
-[entities/channel.ts:93](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L93)
+[entities/channel.ts:93](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L93)
 
 ___
 
@@ -193,7 +193,7 @@ If the channel has neither an ongoing nor upcoming livestream, this is `false`.
 
 #### Defined in
 
-[entities/channel.ts:153](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L153)
+[entities/channel.ts:153](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L153)
 
 ___
 
@@ -209,7 +209,7 @@ The localized titles and descriptions of this channel, if any.
 
 #### Defined in
 
-[entities/channel.ts:144](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L144)
+[entities/channel.ts:144](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L144)
 
 ___
 
@@ -221,7 +221,7 @@ The name of this channel.
 
 #### Defined in
 
-[entities/channel.ts:47](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L47)
+[entities/channel.ts:47](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L47)
 
 ___
 
@@ -233,7 +233,7 @@ The channel's playlists. Only defined when [Channel.fetchPlaylists](./Library_Ex
 
 #### Defined in
 
-[entities/channel.ts:123](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L123)
+[entities/channel.ts:123](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L123)
 
 ___
 
@@ -255,7 +255,7 @@ This channel's profile pictures.
 
 #### Defined in
 
-[entities/channel.ts:77](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L77)
+[entities/channel.ts:77](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L77)
 
 ___
 
@@ -267,7 +267,7 @@ The channel's sections. Only defined when [Channel.fetchSections](./Library_Expo
 
 #### Defined in
 
-[entities/channel.ts:133](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L133)
+[entities/channel.ts:133](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L133)
 
 ___
 
@@ -279,7 +279,7 @@ The number of subscribers this channel has. `-1` if the subcount is hidden.
 
 #### Defined in
 
-[entities/channel.ts:113](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L113)
+[entities/channel.ts:113](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L113)
 
 ___
 
@@ -291,7 +291,7 @@ The channel's subscriptions. Only defined when [Channel.fetchSubscriptions](./Li
 
 #### Defined in
 
-[entities/channel.ts:128](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L128)
+[entities/channel.ts:128](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L128)
 
 ___
 
@@ -303,7 +303,7 @@ The url of the channel.
 
 #### Defined in
 
-[entities/channel.ts:67](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L67)
+[entities/channel.ts:67](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L67)
 
 ___
 
@@ -315,7 +315,7 @@ The channel's uploads. Only available after calling [Channel.fetchVideos](./Libr
 
 #### Defined in
 
-[entities/channel.ts:108](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L108)
+[entities/channel.ts:108](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L108)
 
 ___
 
@@ -327,7 +327,7 @@ This channel's view count.
 
 #### Defined in
 
-[entities/channel.ts:98](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L98)
+[entities/channel.ts:98](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L98)
 
 ___
 
@@ -339,7 +339,7 @@ The YouTube object that created this channel object.
 
 #### Defined in
 
-[entities/channel.ts:32](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L32)
+[entities/channel.ts:32](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L32)
 
 ___
 
@@ -351,7 +351,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/channel.ts:11](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L11)
+[entities/channel.ts:11](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L11)
 
 ___
 
@@ -363,7 +363,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/channel.ts:21](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L21)
+[entities/channel.ts:21](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L21)
 
 ___
 
@@ -375,7 +375,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/channel.ts:16](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L16)
+[entities/channel.ts:16](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L16)
 
 ## Methods
 
@@ -398,7 +398,7 @@ Only useful if `this.full` is false, or if you want updated channel info.
 
 #### Defined in
 
-[entities/channel.ts:258](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L258)
+[entities/channel.ts:258](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L258)
 
 ___
 
@@ -421,7 +421,7 @@ Fetches the channel's playlists from the API and assigns them to [Channel.playli
 
 #### Defined in
 
-[entities/channel.ts:284](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L284)
+[entities/channel.ts:284](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L284)
 
 ___
 
@@ -443,7 +443,7 @@ Fetches the channel's sections from the API and assigns them to [Channel.section
 
 #### Defined in
 
-[entities/channel.ts:304](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L304)
+[entities/channel.ts:304](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L304)
 
 ___
 
@@ -466,7 +466,7 @@ Fetches the channel's subscriptions from the API and assigns them to [Channel.su
 
 #### Defined in
 
-[entities/channel.ts:296](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L296)
+[entities/channel.ts:296](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L296)
 
 ___
 
@@ -488,7 +488,7 @@ Fetches the channel's playlist of uploads from the API and assigns it to the [Ch
 
 #### Defined in
 
-[entities/channel.ts:266](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L266)
+[entities/channel.ts:266](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L266)
 
 ___
 
@@ -513,7 +513,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:395](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L395)
+[entities/channel.ts:395](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L395)
 
 ___
 
@@ -536,7 +536,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:369](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L369)
+[entities/channel.ts:369](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L369)
 
 ___
 
@@ -562,7 +562,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:378](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L378)
+[entities/channel.ts:378](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L378)
 
 ___
 
@@ -579,7 +579,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:313](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L313)
+[entities/channel.ts:313](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L313)
 
 ___
 
@@ -596,7 +596,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:387](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L387)
+[entities/channel.ts:387](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L387)
 
 ___
 
@@ -620,7 +620,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:323](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L323)
+[entities/channel.ts:323](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L323)
 
 ___
 
@@ -643,7 +643,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:339](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L339)
+[entities/channel.ts:339](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L339)
 
 ___
 
@@ -666,4 +666,4 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/channel.ts:354](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/channel.ts#L354)
+[entities/channel.ts:354](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/channel.ts#L354)

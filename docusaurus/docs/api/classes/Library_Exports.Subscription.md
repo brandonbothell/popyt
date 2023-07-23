@@ -25,7 +25,7 @@ A YouTube subscription.
 
 #### Defined in
 
-[entities/subscription.ts:138](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L138)
+[entities/subscription.ts:138](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L138)
 
 ## Properties
 
@@ -38,7 +38,7 @@ The activities that the user has subscribed to.
 
 #### Defined in
 
-[entities/subscription.ts:136](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L136)
+[entities/subscription.ts:136](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L136)
 
 ___
 
@@ -57,7 +57,7 @@ Information on the [Channel](./Library_Exports.Channel#) that the user subscribe
 
 #### Defined in
 
-[entities/subscription.ts:55](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L55)
+[entities/subscription.ts:55](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L55)
 
 ___
 
@@ -69,7 +69,7 @@ The raw data of this subscription.
 
 #### Defined in
 
-[entities/subscription.ts:40](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L40)
+[entities/subscription.ts:40](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L40)
 
 ___
 
@@ -81,7 +81,7 @@ The date that the user subscribed to the channel on.
 
 #### Defined in
 
-[entities/subscription.ts:50](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L50)
+[entities/subscription.ts:50](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L50)
 
 ___
 
@@ -93,7 +93,7 @@ The details of the subscription.
 
 #### Defined in
 
-[entities/subscription.ts:75](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L75)
+[entities/subscription.ts:75](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L75)
 
 ___
 
@@ -105,7 +105,7 @@ Whether or not this is a full subscription object.
 
 #### Defined in
 
-[entities/subscription.ts:35](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L35)
+[entities/subscription.ts:35](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L35)
 
 ___
 
@@ -117,7 +117,7 @@ The ID of this subscription.
 
 #### Defined in
 
-[entities/subscription.ts:45](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L45)
+[entities/subscription.ts:45](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L45)
 
 ___
 
@@ -137,7 +137,7 @@ Statistics on the items that the subscription points to.
 
 #### Defined in
 
-[entities/subscription.ts:120](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L120)
+[entities/subscription.ts:120](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L120)
 
 ___
 
@@ -162,7 +162,7 @@ Information on the user that subscribed to the channel.
 
 #### Defined in
 
-[entities/subscription.ts:81](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L81)
+[entities/subscription.ts:81](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L81)
 
 ___
 
@@ -182,7 +182,7 @@ Thumbnail images for the subscription.
 
 #### Defined in
 
-[entities/subscription.ts:110](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L110)
+[entities/subscription.ts:110](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L110)
 
 ___
 
@@ -194,7 +194,7 @@ The title of the subscription.
 
 #### Defined in
 
-[entities/subscription.ts:70](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L70)
+[entities/subscription.ts:70](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L70)
 
 ___
 
@@ -206,7 +206,7 @@ The YouTube object that created this subscription object.
 
 #### Defined in
 
-[entities/subscription.ts:30](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L30)
+[entities/subscription.ts:30](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L30)
 
 ___
 
@@ -218,7 +218,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/subscription.ts:12](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L12)
+[entities/subscription.ts:12](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L12)
 
 ___
 
@@ -230,7 +230,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/subscription.ts:22](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L22)
+[entities/subscription.ts:22](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L22)
 
 ___
 
@@ -242,7 +242,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/subscription.ts:17](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L17)
+[entities/subscription.ts:17](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L17)
 
 ## Methods
 
@@ -266,7 +266,7 @@ Only useful if `this.full` is false, or if you want updated subscription info.
 
 #### Defined in
 
-[entities/subscription.ts:192](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L192)
+[entities/subscription.ts:192](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L192)
 
 ___
 
@@ -286,7 +286,7 @@ ___
 
 #### Defined in
 
-[entities/subscription.ts:203](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L203)
+[entities/subscription.ts:203](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L203)
 
 ___
 
@@ -306,4 +306,4 @@ ___
 
 #### Defined in
 
-[entities/subscription.ts:208](https://github.com/brandonbothell/popyt/blob/beeaffb/src/entities/subscription.ts#L208)
+[entities/subscription.ts:208](https://github.com/brandonbothell/popyt/blob/365a9e9/src/entities/subscription.ts#L208)
