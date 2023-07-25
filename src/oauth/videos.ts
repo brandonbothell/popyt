@@ -55,7 +55,7 @@ export class OAuthVideos {
 
         if (cached) {
           alreadyResolved.push(cached)
-          videoIds.splice(i, 1)
+          videoIds.splice(i--, 1)
         }
       }
     }
