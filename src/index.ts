@@ -133,6 +133,7 @@ export class YouTube {
 
   /**
    * @ignore
+   * @deprecated Use specific cache methods
    */
   public _cache (id: string, value: any) {
     if (!this._shouldCache) {
@@ -146,14 +147,27 @@ export class YouTube {
   /**
    * @ignore
    */
-  public _cacheItem (type: T.ItemTypes, id: string, parts: string[] | undefined,
+  public _cacheItem (type: T.ItemTypes, name: string, parts: string[] | undefined,
     value: InstanceType<T.ItemTypes>) {
     if (!this._shouldCache) {
       return
     }
 
-    Cache.setItem(type, id, parts, value,
-      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
+    Cache.setItem(type, name, value,
+      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0, parts)
+  }
+
+  /**
+   * @ignore
+   */
+  public _cacheItems (type: T.ItemTypes, names: string[],
+    values: InstanceType<T.ItemTypes>[], parts?: string[]) {
+    if (!this._shouldCache) {
+      return
+    }
+
+    Cache.setItems(type, names, values,
+      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0, parts)
   }
 
   /**

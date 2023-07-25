@@ -239,15 +239,22 @@ export class Playlist {
    */
   public async removeVideo (videoResolvable: VideoResolvable) {
     const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
-    const playlistItemId = (this.youtube._genericService.getPaginatedItems({
+    const matchingItems = (await this.youtube._genericService.getPaginatedItems<Video>({
       type: PaginatedItemType.PlaylistItems,
       mine: false,
       id: this.id,
       maxPerPage: 1,
       subId: typeof video === 'string' ? video : video.id
-    }))[0].id
+    })).items
 
-    return this.removeItem(playlistItemId)
+    if (!matchingItems.length) {
+      return Promise.reject(
+        new Error('The requested video was not found in the playlist')
+      )
+    }
+
+    // Remove by playlist item ID, not video ID
+    return this.removeItem(matchingItems[0].data.id)
   }
 
   /**

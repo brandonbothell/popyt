@@ -4,6 +4,7 @@
  */
 
 export * from './video'
+export * from './video-rating'
 export * from './channel'
 export * from './playlist'
 export * from './comment'

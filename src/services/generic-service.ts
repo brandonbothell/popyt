@@ -2,7 +2,7 @@ import { Cache } from '../util'
 import { ItemTypes, ItemReturns, PaginatedResponse, PaginatedItemType, PaginatedItemOptions,
   PaginatedType, Resolvable, PaginatedInstance, PaginatedRequestParams, AuthorizationOptions } from '../types'
 import YouTube,
-{ Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption } from '..'
+{ Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption, VideoRating } from '..'
 
 /**
  * @ignore
@@ -79,7 +79,7 @@ export class GenericService {
     }
 
     // If all of the items are instances, what are we even doing here?
-    if (alreadyResolvedCount === resolvables.length) {
+    if (!mine && alreadyResolvedCount === resolvables.length) {
       return (resolvedEntities.length === 1 ?
         resolvedEntities[0] :
         resolvedEntities) as ItemReturns<T, K, M>
@@ -162,7 +162,8 @@ export class GenericService {
     }
 
     // These three types in the PaginatedItemTypes enum are the only to be filtered by the 'mine' parameter
-    if (mine && name !== 'Playlists' && name !== 'Subscriptions' && name !== 'ChannelSections') {
+    if (mine &&
+        name !== 'Playlists' && name !== 'Subscriptions' && name !== 'ChannelSections') {
       return Promise.reject(new Error(`${name} cannot be filtered by the 'mine' parameter.`))
     }
 
@@ -180,8 +181,9 @@ export class GenericService {
 
     let endpoint: string
     let maxForEndpoint: number
-    let clazz: typeof Video | typeof Comment | typeof Playlist | typeof Subscription | typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language |
-      typeof Region | typeof ChannelSection | typeof Caption
+    let clazz: typeof Video | typeof Comment | typeof Playlist | typeof Subscription |
+      typeof VideoCategory | typeof VideoAbuseReportReason | typeof Language |
+      typeof Region | typeof ChannelSection | typeof Caption | typeof VideoRating
     let commentType: 'video' | 'channel'
 
     // MUST specify endpoint and clazz values, and most likely need a max as well
@@ -244,10 +246,12 @@ export class GenericService {
         endpoint = 'videoCategories'
         clazz = VideoCategory
         options.regionCode = this.youtube.region
-        // falls through
+        break
+
       case PaginatedItemType.VideoAbuseReportReasons:
-        if (!endpoint) endpoint = 'videoAbuseReportReasons'
-        if (!clazz) clazz = VideoAbuseReportReason
+        endpoint = 'videoAbuseReportReasons'
+        clazz = VideoAbuseReportReason
+        options.hl = this.youtube.language
         // falls through
       case PaginatedItemType.Languages:
         if (!endpoint) endpoint = 'i18nLanguages'
@@ -256,15 +260,21 @@ export class GenericService {
       case PaginatedItemType.Regions:
         if (!endpoint) endpoint = 'i18nRegions'
         if (!clazz) clazz = Region
+        break
 
-        options.hl = this.youtube.language
+      case PaginatedItemType.VideoRatings:
+        endpoint = 'videos/getRating'
+        clazz = VideoRating
+        options.id = id
         break
 
       default:
         return Promise.reject(new TypeError('Unknown item type: ' + type))
     }
 
-    if (!options.part) options.part = clazz.part
+    if (!clazz.part) delete options.part
+    else if (!options.part) options.part = clazz.part
+
     if (pages < 1) pages = Infinity
     if (pageToken) options.pageToken = pageToken
 

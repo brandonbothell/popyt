@@ -312,8 +312,8 @@ export class Video {
    * Must be using an access token with correct scopes.
    */
   public async getRating (): Promise<'like' | 'dislike' | 'none' | 'unspecified'> {
-    const response = await this.youtube.oauth.videos.getMyRatings([ this.id ])
-    return response[0].rating
+    const response = await this.youtube.oauth.videos.getMyRatings(this.id)
+    return response.rating
   }
 
   /**

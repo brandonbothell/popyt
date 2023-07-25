@@ -19,6 +19,7 @@ export class OAuthVideos {
     this.oauth.checkTokenAndThrow()
 
     const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+
     return this.oauth.youtube._request.post('videos/rate', {
       params: { id: typeof video === 'string' ? video : video.id, rating },
       authorizationOptions: { accessToken: true }
@@ -28,25 +29,52 @@ export class OAuthVideos {
   /**
      * Retrieve your rating on [Videos](./Library_Exports.Video#).  
      * Last tested 05/18/2020 11:48. PASSING
-     * @param videoResolvables The video(s) to retrieve your rating from.
+     * @param videoResolvable The video(s) to retrieve your rating from.
      */
-  public async getMyRatings (videoResolvables: YT.VideoResolvable[]): Promise<{ videoId: string; rating: 'like' | 'dislike' | 'none' | 'unspecified' }[]> {
+  public async getMyRatings<T extends YT.VideoResolvable | YT.VideoResolvable[]>
+  (videoResolvable: T): Promise<T extends any[] ? YT.VideoRating[] : YT.VideoRating> {
     this.oauth.checkTokenAndThrow()
 
-    const videoIds = await Promise.all(videoResolvables.map(videoResolvable => this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)))
+    type ToReturn = T extends any[] ? YT.VideoRating[] : YT.VideoRating
 
+    const inputIsArray = Array.isArray(videoResolvable)
+    const resolvables: YT.VideoResolvable[] =
+      inputIsArray ? videoResolvable : [videoResolvable]
+
+    const videoIds = await Promise
+      .all(resolvables.map(resolvable =>
+        this.oauth.youtube._resolutionService.resolve(resolvable, YT.Video)))
+      .then(videos => videos.map(video => typeof video === 'string' ? video : video.id))
+
+    const alreadyResolved: YT.VideoRating[] = []
+
+    // Don't fetch already cached ratings
     if (this.oauth.youtube._shouldCache) {
-      const cached = Cache.get(`get://videos/getRating/${JSON.stringify(videoIds)}`)
-      if (cached) return cached
+      for (let i = 0; i < videoIds.length; i++) {
+        const cached = Cache.getItem(YT.VideoRating, videoIds[i])
+
+        if (cached) {
+          alreadyResolved.push(cached)
+          videoIds.splice(i, 1)
+        }
+      }
     }
 
-    const response = await this.oauth.youtube._request.get('videos/getRating', {
-      params: { id: videoIds.join(',') },
-      authorizationOptions: { accessToken: true }
-    })
-    this.oauth.youtube._cache(`get://videos/getRating/${JSON.stringify(videoIds)}`, response.items)
+    // All of the ratings were cached, don't make a request
+    if (!videoIds.length) {
+      return (inputIsArray ? alreadyResolved : alreadyResolved[0]) as ToReturn
+    }
 
-    return response.items
+    const ratings =
+      await this.oauth.youtube._genericService.getPaginatedItems<YT.VideoRating>({
+        type: YT.PaginatedItemType.VideoRatings, id: videoIds.join(',')
+      }, { accessToken: true })
+
+    if (this.oauth.youtube._shouldCache) {
+      this.oauth.youtube._cacheItems(YT.VideoRating, videoIds, ratings.items)
+    }
+
+    return (inputIsArray ? ratings.items : ratings.items[0]) as ToReturn
   }
 
   /**

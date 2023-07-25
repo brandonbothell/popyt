@@ -24,6 +24,15 @@ describe('OAuth videos', () => {
     expect(rating).to.equal('none')
   })
 
+  it('should cache ratings on videos', async () => {
+    const rating = video.getRating()
+    const start = new Date().getTime()
+
+    await rating
+
+    expect(new Date().getTime() - start).to.be.lessThan(50)
+  })
+
   it('should set thumbnails', async () => {
     if (!oauthVideoId) {
       expect.fail('The environment variable YOUTUBE_OAUTH_VIDEO_ID must be set for this test to be ran!')
