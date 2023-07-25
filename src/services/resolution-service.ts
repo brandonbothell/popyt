@@ -1,5 +1,5 @@
 import { Cache, Parser } from '../util'
-import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, ResolveReturn, SearchType, Subscription, Video, VideoCategory } from '..'
+import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, ResolveReturn, Subscription, Video, VideoCategory } from '..'
 
 /**
  * @ignore
@@ -77,7 +77,7 @@ export class ResolutionService {
       else resolution = resolvedUrl.resolution
     }
 
-    // If the it's different from the original input, then it's a search query
+    // If it's different from the original input, then it's a search query
     // If we couldn't resolve as a URL then we want to try as an ID or search query
     if (idOrSearchQuery !== input || !resolution) {
       resolution = await this.resolveIdOrSearch(idOrSearchQuery, type)
@@ -121,9 +121,11 @@ export class ResolutionService {
     // Reasoning for these constraints: https://webapps.stackexchange.com/a/101153
     const isId = Parser[`${type.name.toLowerCase()}IdRegex`].test(input)
 
-    return isId ? input : this.youtube.search(input, {
+    if (isId) return input
+
+    return this.youtube.search(input, {
       pageOptions: { maxPerPage: 1 },
-      searchFilters: { types: [ type as SearchType ] }
+      searchFilters: { types: [ type ] }
     }).then(result => result.items.length ? result.items[0] : undefined) as InstanceType<T>
   }
 }

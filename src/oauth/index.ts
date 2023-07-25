@@ -109,7 +109,8 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     return this.youtube._genericService.getPaginatedItems<YT.Subscription>(
-      { type: YT.PaginatedItemType.Subscriptions, mine: true, parts, ...pageOptions }
+      { type: YT.PaginatedItemType.Subscriptions, mine: true, parts, ...pageOptions },
+      { accessToken: true }
     )
   }
 
@@ -126,7 +127,8 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     return this.youtube._genericService.getPaginatedItems<YT.Playlist>(
-      { type: YT.PaginatedItemType.Playlists, mine: true, parts, ...pageOptions }
+      { type: YT.PaginatedItemType.Playlists, mine: true, parts, ...pageOptions },
+      { accessToken: true }
     )
   }
 
@@ -138,7 +140,8 @@ export class OAuth {
     this.checkTokenAndThrow()
 
     return (await this.youtube._genericService.getPaginatedItems<YT.ChannelSection>(
-      { type: YT.PaginatedItemType.ChannelSections, mine: true, parts }
+      { type: YT.PaginatedItemType.ChannelSections, mine: true, parts },
+      { accessToken: true }
     )).items
   }
 }

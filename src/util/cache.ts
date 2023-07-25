@@ -26,10 +26,16 @@ export class Cache {
   private static pagesMap:
     Map<string, Map<string, CacheItem<PaginatedResponse<PaginatedInstance>>[]>> = new Map()
 
+  /**
+   * @deprecated Use specific methods
+   */
   public static set (key: string, value: any, ttl: number) {
     Cache.map.set(key, { v: value, t: ttl })
   }
 
+  /**
+   * @deprecated Use specific methods
+   */
   public static get (key: string): any {
     const item = Cache.map.get(key)
 
@@ -41,8 +47,8 @@ export class Cache {
     return item.v
   }
 
-  public static setItem (type: ItemTypes, name: string, parts: string[] | undefined,
-    value: InstanceType<ItemTypes>, ttl: number) {
+  public static setItem (type: ItemTypes, name: string, value: InstanceType<ItemTypes>,
+    ttl: number, parts?: string[]) {
     const key = `${type.name.toLowerCase()}/${name}` // The item key string
     const part = parts ? parts.sort().join(',') : type.part // The parts key string
     const cachedWithSameParts = Cache.itemsMap.get(part) ?? // The parts map
@@ -51,8 +57,21 @@ export class Cache {
     cachedWithSameParts.set(key, { v: value, t: ttl })
   }
 
-  public static getItem (type: ItemTypes, name: string, parts?: string[]):
-  InstanceType<ItemTypes> {
+  public static setItems (type: ItemTypes, names: string[],
+    values: InstanceType<ItemTypes>[], ttl: number, parts?: string[]) {
+    if (names.length !== values.length) {
+      throw new Error(
+        'The number of cache keys must be equivalent to the number of items to cache'
+      )
+    }
+
+    for (let i = 0; i < names.length; i++) {
+      Cache.setItem(type, names[i], values[i], ttl, parts)
+    }
+  }
+
+  public static getItem<T extends ItemTypes = ItemTypes> (type: T, name: string,
+    parts?: string[]): InstanceType<T> | undefined {
     const part = parts ? parts.sort().join(',') : type.part
     const key = `${type.name.toLowerCase()}/${name}`
 
@@ -65,7 +84,7 @@ export class Cache {
       return undefined
     }
 
-    return item.v
+    return item.v as InstanceType<T>
   }
 
   public static setPage (endpoint: string, page: number,
@@ -91,7 +110,7 @@ export class Cache {
   public static getPages<T extends PaginatedInstance = PaginatedInstance> (
     endpoint: string, options: PaginatedRequestParams,
     auth?: AuthorizationOptions, parts?: string[], type?: PaginatedType):
-  PaginatedResponse<T>[] {
+  PaginatedResponse<T>[] | undefined {
     const key = `${endpoint}/${
       JSON.stringify({ ...options, pageToken: undefined, part: undefined })}/${
       auth?.accessToken ?? false}/${auth?.apiKey ?? false}`
