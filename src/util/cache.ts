@@ -1,5 +1,6 @@
-import { AuthorizationOptions, ItemTypes, PaginatedInstance,
-  PaginatedRequestParams, PaginatedResponse, PaginatedType } from '..'
+import { AuthorizationOptions, CacheItem, ItemTypes, PaginatedInstance,
+  PaginatedRequestParams, PaginatedResponse, PaginatedType, ResolutionMap,
+  Resolvable, ResolvableClass } from '..'
 import { findArrayFrom } from '.'
 
 /**
@@ -7,10 +8,15 @@ import { findArrayFrom } from '.'
  */
 export class Cache {
   /**
-  * The plan is to deprecate this global map as soon as the below maps are
+  * @deprecated The plan is to deprecate this global map as soon as the below maps are
   * fully-featured.
   */
   private static map: Map<string, CacheItem> = new Map()
+
+  /**
+  * Map of resolutions separated by type.
+  */
+  private static resolutionMap: ResolutionMap = new Map()
 
   /** 
    * Map of items that are separated by which parts were requested from the API and then
@@ -41,6 +47,30 @@ export class Cache {
 
     if (!item || (item.t > 0 && new Date().getTime() >= item.t)) {
       Cache._delete(key)
+      return undefined
+    }
+
+    return item.v
+  }
+
+  public static setResolution<T extends ResolvableClass = ResolvableClass>
+  (type: T, input: string, value: Resolvable<T>, ttl: number) {
+    const cachedWithSameType = Cache.resolutionMap.get(type) ??
+      Cache.resolutionMap.set(type, new Map()).get(type)
+    cachedWithSameType.set(input, { v: value, t: ttl })
+  }
+
+  public static getResolution<T extends ResolvableClass = ResolvableClass>
+  (type: T, input: string): Resolvable<T> {
+    const cachedWithSameType = Cache.resolutionMap.get(type) as
+      Map<string, CacheItem<Resolvable<T>>>
+
+    if (!cachedWithSameType) return undefined
+
+    const item = cachedWithSameType.get(input)
+
+    if (!item || (item.t > 0 && new Date().getTime() >= item.t)) {
+      Cache._deleteResolution(type, input)
       return undefined
     }
 
@@ -221,16 +251,27 @@ export class Cache {
     }
   }
 
+  /**
+   * @deprecated Use specific methods
+   */
   public static _delete (key: string) {
     Cache.map.delete(key)
   }
 
   public static _deleteItem (key: string, parts: string) {
     const cachedWithSameParts = Cache.itemsMap.get(parts)
-    const cachedItem = cachedWithSameParts?.get(key)
+    const cacheItem = cachedWithSameParts?.get(key)
 
     cachedWithSameParts?.delete(key)
-    return cachedItem
+    return cacheItem
+  }
+
+  public static _deleteResolution (type: ResolvableClass, input: string) {
+    const cachedWithSameType = Cache.resolutionMap.get(type)
+    const cacheItem = cachedWithSameType?.get(input)
+
+    cachedWithSameType?.delete(input)
+    return cacheItem
   }
 
   /**
@@ -268,15 +309,4 @@ export class Cache {
 
     return Cache._deletePageByKey(part, key, page)
   }
-}
-
-/**
- * @ignore
- * v = Value  
- * t = Time to live  
- * p = Parts string (sorted!)
- */
-type CacheItem<T = any> = {
-  v: T
-  t: number
 }

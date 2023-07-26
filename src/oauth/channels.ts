@@ -13,7 +13,6 @@ export class OAuthChannels {
    * Updates a channel's branding settings.
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested NEVER
    * @param channelResolvable The channel to update the branding settings of.
    * @param brandingSettings The new branding settings.
    */
@@ -39,7 +38,6 @@ export class OAuthChannels {
    * **CURRENTLY BROKEN in the API**
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 05/20/2020 02:58. PASSING
    * @param channelResolvable The channel to update the localizations of.
    * @param localizations The new localizations.
    */
@@ -64,7 +62,6 @@ export class OAuthChannels {
 
   /**
    * Sets a channel as made for kids or not made for kids.  
-   * Last tested 05/20/2020 02:58. PASSING
    * @param channelResolvable The channel to update.
    * @param madeForKids Whether or not the channel is made for kids.
    */
@@ -89,7 +86,6 @@ export class OAuthChannels {
 
   /**
    * Sets a channel's watermark.  
-   * Last tested 05/19/2020 18:07. PASSING
    * @param channelResolvable The channel to set the watermark for.
    * @param type The timing type of the watermark.
    * @param offset The offset, in milliseconds, from the start/end of the video to display the watermark from.
@@ -122,7 +118,6 @@ export class OAuthChannels {
 
   /**
    * Unsets a channel's watermark.  
-   * Last tested 05/18/2020 18:23. PASSING
    * @param channelResolvable The channel to unset the watermark from.
    */
   public async unsetChannelWatermark (channelResolvable: YT.ChannelResolvable): Promise<void> {
@@ -137,7 +132,6 @@ export class OAuthChannels {
 
   /**
    * Uploads a channel banner.  
-   * Last tested 05/20/2020 03:17. PASSING
    * @param image The channel banner to upload.
    * @returns The URL of the uploaded banner, used as
    * [`BrandingSettings.image.bannerExternalUrl`](../modules/Library_Exports#channelbrandingsettings)
@@ -155,7 +149,6 @@ export class OAuthChannels {
 
   /**
    * Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized user's [Channel](./Library_Exports.Channel#).  
-   * Last tested 05/24/2020 10:11. PASSING
    * @param type The type of channel section.
    * @param name The name of the channel section.
    * @param position The position of the channel section on the channel homepage.
@@ -206,7 +199,6 @@ export class OAuthChannels {
    * Updates a [ChannelSection](./Library_Exports.ChannelSection#).
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 05/24/2020 10:11. PASSING
    * @param id The ID of the channel section.
    * @param type The type of channel section.
    * @param style The style of the channel section.
@@ -251,7 +243,6 @@ export class OAuthChannels {
 
   /**
    * Deletes a [ChannelSection](./Library_Exports.ChannelSection#).
-   * Last tested 05/24/2020 10:11. PASSING
    * @param id The ID of the channel section.
    */
   public deleteChannelSection (id: string): Promise<YT.ChannelSection> {
@@ -264,7 +255,6 @@ export class OAuthChannels {
 
   /**
    * Subscribe to a [Channel](./Library_Exports.Channel#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param channelResolvable The channel to subscribe to.
    * @returns A partial subscription object.
    */
@@ -286,7 +276,6 @@ export class OAuthChannels {
 
   /**
    * Unsubscribe from a [Channel](./Library_Exports.Channel#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param channelId The channel to unsubscribe from.
    */
   public unsubscribeFromChannel (subscriptionId: string): Promise<void> {

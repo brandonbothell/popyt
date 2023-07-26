@@ -68,7 +68,6 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [Channel](./Library_Exports.Channel#).  
-   * Last tested 05/18/2020 11:48. PASSING
    */
   public getMe (parts?: Part.ChannelParts): Promise<YT.Channel> {
     this.checkTokenAndThrow()
@@ -81,7 +80,6 @@ export class OAuth {
    * meaning they are missing some data. See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
    * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to
    * fetch the full objects while not spamming your quota like you would using a loop.  
-   * Last tested NEVER
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch all.
@@ -98,7 +96,6 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch
@@ -116,7 +113,6 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
    * Set pages to a value <=0 to fetch
@@ -134,7 +130,6 @@ export class OAuth {
 
   /**
    * Gets the authorized user's [ChannelSection](./Library_Exports.ChannelSection)s.  
-   * Last tested 05/18/2020 11:48. PASSING
    */
   public async getMyChannelSections (parts?: Part.ChannelSectionParts) {
     this.checkTokenAndThrow()

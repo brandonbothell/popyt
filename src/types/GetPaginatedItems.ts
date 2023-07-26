@@ -1,5 +1,5 @@
 import { Video, Channel, Comment, Playlist, Subscription, VideoCategory, VideoAbuseReportReason, Language, Region, ChannelSection, Caption, VideoRating } from '..'
-import { ChannelResolvable, VideoCategoryResolvable } from './Resolvable'
+import { ChannelResolvable, VideoCategoryResolvable } from './Resolutions'
 
 const PAGINATED_CLASSES = [
   VideoCategory, VideoAbuseReportReason, Language, Region, Video, Comment, Caption,

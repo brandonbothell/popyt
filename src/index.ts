@@ -59,11 +59,6 @@ export class YouTube {
   /**
    * @ignore
    */
-  public _channelService = new Service.ChannelService(this)
-
-  /**
-   * @ignore
-   */
   public _resolutionService = new Service.ResolutionService(this)
 
   /**
@@ -168,6 +163,19 @@ export class YouTube {
 
     Cache.setItems(type, names, values,
       this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0, parts)
+  }
+
+  /**
+   * @ignore
+   */
+  public _cacheResolution<T extends T.ResolvableClass = T.ResolvableClass>
+  (type: T, input: string, value: T.Resolvable<T>) {
+    if (!this._shouldCache) {
+      return
+    }
+
+    Cache.setResolution(type, input, value,
+      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
   }
 
   /**

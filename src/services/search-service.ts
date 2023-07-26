@@ -76,6 +76,6 @@ export class SearchService {
     if ('videoEmbeddable' in searchFilters) options.videoEmbeddable = 'true'
 
     // Caching handled here
-    return this.youtube._genericService.fetchPages<T>(pages, 'search', options)
+    return this.youtube._genericService.getPages<T>(pages, 'search', options)
   }
 }

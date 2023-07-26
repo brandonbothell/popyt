@@ -1,10 +1,14 @@
-import { Channel, Playlist, Video, VideoCategory, Comment, PaginatedType, Subscription } from '..'
+import { Channel, Playlist, Video, VideoCategory, Comment, PaginatedType,
+  Subscription, CacheItem } from '..'
 
 const RESOLVABLE_CLASSES = [
   Video, Playlist, Channel, VideoCategory, Comment, Subscription
 ]
 
 export type Resolvable<T extends PaginatedType> = string | InstanceType<T>
+
+export type ResolutionMap<T extends ResolvableClass = ResolvableClass> =
+  Map<T, Map<string, CacheItem<Resolvable<T>>>>
 
 /**
  * @ignore

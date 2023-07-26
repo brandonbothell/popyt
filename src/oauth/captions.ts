@@ -12,7 +12,6 @@ export class OAuthCaptions {
   /**
    * Get a [Caption](./Library_Exports.Caption#) object
    * from the URL, ID, or search query of its video and the ID of the caption.  
-   * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the caption from.
    * @param captionId The ID of the caption.
    */
@@ -39,7 +38,6 @@ export class OAuthCaptions {
 
   /**
    * Gets the [Caption](./Library_Exports.Caption#)s of a [Video](./Library_Exports.Video#). Used mostly internally with [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).  
-   * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The Title, URL, or ID of the video to get the captions from.
    */
   public async getCaptions (videoResolvable: YT.VideoResolvable): Promise<YT.Caption[]> {
@@ -60,7 +58,6 @@ export class OAuthCaptions {
 
   /**
    * Uploads a [Caption](./Library_Exports.Caption#) track for a [Video](./Library_Exports.Video#).  
-   * Last tested 06/11/2020 04:50. PASSING
    * @param videoResolvable The video to add the caption track to.
    * @param language The language that the caption track is in.
    * @param name The name of the caption track.
@@ -95,7 +92,6 @@ export class OAuthCaptions {
    * Edits a [Caption](./Library_Exports.Caption#) track.  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 06/11/2020 04:50. PASSING
    * @param id The ID of the caption track to edit.
    * @param track The caption track to upload.
    * @param draft Whether or not the caption track is a draft. If it is, it isn't visible to users.
@@ -140,7 +136,6 @@ export class OAuthCaptions {
 
   /**
    * Downloads a [Caption](./Library_Exports.Caption#) track.  
-   * Last tested 06/11/2020 04:50. PASSING
    * @param id The ID of the caption track to download.
    * @param format The file format to download the track in.
    * @param language The language to download the track in.
@@ -166,7 +161,6 @@ export class OAuthCaptions {
 
   /**
    * Deletes a [Caption](./Library_Exports.Caption#) track.  
-   * Last tested 06/11/2020 04:50. PASSING
    * @param id The ID of the caption track to delete.
    */
   public deleteCaption (id: string): Promise<void> {
