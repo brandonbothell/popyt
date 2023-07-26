@@ -30,13 +30,13 @@ export class Cache {
   (type: T, input: string, value: Resolvable<T>, ttl: number) {
     const cachedWithSameType = Cache.resolutionMap.get(type) ??
       Cache.resolutionMap.set(type, new Map()).get(type)
+
     cachedWithSameType.set(input, { v: value, t: ttl })
   }
 
   public static getResolution<T extends ResolvableClass = ResolvableClass>
   (type: T, input: string): Resolvable<T> {
-    const cachedWithSameType = Cache.resolutionMap.get(type) as
-      Map<string, CacheItem<Resolvable<T>>>
+    const cachedWithSameType = (Cache.resolutionMap as ResolutionMap<T>).get(type)
 
     if (!cachedWithSameType) return undefined
 
