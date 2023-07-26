@@ -1,5 +1,6 @@
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
 import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions, VideoResolvable, PaginatedResponse } from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube playlist.
@@ -109,7 +110,8 @@ export class Playlist {
    */
   public privacy: 'private' | 'public' | 'unlisted'
 
-  constructor (youtube: YouTube, data: any, full = false) {
+  constructor (youtube: YouTube,
+    data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult, full = false) {
     this.youtube = youtube
     this.data = data
     this.full = full
@@ -120,29 +122,29 @@ export class Playlist {
   /**
    * @ignore
    */
-  private _init (data: any) {
-    const playlist = data
-
+  private _init (data: youtube_v3.Schema$Playlist | youtube_v3.Schema$SearchResult) {
     if (data.kind === 'youtube#playlist') {
+      const playlist = data as youtube_v3.Schema$Playlist
+
       this.id = playlist.id
+      this.tags = playlist.snippet?.tags
+      this.length = playlist.contentDetails?.itemCount
+      this.embedHtml = playlist.player?.embedHtml
+      this.privacy = playlist.status?.privacyStatus as Playlist['privacy']
     } else if (data.kind === 'youtube#searchResult') {
-      this.id = data.id.playlistId
+      const searchResult = data as youtube_v3.Schema$SearchResult
+      this.id = searchResult.id.playlistId
     } else {
       throw new Error(`Invalid playlist type: ${data.kind}`)
     }
 
-    if (playlist.snippet) {
-      this.tags = playlist.snippet.tags
-      this.title = playlist.snippet.title
-      this.description = playlist.snippet.description
-      this.creatorId = playlist.snippet.channelId
-      this.dateCreated = new Date(playlist.snippet.publishedAt)
-      this.thumbnails = playlist.snippet.thumbnails
+    if (data.snippet) {
+      this.title = data.snippet.title
+      this.description = data.snippet.description
+      this.creatorId = data.snippet.channelId
+      this.dateCreated = new Date(data.snippet.publishedAt)
+      this.thumbnails = data.snippet.thumbnails
     }
-
-    this.length = playlist.contentDetails?.itemCount
-    this.embedHtml = playlist.player?.embedHtml
-    this.privacy = playlist.status?.privacyStatus
 
     this.url = `https://youtube.com/playlist?list=${this.id}`
   }

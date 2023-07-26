@@ -1,4 +1,5 @@
 import YouTube from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube [Video](./Library_Exports.Video#) category.
@@ -54,7 +55,7 @@ export class VideoCategory {
    */
   public assignable: boolean
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$VideoCategory, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -64,7 +65,7 @@ export class VideoCategory {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$VideoCategory) {
     if (data.kind !== 'youtube#videoCategory') {
       throw new Error(`Invalid video category type: ${data.kind}`)
     }

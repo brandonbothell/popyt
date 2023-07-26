@@ -1,6 +1,7 @@
 import { ChannelParts, SubscriptionParts } from '../types/Parts'
 import { Thumbnail } from '../types'
 import YouTube from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube subscription.
@@ -98,9 +99,9 @@ export class Subscription {
      * Thumbnail images for the user's channel.
      */
     thumbnails?: {
-      default: Thumbnail
-      medium: Thumbnail
-      high: Thumbnail
+      default?: Thumbnail
+      medium?: Thumbnail
+      high?: Thumbnail
     }
   }
 
@@ -108,9 +109,9 @@ export class Subscription {
    * Thumbnail images for the subscription.
    */
   public thumbnails: {
-    default: Thumbnail
-    medium: Thumbnail
-    high: Thumbnail
+    default?: Thumbnail
+    medium?: Thumbnail
+    high?: Thumbnail
   }
 
   /**
@@ -135,7 +136,7 @@ export class Subscription {
    */
   public activities: 'all' | 'uploads'
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$Subscription, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -145,7 +146,7 @@ export class Subscription {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$Subscription) {
     if (data.kind !== 'youtube#subscription') {
       throw new Error(`Invalid subscription type: ${data.kind}`)
     }
@@ -172,7 +173,7 @@ export class Subscription {
         new: subscription.contentDetails.newItemCount,
         total: subscription.contentDetails.totalItemCount
       }
-      this.activities = subscription.contentDetails.activityType
+      this.activities = subscription.contentDetails.activityType as Subscription['activities']
     }
 
     /* **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600 */
@@ -187,14 +188,17 @@ export class Subscription {
   /**
    * Fetches this subscription from the API and reassigns this object to the new subscription object.
    * Only useful if `this.full` is false, or if you want updated subscription info.  
-   * **CURRENTLY NOT WORKING** unless the subscriber and channel properties are populated, see https://issuetracker.google.com/issues/288609601
+   * **CURRENTLY NOT WORKING** unless the subscriber and channel properties are populated,
+   * see https://issuetracker.google.com/issues/288609601
    */
   public async fetch (parts?: SubscriptionParts) {
     let subscription = await this.youtube.getSubscription(this.id, parts).catch((e: Error) => e.message)
 
     if (typeof subscription === 'string') {
-      if (this.subscriber && this.channel) subscription = await this.youtube.getSubscriptionByChannels(this.subscriber.id, this.channel.id, parts)
-      else return undefined
+      if (this.subscriber && this.channel) {
+        subscription = await this.youtube.getSubscriptionByChannels(
+          this.subscriber.id, this.channel.id, parts)
+      } else return undefined
     }
 
     return Object.assign(this, subscription as Subscription)

@@ -1,4 +1,5 @@
 import YouTube from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A caption track.
@@ -105,7 +106,7 @@ export class Caption {
   // Must fail for this property to be populated
   public failureReason?: 'processingFailed' | 'unknownFormat' | 'unsupportedFormat'
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$Caption, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -115,7 +116,7 @@ export class Caption {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$Caption) {
     if (data.kind !== 'youtube#caption') {
       throw new Error(`Invalid caption type: ${data.kind}`)
     }
@@ -127,17 +128,17 @@ export class Caption {
     if (caption.snippet) {
       this.videoId = caption.snippet.videoId
       this.lastUpdated = new Date(caption.snippet.lastUpdated)
-      this.kind = caption.snippet.trackKind
+      this.kind = caption.snippet.trackKind as Caption['kind']
       this.language = caption.snippet.language
       this.name = caption.snippet.name
-      this.audioType = caption.snippet.audioTrackType
+      this.audioType = caption.snippet.audioTrackType as Caption['audioType']
       this.closedCaptions = caption.snippet.isCC
       this.large = caption.snippet.isLarge
       this.easyReader = caption.snippet.isEasyReader
       this.draft = caption.snippet.isDraft
       this.autoSynced = caption.snippet.isAutoSynced
-      this.status = caption.snippet.status
-      this.failureReason = caption.snippet.failureReason
+      this.status = caption.snippet.status as Caption['status']
+      this.failureReason = caption.snippet.failureReason as Caption['failureReason']
     }
   }
 

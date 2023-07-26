@@ -1,5 +1,6 @@
 import { CommentParts } from '../types/Parts'
 import { PageOptions, PaginatedResponse, YouTube } from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 export class Comment {
   /**
@@ -137,7 +138,7 @@ export class Comment {
    */
   public replyCount?: number
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$Comment, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -147,25 +148,30 @@ export class Comment {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$Comment | youtube_v3.Schema$CommentThread) {
     if (data.kind === 'youtube#commentThread') {
-      if (data.snippet) {
-        this.replyCount = data.snippet.totalReplyCount
-        this.videoId = data.snippet.videoId
-        this.channelId = data.snippet.channelId
+      const thread = data as youtube_v3.Schema$CommentThread
+
+      if (thread.snippet) {
+        this.replyCount = thread.snippet.totalReplyCount
+        this.videoId = thread.snippet.videoId
+        this.channelId = thread.snippet.channelId
       }
 
-      if (data.replies && data.replies.comments?.length > 0) {
+      if (thread.replies && thread.replies.comments?.length > 0) {
         if (!this.replies) this.replies = { items: [] }
-        for (const replyData of data.replies.comments) this.replies.items.push(new Comment(this.youtube, replyData))
+
+        for (const replyData of thread.replies.comments) {
+          this.replies.items.push(new Comment(this.youtube, replyData))
+        }
       }
 
-      if (data.snippet?.topLevelComment) data = data.snippet.topLevelComment
+      if (thread.snippet?.topLevelComment) data = thread.snippet.topLevelComment
     } else if (data.kind !== 'youtube#comment') {
       throw new Error(`Invalid comment type: ${data.kind}`)
     }
 
-    const comment = data
+    const comment = data as youtube_v3.Schema$Comment
 
     this.id = comment.id
 
@@ -186,7 +192,7 @@ export class Comment {
       this.popular = comment.snippet.likeCount >= 100
       this.likes = comment.snippet.likeCount
       this.datePublished = new Date(comment.snippet.publishedAt)
-      this.dateEdited = comment.snippet.updatedAt
+      this.dateEdited = new Date(comment.snippet.updatedAt)
       this.parentCommentId = comment.snippet.parentId
 
       // this property is broken in the API as of 06/24/2023: https://issuetracker.google.com/issues/288239809

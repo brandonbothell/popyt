@@ -1,5 +1,6 @@
 import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
 import { YouTube, Playlist, Channel, ChannelSectionType, PageOptions, PaginatedResponse, Subscription } from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube [Channel](./Library_Exports.Channel#) section.
@@ -87,7 +88,7 @@ export class ChannelSection {
    */
   public id: string
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$ChannelSection, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -97,7 +98,7 @@ export class ChannelSection {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$ChannelSection) {
     if (data.kind !== 'youtube#channelSection') {
       throw new Error(`Invalid channel section type: ${data.kind}`)
     }
@@ -107,7 +108,7 @@ export class ChannelSection {
     this.id = section.id
 
     if (section.snippet) {
-      this.type = section.snippet.type.toLowerCase()
+      this.type = section.snippet.type.toLowerCase() as ChannelSection['type']
       this.channelId = section.snippet.channelId
       this.name = section.snippet.title
       this.position = section.snippet.position

@@ -20,7 +20,7 @@
     "docs:serve": "yarn workspace docusaurus serve",
     "docs:test": "yarn workspace docusaurus start",
     "lint": "eslint src/**/*.ts test/**/*.ts",
-    "build": "tsc"
+    "build": "tsc --build --clean && tsc"
   },
   "nyc": {
     "include": "src"
@@ -45,6 +45,7 @@
     "caching"
   ],
   "devDependencies": {
+    "@googleapis/youtube": "^10.0.0",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/chai": "4.3.5",
     "@types/gulp": "4.0.13",
@@ -69,6 +70,9 @@
   },
   "resolutions": {
     "node-preload": "0.2.0"
+  },
+  "engines": {
+    "node": "20.3.1"
   },
   "repository": {
     "url": "https://github.com/brandonbothell/popyt.git"

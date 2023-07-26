@@ -1,5 +1,6 @@
 import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
 import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions, PaginatedResponse, Image, SubscriptionResolvable } from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube channel.
@@ -142,7 +143,7 @@ export class Channel {
   /**
    * The localized titles and descriptions of this channel, if any.
    */
-  public localizations: { [language: string]: { title: string; description: string } }
+  public localizations: { [language: string]: youtube_v3.Schema$ChannelLocalization }
 
   /**
    * Only set if the channel is a search result.
@@ -168,7 +169,8 @@ export class Channel {
     selfDeclaredMadeForKids: boolean
   }
 
-  constructor (youtube: YouTube, data: any, full = false) {
+  constructor (youtube: YouTube,
+    data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult, full = false) {
     this.youtube = youtube
     this.data = data
     this.full = full
@@ -179,10 +181,11 @@ export class Channel {
   /**
    * @ignore
    */
-  private _init (data: any) {
-    const channel = data
+  private _init (data: youtube_v3.Schema$Channel | youtube_v3.Schema$SearchResult) {
 
     if (data.kind === 'youtube#channel') {
+      const channel = data as youtube_v3.Schema$Channel
+
       this.id = channel.id
       this.localizations = channel.localizations
 
@@ -231,22 +234,23 @@ export class Channel {
             channel.brandingSettings.channel.featuredChannelsUrls.map(id => `https://www.youtube.com/channel/${id}`) : []
         }
       }
-    } else if (channel.kind === 'youtube#searchResult') {
-      this.id = channel.id?.channelId ?? channel.snippet?.channelId
+    } else if (data.kind === 'youtube#searchResult') {
+      const searchResult = data as youtube_v3.Schema$SearchResult
+      this.id = searchResult.id?.channelId ?? searchResult.snippet?.channelId
 
-      if (channel.snippet) {
-        // Impossible to test
-        this.liveStatus = channel.snippet.liveBroadcastContent !== 'none' ? channel.snippet.liveBroadcastContent : false
+      if (searchResult.snippet) {
+        this.liveStatus = (searchResult.snippet.liveBroadcastContent !== 'none' ?
+          searchResult.snippet.liveBroadcastContent : false) as Channel['liveStatus']
       }
     } else {
-      throw new Error(`Invalid channel type: ${channel.kind}`)
+      throw new Error(`Invalid channel type: ${data.kind}`)
     }
 
-    if (channel.snippet) {
-      this.profilePictures = channel.snippet.thumbnails
-      this.dateCreated = new Date(channel.snippet.publishedAt)
-      this.name = channel.snippet.title
-      this.about = channel.snippet.description
+    if (data.snippet) {
+      this.profilePictures = data.snippet.thumbnails
+      this.dateCreated = new Date(data.snippet.publishedAt)
+      this.name = data.snippet.title
+      this.about = data.snippet.description
     }
 
     this.url = `https://youtube.com/channel/${this.id}`

@@ -1,4 +1,5 @@
 import YouTube from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A language.
@@ -49,7 +50,7 @@ export class Language {
    */
   public name: string
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$I18nLanguage, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -59,7 +60,7 @@ export class Language {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$I18nLanguage) {
     if (data.kind !== 'youtube#i18nLanguage') {
       throw new Error(`Invalid language type: ${data.kind}`)
     }

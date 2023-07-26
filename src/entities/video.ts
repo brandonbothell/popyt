@@ -3,6 +3,7 @@ import { CommentThreadParts, VideoParts } from '../types/Parts'
 import { Thumbnail, ISODuration, PageOptions, PaginatedResponse } from '../types'
 import { YouTube, VideoUpdateResource, Caption } from '..'
 import { Comment } from './comment'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube video.
@@ -195,9 +196,10 @@ export class Video {
   /**
    * The localized titles and descriptions of this video, if any.
    */
-  public localizations: { [language: string]: { title: string; description: string } }
+  public localizations: { [language: string]: { title?: string; description?: string } }
 
-  constructor (youtube: YouTube, data: any, full = false) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$Video |
+    youtube_v3.Schema$PlaylistItem | youtube_v3.Schema$SearchResult, full = false) {
     this.youtube = youtube
     this.data = data
     this.full = full
@@ -208,62 +210,82 @@ export class Video {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$Video | youtube_v3.Schema$PlaylistItem |
+    youtube_v3.Schema$SearchResult) {
     if (data.kind === 'youtube#video') {
-      this.id = data.id
-      this.localizations = data.localizations
+      const video = data as youtube_v3.Schema$Video
 
-      if (data.contentDetails) {
-        this._length = Parser.parseIsoDuration(data.contentDetails.duration)
+      this.id = video.id
+      this.localizations = video.localizations
+
+      if (video.contentDetails) {
+        this._length = Parser.parseIsoDuration(video.contentDetails.duration)
         this.minutes = (this._length.hours * 60) + this._length.minutes
         this.seconds = this._length.seconds
       }
 
-      if (data.recordingDetails?.recordingDate) {
-        this.dateRecorded = new Date(data.recordingDetails.recordingDate)
+      if (video.recordingDetails?.recordingDate) {
+        this.dateRecorded = new Date(video.recordingDetails.recordingDate)
+      }
+
+      if (video.statistics) {
+        this.likes = Number(video.statistics.likeCount)
+        this.dislikes = Number(video.statistics.dislikeCount)
+        this.views = Number(video.statistics.viewCount)
+        this.commentCount = Number(video.statistics.commentCount)
+      }
+
+      if (video.status) {
+        this.private = video.status.privacyStatus === 'private'
+        this.kids = 'madeForKids' in video.status ? {
+          madeForKids: video.status.madeForKids,
+          selfDeclaredMadeForKids: video.status.selfDeclaredMadeForKids
+        } : undefined
+        this.license = video.status.license as Video['license']
+      }
+
+      if (video.snippet) {
+        this.tags = video.snippet.tags
+        this.liveStatus = (video.snippet.liveBroadcastContent !== 'none' ?
+          video.snippet.liveBroadcastContent : false) as Video['liveStatus']
+        this.category = video.snippet.categoryId
       }
     } else if (data.kind === 'youtube#playlistItem') {
-      this.id = data.snippet?.resourceId.videoId
+      const playlistItem = data as youtube_v3.Schema$PlaylistItem
 
-      if (data.contentDetails) {
-        this.note = data.contentDetails.note
-        this.datePublished = new Date(data.contentDetails.videoPublishedAt)
+      this.id = playlistItem.snippet?.resourceId.videoId
+
+      if (playlistItem.contentDetails) {
+        this.note = playlistItem.contentDetails.note
+        this.datePublished = new Date(playlistItem.contentDetails.videoPublishedAt)
+      }
+
+      if (playlistItem.snippet) {
+        this.channel = {
+          id: playlistItem.snippet.videoOwnerChannelId,
+          name: playlistItem.snippet.videoOwnerChannelTitle
+        }
       }
     } else if (data.kind === 'youtube#searchResult') {
-      this.id = data.id.videoId
+      const searchResult = data as youtube_v3.Schema$SearchResult
+      this.id = searchResult.id.videoId
     } else {
       throw new Error(`Invalid video type: ${data.kind}`)
     }
 
     if (data.snippet) {
-      if (!this.datePublished) this.datePublished = new Date(data.snippet.publishedAt)
       this.title = data.snippet.title
       this.description = data.snippet.description
       this.thumbnails = data.snippet.thumbnails
-      this.tags = data.snippet.tags
-      this.channel = {
-        id: data.snippet.channelId || data.snippet.videoOwnerChannelId,
-        name: data.snippet.channelTitle || data.snippet.videoOwnerChannelTitle
+
+      if (!this.datePublished) this.datePublished = new Date(data.snippet.publishedAt)
+
+      if (!this.channel) {
+        this.channel = {
+          id: data.snippet.channelId,
+          name: data.snippet.channelTitle
+        }
       }
-      // Impossible to test
-      this.liveStatus = data.snippet.liveBroadcastContent !== 'none' ? data.snippet.liveBroadcastContent : false
-      this.category = data.snippet.categoryId
-    }
-
-    if (data.statistics) {
-      this.likes = Number(data.statistics.likeCount)
-      this.dislikes = Number(data.statistics.dislikeCount)
-      this.views = Number(data.statistics.viewCount)
-      this.commentCount = Number(data.statistics.commentCount)
-    }
-
-    if (data.status) {
-      this.private = data.status.privacyStatus === 'private'
-      this.kids = 'madeForKids' in data.status ? {
-        madeForKids: data.status.madeForKids,
-        selfDeclaredMadeForKids: data.status.selfDeclaredMadeForKids
-      } : undefined
-      this.license = data.status.license
     }
 
     this.url = `https://youtube.com/watch?v=${this.id}`

@@ -1,4 +1,5 @@
 import { YouTube } from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 /**
  * A YouTube [Video](./Library_Exports.Video) rating (like/dislike).
@@ -44,7 +45,7 @@ export class VideoRating {
    */
   public rating: 'like' | 'dislike' | 'none' | 'unspecified'
 
-  constructor (youtube: YouTube, data: any, full = true) {
+  constructor (youtube: YouTube, data: youtube_v3.Schema$VideoRating, full = true) {
     this.youtube = youtube
     this.data = data
 
@@ -54,7 +55,7 @@ export class VideoRating {
   /**
    * @ignore
    */
-  private _init (data: any) {
+  private _init (data: youtube_v3.Schema$VideoRating) {
     // Currently broken in the API
     /* if (data.kind !== 'youtube#videoGetRatingResponse') {
       throw new Error(`Invalid video rating type: ${data.kind}`)
@@ -65,7 +66,7 @@ export class VideoRating {
     }
 
     this.videoId = data.videoId
-    this.rating = data.rating
+    this.rating = data.rating as VideoRating['rating']
   }
 
   /**
