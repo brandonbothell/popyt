@@ -87,7 +87,7 @@ export class ResolutionService {
     // If there are no search results and it couldn't be parsed, fallback to original input
     if (!resolution) resolution = input
 
-    this.youtube._cacheResolution(type, input, resolution)
+    if (this.youtube._shouldCache) this.youtube._cacheResolution(type, input, resolution)
 
     return resolution
   }

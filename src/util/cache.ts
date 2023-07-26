@@ -8,12 +8,6 @@ import { findArrayFrom } from '.'
  */
 export class Cache {
   /**
-  * @deprecated The plan is to deprecate this global map as soon as the below maps are
-  * fully-featured.
-  */
-  private static map: Map<string, CacheItem> = new Map()
-
-  /**
   * Map of resolutions separated by type.
   */
   private static resolutionMap: ResolutionMap = new Map()
@@ -22,36 +16,15 @@ export class Cache {
    * Map of items that are separated by which parts were requested from the API and then
    * their ID/URL/search query.
    */
-  private static itemsMap:
+  private static itemMap:
   Map<string, Map<string, CacheItem<InstanceType<ItemTypes>>>> = new Map()
 
   /** 
-   * Map of pages of items that are separated by which parts were requested from the API
-   * and then a cache key generated from the request options.
+   * Map of arrays of pages of items that are separated by which parts were requested
+   * from the API and then a cache key generated from the request options.
    */
   private static pagesMap:
     Map<string, Map<string, CacheItem<PaginatedResponse<PaginatedInstance>>[]>> = new Map()
-
-  /**
-   * @deprecated Use specific methods
-   */
-  public static set (key: string, value: any, ttl: number) {
-    Cache.map.set(key, { v: value, t: ttl })
-  }
-
-  /**
-   * @deprecated Use specific methods
-   */
-  public static get (key: string): any {
-    const item = Cache.map.get(key)
-
-    if (!item || (item.t > 0 && new Date().getTime() >= item.t)) {
-      Cache._delete(key)
-      return undefined
-    }
-
-    return item.v
-  }
 
   public static setResolution<T extends ResolvableClass = ResolvableClass>
   (type: T, input: string, value: Resolvable<T>, ttl: number) {
@@ -81,8 +54,8 @@ export class Cache {
     ttl: number, parts?: string[]) {
     const key = `${type.name.toLowerCase()}/${name}` // The item key string
     const part = parts ? parts.sort().join(',') : type.part // The parts key string
-    const cachedWithSameParts = Cache.itemsMap.get(part) ?? // The parts map
-      Cache.itemsMap.set(part, new Map()).get(part)
+    const cachedWithSameParts = Cache.itemMap.get(part) ?? // The parts map
+      Cache.itemMap.set(part, new Map()).get(part)
 
     cachedWithSameParts.set(key, { v: value, t: ttl })
   }
@@ -106,7 +79,7 @@ export class Cache {
     const key = `${type.name.toLowerCase()}/${name}`
 
     // Search for an item that has the same or more parts than we need
-    const item = Cache.findCachedItemWithParts(Cache.itemsMap, part, key)
+    const item = Cache.findCachedItemWithParts(Cache.itemMap, part, key)
 
     if (!item) return undefined
     if (item.t > 0 && new Date().getTime() >= item.t) {
@@ -195,20 +168,22 @@ export class Cache {
   public static checkTTLs () {
     const time = new Date().getTime()
 
-    for (const [ key, value ] of Cache.map.entries()) {
-      const timeToDelete = value.t
-
-      if (timeToDelete > 0 && time >= timeToDelete) {
-        Cache.map.delete(key)
-      }
-    }
-
-    for (const [ part, cache ] of Cache.itemsMap.entries()) {
+    for (const [ part, cache ] of Cache.itemMap.entries()) {
       for (const [ key, item ] of cache.entries()) {
         const timeToDelete = item.t
 
         if (timeToDelete > 0 && time >= timeToDelete) {
           Cache._deleteItem(key, part)
+        }
+      }
+    }
+
+    for (const [ type, cache ] of Cache.resolutionMap.entries()) {
+      for (const [ key, item ] of cache.entries()) {
+        const timeToDelete = item.t
+
+        if (timeToDelete > 0 && time >= timeToDelete) {
+          Cache._deleteResolution(type, key)
         }
       }
     }
@@ -229,11 +204,13 @@ export class Cache {
   }
 
   public static setTTLs (ttl: number) {
-    for (const [ key, item ] of Cache.map.entries()) {
-      Cache.map.set(key, { ...item, t: ttl })
+    for (const cache of Cache.itemMap.values()) {
+      for (let [ key, item ] of cache.entries()) {
+        cache.set(key, { ...item, t: ttl })
+      }
     }
 
-    for (const cache of Cache.itemsMap.values()) {
+    for (const cache of Cache.resolutionMap.values()) {
       for (let [ key, item ] of cache.entries()) {
         cache.set(key, { ...item, t: ttl })
       }
@@ -251,15 +228,8 @@ export class Cache {
     }
   }
 
-  /**
-   * @deprecated Use specific methods
-   */
-  public static _delete (key: string) {
-    Cache.map.delete(key)
-  }
-
-  public static _deleteItem (key: string, parts: string) {
-    const cachedWithSameParts = Cache.itemsMap.get(parts)
+  public static _deleteItem (key: string, parts?: string) {
+    const cachedWithSameParts = Cache.itemMap.get(parts ?? '')
     const cacheItem = cachedWithSameParts?.get(key)
 
     cachedWithSameParts?.delete(key)

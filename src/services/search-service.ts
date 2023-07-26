@@ -1,4 +1,3 @@
-import { Cache } from '../util'
 import YouTube, { Video, Channel, Playlist, InternalSearchOptions, SearchType, PaginatedResponse, SearchFilters, VideoCategory } from '..'
 
 /**
@@ -15,11 +14,6 @@ export class SearchService {
     }: InternalSearchOptions<T>): Promise<PaginatedResponse<InstanceType<T>>> {
 
     const type = types.map(t => t.name.toLowerCase()).join(',')
-
-    if (this.youtube._shouldCache) {
-      const cached = Cache.get(`search://${type}/"${searchTerm}"/${pages}/${maxPerPage}/${pageToken}/${JSON.stringify(otherFilters)}`)
-      if (cached) return cached
-    }
 
     if (maxPerPage < 1) {
       return Promise.reject(new Error('Max per page must be above 0'))

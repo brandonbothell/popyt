@@ -243,7 +243,6 @@ export class Playlist {
       type: PaginatedItemType.PlaylistItems,
       mine: false,
       id: this.id,
-      maxPerPage: 1,
       subId: typeof video === 'string' ? video : video.id
     })).items
 

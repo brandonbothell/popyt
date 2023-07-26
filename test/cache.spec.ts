@@ -3,7 +3,7 @@ import './setup-instance'
 
 import { setTimeout } from 'timers/promises'
 import { Cache } from '../src/util/cache'
-import { YouTube } from '../src'
+import { VideoRating, YouTube } from '../src'
 import { expect } from 'chai'
 
 const apiKey = process.env.YOUTUBE_API_KEY
@@ -61,49 +61,30 @@ describe('Caching', () => {
     expect(new Date().getTime() - time).to.be.greaterThan(30)
   })
 
-  it('should delete items successfully', () => {
-    Cache.set('test', 'value', 0)
-    Cache._delete('test')
-
-    expect(Cache.get('test')).to.equal(undefined)
-  })
+  const testRating = new VideoRating(new YouTube('test'),
+    { videoId: 'test', rating: 'like' })
 
   it('should ignore items with a ttl <= 0', () => {
-    Cache.set('test', 'value', 0)
+    Cache.setItem(VideoRating, 'test', testRating, 0)
     Cache.checkTTLs()
 
-    expect(Cache.get('test')).to.equal('value')
+    expect(Cache.getItem(VideoRating, 'test')).to.equal(testRating)
 
-    Cache._delete('test')
+    Cache._deleteItem('videorating/test')
   })
 
   it('should delete expired items', () => {
-    Cache.set('test', 'value', 1)
+    Cache.setItem(VideoRating, 'test', testRating, 1)
     Cache.checkTTLs()
 
-    expect(Cache.get('test')).to.equal(undefined)
-  })
-
-  it('should not cache if _shouldCache is false', () => {
-    const youtube = new YouTube(apiKey, undefined, { cache: false })
-    youtube._cache('test', 'value')
-
-    expect(Cache.get('test')).to.equal(undefined)
-  })
-
-  it('should cache if _shouldCache is true', () => {
-    const youtube = new YouTube(apiKey, undefined, { cache: true, cacheTTL: 60 })
-    youtube._cache('test', 'value')
-
-    expect(Cache.get('test')).to.equal('value')
-    Cache._delete('test')
+    expect(Cache.getItem(VideoRating, 'test')).to.equal(undefined)
   })
 
   it('should cache forever if cacheTTL is <= 0', () => {
     const youtube = new YouTube(apiKey, undefined, { cache: true, cacheTTL: 0 })
-    youtube._cache('test', 'value')
+    youtube._cacheItem(VideoRating, 'test', testRating)
 
-    expect(Cache.get('test')).to.equal('value')
-    Cache._delete('test')
+    expect(Cache.getItem(VideoRating, 'test')).to.equal(testRating)
+    expect(Cache._deleteItem('videorating/test')?.v).to.equal(testRating)
   })
 })
