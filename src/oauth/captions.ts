@@ -18,7 +18,7 @@ export class OAuthCaptions {
   public async getCaption (videoResolvable: YT.VideoResolvable, captionId: string): Promise<YT.Caption> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const params: { videoId: string; id?: string } =
       { videoId: typeof video === 'string' ? video : video.id }
 
@@ -43,7 +43,7 @@ export class OAuthCaptions {
   public async getCaptions (videoResolvable: YT.VideoResolvable): Promise<YT.Caption[]> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const data = await this.oauth.youtube._request.get('captions', {
       params: { part: 'snippet', videoId: typeof video === 'string' ? video : video.id },
       authorizationOptions: { accessToken: true }
@@ -67,7 +67,7 @@ export class OAuthCaptions {
   public async uploadCaption (videoResolvable: YT.VideoResolvable, language: string, name: string, track: Buffer, draft: boolean = false): Promise<YT.Caption> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const data: typeof Data.CAPTION_DATA = JSON.parse(JSON.stringify(Data.CAPTION_DATA))
 
     data.snippet = {

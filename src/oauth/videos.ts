@@ -17,7 +17,7 @@ export class OAuthVideos {
   public async rateVideo (videoResolvable: YT.VideoResolvable, rating: 'like' | 'dislike' | 'none'): Promise<void> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
 
     return this.oauth.youtube._request.post('videos/rate', {
       params: { id: typeof video === 'string' ? video : video.id, rating },
@@ -41,7 +41,7 @@ export class OAuthVideos {
 
     const videoIds = await Promise
       .all(resolvables.map(resolvable =>
-        this.oauth.youtube._resolutionService.resolve(resolvable, YT.Video)))
+        this.oauth.youtube._services.resolution.resolve(resolvable, YT.Video)))
       .then(videos => videos.map(video => typeof video === 'string' ? video : video.id))
 
     const alreadyResolved: YT.VideoRating[] = []
@@ -64,7 +64,7 @@ export class OAuthVideos {
     }
 
     const ratings =
-      await this.oauth.youtube._genericService.getPaginatedItems<YT.VideoRating>({
+      await this.oauth.youtube._services.retrieval.getPaginatedItems<YT.VideoRating>({
         type: YT.PaginatedItemType.VideoRatings, id: videoIds.join(',')
       }, { accessToken: true })
 
@@ -86,7 +86,7 @@ export class OAuthVideos {
   public async reportAbuse (videoResolvable: YT.VideoResolvable, reasonId: string, secondaryReasonId?: string, comments?: string, language?: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const data: {
         videoId: string
         reasonId: string
@@ -115,7 +115,7 @@ export class OAuthVideos {
   public async deleteVideo (videoResolvable: YT.VideoResolvable): Promise<void> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     return this.oauth.youtube._request.delete('videos', {
       params: { id: typeof video === 'string' ? video : video.id },
       authorizationOptions: { accessToken: true }
@@ -171,7 +171,7 @@ export class OAuthVideos {
   public async setThumbnail (videoResolvable: YT.VideoResolvable, image: YT.Image): Promise<typeof YT.Video.prototype.thumbnails> {
     this.oauth.checkTokenAndThrow()
 
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const response = await this.oauth.youtube._upload.imagePost('thumbnails/set', {
       params: { videoId: typeof video === 'string' ? video : video.id },
       image,
@@ -186,7 +186,7 @@ export class OAuthVideos {
    */
   public async getVideoAbuseReportReasons () {
     this.oauth.checkTokenAndThrow()
-    return (await this.oauth.youtube._genericService.getPaginatedItems(
+    return (await this.oauth.youtube._services.retrieval.getPaginatedItems(
       { type: YT.PaginatedItemType.VideoAbuseReportReasons },
       { accessToken: true })
     ).items as YT.VideoAbuseReportReason[]

@@ -108,7 +108,7 @@ export class ResolutionService {
       return { searchQuery: parsedChannel.searchQuery }
     } else if (parsedChannel?.username) {
       // The new usernames are the same, but maybe one day we can use this like:
-      // const channel = await this.youtube._channelService.getChannelByUsername(parsedChannel.username) as InstanceType<T>
+      // const channel = await this.youtube._services.channel.getChannelByUsername(parsedChannel.username) as InstanceType<T>
       // if (channel) return { resolution: channel }
       return { searchQuery: parsedChannel.username }
     }

@@ -63,7 +63,7 @@ export class OAuthPlaylists {
 
     this.oauth.checkTokenAndThrow()
 
-    const playlist = await this.oauth.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
+    const playlist = await this.oauth.youtube._services.resolution.resolve(playlistResolvable, YT.Playlist)
     const data: typeof Data.PLAYLIST_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_DATA))
     const parts: string[] = [ 'id', 'player', 'snippet' ]
 
@@ -94,7 +94,7 @@ export class OAuthPlaylists {
   public async deletePlaylist (playlistResolvable: YT.PlaylistResolvable): Promise<void> {
     this.oauth.checkTokenAndThrow()
 
-    const playlist = await this.oauth.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
+    const playlist = await this.oauth.youtube._services.resolution.resolve(playlistResolvable, YT.Playlist)
     return this.oauth.youtube._request.delete('playlists', {
       params: { id: typeof playlist === 'string' ? playlist : playlist.id },
       authorizationOptions: { accessToken: true }
@@ -114,8 +114,8 @@ export class OAuthPlaylists {
 
     this.oauth.checkTokenAndThrow()
 
-    const playlist = await this.oauth.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const playlist = await this.oauth.youtube._services.resolution.resolve(playlistResolvable, YT.Playlist)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
 
     const data: typeof Data.PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
@@ -152,8 +152,8 @@ export class OAuthPlaylists {
 
     this.oauth.checkTokenAndThrow()
 
-    const playlist = await this.oauth.youtube._resolutionService.resolve(playlistResolvable, YT.Playlist)
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const playlist = await this.oauth.youtube._services.resolution.resolve(playlistResolvable, YT.Playlist)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
 
     const data: typeof Data.PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]

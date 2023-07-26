@@ -199,7 +199,7 @@ export class Playlist {
    * @param note A note on the video.
    */
   public async addVideo (videoResolvable: VideoResolvable, position?: number, note?: string) {
-    const videoId = await this.youtube._resolutionService.resolve(videoResolvable, Video)
+    const videoId = await this.youtube._services.resolution.resolve(videoResolvable, Video)
     const playlistItem = await this.youtube.oauth.playlists.addPlaylistItem(
       this, videoId, position, note)
 
@@ -218,8 +218,8 @@ export class Playlist {
    * @param itemId The playlist item ID if you have it.
    */
   public async updateVideo (videoResolvable: VideoResolvable, position?: number, note?: string, itemId?: string) {
-    const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
-    const playlistItemId = itemId ?? (await this.youtube._genericService.getPaginatedItems({
+    const video = await this.youtube._services.resolution.resolve(videoResolvable, Video)
+    const playlistItemId = itemId ?? (await this.youtube._services.retrieval.getPaginatedItems({
       type: PaginatedItemType.PlaylistItems,
       mine: false,
       id: this.id,
@@ -238,8 +238,8 @@ export class Playlist {
    * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    */
   public async removeVideo (videoResolvable: VideoResolvable) {
-    const video = await this.youtube._resolutionService.resolve(videoResolvable, Video)
-    const matchingItems = (await this.youtube._genericService.getPaginatedItems<Video>({
+    const video = await this.youtube._services.resolution.resolve(videoResolvable, Video)
+    const matchingItems = (await this.youtube._services.retrieval.getPaginatedItems<Video>({
       type: PaginatedItemType.PlaylistItems,
       mine: false,
       id: this.id,

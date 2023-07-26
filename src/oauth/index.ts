@@ -71,7 +71,7 @@ export class OAuth {
    */
   public getMe (parts?: Part.ChannelParts): Promise<YT.Channel> {
     this.checkTokenAndThrow()
-    return this.youtube._genericService.getItem(YT.Channel, { mine: true }, parts)
+    return this.youtube._services.retrieval.getItem(YT.Channel, { mine: true }, parts)
   }
 
   /**
@@ -105,7 +105,7 @@ export class OAuth {
   public getMySubscriptions (pageOptions?: YT.PageOptions, parts?: Part.SubscriptionParts) {
     this.checkTokenAndThrow()
 
-    return this.youtube._genericService.getPaginatedItems<YT.Subscription>(
+    return this.youtube._services.retrieval.getPaginatedItems<YT.Subscription>(
       { type: YT.PaginatedItemType.Subscriptions, mine: true, parts, ...pageOptions },
       { accessToken: true }
     )
@@ -122,7 +122,7 @@ export class OAuth {
   public getMyPlaylists (pageOptions?: YT.PageOptions, parts?: Part.PlaylistParts) {
     this.checkTokenAndThrow()
 
-    return this.youtube._genericService.getPaginatedItems<YT.Playlist>(
+    return this.youtube._services.retrieval.getPaginatedItems<YT.Playlist>(
       { type: YT.PaginatedItemType.Playlists, mine: true, parts, ...pageOptions },
       { accessToken: true }
     )
@@ -134,7 +134,7 @@ export class OAuth {
   public async getMyChannelSections (parts?: Part.ChannelSectionParts) {
     this.checkTokenAndThrow()
 
-    return (await this.youtube._genericService.getPaginatedItems<YT.ChannelSection>(
+    return (await this.youtube._services.retrieval.getPaginatedItems<YT.ChannelSection>(
       { type: YT.PaginatedItemType.ChannelSections, mine: true, parts },
       { accessToken: true }
     )).items
