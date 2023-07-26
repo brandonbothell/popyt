@@ -29,8 +29,9 @@ describe('Channels', () => {
     expect(await youtube.getChannel('https://www.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ', [ 'id' ])).to.be.an.instanceOf(Channel)
   })
 
-  it('shouldn\'t work with proper usernames', async () => {
-    expect(await youtube.getChannel('@brandonbothell', [ 'id' ]).catch(e => e.message)).to.equal('Channel not found')
+  it('should work with proper usernames', async () => {
+    expect(await youtube.getChannel('@brandonbothell', [ 'id' ]))
+      .to.be.an.instanceOf(Channel)
   })
 
   it('should work with single searching', async () => {

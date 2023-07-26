@@ -11,7 +11,6 @@ export class OAuthVideos {
 
   /**
    * Like, dislike, or remove a rating from a [Video](./Library_Exports.Video#).
-   * Last tested 05/18/2020 11:48. PASSING
    * @param videoResolvable The video to rate.
    * @param rating The rating to give the video.
    */
@@ -28,7 +27,6 @@ export class OAuthVideos {
 
   /**
      * Retrieve your rating on [Videos](./Library_Exports.Video#).  
-     * Last tested 05/18/2020 11:48. PASSING
      * @param videoResolvable The video(s) to retrieve your rating from.
      */
   public async getMyRatings<T extends YT.VideoResolvable | YT.VideoResolvable[]>
@@ -79,7 +77,6 @@ export class OAuthVideos {
 
   /**
      * Report a [Video](./Library_Exports.Video#) for abuse.  
-     * Last tested NEVER
      * @param videoResolvable The video to report.
      * @param reasonId The reason for reporting. (IDs can be found [here](https://developers.google.com/youtube/v3/docs/videoAbuseReportReasons/list))
      * @param secondaryReasonId An optional second reason for reporting.
@@ -113,7 +110,6 @@ export class OAuthVideos {
 
   /**
      * Deletes a [Video](./Library_Exports.Video#).
-     * Last tested NEVER
      * @param videoResolvable The video to delete.
      */
   public async deleteVideo (videoResolvable: YT.VideoResolvable): Promise<void> {
@@ -130,7 +126,6 @@ export class OAuthVideos {
      * Updates a [Video](./Library_Exports.Video#).  
      * **If your request does not specify a value for a property that already has a value,
      * the property's existing value will be deleted.**  
-     * Last tested NEVER
      * @param video The updated video object.
      */
   public async updateVideo (video: YT.VideoUpdateResource): Promise<YT.Video> {
@@ -170,7 +165,6 @@ export class OAuthVideos {
 
   /**
      * Sets a new [Thumbnail](../modules/Library_Exports#thumbnail) for a [Video](./Library_Exports.Video).  
-     * Last tested 05/18/2020 11:48. PASSING
      * @param videoResolvable The video to set the thumbnail for.
      * @param image The image data and type to upload.
      */
@@ -189,7 +183,6 @@ export class OAuthVideos {
 
   /**
    * Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason#)s.
-   * Last tested 05/18/2020 11:48. PASSING
    */
   public async getVideoAbuseReportReasons () {
     this.oauth.checkTokenAndThrow()

@@ -57,7 +57,7 @@ export class ResolutionService {
     }
 
     if (this.youtube._shouldCache) {
-      const cached = Cache.get(`get_id://${type.endpoint}/${input}`)
+      const cached = Cache.getResolution(type, input)
       if (cached) return cached
     }
 
@@ -66,8 +66,9 @@ export class ResolutionService {
     let resolution: Resolvable<T>
 
     if (type === Channel && Parser.channelHandleRegex.test(input)) {
-      // Try to resolve as a username (custom channel handle)
-      resolution = await this.youtube._channelService.getChannelByUsername(input.slice(1)) as Resolvable<T>
+      // Try to search for the username (custom channel handles not implemented in API)
+      // At some point this can be used to get directly by handle if YouTube ever gets their crap together
+      idOrSearchQuery = input.slice(1)
       // Try to resolve as a URL
     } else if (Parser.youtubeUrlRegex.test(input)) {
       const resolvedUrl = await this.resolveUrl(input, type)
@@ -83,9 +84,10 @@ export class ResolutionService {
       resolution = await this.resolveIdOrSearch(idOrSearchQuery, type)
     }
 
+    // If there are no search results and it couldn't be parsed, fallback to original input
     if (!resolution) resolution = input
 
-    this.youtube._cache(`get_id://${type.endpoint}/${input}`, resolution)
+    this.youtube._cacheResolution(type, input, resolution)
 
     return resolution
   }
@@ -105,9 +107,10 @@ export class ResolutionService {
       // we have to search for the legacy username and hope for the best
       return { searchQuery: parsedChannel.searchQuery }
     } else if (parsedChannel?.username) {
-      // But the new usernames (/@CustomUsername) work perfectly
-      const channel = await this.youtube._channelService.getChannelByUsername(parsedChannel.username) as InstanceType<T>
-      if (channel) return { resolution: channel }
+      // The new usernames are the same, but maybe one day we can use this like:
+      // const channel = await this.youtube._channelService.getChannelByUsername(parsedChannel.username) as InstanceType<T>
+      // if (channel) return { resolution: channel }
+      return { searchQuery: parsedChannel.username }
     }
 
     return { resolution: parsedUrl[type.name.toLowerCase()]?.id }

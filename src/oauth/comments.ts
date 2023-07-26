@@ -11,7 +11,6 @@ export class OAuthComments {
 
   /**
    * Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param text The text content of the comment.
    * @param channelResolvable The channel to post the comment on.
    * @param videoResolvable The video of the channel to post the comment on.
@@ -39,7 +38,6 @@ export class OAuthComments {
 
   /**
    * Replies to a [Comment](./Library_Exports.Comment#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
    * Required for [Comment.url](./Library_Exports.Comment#url) to be correct.
@@ -60,7 +58,6 @@ export class OAuthComments {
 
   /**
    * Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
-   * Last tested 07/05/2021 17:40. PASSING
    * @param commentId The ID of the comment.
    * @param text The new text content of the comment.
    */
@@ -83,7 +80,6 @@ export class OAuthComments {
 
   /**
    * Marks a [Comment](./Library_Exports.Comment#) as spam.  
-   * Last tested NEVER
    * @param commentId The ID of the comment to mark as spam.
    */
   public markCommentAsSpam (commentId: string): Promise<void> {
@@ -96,7 +92,6 @@ export class OAuthComments {
 
   /**
    * Sets the moderation status of a [Comment](./Library_Exports.Comment#)  
-   * Last tested NEVER
    * @param commentId The ID of the comment to set the moderation status of.
    * @param moderationStatus The moderation status to set the comment to.
    * @param banAuthor Whether or not to ban the author from making future comments.
@@ -125,7 +120,6 @@ export class OAuthComments {
 
   /**
    * Deletes a [Comment](./Library_Exports.Comment#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the comment to delete.
    */
   public deleteComment (commentId: string): Promise<void> {

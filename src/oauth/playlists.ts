@@ -11,7 +11,6 @@ export class OAuthPlaylists {
 
   /**
    * Creates a [Playlist](./Library_Exports.Playlist#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param title A title for the playlist.
    * @param description A description of the playlist.
    * @param privacy Whether the video is private, public, or unlisted.
@@ -50,7 +49,6 @@ export class OAuthPlaylists {
    * Updates a [Playlist](./Library_Exports.Playlist#).  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param playlistResolvable The playlist to update.
    * @param title A title for the playlist.
    * @param description A description of the playlist.
@@ -91,7 +89,6 @@ export class OAuthPlaylists {
 
   /**
    * Deletes a [Playlist](./Library_Exports.Playlist#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param playlistResolvable The playlist to delete.
    */
   public async deletePlaylist (playlistResolvable: YT.PlaylistResolvable): Promise<void> {
@@ -106,7 +103,6 @@ export class OAuthPlaylists {
 
   /**
    * Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param playlistResolvable The playlist to add the video to.
    * @param videoResolvable The video to add to the playlist.
    * @param position The position to add the video in. Defaults to the end.
@@ -144,7 +140,6 @@ export class OAuthPlaylists {
    * Edits a playlist item.  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the playlist item to edit.
    * @param playlistResolvable The playlist that the video is in.
    * @param videoResolvable The video that's in the playlist.
@@ -182,7 +177,6 @@ export class OAuthPlaylists {
 
   /**
    * Deletes a playlist item.  
-   * Last tested 05/18/2020 11:48. PASSING
    * @param id The ID of the playlist item to delete.
    */
   public deletePlaylistItem (id: string): Promise<void> {

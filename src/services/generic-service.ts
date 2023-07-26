@@ -288,7 +288,7 @@ export class GenericService {
     }
 
     // Caching handled here
-    return this.fetchPages(
+    return this.getPages(
       pages, endpoint, options, clazz, auth, parts) as Promise<PaginatedResponse<T>>
   }
 
@@ -297,7 +297,7 @@ export class GenericService {
    * @param clazz Most endpoints only return one type of entity, so set this to that entity.
    * If endpoint is `search`, then leave undefined.
    */
-  public async fetchPages<T extends PaginatedType = PaginatedType> (
+  public async getPages<T extends PaginatedType = PaginatedType> (
     pages: number, endpoint: string, options: PaginatedRequestParams, clazz?: T,
     auth?: AuthorizationOptions, parts?: string[]):
   Promise<PaginatedResponse<InstanceType<T>>> {
