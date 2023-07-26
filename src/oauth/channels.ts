@@ -19,7 +19,7 @@ export class OAuthChannels {
   public async updateChannelBranding (channelResolvable: YT.ChannelResolvable, brandingSettings: YT.ChannelBrandingSettings): Promise<YT.Channel> {
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.CHANNEL_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_DATA))
 
     data.id = typeof channel === 'string' ? channel : channel.id
@@ -46,7 +46,7 @@ export class OAuthChannels {
 
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.CHANNEL_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_DATA))
 
     data.id = typeof channel === 'string' ? channel : channel.id
@@ -68,7 +68,7 @@ export class OAuthChannels {
   public async setChannelMadeForKids (channelResolvable: YT.ChannelResolvable, madeForKids: boolean): Promise<YT.Channel> {
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.CHANNEL_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_DATA))
 
     data.id = typeof channel === 'string' ? channel : channel.id
@@ -97,7 +97,7 @@ export class OAuthChannels {
 
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.WATERMARK_DATA = JSON.parse(JSON.stringify(Data.WATERMARK_DATA))
 
     data.timing = {
@@ -123,7 +123,7 @@ export class OAuthChannels {
   public async unsetChannelWatermark (channelResolvable: YT.ChannelResolvable): Promise<void> {
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     return this.oauth.youtube._request.post('watermarks/unset', {
       params: { channelId: typeof channel === 'string' ? channel : channel.id },
       authorizationOptions: { accessToken: true }
@@ -160,9 +160,9 @@ export class OAuthChannels {
     this.oauth.checkTokenAndThrow()
 
     const resolvedPlaylists =
-      playlistsResolvable ? await Promise.all(playlistsResolvable.map(v => this.oauth.youtube._resolutionService.resolve(v, YT.Playlist))) : undefined
+      playlistsResolvable ? await Promise.all(playlistsResolvable.map(v => this.oauth.youtube._services.resolution.resolve(v, YT.Playlist))) : undefined
     const resolvedChannels =
-      channelsResolvable? await Promise.all(channelsResolvable.map(v => this.oauth.youtube._resolutionService.resolve(v, YT.Channel))) : undefined
+      channelsResolvable? await Promise.all(channelsResolvable.map(v => this.oauth.youtube._services.resolution.resolve(v, YT.Channel))) : undefined
 
     const data: typeof Data.CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_SECTION_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
@@ -215,9 +215,9 @@ export class OAuthChannels {
     this.oauth.checkTokenAndThrow()
 
     const resolvedPlaylists =
-      playlistsResolvable ? await Promise.all(playlistsResolvable.map(v => this.oauth.youtube._resolutionService.resolve(v, YT.Playlist))) : undefined
+      playlistsResolvable ? await Promise.all(playlistsResolvable.map(v => this.oauth.youtube._services.resolution.resolve(v, YT.Playlist))) : undefined
     const resolvedChannels =
-      channelsResolvable? await Promise.all(channelsResolvable.map(v => this.oauth.youtube._resolutionService.resolve(v, YT.Channel))) : undefined
+      channelsResolvable? await Promise.all(channelsResolvable.map(v => this.oauth.youtube._services.resolution.resolve(v, YT.Channel))) : undefined
 
     const data: typeof Data.CHANNEL_SECTION_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_SECTION_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
@@ -261,7 +261,7 @@ export class OAuthChannels {
   public async subscribeToChannel (channelResolvable: YT.ChannelResolvable): Promise<YT.Subscription> {
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.SUBSCRIPTION_DATA = JSON.parse(JSON.stringify(Data.SUBSCRIPTION_DATA))
 
     data.snippet.resourceId.channelId = typeof channel === 'string' ? channel : channel.id

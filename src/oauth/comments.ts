@@ -19,8 +19,8 @@ export class OAuthComments {
   public async postComment (text: string, channelResolvable: YT.ChannelResolvable, videoResolvable: YT.VideoResolvable): Promise<YT.Comment> {
     this.oauth.checkTokenAndThrow()
 
-    const channel = await this.oauth.youtube._resolutionService.resolve(channelResolvable, YT.Channel)
-    const video = await this.oauth.youtube._resolutionService.resolve(videoResolvable, YT.Video)
+    const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
+    const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const data: typeof Data.COMMENT_THREAD_DATA = JSON.parse(JSON.stringify(Data.COMMENT_THREAD_DATA))
 
     data.snippet.topLevelComment.snippet.textOriginal = text

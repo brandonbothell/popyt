@@ -54,11 +54,11 @@ export class SearchService {
     const searchFilters = otherFilters as unknown as SearchFilters<T>
 
     if ('channel' in searchFilters) {
-      const channel = await this.youtube._resolutionService.resolve(searchFilters.channel, Channel)
+      const channel = await this.youtube._services.resolution.resolve(searchFilters.channel, Channel)
       options.channelId = typeof channel === 'string' ? channel : channel.id
     }
     if ('videoCategory' in searchFilters) {
-      const videoCategory = await this.youtube._resolutionService.resolve(searchFilters.videoCategory, VideoCategory)
+      const videoCategory = await this.youtube._services.resolution.resolve(searchFilters.videoCategory, VideoCategory)
       options.videoCategoryId = typeof videoCategory === 'string' ? videoCategory : videoCategory.id
     }
     if ('eventType' in searchFilters) options.eventType = searchFilters.eventType
@@ -70,6 +70,6 @@ export class SearchService {
     if ('videoEmbeddable' in searchFilters) options.videoEmbeddable = 'true'
 
     // Caching handled here
-    return this.youtube._genericService.getPages<T>(pages, 'search', options)
+    return this.youtube._services.retrieval.getPages<T>(pages, 'search', options)
   }
 }

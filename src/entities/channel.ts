@@ -323,7 +323,7 @@ export class Channel {
   */
   public async unsubscribe (subscriptionResolvable?: SubscriptionResolvable, myId?: string) {
     const subscription = subscriptionResolvable ?
-      await this.youtube._resolutionService.resolve(subscriptionResolvable, Subscription) :
+      await this.youtube._services.resolution.resolve(subscriptionResolvable, Subscription) :
       await this.youtube.getSubscriptionByChannels(
         myId ?? (await this.youtube.oauth.getMe()).id, this.id
       )
