@@ -56,6 +56,7 @@ export type PaginatedRequestParams = {
   textFormat?: string
   playlistId?: string
   channelId?: string
+  forChannelId?: string
   regionCode?: string
   pageToken?: string
   mine?: boolean

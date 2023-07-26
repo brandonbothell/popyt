@@ -24,7 +24,7 @@ describe('Creation of the YouTube instance', () => {
       err = error.message
     }
 
-    expect(err).to.equal('Must include one of api key or access token whenever constructing the YouTube object.')
+    expect(err).to.equal('Must include one of API key or access token whenever constructing the YouTube object.')
   })
 })
 

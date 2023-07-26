@@ -54,11 +54,6 @@ export class YouTube {
   /**
    * @ignore
    */
-  public _subscriptionService = new Service.SubscriptionService(this)
-
-  /**
-   * @ignore
-   */
   public _resolutionService = new Service.ResolutionService(this)
 
   /**
@@ -98,7 +93,7 @@ export class YouTube {
     this.#auth.accessToken = accessToken
 
     if (!this.#auth.accessToken && !this.#auth.apiKey) {
-      throw new TypeError('Must include one of api key or access token whenever constructing the YouTube object.')
+      throw new TypeError('Must include one of API key or access token whenever constructing the YouTube object.')
     }
 
     if (options.request) {
@@ -128,22 +123,9 @@ export class YouTube {
 
   /**
    * @ignore
-   * @deprecated Use specific cache methods
    */
-  public _cache (id: string, value: any) {
-    if (!this._shouldCache) {
-      return
-    }
-
-    Cache.set(id, value,
-      this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
-  }
-
-  /**
-   * @ignore
-   */
-  public _cacheItem (type: T.ItemTypes, name: string, parts: string[] | undefined,
-    value: InstanceType<T.ItemTypes>) {
+  public _cacheItem (type: T.ItemTypes, name: string, value: InstanceType<T.ItemTypes>,
+    parts?: string[]) {
     if (!this._shouldCache) {
       return
     }
@@ -315,9 +297,20 @@ export class YouTube {
    * @param parts The parts of the subscription to fetch (saves quota if you aren't using certain properties!)
    */
   public async getSubscriptionByChannels (subscriberResolvable: T.ChannelResolvable, channelResolvable: T.ChannelResolvable, parts?: Part.SubscriptionParts) {
-    const subscriberAndChannel = (await this._resolutionService.resolve([ subscriberResolvable, channelResolvable ], Entity.Channel))
+    const subscriberAndChannel = (await this._resolutionService
+      .resolve([ subscriberResolvable, channelResolvable ], Entity.Channel))
       .map(channel => typeof channel === 'string' ? channel : channel.id)
-    return this._subscriptionService.getSubscriptionByChannels(subscriberAndChannel[0], subscriberAndChannel[1], parts)
+
+    return this._genericService.getPaginatedItems<Entity.Channel>({
+      type: T.PaginatedItemType.Subscriptions,
+      id: subscriberAndChannel[0],
+      subId: subscriberAndChannel[1],
+      maxPerPage: 1
+    }).then(results =>
+      results.items.length ?
+        results.items[0] :
+        Promise.reject(new Error('Subscription not found'))
+    )
   }
 
   /**

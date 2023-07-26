@@ -231,6 +231,7 @@ export class GenericService {
       case PaginatedItemType.Subscriptions:
         if (!endpoint) endpoint = 'subscriptions'
         if (!clazz) clazz = Subscription
+        if (subId) options.forChannelId = subId
 
         maxForEndpoint = 50
         // falls through
@@ -372,8 +373,10 @@ export class GenericService {
       if (page.prevPageToken) toCache.prevPageToken = page.prevPageToken
       if (page.nextPageToken) toCache.nextPageToken = page.nextPageToken
 
-      this.youtube._cachePage(
-        endpoint, pagesFetched, options, auth, parts, clazz, toCache)
+      if (this.youtube._shouldCache) {
+        this.youtube._cachePage(
+          endpoint, pagesFetched, options, auth, parts, clazz, toCache)
+      }
 
       if (++pagesFetched >= pages || !page.nextPageToken) {
         if (page.prevPageToken) toReturn.prevPageToken = page.prevPageToken
@@ -394,7 +397,7 @@ export class GenericService {
     const entity = new (type)(this.youtube, item, true) as InstanceType<K>
 
     if (this.youtube._shouldCache) {
-      this.youtube._cacheItem(type, cacheString, parts, entity)
+      this.youtube._cacheItem(type, cacheString, entity, parts)
     }
 
     return entity

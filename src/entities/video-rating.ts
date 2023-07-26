@@ -60,6 +60,10 @@ export class VideoRating {
       throw new Error(`Invalid video rating type: ${data.kind}`)
     } */
 
+    if (!data.videoId || !data.rating) {
+      throw new Error('Invalid video rating')
+    }
+
     this.videoId = data.videoId
     this.rating = data.rating
   }
