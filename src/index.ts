@@ -17,6 +17,7 @@ export * from './types'
  */
 export class YouTube {
   /**
+   * Should be checked BEFORE running any _cache methods.
    * @ignore
    */
   public _shouldCache: boolean
@@ -120,9 +121,6 @@ export class YouTube {
    */
   public _cacheItem (type: T.ItemTypes, name: string, value: InstanceType<T.ItemTypes>,
     parts?: string[]) {
-    if (!this._shouldCache) {
-      return
-    }
 
     Cache.setItem(type, name, value,
       this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0, parts)
@@ -133,9 +131,6 @@ export class YouTube {
    */
   public _cacheItems (type: T.ItemTypes, names: string[],
     values: InstanceType<T.ItemTypes>[], parts?: string[]) {
-    if (!this._shouldCache) {
-      return
-    }
 
     Cache.setItems(type, names, values,
       this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0, parts)
@@ -146,9 +141,6 @@ export class YouTube {
    */
   public _cacheResolution<T extends T.ResolvableClass = T.ResolvableClass>
   (type: T, input: string, value: T.Resolvable<T>) {
-    if (!this._shouldCache) {
-      return
-    }
 
     Cache.setResolution(type, input, value,
       this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
@@ -160,9 +152,6 @@ export class YouTube {
   public _cachePage (endpoint: string, page: number, options: T.PaginatedRequestParams,
     auth: T.AuthorizationOptions | undefined, parts: string[] | undefined,
     type: T.PaginatedType | undefined, value: T.PaginatedResponse<T.PaginatedInstance>) {
-    if (!this._shouldCache) {
-      return
-    }
 
     Cache.setPage(endpoint, page, options, auth, parts, type, value,
       this._cacheTTL > 0 ? this._cacheTTL * 1000 + new Date().getTime() : 0)
