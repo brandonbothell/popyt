@@ -19,7 +19,7 @@ jobs:
           git config --global user.email "bothellbrandon@gmail.com"
     - uses: actions/setup-node@v3.7.0
       with:
-        node-version: '20.3.0'
+        node-version: '20.5.0'
     - name: Build Docs
       uses: borales/actions-yarn@v4
       with:
@@ -38,7 +38,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3.7.0
       with:
-        node-version: '20.3.0'
+        node-version: '20.5.0'
     - name: Build Source and Typings
       uses: borales/actions-yarn@v4
       with:

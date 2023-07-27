@@ -16,7 +16,7 @@ jobs:
         ref: 'release'
     - uses: actions/setup-node@v3.7.0
       with:
-        node-version: '20.3.0'
+        node-version: '20.5.0'
     - name: Test and generate coverage
       uses: borales/actions-yarn@v4
       with:
