@@ -1,5 +1,5 @@
 import { Cache, Parser } from '../util'
-import YouTube, { Channel, Comment, Playlist, Resolvable, ResolvableClass, ResolveReturn, Subscription, Video, VideoCategory } from '..'
+import YouTube, { Channel, Comment, IDEntity, Playlist, Resolvable, ResolvableClass, ResolveReturn, Subscription, Video, VideoCategory } from '..'
 
 /**
  * @ignore
@@ -130,5 +130,9 @@ export class ResolutionService {
       pageOptions: { maxPerPage: 1 },
       searchFilters: { types: [ type ] }
     }).then(result => result.items.length ? result.items[0] : undefined) as InstanceType<T>
+  }
+
+  public static toId (entityOrId: string | IDEntity) {
+    return typeof entityOrId === 'string' ? entityOrId : entityOrId.id
   }
 }

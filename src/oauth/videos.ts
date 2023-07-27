@@ -3,6 +3,7 @@
  */
 
 import { Cache } from '../util'
+import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as YT from '..'
 
@@ -20,7 +21,7 @@ export class OAuthVideos {
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
 
     return this.oauth.youtube._request.post('videos/rate', {
-      params: { id: typeof video === 'string' ? video : video.id, rating },
+      params: { id: ResolutionService.toId(video), rating },
       authorizationOptions: { accessToken: true }
     })
   }
@@ -42,7 +43,7 @@ export class OAuthVideos {
     const videoIds = await Promise
       .all(resolvables.map(resolvable =>
         this.oauth.youtube._services.resolution.resolve(resolvable, YT.Video)))
-      .then(videos => videos.map(video => typeof video === 'string' ? video : video.id))
+      .then(videos => videos.map(video => ResolutionService.toId(video)))
 
     const alreadyResolved: YT.VideoRating[] = []
 
@@ -94,7 +95,7 @@ export class OAuthVideos {
         comments?: string
         language?: string
       } = {
-        videoId: typeof video === 'string' ? video : video.id,
+        videoId: ResolutionService.toId(video),
         reasonId
       }
 
@@ -117,7 +118,7 @@ export class OAuthVideos {
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     return this.oauth.youtube._request.delete('videos', {
-      params: { id: typeof video === 'string' ? video : video.id },
+      params: { id: ResolutionService.toId(video) },
       authorizationOptions: { accessToken: true }
     })
   }
@@ -173,7 +174,7 @@ export class OAuthVideos {
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const response = await this.oauth.youtube._upload.imagePost('thumbnails/set', {
-      params: { videoId: typeof video === 'string' ? video : video.id },
+      params: { videoId: ResolutionService.toId(video) },
       image,
       authorizationOptions: { accessToken: true }
     })

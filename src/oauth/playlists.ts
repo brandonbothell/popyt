@@ -2,6 +2,7 @@
  * @module OAuth
  */
 
+import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
@@ -67,7 +68,7 @@ export class OAuthPlaylists {
     const data: typeof Data.PLAYLIST_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_DATA))
     const parts: string[] = [ 'id', 'player', 'snippet' ]
 
-    data.id = typeof playlist === 'string' ? playlist : playlist.id
+    data.id = ResolutionService.toId(playlist)
     data.snippet = { title }
     data.snippet.defaultLanguage = language ? language : this.oauth.youtube.language
 
@@ -96,7 +97,7 @@ export class OAuthPlaylists {
 
     const playlist = await this.oauth.youtube._services.resolution.resolve(playlistResolvable, YT.Playlist)
     return this.oauth.youtube._request.delete('playlists', {
-      params: { id: typeof playlist === 'string' ? playlist : playlist.id },
+      params: { id: ResolutionService.toId(playlist) },
       authorizationOptions: { accessToken: true }
     })
   }
@@ -120,8 +121,8 @@ export class OAuthPlaylists {
     const data: typeof Data.PLAYLIST_ITEM_DATA = JSON.parse(JSON.stringify(Data.PLAYLIST_ITEM_DATA))
     const parts: string[] = [ 'id', 'snippet' ]
 
-    data.snippet.playlistId = typeof playlist === 'string' ? playlist : playlist.id
-    data.snippet.resourceId.videoId = typeof video === 'string' ? video : video.id
+    data.snippet.playlistId = ResolutionService.toId(playlist)
+    data.snippet.resourceId.videoId = ResolutionService.toId(video)
 
     if (position) data.snippet.position = position
     if (note) data.contentDetails = { note }
@@ -159,8 +160,8 @@ export class OAuthPlaylists {
     const parts: string[] = [ 'id', 'snippet' ]
 
     data.id = id
-    data.snippet.playlistId = typeof playlist === 'string' ? playlist : playlist.id
-    data.snippet.resourceId.videoId = typeof video === 'string' ? video : video.id
+    data.snippet.playlistId = ResolutionService.toId(playlist)
+    data.snippet.resourceId.videoId = ResolutionService.toId(video)
 
     if (position) data.snippet.position = position
     if (note) data.contentDetails = { note }

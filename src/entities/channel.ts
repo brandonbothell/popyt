@@ -1,4 +1,5 @@
 import { ChannelParts, ChannelSectionParts, PlaylistParts, SubscriptionParts } from '../types/Parts'
+import { ResolutionService } from '../services'
 import { YouTube, Playlist, Thumbnail, Subscription, ChannelSection, ChannelBrandingSettings, PageOptions, PaginatedResponse, Image, SubscriptionResolvable } from '..'
 import { youtube_v3 } from '@googleapis/youtube'
 
@@ -333,7 +334,7 @@ export class Channel {
       )
 
     return this.youtube.oauth.channels.unsubscribeFromChannel(
-      typeof subscription === 'string' ? subscription : subscription.id
+      ResolutionService.toId(subscription)
     )
   }
 

@@ -1,9 +1,12 @@
 import YouTube, { Video, Channel, Playlist, InternalSearchOptions, SearchType, PaginatedResponse, SearchFilters, VideoCategory } from '..'
+import { ResolutionService } from '.'
 
 /**
  * @ignore
  */
 export class SearchService {
+  public part = 'snippet'
+
   constructor (private youtube: YouTube) {}
 
   public async search<T extends SearchType = SearchType> (
@@ -44,7 +47,7 @@ export class SearchService {
     } = {
       q: encodeURIComponent(searchTerm),
       maxResults: maxPerPage,
-      part: 'snippet',
+      part: this.part,
       type,
       regionCode: this.youtube.region
     }
@@ -55,11 +58,11 @@ export class SearchService {
 
     if ('channel' in searchFilters) {
       const channel = await this.youtube._services.resolution.resolve(searchFilters.channel, Channel)
-      options.channelId = typeof channel === 'string' ? channel : channel.id
+      options.channelId = ResolutionService.toId(channel)
     }
     if ('videoCategory' in searchFilters) {
       const videoCategory = await this.youtube._services.resolution.resolve(searchFilters.videoCategory, VideoCategory)
-      options.videoCategoryId = typeof videoCategory === 'string' ? videoCategory : videoCategory.id
+      options.videoCategoryId = ResolutionService.toId(videoCategory)
     }
     if ('eventType' in searchFilters) options.eventType = searchFilters.eventType
     if ('videoType' in searchFilters) options.videoType = searchFilters.videoType

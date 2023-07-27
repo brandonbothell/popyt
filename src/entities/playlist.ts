@@ -1,4 +1,5 @@
 import { PlaylistItemParts, PlaylistParts } from '../types/Parts'
+import { ResolutionService } from '../services'
 import { YouTube, Video, Thumbnail, PaginatedItemType, PageOptions, VideoResolvable, PaginatedResponse } from '..'
 import { youtube_v3 } from '@googleapis/youtube'
 
@@ -226,7 +227,7 @@ export class Playlist {
       mine: false,
       id: this.id,
       maxPerPage: 1,
-      subId: typeof video === 'string' ? video : video.id
+      subId: ResolutionService.toId(video)
     })
     )[0].id
 
@@ -245,7 +246,7 @@ export class Playlist {
       type: PaginatedItemType.PlaylistItems,
       mine: false,
       id: this.id,
-      subId: typeof video === 'string' ? video : video.id
+      subId: ResolutionService.toId(video)
     })).items
 
     if (!matchingItems.length) {

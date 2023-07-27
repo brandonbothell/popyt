@@ -296,7 +296,7 @@ export class YouTube {
   public async getSubscriptionByChannels (subscriberResolvable: T.ChannelResolvable, channelResolvable: T.ChannelResolvable, parts?: Part.SubscriptionParts) {
     const subscriberAndChannel = (await this._services.resolution
       .resolve([ subscriberResolvable, channelResolvable ], Entity.Channel))
-      .map(channel => typeof channel === 'string' ? channel : channel.id)
+      .map(channel => Service.ResolutionService.toId(channel))
 
     return this._services.retrieval.getPaginatedItems<Entity.Subscription>({
       type: T.PaginatedItemType.Subscriptions,
@@ -323,7 +323,7 @@ export class YouTube {
   public async getPlaylistItems (playlistResolvable: T.PlaylistResolvable, pageOptions?: T.PageOptions, parts?: Part.PlaylistItemParts) {
     const playlist = await this._services.resolution.resolve(playlistResolvable, Entity.Playlist)
     return this._services.retrieval.getPaginatedItems<Entity.Video>(
-      { type: T.PaginatedItemType.PlaylistItems, id: typeof playlist === 'string' ? playlist : playlist.id, ...pageOptions, parts }
+      { type: T.PaginatedItemType.PlaylistItems, id: Service.ResolutionService.toId(playlist), ...pageOptions, parts }
     )
   }
 
@@ -342,7 +342,7 @@ export class YouTube {
 
     const video = await this._services.resolution.resolve(videoResolvable, Entity.Video)
     return this._services.retrieval.getPaginatedItems<Entity.Comment>(
-      { type: T.PaginatedItemType.VideoComments, id: typeof video === 'string' ? video : video.id, ...pageOptions, parts, order })
+      { type: T.PaginatedItemType.VideoComments, id: Service.ResolutionService.toId(video), ...pageOptions, parts, order })
   }
 
   /**
@@ -358,7 +358,7 @@ export class YouTube {
   public async getChannelPlaylists (channelResolvable: T.ChannelResolvable, pageOptions?: T.PageOptions, parts?: Part.PlaylistParts) {
     const channel = await this._services.resolution.resolve(channelResolvable, Entity.Channel)
     return this._services.retrieval.getPaginatedItems<Entity.Playlist>(
-      { type: T.PaginatedItemType.Playlists, id: typeof channel === 'string' ? channel : channel.id, ...pageOptions, parts })
+      { type: T.PaginatedItemType.Playlists, id: Service.ResolutionService.toId(channel), ...pageOptions, parts })
   }
 
   /**
@@ -374,7 +374,7 @@ export class YouTube {
   public async getChannelSubscriptions (channelResolvable: T.ChannelResolvable, pageOptions?: T.PageOptions, parts?: Part.SubscriptionParts) {
     const channel = await this._services.resolution.resolve(channelResolvable, Entity.Channel)
     return this._services.retrieval.getPaginatedItems<Entity.Subscription>(
-      { type: T.PaginatedItemType.Subscriptions, id: typeof channel === 'string' ? channel : channel.id, ...pageOptions, parts })
+      { type: T.PaginatedItemType.Subscriptions, id: Service.ResolutionService.toId(channel), ...pageOptions, parts })
   }
 
   /**
@@ -390,7 +390,7 @@ export class YouTube {
   public async getCommentReplies (commentResolvable: T.CommentResolvable, pageOptions?: T.PageOptions, parts?: Part.CommentParts) {
     const comment = await this._services.resolution.resolve(commentResolvable, Entity.Comment)
     return this._services.retrieval.getPaginatedItems<Entity.Comment>(
-      { type: T.PaginatedItemType.CommentReplies, id: typeof comment === 'string' ? comment : comment.id, ...pageOptions, parts })
+      { type: T.PaginatedItemType.CommentReplies, id: Service.ResolutionService.toId(comment), ...pageOptions, parts })
   }
 
   /**
@@ -403,7 +403,7 @@ export class YouTube {
   public async getChannelSections (channelResolvable: T.ChannelResolvable, parts?: Part.ChannelSectionParts) {
     const channel = await this._services.resolution.resolve(channelResolvable, Entity.Channel)
     return (await this._services.retrieval.getPaginatedItems<Entity.ChannelSection>(
-      { type: T.PaginatedItemType.ChannelSections, id: typeof channel === 'string' ? channel : channel.id, parts })).items
+      { type: T.PaginatedItemType.ChannelSections, id: Service.ResolutionService.toId(channel), parts })).items
   }
 
   /**

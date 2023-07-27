@@ -2,9 +2,11 @@
  * @module OAuth
  */
 
+import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
+import { youtube_v3 } from '@googleapis/youtube'
 
 export class OAuthCaptions {
   constructor (public oauth: OAuth) {}
@@ -20,12 +22,12 @@ export class OAuthCaptions {
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const params: { videoId: string; id?: string } =
-      { videoId: typeof video === 'string' ? video : video.id }
+      { videoId: ResolutionService.toId(video) }
 
     if (captionId) params.id = captionId
 
     const data = await this.oauth.youtube._request.get('captions', {
-      params: { part: 'snippet', id: captionId },
+      params: { part: YT.Caption.part, id: captionId },
       authorizationOptions: { accessToken: true }
     })
 
@@ -45,7 +47,7 @@ export class OAuthCaptions {
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
     const data = await this.oauth.youtube._request.get('captions', {
-      params: { part: 'snippet', videoId: typeof video === 'string' ? video : video.id },
+      params: { part: YT.Caption.part, videoId: ResolutionService.toId(video) },
       authorizationOptions: { accessToken: true }
     })
 
@@ -71,7 +73,7 @@ export class OAuthCaptions {
     const data: typeof Data.CAPTION_DATA = JSON.parse(JSON.stringify(Data.CAPTION_DATA))
 
     data.snippet = {
-      videoId: typeof video === 'string' ? video : video.id,
+      videoId: ResolutionService.toId(video),
       language: language,
       name: name,
       isDraft: draft
@@ -79,7 +81,7 @@ export class OAuthCaptions {
 
     const response = await this.oauth.youtube._upload.multipartStreamPost('captions', {
       authorizationOptions: { accessToken: true },
-      params: { part: 'snippet' },
+      params: { part: YT.Caption.part },
       parts: [
         { data: JSON.stringify(data) },
         { data: track }
@@ -96,7 +98,7 @@ export class OAuthCaptions {
    * @param track The caption track to upload.
    * @param draft Whether or not the caption track is a draft. If it is, it isn't visible to users.
    */
-  public async updateCaption (id: string, track?: Buffer, draft: boolean = null): Promise<YT.Caption> {
+  public async updateCaption (id: string, track?: Buffer, draft: boolean = null) {
     this.oauth.checkTokenAndThrow()
 
     const data: typeof Data.CAPTION_DATA = JSON.parse(JSON.stringify(Data.CAPTION_DATA))
@@ -104,13 +106,13 @@ export class OAuthCaptions {
     data.id = id
     data.snippet = { isDraft: draft }
 
-    let response
+    let response: youtube_v3.Schema$Caption
 
     if (track) {
       if (draft !== null) {
         response = await this.oauth.youtube._upload.multipartStreamPut('captions', {
           authorizationOptions: { accessToken: true },
-          params: { part: 'snippet' },
+          params: { part: YT.Caption.part },
           parts: [
             { data: JSON.stringify(data) },
             { data: track }
@@ -119,13 +121,13 @@ export class OAuthCaptions {
       } else {
         response = await this.oauth.youtube._upload.streamPut('captions', {
           authorizationOptions: { accessToken: true },
-          params: { part: 'snippet' },
+          params: { part: YT.Caption.part },
           stream: track
         })
       }
     } else {
       response = await this.oauth.youtube._request.put('captions', {
-        params: { part: 'snippet' },
+        params: { part: YT.Caption.part },
         data: JSON.stringify(data),
         authorizationOptions: { accessToken: true }
       })
@@ -140,7 +142,8 @@ export class OAuthCaptions {
    * @param format The file format to download the track in.
    * @param language The language to download the track in.
    */
-  public downloadCaption (id: string, format?: 'sbv' | 'scc' | 'srt' | 'ttml' | 'vtt', language?: string): Promise<Buffer> {
+  public downloadCaption (id: string, format?: 'sbv' | 'scc' | 'srt' | 'ttml' | 'vtt',
+    language?: string): Promise<Buffer> {
     this.oauth.checkTokenAndThrow()
 
     const params: {
@@ -156,7 +159,8 @@ export class OAuthCaptions {
       params.tlang = language
     }
 
-    return this.oauth.youtube._request.get(`captions/${id}`, { params, authorizationOptions: { accessToken: true } })
+    return this.oauth.youtube._request.get(`captions/${id}`,
+      { params, authorizationOptions: { accessToken: true } })
   }
 
   /**
@@ -165,6 +169,7 @@ export class OAuthCaptions {
    */
   public deleteCaption (id: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.delete('captions', { params: { id }, authorizationOptions: { accessToken: true } })
+    return this.oauth.youtube._request.delete('captions',
+      { params: { id }, authorizationOptions: { accessToken: true } })
   }
 }

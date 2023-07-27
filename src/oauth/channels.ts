@@ -2,6 +2,7 @@
  * @module OAuth
  */
 
+import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
@@ -22,7 +23,7 @@ export class OAuthChannels {
     const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.CHANNEL_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_DATA))
 
-    data.id = typeof channel === 'string' ? channel : channel.id
+    data.id = ResolutionService.toId(channel)
     data.brandingSettings = brandingSettings
 
     const response = await this.oauth.youtube._request.put('channels', {
@@ -49,7 +50,7 @@ export class OAuthChannels {
     const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.CHANNEL_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_DATA))
 
-    data.id = typeof channel === 'string' ? channel : channel.id
+    data.id = ResolutionService.toId(channel)
     data.localizations = localizations
 
     const response = await this.oauth.youtube._request.put('channels', {
@@ -71,7 +72,7 @@ export class OAuthChannels {
     const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.CHANNEL_DATA = JSON.parse(JSON.stringify(Data.CHANNEL_DATA))
 
-    data.id = typeof channel === 'string' ? channel : channel.id
+    data.id = ResolutionService.toId(channel)
     data.status = {
       selfDeclaredMadeForKids: madeForKids
     }
@@ -108,7 +109,7 @@ export class OAuthChannels {
 
     return this.oauth.youtube._upload.multipartImagePost('watermarks/set', {
       authorizationOptions: { accessToken: true },
-      params: { channelId: typeof channel === 'string' ? channel : channel.id },
+      params: { channelId: ResolutionService.toId(channel) },
       parts: [
         { data: JSON.stringify(data) },
         { data: image.data, contentType: image.type }
@@ -125,7 +126,7 @@ export class OAuthChannels {
 
     const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     return this.oauth.youtube._request.post('watermarks/unset', {
-      params: { channelId: typeof channel === 'string' ? channel : channel.id },
+      params: { channelId: ResolutionService.toId(channel) },
       authorizationOptions: { accessToken: true }
     })
   }
@@ -172,8 +173,8 @@ export class OAuthChannels {
     if (name) data.snippet.title = name
     if (position != null) data.snippet.position = position
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
-    if (resolvedPlaylists) data.contentDetails.playlists = resolvedPlaylists.map(resolution => typeof resolution === 'string' ? resolution : resolution.id)
-    if (resolvedChannels) data.contentDetails.channels = resolvedChannels.map(resolution => typeof resolution === 'string' ? resolution : resolution.id)
+    if (resolvedPlaylists) data.contentDetails.playlists = resolvedPlaylists.map(resolution => ResolutionService.toId(resolution))
+    if (resolvedChannels) data.contentDetails.channels = resolvedChannels.map(resolution => ResolutionService.toId(resolution))
 
     if (resolvedPlaylists || resolvedChannels) parts.push('contentDetails')
 
@@ -228,8 +229,8 @@ export class OAuthChannels {
     if (name) data.snippet.title = name
     if (position) data.snippet.position = position
     if (playlistsResolvable || channelsResolvable) data.contentDetails = {}
-    if (resolvedPlaylists) data.contentDetails.playlists = resolvedPlaylists.map(resolution => typeof resolution === 'string' ? resolution : resolution.id)
-    if (resolvedChannels) data.contentDetails.channels = resolvedChannels.map(resolution => typeof resolution === 'string' ? resolution : resolution.id)
+    if (resolvedPlaylists) data.contentDetails.playlists = resolvedPlaylists.map(resolution => ResolutionService.toId(resolution))
+    if (resolvedChannels) data.contentDetails.channels = resolvedChannels.map(resolution => ResolutionService.toId(resolution))
 
     if (resolvedPlaylists || resolvedChannels) parts.push('contentDetails')
 
@@ -264,7 +265,7 @@ export class OAuthChannels {
     const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
     const data: typeof Data.SUBSCRIPTION_DATA = JSON.parse(JSON.stringify(Data.SUBSCRIPTION_DATA))
 
-    data.snippet.resourceId.channelId = typeof channel === 'string' ? channel : channel.id
+    data.snippet.resourceId.channelId = ResolutionService.toId(channel)
 
     const result = await this.oauth.youtube._request.post('subscriptions', {
       params: { part: 'snippet' },

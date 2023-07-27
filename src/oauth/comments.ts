@@ -2,6 +2,7 @@
  * @module OAuth
  */
 
+import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
@@ -24,11 +25,11 @@ export class OAuthComments {
     const data: typeof Data.COMMENT_THREAD_DATA = JSON.parse(JSON.stringify(Data.COMMENT_THREAD_DATA))
 
     data.snippet.topLevelComment.snippet.textOriginal = text
-    data.snippet.channelId = typeof channel === 'string' ? channel : channel.id
-    data.snippet.videoId = typeof video === 'string' ? video : video.id
+    data.snippet.channelId = ResolutionService.toId(channel)
+    data.snippet.videoId = ResolutionService.toId(video)
 
     const result = await this.oauth.youtube._request.post('commentThreads', {
-      params: { part: 'snippet' },
+      params: { part: YT.Comment.part },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
@@ -49,7 +50,7 @@ export class OAuthComments {
     data.snippet = { parentId: commentId, textOriginal: text }
 
     const response = await this.oauth.youtube._request.post('comments', {
-      params: { part: 'id,snippet' },
+      params: { part: YT.Comment.part },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
@@ -69,7 +70,7 @@ export class OAuthComments {
     data.id = commentId
 
     const result = await this.oauth.youtube._request.put('comments', {
-      params: { part: 'snippet' },
+      params: { part: YT.Comment.part },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })

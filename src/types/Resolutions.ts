@@ -50,3 +50,8 @@ export type CommentResolvable = string | Comment
  * An ID or object of a subscription.
  */
 export type SubscriptionResolvable = string | Subscription
+
+export interface IDEntity {
+  id: string
+  [key: string]: any
+}
