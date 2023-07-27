@@ -2,26 +2,28 @@ import { Cache } from '../util'
 import { ItemTypes, ItemReturns, PaginatedResponse, PaginatedItemType, PaginatedItemOptions,
   PaginatedType, Resolvable, PaginatedInstance, PaginatedRequestParams, AuthorizationOptions } from '../types'
 import YouTube,
-{ Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription, VideoCategory, Language, Region, ChannelSection, Caption, VideoRating } from '..'
+{ Video, Channel, Playlist, Comment, VideoAbuseReportReason, Subscription,
+  VideoCategory, Language, Region, ChannelSection, Caption, VideoRating } from '..'
 
 /**
  * @ignore
  */
 export class RetrievalService {
-  public readonly _getItemAllowedTypes = new Set([ Video, Channel, Playlist, Comment, Subscription, VideoCategory, ChannelSection, Caption ].map(c => c.name))
-  public readonly _getMineAllowed = new Set([ Playlist, Subscription, ChannelSection, Channel ].map(c => c.name))
+  public readonly _getItemAllowedTypes = new Set([ Video, Channel, Playlist, Comment,
+    Subscription, VideoCategory, ChannelSection, Caption ].map(c => c.name))
 
-  constructor (private youtube: YouTube) {
+  public readonly _getMineAllowed = new Set([ Playlist, Subscription,
+    ChannelSection, Channel ].map(c => c.name))
 
-  }
+  constructor (private youtube: YouTube) {}
 
   public async getItem<T extends Resolvable<K> | Resolvable<K>[], K extends ItemTypes, M extends boolean = false>
-  (type: K, { mine, resolvableEntity }:
-  { mine?: M; resolvableEntity?: T }, parts?: string[]):
-  Promise<ItemReturns<T, K, M>> {
+  (type: K, { mine, resolvableEntity }: { mine?: M; resolvableEntity?: T },
+    parts?: string[]): Promise<ItemReturns<T, K, M>> {
 
     if (!this._getItemAllowedTypes.has(type.name)) {
-      return Promise.reject(new Error(`${type.name}s cannot be directly fetched. The item may be paginated or not directly accessible.`))
+      return Promise.reject(new Error(`${type.name}s cannot be directly fetched. ` +
+      'The item may be paginated or not directly accessible.'))
     }
 
     if (mine && !this._getMineAllowed.has(type.name)) {
@@ -140,15 +142,20 @@ export class RetrievalService {
 
   /**
    * 
-   * @param maxPerPage Leave undefined or set to < 1 to fetch the maximum allowed by the API for any given type.
-   * @param pages Number of pages to fetch from the API. Set to < 1 to fetch all of them. Defaults to 1.
-   * @param pageToken The page to start at (retrieved from the return value of a previous call to this function)
+   * @param maxPerPage Leave undefined or set to < 1 to fetch the maximum
+   * allowed by the API for any given type.
+   * @param pages Number of pages to fetch from the API.
+   * Set to < 1 to fetch all of them. Defaults to 1.
+   * @param pageToken The page to start at
+   * (retrieved from the return value of a previous call to this function)
    * 
-   * @returns An object containing the array of instantiated entities as well as possible next and previous page tokens.
+   * @returns An object containing the array of instantiated entities as well
+   * as possible next and previous page tokens.
    */
   public async getPaginatedItems<T extends PaginatedInstance = PaginatedInstance>
-  ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken, subId, parts, ...otherFilters }: PaginatedItemOptions,
-    auth?: AuthorizationOptions): Promise<PaginatedResponse<T>> {
+  ({ type, mine = false, id, maxPerPage = 0, pages = 1, pageToken,
+    subId, parts, ...otherFilters }: PaginatedItemOptions,
+  auth?: AuthorizationOptions): Promise<PaginatedResponse<T>> {
 
     const name = PaginatedItemType[type] as keyof typeof PaginatedItemType
 
@@ -166,14 +173,6 @@ export class RetrievalService {
         name !== 'Playlists' && name !== 'Subscriptions' && name !== 'ChannelSections') {
       return Promise.reject(new Error(`${name} cannot be filtered by the 'mine' parameter.`))
     }
-
-    /* let cacheKey: string
-
-    if (this.youtube._shouldCache) {
-      cacheKey = `getpage://${type}/${id ? id : 'mine'}/${subId}/${parts?.join(',')}/${maxPerPage >= 1 ? maxPerPage : 0}/${pages}/${pageToken}`
-      const cached = Cache.get(cacheKey)
-      if (cached) return cached
-    } */
 
     const options: PaginatedRequestParams = {
       part: parts?.join(',')

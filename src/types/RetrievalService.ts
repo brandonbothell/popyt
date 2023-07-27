@@ -1,5 +1,20 @@
-import { Video, Channel, Comment, Playlist, Subscription, VideoCategory, VideoAbuseReportReason, Language, Region, ChannelSection, Caption, VideoRating } from '..'
+import { Video, Channel, Comment, Playlist, Subscription, VideoCategory,
+  VideoAbuseReportReason, Language, Region, Caption, ChannelSection, VideoRating } from '..'
 import { ChannelResolvable, VideoCategoryResolvable } from './Resolutions'
+
+/* Item Types */
+
+export const GETTABLE_CLASSES =
+  [ Video, Channel, Playlist, Comment, Subscription,
+    VideoCategory, ChannelSection, Caption, VideoRating ]
+
+export type ItemTypes = typeof GETTABLE_CLASSES[number]
+
+export type ItemReturns<T extends any | any[], K extends ItemTypes, M extends boolean> =
+  M extends true ? InstanceType<K> :
+  T extends any[] ? InstanceType<K>[] : InstanceType<K>
+
+/* Paginated Types */
 
 const PAGINATED_CLASSES = [
   VideoCategory, VideoAbuseReportReason, Language, Region, Video, Comment, Caption,
