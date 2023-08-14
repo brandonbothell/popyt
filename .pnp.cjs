@@ -33,7 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["@googleapis/youtube", "npm:10.1.0"],\
+            ["@googleapis/youtube", "npm:11.0.0"],\
             ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
             ["@types/chai", "npm:4.3.5"],\
             ["@types/gulp", "npm:4.0.13"],\
@@ -3996,10 +3996,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@googleapis/youtube", [\
-        ["npm:10.1.0", {\
-          "packageLocation": "./.yarn/cache/@googleapis-youtube-npm-10.1.0-ea3dbeaa7e-a59f8fb737.zip/node_modules/@googleapis/youtube/",\
+        ["npm:11.0.0", {\
+          "packageLocation": "./.yarn/cache/@googleapis-youtube-npm-11.0.0-9f5c275e94-f810e45994.zip/node_modules/@googleapis/youtube/",\
           "packageDependencies": [\
-            ["@googleapis/youtube", "npm:10.1.0"],\
+            ["@googleapis/youtube", "npm:11.0.0"],\
             ["googleapis-common", "npm:6.0.4"]\
           ],\
           "linkType": "HARD"\
@@ -13382,7 +13382,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["popyt", "workspace:."],\
-            ["@googleapis/youtube", "npm:10.1.0"],\
+            ["@googleapis/youtube", "npm:11.0.0"],\
             ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
             ["@types/chai", "npm:4.3.5"],\
             ["@types/gulp", "npm:4.0.13"],\
