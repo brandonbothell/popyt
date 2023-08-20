@@ -1,12 +1,7 @@
 name: Renovate
 
 on:
-  push:
-    branches:
-      - 'renovate/**'
-    paths:
-      - 'package.json'
-      - '.github/**/*.yml'
+  pull_request:
   workflow_dispatch:
 
 jobs:
