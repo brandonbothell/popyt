@@ -40,7 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/gulp-sourcemaps", "npm:0.0.36"],\
             ["@types/merge2", "npm:1.4.1"],\
             ["@types/mocha", "npm:10.0.1"],\
-            ["@types/node", "npm:20.5.1"],\
+            ["@types/node", "npm:20.5.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.4.1"],\
             ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.4.1"],\
             ["chai", "npm:4.3.7"],\
@@ -5110,10 +5110,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:20.5.1", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-20.5.1-d4e9ac5c26-3dbe611cd6.zip/node_modules/@types/node/",\
+        ["npm:20.5.2", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.5.2-f52380ca51-46d032bb9a.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:20.5.1"]\
+            ["@types/node", "npm:20.5.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8324,7 +8324,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/tsconfig", "npm:0.0.0-5601"],\
             ["@docusaurus/types", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.1"],\
             ["@mdx-js/react", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.6.22"],\
-            ["@types/node", "npm:20.5.1"],\
+            ["@types/node", "npm:20.5.2"],\
             ["@types/react", "npm:18.2.20"],\
             ["clsx", "npm:2.0.0"],\
             ["docusaurus-plugin-typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.19.2"],\
@@ -13386,7 +13386,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/gulp-sourcemaps", "npm:0.0.36"],\
             ["@types/merge2", "npm:1.4.1"],\
             ["@types/mocha", "npm:10.0.1"],\
-            ["@types/node", "npm:20.5.1"],\
+            ["@types/node", "npm:20.5.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.4.1"],\
             ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.4.1"],\
             ["chai", "npm:4.3.7"],\
@@ -16574,7 +16574,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.11"],\
             ["@tsconfig/node14", "npm:1.0.3"],\
             ["@tsconfig/node16", "npm:1.0.4"],\
-            ["@types/node", "npm:20.5.1"],\
+            ["@types/node", "npm:20.5.2"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\

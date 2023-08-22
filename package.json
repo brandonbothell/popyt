@@ -52,7 +52,7 @@
     "@types/gulp-sourcemaps": "0.0.36",
     "@types/merge2": "1.4.1",
     "@types/mocha": "10.0.1",
-    "@types/node": "20.5.1",
+    "@types/node": "20.5.2",
     "@typescript-eslint/eslint-plugin": "6.4.1",
     "@typescript-eslint/parser": "6.4.1",
     "chai": "4.3.7",
