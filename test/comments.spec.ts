@@ -52,8 +52,7 @@ describe('Comments', () => {
     const comment = (await video.fetchComments({ maxPerPage: 1 }, 'relevance', [ 'snippet' ])).items[0]
 
     expect(comment.videoId).to.equal(video.id)
-    // expect(comments[0].channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
-    expect(comment.channelId).to.equal(undefined) // broken in the API!
+    expect(comment.channelId).to.equal('UC6mi9rp7vRYninucP61qOjg')
   })
 
   it('should have a correct URL', async () => {
