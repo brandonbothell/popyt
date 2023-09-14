@@ -6233,9 +6233,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:46.5.0":
-  version: 46.5.0
-  resolution: "eslint-plugin-jsdoc@npm:46.5.0"
+"eslint-plugin-jsdoc@npm:46.7.0":
+  version: 46.7.0
+  resolution: "eslint-plugin-jsdoc@npm:46.7.0"
   dependencies:
     "@es-joy/jsdoccomment": ~0.40.1
     are-docs-informative: ^0.0.2
@@ -6248,7 +6248,7 @@ __metadata:
     spdx-expression-parse: ^3.0.1
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0
-  checksum: 6e182b25e136250cd0bde076bdb051d4e82efc50c20f99cb436aa136a49769ec44a2346df384deba399ca8f303f9ae3be80e21e546d0e921b23f9a0c6330e32e
+  checksum: 29dcafdb50693d190a0a56d18863ba5e185972304c42c7640d76731e8ddab2113d60a4adfe2d5f983474b9067c407f6a472ec92530471f0bd6071defcc12bf14
   languageName: node
   linkType: hard
 
@@ -10167,7 +10167,7 @@ __metadata:
     dotenv: 16.3.1
     eslint: 8.49.0
     eslint-plugin-import: 2.28.1
-    eslint-plugin-jsdoc: 46.5.0
+    eslint-plugin-jsdoc: 46.7.0
     eslint-plugin-unused-imports: 3.0.0
     mocha: 10.2.0
     nyc: 15.1.0
