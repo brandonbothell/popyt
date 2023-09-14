@@ -28,7 +28,7 @@ jobs:
         YOUTUBE_CAPTION_VIDEO_ID: uSCIlsJXATc
         YOUTUBE_OAUTH_VIDEO_ID: uSCIlsJXATc
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
