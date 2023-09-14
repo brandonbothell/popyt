@@ -48,7 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:16.3.1"],\
             ["eslint", "npm:8.49.0"],\
             ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.28.1"],\
-            ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.5.0"],\
+            ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.7.0"],\
             ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:3.0.0"],\
             ["mocha", "npm:10.2.0"],\
             ["nyc", "npm:15.1.0"],\
@@ -8964,17 +8964,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["eslint-plugin-jsdoc", [\
-        ["npm:46.5.0", {\
-          "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-46.5.0-b02737065f-6e182b25e1.zip/node_modules/eslint-plugin-jsdoc/",\
+        ["npm:46.7.0", {\
+          "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-46.7.0-5949a850a8-29dcafdb50.zip/node_modules/eslint-plugin-jsdoc/",\
           "packageDependencies": [\
-            ["eslint-plugin-jsdoc", "npm:46.5.0"]\
+            ["eslint-plugin-jsdoc", "npm:46.7.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.5.0", {\
-          "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-4a91b70514/0/cache/eslint-plugin-jsdoc-npm-46.5.0-b02737065f-6e182b25e1.zip/node_modules/eslint-plugin-jsdoc/",\
+        ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.7.0", {\
+          "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-0a6277759c/0/cache/eslint-plugin-jsdoc-npm-46.7.0-5949a850a8-29dcafdb50.zip/node_modules/eslint-plugin-jsdoc/",\
           "packageDependencies": [\
-            ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.5.0"],\
+            ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.7.0"],\
             ["@es-joy/jsdoccomment", "npm:0.40.1"],\
             ["@types/eslint", null],\
             ["are-docs-informative", "npm:0.0.2"],\
@@ -13394,7 +13394,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:16.3.1"],\
             ["eslint", "npm:8.49.0"],\
             ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.28.1"],\
-            ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.5.0"],\
+            ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.7.0"],\
             ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:3.0.0"],\
             ["mocha", "npm:10.2.0"],\
             ["nyc", "npm:15.1.0"],\
