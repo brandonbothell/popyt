@@ -52,7 +52,7 @@
     "@types/gulp-sourcemaps": "0.0.36",
     "@types/merge2": "1.4.1",
     "@types/mocha": "10.0.1",
-    "@types/node": "20.5.4",
+    "@types/node": "20.6.1",
     "@typescript-eslint/eslint-plugin": "6.4.1",
     "@typescript-eslint/parser": "6.4.1",
     "chai": "4.3.8",
@@ -72,7 +72,7 @@
     "node-preload": "0.2.0"
   },
   "engines": {
-    "node": "20.5.1"
+    "node": "20.6.1"
   },
   "repository": {
     "url": "https://github.com/brandonbothell/popyt.git"
