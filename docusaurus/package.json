@@ -15,8 +15,8 @@
     "build:config": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.4.1",
-    "@docusaurus/preset-classic": "2.4.1",
+    "@docusaurus/core": "2.4.3",
+    "@docusaurus/preset-classic": "2.4.3",
     "@mdx-js/react": "1.6.22",
     "@types/react": "18.2.22",
     "clsx": "2.0.0",
@@ -25,11 +25,11 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.4.1",
-    "@docusaurus/theme-classic": "2.4.1",
-    "@docusaurus/theme-common": "2.4.1",
+    "@docusaurus/module-type-aliases": "2.4.3",
+    "@docusaurus/theme-classic": "2.4.3",
+    "@docusaurus/theme-common": "2.4.3",
     "@docusaurus/tsconfig": "0.0.0-5601",
-    "@docusaurus/types": "2.4.1",
+    "@docusaurus/types": "2.4.3",
     "@types/node": "20.6.4",
     "docusaurus-plugin-typedoc": "0.19.2",
     "typedoc": "0.24.8",
