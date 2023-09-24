@@ -3192,10 +3192,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.6.4":
-  version: 20.6.4
-  resolution: "@types/node@npm:20.6.4"
-  checksum: 5fdf81c8760b620a3f3b2cdac1688008f0c73a00af98e067b4621a572d39b831eaeee8fbd7300cd06667dec31d8b032fbb8e1bbedae56ec6ff1230a338b4e8a5
+"@types/node@npm:20.6.5":
+  version: 20.6.5
+  resolution: "@types/node@npm:20.6.5"
+  checksum: b849e849cf7631458a65c5019c81962028e306d8c4455a48422277b240f5a7eb8a1f1dafa60306bd4c773b77263bb8b05c074b1026e868bd137bb2022cf63ea2
   languageName: node
   linkType: hard
 
@@ -5762,7 +5762,7 @@ __metadata:
     "@docusaurus/tsconfig": 0.0.0-5601
     "@docusaurus/types": 2.4.3
     "@mdx-js/react": 1.6.22
-    "@types/node": 20.6.4
+    "@types/node": 20.6.5
     "@types/react": 18.2.22
     clsx: 2.0.0
     docusaurus-plugin-typedoc: 0.19.2
@@ -10150,7 +10150,7 @@ __metadata:
     "@types/gulp-sourcemaps": 0.0.36
     "@types/merge2": 1.4.1
     "@types/mocha": 10.0.1
-    "@types/node": 20.6.4
+    "@types/node": 20.6.5
     "@typescript-eslint/eslint-plugin": 6.7.2
     "@typescript-eslint/parser": 6.7.2
     chai: 4.3.8
