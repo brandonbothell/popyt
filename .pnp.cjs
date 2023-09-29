@@ -39,7 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/gulp", "npm:4.0.14"],\
             ["@types/gulp-sourcemaps", "npm:0.0.36"],\
             ["@types/merge2", "npm:1.4.2"],\
-            ["@types/mocha", "npm:10.0.1"],\
+            ["@types/mocha", "npm:10.0.2"],\
             ["@types/node", "npm:20.7.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.7.3"],\
             ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.7.3"],\
@@ -5087,10 +5087,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/mocha", [\
-        ["npm:10.0.1", {\
-          "packageLocation": "./.yarn/cache/@types-mocha-npm-10.0.1-7c94e9e170-224ea9fce7.zip/node_modules/@types/mocha/",\
+        ["npm:10.0.2", {\
+          "packageLocation": "./.yarn/cache/@types-mocha-npm-10.0.2-d38f8534d9-a78a02691f.zip/node_modules/@types/mocha/",\
           "packageDependencies": [\
-            ["@types/mocha", "npm:10.0.1"]\
+            ["@types/mocha", "npm:10.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13379,7 +13379,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/gulp", "npm:4.0.14"],\
             ["@types/gulp-sourcemaps", "npm:0.0.36"],\
             ["@types/merge2", "npm:1.4.2"],\
-            ["@types/mocha", "npm:10.0.1"],\
+            ["@types/mocha", "npm:10.0.2"],\
             ["@types/node", "npm:20.7.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.7.3"],\
             ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.7.3"],\
