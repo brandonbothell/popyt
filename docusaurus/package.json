@@ -30,7 +30,7 @@
     "@docusaurus/theme-common": "2.4.3",
     "@docusaurus/tsconfig": "0.0.0-5601",
     "@docusaurus/types": "2.4.3",
-    "@types/node": "20.8.3",
+    "@types/node": "20.8.4",
     "docusaurus-plugin-typedoc": "0.19.2",
     "typedoc": "0.24.8",
     "typedoc-plugin-markdown": "3.16.0",
