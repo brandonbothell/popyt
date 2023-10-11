@@ -47,7 +47,7 @@
   "devDependencies": {
     "@googleapis/youtube": "11.0.1",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
-    "@types/chai": "4.3.6",
+    "@types/chai": "4.3.7",
     "@types/gulp": "4.0.15",
     "@types/gulp-sourcemaps": "0.0.36",
     "@types/merge2": "1.4.2",
