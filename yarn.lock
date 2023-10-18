@@ -3038,13 +3038,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/gulp-sourcemaps@npm:0.0.36":
-  version: 0.0.36
-  resolution: "@types/gulp-sourcemaps@npm:0.0.36"
+"@types/gulp-sourcemaps@npm:0.0.37":
+  version: 0.0.37
+  resolution: "@types/gulp-sourcemaps@npm:0.0.37"
   dependencies:
     "@types/node": "*"
     "@types/vinyl": "*"
-  checksum: 362af6790599c592fd29ef8547fc9bf82390031afb48bb49c16c7498e0a791003c5d5958ebf79f04f595af339e173eb00b255ca2b277a7e6f29a87cddcfaf74d
+  checksum: 38f47dc29725b021a3b63464a93b6473955b25b835916c3e2395cf694aea337481225bf7681987f65503a307e2630e509945f4bd410fa0bf839e5b4cf9077594
   languageName: node
   linkType: hard
 
@@ -10158,7 +10158,7 @@ __metadata:
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@types/chai": 4.3.9
     "@types/gulp": 4.0.15
-    "@types/gulp-sourcemaps": 0.0.36
+    "@types/gulp-sourcemaps": 0.0.37
     "@types/merge2": 1.4.2
     "@types/mocha": 10.0.2
     "@types/node": 20.8.6
