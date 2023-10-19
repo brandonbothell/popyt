@@ -45,7 +45,7 @@
     "caching"
   ],
   "devDependencies": {
-    "@googleapis/youtube": "11.0.1",
+    "@googleapis/youtube": "12.0.0",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/chai": "4.3.9",
     "@types/gulp": "4.0.16",
