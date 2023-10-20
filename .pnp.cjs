@@ -38,7 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/chai", "npm:4.3.9"],\
             ["@types/gulp", "npm:4.0.16"],\
             ["@types/gulp-sourcemaps", "npm:0.0.37"],\
-            ["@types/merge2", "npm:1.4.2"],\
+            ["@types/merge2", "npm:1.4.3"],\
             ["@types/mocha", "npm:10.0.2"],\
             ["@types/node", "npm:20.8.6"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.8.0"],\
@@ -5062,10 +5062,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/merge2", [\
-        ["npm:1.4.2", {\
-          "packageLocation": "./.yarn/cache/@types-merge2-npm-1.4.2-31b5b9d828-ac8be841ca.zip/node_modules/@types/merge2/",\
+        ["npm:1.4.3", {\
+          "packageLocation": "./.yarn/cache/@types-merge2-npm-1.4.3-4887d1358e-f20b81efef.zip/node_modules/@types/merge2/",\
           "packageDependencies": [\
-            ["@types/merge2", "npm:1.4.2"],\
+            ["@types/merge2", "npm:1.4.3"],\
             ["@types/node", "npm:20.4.2"]\
           ],\
           "linkType": "HARD"\
@@ -13380,7 +13380,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/chai", "npm:4.3.9"],\
             ["@types/gulp", "npm:4.0.16"],\
             ["@types/gulp-sourcemaps", "npm:0.0.37"],\
-            ["@types/merge2", "npm:1.4.2"],\
+            ["@types/merge2", "npm:1.4.3"],\
             ["@types/mocha", "npm:10.0.2"],\
             ["@types/node", "npm:20.8.6"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.8.0"],\

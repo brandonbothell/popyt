@@ -3156,12 +3156,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/merge2@npm:1.4.2":
-  version: 1.4.2
-  resolution: "@types/merge2@npm:1.4.2"
+"@types/merge2@npm:1.4.3":
+  version: 1.4.3
+  resolution: "@types/merge2@npm:1.4.3"
   dependencies:
     "@types/node": "*"
-  checksum: ac8be841ca7b648162c21c55b178a2fb6d5a3c0c1069d9c3d3a43a27721235a0d00da21bc66e4bd9cacad74798bfceae68a04325f5e917c5d58d0d99dd932f8f
+  checksum: f20b81efef49c02492001ed882fbf6dd3dd7846277c13b5afb6210a568b309e200cc74bb1626dcf44d34c0fb6d443c1c6abef4ce7989b509cd7d8b73397a56ae
   languageName: node
   linkType: hard
 
@@ -10160,7 +10160,7 @@ __metadata:
     "@types/chai": 4.3.9
     "@types/gulp": 4.0.16
     "@types/gulp-sourcemaps": 0.0.37
-    "@types/merge2": 1.4.2
+    "@types/merge2": 1.4.3
     "@types/mocha": 10.0.2
     "@types/node": 20.8.6
     "@typescript-eslint/eslint-plugin": 6.8.0
