@@ -11,7 +11,7 @@ jobs:
     name: Fully test and upload coverage
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: 'release'
     - uses: actions/setup-node@v3.8.2

@@ -10,7 +10,7 @@ jobs:
     name: Publish documenation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: 'release'
     - name: Set git user
@@ -35,7 +35,7 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v3.8.2
       with:
         node-version: '20.5.0'
