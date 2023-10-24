@@ -3193,12 +3193,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.8.6":
-  version: 20.8.6
-  resolution: "@types/node@npm:20.8.6"
+"@types/node@npm:20.8.8":
+  version: 20.8.8
+  resolution: "@types/node@npm:20.8.8"
   dependencies:
     undici-types: ~5.25.1
-  checksum: ccfb7ac482c5a96edeb239893c5c099f5257fcc2ed9ae62fefdfbc782b79e16dbc2af9a85b379665237bf759904b44ca2be68e75d239e0297882aad42f61905c
+  checksum: 028a9606e4ef594a4bc7b3310596499d7ce01b2e30f4d1d906ad8ec30c24cea7ec1b3dc181dd5df8d8d2bfe8de54bf3e28ae93be174b4c7d81c0db8326e4f35c
   languageName: node
   linkType: hard
 
@@ -5767,7 +5767,7 @@ __metadata:
     "@docusaurus/tsconfig": 0.0.0-5601
     "@docusaurus/types": 2.4.3
     "@mdx-js/react": 1.6.22
-    "@types/node": 20.8.6
+    "@types/node": 20.8.8
     "@types/react": 18.2.31
     clsx: 2.0.0
     docusaurus-plugin-typedoc: 0.19.2
@@ -10162,7 +10162,7 @@ __metadata:
     "@types/gulp-sourcemaps": 0.0.37
     "@types/merge2": 1.4.3
     "@types/mocha": 10.0.2
-    "@types/node": 20.8.6
+    "@types/node": 20.8.8
     "@typescript-eslint/eslint-plugin": 6.8.0
     "@typescript-eslint/parser": 6.8.0
     chai: 4.3.10
