@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@googleapis/youtube", "npm:11.0.1"],\
             ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
-            ["@types/chai", "npm:4.3.9"],\
+            ["@types/chai", "npm:4.3.10"],\
             ["@types/gulp", "npm:4.0.16"],\
             ["@types/gulp-sourcemaps", "npm:0.0.37"],\
             ["@types/merge2", "npm:1.4.3"],\
@@ -4816,10 +4816,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/chai", [\
-        ["npm:4.3.9", {\
-          "packageLocation": "./.yarn/cache/@types-chai-npm-4.3.9-4be4e40244-2300a2c7ab.zip/node_modules/@types/chai/",\
+        ["npm:4.3.10", {\
+          "packageLocation": "./.yarn/cache/@types-chai-npm-4.3.10-4c80ae34e8-cb9ebe31f5.zip/node_modules/@types/chai/",\
           "packageDependencies": [\
-            ["@types/chai", "npm:4.3.9"]\
+            ["@types/chai", "npm:4.3.10"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13420,7 +13420,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["popyt", "workspace:."],\
             ["@googleapis/youtube", "npm:11.0.1"],\
             ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
-            ["@types/chai", "npm:4.3.9"],\
+            ["@types/chai", "npm:4.3.10"],\
             ["@types/gulp", "npm:4.0.16"],\
             ["@types/gulp-sourcemaps", "npm:0.0.37"],\
             ["@types/merge2", "npm:1.4.3"],\
