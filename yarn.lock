@@ -3048,15 +3048,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/gulp@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@types/gulp@npm:4.0.16"
+"@types/gulp@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@types/gulp@npm:4.0.17"
   dependencies:
     "@types/node": "*"
     "@types/undertaker": ">=1.2.6"
     "@types/vinyl-fs": "*"
     chokidar: ^3.3.1
-  checksum: d3586f955a43746e9e7ef2061c12a2a4d8a7d461b09c681a4b09f75a037a9778336033a31e17a88585b1e77fe9b3005dbe7ea5c32d00e46b6cc8ac10a87281c1
+  checksum: 46b51ffbb0d4d608a720cfd6bcd922c0bb215b41ec87050417b9e1c59992bdb5996a4e477bccf4fff37c0a194a9929446fc5167895c61d1ff6bf9ff6b1b48a4b
   languageName: node
   linkType: hard
 
@@ -10200,7 +10200,7 @@ __metadata:
     "@googleapis/youtube": 11.0.1
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@types/chai": 4.3.10
-    "@types/gulp": 4.0.16
+    "@types/gulp": 4.0.17
     "@types/gulp-sourcemaps": 0.0.37
     "@types/merge2": 1.4.3
     "@types/mocha": 10.0.3
