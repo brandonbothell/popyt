@@ -31,7 +31,7 @@
     "@docusaurus/tsconfig": "0.0.0-5601",
     "@docusaurus/types": "2.4.3",
     "@types/node": "20.9.0",
-    "docusaurus-plugin-typedoc": "0.19.2",
+    "docusaurus-plugin-typedoc": "0.22.0",
     "typedoc": "0.24.8",
     "typedoc-plugin-markdown": "3.17.0",
     "typescript": "5.1.6"
