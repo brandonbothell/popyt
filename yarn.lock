@@ -2363,12 +2363,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@googleapis/youtube@npm:11.0.1":
-  version: 11.0.1
-  resolution: "@googleapis/youtube@npm:11.0.1"
+"@googleapis/youtube@npm:13.1.0":
+  version: 13.1.0
+  resolution: "@googleapis/youtube@npm:13.1.0"
   dependencies:
     googleapis-common: ^7.0.0
-  checksum: a9a80420b8a23f0769967e24847f17c1b007ef6b0d7c37bfd3f8ab350b1d1086b57fadd7cc026c4df49413fc939e6d14ba5605d84553b17217452b5fc9983837
+  checksum: c342aed5b6b7a31020b31d49b59f2613cba1552d08d9d3e8b430f0611b2040cab05b0c334f6f54c1c3227dbb9b5a6df3f2ab9a741785b2e75d724ed2a9adfcec
   languageName: node
   linkType: hard
 
@@ -10197,7 +10197,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "popyt@workspace:."
   dependencies:
-    "@googleapis/youtube": 11.0.1
+    "@googleapis/youtube": 13.1.0
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@types/chai": 4.3.10
     "@types/gulp": 4.0.16
