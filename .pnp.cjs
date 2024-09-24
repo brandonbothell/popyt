@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@googleapis/youtube", "npm:11.0.1"],\
             ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
-            ["@types/chai", "npm:4.3.10"],\
+            ["@types/chai", "npm:4.3.20"],\
             ["@types/gulp", "npm:4.0.16"],\
             ["@types/gulp-sourcemaps", "npm:0.0.37"],\
             ["@types/merge2", "npm:1.4.3"],\
@@ -43,7 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.9.0"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
             ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
-            ["chai", "npm:4.3.10"],\
+            ["chai", "npm:4.5.0"],\
             ["cross-env", "npm:7.0.3"],\
             ["dotenv", "npm:16.3.1"],\
             ["eslint", "npm:8.53.0"],\
@@ -4816,10 +4816,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/chai", [\
-        ["npm:4.3.10", {\
-          "packageLocation": "./.yarn/cache/@types-chai-npm-4.3.10-4c80ae34e8-cb9ebe31f5.zip/node_modules/@types/chai/",\
+        ["npm:4.3.20", {\
+          "packageLocation": "./.yarn/cache/@types-chai-npm-4.3.20-468371f41f-7c5b0c9148.zip/node_modules/@types/chai/",\
           "packageDependencies": [\
-            ["@types/chai", "npm:4.3.10"]\
+            ["@types/chai", "npm:4.3.20"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6995,17 +6995,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["chai", [\
-        ["npm:4.3.10", {\
-          "packageLocation": "./.yarn/cache/chai-npm-4.3.10-96f52a35f0-536668c60a.zip/node_modules/chai/",\
+        ["npm:4.5.0", {\
+          "packageLocation": "./.yarn/cache/chai-npm-4.5.0-428447e206-70e5a8418a.zip/node_modules/chai/",\
           "packageDependencies": [\
-            ["chai", "npm:4.3.10"],\
+            ["chai", "npm:4.5.0"],\
             ["assertion-error", "npm:1.1.0"],\
             ["check-error", "npm:1.0.3"],\
             ["deep-eql", "npm:4.1.3"],\
             ["get-func-name", "npm:2.0.2"],\
             ["loupe", "npm:2.3.6"],\
             ["pathval", "npm:1.1.1"],\
-            ["type-detect", "npm:4.0.8"]\
+            ["type-detect", "npm:4.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13420,7 +13420,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["popyt", "workspace:."],\
             ["@googleapis/youtube", "npm:11.0.1"],\
             ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
-            ["@types/chai", "npm:4.3.10"],\
+            ["@types/chai", "npm:4.3.20"],\
             ["@types/gulp", "npm:4.0.16"],\
             ["@types/gulp-sourcemaps", "npm:0.0.37"],\
             ["@types/merge2", "npm:1.4.3"],\
@@ -13428,7 +13428,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.9.0"],\
             ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
             ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
-            ["chai", "npm:4.3.10"],\
+            ["chai", "npm:4.5.0"],\
             ["cross-env", "npm:7.0.3"],\
             ["dotenv", "npm:16.3.1"],\
             ["eslint", "npm:8.53.0"],\
@@ -16711,6 +16711,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/type-detect-npm-4.0.8-8d8127b901-62b5628bff.zip/node_modules/type-detect/",\
           "packageDependencies": [\
             ["type-detect", "npm:4.0.8"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:4.1.0", {\
+          "packageLocation": "./.yarn/cache/type-detect-npm-4.1.0-171d011a73-3b32f873cd.zip/node_modules/type-detect/",\
+          "packageDependencies": [\
+            ["type-detect", "npm:4.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
