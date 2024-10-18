@@ -3758,10 +3758,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@docusaurus/tsconfig", [\
-        ["npm:0.0.0-5601", {\
-          "packageLocation": "./.yarn/cache/@docusaurus-tsconfig-npm-0.0.0-5601-c78408288b-c5ec80d304.zip/node_modules/@docusaurus/tsconfig/",\
+        ["npm:0.0.0-6110", {\
+          "packageLocation": "./.yarn/cache/@docusaurus-tsconfig-npm-0.0.0-6110-e24adc68ed-ac0172dbcb.zip/node_modules/@docusaurus/tsconfig/",\
           "packageDependencies": [\
-            ["@docusaurus/tsconfig", "npm:0.0.0-5601"]\
+            ["@docusaurus/tsconfig", "npm:0.0.0-6110"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8355,7 +8355,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@docusaurus/preset-classic", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.3"],\
             ["@docusaurus/theme-classic", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.3"],\
             ["@docusaurus/theme-common", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.3"],\
-            ["@docusaurus/tsconfig", "npm:0.0.0-5601"],\
+            ["@docusaurus/tsconfig", "npm:0.0.0-6110"],\
             ["@docusaurus/types", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.3"],\
             ["@mdx-js/react", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.6.22"],\
             ["@types/node", "npm:20.9.0"],\
