@@ -8,47 +8,79 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": [ "tsconfig.json", "tsconfig.utils.json" ],
+    "project": [
+      "tsconfig.json",
+      "tsconfig.utils.json"
+    ],
     "sourceType": "module"
   },
-  "ignorePatterns": [ "docusaurus/**/*.js", "typings/**/*", "out/**/*" ],
+  "ignorePatterns": [
+    "docusaurus/**/*.js",
+    "typings/**/*",
+    "out/**/*"
+  ],
   "plugins": [
     "@typescript-eslint",
     "unused-imports"
   ],
   "rules": {
-    "import/no-unresolved": [ 0 ],
-    "import/order": ["error", {
-      "alphabetize": {
-        "order": "desc"
+    "import/no-unresolved": [
+      0
+    ],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "desc"
+        }
       }
-    }],
+    ],
     "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/await-thenable": "error",
-    "@typescript-eslint/naming-convention": ["error",
+    "@typescript-eslint/naming-convention": [
+      "error",
       {
         "selector": "default",
-        "format": ["camelCase"],
+        "format": [
+          "camelCase"
+        ],
         "leadingUnderscore": "allow",
         "trailingUnderscore": "allow"
       },
       {
         "selector": "function",
-        "format": ["camelCase", "PascalCase"]
+        "format": [
+          "camelCase",
+          "PascalCase"
+        ]
       },
       {
         "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE"],
+        "format": [
+          "camelCase",
+          "UPPER_CASE"
+        ],
         "leadingUnderscore": "allow",
         "trailingUnderscore": "allow"
       },
       {
         "selector": "typeLike",
-        "format": ["PascalCase"]
+        "format": [
+          "PascalCase"
+        ]
       },
       {
         "selector": "enumMember",
-        "format": ["PascalCase"]
+        "format": [
+          "PascalCase"
+        ]
+      },
+      {
+        "selector": "import",
+        "format": [
+          "camelCase",
+          "PascalCase"
+        ]
       }
     ],
     "@typescript-eslint/consistent-type-assertions": "error",
@@ -78,7 +110,10 @@
         "avoidEscape": true
       }
     ],
-    "@typescript-eslint/semi": [ "error", "never" ],
+    "@typescript-eslint/semi": [
+      "error",
+      "never"
+    ],
     "@typescript-eslint/triple-slash-reference": [
       "error",
       {
@@ -90,13 +125,28 @@
     "@typescript-eslint/type-annotation-spacing": "error",
     "@typescript-eslint/unified-signatures": "error",
     "arrow-spacing": "error",
-    "brace-style": [ "error", "1tbs" ],
-    "block-spacing": [ "error", "always" ],
+    "brace-style": [
+      "error",
+      "1tbs"
+    ],
+    "block-spacing": [
+      "error",
+      "always"
+    ],
     "comma-dangle": "error",
-    "curly": [ "error", "multi-line" ],
+    "curly": [
+      "error",
+      "multi-line"
+    ],
     "eol-last": "error",
-    "eqeqeq": [ "error", "smart" ],
-    "func-call-spacing": [ "error", "never" ],
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
     "id-blacklist": [
       "error",
       "any",
@@ -123,7 +173,12 @@
     "new-parens": "error",
     "no-caller": "error",
     "no-cond-assign": "error",
-    "no-constant-condition": [ "error", { "checkLoops": false } ],
+    "no-constant-condition": [
+      "error",
+      {
+        "checkLoops": false
+      }
+    ],
     "no-control-regex": "error",
     "no-duplicate-case": "error",
     "no-duplicate-imports": "error",
@@ -133,7 +188,10 @@
     "no-ex-assign": "error",
     "no-extra-boolean-cast": "error",
     "no-fallthrough": "error",
-    "no-inner-declarations": [ "error", "functions" ],
+    "no-inner-declarations": [
+      "error",
+      "functions"
+    ],
     "no-invalid-regexp": "error",
     "no-irregular-whitespace": "error",
     "no-multi-spaces": "error",
@@ -152,16 +210,27 @@
     "no-unexpected-multiline": "error",
     "no-unused-labels": "error",
     "no-var": "error",
-    "object-curly-spacing": [ "error", "always" ],
-    "one-var": [ "error", "never" ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "one-var": [
+      "error",
+      "never"
+    ],
     "radix": "off",
     "space-before-function-paren": "error",
-    "space-in-parens": [ "error", "never" ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
     "spaced-comment": [
       "error",
       "always",
       {
-        "markers": [ "/" ]
+        "markers": [
+          "/"
+        ]
       }
     ],
     "use-isnan": "error",
