@@ -10,32 +10,32 @@ jobs:
     name: Lint and type check
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3.8.2
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v6
       with:
-        node-version: '20.5.0'
+        node-version: '20.19.5'
     - name: Lint
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: lint
     - name: Build typings (type check)
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: build
     - name: Test build of documentatation
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: docs:build
   test:
     name: Test and upload coverage
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3.8.2
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v6
       with:
-        node-version: '20.5.0'
+        node-version: '20.19.5'
     - name: Test and generate coverage
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: coverage
       env:

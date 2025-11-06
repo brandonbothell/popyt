@@ -20,12 +20,12 @@ A YouTube channel.
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `youtube` | [`YouTube`](Library_Exports.YouTube) | `undefined` |
-| `data` | `any` | `undefined` |
+| `data` | `Schema$SearchResult` \| `Schema$Channel` | `undefined` |
 | `full` | `boolean` | `false` |
 
 #### Defined in
 
-[entities/channel.ts:170](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L170)
+[entities/channel.ts:173](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L173)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The description of this channel.
 
 #### Defined in
 
-[entities/channel.ts:52](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L52)
+[entities/channel.ts:55](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L55)
 
 ___
 
@@ -50,7 +50,7 @@ this channel across all platforms.
 
 #### Defined in
 
-[entities/channel.ts:139](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L139)
+[entities/channel.ts:142](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L142)
 
 ___
 
@@ -62,7 +62,7 @@ The country this channel is based in.
 
 #### Defined in
 
-[entities/channel.ts:62](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L62)
+[entities/channel.ts:65](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L65)
 
 ___
 
@@ -74,7 +74,7 @@ This channel's custom URL, if they have one.
 
 #### Defined in
 
-[entities/channel.ts:72](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L72)
+[entities/channel.ts:75](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L75)
 
 ___
 
@@ -86,7 +86,7 @@ The raw data of this channel.
 
 #### Defined in
 
-[entities/channel.ts:42](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L42)
+[entities/channel.ts:45](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L45)
 
 ___
 
@@ -98,7 +98,7 @@ The date this channel was created.
 
 #### Defined in
 
-[entities/channel.ts:88](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L88)
+[entities/channel.ts:91](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L91)
 
 ___
 
@@ -110,7 +110,7 @@ The URLs of all of this channel's featured channels. This property is broken for
 
 #### Defined in
 
-[entities/channel.ts:118](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L118)
+[entities/channel.ts:121](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L121)
 
 ___
 
@@ -122,7 +122,7 @@ Whether or not this a full channel object.
 
 #### Defined in
 
-[entities/channel.ts:37](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L37)
+[entities/channel.ts:40](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L40)
 
 ___
 
@@ -134,7 +134,7 @@ The ID of this channel.
 
 #### Defined in
 
-[entities/channel.ts:57](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L57)
+[entities/channel.ts:60](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L60)
 
 ___
 
@@ -146,7 +146,7 @@ This channel's keywords.
 
 #### Defined in
 
-[entities/channel.ts:103](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L103)
+[entities/channel.ts:106](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L106)
 
 ___
 
@@ -165,7 +165,7 @@ Properties to do with videos made for children.
 
 #### Defined in
 
-[entities/channel.ts:158](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L158)
+[entities/channel.ts:161](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L161)
 
 ___
 
@@ -177,7 +177,7 @@ The default language for this channel's uploads.
 
 #### Defined in
 
-[entities/channel.ts:93](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L93)
+[entities/channel.ts:96](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L96)
 
 ___
 
@@ -193,7 +193,7 @@ If the channel has neither an ongoing nor upcoming livestream, this is `false`.
 
 #### Defined in
 
-[entities/channel.ts:153](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L153)
+[entities/channel.ts:156](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L156)
 
 ___
 
@@ -205,11 +205,11 @@ The localized titles and descriptions of this channel, if any.
 
 #### Index signature
 
-▪ [language: `string`]: { `description`: `string` ; `title`: `string`  }
+▪ [language: `string`]: `youtube_v3.Schema$ChannelLocalization`
 
 #### Defined in
 
-[entities/channel.ts:144](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L144)
+[entities/channel.ts:147](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L147)
 
 ___
 
@@ -221,19 +221,19 @@ The name of this channel.
 
 #### Defined in
 
-[entities/channel.ts:47](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L47)
+[entities/channel.ts:50](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L50)
 
 ___
 
 ### playlists
 
-• **playlists**: [`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>
+• **playlists**: [`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>
 
 The channel's playlists. Only defined when [Channel.fetchPlaylists](./Library_Exports.Channel#fetchPlaylists) is called.
 
 #### Defined in
 
-[entities/channel.ts:123](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L123)
+[entities/channel.ts:126](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L126)
 
 ___
 
@@ -255,7 +255,7 @@ This channel's profile pictures.
 
 #### Defined in
 
-[entities/channel.ts:77](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L77)
+[entities/channel.ts:80](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L80)
 
 ___
 
@@ -267,7 +267,7 @@ The channel's sections. Only defined when [Channel.fetchSections](./Library_Expo
 
 #### Defined in
 
-[entities/channel.ts:133](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L133)
+[entities/channel.ts:136](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L136)
 
 ___
 
@@ -279,19 +279,19 @@ The number of subscribers this channel has. `-1` if the subcount is hidden.
 
 #### Defined in
 
-[entities/channel.ts:113](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L113)
+[entities/channel.ts:116](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L116)
 
 ___
 
 ### subscriptions
 
-• **subscriptions**: [`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>
+• **subscriptions**: [`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Subscription`](Library_Exports.Subscription)\>
 
 The channel's subscriptions. Only defined when [Channel.fetchSubscriptions](./Library_Exports.Channel#fetchSubscriptions) is called.
 
 #### Defined in
 
-[entities/channel.ts:128](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L128)
+[entities/channel.ts:131](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L131)
 
 ___
 
@@ -303,7 +303,7 @@ The url of the channel.
 
 #### Defined in
 
-[entities/channel.ts:67](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L67)
+[entities/channel.ts:70](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L70)
 
 ___
 
@@ -315,7 +315,7 @@ The channel's uploads. Only available after calling [Channel.fetchVideos](./Libr
 
 #### Defined in
 
-[entities/channel.ts:108](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L108)
+[entities/channel.ts:111](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L111)
 
 ___
 
@@ -327,7 +327,7 @@ This channel's view count.
 
 #### Defined in
 
-[entities/channel.ts:98](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L98)
+[entities/channel.ts:101](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L101)
 
 ___
 
@@ -339,7 +339,7 @@ The YouTube object that created this channel object.
 
 #### Defined in
 
-[entities/channel.ts:32](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L32)
+[entities/channel.ts:35](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L35)
 
 ___
 
@@ -351,7 +351,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/channel.ts:11](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L11)
+[entities/channel.ts:13](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L13)
 
 ___
 
@@ -363,25 +363,25 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/channel.ts:21](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L21)
+[entities/channel.ts:24](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L24)
 
 ___
 
 ### part
 
-▪ `Static` **part**: `string` = `'snippet,contentDetails,statistics,status,brandingSettings,localizations'`
+▪ `Static` **part**: `string` = `'brandingSettings,contentDetails,localizations,snippet,statistics,status'`
 
 The parts to request for this entity.
 
 #### Defined in
 
-[entities/channel.ts:16](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L16)
+[entities/channel.ts:18](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L18)
 
 ## Methods
 
 ### fetch
 
-▸ **fetch**(`parts?`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **fetch**(`parts?`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Fetches this channel from the API and reassigns this object to the new channel object.
 Only useful if `this.full` is false, or if you want updated channel info.
@@ -394,17 +394,17 @@ Only useful if `this.full` is false, or if you want updated channel info.
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[entities/channel.ts:258](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L258)
+[entities/channel.ts:264](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L264)
 
 ___
 
 ### fetchPlaylists
 
-▸ **fetchPlaylists**(`pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
+▸ **fetchPlaylists**(`pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>\>
 
 Fetches the channel's playlists from the API and assigns them to [Channel.playlists](./Library_Exports.Channel#playlists).
 
@@ -417,17 +417,17 @@ Fetches the channel's playlists from the API and assigns them to [Channel.playli
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>\>
 
 #### Defined in
 
-[entities/channel.ts:284](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L284)
+[entities/channel.ts:290](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L290)
 
 ___
 
 ### fetchSections
 
-▸ **fetchSections**(`parts?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
+▸ **fetchSections**(`parts?`): `Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
 
 Fetches the channel's sections from the API and assigns them to [Channel.sections](./Library_Exports.Channel#sections).
 
@@ -439,17 +439,17 @@ Fetches the channel's sections from the API and assigns them to [Channel.section
 
 #### Returns
 
-`Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
+`Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
 
 #### Defined in
 
-[entities/channel.ts:304](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L304)
+[entities/channel.ts:310](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L310)
 
 ___
 
 ### fetchSubscriptions
 
-▸ **fetchSubscriptions**(`pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>\>
+▸ **fetchSubscriptions**(`pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Subscription`](Library_Exports.Subscription)\>\>
 
 Fetches the channel's subscriptions from the API and assigns them to [Channel.subscriptions](./Library_Exports.Channel#subscriptions).
 
@@ -462,17 +462,17 @@ Fetches the channel's subscriptions from the API and assigns them to [Channel.su
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Subscription`](Library_Exports.Subscription)\>\>
 
 #### Defined in
 
-[entities/channel.ts:296](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L296)
+[entities/channel.ts:302](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L302)
 
 ___
 
 ### fetchVideos
 
-▸ **fetchVideos**(`parts?`): `Promise`<[`Playlist`](Library_Exports.Playlist)\>
+▸ **fetchVideos**(`parts?`): `Promise`\<[`Playlist`](Library_Exports.Playlist)\>
 
 Fetches the channel's playlist of uploads from the API and assigns it to the [Channel.videos](./Library_Exports.Channel#videos) property.
 
@@ -484,17 +484,17 @@ Fetches the channel's playlist of uploads from the API and assigns it to the [Ch
 
 #### Returns
 
-`Promise`<[`Playlist`](Library_Exports.Playlist)\>
+`Promise`\<[`Playlist`](Library_Exports.Playlist)\>
 
 #### Defined in
 
-[entities/channel.ts:266](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L266)
+[entities/channel.ts:272](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L272)
 
 ___
 
 ### setBanner
 
-▸ **setBanner**(`image`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **setBanner**(`image`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Uploads and sets the channel's banner.
 Must be using an access token with correct scopes.
@@ -509,17 +509,17 @@ Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[entities/channel.ts:395](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L395)
+[entities/channel.ts:401](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L401)
 
 ___
 
 ### setMadeForKids
 
-▸ **setMadeForKids**(`madeForKids`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **setMadeForKids**(`madeForKids`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Sets whether or not the channel is made for kids.
 Must be using an access token with correct scopes.
@@ -532,17 +532,17 @@ Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[entities/channel.ts:369](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L369)
+[entities/channel.ts:375](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L375)
 
 ___
 
 ### setWatermark
 
-▸ **setWatermark**(`type`, `offset`, `duration`, `image`): `Promise`<`void`\>
+▸ **setWatermark**(`type`, `offset`, `duration`, `image`): `Promise`\<`void`\>
 
 Sets the channel's watermark.
 Must be using an access token with correct scopes.
@@ -558,51 +558,51 @@ Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[entities/channel.ts:378](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L378)
+[entities/channel.ts:384](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L384)
 
 ___
 
 ### subscribe
 
-▸ **subscribe**(): `Promise`<[`Subscription`](Library_Exports.Subscription)\>
+▸ **subscribe**(): `Promise`\<[`Subscription`](Library_Exports.Subscription)\>
 
 Subscribes to the channel.
 Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<[`Subscription`](Library_Exports.Subscription)\>
+`Promise`\<[`Subscription`](Library_Exports.Subscription)\>
 
 #### Defined in
 
-[entities/channel.ts:313](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L313)
+[entities/channel.ts:319](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L319)
 
 ___
 
 ### unsetWatermark
 
-▸ **unsetWatermark**(): `Promise`<`void`\>
+▸ **unsetWatermark**(): `Promise`\<`void`\>
 
 Unsets the channel's watermark.
 Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[entities/channel.ts:387](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L387)
+[entities/channel.ts:393](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L393)
 
 ___
 
 ### unsubscribe
 
-▸ **unsubscribe**(`subscriptionResolvable?`, `myId?`): `Promise`<`void`\>
+▸ **unsubscribe**(`subscriptionResolvable?`, `myId?`): `Promise`\<`void`\>
 
 Unsubscribes from the channel.
 Must be using an access token with correct scopes.
@@ -616,17 +616,17 @@ Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[entities/channel.ts:323](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L323)
+[entities/channel.ts:329](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L329)
 
 ___
 
 ### updateBranding
 
-▸ **updateBranding**(`branding`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **updateBranding**(`branding`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Updates the channel's branding settings.
 Must be using an access token with correct scopes.
@@ -639,17 +639,17 @@ Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[entities/channel.ts:339](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L339)
+[entities/channel.ts:345](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L345)
 
 ___
 
 ### updateLocalizations
 
-▸ **updateLocalizations**(`localizations`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **updateLocalizations**(`localizations`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Updates the channel's localizations.
 Must be using an access token with correct scopes.
@@ -662,8 +662,8 @@ Must be using an access token with correct scopes.
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[entities/channel.ts:354](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/channel.ts#L354)
+[entities/channel.ts:360](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/channel.ts#L360)

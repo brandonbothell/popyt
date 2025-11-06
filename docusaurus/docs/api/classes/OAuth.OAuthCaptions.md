@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/captions.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L10)
+[oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L12)
 
 ## Properties
 
@@ -31,16 +31,15 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/captions.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L10)
+[oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L12)
 
 ## Methods
 
 ### deleteCaption
 
-▸ **deleteCaption**(`id`): `Promise`<`void`\>
+▸ **deleteCaption**(`id`): `Promise`\<`void`\>
 
-Deletes a [Caption](./Library_Exports.Caption#) track.  
-Last tested 06/11/2020 04:50. PASSING
+Deletes a [Caption](./Library_Exports.Caption#) track.
 
 #### Parameters
 
@@ -50,20 +49,19 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/captions.ts:166](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L166)
+[oauth/captions.ts:170](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L170)
 
 ___
 
 ### downloadCaption
 
-▸ **downloadCaption**(`id`, `format?`, `language?`): `Promise`<`Buffer`\>
+▸ **downloadCaption**(`id`, `format?`, `language?`): `Promise`\<`Buffer`\>
 
-Downloads a [Caption](./Library_Exports.Caption#) track.  
-Last tested 06/11/2020 04:50. PASSING
+Downloads a [Caption](./Library_Exports.Caption#) track.
 
 #### Parameters
 
@@ -75,20 +73,20 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Returns
 
-`Promise`<`Buffer`\>
+`Promise`\<`Buffer`\>
 
 #### Defined in
 
-[oauth/captions.ts:142](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L142)
+[oauth/captions.ts:145](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L145)
 
 ___
 
 ### getCaption
 
-▸ **getCaption**(`videoResolvable`, `captionId`): `Promise`<[`Caption`](Library_Exports.Caption)\>
+▸ **getCaption**(`videoResolvable`, `captionId`): `Promise`\<[`Caption`](Library_Exports.Caption)\>
 
-Get a [Caption](./Library_Exports.Caption#) object from the ID of the caption.  
-Last tested 06/11/2020 04:50. PASSING
+Get a [Caption](./Library_Exports.Caption#) object
+from the URL, ID, or search query of its video and the ID of the caption.
 
 #### Parameters
 
@@ -99,20 +97,19 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Returns
 
-`Promise`<[`Caption`](Library_Exports.Caption)\>
+`Promise`\<[`Caption`](Library_Exports.Caption)\>
 
 #### Defined in
 
-[oauth/captions.ts:18](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L18)
+[oauth/captions.ts:20](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L20)
 
 ___
 
 ### getCaptions
 
-▸ **getCaptions**(`videoResolvable`): `Promise`<[`Caption`](Library_Exports.Caption)[]\>
+▸ **getCaptions**(`videoResolvable`): `Promise`\<[`Caption`](Library_Exports.Caption)[]\>
 
-Gets the [Caption](./Library_Exports.Caption#)s of a [Video](./Library_Exports.Video#). Used mostly internally with [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).  
-Last tested 06/11/2020 04:50. PASSING
+Gets the [Caption](./Library_Exports.Caption#)s of a [Video](./Library_Exports.Video#). Used mostly internally with [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).
 
 #### Parameters
 
@@ -122,22 +119,21 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Returns
 
-`Promise`<[`Caption`](Library_Exports.Caption)[]\>
+`Promise`\<[`Caption`](Library_Exports.Caption)[]\>
 
 #### Defined in
 
-[oauth/captions.ts:39](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L39)
+[oauth/captions.ts:45](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L45)
 
 ___
 
 ### updateCaption
 
-▸ **updateCaption**(`id`, `track?`, `draft?`): `Promise`<[`Caption`](Library_Exports.Caption)\>
+▸ **updateCaption**(`id`, `track?`, `draft?`): `Promise`\<[`Caption`](Library_Exports.Caption)\>
 
 Edits a [Caption](./Library_Exports.Caption#) track.  
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested 06/11/2020 04:50. PASSING
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -149,20 +145,19 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Returns
 
-`Promise`<[`Caption`](Library_Exports.Caption)\>
+`Promise`\<[`Caption`](Library_Exports.Caption)\>
 
 #### Defined in
 
-[oauth/captions.ts:97](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L97)
+[oauth/captions.ts:101](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L101)
 
 ___
 
 ### uploadCaption
 
-▸ **uploadCaption**(`videoResolvable`, `language`, `name`, `track`, `draft?`): `Promise`<[`Caption`](Library_Exports.Caption)\>
+▸ **uploadCaption**(`videoResolvable`, `language`, `name`, `track`, `draft?`): `Promise`\<[`Caption`](Library_Exports.Caption)\>
 
-Uploads a [Caption](./Library_Exports.Caption#) track for a [Video](./Library_Exports.Video#).  
-Last tested 06/11/2020 04:50. PASSING
+Uploads a [Caption](./Library_Exports.Caption#) track for a [Video](./Library_Exports.Video#).
 
 #### Parameters
 
@@ -176,8 +171,8 @@ Last tested 06/11/2020 04:50. PASSING
 
 #### Returns
 
-`Promise`<[`Caption`](Library_Exports.Caption)\>
+`Promise`\<[`Caption`](Library_Exports.Caption)\>
 
 #### Defined in
 
-[oauth/captions.ts:64](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/captions.ts#L64)
+[oauth/captions.ts:69](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/captions.ts#L69)

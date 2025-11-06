@@ -20,12 +20,12 @@ A language.
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `youtube` | [`YouTube`](Library_Exports.YouTube) | `undefined` |
-| `data` | `any` | `undefined` |
+| `data` | `Schema$I18nLanguage` | `undefined` |
 | `full` | `boolean` | `true` |
 
 #### Defined in
 
-[entities/language.ts:52](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L52)
+[entities/language.ts:53](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L53)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The raw data of this language.
 
 #### Defined in
 
-[entities/language.ts:35](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L35)
+[entities/language.ts:36](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L36)
 
 ___
 
@@ -49,7 +49,7 @@ Whether or not this is a full language object.
 
 #### Defined in
 
-[entities/language.ts:30](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L30)
+[entities/language.ts:31](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L31)
 
 ___
 
@@ -61,7 +61,7 @@ The language code that uniquely identifies the language.
 
 #### Defined in
 
-[entities/language.ts:45](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L45)
+[entities/language.ts:46](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L46)
 
 ___
 
@@ -73,7 +73,7 @@ The ID of this language.
 
 #### Defined in
 
-[entities/language.ts:40](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L40)
+[entities/language.ts:41](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L41)
 
 ___
 
@@ -85,7 +85,7 @@ The language's name.
 
 #### Defined in
 
-[entities/language.ts:50](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L50)
+[entities/language.ts:51](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L51)
 
 ___
 
@@ -97,7 +97,7 @@ The YouTube object that created this language object.
 
 #### Defined in
 
-[entities/language.ts:25](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L25)
+[entities/language.ts:26](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L26)
 
 ___
 
@@ -109,7 +109,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/language.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L10)
+[entities/language.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L11)
 
 ___
 
@@ -121,7 +121,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/language.ts:20](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L20)
+[entities/language.ts:21](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L21)
 
 ___
 
@@ -133,4 +133,4 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/language.ts:15](https://github.com/brandonbothell/popyt/blob/fb05585/src/entities/language.ts#L15)
+[entities/language.ts:16](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/entities/language.ts#L16)

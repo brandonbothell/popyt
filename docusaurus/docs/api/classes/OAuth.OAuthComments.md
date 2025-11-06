@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L10)
+[oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L11)
 
 ## Properties
 
@@ -31,16 +31,15 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L10)
+[oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L11)
 
 ## Methods
 
 ### deleteComment
 
-▸ **deleteComment**(`commentId`): `Promise`<`void`\>
+▸ **deleteComment**(`commentId`): `Promise`\<`void`\>
 
-Deletes a [Comment](./Library_Exports.Comment#).  
-Last tested 05/18/2020 11:48. PASSING
+Deletes a [Comment](./Library_Exports.Comment#).
 
 #### Parameters
 
@@ -50,20 +49,19 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/comments.ts:131](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L131)
+[oauth/comments.ts:126](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L126)
 
 ___
 
 ### editComment
 
-▸ **editComment**(`commentId`, `text`): `Promise`<[`Comment`](Library_Exports.Comment)\>
+▸ **editComment**(`commentId`, `text`): `Promise`\<[`Comment`](Library_Exports.Comment)\>
 
-Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
-Last tested 07/05/2021 17:40. PASSING
+Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.
 
 #### Parameters
 
@@ -74,20 +72,19 @@ Last tested 07/05/2021 17:40. PASSING
 
 #### Returns
 
-`Promise`<[`Comment`](Library_Exports.Comment)\>
+`Promise`\<[`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[oauth/comments.ts:67](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L67)
+[oauth/comments.ts:65](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L65)
 
 ___
 
 ### markCommentAsSpam
 
-▸ **markCommentAsSpam**(`commentId`): `Promise`<`void`\>
+▸ **markCommentAsSpam**(`commentId`): `Promise`\<`void`\>
 
-Marks a [Comment](./Library_Exports.Comment#) as spam.  
-Last tested NEVER
+Marks a [Comment](./Library_Exports.Comment#) as spam.
 
 #### Parameters
 
@@ -97,20 +94,19 @@ Last tested NEVER
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/comments.ts:89](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L89)
+[oauth/comments.ts:86](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L86)
 
 ___
 
 ### postComment
 
-▸ **postComment**(`text`, `channelResolvable`, `videoResolvable`): `Promise`<[`Comment`](Library_Exports.Comment)\>
+▸ **postComment**(`text`, `channelResolvable`, `videoResolvable`): `Promise`\<[`Comment`](Library_Exports.Comment)\>
 
-Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
-Last tested 05/18/2020 11:48. PASSING
+Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.
 
 #### Parameters
 
@@ -122,20 +118,19 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Comment`](Library_Exports.Comment)\>
+`Promise`\<[`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L20)
+[oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L20)
 
 ___
 
 ### replyToComment
 
-▸ **replyToComment**(`commentId`, `text`): `Promise`<[`Comment`](Library_Exports.Comment)\>
+▸ **replyToComment**(`commentId`, `text`): `Promise`\<[`Comment`](Library_Exports.Comment)\>
 
-Replies to a [Comment](./Library_Exports.Comment#).  
-Last tested 05/18/2020 11:48. PASSING
+Replies to a [Comment](./Library_Exports.Comment#).
 
 #### Parameters
 
@@ -146,20 +141,19 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Comment`](Library_Exports.Comment)\>
+`Promise`\<[`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[oauth/comments.ts:47](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L47)
+[oauth/comments.ts:46](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L46)
 
 ___
 
 ### setCommentModerationStatus
 
-▸ **setCommentModerationStatus**(`commentId`, `moderationStatus`, `banAuthor?`): `Promise`<`void`\>
+▸ **setCommentModerationStatus**(`commentId`, `moderationStatus`, `banAuthor?`): `Promise`\<`void`\>
 
-Sets the moderation status of a [Comment](./Library_Exports.Comment#)  
-Last tested NEVER
+Sets the moderation status of a [Comment](./Library_Exports.Comment#)
 
 #### Parameters
 
@@ -171,8 +165,8 @@ Last tested NEVER
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/comments.ts:104](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/comments.ts#L104)
+[oauth/comments.ts:100](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L100)

@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L10)
+[oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L11)
 
 ## Properties
 
@@ -31,16 +31,15 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L10)
+[oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L11)
 
 ## Methods
 
 ### addChannelSection
 
-▸ **addChannelSection**(`type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
+▸ **addChannelSection**(`type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
-Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized user's [Channel](./Library_Exports.Channel#).  
-Last tested 05/24/2020 10:11. PASSING
+Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized user's [Channel](./Library_Exports.Channel#).
 
 #### Parameters
 
@@ -54,20 +53,19 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Returns
 
-`Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
+`Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
 #### Defined in
 
-[oauth/channels.ts:165](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L165)
+[oauth/channels.ts:159](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L159)
 
 ___
 
 ### deleteChannelSection
 
-▸ **deleteChannelSection**(`id`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
+▸ **deleteChannelSection**(`id`): `Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
 Deletes a [ChannelSection](./Library_Exports.ChannelSection#).
-Last tested 05/24/2020 10:11. PASSING
 
 #### Parameters
 
@@ -77,20 +75,19 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Returns
 
-`Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
+`Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
 #### Defined in
 
-[oauth/channels.ts:257](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L257)
+[oauth/channels.ts:249](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L249)
 
 ___
 
 ### setChannelMadeForKids
 
-▸ **setChannelMadeForKids**(`channelResolvable`, `madeForKids`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **setChannelMadeForKids**(`channelResolvable`, `madeForKids`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
-Sets a channel as made for kids or not made for kids.  
-Last tested 05/20/2020 02:58. PASSING
+Sets a channel as made for kids or not made for kids.
 
 #### Parameters
 
@@ -101,20 +98,19 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[oauth/channels.ts:71](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L71)
+[oauth/channels.ts:69](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L69)
 
 ___
 
 ### setChannelWatermark
 
-▸ **setChannelWatermark**(`channelResolvable`, `type`, `offset`, `duration`, `image`): `Promise`<`void`\>
+▸ **setChannelWatermark**(`channelResolvable`, `type`, `offset`, `duration`, `image`): `Promise`\<`void`\>
 
-Sets a channel's watermark.  
-Last tested 05/19/2020 18:07. PASSING
+Sets a channel's watermark.
 
 #### Parameters
 
@@ -128,20 +124,19 @@ Last tested 05/19/2020 18:07. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/channels.ts:99](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L99)
+[oauth/channels.ts:96](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L96)
 
 ___
 
 ### subscribeToChannel
 
-▸ **subscribeToChannel**(`channelResolvable`): `Promise`<[`Subscription`](Library_Exports.Subscription)\>
+▸ **subscribeToChannel**(`channelResolvable`): `Promise`\<[`Subscription`](Library_Exports.Subscription)\>
 
-Subscribe to a [Channel](./Library_Exports.Channel#).  
-Last tested 05/18/2020 11:48. PASSING
+Subscribe to a [Channel](./Library_Exports.Channel#).
 
 #### Parameters
 
@@ -151,22 +146,21 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Subscription`](Library_Exports.Subscription)\>
+`Promise`\<[`Subscription`](Library_Exports.Subscription)\>
 
 A partial subscription object.
 
 #### Defined in
 
-[oauth/channels.ts:271](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L271)
+[oauth/channels.ts:262](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L262)
 
 ___
 
 ### unsetChannelWatermark
 
-▸ **unsetChannelWatermark**(`channelResolvable`): `Promise`<`void`\>
+▸ **unsetChannelWatermark**(`channelResolvable`): `Promise`\<`void`\>
 
-Unsets a channel's watermark.  
-Last tested 05/18/2020 18:23. PASSING
+Unsets a channel's watermark.
 
 #### Parameters
 
@@ -176,20 +170,19 @@ Last tested 05/18/2020 18:23. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/channels.ts:128](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L128)
+[oauth/channels.ts:124](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L124)
 
 ___
 
 ### unsubscribeFromChannel
 
-▸ **unsubscribeFromChannel**(`subscriptionId`): `Promise`<`void`\>
+▸ **unsubscribeFromChannel**(`subscriptionId`): `Promise`\<`void`\>
 
-Unsubscribe from a [Channel](./Library_Exports.Channel#).  
-Last tested 05/18/2020 11:48. PASSING
+Unsubscribe from a [Channel](./Library_Exports.Channel#).
 
 #### Parameters
 
@@ -199,22 +192,21 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/channels.ts:292](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L292)
+[oauth/channels.ts:282](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L282)
 
 ___
 
 ### updateChannelBranding
 
-▸ **updateChannelBranding**(`channelResolvable`, `brandingSettings`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **updateChannelBranding**(`channelResolvable`, `brandingSettings`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Updates a channel's branding settings.
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested NEVER
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -225,23 +217,22 @@ Last tested NEVER
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L20)
+[oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L20)
 
 ___
 
 ### updateChannelLocalizations
 
-▸ **updateChannelLocalizations**(`channelResolvable`, `localizations`): `Promise`<[`Channel`](Library_Exports.Channel)\>
+▸ **updateChannelLocalizations**(`channelResolvable`, `localizations`): `Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 Updates a channel's localizations.
 **CURRENTLY BROKEN in the API**
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested 05/20/2020 02:58. PASSING
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -252,22 +243,21 @@ Last tested 05/20/2020 02:58. PASSING
 
 #### Returns
 
-`Promise`<[`Channel`](Library_Exports.Channel)\>
+`Promise`\<[`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[oauth/channels.ts:46](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L46)
+[oauth/channels.ts:45](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L45)
 
 ___
 
 ### updateChannelSection
 
-▸ **updateChannelSection**(`id`, `type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
+▸ **updateChannelSection**(`id`, `type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
 Updates a [ChannelSection](./Library_Exports.ChannelSection#).
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested 05/24/2020 10:11. PASSING
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -282,20 +272,19 @@ Last tested 05/24/2020 10:11. PASSING
 
 #### Returns
 
-`Promise`<[`ChannelSection`](Library_Exports.ChannelSection)\>
+`Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)\>
 
 #### Defined in
 
-[oauth/channels.ts:221](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L221)
+[oauth/channels.ts:214](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L214)
 
 ___
 
 ### uploadChannelBanner
 
-▸ **uploadChannelBanner**(`image`): `Promise`<`string`\>
+▸ **uploadChannelBanner**(`image`): `Promise`\<`string`\>
 
-Uploads a channel banner.  
-Last tested 05/20/2020 03:17. PASSING
+Uploads a channel banner.
 
 #### Parameters
 
@@ -305,7 +294,7 @@ Last tested 05/20/2020 03:17. PASSING
 
 #### Returns
 
-`Promise`<`string`\>
+`Promise`\<`string`\>
 
 The URL of the uploaded banner, used as
 [`BrandingSettings.image.bannerExternalUrl`](../modules/Library_Exports#channelbrandingsettings)
@@ -313,4 +302,4 @@ in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
 
 #### Defined in
 
-[oauth/channels.ts:146](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/channels.ts#L146)
+[oauth/channels.ts:141](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L141)

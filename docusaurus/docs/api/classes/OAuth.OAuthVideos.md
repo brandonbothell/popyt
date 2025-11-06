@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L10)
+[oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L11)
 
 ## Properties
 
@@ -31,16 +31,15 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L10)
+[oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L11)
 
 ## Methods
 
 ### deleteVideo
 
-▸ **deleteVideo**(`videoResolvable`): `Promise`<`void`\>
+▸ **deleteVideo**(`videoResolvable`): `Promise`\<`void`\>
 
 Deletes a [Video](./Library_Exports.Video#).
-Last tested NEVER
 
 #### Parameters
 
@@ -50,60 +49,63 @@ Last tested NEVER
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/videos.ts:91](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L91)
+[oauth/videos.ts:116](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L116)
 
 ___
 
 ### getMyRatings
 
-▸ **getMyRatings**(`videoResolvables`): `Promise`<{ `rating`: ``"none"`` \| ``"like"`` \| ``"dislike"`` \| ``"unspecified"`` ; `videoId`: `string`  }[]\>
+▸ **getMyRatings**\<`T`\>(`videoResolvable`): `Promise`\<`T` extends `any`[] ? [`VideoRating`](Library_Exports.VideoRating)[] : [`VideoRating`](Library_Exports.VideoRating)\>
 
-Retrieve your rating on [Videos](./Library_Exports.Video#).  
-Last tested 05/18/2020 11:48. PASSING
+Retrieve your rating on [Videos](./Library_Exports.Video#).
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`VideoResolvable`](../modules/Library_Exports#videoresolvable) \| [`VideoResolvable`](../modules/Library_Exports#videoresolvable)[] |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoResolvables` | [`VideoResolvable`](../modules/Library_Exports#videoresolvable)[] | The video(s) to retrieve your rating from. |
+| `videoResolvable` | `T` | The video(s) to retrieve your rating from. |
 
 #### Returns
 
-`Promise`<{ `rating`: ``"none"`` \| ``"like"`` \| ``"dislike"`` \| ``"unspecified"`` ; `videoId`: `string`  }[]\>
+`Promise`\<`T` extends `any`[] ? [`VideoRating`](Library_Exports.VideoRating)[] : [`VideoRating`](Library_Exports.VideoRating)\>
 
 #### Defined in
 
-[oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L33)
+[oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L33)
 
 ___
 
 ### getVideoAbuseReportReasons
 
-▸ **getVideoAbuseReportReasons**(): `Promise`<[`VideoAbuseReportReason`](Library_Exports.VideoAbuseReportReason)[]\>
+▸ **getVideoAbuseReportReasons**(): `Promise`\<[`VideoAbuseReportReason`](Library_Exports.VideoAbuseReportReason)[]\>
 
 Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason#)s.
-Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`VideoAbuseReportReason`](Library_Exports.VideoAbuseReportReason)[]\>
+`Promise`\<[`VideoAbuseReportReason`](Library_Exports.VideoAbuseReportReason)[]\>
 
 #### Defined in
 
-[oauth/videos.ts:166](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L166)
+[oauth/videos.ts:188](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L188)
 
 ___
 
 ### rateVideo
 
-▸ **rateVideo**(`videoResolvable`, `rating`): `Promise`<`void`\>
+▸ **rateVideo**(`videoResolvable`, `rating`): `Promise`\<`void`\>
 
 Like, dislike, or remove a rating from a [Video](./Library_Exports.Video#).
-Last tested 05/18/2020 11:48. PASSING
 
 #### Parameters
 
@@ -114,20 +116,19 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L18)
+[oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L18)
 
 ___
 
 ### reportAbuse
 
-▸ **reportAbuse**(`videoResolvable`, `reasonId`, `secondaryReasonId?`, `comments?`, `language?`): `Promise`<`void`\>
+▸ **reportAbuse**(`videoResolvable`, `reasonId`, `secondaryReasonId?`, `comments?`, `language?`): `Promise`\<`void`\>
 
-Report a [Video](./Library_Exports.Video#) for abuse.  
-Last tested NEVER
+Report a [Video](./Library_Exports.Video#) for abuse.
 
 #### Parameters
 
@@ -141,20 +142,19 @@ Last tested NEVER
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/videos.ts:61](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L61)
+[oauth/videos.ts:87](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L87)
 
 ___
 
 ### setThumbnail
 
-▸ **setThumbnail**(`videoResolvable`, `image`): `Promise`<{ `default?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `high?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `maxres?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `medium?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `standard?`: [`Thumbnail`](../modules/Library_Exports#thumbnail)  }\>
+▸ **setThumbnail**(`videoResolvable`, `image`): `Promise`\<\{ `default?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `high?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `maxres?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `medium?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `standard?`: [`Thumbnail`](../modules/Library_Exports#thumbnail)  }\>
 
-Sets a new [Thumbnail](../modules/Library_Exports#thumbnail) for a [Video](./Library_Exports.Video).  
-Last tested 05/18/2020 11:48. PASSING
+Sets a new [Thumbnail](../modules/Library_Exports#thumbnail) for a [Video](./Library_Exports.Video).
 
 #### Parameters
 
@@ -165,22 +165,21 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<{ `default?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `high?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `maxres?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `medium?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `standard?`: [`Thumbnail`](../modules/Library_Exports#thumbnail)  }\>
+`Promise`\<\{ `default?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `high?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `maxres?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `medium?`: [`Thumbnail`](../modules/Library_Exports#thumbnail) ; `standard?`: [`Thumbnail`](../modules/Library_Exports#thumbnail)  }\>
 
 #### Defined in
 
-[oauth/videos.ts:149](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L149)
+[oauth/videos.ts:172](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L172)
 
 ___
 
 ### updateVideo
 
-▸ **updateVideo**(`video`): `Promise`<[`Video`](Library_Exports.Video)\>
+▸ **updateVideo**(`video`): `Promise`\<[`Video`](Library_Exports.Video)\>
 
 Updates a [Video](./Library_Exports.Video#).  
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested NEVER
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -190,8 +189,8 @@ Last tested NEVER
 
 #### Returns
 
-`Promise`<[`Video`](Library_Exports.Video)\>
+`Promise`\<[`Video`](Library_Exports.Video)\>
 
 #### Defined in
 
-[oauth/videos.ts:108](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/videos.ts#L108)
+[oauth/videos.ts:132](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/videos.ts#L132)

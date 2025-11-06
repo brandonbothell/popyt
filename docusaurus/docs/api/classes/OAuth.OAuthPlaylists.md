@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L10)
+[oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L11)
 
 ## Properties
 
@@ -31,16 +31,15 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L10)
+[oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L11)
 
 ## Methods
 
 ### addPlaylistItem
 
-▸ **addPlaylistItem**(`playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`<[`Video`](Library_Exports.Video)\>
+▸ **addPlaylistItem**(`playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`\<[`Video`](Library_Exports.Video)\>
 
-Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).  
-Last tested 05/18/2020 11:48. PASSING
+Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).
 
 #### Parameters
 
@@ -53,22 +52,21 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Video`](Library_Exports.Video)\>
+`Promise`\<[`Video`](Library_Exports.Video)\>
 
 A partial video object.
 
 #### Defined in
 
-[oauth/playlists.ts:116](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L116)
+[oauth/playlists.ts:113](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L113)
 
 ___
 
 ### createPlaylist
 
-▸ **createPlaylist**(`title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`<[`Playlist`](Library_Exports.Playlist)\>
+▸ **createPlaylist**(`title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`\<[`Playlist`](Library_Exports.Playlist)\>
 
-Creates a [Playlist](./Library_Exports.Playlist#).  
-Last tested 05/18/2020 11:48. PASSING
+Creates a [Playlist](./Library_Exports.Playlist#).
 
 #### Parameters
 
@@ -83,20 +81,19 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Playlist`](Library_Exports.Playlist)\>
+`Promise`\<[`Playlist`](Library_Exports.Playlist)\>
 
 #### Defined in
 
-[oauth/playlists.ts:22](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L22)
+[oauth/playlists.ts:22](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L22)
 
 ___
 
 ### deletePlaylist
 
-▸ **deletePlaylist**(`playlistResolvable`): `Promise`<`void`\>
+▸ **deletePlaylist**(`playlistResolvable`): `Promise`\<`void`\>
 
-Deletes a [Playlist](./Library_Exports.Playlist#).  
-Last tested 05/18/2020 11:48. PASSING
+Deletes a [Playlist](./Library_Exports.Playlist#).
 
 #### Parameters
 
@@ -106,20 +103,19 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/playlists.ts:97](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L97)
+[oauth/playlists.ts:95](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L95)
 
 ___
 
 ### deletePlaylistItem
 
-▸ **deletePlaylistItem**(`id`): `Promise`<`void`\>
+▸ **deletePlaylistItem**(`id`): `Promise`\<`void`\>
 
-Deletes a playlist item.  
-Last tested 05/18/2020 11:48. PASSING
+Deletes a playlist item.
 
 #### Parameters
 
@@ -129,22 +125,21 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[oauth/playlists.ts:188](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L188)
+[oauth/playlists.ts:183](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L183)
 
 ___
 
 ### updatePlaylist
 
-▸ **updatePlaylist**(`playlistResolvable`, `title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`<[`Playlist`](Library_Exports.Playlist)\>
+▸ **updatePlaylist**(`playlistResolvable`, `title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`\<[`Playlist`](Library_Exports.Playlist)\>
 
 Updates a [Playlist](./Library_Exports.Playlist#).  
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested 05/18/2020 11:48. PASSING
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -160,22 +155,21 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Playlist`](Library_Exports.Playlist)\>
+`Promise`\<[`Playlist`](Library_Exports.Playlist)\>
 
 #### Defined in
 
-[oauth/playlists.ts:62](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L62)
+[oauth/playlists.ts:61](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L61)
 
 ___
 
 ### updatePlaylistItem
 
-▸ **updatePlaylistItem**(`id`, `playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`<[`Video`](Library_Exports.Video)\>
+▸ **updatePlaylistItem**(`id`, `playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`\<[`Video`](Library_Exports.Video)\>
 
 Edits a playlist item.  
 **If your request does not specify a value for a property that already has a value,
-the property's existing value will be deleted.**  
-Last tested 05/18/2020 11:48. PASSING
+the property's existing value will be deleted.**
 
 #### Parameters
 
@@ -189,10 +183,10 @@ Last tested 05/18/2020 11:48. PASSING
 
 #### Returns
 
-`Promise`<[`Video`](Library_Exports.Video)\>
+`Promise`\<[`Video`](Library_Exports.Video)\>
 
 A partial video object.
 
 #### Defined in
 
-[oauth/playlists.ts:155](https://github.com/brandonbothell/popyt/blob/fb05585/src/oauth/playlists.ts#L155)
+[oauth/playlists.ts:151](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/playlists.ts#L151)

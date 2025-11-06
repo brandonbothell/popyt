@@ -27,7 +27,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:94](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L94)
+[index.ts:84](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L84)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The main class used to interact with the YouTube API. Use this.
 
 #### Defined in
 
-[index.ts:69](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L69)
+[index.ts:59](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L59)
 
 ___
 
@@ -49,7 +49,7 @@ The language for the API to respond in. See [`YouTube.getLanguages()`](#getlangu
 
 #### Defined in
 
-[index.ts:79](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L79)
+[index.ts:69](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L69)
 
 ___
 
@@ -61,7 +61,7 @@ Methods requiring an OAuth token.
 
 #### Defined in
 
-[index.ts:74](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L74)
+[index.ts:64](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L64)
 
 ___
 
@@ -73,29 +73,29 @@ The region for the API cater responses to. See [`YouTube.getRegions()`](#getregi
 
 #### Defined in
 
-[index.ts:84](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L84)
+[index.ts:74](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L74)
 
 ## Methods
 
 ### getCategories
 
-▸ **getCategories**(): `Promise`<[`VideoCategory`](Library_Exports.VideoCategory)[]\>
+▸ **getCategories**(): `Promise`\<[`VideoCategory`](Library_Exports.VideoCategory)[]\>
 
 Get the list of video categories in [`this.region`](#region)`.
 
 #### Returns
 
-`Promise`<[`VideoCategory`](Library_Exports.VideoCategory)[]\>
+`Promise`\<[`VideoCategory`](Library_Exports.VideoCategory)[]\>
 
 #### Defined in
 
-[index.ts:366](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L366)
+[index.ts:401](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L401)
 
 ___
 
 ### getCategory
 
-▸ **getCategory**<`T`\>(`categoryId`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`VideoCategory`](Library_Exports.VideoCategory)\>\>
+▸ **getCategory**\<`T`\>(`categoryId`): `Promise`\<`T` extends `any`[] ? [`VideoCategory`](Library_Exports.VideoCategory)[] : [`VideoCategory`](Library_Exports.VideoCategory)\>
 
 Get a [`VideoCategory`](./Library_Exports.VideoCategory) object from the ID of a category.
 
@@ -113,17 +113,17 @@ Get a [`VideoCategory`](./Library_Exports.VideoCategory) object from the ID of a
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`VideoCategory`](Library_Exports.VideoCategory)\>\>
+`Promise`\<`T` extends `any`[] ? [`VideoCategory`](Library_Exports.VideoCategory)[] : [`VideoCategory`](Library_Exports.VideoCategory)\>
 
 #### Defined in
 
-[index.ts:241](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L241)
+[index.ts:265](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L265)
 
 ___
 
 ### getChannel
 
-▸ **getChannel**<`T`\>(`channelResolvable`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Channel`](Library_Exports.Channel)\>, typeof [`Channel`](Library_Exports.Channel)\>\>
+▸ **getChannel**\<`T`\>(`channelResolvable`, `parts?`): `Promise`\<`ResolveReturn`\<`T`, typeof [`Channel`](Library_Exports.Channel)\> extends `any`[] ? [`Channel`](Library_Exports.Channel)[] : [`Channel`](Library_Exports.Channel)\>
 
 Get a [`Channel`](./Library_Exports.Channel) object from the URL, ID, search query, or handle of a channel.
 **Beware**, support for old custom channel URLs is shoddy.
@@ -144,17 +144,17 @@ Consider migrating to [the new @ system.](https://support.google.com/youtube/ans
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Channel`](Library_Exports.Channel)\>, typeof [`Channel`](Library_Exports.Channel)\>\>
+`Promise`\<`ResolveReturn`\<`T`, typeof [`Channel`](Library_Exports.Channel)\> extends `any`[] ? [`Channel`](Library_Exports.Channel)[] : [`Channel`](Library_Exports.Channel)\>
 
 #### Defined in
 
-[index.ts:201](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L201)
+[index.ts:225](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L225)
 
 ___
 
 ### getChannelPlaylists
 
-▸ **getChannelPlaylists**(`channelResolvable`, `pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
+▸ **getChannelPlaylists**(`channelResolvable`, `pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>\>
 
 Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Playlist`](./Library_Exports.Playlist)s.
 Used mostly internally with [`Channel.fetchPlaylists()`](./Library_Exports.Channel#fetchplaylists).
@@ -169,19 +169,19 @@ Used mostly internally with [`Channel.fetchPlaylists()`](./Library_Exports.Chann
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>\>
 
 An object containing page token information for future requests and **playlist objects**.
 
 #### Defined in
 
-[index.ts:312](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L312)
+[index.ts:347](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L347)
 
 ___
 
 ### getChannelSection
 
-▸ **getChannelSection**<`T`\>(`sectionId`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`ChannelSection`](Library_Exports.ChannelSection)\>\>
+▸ **getChannelSection**\<`T`\>(`sectionId`, `parts?`): `Promise`\<`T` extends `any`[] ? [`ChannelSection`](Library_Exports.ChannelSection)[] : [`ChannelSection`](Library_Exports.ChannelSection)\>
 
 Get a [`ChannelSection`](./Library_Exports.ChannelSection) object from the ID of a section.
 
@@ -200,17 +200,17 @@ Get a [`ChannelSection`](./Library_Exports.ChannelSection) object from the ID of
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`ChannelSection`](Library_Exports.ChannelSection)\>\>
+`Promise`\<`T` extends `any`[] ? [`ChannelSection`](Library_Exports.ChannelSection)[] : [`ChannelSection`](Library_Exports.ChannelSection)\>
 
 #### Defined in
 
-[index.ts:250](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L250)
+[index.ts:274](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L274)
 
 ___
 
 ### getChannelSections
 
-▸ **getChannelSections**(`channelResolvable`, `parts?`): `Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
+▸ **getChannelSections**(`channelResolvable`, `parts?`): `Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
 
 Gets the [`ChannelSection`](./Library_Exports.ChannelSection)s of a [`Channel`](./Library_Exports.Channel).
 Used mostly internally with [`Channel.fetchSections`](./Library_Exports.Channel#fetchsections).
@@ -224,19 +224,19 @@ Used mostly internally with [`Channel.fetchSections`](./Library_Exports.Channel#
 
 #### Returns
 
-`Promise`<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
+`Promise`\<[`ChannelSection`](Library_Exports.ChannelSection)[]\>
 
 Partial channel section objects.
 
 #### Defined in
 
-[index.ts:357](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L357)
+[index.ts:392](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L392)
 
 ___
 
 ### getChannelSubscriptions
 
-▸ **getChannelSubscriptions**(`channelResolvable`, `pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>\>
+▸ **getChannelSubscriptions**(`channelResolvable`, `pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Subscription`](Library_Exports.Subscription)\>\>
 
 Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Subscription`](./Library_Exports.Subscription)s.
 Used mostly internally with [`Channel.fetchSubscriptions()`](./Library_Exports.Channel#fetchsubscriptions).
@@ -251,19 +251,19 @@ Used mostly internally with [`Channel.fetchSubscriptions()`](./Library_Exports.C
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Subscription`](Library_Exports.Subscription)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Subscription`](Library_Exports.Subscription)\>\>
 
 An object containing page token information for future requests and **subscription objects**.
 
 #### Defined in
 
-[index.ts:328](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L328)
+[index.ts:363](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L363)
 
 ___
 
 ### getComment
 
-▸ **getComment**<`T`\>(`commentId`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`Comment`](Library_Exports.Comment)\>\>
+▸ **getComment**\<`T`\>(`commentId`, `parts?`): `Promise`\<`T` extends `any`[] ? [`Comment`](Library_Exports.Comment)[] : [`Comment`](Library_Exports.Comment)\>
 
 Get a [`Comment`](./Library_Exports.Comment) object from the ID of a comment.
 
@@ -282,17 +282,17 @@ Get a [`Comment`](./Library_Exports.Comment) object from the ID of a comment.
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`Comment`](Library_Exports.Comment)\>\>
+`Promise`\<`T` extends `any`[] ? [`Comment`](Library_Exports.Comment)[] : [`Comment`](Library_Exports.Comment)\>
 
 #### Defined in
 
-[index.ts:222](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L222)
+[index.ts:246](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L246)
 
 ___
 
 ### getCommentReplies
 
-▸ **getCommentReplies**(`commentResolvable`, `pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Comment`](Library_Exports.Comment)\>\>
+▸ **getCommentReplies**(`commentResolvable`, `pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Comment`](Library_Exports.Comment)\>\>
 
 Get `maxPerPage * pages` replies to a [`Comment`](./Library_Exports.Comment).
 Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.Comment#fetchreplies).
@@ -307,35 +307,35 @@ Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.Comment#f
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Comment`](Library_Exports.Comment)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Comment`](Library_Exports.Comment)\>\>
 
 An object containing page token information for future requests and **comment objects**.
 
 #### Defined in
 
-[index.ts:344](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L344)
+[index.ts:379](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L379)
 
 ___
 
 ### getLanguages
 
-▸ **getLanguages**(): `Promise`<[`Language`](Library_Exports.Language)[]\>
+▸ **getLanguages**(): `Promise`\<[`Language`](Library_Exports.Language)[]\>
 
 Get a list of languages that YouTube supports.
 
 #### Returns
 
-`Promise`<[`Language`](Library_Exports.Language)[]\>
+`Promise`\<[`Language`](Library_Exports.Language)[]\>
 
 #### Defined in
 
-[index.ts:373](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L373)
+[index.ts:408](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L408)
 
 ___
 
 ### getPlaylist
 
-▸ **getPlaylist**<`T`\>(`playlistResolvable`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Playlist`](Library_Exports.Playlist)\>, typeof [`Playlist`](Library_Exports.Playlist)\>\>
+▸ **getPlaylist**\<`T`\>(`playlistResolvable`, `parts?`): `Promise`\<`ResolveReturn`\<`T`, typeof [`Playlist`](Library_Exports.Playlist)\> extends `any`[] ? [`Playlist`](Library_Exports.Playlist)[] : [`Playlist`](Library_Exports.Playlist)\>
 
 Get a [`Playlist`](./Library_Exports.Playlist) object from the URL, ID, or search query of a playlist.
 Meant mostly for getting by URL or ID.
@@ -355,17 +355,17 @@ Meant mostly for getting by URL or ID.
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Playlist`](Library_Exports.Playlist)\>, typeof [`Playlist`](Library_Exports.Playlist)\>\>
+`Promise`\<`ResolveReturn`\<`T`, typeof [`Playlist`](Library_Exports.Playlist)\> extends `any`[] ? [`Playlist`](Library_Exports.Playlist)[] : [`Playlist`](Library_Exports.Playlist)\>
 
 #### Defined in
 
-[index.ts:212](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L212)
+[index.ts:236](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L236)
 
 ___
 
 ### getPlaylistItems
 
-▸ **getPlaylistItems**(`playlistResolvable`, `pageOptions?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>\>
+▸ **getPlaylistItems**(`playlistResolvable`, `pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Video`](Library_Exports.Video)\>\>
 
 Get `maxPerPage * pages` videos in a [`Playlist`](./Library_Exports.Playlist).
 Used mostly internally with [`Playlist.fetchVideos()`](./Library_Exports.Playlist#fetchvideos).
@@ -380,35 +380,35 @@ Used mostly internally with [`Playlist.fetchVideos()`](./Library_Exports.Playlis
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Video`](Library_Exports.Video)\>\>
 
 An object containing page token information for future requests and ***partial* video objects**.
 
 #### Defined in
 
-[index.ts:277](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L277)
+[index.ts:312](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L312)
 
 ___
 
 ### getRegions
 
-▸ **getRegions**(): `Promise`<[`Region`](Library_Exports.Region)[]\>
+▸ **getRegions**(): `Promise`\<[`Region`](Library_Exports.Region)[]\>
 
 Get a list of regions that YouTube supports.
 
 #### Returns
 
-`Promise`<[`Region`](Library_Exports.Region)[]\>
+`Promise`\<[`Region`](Library_Exports.Region)[]\>
 
 #### Defined in
 
-[index.ts:380](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L380)
+[index.ts:415](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L415)
 
 ___
 
 ### getSubscription
 
-▸ **getSubscription**<`T`\>(`subscriptionId`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`Subscription`](Library_Exports.Subscription)\>\>
+▸ **getSubscription**\<`T`\>(`subscriptionId`, `parts?`): `Promise`\<`T` extends `any`[] ? [`Subscription`](Library_Exports.Subscription)[] : [`Subscription`](Library_Exports.Subscription)\>
 
 Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a subscription.  
 Fetching a subscription by ID is **CURRENTLY BROKEN** in the Public YouTube API,
@@ -429,17 +429,17 @@ see https://issuetracker.google.com/issues/288609601
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`T`, typeof [`Subscription`](Library_Exports.Subscription)\>\>
+`Promise`\<`T` extends `any`[] ? [`Subscription`](Library_Exports.Subscription)[] : [`Subscription`](Library_Exports.Subscription)\>
 
 #### Defined in
 
-[index.ts:233](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L233)
+[index.ts:257](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L257)
 
 ___
 
 ### getSubscriptionByChannels
 
-▸ **getSubscriptionByChannels**(`subscriberResolvable`, `channelResolvable`, `parts?`): `Promise`<[`Subscription`](Library_Exports.Subscription)\>
+▸ **getSubscriptionByChannels**(`subscriberResolvable`, `channelResolvable`, `parts?`): `Promise`\<[`Subscription`](Library_Exports.Subscription)\>
 
 Get a [`Subscription`](./Library_Exports.Subscription) object from the subscriber and channel of a subscription.
 Channels can be passed in the form of ID, URL, or search query.
@@ -454,17 +454,17 @@ Channels can be passed in the form of ID, URL, or search query.
 
 #### Returns
 
-`Promise`<[`Subscription`](Library_Exports.Subscription)\>
+`Promise`\<[`Subscription`](Library_Exports.Subscription)\>
 
 #### Defined in
 
-[index.ts:261](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L261)
+[index.ts:285](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L285)
 
 ___
 
 ### getVideo
 
-▸ **getVideo**<`T`\>(`videoResolvable`, `parts?`): `Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Video`](Library_Exports.Video)\>, typeof [`Video`](Library_Exports.Video)\>\>
+▸ **getVideo**\<`T`\>(`videoResolvable`, `parts?`): `Promise`\<`ResolveReturn`\<`T`, typeof [`Video`](Library_Exports.Video)\> extends `any`[] ? [`Video`](Library_Exports.Video)[] : [`Video`](Library_Exports.Video)\>
 
 Get a [`Video`](./Library_Exports.Video) object from the URL, ID, or search query of a video.
 
@@ -483,17 +483,17 @@ Get a [`Video`](./Library_Exports.Video) object from the URL, ID, or search quer
 
 #### Returns
 
-`Promise`<[`ItemReturns`](../modules/Library_Exports#itemreturns)<`ResolveReturn`<`T`, typeof [`Video`](Library_Exports.Video)\>, typeof [`Video`](Library_Exports.Video)\>\>
+`Promise`\<`ResolveReturn`\<`T`, typeof [`Video`](Library_Exports.Video)\> extends `any`[] ? [`Video`](Library_Exports.Video)[] : [`Video`](Library_Exports.Video)\>
 
 #### Defined in
 
-[index.ts:189](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L189)
+[index.ts:213](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L213)
 
 ___
 
 ### getVideoComments
 
-▸ **getVideoComments**(`videoResolvable`, `pageOptions?`, `order?`, `parts?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Comment`](Library_Exports.Comment)\>\>
+▸ **getVideoComments**(`videoResolvable`, `pageOptions?`, `order?`, `parts?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Comment`](Library_Exports.Comment)\>\>
 
 Get `maxPerPage * pages` [`Comment`](./Library_Exports.Comment)s from a [`Video`](./Library_Exports.Video).
 Used mostly internally with [`Video.fetchComments()`](./Library_Exports.Video#fetchcomments).
@@ -509,13 +509,13 @@ Used mostly internally with [`Video.fetchComments()`](./Library_Exports.Video#fe
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Comment`](Library_Exports.Comment)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Comment`](Library_Exports.Comment)\>\>
 
 An object containing page token information for future requests and **comment objects**.
 
 #### Defined in
 
-[index.ts:294](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L294)
+[index.ts:329](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L329)
 
 ___
 
@@ -529,13 +529,13 @@ ___
 
 #### Defined in
 
-[index.ts:384](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L384)
+[index.ts:419](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L419)
 
 ___
 
 ### search
 
-▸ **search**<`T`\>(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<`InstanceType`<`T`\>\>\>
+▸ **search**\<`T`\>(`searchTerm`, `searchOptions?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<`InstanceType`\<`T`\>\>\>
 
 Search supported entities on YouTube.
 
@@ -550,21 +550,21 @@ Search supported entities on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`GenericSearchOptions`](../modules/Library_Exports#genericsearchoptions)<`T`\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
+| `searchOptions?` | [`GenericSearchOptions`](../modules/Library_Exports#genericsearchoptions)\<`T`\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<`InstanceType`<`T`\>\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<`InstanceType`\<`T`\>\>\>
 
 #### Defined in
 
-[index.ts:146](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L146)
+[index.ts:167](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L167)
 
 ___
 
 ### searchChannels
 
-▸ **searchChannels**(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Channel`](Library_Exports.Channel)\>\>
+▸ **searchChannels**(`searchTerm`, `searchOptions?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Channel`](Library_Exports.Channel)\>\>
 
 Search channels on YouTube.
 
@@ -573,21 +573,21 @@ Search channels on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`EntitySearchOptions`](../modules/Library_Exports#entitysearchoptions)<typeof [`Channel`](Library_Exports.Channel)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
+| `searchOptions?` | [`EntitySearchOptions`](../modules/Library_Exports#entitysearchoptions)\<typeof [`Channel`](Library_Exports.Channel)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Channel`](Library_Exports.Channel)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Channel`](Library_Exports.Channel)\>\>
 
 #### Defined in
 
-[index.ts:169](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L169)
+[index.ts:190](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L190)
 
 ___
 
 ### searchPlaylists
 
-▸ **searchPlaylists**(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
+▸ **searchPlaylists**(`searchTerm`, `searchOptions?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>\>
 
 Search playlists on YouTube.
 
@@ -596,21 +596,21 @@ Search playlists on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`EntitySearchOptions`](../modules/Library_Exports#entitysearchoptions)<typeof [`Playlist`](Library_Exports.Playlist)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
+| `searchOptions?` | [`EntitySearchOptions`](../modules/Library_Exports#entitysearchoptions)\<typeof [`Playlist`](Library_Exports.Playlist)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Playlist`](Library_Exports.Playlist)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Playlist`](Library_Exports.Playlist)\>\>
 
 #### Defined in
 
-[index.ts:180](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L180)
+[index.ts:201](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L201)
 
 ___
 
 ### searchVideos
 
-▸ **searchVideos**(`searchTerm`, `searchOptions?`): `Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>\>
+▸ **searchVideos**(`searchTerm`, `searchOptions?`): `Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Video`](Library_Exports.Video)\>\>
 
 Search videos on YouTube.
 
@@ -619,15 +619,15 @@ Search videos on YouTube.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `searchTerm` | `string` | What to search for on YouTube. |
-| `searchOptions?` | [`EntitySearchOptions`](../modules/Library_Exports#entitysearchoptions)<typeof [`Video`](Library_Exports.Video)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
+| `searchOptions?` | [`EntitySearchOptions`](../modules/Library_Exports#entitysearchoptions)\<typeof [`Video`](Library_Exports.Video)\> | Options related to the search including search filters, the number of pages, maximum number of results per page, and starting page token. Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you'd like. |
 
 #### Returns
 
-`Promise`<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)<[`Video`](Library_Exports.Video)\>\>
+`Promise`\<[`PaginatedResponse`](../modules/Library_Exports#paginatedresponse)\<[`Video`](Library_Exports.Video)\>\>
 
 #### Defined in
 
-[index.ts:158](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L158)
+[index.ts:179](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L179)
 
 ___
 
@@ -647,4 +647,4 @@ ___
 
 #### Defined in
 
-[index.ts:388](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L388)
+[index.ts:423](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L423)

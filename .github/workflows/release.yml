@@ -10,22 +10,22 @@ jobs:
     name: Publish documenation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
       with:
         ref: 'release'
     - name: Set git user
       run: |
           git config --global user.name "Brandon Bothell"
           git config --global user.email "bothellbrandon@gmail.com"
-    - uses: actions/setup-node@v3.8.2
+    - uses: actions/setup-node@v6
       with:
-        node-version: '20.5.0'
+        node-version: '20.19.5'
     - name: Build Docs
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: docs:build
     - name: Publish Docs
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: docs:publish
       env:
@@ -35,16 +35,16 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3.8.2
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v6
       with:
-        node-version: '20.5.0'
+        node-version: '20.19.5'
     - name: Build Source and Typings
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: build
     - name: Publish Package
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         cmd: npm publish
       env:

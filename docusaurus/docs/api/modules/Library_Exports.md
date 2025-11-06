@@ -19,7 +19,12 @@ custom_edit_url: null
 - [Video](../classes/Library_Exports.Video)
 - [VideoAbuseReportReason](../classes/Library_Exports.VideoAbuseReportReason)
 - [VideoCategory](../classes/Library_Exports.VideoCategory)
+- [VideoRating](../classes/Library_Exports.VideoRating)
 - [YouTube](../classes/Library_Exports.YouTube)
+
+## Interfaces
+
+- [IDEntity](../interfaces/Library_Exports.IDEntity)
 
 ## References
 
@@ -42,7 +47,7 @@ Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 #### Defined in
 
-[types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Util.ts#L44)
+[types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Util.ts#L44)
 
 ___
 
@@ -71,7 +76,7 @@ ___
 
 #### Defined in
 
-[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Banners.ts#L1)
+[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Banners.ts#L1)
 
 ___
 
@@ -83,7 +88,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `channel?` | { `country?`: `string` ; `defaultLanguage?`: `string` ; `defaultTab?`: `string` ; `description?`: `string` ; `featuredChannelsTitle?`: `string` ; `featuredChannelsUrls?`: `string`[] ; `keywords?`: `string` ; `moderateComments?`: `boolean` ; `profileColor?`: `string` ; `showBrowseView?`: `boolean` ; `showRelatedChannels?`: `boolean` ; `trackingAnalyticsAccountId?`: `string` ; `unsubscribedTrailer?`: `string`  } |
+| `channel?` | \{ `country?`: `string` ; `defaultLanguage?`: `string` ; `defaultTab?`: `string` ; `description?`: `string` ; `featuredChannelsTitle?`: `string` ; `featuredChannelsUrls?`: `string`[] ; `keywords?`: `string` ; `moderateComments?`: `boolean` ; `profileColor?`: `string` ; `showBrowseView?`: `boolean` ; `showRelatedChannels?`: `boolean` ; `trackingAnalyticsAccountId?`: `string` ; `unsubscribedTrailer?`: `string`  } |
 | `channel.country?` | `string` |
 | `channel.defaultLanguage?` | `string` |
 | `channel.defaultTab?` | `string` |
@@ -97,14 +102,14 @@ ___
 | `channel.showRelatedChannels?` | `boolean` |
 | `channel.trackingAnalyticsAccountId?` | `string` |
 | `channel.unsubscribedTrailer?` | `string` |
-| `image?` | { `bannerExternalUrl?`: `string` ; `trackingImageUrl?`: `string` ; `watchIconImageUrl?`: `string`  } |
+| `image?` | \{ `bannerExternalUrl?`: `string` ; `trackingImageUrl?`: `string` ; `watchIconImageUrl?`: `string`  } |
 | `image.bannerExternalUrl?` | `string` |
 | `image.trackingImageUrl?` | `string` |
 | `image.watchIconImageUrl?` | `string` |
 
 #### Defined in
 
-[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/BrandingSettings.ts#L1)
+[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/BrandingSettings.ts#L1)
 
 ___
 
@@ -114,7 +119,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L17)
+[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L17)
 
 ___
 
@@ -126,7 +131,7 @@ A URL, ID, search query, or object of a channel.
 
 #### Defined in
 
-[types/Resolvable.ts:33](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L33)
+[types/Resolutions.ts:37](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L37)
 
 ___
 
@@ -142,7 +147,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:128](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L128)
+[types/RetrievalService.ts:147](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L147)
 
 ___
 
@@ -152,7 +157,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L36)
+[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L36)
 
 ___
 
@@ -162,7 +167,7 @@ ___
 
 #### Defined in
 
-[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/ChannelSectionType.ts#L1)
+[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/ChannelSectionType.ts#L1)
 
 ___
 
@@ -172,7 +177,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L32)
+[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L32)
 
 ___
 
@@ -184,7 +189,7 @@ An ID or object of a comment.
 
 #### Defined in
 
-[types/Resolvable.ts:43](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L43)
+[types/Resolutions.ts:47](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L47)
 
 ___
 
@@ -194,13 +199,13 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L40)
+[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L40)
 
 ___
 
 ### EntitySearchOptions
 
-Ƭ **EntitySearchOptions**<`T`\>: `Object`
+Ƭ **EntitySearchOptions**\<`T`\>: `Object`
 
 #### Type parameters
 
@@ -213,17 +218,17 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `pageOptions?` | [`PageOptions`](Library_Exports#pageoptions) |
-| `searchFilters?` | `Omit`<[`SearchFilters`](Library_Exports#searchfilters)<`T`\>, ``"types"``\> |
+| `searchFilters?` | `Omit`\<[`SearchFilters`](Library_Exports#searchfilters)\<`T`\>, ``"types"``\> |
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:92](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L92)
+[types/RetrievalService.ts:111](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L111)
 
 ___
 
 ### GenericSearchOptions
 
-Ƭ **GenericSearchOptions**<`T`\>: `Object`
+Ƭ **GenericSearchOptions**\<`T`\>: `Object`
 
 #### Type parameters
 
@@ -236,11 +241,11 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `pageOptions?` | [`PageOptions`](Library_Exports#pageoptions) |
-| `searchFilters?` | [`SearchFilters`](Library_Exports#searchfilters)<`T`\> |
+| `searchFilters?` | [`SearchFilters`](Library_Exports#searchfilters)\<`T`\> |
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:87](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L87)
+[types/RetrievalService.ts:106](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L106)
 
 ___
 
@@ -257,13 +262,13 @@ ___
 
 #### Defined in
 
-[types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Util.ts#L46)
+[types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Util.ts#L46)
 
 ___
 
 ### ItemReturns
 
-Ƭ **ItemReturns**<`T`, `K`\>: `T` extends `any`[] ? `InstanceType`<`K`\>[] : `InstanceType`<`K`\>
+Ƭ **ItemReturns**\<`T`, `K`, `M`\>: `M` extends ``true`` ? `InstanceType`\<`K`\> : `T` extends `any`[] ? `InstanceType`\<`K`\>[] : `InstanceType`\<`K`\>
 
 #### Type parameters
 
@@ -271,10 +276,11 @@ ___
 | :------ | :------ |
 | `T` | extends `any` \| `any`[] |
 | `K` | extends [`ItemTypes`](Library_Exports#itemtypes) |
+| `M` | extends `boolean` |
 
 #### Defined in
 
-[types/GetItem.ts:7](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetItem.ts#L7)
+[types/RetrievalService.ts:13](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L13)
 
 ___
 
@@ -284,7 +290,7 @@ ___
 
 #### Defined in
 
-[types/GetItem.ts:5](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetItem.ts#L5)
+[types/RetrievalService.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L11)
 
 ___
 
@@ -302,23 +308,23 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:63](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L63)
+[types/RetrievalService.ts:82](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L82)
 
 ___
 
 ### PaginatedInstance
 
-Ƭ **PaginatedInstance**: `InstanceType`<[`PaginatedType`](Library_Exports#paginatedtype)\>
+Ƭ **PaginatedInstance**: `InstanceType`\<[`PaginatedType`](Library_Exports#paginatedtype)\>
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:27](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L27)
+[types/RetrievalService.ts:44](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L44)
 
 ___
 
 ### PaginatedResponse
 
-Ƭ **PaginatedResponse**<`T`\>: `Object`
+Ƭ **PaginatedResponse**\<`T`\>: `Object`
 
 #### Type parameters
 
@@ -336,7 +342,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:69](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L69)
+[types/RetrievalService.ts:88](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L88)
 
 ___
 
@@ -346,7 +352,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:25](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L25)
+[types/RetrievalService.ts:42](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L42)
 
 ___
 
@@ -356,7 +362,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L38)
+[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L38)
 
 ___
 
@@ -366,7 +372,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L30)
+[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L30)
 
 ___
 
@@ -378,7 +384,7 @@ A URL, ID, search query, or object of a playlist.
 
 #### Defined in
 
-[types/Resolvable.ts:28](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L28)
+[types/Resolutions.ts:32](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L32)
 
 ___
 
@@ -394,13 +400,29 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:124](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L124)
+[types/RetrievalService.ts:143](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L143)
+
+___
+
+### ResolutionMap
+
+Ƭ **ResolutionMap**\<`T`\>: `Map`\<`T`, `Map`\<`string`, `CacheItem`\<[`Resolvable`](Library_Exports#resolvable)\<`T`\>\>\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `ResolvableClass` = `ResolvableClass` |
+
+#### Defined in
+
+[types/Resolutions.ts:10](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L10)
 
 ___
 
 ### Resolvable
 
-Ƭ **Resolvable**<`T`\>: `string` \| `InstanceType`<`T`\>
+Ƭ **Resolvable**\<`T`\>: `string` \| `InstanceType`\<`T`\>
 
 #### Type parameters
 
@@ -410,13 +432,13 @@ ___
 
 #### Defined in
 
-[types/Resolvable.ts:7](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L7)
+[types/Resolutions.ts:8](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L8)
 
 ___
 
 ### SearchFilters
 
-Ƭ **SearchFilters**<`T`\>: { `order?`: ``"date"`` \| ``"rating"`` \| ``"relevance"`` \| ``"title"`` \| ``"videoCount"`` \| ``"viewCount"`` ; `types?`: `T`[]  } & `T` extends typeof [`Video`](../classes/Library_Exports.Video) ? [`VideoSearchOptions`](Library_Exports#videosearchoptions) : `T` extends typeof [`Playlist`](../classes/Library_Exports.Playlist) ? [`PlaylistSearchOptions`](Library_Exports#playlistsearchoptions) : `T` extends typeof [`Channel`](../classes/Library_Exports.Channel) ? [`ChannelSearchOptions`](Library_Exports#channelsearchoptions) : {}
+Ƭ **SearchFilters**\<`T`\>: \{ `order?`: ``"date"`` \| ``"rating"`` \| ``"relevance"`` \| ``"title"`` \| ``"videoCount"`` \| ``"viewCount"`` ; `types?`: `T`[]  } & `T` extends typeof [`Video`](../classes/Library_Exports.Video) ? [`VideoSearchOptions`](Library_Exports#videosearchoptions) : `T` extends typeof [`Playlist`](../classes/Library_Exports.Playlist) ? [`PlaylistSearchOptions`](Library_Exports#playlistsearchoptions) : `T` extends typeof [`Channel`](../classes/Library_Exports.Channel) ? [`ChannelSearchOptions`](Library_Exports#channelsearchoptions) : {}
 
 #### Type parameters
 
@@ -426,7 +448,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:79](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L79)
+[types/RetrievalService.ts:98](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L98)
 
 ___
 
@@ -436,7 +458,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:77](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L77)
+[types/RetrievalService.ts:96](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L96)
 
 ___
 
@@ -446,7 +468,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L34)
+[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L34)
 
 ___
 
@@ -458,7 +480,7 @@ An ID or object of a subscription.
 
 #### Defined in
 
-[types/Resolvable.ts:48](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L48)
+[types/Resolutions.ts:52](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L52)
 
 ___
 
@@ -476,7 +498,7 @@ ___
 
 #### Defined in
 
-[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Thumbnail.ts#L1)
+[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Thumbnail.ts#L1)
 
 ___
 
@@ -488,7 +510,7 @@ An ID or object of a video category.
 
 #### Defined in
 
-[types/Resolvable.ts:38](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L38)
+[types/Resolutions.ts:42](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L42)
 
 ___
 
@@ -498,7 +520,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Parts.ts#L1)
+[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Parts.ts#L1)
 
 ___
 
@@ -510,7 +532,7 @@ A URL, ID, search query, or object of a video.
 
 #### Defined in
 
-[types/Resolvable.ts:23](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/Resolvable.ts#L23)
+[types/Resolutions.ts:27](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L27)
 
 ___
 
@@ -533,7 +555,7 @@ ___
 
 #### Defined in
 
-[types/GetPaginatedItems.ts:104](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetPaginatedItems.ts#L104)
+[types/RetrievalService.ts:123](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L123)
 
 ___
 
@@ -546,16 +568,16 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `id` | `string` |
-| `localizations?` | { `[key: string]`: { `description`: `string` ; `title`: `string`  };  } |
-| `recordingDetails?` | { `recordingDate?`: `Date` \| `string`  } |
+| `localizations?` | \{ `[key: string]`: \{ `description`: `string` ; `title`: `string`  };  } |
+| `recordingDetails?` | \{ `recordingDate?`: `Date` \| `string`  } |
 | `recordingDetails.recordingDate?` | `Date` \| `string` |
-| `snippet?` | { `categoryId`: `string` ; `defaultLanguage?`: `string` ; `description?`: `string` ; `tags?`: `string`[] \| `string` ; `title`: `string`  } |
+| `snippet?` | \{ `categoryId`: `string` ; `defaultLanguage?`: `string` ; `description?`: `string` ; `tags?`: `string`[] \| `string` ; `title`: `string`  } |
 | `snippet.categoryId` | `string` |
 | `snippet.defaultLanguage?` | `string` |
 | `snippet.description?` | `string` |
 | `snippet.tags?` | `string`[] \| `string` |
 | `snippet.title` | `string` |
-| `status?` | { `embeddable?`: `boolean` ; `license?`: ``"creativeCommon"`` \| ``"youtube"`` ; `privacyStatus?`: ``"private"`` \| ``"public"`` \| ``"unlisted"`` ; `publicStatsViewable?`: `boolean` ; `publishAt?`: `Date` \| `string` ; `selfDeclaredMadeForKids?`: `boolean`  } |
+| `status?` | \{ `embeddable?`: `boolean` ; `license?`: ``"creativeCommon"`` \| ``"youtube"`` ; `privacyStatus?`: ``"private"`` \| ``"public"`` \| ``"unlisted"`` ; `publicStatsViewable?`: `boolean` ; `publishAt?`: `Date` \| `string` ; `selfDeclaredMadeForKids?`: `boolean`  } |
 | `status.embeddable?` | `boolean` |
 | `status.license?` | ``"creativeCommon"`` \| ``"youtube"`` |
 | `status.privacyStatus?` | ``"private"`` \| ``"public"`` \| ``"unlisted"`` |
@@ -565,7 +587,7 @@ ___
 
 #### Defined in
 
-[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/VideoUpdateResource.ts#L1)
+[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/VideoUpdateResource.ts#L1)
 
 ___
 
@@ -585,14 +607,14 @@ ___
 
 #### Defined in
 
-[index.ts:394](https://github.com/brandonbothell/popyt/blob/fb05585/src/index.ts#L394)
+[index.ts:429](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/index.ts#L429)
 
 ## Variables
 
 ### GETTABLE\_CLASSES
 
-• `Const` **GETTABLE\_CLASSES**: (typeof [`Video`](../classes/Library_Exports.Video) \| typeof [`Channel`](../classes/Library_Exports.Channel) \| typeof [`Playlist`](../classes/Library_Exports.Playlist) \| typeof [`Comment`](../classes/Library_Exports.Comment) \| typeof [`Subscription`](../classes/Library_Exports.Subscription) \| typeof [`VideoCategory`](../classes/Library_Exports.VideoCategory) \| typeof [`ChannelSection`](../classes/Library_Exports.ChannelSection) \| typeof [`Caption`](../classes/Library_Exports.Caption))[]
+• `Const` **GETTABLE\_CLASSES**: (typeof [`Video`](../classes/Library_Exports.Video) \| typeof [`Playlist`](../classes/Library_Exports.Playlist) \| typeof [`Channel`](../classes/Library_Exports.Channel) \| typeof [`VideoCategory`](../classes/Library_Exports.VideoCategory) \| typeof [`Comment`](../classes/Library_Exports.Comment) \| typeof [`Subscription`](../classes/Library_Exports.Subscription) \| typeof [`Caption`](../classes/Library_Exports.Caption) \| typeof [`ChannelSection`](../classes/Library_Exports.ChannelSection) \| typeof [`VideoRating`](../classes/Library_Exports.VideoRating))[]
 
 #### Defined in
 
-[types/GetItem.ts:3](https://github.com/brandonbothell/popyt/blob/fb05585/src/types/GetItem.ts#L3)
+[types/RetrievalService.ts:7](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/RetrievalService.ts#L7)
