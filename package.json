@@ -65,7 +65,7 @@
     "mocha": "10.2.0",
     "nyc": "15.1.0",
     "source-map-support": "0.5.21",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "tsx": "^4.20.6",
     "typescript": "5.1.6"
   },
@@ -83,7 +83,7 @@
     "source-map-support@0.5.21": {
       "unplugged": true
     },
-    "ts-node@10.9.1": {
+    "ts-node@10.9.2": {
       "unplugged": true
     }
   }
