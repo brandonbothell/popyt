@@ -37,7 +37,7 @@ const RAW_RUNTIME_STATE =
           ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
           ["@types/chai", "npm:4.3.10"],\
           ["@types/gulp", "npm:4.0.16"],\
-          ["@types/gulp-sourcemaps", "npm:0.0.37"],\
+          ["@types/gulp-sourcemaps", "npm:0.0.38"],\
           ["@types/merge2", "npm:1.4.3"],\
           ["@types/mocha", "npm:10.0.3"],\
           ["@types/node", "npm:20.9.0"],\
@@ -5372,10 +5372,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/gulp-sourcemaps", [\
-      ["npm:0.0.37", {\
-        "packageLocation": "./.yarn/cache/@types-gulp-sourcemaps-npm-0.0.37-e17fe6ef54-38f47dc297.zip/node_modules/@types/gulp-sourcemaps/",\
+      ["npm:0.0.38", {\
+        "packageLocation": "./.yarn/cache/@types-gulp-sourcemaps-npm-0.0.38-7cc68189d1-a840c302c2.zip/node_modules/@types/gulp-sourcemaps/",\
         "packageDependencies": [\
-          ["@types/gulp-sourcemaps", "npm:0.0.37"],\
+          ["@types/gulp-sourcemaps", "npm:0.0.38"],\
           ["@types/node", "npm:20.4.2"],\
           ["@types/vinyl", "npm:2.0.7"]\
         ],\
@@ -13906,7 +13906,7 @@ const RAW_RUNTIME_STATE =
           ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
           ["@types/chai", "npm:4.3.10"],\
           ["@types/gulp", "npm:4.0.16"],\
-          ["@types/gulp-sourcemaps", "npm:0.0.37"],\
+          ["@types/gulp-sourcemaps", "npm:0.0.38"],\
           ["@types/merge2", "npm:1.4.3"],\
           ["@types/mocha", "npm:10.0.3"],\
           ["@types/node", "npm:20.9.0"],\
