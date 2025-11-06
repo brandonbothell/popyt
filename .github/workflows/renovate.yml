@@ -13,7 +13,7 @@ jobs:
     #   run: |
     #       git config --global user.name "Brandon Bothell"
     #       git config --global user.email "bothellbrandon@gmail.com"
-    - uses: actions/setup-node@v3.8.2
+    - uses: actions/setup-node@v3.9.1
       with:
         node-version: '20.5.0'
     - name: Lint
