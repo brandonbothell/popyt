@@ -50,7 +50,7 @@
     "@types/chai": "4.3.10",
     "@types/gulp": "4.0.16",
     "@types/gulp-sourcemaps": "0.0.37",
-    "@types/merge2": "1.4.3",
+    "@types/merge2": "1.4.4",
     "@types/mocha": "10.0.3",
     "@types/node": "20.9.0",
     "@typescript-eslint/eslint-plugin": "6.13.0",
