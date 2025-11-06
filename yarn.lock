@@ -5961,7 +5961,7 @@ __metadata:
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     typedoc: "npm:0.24.8"
-    typedoc-plugin-markdown: "npm:3.17.0"
+    typedoc-plugin-markdown: "npm:3.17.1"
     typescript: "npm:5.1.6"
   languageName: unknown
   linkType: soft
@@ -13065,14 +13065,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-plugin-markdown@npm:3.17.0":
-  version: 3.17.0
-  resolution: "typedoc-plugin-markdown@npm:3.17.0"
+"typedoc-plugin-markdown@npm:3.17.1":
+  version: 3.17.1
+  resolution: "typedoc-plugin-markdown@npm:3.17.1"
   dependencies:
     handlebars: "npm:^4.7.7"
   peerDependencies:
     typedoc: ">=0.24.0"
-  checksum: 10/aaa4aadbf1a7bb0b6f20d3148f9e15c6e5bd3b2e51da6f6a44c063b87047a0ed1c895ea83a1ff59f322d9c8ed878f0b80ae3cc621751e257b94d6ff7f7a0f4f8
+  checksum: 10/21bfe7fba60e3c27e15700196b1b4abdf5b63bfdc9a4af57cf6f0891f9d359ac561435773709c6ea3555bae402b7a81b637d055e767afd33e2c0dc717d0449d2
   languageName: node
   linkType: hard
 
