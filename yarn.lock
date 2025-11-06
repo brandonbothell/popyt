@@ -2221,10 +2221,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/tsconfig@npm:0.0.0-5601":
-  version: 0.0.0-5601
-  resolution: "@docusaurus/tsconfig@npm:0.0.0-5601"
-  checksum: 10/c5ec80d30434e68481e796ea3268d3a3a026bc3accd46488724c71db12b6ba6a828eab7925d53cbf608a44ffd3c53389890c0b70f116e341c9ffd2dad3f42c96
+"@docusaurus/tsconfig@npm:0.0.0-6119":
+  version: 0.0.0-6119
+  resolution: "@docusaurus/tsconfig@npm:0.0.0-6119"
+  checksum: 10/240afe6022e9f3e8b5c7bef64c432b35ee7d215ce1ae6366d62336e7eb70f9483a9f298119b5e8d8cfaded85da7c337e276a90d16e29c0fab9117999eaac6727
   languageName: node
   linkType: hard
 
@@ -5950,7 +5950,7 @@ __metadata:
     "@docusaurus/preset-classic": "npm:2.4.3"
     "@docusaurus/theme-classic": "npm:2.4.3"
     "@docusaurus/theme-common": "npm:2.4.3"
-    "@docusaurus/tsconfig": "npm:0.0.0-5601"
+    "@docusaurus/tsconfig": "npm:0.0.0-6119"
     "@docusaurus/types": "npm:2.4.3"
     "@mdx-js/react": "npm:1.6.22"
     "@types/node": "npm:20.9.0"
