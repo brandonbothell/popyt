@@ -3356,12 +3356,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.9.0":
-  version: 20.9.0
-  resolution: "@types/node@npm:20.9.0"
+"@types/node@npm:20.19.25":
+  version: 20.19.25
+  resolution: "@types/node@npm:20.19.25"
   dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 10/a934f7645ed117a27857147403b0c657ffbca578c8f280e4c21d27dfb43e58dc4f24c4319d4335b8a4fa08e28fb2dc905a5bd5e4bc8878047164c56c1b162139
+    undici-types: "npm:~6.21.0"
+  checksum: 10/f0ed863599da289df5838380e211f9e010414dc7df8127b79f6a7eeca80a8d6e3daf3e58ddad1884f8dfafd17c16b02f56cee1689b7ebdf5df6d0e5770165ac1
   languageName: node
   linkType: hard
 
@@ -5953,7 +5953,7 @@ __metadata:
     "@docusaurus/tsconfig": "npm:0.0.0-5601"
     "@docusaurus/types": "npm:2.4.3"
     "@mdx-js/react": "npm:1.6.22"
-    "@types/node": "npm:20.9.0"
+    "@types/node": "npm:20.19.25"
     "@types/react": "npm:18.2.35"
     clsx: "npm:2.0.0"
     docusaurus-plugin-typedoc: "npm:0.19.2"
@@ -10490,7 +10490,7 @@ __metadata:
     "@types/gulp-sourcemaps": "npm:0.0.37"
     "@types/merge2": "npm:1.4.3"
     "@types/mocha": "npm:10.0.3"
-    "@types/node": "npm:20.9.0"
+    "@types/node": "npm:20.19.25"
     "@typescript-eslint/eslint-plugin": "npm:6.13.0"
     "@typescript-eslint/parser": "npm:6.13.0"
     chai: "npm:4.3.10"
@@ -13140,10 +13140,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~5.26.4":
-  version: 5.26.5
-  resolution: "undici-types@npm:5.26.5"
-  checksum: 10/0097779d94bc0fd26f0418b3a05472410408877279141ded2bd449167be1aed7ea5b76f756562cb3586a07f251b90799bab22d9019ceba49c037c76445f7cddd
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10/ec8f41aa4359d50f9b59fa61fe3efce3477cc681908c8f84354d8567bb3701fafdddf36ef6bff307024d3feb42c837cf6f670314ba37fc8145e219560e473d14
   languageName: node
   linkType: hard
 
