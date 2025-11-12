@@ -40,7 +40,7 @@ const RAW_RUNTIME_STATE =
           ["@types/gulp-sourcemaps", "npm:0.0.37"],\
           ["@types/merge2", "npm:1.4.3"],\
           ["@types/mocha", "npm:10.0.3"],\
-          ["@types/node", "npm:20.9.0"],\
+          ["@types/node", "npm:20.19.25"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
           ["chai", "npm:4.3.10"],\
@@ -5530,18 +5530,18 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:20.19.25", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-20.19.25-db2be37769-f0ed863599.zip/node_modules/@types/node/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:20.19.25"],\
+          ["undici-types", "npm:6.21.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:20.4.2", {\
         "packageLocation": "./.yarn/cache/@types-node-npm-20.4.2-0b33863e43-d013c11ea2.zip/node_modules/@types/node/",\
         "packageDependencies": [\
           ["@types/node", "npm:20.4.2"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:20.9.0", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-20.9.0-d5b5fa6634-a934f7645e.zip/node_modules/@types/node/",\
-        "packageDependencies": [\
-          ["@types/node", "npm:20.9.0"],\
-          ["undici-types", "npm:5.26.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8774,7 +8774,7 @@ const RAW_RUNTIME_STATE =
           ["@docusaurus/tsconfig", "npm:0.0.0-5601"],\
           ["@docusaurus/types", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.3"],\
           ["@mdx-js/react", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.6.22"],\
-          ["@types/node", "npm:20.9.0"],\
+          ["@types/node", "npm:20.19.25"],\
           ["@types/react", "npm:18.2.35"],\
           ["clsx", "npm:2.0.0"],\
           ["docusaurus", "workspace:docusaurus"],\
@@ -13909,7 +13909,7 @@ const RAW_RUNTIME_STATE =
           ["@types/gulp-sourcemaps", "npm:0.0.37"],\
           ["@types/merge2", "npm:1.4.3"],\
           ["@types/mocha", "npm:10.0.3"],\
-          ["@types/node", "npm:20.9.0"],\
+          ["@types/node", "npm:20.19.25"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
           ["chai", "npm:4.3.10"],\
@@ -17244,7 +17244,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.11"],\
           ["@tsconfig/node14", "npm:1.0.3"],\
           ["@tsconfig/node16", "npm:1.0.4"],\
-          ["@types/node", "npm:20.9.0"],\
+          ["@types/node", "npm:20.19.25"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
@@ -17509,10 +17509,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["undici-types", [\
-      ["npm:5.26.5", {\
-        "packageLocation": "./.yarn/cache/undici-types-npm-5.26.5-de4f7c7bb9-0097779d94.zip/node_modules/undici-types/",\
+      ["npm:6.21.0", {\
+        "packageLocation": "./.yarn/cache/undici-types-npm-6.21.0-eb2b0ed56a-ec8f41aa43.zip/node_modules/undici-types/",\
         "packageDependencies": [\
-          ["undici-types", "npm:5.26.5"]\
+          ["undici-types", "npm:6.21.0"]\
         ],\
         "linkType": "HARD"\
       }]\
