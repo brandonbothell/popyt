@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L11)
+[oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L11)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L11)
+[oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L11)
 
 ## Methods
 
@@ -57,7 +57,7 @@ Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized use
 
 #### Defined in
 
-[oauth/channels.ts:159](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L159)
+[oauth/channels.ts:159](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L159)
 
 ___
 
@@ -79,7 +79,7 @@ Deletes a [ChannelSection](./Library_Exports.ChannelSection#).
 
 #### Defined in
 
-[oauth/channels.ts:249](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L249)
+[oauth/channels.ts:249](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L249)
 
 ___
 
@@ -102,7 +102,7 @@ Sets a channel as made for kids or not made for kids.
 
 #### Defined in
 
-[oauth/channels.ts:69](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L69)
+[oauth/channels.ts:69](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L69)
 
 ___
 
@@ -128,7 +128,7 @@ Sets a channel's watermark.
 
 #### Defined in
 
-[oauth/channels.ts:96](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L96)
+[oauth/channels.ts:96](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L96)
 
 ___
 
@@ -152,7 +152,7 @@ A partial subscription object.
 
 #### Defined in
 
-[oauth/channels.ts:262](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L262)
+[oauth/channels.ts:262](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L262)
 
 ___
 
@@ -174,7 +174,7 @@ Unsets a channel's watermark.
 
 #### Defined in
 
-[oauth/channels.ts:124](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L124)
+[oauth/channels.ts:124](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L124)
 
 ___
 
@@ -196,7 +196,7 @@ Unsubscribe from a [Channel](./Library_Exports.Channel#).
 
 #### Defined in
 
-[oauth/channels.ts:282](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L282)
+[oauth/channels.ts:282](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L282)
 
 ___
 
@@ -221,7 +221,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L20)
+[oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L20)
 
 ___
 
@@ -247,7 +247,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[oauth/channels.ts:45](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L45)
+[oauth/channels.ts:45](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L45)
 
 ___
 
@@ -276,7 +276,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[oauth/channels.ts:214](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L214)
+[oauth/channels.ts:214](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L214)
 
 ___
 
@@ -302,4 +302,4 @@ in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
 
 #### Defined in
 
-[oauth/channels.ts:141](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/channels.ts#L141)
+[oauth/channels.ts:141](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/channels.ts#L141)

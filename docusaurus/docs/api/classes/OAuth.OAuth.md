@@ -24,7 +24,7 @@ Use `YouTube.oauth` to access these methods.
 
 #### Defined in
 
-[oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L56)
+[oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L56)
 
 ## Properties
 
@@ -36,7 +36,7 @@ All OAuth methods related to [captions](./Library_Exports.Caption).
 
 #### Defined in
 
-[oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L50)
+[oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L50)
 
 ___
 
@@ -48,7 +48,7 @@ All OAuth methods related to [channels](./Library_Exports.Channel).
 
 #### Defined in
 
-[oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L45)
+[oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L45)
 
 ___
 
@@ -60,7 +60,7 @@ All OAuth methods related to [comments](./Library_Exports.Comment).
 
 #### Defined in
 
-[oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L29)
+[oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L29)
 
 ___
 
@@ -73,7 +73,7 @@ All OAuth methods related to
 
 #### Defined in
 
-[oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L40)
+[oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L40)
 
 ___
 
@@ -85,7 +85,7 @@ All OAuth methods related to [videos](./Library_Exports.Video)/video ratings.
 
 #### Defined in
 
-[oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L34)
+[oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L34)
 
 ___
 
@@ -95,7 +95,7 @@ ___
 
 #### Defined in
 
-[oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L24)
+[oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L24)
 
 ## Methods
 
@@ -117,7 +117,7 @@ Gets the authorized user's [Channel](./Library_Exports.Channel#).
 
 #### Defined in
 
-[oauth/index.ts:72](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L72)
+[oauth/index.ts:72](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L72)
 
 ___
 
@@ -139,7 +139,7 @@ Gets the authorized user's [ChannelSection](./Library_Exports.ChannelSection)s.
 
 #### Defined in
 
-[oauth/index.ts:134](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L134)
+[oauth/index.ts:134](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L134)
 
 ___
 
@@ -162,7 +162,7 @@ Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.
 
 #### Defined in
 
-[oauth/index.ts:122](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L122)
+[oauth/index.ts:122](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L122)
 
 ___
 
@@ -185,7 +185,7 @@ Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.
 
 #### Defined in
 
-[oauth/index.ts:105](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L105)
+[oauth/index.ts:105](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L105)
 
 ___
 
@@ -212,4 +212,4 @@ fetch the full objects while not spamming your quota like you would using a loop
 
 #### Defined in
 
-[oauth/index.ts:88](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/index.ts#L88)
+[oauth/index.ts:88](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/index.ts#L88)

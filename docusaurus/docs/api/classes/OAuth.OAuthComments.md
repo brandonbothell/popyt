@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L11)
+[oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L11)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L11)
+[oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L11)
 
 ## Methods
 
@@ -53,7 +53,7 @@ Deletes a [Comment](./Library_Exports.Comment#).
 
 #### Defined in
 
-[oauth/comments.ts:126](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L126)
+[oauth/comments.ts:126](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L126)
 
 ___
 
@@ -76,7 +76,7 @@ Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Vide
 
 #### Defined in
 
-[oauth/comments.ts:65](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L65)
+[oauth/comments.ts:65](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L65)
 
 ___
 
@@ -98,7 +98,7 @@ Marks a [Comment](./Library_Exports.Comment#) as spam.
 
 #### Defined in
 
-[oauth/comments.ts:86](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L86)
+[oauth/comments.ts:86](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L86)
 
 ___
 
@@ -122,7 +122,7 @@ Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Vide
 
 #### Defined in
 
-[oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L20)
+[oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L20)
 
 ___
 
@@ -145,7 +145,7 @@ Replies to a [Comment](./Library_Exports.Comment#).
 
 #### Defined in
 
-[oauth/comments.ts:46](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L46)
+[oauth/comments.ts:46](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L46)
 
 ___
 
@@ -169,4 +169,4 @@ Sets the moderation status of a [Comment](./Library_Exports.Comment#)
 
 #### Defined in
 
-[oauth/comments.ts:100](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/oauth/comments.ts#L100)
+[oauth/comments.ts:100](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/comments.ts#L100)

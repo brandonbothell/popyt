@@ -19,4 +19,4 @@ custom_edit_url: null
 
 #### Defined in
 
-[types/Resolutions.ts:55](https://github.com/brandonbothell/popyt/blob/85eb6fd/src/types/Resolutions.ts#L55)
+[types/Resolutions.ts:55](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L55)
