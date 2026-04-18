@@ -54,11 +54,10 @@ export default function CodeBlock ({
 
 export function CodeSandboxText (): JSX.Element {
   return (
-    <text><Svg role="img" style={{
-      width: '15',
-      height: '15',
-      verticalAlign: 'middle',
-      marginRight: '1px'
+    <text><Svg role="img" width={15} height={15} style={{
+      verticalAlign: '-.1em',
+      marginRight: '2px',
+      marginLeft: '1px'
     }} />CodeSandbox</text>
   )
 }
