@@ -1,14 +1,14 @@
 # Popyt
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
-[![GitHub issues](https://img.shields.io/github/issues/brandonbothell/popyt.svg)](https://github.com/brandonbothell/popyt/issues)
-[![GitHub stars](https://img.shields.io/github/stars/brandonbothell/popyt.svg)](https://github.com/brandonbothell/popyt/stargazers)
-[![GitHub license](https://img.shields.io/github/license/brandonbothell/popyt.svg)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/issues)
+[![GitHub stars](https://img.shields.io/github/stars/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/stargazers)
+[![GitHub license](https://img.shields.io/github/license/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
 [![Release coverage](https://codecov.io/gh/brandonbothell/popyt/branch/release/graph/badge.svg?token=OAV13MIW6S)](https://app.codecov.io/gh/brandonbothell/popyt/tree/release)
 [![Actions status](https://github.com/brandonbothell/popyt/workflows/Test/badge.svg)](https://github.com/brandonbothell/popyt/actions)
 [![DeepScan grade](https://deepscan.io/api/teams/21522/projects/24946/branches/772144/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21522&pid=24946&bid=772144)
-[![Downloads](https://img.shields.io/npm/dt/popyt.svg)](https://www.npmjs.com/package/popyt)
-[![Version](https://img.shields.io/npm/v/popyt.svg)](https://www.npmjs.com/package/popyt)
+[![Downloads](https://img.shields.io/npm/dt/popyt)](https://www.npmjs.com/package/popyt)
+[![Version](https://img.shields.io/npm/v/popyt)](https://www.npmjs.com/package/popyt)
 
 # Examples
 ## Try out the [5-minute tutorial](https://brandonbothell.github.io/popyt/docs/tutorial/intro) or the [example project](https://github.com/brandonbothell/popyt-example).
