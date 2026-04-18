@@ -29,9 +29,12 @@ describe('Comments', () => {
       .to.equal('The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter has disabled comments.')
   })
 
-  it('should not work with invalid videos', async () => {
-    expect(await youtube.getVideoComments('JSFSFDKFaVeryFakeVideoID').catch(error => error.message))
-      .to.equal('The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter could not be found.')
+  it('should work when searching comments by video title', async () => {
+    const comments = await youtube.getVideoComments('never gonna give you up')
+
+    expect(comments.items).to.be.an.instanceOf(Array)
+    expect(comments.items[0]).to.be.an.instanceOf(Comment)
+    expect(comments.nextPageToken).to.be.a('string')
   })
 
   it('should return an array with a length of <= maxPerPage', async () => {

@@ -3,7 +3,7 @@ import { Request } from '../src/util'
 import YouTube from '../src'
 import { expect } from 'chai'
 
-const testRequest = new Request('https://apichallenges.herokuapp.com/mirror/request/')
+const testRequest = new Request('https://httpbin.org/anything')
 
 describe('YouTube instance', () => {
   it('should set authorization', async () => {
@@ -15,7 +15,7 @@ describe('YouTube instance', () => {
       accept: 'application/json'
     })
 
-    expect(response.messageDetails.includes('Authorization: Bearer Another API key\n'))
+    expect(response.headers['Authorization']).to.equal('Bearer Another API key')
 
     youtube.setAuthorization({ apiKey: 'Fakest API Key Ever' })
     response = await youtube._request.get('', {
@@ -23,6 +23,6 @@ describe('YouTube instance', () => {
       accept: 'application/json'
     })
 
-    expect(response.messageDetails.includes('key: Fakest API Key Ever\n'))
+    expect(response.args['key']).to.equal('Fakest API Key Ever')
   })
 })

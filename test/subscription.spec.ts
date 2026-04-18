@@ -17,15 +17,17 @@ describe('Subscriptions', () => {
 
     expect(testSubscription.id).to.be.a('string')
     expect(testSubscription.subscriber.id).to.equal(subscriber?.id)
-    expect(testSubscription.activities).to.satisfy(a => a === 'all' || a === 'uploads')
-    expect(testSubscription.channel).to.satisfy(c => typeof c.id === 'string' && typeof c.name === 'string')
+    expect(testSubscription.activities).to.satisfy((a: typeof Subscription.prototype.activities) => a === 'all' || a === 'uploads')
+    expect(testSubscription.channel).to.satisfy((c: typeof Subscription.prototype.channel) => typeof c.id === 'string' && typeof c.name === 'string')
     expect(testSubscription.dateSubscribed).to.be.an.instanceOf(Date)
     expect(testSubscription.description).to.be.a('string')
     expect(testSubscription.full).to.equal(true)
-    expect(testSubscription.items).to.satisfy(i => typeof i.new === 'number' && typeof i.total === 'number')
-    expect(testSubscription.subscriber)
-      .to.satisfy(s => typeof s.id === 'string' && typeof s.name === 'string' && typeof s.description === 'string' && typeof s.thumbnails === 'object')
-    expect(testSubscription.thumbnails).to.satisfy(t => typeof t.default === 'object' && typeof t.medium === 'object' && typeof t.high === 'object')
+    expect(testSubscription.items).to.satisfy((i: typeof Subscription.prototype.items) => typeof i.new === 'number' && typeof i.total === 'number')
+
+    expect(testSubscription.subscriber).to.satisfy((s: typeof Subscription.prototype.subscriber) =>
+      typeof s.id === 'string' && typeof s.name === 'string' && typeof s.description === 'string' && typeof s.thumbnails === 'object')
+    expect(testSubscription.thumbnails).to.satisfy((t: typeof Subscription.prototype.thumbnails) =>
+      typeof t.default === 'object' && typeof t.medium === 'object' && typeof t.high === 'object')
     expect(testSubscription.title).to.be.a('string')
   })
 
@@ -34,7 +36,7 @@ describe('Subscriptions', () => {
 
     try {
       new Subscription(youtube, { kind: 'invalid' })
-    } catch (err) {
+    } catch (err: any) {
       error = err.message
     }
 

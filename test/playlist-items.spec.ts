@@ -12,9 +12,9 @@ if (!apiKey) {
 let playlist: Playlist
 
 describe('Playlist items', () => {
-  it('should reject if the playlist isn\'t found', async () => {
+  it('should reject if the playlist ID is invalid', async () => {
     expect(await youtube.getPlaylistItems('DSFDKLSDFaVeryFakePlaylistID')
-      .catch(error => error.message)).to.equal('The playlist identified with the request\'s <code>playlistId</code> parameter cannot be found.')
+      .catch(error => error.message)).to.equal('Invalid Value')
   })
 
   it('should reject if maxPerPage is > 50', async () => {
