@@ -21,7 +21,7 @@ export class Subscription {
    * The fields to request for this entity.
    */
   public static fields = 'items(kind,id,' +
-    'snippet(publishedAt,title,channelTitle,description,resourceId(channelId),channelId,thumbnails),' +
+    'snippet(publishedAt,title,description,resourceId(channelId),channelId,thumbnails),' +
     'contentDetails(newItemCount,totalItemCount,activityType),' +
     'subscriberSnippet(title,description,thumbnails))'
 
