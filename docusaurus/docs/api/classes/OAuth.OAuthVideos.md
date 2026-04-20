@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L11)
+[oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L11)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L11)
+[oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L11)
 
 ## Methods
 
@@ -53,7 +53,7 @@ Deletes a [Video](./Library_Exports.Video#).
 
 #### Defined in
 
-[oauth/videos.ts:116](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L116)
+[oauth/videos.ts:116](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L116)
 
 ___
 
@@ -81,7 +81,7 @@ Retrieve your rating on [Videos](./Library_Exports.Video#).
 
 #### Defined in
 
-[oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L33)
+[oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L33)
 
 ___
 
@@ -97,7 +97,7 @@ Gets a list of [VideoAbuseReportReason](./Library_Exports.VideoAbuseReportReason
 
 #### Defined in
 
-[oauth/videos.ts:188](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L188)
+[oauth/videos.ts:188](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L188)
 
 ___
 
@@ -120,7 +120,7 @@ Like, dislike, or remove a rating from a [Video](./Library_Exports.Video#).
 
 #### Defined in
 
-[oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L18)
+[oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L18)
 
 ___
 
@@ -146,7 +146,7 @@ Report a [Video](./Library_Exports.Video#) for abuse.
 
 #### Defined in
 
-[oauth/videos.ts:87](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L87)
+[oauth/videos.ts:87](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L87)
 
 ___
 
@@ -169,7 +169,7 @@ Sets a new [Thumbnail](../modules/Library_Exports#thumbnail) for a [Video](./Lib
 
 #### Defined in
 
-[oauth/videos.ts:172](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L172)
+[oauth/videos.ts:172](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L172)
 
 ___
 
@@ -193,4 +193,4 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[oauth/videos.ts:132](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/videos.ts#L132)
+[oauth/videos.ts:132](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/videos.ts#L132)

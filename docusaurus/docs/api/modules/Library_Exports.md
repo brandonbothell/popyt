@@ -47,7 +47,7 @@ Renames and re-exports [YouTube](../classes/Library_Exports.YouTube)
 
 #### Defined in
 
-[types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Util.ts#L44)
+[types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Util.ts#L44)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Banners.ts#L1)
+[types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Banners.ts#L1)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/BrandingSettings.ts#L1)
+[types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/BrandingSettings.ts#L1)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L17)
+[types/Parts.ts:17](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L17)
 
 ___
 
@@ -131,7 +131,7 @@ A URL, ID, search query, or object of a channel.
 
 #### Defined in
 
-[types/Resolutions.ts:37](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L37)
+[types/Resolutions.ts:37](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L37)
 
 ___
 
@@ -147,7 +147,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:147](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L147)
+[types/RetrievalService.ts:147](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L147)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L36)
+[types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L36)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/ChannelSectionType.ts#L1)
+[types/ChannelSectionType.ts:1](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/ChannelSectionType.ts#L1)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L32)
+[types/Parts.ts:32](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L32)
 
 ___
 
@@ -189,7 +189,7 @@ An ID or object of a comment.
 
 #### Defined in
 
-[types/Resolutions.ts:47](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L47)
+[types/Resolutions.ts:47](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L47)
 
 ___
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L40)
+[types/Parts.ts:40](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L40)
 
 ___
 
@@ -222,7 +222,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:111](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L111)
+[types/RetrievalService.ts:111](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L111)
 
 ___
 
@@ -245,7 +245,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:106](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L106)
+[types/RetrievalService.ts:106](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L106)
 
 ___
 
@@ -262,7 +262,7 @@ ___
 
 #### Defined in
 
-[types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Util.ts#L46)
+[types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Util.ts#L46)
 
 ___
 
@@ -280,7 +280,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:13](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L13)
+[types/RetrievalService.ts:13](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L13)
 
 ___
 
@@ -290,7 +290,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L11)
+[types/RetrievalService.ts:11](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L11)
 
 ___
 
@@ -308,7 +308,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:82](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L82)
+[types/RetrievalService.ts:82](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L82)
 
 ___
 
@@ -318,7 +318,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:44](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L44)
+[types/RetrievalService.ts:44](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L44)
 
 ___
 
@@ -342,7 +342,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:88](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L88)
+[types/RetrievalService.ts:88](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L88)
 
 ___
 
@@ -352,7 +352,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:42](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L42)
+[types/RetrievalService.ts:42](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L42)
 
 ___
 
@@ -362,7 +362,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L38)
+[types/Parts.ts:38](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L38)
 
 ___
 
@@ -372,7 +372,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L30)
+[types/Parts.ts:30](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L30)
 
 ___
 
@@ -384,7 +384,7 @@ A URL, ID, search query, or object of a playlist.
 
 #### Defined in
 
-[types/Resolutions.ts:32](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L32)
+[types/Resolutions.ts:32](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L32)
 
 ___
 
@@ -400,7 +400,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:143](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L143)
+[types/RetrievalService.ts:143](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L143)
 
 ___
 
@@ -416,7 +416,7 @@ ___
 
 #### Defined in
 
-[types/Resolutions.ts:10](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L10)
+[types/Resolutions.ts:10](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L10)
 
 ___
 
@@ -432,7 +432,7 @@ ___
 
 #### Defined in
 
-[types/Resolutions.ts:8](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L8)
+[types/Resolutions.ts:8](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L8)
 
 ___
 
@@ -448,7 +448,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:98](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L98)
+[types/RetrievalService.ts:98](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L98)
 
 ___
 
@@ -458,7 +458,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:96](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L96)
+[types/RetrievalService.ts:96](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L96)
 
 ___
 
@@ -468,7 +468,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L34)
+[types/Parts.ts:34](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L34)
 
 ___
 
@@ -480,7 +480,7 @@ An ID or object of a subscription.
 
 #### Defined in
 
-[types/Resolutions.ts:52](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L52)
+[types/Resolutions.ts:52](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L52)
 
 ___
 
@@ -498,7 +498,7 @@ ___
 
 #### Defined in
 
-[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Thumbnail.ts#L1)
+[types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Thumbnail.ts#L1)
 
 ___
 
@@ -510,7 +510,7 @@ An ID or object of a video category.
 
 #### Defined in
 
-[types/Resolutions.ts:42](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L42)
+[types/Resolutions.ts:42](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L42)
 
 ___
 
@@ -520,7 +520,7 @@ ___
 
 #### Defined in
 
-[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Parts.ts#L1)
+[types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Parts.ts#L1)
 
 ___
 
@@ -532,7 +532,7 @@ A URL, ID, search query, or object of a video.
 
 #### Defined in
 
-[types/Resolutions.ts:27](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/Resolutions.ts#L27)
+[types/Resolutions.ts:27](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/Resolutions.ts#L27)
 
 ___
 
@@ -555,7 +555,7 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:123](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L123)
+[types/RetrievalService.ts:123](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L123)
 
 ___
 
@@ -587,7 +587,7 @@ ___
 
 #### Defined in
 
-[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/VideoUpdateResource.ts#L1)
+[types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/VideoUpdateResource.ts#L1)
 
 ___
 
@@ -607,7 +607,7 @@ ___
 
 #### Defined in
 
-[index.ts:429](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/index.ts#L429)
+[index.ts:429](https://github.com/brandonbothell/popyt/blob/b03ac36/src/index.ts#L429)
 
 ## Variables
 
@@ -617,4 +617,4 @@ ___
 
 #### Defined in
 
-[types/RetrievalService.ts:7](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/types/RetrievalService.ts#L7)
+[types/RetrievalService.ts:7](https://github.com/brandonbothell/popyt/blob/b03ac36/src/types/RetrievalService.ts#L7)

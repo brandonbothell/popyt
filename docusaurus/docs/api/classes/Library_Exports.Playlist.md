@@ -25,7 +25,7 @@ A YouTube playlist.
 
 #### Defined in
 
-[entities/playlist.ts:114](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L114)
+[entities/playlist.ts:114](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L114)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The ID of the creator of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:71](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L71)
+[entities/playlist.ts:71](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L71)
 
 ___
 
@@ -49,7 +49,7 @@ The raw data of this playlist.
 
 #### Defined in
 
-[entities/playlist.ts:37](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L37)
+[entities/playlist.ts:37](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L37)
 
 ___
 
@@ -61,7 +61,7 @@ The date the playlist was created.
 
 #### Defined in
 
-[entities/playlist.ts:81](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L81)
+[entities/playlist.ts:81](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L81)
 
 ___
 
@@ -73,7 +73,7 @@ The description of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:57](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L57)
+[entities/playlist.ts:57](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L57)
 
 ___
 
@@ -85,7 +85,7 @@ An \<iframe\> tag that embeds a player that will play the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:102](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L102)
+[entities/playlist.ts:102](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L102)
 
 ___
 
@@ -97,7 +97,7 @@ Whether or not this is a full playlist object.
 
 #### Defined in
 
-[entities/playlist.ts:42](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L42)
+[entities/playlist.ts:42](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L42)
 
 ___
 
@@ -109,7 +109,7 @@ The ID of this playlist.
 
 #### Defined in
 
-[entities/playlist.ts:47](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L47)
+[entities/playlist.ts:47](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L47)
 
 ___
 
@@ -121,7 +121,7 @@ The number of items in the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:97](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L97)
+[entities/playlist.ts:97](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L97)
 
 ___
 
@@ -133,7 +133,7 @@ Information on this playlist's privacy.
 
 #### Defined in
 
-[entities/playlist.ts:112](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L112)
+[entities/playlist.ts:112](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L112)
 
 ___
 
@@ -145,7 +145,7 @@ The tags of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:107](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L107)
+[entities/playlist.ts:107](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L107)
 
 ___
 
@@ -167,7 +167,7 @@ The thumbnails for the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:86](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L86)
+[entities/playlist.ts:86](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L86)
 
 ___
 
@@ -179,7 +179,7 @@ The title of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:52](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L52)
+[entities/playlist.ts:52](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L52)
 
 ___
 
@@ -191,7 +191,7 @@ The url of the playlist.
 
 #### Defined in
 
-[entities/playlist.ts:76](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L76)
+[entities/playlist.ts:76](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L76)
 
 ___
 
@@ -207,7 +207,7 @@ like you would using a loop.
 
 #### Defined in
 
-[entities/playlist.ts:66](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L66)
+[entities/playlist.ts:66](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L66)
 
 ___
 
@@ -219,7 +219,7 @@ The YouTube object that created this playlist.
 
 #### Defined in
 
-[entities/playlist.ts:32](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L32)
+[entities/playlist.ts:32](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L32)
 
 ___
 
@@ -231,7 +231,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/playlist.ts:13](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L13)
+[entities/playlist.ts:13](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L13)
 
 ___
 
@@ -243,7 +243,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/playlist.ts:23](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L23)
+[entities/playlist.ts:23](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L23)
 
 ___
 
@@ -255,7 +255,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/playlist.ts:18](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L18)
+[entities/playlist.ts:18](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L18)
 
 ## Methods
 
@@ -280,7 +280,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:204](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L204)
+[entities/playlist.ts:204](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L204)
 
 ___
 
@@ -297,7 +297,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:283](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L283)
+[entities/playlist.ts:283](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L283)
 
 ___
 
@@ -320,7 +320,7 @@ Only useful if `this.full` is false, or if you want updated playlist info.
 
 #### Defined in
 
-[entities/playlist.ts:173](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L173)
+[entities/playlist.ts:173](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L173)
 
 ___
 
@@ -347,7 +347,7 @@ like you would using a loop.
 
 #### Defined in
 
-[entities/playlist.ts:164](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L164)
+[entities/playlist.ts:164](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L164)
 
 ___
 
@@ -370,7 +370,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:267](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L267)
+[entities/playlist.ts:267](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L267)
 
 ___
 
@@ -393,7 +393,7 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:243](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L243)
+[entities/playlist.ts:243](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L243)
 
 ___
 
@@ -423,7 +423,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[entities/playlist.ts:190](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L190)
+[entities/playlist.ts:190](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L190)
 
 ___
 
@@ -449,4 +449,4 @@ Must be using an access token with correct scopes.
 
 #### Defined in
 
-[entities/playlist.ts:223](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/playlist.ts#L223)
+[entities/playlist.ts:223](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/playlist.ts#L223)

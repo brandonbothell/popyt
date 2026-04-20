@@ -21,7 +21,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L12)
+[oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L12)
 
 ## Properties
 
@@ -31,7 +31,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L12)
+[oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L12)
 
 ## Methods
 
@@ -53,7 +53,7 @@ Deletes a [Caption](./Library_Exports.Caption#) track.
 
 #### Defined in
 
-[oauth/captions.ts:170](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L170)
+[oauth/captions.ts:170](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L170)
 
 ___
 
@@ -77,7 +77,7 @@ Downloads a [Caption](./Library_Exports.Caption#) track.
 
 #### Defined in
 
-[oauth/captions.ts:145](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L145)
+[oauth/captions.ts:145](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L145)
 
 ___
 
@@ -101,7 +101,7 @@ from the URL, ID, or search query of its video and the ID of the caption.
 
 #### Defined in
 
-[oauth/captions.ts:20](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L20)
+[oauth/captions.ts:20](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L20)
 
 ___
 
@@ -123,7 +123,7 @@ Gets the [Caption](./Library_Exports.Caption#)s of a [Video](./Library_Exports.V
 
 #### Defined in
 
-[oauth/captions.ts:45](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L45)
+[oauth/captions.ts:45](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L45)
 
 ___
 
@@ -149,7 +149,7 @@ the property's existing value will be deleted.**
 
 #### Defined in
 
-[oauth/captions.ts:101](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L101)
+[oauth/captions.ts:101](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L101)
 
 ___
 
@@ -175,4 +175,4 @@ Uploads a [Caption](./Library_Exports.Caption#) track for a [Video](./Library_Ex
 
 #### Defined in
 
-[oauth/captions.ts:69](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/oauth/captions.ts#L69)
+[oauth/captions.ts:69](https://github.com/brandonbothell/popyt/blob/b03ac36/src/oauth/captions.ts#L69)

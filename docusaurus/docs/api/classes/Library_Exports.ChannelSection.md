@@ -25,7 +25,7 @@ A YouTube [Channel](./Library_Exports.Channel#) section.
 
 #### Defined in
 
-[entities/channel-section.ts:91](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L91)
+[entities/channel-section.ts:91](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L91)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The ID of the channel that created this channel section.
 
 #### Defined in
 
-[entities/channel-section.ts:52](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L52)
+[entities/channel-section.ts:52](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L52)
 
 ___
 
@@ -49,7 +49,7 @@ The IDs of the channels in this channel section. Undefined if there aren't any.
 
 #### Defined in
 
-[entities/channel-section.ts:67](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L67)
+[entities/channel-section.ts:67](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L67)
 
 ___
 
@@ -61,7 +61,7 @@ The channels in the channel section. Only available after calling [ChannelSectio
 
 #### Defined in
 
-[entities/channel-section.ts:77](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L77)
+[entities/channel-section.ts:77](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L77)
 
 ___
 
@@ -73,7 +73,7 @@ The raw data of this channel section.
 
 #### Defined in
 
-[entities/channel-section.ts:37](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L37)
+[entities/channel-section.ts:37](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L37)
 
 ___
 
@@ -85,7 +85,7 @@ Whether or not this a full channel section object.
 
 #### Defined in
 
-[entities/channel-section.ts:32](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L32)
+[entities/channel-section.ts:32](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L32)
 
 ___
 
@@ -97,7 +97,7 @@ The ID of this channel section.
 
 #### Defined in
 
-[entities/channel-section.ts:89](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L89)
+[entities/channel-section.ts:89](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L89)
 
 ___
 
@@ -109,7 +109,7 @@ The name of this channel section.
 
 #### Defined in
 
-[entities/channel-section.ts:42](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L42)
+[entities/channel-section.ts:42](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L42)
 
 ___
 
@@ -121,7 +121,7 @@ The IDs of the playlists in this channel section. Undefined if there aren't any.
 
 #### Defined in
 
-[entities/channel-section.ts:62](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L62)
+[entities/channel-section.ts:62](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L62)
 
 ___
 
@@ -133,7 +133,7 @@ The playlists in the channel section. Only available after calling [ChannelSecti
 
 #### Defined in
 
-[entities/channel-section.ts:72](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L72)
+[entities/channel-section.ts:72](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L72)
 
 ___
 
@@ -145,7 +145,7 @@ The zero-based position of this channel section on the channel page.
 
 #### Defined in
 
-[entities/channel-section.ts:57](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L57)
+[entities/channel-section.ts:57](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L57)
 
 ___
 
@@ -159,7 +159,7 @@ Only available after calling [ChannelSection.fetchChannels()](./Library_Exports.
 
 #### Defined in
 
-[entities/channel-section.ts:84](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L84)
+[entities/channel-section.ts:84](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L84)
 
 ___
 
@@ -171,7 +171,7 @@ The type of this channel section.
 
 #### Defined in
 
-[entities/channel-section.ts:47](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L47)
+[entities/channel-section.ts:47](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L47)
 
 ___
 
@@ -183,7 +183,7 @@ The YouTube object that created this channel section object.
 
 #### Defined in
 
-[entities/channel-section.ts:27](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L27)
+[entities/channel-section.ts:27](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L27)
 
 ___
 
@@ -195,7 +195,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/channel-section.ts:12](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L12)
+[entities/channel-section.ts:12](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L12)
 
 ___
 
@@ -207,7 +207,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/channel-section.ts:22](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L22)
+[entities/channel-section.ts:22](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L22)
 
 ___
 
@@ -219,7 +219,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/channel-section.ts:17](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L17)
+[entities/channel-section.ts:17](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L17)
 
 ## Methods
 
@@ -242,7 +242,7 @@ Only useful if `this.full` is false, or if you want updated channel section info
 
 #### Defined in
 
-[entities/channel-section.ts:125](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L125)
+[entities/channel-section.ts:125](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L125)
 
 ___
 
@@ -264,7 +264,7 @@ Fetches the channel section's channels from the API and assigns them to the [Cha
 
 #### Defined in
 
-[entities/channel-section.ts:150](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L150)
+[entities/channel-section.ts:150](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L150)
 
 ___
 
@@ -287,7 +287,7 @@ Fetches the channel section's playlists from the API and assigns them to the [Ch
 
 #### Defined in
 
-[entities/channel-section.ts:133](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L133)
+[entities/channel-section.ts:133](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L133)
 
 ___
 
@@ -308,4 +308,4 @@ ___
 
 #### Defined in
 
-[entities/channel-section.ts:165](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/channel-section.ts#L165)
+[entities/channel-section.ts:165](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/channel-section.ts#L165)

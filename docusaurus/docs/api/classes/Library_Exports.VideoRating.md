@@ -25,7 +25,7 @@ A YouTube [Video](./Library_Exports.Video) rating (like/dislike).
 
 #### Defined in
 
-[entities/video-rating.ts:48](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L48)
+[entities/video-rating.ts:48](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L48)
 
 ## Properties
 
@@ -37,7 +37,7 @@ The raw data of this channel section.
 
 #### Defined in
 
-[entities/video-rating.ts:36](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L36)
+[entities/video-rating.ts:36](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L36)
 
 ___
 
@@ -49,7 +49,7 @@ Whether or not this a full channel section object.
 
 #### Defined in
 
-[entities/video-rating.ts:31](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L31)
+[entities/video-rating.ts:31](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L31)
 
 ___
 
@@ -61,7 +61,7 @@ The rating left on this video.
 
 #### Defined in
 
-[entities/video-rating.ts:46](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L46)
+[entities/video-rating.ts:46](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L46)
 
 ___
 
@@ -73,7 +73,7 @@ The ID of the video this rating is for.
 
 #### Defined in
 
-[entities/video-rating.ts:41](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L41)
+[entities/video-rating.ts:41](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L41)
 
 ___
 
@@ -85,7 +85,7 @@ The YouTube object that created this channel section object.
 
 #### Defined in
 
-[entities/video-rating.ts:26](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L26)
+[entities/video-rating.ts:26](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L26)
 
 ___
 
@@ -97,7 +97,7 @@ The name of the endpoint used for this entity.
 
 #### Defined in
 
-[entities/video-rating.ts:11](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L11)
+[entities/video-rating.ts:11](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L11)
 
 ___
 
@@ -109,7 +109,7 @@ The fields to request for this entity.
 
 #### Defined in
 
-[entities/video-rating.ts:21](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L21)
+[entities/video-rating.ts:21](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L21)
 
 ___
 
@@ -121,7 +121,7 @@ The parts to request for this entity.
 
 #### Defined in
 
-[entities/video-rating.ts:16](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L16)
+[entities/video-rating.ts:16](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L16)
 
 ## Methods
 
@@ -138,4 +138,4 @@ Only useful if you want updated rating info.
 
 #### Defined in
 
-[entities/video-rating.ts:76](https://github.com/brandonbothell/popyt/blob/9c8a38f/src/entities/video-rating.ts#L76)
+[entities/video-rating.ts:76](https://github.com/brandonbothell/popyt/blob/b03ac36/src/entities/video-rating.ts#L76)
