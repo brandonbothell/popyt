@@ -10,7 +10,7 @@ jobs:
     name: Publish documenation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       with:
         ref: 'release'
     - name: Set git user
@@ -19,7 +19,7 @@ jobs:
           git config --global user.email "bothellbrandon@gmail.com"
     - uses: actions/setup-node@v6
       with:
-        node-version: '20.19.5'
+        node-version: '23.x'
     - name: Build Docs
       uses: borales/actions-yarn@v5
       with:
@@ -35,10 +35,10 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - uses: actions/setup-node@v6
       with:
-        node-version: '20.19.5'
+        node-version: '23.x'
     - name: Build Source and Typings
       uses: borales/actions-yarn@v5
       with:
