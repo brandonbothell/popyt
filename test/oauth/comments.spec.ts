@@ -17,7 +17,6 @@ describe('OAuth comments', () => {
     Comment.part = 'snippet'
 
     const text = `testing ${new Date()}`
-    console.log('Comment text: ' + text)
     const uploads = (await youtube.oauth.getMyUploads()).items
     comment = await uploads[0].postComment(text)
     commentId = comment.id
