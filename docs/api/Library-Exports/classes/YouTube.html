@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-api/Library-Exports/classes/YouTube" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">YouTube | Popyt</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://popyt.brandonsbench.net/docs/api/Library-Exports/classes/YouTube"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="YouTube | Popyt"><meta data-rh="true" name="description" content="popyt"><meta data-rh="true" property="og:description" content="popyt"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://popyt.brandonsbench.net/docs/api/Library-Exports/classes/YouTube"><link data-rh="true" rel="alternate" href="https://popyt.brandonsbench.net/docs/api/Library-Exports/classes/YouTube" hreflang="en"><link data-rh="true" rel="alternate" href="https://popyt.brandonsbench.net/docs/api/Library-Exports/classes/YouTube" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"YouTube Class (use this)","item":"https://popyt.brandonsbench.net/docs/api/Library-Exports/classes/YouTube"}]}</script><link rel="stylesheet" href="/assets/css/styles.761626be.css">
+<script src="/assets/js/runtime~main.a394a9c5.js" defer="defer"></script>
+<script src="/assets/js/main.17fc634a.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"dark"),document.documentElement.setAttribute("data-theme-choice",t||"dark")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_HjVO" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Docusaurus Logo" class="themedComponent_HcTd themedComponent--light_yzBW"><img src="/img/logo.svg" alt="Docusaurus Logo" class="themedComponent_HcTd themedComponent--dark_yYlX"></div><b class="navbar__title text--truncate">Popyt</b></a><a class="navbar__item navbar__link" href="/docs/tutorial/intro">Tutorial</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/api">Documentation</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/brandonbothell/popyt" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_u8l6"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_HTgl colorModeToggle_oMwc"><button class="clean-btn toggleButton_mQqr toggleButtonDisabled_nJ8W" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_Z_85 lightToggleIcon_euXD"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_Z_85 darkToggleIcon_xSIN"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_Z_85 systemToggleIcon_mtb2"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_mzFR"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_VFyK"><div class="docsWrapper_CHCr"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_HbjK" type="button"></button><div class="docRoot_iXAO"><aside class="theme-doc-sidebar-container docSidebarContainer_TV_h"><div class="sidebarViewport_fDTB"><div class="sidebar_v6uA"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_JgTC"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api"><span title="Read Me" class="linkLabel_Tfsq">Read Me</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/api/Library-Exports/classes/YouTube"><span title="YouTube Class (use this)" class="linkLabel_Tfsq">YouTube Class (use this)</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_GPF8 menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/api/Library-Exports/classes/Caption"><span title="Classes" class="categoryLinkLabel_v2oR">Classes</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Caption"><span title="Caption" class="linkLabel_Tfsq">Caption</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Channel"><span title="Channel" class="linkLabel_Tfsq">Channel</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/ChannelSection"><span title="ChannelSection" class="linkLabel_Tfsq">ChannelSection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Comment"><span title="Comment" class="linkLabel_Tfsq">Comment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Language"><span title="Language" class="linkLabel_Tfsq">Language</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Playlist"><span title="Playlist" class="linkLabel_Tfsq">Playlist</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Region"><span title="Region" class="linkLabel_Tfsq">Region</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Subscription"><span title="Subscription" class="linkLabel_Tfsq">Subscription</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/Video"><span title="Video" class="linkLabel_Tfsq">Video</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/VideoAbuseReportReason"><span title="VideoAbuseReportReason" class="linkLabel_Tfsq">VideoAbuseReportReason</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/VideoCategory"><span title="VideoCategory" class="linkLabel_Tfsq">VideoCategory</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/Library-Exports/classes/VideoRating"><span title="VideoRating" class="linkLabel_Tfsq">VideoRating</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/api/Library-Exports/classes/YouTube"><span title="YouTube" class="linkLabel_Tfsq">YouTube</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_GPF8 menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/api/OAuth/classes/OAuth"><span title="Authenticated Classes" class="categoryLinkLabel_v2oR">Authenticated Classes</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_GPF8 menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/api/Library-Exports/type-aliases/Authorization"><span title="Types" class="categoryLinkLabel_v2oR">Types</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api/modules"><span title="Modules" class="linkLabel_Tfsq">Modules</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_ZFL5"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_lHeC"><div class="docItemContainer_n1qn"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_E5X2" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_wHVF"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">YouTube Class (use this)</span></li></ul></nav><div class="tocCollapsible_eb2Y theme-doc-toc-mobile tocMobile_l3FP"><button type="button" class="clean-btn tocCollapsibleButton_Sb1x">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>YouTube</h1></header><p><a class="" href="/docs/api"><strong>popyt</strong></a></p>
+<hr>
+<p><a class="" href="/docs/api/modules">popyt</a> / <a class="" href="/docs/api/Library-Exports">Library Exports</a> / YouTube</p>
+<h1>Class: YouTube</h1>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L18" target="_blank" rel="noopener noreferrer" class="">index.ts:18</a></p>
+<p>The main class used to interact with the YouTube API. Use this.</p>
+<h2 class="anchor anchorTargetStickyNavbar_sTbM" id="constructors">Constructors<a href="#constructors" class="hash-link" aria-label="Direct link to Constructors" title="Direct link to Constructors" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="constructor">Constructor<a href="#constructor" class="hash-link" aria-label="Direct link to Constructor" title="Direct link to Constructor" translate="no">​</a></h3>
+<blockquote>
+<p><strong>new YouTube</strong>(<code>apiKey?</code>, <code>accessToken?</code>, <code>options?</code>, <code>language?</code>, <code>region?</code>): <code>YouTube</code></p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L84" target="_blank" rel="noopener noreferrer" class="">index.ts:84</a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="apikey">apiKey?<a href="#apikey" class="hash-link" aria-label="Direct link to apiKey?" title="Direct link to apiKey?" translate="no">​</a></h5>
+<p><code>string</code></p>
+<p>Your YouTube Data API v3 key. Don&#x27;t share this with anybody.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="accesstoken">accessToken?<a href="#accesstoken" class="hash-link" aria-label="Direct link to accessToken?" title="Direct link to accessToken?" translate="no">​</a></h5>
+<p><code>string</code></p>
+<p>A Google OAuth 2.0 access token. Used for <a href="#oauth" class=""><code>YouTube.oauth</code></a> methods.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="options">options?<a href="#options" class="hash-link" aria-label="Direct link to options?" title="Direct link to options?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/YouTubeOptions"><code>YouTubeOptions</code></a> = <code>...</code></p>
+<p>Caching options. Recommended to change.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="language">language?<a href="#language" class="hash-link" aria-label="Direct link to language?" title="Direct link to language?" translate="no">​</a></h5>
+<p><code>string</code> = <code>&#x27;en_US&#x27;</code></p>
+<p>The language for the API to respond in. See <a href="#getlanguages" class=""><code>YouTube.getLanguages()</code></a>.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="region">region?<a href="#region" class="hash-link" aria-label="Direct link to region?" title="Direct link to region?" translate="no">​</a></h5>
+<p><code>string</code> = <code>&#x27;US&#x27;</code></p>
+<p>The region for the API cater responses to. See <a href="#getregions" class=""><code>YouTube.getRegions()</code></a>..</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>YouTube</code></p>
+<h2 class="anchor anchorTargetStickyNavbar_sTbM" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="language-1">language<a href="#language-1" class="hash-link" aria-label="Direct link to language" title="Direct link to language" translate="no">​</a></h3>
+<blockquote>
+<p><strong>language</strong>: <code>string</code></p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L69" target="_blank" rel="noopener noreferrer" class="">index.ts:69</a></p>
+<p>The language for the API to respond in. See <a href="#getlanguages" class=""><code>YouTube.getLanguages()</code></a>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="oauth">oauth<a href="#oauth" class="hash-link" aria-label="Direct link to oauth" title="Direct link to oauth" translate="no">​</a></h3>
+<blockquote>
+<p><strong>oauth</strong>: <a class="" href="/docs/api/OAuth/classes/OAuth"><code>OAuth</code></a></p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L64" target="_blank" rel="noopener noreferrer" class="">index.ts:64</a></p>
+<p>Methods requiring an OAuth token.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="region-1">region<a href="#region-1" class="hash-link" aria-label="Direct link to region" title="Direct link to region" translate="no">​</a></h3>
+<blockquote>
+<p><strong>region</strong>: <code>string</code></p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L74" target="_blank" rel="noopener noreferrer" class="">index.ts:74</a></p>
+<p>The region for the API cater responses to. See <a href="#getregions" class=""><code>YouTube.getRegions()</code></a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_sTbM" id="methods">Methods<a href="#methods" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getcategories">getCategories()<a href="#getcategories" class="hash-link" aria-label="Direct link to getCategories()" title="Direct link to getCategories()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getCategories</strong>(): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a>[]&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L401" target="_blank" rel="noopener noreferrer" class="">index.ts:401</a></p>
+<p>Get the list of video categories in <a href="#region" class=""><code>this.region</code></a>`.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a>[]&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getcategory">getCategory()<a href="#getcategory" class="hash-link" aria-label="Direct link to getCategory()" title="Direct link to getCategory()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getCategory</strong>&lt;<code>T</code>&gt;(<code>categoryId</code>): <code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L265" target="_blank" rel="noopener noreferrer" class="">index.ts:265</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a> object from the ID of a category.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters">Type Parameters<a href="#type-parameters" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t">T<a href="#t" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <code>string</code> | <code>string</code>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="categoryid">categoryId<a href="#categoryid" class="hash-link" aria-label="Direct link to categoryId" title="Direct link to categoryId" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The ID of the category.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/VideoCategory"><code>VideoCategory</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getchannel">getChannel()<a href="#getchannel" class="hash-link" aria-label="Direct link to getChannel()" title="Direct link to getChannel()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getChannel</strong>&lt;<code>T</code>&gt;(<code>channelResolvable</code>, <code>parts?</code>): <code>Promise</code>&lt;<code>ResolveReturn</code>&lt;<code>T</code>, <em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt; <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L225" target="_blank" rel="noopener noreferrer" class="">index.ts:225</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a> object from the URL, ID, search query, or handle of a channel.
+<strong>Beware</strong>, support for old custom channel URLs is shoddy.
+Consider migrating to <a href="https://support.google.com/youtube/answer/2657968?hl=en" target="_blank" rel="noopener noreferrer" class="">the new @ system.</a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-1">Type Parameters<a href="#type-parameters-1" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-1">T<a href="#t-1" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a> | <a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="channelresolvable">channelResolvable<a href="#channelresolvable" class="hash-link" aria-label="Direct link to channelResolvable" title="Direct link to channelResolvable" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The URL, ID, search query, or handle of the channel.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts">parts?<a href="#parts" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelParts"><code>ChannelParts</code></a></p>
+<p>The parts of the channel to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>ResolveReturn</code>&lt;<code>T</code>, <em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt; <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getchannelplaylists">getChannelPlaylists()<a href="#getchannelplaylists" class="hash-link" aria-label="Direct link to getChannelPlaylists()" title="Direct link to getChannelPlaylists()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getChannelPlaylists</strong>(<code>channelResolvable</code>, <code>pageOptions?</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L347" target="_blank" rel="noopener noreferrer" class="">index.ts:347</a></p>
+<p>Get <code>maxPerPage * pages</code> of a <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&#x27;s <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>s.
+Used mostly internally with <a class="" href="/docs/api/Library-Exports/classes/Channel#fetchplaylists"><code>Channel.fetchPlaylists()</code></a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-3">Parameters<a href="#parameters-3" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="channelresolvable-1">channelResolvable<a href="#channelresolvable-1" class="hash-link" aria-label="Direct link to channelResolvable" title="Direct link to channelResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a></p>
+<p>The Username, URL, or ID of the channel.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="pageoptions">pageOptions?<a href="#pageoptions" class="hash-link" aria-label="Direct link to pageOptions?" title="Direct link to pageOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PageOptions"><code>PageOptions</code></a></p>
+<p>The number of pages and maximum number of items per page.
+Fetches the maximum number of items allowed by the API per page by default.<br>
+<!-- -->Set pages to a value <!-- -->&lt;=<!-- -->0 to fetch all.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-1">parts?<a href="#parts-1" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PlaylistParts"><code>PlaylistParts</code></a></p>
+<p>The parts of the playlists to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;&gt;</p>
+<p>An object containing page token information for future requests and <strong>playlist objects</strong>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getchannelsection">getChannelSection()<a href="#getchannelsection" class="hash-link" aria-label="Direct link to getChannelSection()" title="Direct link to getChannelSection()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getChannelSection</strong>&lt;<code>T</code>&gt;(<code>sectionId</code>, <code>parts?</code>): <code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L274" target="_blank" rel="noopener noreferrer" class="">index.ts:274</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a> object from the ID of a section.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-2">Type Parameters<a href="#type-parameters-2" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-2">T<a href="#t-2" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <code>string</code> | <code>string</code>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="sectionid">sectionId<a href="#sectionid" class="hash-link" aria-label="Direct link to sectionId" title="Direct link to sectionId" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The ID of the section.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-2">parts?<a href="#parts-2" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelSectionParts"><code>ChannelSectionParts</code></a></p>
+<p>The parts of the channel section to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getchannelsections">getChannelSections()<a href="#getchannelsections" class="hash-link" aria-label="Direct link to getChannelSections()" title="Direct link to getChannelSections()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getChannelSections</strong>(<code>channelResolvable</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>[]&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L392" target="_blank" rel="noopener noreferrer" class="">index.ts:392</a></p>
+<p>Gets the <a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>s of a <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>.
+Used mostly internally with <a class="" href="/docs/api/Library-Exports/classes/Channel#fetchsections"><code>Channel.fetchSections</code></a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-5">Parameters<a href="#parameters-5" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="channelresolvable-2">channelResolvable<a href="#channelresolvable-2" class="hash-link" aria-label="Direct link to channelResolvable" title="Direct link to channelResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a></p>
+<p>The Username, URL, or ID of the channel to get the sections from.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-3">parts?<a href="#parts-3" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelSectionParts"><code>ChannelSectionParts</code></a></p>
+<p>The parts of the channel sections to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/ChannelSection"><code>ChannelSection</code></a>[]&gt;</p>
+<p>Partial channel section objects.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getchannelsubscriptions">getChannelSubscriptions()<a href="#getchannelsubscriptions" class="hash-link" aria-label="Direct link to getChannelSubscriptions()" title="Direct link to getChannelSubscriptions()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getChannelSubscriptions</strong>(<code>channelResolvable</code>, <code>pageOptions?</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L363" target="_blank" rel="noopener noreferrer" class="">index.ts:363</a></p>
+<p>Get <code>maxPerPage * pages</code> of a <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&#x27;s <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>s.
+Used mostly internally with <a class="" href="/docs/api/Library-Exports/classes/Channel#fetchsubscriptions"><code>Channel.fetchSubscriptions()</code></a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-6">Parameters<a href="#parameters-6" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="channelresolvable-3">channelResolvable<a href="#channelresolvable-3" class="hash-link" aria-label="Direct link to channelResolvable" title="Direct link to channelResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a></p>
+<p>The Username, URL, or ID of the channel.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="pageoptions-1">pageOptions?<a href="#pageoptions-1" class="hash-link" aria-label="Direct link to pageOptions?" title="Direct link to pageOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PageOptions"><code>PageOptions</code></a></p>
+<p>The number of pages and maximum number of items per page.
+Fetches the maximum number of items allowed by the API per page by default.<br>
+<!-- -->Set pages to a value <!-- -->&lt;=<!-- -->0 to fetch all.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-4">parts?<a href="#parts-4" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/SubscriptionParts"><code>SubscriptionParts</code></a></p>
+<p>The parts of the subscriptions to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>&gt;&gt;</p>
+<p>An object containing page token information for future requests and <strong>subscription objects</strong>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getcomment">getComment()<a href="#getcomment" class="hash-link" aria-label="Direct link to getComment()" title="Direct link to getComment()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getComment</strong>&lt;<code>T</code>&gt;(<code>commentId</code>, <code>parts?</code>): <code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L246" target="_blank" rel="noopener noreferrer" class="">index.ts:246</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a> object from the ID of a comment.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-3">Type Parameters<a href="#type-parameters-3" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-3">T<a href="#t-3" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <code>string</code> | <code>string</code>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-7">Parameters<a href="#parameters-7" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="commentid">commentId<a href="#commentid" class="hash-link" aria-label="Direct link to commentId" title="Direct link to commentId" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The ID of the comment.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-5">parts?<a href="#parts-5" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/CommentParts"><code>CommentParts</code></a></p>
+<p>The parts of the comment to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getcommentreplies">getCommentReplies()<a href="#getcommentreplies" class="hash-link" aria-label="Direct link to getCommentReplies()" title="Direct link to getCommentReplies()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getCommentReplies</strong>(<code>commentResolvable</code>, <code>pageOptions?</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L379" target="_blank" rel="noopener noreferrer" class="">index.ts:379</a></p>
+<p>Get <code>maxPerPage * pages</code> replies to a <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>.
+Used mostly internally with <a class="" href="/docs/api/Library-Exports/classes/Comment#fetchreplies"><code>Comment.fetchReplies</code></a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-8">Parameters<a href="#parameters-8" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="commentresolvable">commentResolvable<a href="#commentresolvable" class="hash-link" aria-label="Direct link to commentResolvable" title="Direct link to commentResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/CommentResolvable"><code>CommentResolvable</code></a></p>
+<p>The ID or URL of the comment to get replies from.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="pageoptions-2">pageOptions?<a href="#pageoptions-2" class="hash-link" aria-label="Direct link to pageOptions?" title="Direct link to pageOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PageOptions"><code>PageOptions</code></a></p>
+<p>The number of pages and maximum number of items per page.
+Fetches the maximum number of items allowed by the API per page by default.<br>
+<!-- -->Set pages to a value <!-- -->&lt;=<!-- -->0 to fetch all.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-6">parts?<a href="#parts-6" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/CommentParts"><code>CommentParts</code></a></p>
+<p>The parts of the replies to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-9">Returns<a href="#returns-9" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>&gt;&gt;</p>
+<p>An object containing page token information for future requests and <strong>comment objects</strong>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getlanguages">getLanguages()<a href="#getlanguages" class="hash-link" aria-label="Direct link to getLanguages()" title="Direct link to getLanguages()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getLanguages</strong>(): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/Language"><code>Language</code></a>[]&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L408" target="_blank" rel="noopener noreferrer" class="">index.ts:408</a></p>
+<p>Get a list of languages that YouTube supports.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-10">Returns<a href="#returns-10" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/Language"><code>Language</code></a>[]&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getplaylist">getPlaylist()<a href="#getplaylist" class="hash-link" aria-label="Direct link to getPlaylist()" title="Direct link to getPlaylist()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getPlaylist</strong>&lt;<code>T</code>&gt;(<code>playlistResolvable</code>, <code>parts?</code>): <code>Promise</code>&lt;<code>ResolveReturn</code>&lt;<code>T</code>, <em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt; <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L236" target="_blank" rel="noopener noreferrer" class="">index.ts:236</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a> object from the URL, ID, or search query of a playlist.
+Meant mostly for getting by URL or ID.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-4">Type Parameters<a href="#type-parameters-4" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-4">T<a href="#t-4" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <a class="" href="/docs/api/Library-Exports/type-aliases/PlaylistResolvable"><code>PlaylistResolvable</code></a> | <a class="" href="/docs/api/Library-Exports/type-aliases/PlaylistResolvable"><code>PlaylistResolvable</code></a>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="playlistresolvable">playlistResolvable<a href="#playlistresolvable" class="hash-link" aria-label="Direct link to playlistResolvable" title="Direct link to playlistResolvable" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The URL, ID, or search query of the playlist.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-7">parts?<a href="#parts-7" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PlaylistParts"><code>PlaylistParts</code></a></p>
+<p>The parts of the playlist to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-11">Returns<a href="#returns-11" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>ResolveReturn</code>&lt;<code>T</code>, <em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt; <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getplaylistitems">getPlaylistItems()<a href="#getplaylistitems" class="hash-link" aria-label="Direct link to getPlaylistItems()" title="Direct link to getPlaylistItems()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getPlaylistItems</strong>(<code>playlistResolvable</code>, <code>pageOptions?</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L312" target="_blank" rel="noopener noreferrer" class="">index.ts:312</a></p>
+<p>Get <code>maxPerPage * pages</code> videos in a <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>.
+Used mostly internally with <a class="" href="/docs/api/Library-Exports/classes/Playlist#fetchvideos"><code>Playlist.fetchVideos()</code></a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-10">Parameters<a href="#parameters-10" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="playlistresolvable-1">playlistResolvable<a href="#playlistresolvable-1" class="hash-link" aria-label="Direct link to playlistResolvable" title="Direct link to playlistResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PlaylistResolvable"><code>PlaylistResolvable</code></a></p>
+<p>The URL, ID, or Title of the playlist.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="pageoptions-3">pageOptions?<a href="#pageoptions-3" class="hash-link" aria-label="Direct link to pageOptions?" title="Direct link to pageOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PageOptions"><code>PageOptions</code></a></p>
+<p>The number of pages and maximum number of items per page.
+Fetches the maximum number of items allowed by the API per page by default.<br>
+<!-- -->Set pages to a value <!-- -->&lt;=<!-- -->0 to fetch all.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-8">parts?<a href="#parts-8" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PlaylistItemParts"><code>PlaylistItemParts</code></a></p>
+<p>The parts of the videos to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-12">Returns<a href="#returns-12" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;&gt;</p>
+<p>An object containing page token information for future requests and <strong><em>partial</em> video objects</strong>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getregions">getRegions()<a href="#getregions" class="hash-link" aria-label="Direct link to getRegions()" title="Direct link to getRegions()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getRegions</strong>(): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/Region"><code>Region</code></a>[]&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L415" target="_blank" rel="noopener noreferrer" class="">index.ts:415</a></p>
+<p>Get a list of regions that YouTube supports.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-13">Returns<a href="#returns-13" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/Region"><code>Region</code></a>[]&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getsubscription">getSubscription()<a href="#getsubscription" class="hash-link" aria-label="Direct link to getSubscription()" title="Direct link to getSubscription()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getSubscription</strong>&lt;<code>T</code>&gt;(<code>subscriptionId</code>, <code>parts?</code>): <code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L257" target="_blank" rel="noopener noreferrer" class="">index.ts:257</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a> object from the ID of a subscription.<br>
+<!-- -->Fetching a subscription by ID is <strong>CURRENTLY BROKEN</strong> in the Public YouTube API,
+see <a href="https://issuetracker.google.com/issues/288609601" target="_blank" rel="noopener noreferrer" class="">https://issuetracker.google.com/issues/288609601</a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-5">Type Parameters<a href="#type-parameters-5" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-5">T<a href="#t-5" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <code>string</code> | <code>string</code>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-11">Parameters<a href="#parameters-11" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="subscriptionid">subscriptionId<a href="#subscriptionid" class="hash-link" aria-label="Direct link to subscriptionId" title="Direct link to subscriptionId" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The ID of the subscription.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-9">parts?<a href="#parts-9" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/SubscriptionParts"><code>SubscriptionParts</code></a></p>
+<p>The parts of the subscription to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-14">Returns<a href="#returns-14" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>T</code> <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getsubscriptionbychannels">getSubscriptionByChannels()<a href="#getsubscriptionbychannels" class="hash-link" aria-label="Direct link to getSubscriptionByChannels()" title="Direct link to getSubscriptionByChannels()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getSubscriptionByChannels</strong>(<code>subscriberResolvable</code>, <code>channelResolvable</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L285" target="_blank" rel="noopener noreferrer" class="">index.ts:285</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a> object from the subscriber and channel of a subscription.
+Channels can be passed in the form of ID, URL, or search query.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-12">Parameters<a href="#parameters-12" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="subscriberresolvable">subscriberResolvable<a href="#subscriberresolvable" class="hash-link" aria-label="Direct link to subscriberResolvable" title="Direct link to subscriberResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a></p>
+<p>A resolvable channel that is the subscriber.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="channelresolvable-4">channelResolvable<a href="#channelresolvable-4" class="hash-link" aria-label="Direct link to channelResolvable" title="Direct link to channelResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/ChannelResolvable"><code>ChannelResolvable</code></a></p>
+<p>A resolvable channel that is the channel being subscribed to.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-10">parts?<a href="#parts-10" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/SubscriptionParts"><code>SubscriptionParts</code></a></p>
+<p>The parts of the subscription to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-15">Returns<a href="#returns-15" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/classes/Subscription"><code>Subscription</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getvideo">getVideo()<a href="#getvideo" class="hash-link" aria-label="Direct link to getVideo()" title="Direct link to getVideo()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getVideo</strong>&lt;<code>T</code>&gt;(<code>videoResolvable</code>, <code>parts?</code>): <code>Promise</code>&lt;<code>ResolveReturn</code>&lt;<code>T</code>, <em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt; <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L213" target="_blank" rel="noopener noreferrer" class="">index.ts:213</a></p>
+<p>Get a <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a> object from the URL, ID, or search query of a video.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-6">Type Parameters<a href="#type-parameters-6" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-6">T<a href="#t-6" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <a class="" href="/docs/api/Library-Exports/type-aliases/VideoResolvable"><code>VideoResolvable</code></a> | <a class="" href="/docs/api/Library-Exports/type-aliases/VideoResolvable"><code>VideoResolvable</code></a>[]</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-13">Parameters<a href="#parameters-13" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="videoresolvable">videoResolvable<a href="#videoresolvable" class="hash-link" aria-label="Direct link to videoResolvable" title="Direct link to videoResolvable" translate="no">​</a></h5>
+<p><code>T</code></p>
+<p>The URL, ID, or search query of the video.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-11">parts?<a href="#parts-11" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/VideoParts"><code>VideoParts</code></a></p>
+<p>The parts of the video to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-16">Returns<a href="#returns-16" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<code>ResolveReturn</code>&lt;<code>T</code>, <em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt; <em>extends</em> <code>any</code>[] ? <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>[] : <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="getvideocomments">getVideoComments()<a href="#getvideocomments" class="hash-link" aria-label="Direct link to getVideoComments()" title="Direct link to getVideoComments()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>getVideoComments</strong>(<code>videoResolvable</code>, <code>pageOptions?</code>, <code>order?</code>, <code>parts?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L329" target="_blank" rel="noopener noreferrer" class="">index.ts:329</a></p>
+<p>Get <code>maxPerPage * pages</code> <a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>s from a <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>.
+Used mostly internally with <a class="" href="/docs/api/Library-Exports/classes/Video#fetchcomments"><code>Video.fetchComments()</code></a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-14">Parameters<a href="#parameters-14" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="videoresolvable-1">videoResolvable<a href="#videoresolvable-1" class="hash-link" aria-label="Direct link to videoResolvable" title="Direct link to videoResolvable" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/VideoResolvable"><code>VideoResolvable</code></a></p>
+<p>The URL, ID, or Title of the video.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="pageoptions-4">pageOptions?<a href="#pageoptions-4" class="hash-link" aria-label="Direct link to pageOptions?" title="Direct link to pageOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/PageOptions"><code>PageOptions</code></a></p>
+<p>The number of pages and maximum number of items per page.
+Fetches the maximum number of items allowed by the API per page by default.<br>
+<!-- -->Set pages to a value <!-- -->&lt;=<!-- -->0 to fetch all.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="order">order?<a href="#order" class="hash-link" aria-label="Direct link to order?" title="Direct link to order?" translate="no">​</a></h5>
+<p><code>&quot;time&quot;</code> | <code>&quot;relevance&quot;</code></p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="parts-12">parts?<a href="#parts-12" class="hash-link" aria-label="Direct link to parts?" title="Direct link to parts?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/CommentThreadParts"><code>CommentThreadParts</code></a></p>
+<p>The parts of the comments to fetch (saves quota if you aren&#x27;t using certain properties!)</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-17">Returns<a href="#returns-17" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Comment"><code>Comment</code></a>&gt;&gt;</p>
+<p>An object containing page token information for future requests and <strong>comment objects</strong>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="hasaccesstoken">hasAccessToken()<a href="#hasaccesstoken" class="hash-link" aria-label="Direct link to hasAccessToken()" title="Direct link to hasAccessToken()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>hasAccessToken</strong>(): <code>boolean</code></p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L419" target="_blank" rel="noopener noreferrer" class="">index.ts:419</a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-18">Returns<a href="#returns-18" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>boolean</code></p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="search">search()<a href="#search" class="hash-link" aria-label="Direct link to search()" title="Direct link to search()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>search</strong>&lt;<code>T</code>&gt;(<code>searchTerm</code>, <code>searchOptions?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<code>InstanceType</code>&lt;<code>T</code>&gt;&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L167" target="_blank" rel="noopener noreferrer" class="">index.ts:167</a></p>
+<p>Search supported entities on YouTube.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="type-parameters-7">Type Parameters<a href="#type-parameters-7" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="t-7">T<a href="#t-7" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h5>
+<p><code>T</code> <em>extends</em> <a class="" href="/docs/api/Library-Exports/type-aliases/SearchType"><code>SearchType</code></a> = <a class="" href="/docs/api/Library-Exports/type-aliases/SearchType"><code>SearchType</code></a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-15">Parameters<a href="#parameters-15" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchterm">searchTerm<a href="#searchterm" class="hash-link" aria-label="Direct link to searchTerm" title="Direct link to searchTerm" translate="no">​</a></h5>
+<p><code>string</code></p>
+<p>What to search for on YouTube.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchoptions">searchOptions?<a href="#searchoptions" class="hash-link" aria-label="Direct link to searchOptions?" title="Direct link to searchOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/GenericSearchOptions"><code>GenericSearchOptions</code></a>&lt;<code>T</code>&gt;</p>
+<p>Options related to the search including search filters,
+the number of pages, maximum number of results per page, and starting page token.
+Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you&#x27;d like.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-19">Returns<a href="#returns-19" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<code>InstanceType</code>&lt;<code>T</code>&gt;&gt;&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="searchchannels">searchChannels()<a href="#searchchannels" class="hash-link" aria-label="Direct link to searchChannels()" title="Direct link to searchChannels()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>searchChannels</strong>(<code>searchTerm</code>, <code>searchOptions?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L190" target="_blank" rel="noopener noreferrer" class="">index.ts:190</a></p>
+<p>Search channels on YouTube.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-16">Parameters<a href="#parameters-16" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchterm-1">searchTerm<a href="#searchterm-1" class="hash-link" aria-label="Direct link to searchTerm" title="Direct link to searchTerm" translate="no">​</a></h5>
+<p><code>string</code></p>
+<p>What to search for on YouTube.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchoptions-1">searchOptions?<a href="#searchoptions-1" class="hash-link" aria-label="Direct link to searchOptions?" title="Direct link to searchOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/EntitySearchOptions"><code>EntitySearchOptions</code></a>&lt;<em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt;</p>
+<p>Options related to the search including search filters,
+the number of pages, maximum number of results per page, and starting page token.
+Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you&#x27;d like.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-20">Returns<a href="#returns-20" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Channel"><code>Channel</code></a>&gt;&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="searchplaylists">searchPlaylists()<a href="#searchplaylists" class="hash-link" aria-label="Direct link to searchPlaylists()" title="Direct link to searchPlaylists()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>searchPlaylists</strong>(<code>searchTerm</code>, <code>searchOptions?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L201" target="_blank" rel="noopener noreferrer" class="">index.ts:201</a></p>
+<p>Search playlists on YouTube.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-17">Parameters<a href="#parameters-17" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchterm-2">searchTerm<a href="#searchterm-2" class="hash-link" aria-label="Direct link to searchTerm" title="Direct link to searchTerm" translate="no">​</a></h5>
+<p><code>string</code></p>
+<p>What to search for on YouTube.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchoptions-2">searchOptions?<a href="#searchoptions-2" class="hash-link" aria-label="Direct link to searchOptions?" title="Direct link to searchOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/EntitySearchOptions"><code>EntitySearchOptions</code></a>&lt;<em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;</p>
+<p>Options related to the search including search filters,
+the number of pages, maximum number of results per page, and starting page token.
+Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you&#x27;d like.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-21">Returns<a href="#returns-21" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">  ​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Playlist"><code>Playlist</code></a>&gt;&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="searchvideos">searchVideos()<a href="#searchvideos" class="hash-link" aria-label="Direct link to searchVideos()" title="Direct link to searchVideos()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>searchVideos</strong>(<code>searchTerm</code>, <code>searchOptions?</code>): <code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;&gt;</p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L179" target="_blank" rel="noopener noreferrer" class="">index.ts:179</a></p>
+<p>Search videos on YouTube.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-18">Parameters<a href="#parameters-18" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchterm-3">searchTerm<a href="#searchterm-3" class="hash-link" aria-label="Direct link to searchTerm" title="Direct link to searchTerm" translate="no">​</a></h5>
+<p><code>string</code></p>
+<p>What to search for on YouTube.</p>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="searchoptions-3">searchOptions?<a href="#searchoptions-3" class="hash-link" aria-label="Direct link to searchOptions?" title="Direct link to searchOptions?" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/EntitySearchOptions"><code>EntitySearchOptions</code></a>&lt;<em>typeof</em> <a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;</p>
+<p>Options related to the search including search filters,
+the number of pages, maximum number of results per page, and starting page token.
+Defaults to the maximum 50 items per page, as well as 1 page. Increase pages as high as you&#x27;d like.</p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-22">Returns<a href="#returns-22" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>Promise</code>&lt;<a class="" href="/docs/api/Library-Exports/type-aliases/PaginatedResponse"><code>PaginatedResponse</code></a>&lt;<a class="" href="/docs/api/Library-Exports/classes/Video"><code>Video</code></a>&gt;&gt;</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_sTbM" id="setauthorization">setAuthorization()<a href="#setauthorization" class="hash-link" aria-label="Direct link to setAuthorization()" title="Direct link to setAuthorization()" translate="no">​</a></h3>
+<blockquote>
+<p><strong>setAuthorization</strong>(<code>authorization</code>): <code>void</code></p>
+</blockquote>
+<p>Defined in: <a href="https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/index.ts#L423" target="_blank" rel="noopener noreferrer" class="">index.ts:423</a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="parameters-19">Parameters<a href="#parameters-19" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+<h5 class="anchor anchorTargetStickyNavbar_sTbM" id="authorization">authorization<a href="#authorization" class="hash-link" aria-label="Direct link to authorization" title="Direct link to authorization" translate="no">​</a></h5>
+<p><a class="" href="/docs/api/Library-Exports/type-aliases/Authorization"><code>Authorization</code></a></p>
+<h4 class="anchor anchorTargetStickyNavbar_sTbM" id="returns-23">Returns<a href="#returns-23" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns" translate="no">​</a></h4>
+<p><code>void</code></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_M6xY"><a href="https://github.com/brandonbothell/popyt/tree/master/docusaurus/docs/api/Library-Exports/classes/YouTube.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_z0D0" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_dwxK"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/api"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Read Me</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/api/Library-Exports/classes/Caption"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Caption</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_A2Wt thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#constructors" class="table-of-contents__link toc-highlight">Constructors</a><ul><li><a href="#constructor" class="table-of-contents__link toc-highlight">Constructor</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#language-1" class="table-of-contents__link toc-highlight">language</a></li><li><a href="#oauth" class="table-of-contents__link toc-highlight">oauth</a></li><li><a href="#region-1" class="table-of-contents__link toc-highlight">region</a></li></ul></li><li><a href="#methods" class="table-of-contents__link toc-highlight">Methods</a><ul><li><a href="#getcategories" class="table-of-contents__link toc-highlight">getCategories()</a></li><li><a href="#getcategory" class="table-of-contents__link toc-highlight">getCategory()</a></li><li><a href="#getchannel" class="table-of-contents__link toc-highlight">getChannel()</a></li><li><a href="#getchannelplaylists" class="table-of-contents__link toc-highlight">getChannelPlaylists()</a></li><li><a href="#getchannelsection" class="table-of-contents__link toc-highlight">getChannelSection()</a></li><li><a href="#getchannelsections" class="table-of-contents__link toc-highlight">getChannelSections()</a></li><li><a href="#getchannelsubscriptions" class="table-of-contents__link toc-highlight">getChannelSubscriptions()</a></li><li><a href="#getcomment" class="table-of-contents__link toc-highlight">getComment()</a></li><li><a href="#getcommentreplies" class="table-of-contents__link toc-highlight">getCommentReplies()</a></li><li><a href="#getlanguages" class="table-of-contents__link toc-highlight">getLanguages()</a></li><li><a href="#getplaylist" class="table-of-contents__link toc-highlight">getPlaylist()</a></li><li><a href="#getplaylistitems" class="table-of-contents__link toc-highlight">getPlaylistItems()</a></li><li><a href="#getregions" class="table-of-contents__link toc-highlight">getRegions()</a></li><li><a href="#getsubscription" class="table-of-contents__link toc-highlight">getSubscription()</a></li><li><a href="#getsubscriptionbychannels" class="table-of-contents__link toc-highlight">getSubscriptionByChannels()</a></li><li><a href="#getvideo" class="table-of-contents__link toc-highlight">getVideo()</a></li><li><a href="#getvideocomments" class="table-of-contents__link toc-highlight">getVideoComments()</a></li><li><a href="#hasaccesstoken" class="table-of-contents__link toc-highlight">hasAccessToken()</a></li><li><a href="#search" class="table-of-contents__link toc-highlight">search()</a></li><li><a href="#searchchannels" class="table-of-contents__link toc-highlight">searchChannels()</a></li><li><a href="#searchplaylists" class="table-of-contents__link toc-highlight">searchPlaylists()</a></li><li><a href="#searchvideos" class="table-of-contents__link toc-highlight">searchVideos()</a></li><li><a href="#setauthorization" class="table-of-contents__link toc-highlight">setAuthorization()</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/tutorial/intro">Tutorial</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api">API Documentation</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/youtube-api" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_u8l6"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/brandonbothell/popyt/discussions" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Discussions<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_u8l6"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/brandonbothell" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_u8l6"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.npmjs.com/package/popyt" target="_blank" rel="noopener noreferrer" class="footer__link-item">NPM<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_u8l6"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/brandonbothell/popyt" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_u8l6"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Brandon Bothell. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
