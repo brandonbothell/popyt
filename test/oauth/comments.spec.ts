@@ -15,6 +15,7 @@ let commentReplyId: string
 describe('OAuth comments', () => {
   it('should post comments', async () => {
     const text = `testing ${new Date().getTime()}`
+    console.log('Comment text: ' + text)
     const uploads = (await youtube.oauth.getMyUploads()).items
     comment = await uploads[0].postComment(text)
     commentId = comment.id
