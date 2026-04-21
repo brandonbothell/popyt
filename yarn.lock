@@ -5931,13 +5931,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-typedoc@npm:0.19.2":
-  version: 0.19.2
-  resolution: "docusaurus-plugin-typedoc@npm:0.19.2"
+"docusaurus-plugin-typedoc@npm:0.22.0":
+  version: 0.22.0
+  resolution: "docusaurus-plugin-typedoc@npm:0.22.0"
   peerDependencies:
     typedoc: ">=0.24.0"
     typedoc-plugin-markdown: ">=3.15.0"
-  checksum: 10/fffce6be3a307d3e8513bbca0c1e881f5dfbaa016cc3562fde4298d2cabd94dda6d893141b6d27f01f3fff0b57c90aaf3d1efb9cf2b43fbb264e0c6cf61ab8fb
+  checksum: 10/d72ad117668c18448c501b19983bfebac5c425013295401d6a9ec034e294f7de677e20f5fd8d4f04ede44bc53bb607c0d2130615c28fc22f17c237b44dc5f6d7
   languageName: node
   linkType: hard
 
@@ -5956,7 +5956,7 @@ __metadata:
     "@types/node": "npm:20.9.0"
     "@types/react": "npm:18.2.35"
     clsx: "npm:2.0.0"
-    docusaurus-plugin-typedoc: "npm:0.19.2"
+    docusaurus-plugin-typedoc: "npm:0.22.0"
     prism-react-renderer: "npm:1.3.5"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
