@@ -15,7 +15,7 @@ jobs:
     #       git config --global user.email "bothellbrandon@gmail.com"
     - uses: actions/setup-node@v6
       with:
-        node-version: '20.19.5'
+        node-version: '20.20.2'
     - name: Lint
       uses: borales/actions-yarn@v5
       with:

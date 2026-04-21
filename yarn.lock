@@ -4197,12 +4197,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.9.0":
-  version: 20.9.0
-  resolution: "@types/node@npm:20.9.0"
+"@types/node@npm:20.19.39":
+  version: 20.19.39
+  resolution: "@types/node@npm:20.19.39"
   dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 10/a934f7645ed117a27857147403b0c657ffbca578c8f280e4c21d27dfb43e58dc4f24c4319d4335b8a4fa08e28fb2dc905a5bd5e4bc8878047164c56c1b162139
+    undici-types: "npm:~6.21.0"
+  checksum: 10/15087cb55440fe401d2363d1719fd7123a0aa1152c1b4aeab8c256cee1eaebfba6f54266bf3d181faafda724e3625c91d87109d983cffb3ca8fc12f9f82effcb
   languageName: node
   linkType: hard
 
@@ -6823,7 +6823,7 @@ __metadata:
     "@docusaurus/tsconfig": "npm:3.10.0"
     "@docusaurus/types": "npm:3.10.0"
     "@mdx-js/react": "npm:3.1.1"
-    "@types/node": "npm:20.9.0"
+    "@types/node": "npm:20.19.39"
     "@types/react": "npm:^18.2.0"
     "@types/react-dom": "npm:^18.2.0"
     clsx: "npm:2.1.1"
@@ -15277,10 +15277,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~5.26.4":
-  version: 5.26.5
-  resolution: "undici-types@npm:5.26.5"
-  checksum: 10/0097779d94bc0fd26f0418b3a05472410408877279141ded2bd449167be1aed7ea5b76f756562cb3586a07f251b90799bab22d9019ceba49c037c76445f7cddd
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10/ec8f41aa4359d50f9b59fa61fe3efce3477cc681908c8f84354d8567bb3701fafdddf36ef6bff307024d3feb42c837cf6f670314ba37fc8145e219560e473d14
   languageName: node
   linkType: hard
 
