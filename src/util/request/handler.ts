@@ -76,7 +76,6 @@ export class Handler {
         }
 
         if (parsed.error) {
-          console.error('Error response: ' + JSON.stringify(parsed, null, 2))
           return reject(new Error(parsed.error.message))
         } else if (response.statusCode === 404) {
           return reject(new Error('HTTP status code 404 Not Found'))

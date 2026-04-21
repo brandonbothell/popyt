@@ -29,7 +29,7 @@ export class OAuthComments {
     data.snippet.videoId = ResolutionService.toId(video)
 
     const result = await this.oauth.youtube._request.post('commentThreads', {
-      params: { part: YT.Comment.part },
+      params: { part: 'snippet' },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
