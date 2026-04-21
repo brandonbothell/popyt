@@ -33,6 +33,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@docusaurus/tsconfig", "npm:3.10.0"],\
           ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.0.5"],\
           ["@eslint/eslintrc", "npm:3.3.5"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
@@ -16644,6 +16645,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@docusaurus/tsconfig", "npm:3.10.0"],\
           ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.0.5"],\
           ["@eslint/eslintrc", "npm:3.3.5"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\

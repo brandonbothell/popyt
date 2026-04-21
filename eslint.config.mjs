@@ -23,7 +23,7 @@ export default defineConfig(
   globalIgnores(['docusaurus/**/*.js', 'typings/**/*', 'out/**/*', 'coverage/**/*', '**/.pnp.*', '.yarn/**/*']),
   [{
     extends: fixupConfigRules(compat.extends('plugin:import/recommended')),
-    files: ['src/**/*.ts', 'test/**/*.ts', 'eslint.config.mjs'],
+    files: ['src/**/*.ts', 'test/**/*.ts', 'docusaurus/**/*.ts', 'docusaurus/**/*.tsx', 'eslint.config.mjs'],
 
     plugins: {
       '@stylistic': stylistic,

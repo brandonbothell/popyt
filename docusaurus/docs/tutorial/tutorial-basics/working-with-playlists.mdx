@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-import CodeSandboxBlock, { CodeSandboxText } from '@site/src/components/CodeSandboxBlock'
+import CodeBlock, { CodeSandboxText } from '@theme/CodeBlock'
 
 # Working with Playlists
 Playlists are lists of videos and a some metadata including a title, description, etc. They have some unique behaviors, especially pertaining to the completeness of videos fetched from these objects.
@@ -13,7 +13,7 @@ that you can run online and download**.
 
 ## Fetch your first playlist
 
-<CodeSandboxBlock
+<CodeBlock
   language="js"
   url="https://codesandbox.io/p/sandbox/fetch-playlists-from-youtube-x6jwck">
 {`const playlistById = youtube.getPlaylist('PLOnQsl0GcqfbrO4-KsJQp7ecp5T16frBI')
@@ -22,7 +22,7 @@ const playlistByTitleSearch = youtube.getPlaylist('Never Gonna Give You Up Parod
 \n
 console.log(\`Playlist title: $\{playlistById.title}\`)
 console.log(\`Playlist length: $\{playlistById.length} videos\`)`}
-</CodeSandboxBlock>
+</CodeBlock>
 
 :::tip[CHILD OBJECTS MUST BE FETCHED EXPLICITLY]
 

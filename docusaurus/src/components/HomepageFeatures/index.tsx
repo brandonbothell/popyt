@@ -1,5 +1,6 @@
-import React from 'react'
-import clsx from 'clsx'
+/// <reference types="../../types.d.ts" />
+import React, { JSX } from 'react'
+import { clsx } from 'clsx'
 import styles from './styles.module.css'
 
 type FeatureItem = {

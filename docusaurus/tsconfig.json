@@ -1,12 +1,16 @@
 {
   // Compiles docusaurus.config.ts, sidebars.ts, and babel.config.ts
-  "extends": "@docusaurus/tsconfig/tsconfig.json",
+  "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "outDir": ".",
     "noEmit": false,
-    "allowJs": false
+    "allowJs": false,
+    "types": [
+      "@docusaurus/module-type-aliases",
+      "@docusaurus/theme-classic"
+    ]
   },
   "files": [
     "./sidebars.ts",

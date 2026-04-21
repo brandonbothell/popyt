@@ -1,4 +1,6 @@
-import clsx from 'clsx'
+/// <reference types="../types.d.ts" />
+import { JSX } from 'react'
+import { clsx } from 'clsx'
 import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'

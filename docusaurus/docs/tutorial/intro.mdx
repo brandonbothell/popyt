@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-import CodeSandboxBlock, { CodeSandboxText } from '@site/src/components/CodeSandboxBlock'
+import CodeBlock, { CodeSandboxText } from '@theme/CodeBlock'
 
 # Tutorial Intro
 
@@ -44,12 +44,12 @@ Here are a few examples of retrieving data, but check [the documentation](../api
 
 Get a video by ID:
 
-<CodeSandboxBlock
+<CodeBlock
   language="js"
   url="https://codesandbox.io/p/sandbox/fetch-videos-from-youtube-jmqlfq">
   {`const video = await youtube.getVideo('dQw4w9WgXcQ')
 console.log(video.title)`}
-</CodeSandboxBlock>
+</CodeBlock>
 
 You can do the same thing with playlists, channels, and comments by replacing Video with any of them.
 

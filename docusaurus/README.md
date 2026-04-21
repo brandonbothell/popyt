@@ -1,4 +1,4 @@
-import CodeSandboxBlock from '@site/src/components/CodeSandboxBlock'
+import CodeBlock from '@theme/CodeBlock'
 
 # Getting Started
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
@@ -24,12 +24,12 @@ Here are some basic methods:
 
 Instantiate the object:
 
-<CodeSandboxBlock
+<CodeBlock
   language="js"
   url="https://codesandbox.io/p/sandbox/fetch-videos-from-youtube-jmqlfq">
   {`const { YouTube } = require('popyt')
 const youtube = new YouTube(apiKey)`}
-</CodeSandboxBlock>
+</CodeBlock>
 
 Instantiate the object without caching:
 
