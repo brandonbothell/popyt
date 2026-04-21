@@ -6,7 +6,7 @@
 
 # Class: Region
 
-Defined in: [entities/region.ts:7](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L7)
+Defined in: [entities/region.ts:7](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L7)
 
 A region.
 
@@ -16,7 +16,7 @@ A region.
 
 > **new Region**(`youtube`, `data`, `full?`): `Region`
 
-Defined in: [entities/region.ts:53](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L53)
+Defined in: [entities/region.ts:53](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L53)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/region.ts:53](https://github.com/brandonbothell/popyt/blob
 
 > **data**: `any`
 
-Defined in: [entities/region.ts:36](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L36)
+Defined in: [entities/region.ts:36](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L36)
 
 The raw data of this region.
 
@@ -52,7 +52,7 @@ The raw data of this region.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/region.ts:31](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L31)
+Defined in: [entities/region.ts:31](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L31)
 
 Whether or not this is a full region object.
 
@@ -62,7 +62,7 @@ Whether or not this is a full region object.
 
 > **gl**: `string`
 
-Defined in: [entities/region.ts:46](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L46)
+Defined in: [entities/region.ts:46](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L46)
 
 The country code that uniquely identifies the region.
 
@@ -72,7 +72,7 @@ The country code that uniquely identifies the region.
 
 > **id**: `string`
 
-Defined in: [entities/region.ts:41](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L41)
+Defined in: [entities/region.ts:41](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L41)
 
 The ID of this region.
 
@@ -82,7 +82,7 @@ The ID of this region.
 
 > **name**: `string`
 
-Defined in: [entities/region.ts:51](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L51)
+Defined in: [entities/region.ts:51](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L51)
 
 The region's name.
 
@@ -92,7 +92,7 @@ The region's name.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/region.ts:26](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L26)
+Defined in: [entities/region.ts:26](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L26)
 
 The YouTube object that created this region object.
 
@@ -102,7 +102,7 @@ The YouTube object that created this region object.
 
 > `static` **endpoint**: `string` = `'i18nRegions'`
 
-Defined in: [entities/region.ts:11](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L11)
+Defined in: [entities/region.ts:11](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L11)
 
 The name of the endpoint used for this entity.
 
@@ -112,7 +112,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string` = `'items(kind,id,snippet(gl,name))'`
 
-Defined in: [entities/region.ts:21](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L21)
+Defined in: [entities/region.ts:21](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L21)
 
 The fields to request for this entity.
 
@@ -122,6 +122,6 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'snippet'`
 
-Defined in: [entities/region.ts:16](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/entities/region.ts#L16)
+Defined in: [entities/region.ts:16](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/region.ts#L16)
 
 The parts to request for this entity.

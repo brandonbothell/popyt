@@ -6,7 +6,7 @@
 
 # Class: OAuthChannels
 
-Defined in: [oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L10)
+Defined in: [oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L10)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [oauth/channels.ts:10](https://github.com/brandonbothell/popyt/blob/
 
 > **new OAuthChannels**(`oauth`): `OAuthChannels`
 
-Defined in: [oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L11)
+Defined in: [oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L11)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/
 
 > **oauth**: [`OAuth`](OAuth.md)
 
-Defined in: [oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L11)
+Defined in: [oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L11)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: [oauth/channels.ts:11](https://github.com/brandonbothell/popyt/blob/
 
 > **addChannelSection**(`type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`\<[`ChannelSection`](../../Library-Exports/classes/ChannelSection.md)\>
 
-Defined in: [oauth/channels.ts:159](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L159)
+Defined in: [oauth/channels.ts:159](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L159)
 
 Adds a [ChannelSection](../../Library-Exports/classes/ChannelSection#) to the authorized user's [Channel](../../Library-Exports/classes/Channel#).
 
@@ -86,7 +86,7 @@ Any channels in the channel section.
 
 > **deleteChannelSection**(`id`): `Promise`\<[`ChannelSection`](../../Library-Exports/classes/ChannelSection.md)\>
 
-Defined in: [oauth/channels.ts:245](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L245)
+Defined in: [oauth/channels.ts:245](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L245)
 
 Deletes a [ChannelSection](../../Library-Exports/classes/ChannelSection#).
 
@@ -108,7 +108,7 @@ The ID of the channel section.
 
 > **setChannelMadeForKids**(`channelResolvable`, `madeForKids`): `Promise`\<[`Channel`](../../Library-Exports/classes/Channel.md)\>
 
-Defined in: [oauth/channels.ts:69](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L69)
+Defined in: [oauth/channels.ts:69](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L69)
 
 Sets a channel as made for kids or not made for kids.
 
@@ -136,7 +136,7 @@ Whether or not the channel is made for kids.
 
 > **setChannelWatermark**(`channelResolvable`, `type`, `offset`, `duration`, `image`): `Promise`\<`void`\>
 
-Defined in: [oauth/channels.ts:96](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L96)
+Defined in: [oauth/channels.ts:96](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L96)
 
 Sets a channel's watermark.
 
@@ -182,7 +182,7 @@ The watermark image.
 
 > **subscribeToChannel**(`channelResolvable`): `Promise`\<[`Subscription`](../../Library-Exports/classes/Subscription.md)\>
 
-Defined in: [oauth/channels.ts:258](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L258)
+Defined in: [oauth/channels.ts:258](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L258)
 
 Subscribe to a [Channel](../../Library-Exports/classes/Channel#).
 
@@ -206,7 +206,7 @@ A partial subscription object.
 
 > **unsetChannelWatermark**(`channelResolvable`): `Promise`\<`void`\>
 
-Defined in: [oauth/channels.ts:124](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L124)
+Defined in: [oauth/channels.ts:124](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L124)
 
 Unsets a channel's watermark.
 
@@ -228,7 +228,7 @@ The channel to unset the watermark from.
 
 > **unsubscribeFromChannel**(`subscriptionId`): `Promise`\<`void`\>
 
-Defined in: [oauth/channels.ts:278](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L278)
+Defined in: [oauth/channels.ts:278](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L278)
 
 Unsubscribe from a [Channel](../../Library-Exports/classes/Channel#).
 
@@ -250,7 +250,7 @@ The subscription to unsubscribe from.
 
 > **updateChannelBranding**(`channelResolvable`, `brandingSettings`): `Promise`\<[`Channel`](../../Library-Exports/classes/Channel.md)\>
 
-Defined in: [oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L20)
+Defined in: [oauth/channels.ts:20](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L20)
 
 Updates a channel's branding settings.
 **If your request does not specify a value for a property that already has a value,
@@ -280,7 +280,7 @@ The new branding settings.
 
 > **updateChannelLocalizations**(`channelResolvable`, `localizations`): `Promise`\<[`Channel`](../../Library-Exports/classes/Channel.md)\>
 
-Defined in: [oauth/channels.ts:45](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L45)
+Defined in: [oauth/channels.ts:45](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L45)
 
 Updates a channel's localizations.
 **CURRENTLY BROKEN in the API**
@@ -309,7 +309,7 @@ The new localizations.
 
 > **updateChannelSection**(`id`, `type`, `name?`, `position?`, `playlistsResolvable?`, `channelsResolvable?`): `Promise`\<[`ChannelSection`](../../Library-Exports/classes/ChannelSection.md)\>
 
-Defined in: [oauth/channels.ts:210](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L210)
+Defined in: [oauth/channels.ts:210](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L210)
 
 Updates a [ChannelSection](../../Library-Exports/classes/ChannelSection#).
 **If your request does not specify a value for a property that already has a value,
@@ -363,7 +363,7 @@ Any channels in the channel section.
 
 > **uploadChannelBanner**(`image`): `Promise`\<`string`\>
 
-Defined in: [oauth/channels.ts:141](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/channels.ts#L141)
+Defined in: [oauth/channels.ts:141](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/channels.ts#L141)
 
 Uploads a channel banner.
 

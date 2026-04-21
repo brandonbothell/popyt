@@ -8,7 +8,7 @@
 
 > **PaginatedResponse**\<`T`\> = `object`
 
-Defined in: [types/RetrievalService.ts:88](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/types/RetrievalService.ts#L88)
+Defined in: [types/RetrievalService.ts:88](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L88)
 
 ## Type Parameters
 
@@ -22,7 +22,7 @@ Defined in: [types/RetrievalService.ts:88](https://github.com/brandonbothell/pop
 
 > **items**: `T`[]
 
-Defined in: [types/RetrievalService.ts:89](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/types/RetrievalService.ts#L89)
+Defined in: [types/RetrievalService.ts:89](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L89)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types/RetrievalService.ts:89](https://github.com/brandonbothell/pop
 
 > `optional` **nextPageToken?**: `string`
 
-Defined in: [types/RetrievalService.ts:91](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/types/RetrievalService.ts#L91)
+Defined in: [types/RetrievalService.ts:91](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L91)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [types/RetrievalService.ts:91](https://github.com/brandonbothell/pop
 
 > `optional` **prevPageToken?**: `string`
 
-Defined in: [types/RetrievalService.ts:90](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/types/RetrievalService.ts#L90)
+Defined in: [types/RetrievalService.ts:90](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L90)

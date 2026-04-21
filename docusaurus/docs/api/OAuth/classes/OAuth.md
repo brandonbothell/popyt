@@ -6,7 +6,7 @@
 
 # Class: OAuth
 
-Defined in: [oauth/index.ts:23](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L23)
+Defined in: [oauth/index.ts:23](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L23)
 
 All methods requiring an OAuth access token.
 Use [`YouTube.oauth`](../../Library-Exports/classes/YouTube#oauth) to access these methods.
@@ -17,7 +17,7 @@ Use [`YouTube.oauth`](../../Library-Exports/classes/YouTube#oauth) to access the
 
 > **new OAuth**(`youtube`): `OAuth`
 
-Defined in: [oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L56)
+Defined in: [oauth/index.ts:56](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L56)
 
 #### Parameters
 
@@ -37,7 +37,7 @@ The [YouTube](../../Library-Exports/classes/YouTube) object to retrieve the toke
 
 > **captions**: [`OAuthCaptions`](OAuthCaptions.md)
 
-Defined in: [oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L50)
+Defined in: [oauth/index.ts:50](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L50)
 
 All OAuth methods related to [captions](../../Library-Exports/classes/Caption).
 
@@ -47,7 +47,7 @@ All OAuth methods related to [captions](../../Library-Exports/classes/Caption).
 
 > **channels**: [`OAuthChannels`](OAuthChannels.md)
 
-Defined in: [oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L45)
+Defined in: [oauth/index.ts:45](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L45)
 
 All OAuth methods related to [channels](../../Library-Exports/classes/Channel).
 
@@ -57,7 +57,7 @@ All OAuth methods related to [channels](../../Library-Exports/classes/Channel).
 
 > **comments**: [`OAuthComments`](OAuthComments.md)
 
-Defined in: [oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L29)
+Defined in: [oauth/index.ts:29](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L29)
 
 All OAuth methods related to [comments](../../Library-Exports/classes/Comment).
 
@@ -67,7 +67,7 @@ All OAuth methods related to [comments](../../Library-Exports/classes/Comment).
 
 > **playlists**: [`OAuthPlaylists`](OAuthPlaylists.md)
 
-Defined in: [oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L40)
+Defined in: [oauth/index.ts:40](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L40)
 
 All OAuth methods related to
 [playlists](../../Library-Exports/classes/Playlist)/playlist items.
@@ -78,7 +78,7 @@ All OAuth methods related to
 
 > **videos**: [`OAuthVideos`](OAuthVideos.md)
 
-Defined in: [oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L34)
+Defined in: [oauth/index.ts:34](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L34)
 
 All OAuth methods related to [videos](../../Library-Exports/classes/Video)/video ratings.
 
@@ -88,7 +88,7 @@ All OAuth methods related to [videos](../../Library-Exports/classes/Video)/video
 
 > **youtube**: [`YouTube`](../../Library-Exports/classes/YouTube.md)
 
-Defined in: [oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L24)
+Defined in: [oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L24)
 
 ## Methods
 
@@ -96,7 +96,7 @@ Defined in: [oauth/index.ts:24](https://github.com/brandonbothell/popyt/blob/c84
 
 > **getMe**(`parts?`): `Promise`\<[`Channel`](../../Library-Exports/classes/Channel.md)\>
 
-Defined in: [oauth/index.ts:72](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L72)
+Defined in: [oauth/index.ts:72](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L72)
 
 Gets the authorized user's [Channel](../../Library-Exports/classes/Channel#).
 
@@ -116,7 +116,7 @@ Gets the authorized user's [Channel](../../Library-Exports/classes/Channel#).
 
 > **getMyChannelSections**(`parts?`): `Promise`\<[`ChannelSection`](../../Library-Exports/classes/ChannelSection.md)[]\>
 
-Defined in: [oauth/index.ts:134](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L134)
+Defined in: [oauth/index.ts:134](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L134)
 
 Gets the authorized user's [ChannelSection](../../Library-Exports/classes/ChannelSection)s.
 
@@ -136,7 +136,7 @@ Gets the authorized user's [ChannelSection](../../Library-Exports/classes/Channe
 
 > **getMyPlaylists**(`pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../../Library-Exports/type-aliases/PaginatedResponse.md)\<[`Playlist`](../../Library-Exports/classes/Playlist.md)\>\>
 
-Defined in: [oauth/index.ts:122](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L122)
+Defined in: [oauth/index.ts:122](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L122)
 
 Gets the authorized user's [Playlist](../../Library-Exports/classes/Playlist#)s.
 
@@ -166,7 +166,7 @@ Set to a value {'<='}0 to fetch all.
 
 > **getMySubscriptions**(`pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../../Library-Exports/type-aliases/PaginatedResponse.md)\<[`Subscription`](../../Library-Exports/classes/Subscription.md)\>\>
 
-Defined in: [oauth/index.ts:105](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L105)
+Defined in: [oauth/index.ts:105](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L105)
 
 Gets the authorized user's [Subscription](../../Library-Exports/classes/Subscription#)s.
 
@@ -196,7 +196,7 @@ Set to a value {'<='}0 to fetch all.
 
 > **getMyUploads**(`pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../../Library-Exports/type-aliases/PaginatedResponse.md)\<[`Video`](../../Library-Exports/classes/Video.md)\>\>
 
-Defined in: [oauth/index.ts:88](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/oauth/index.ts#L88)
+Defined in: [oauth/index.ts:88](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/oauth/index.ts#L88)
 
 Gets the authorized user's uploads.  
 These are **partial [Video](../../Library-Exports/classes/Video) objects**,

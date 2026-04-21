@@ -158,7 +158,7 @@ export class Subscription {
     if (subscription.snippet) {
       this.dateSubscribed = new Date(subscription.snippet.publishedAt)
       this.channel = {
-        name: subscription.snippet.channelTitle || subscription.snippet.title,
+        name: subscription.snippet.title,
         id: subscription.snippet.resourceId?.channelId
       }
       this.title = subscription.snippet.title

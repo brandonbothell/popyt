@@ -6,14 +6,14 @@
   "main": "out/index.js",
   "types": "typings/index.d.ts",
   "scripts": {
-    "test": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/*.spec.ts\" --timeout 30000",
-    "test:oauth": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/oauth/*.spec.ts\" --timeout 30000",
-    "test:http": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/request.spec.ts\" --timeout 30000",
-    "test:comments": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/comments.spec.ts\" --timeout 30000",
-    "test:youtube": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/youtube.spec.ts\" --timeout 30000",
-    "test:playlist-items": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/playlist-items.spec.ts\" --timeout 30000",
-    "test:subscriptions": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/subscription.spec.ts\" --timeout 30000",
-    "test:all": "mocha --exit --require .yarn/unplugged/ts-node-virtual-606bda6af3/node_modules/ts-node/register/transpile-only.js --require .yarn/unplugged/source-map-support-npm-0.5.21-09ca99e250/node_modules/source-map-support/register.js --recursive \"./test/**/*.spec.ts\" --timeout 30000",
+    "test": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/*.spec.ts\" --timeout 30000",
+    "test:oauth": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/oauth/*.spec.ts\" --timeout 30000",
+    "test:http": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/request.spec.ts\" --timeout 30000",
+    "test:comments": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/comments.spec.ts\" --timeout 30000",
+    "test:youtube": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/youtube.spec.ts\" --timeout 30000",
+    "test:playlist-items": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/playlist-items.spec.ts\" --timeout 30000",
+    "test:subscriptions": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/subscription.spec.ts\" --timeout 30000",
+    "test:all": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/**/*.spec.ts\" --timeout 30000",
     "coverage": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test",
     "coverage:all": "tsc && cross-env NODE_ENV=test nyc --reporter=json yarn test:all",
     "coverage:allhtml": "tsc && cross-env NODE_ENV=test nyc --reporter=lcov yarn test:all",
@@ -50,47 +50,39 @@
     "caching"
   ],
   "devDependencies": {
-    "@googleapis/youtube": "11.0.1",
+    "@googleapis/youtube": "31.0.0",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/chai": "4.3.10",
     "@types/gulp": "4.0.18",
     "@types/gulp-sourcemaps": "0.0.38",
     "@types/merge2": "1.4.3",
     "@types/mocha": "10.0.3",
-    "@types/node": "20.9.0",
+    "@types/node": "25.6.0",
     "@typescript-eslint/eslint-plugin": "6.13.0",
     "@typescript-eslint/parser": "6.13.0",
     "chai": "4.3.10",
-    "cross-env": "7.0.3",
-    "dotenv": "16.3.1",
+    "cross-env": "10.1.0",
+    "dotenv": "17.4.2",
     "eslint": "8.53.0",
-    "eslint-plugin-import": "2.29.0",
+    "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsdoc": "46.8.2",
     "eslint-plugin-unused-imports": "3.0.0",
     "mocha": "10.2.0",
     "nyc": "15.1.0",
     "source-map-support": "0.5.21",
-    "ts-node": "10.9.1",
-    "tsx": "^4.20.6",
-    "typescript": "5.1.6"
+    "ts-node": "10.9.2",
+    "typescript": "6.0.3",
+    "undici-types": "8.1.0"
   },
   "resolutions": {
     "node-preload": "0.2.0",
     "webpack": "5.105.0"
   },
   "engines": {
-    "node": "20.19.5"
+    "node": ">=18.0 <24.0"
   },
   "repository": {
     "url": "https://github.com/brandonbothell/popyt.git"
   },
-  "packageManager": "yarn@4.10.3",
-  "dependenciesMeta": {
-    "source-map-support@0.5.21": {
-      "unplugged": true
-    },
-    "ts-node@10.9.1": {
-      "unplugged": true
-    }
-  }
+  "packageManager": "yarn@4.10.3"
 }

@@ -3,6 +3,7 @@
     "lib": [
       "es2023"
     ],
+    "types": [ "node" ],
     "module": "Node16",
     "target": "es2022",
     "outDir": "out",

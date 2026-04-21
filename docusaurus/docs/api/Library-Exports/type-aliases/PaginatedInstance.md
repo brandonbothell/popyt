@@ -8,4 +8,4 @@
 
 > **PaginatedInstance** = `InstanceType`\<[`PaginatedType`](PaginatedType.md)\>
 
-Defined in: [types/RetrievalService.ts:44](https://github.com/brandonbothell/popyt/blob/c844ccc6eb54053a0787030e23d6e19a0eb28735/src/types/RetrievalService.ts#L44)
+Defined in: [types/RetrievalService.ts:44](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L44)
