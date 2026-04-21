@@ -38,7 +38,7 @@ const RAW_RUNTIME_STATE =
           ["@types/chai", "npm:4.3.10"],\
           ["@types/gulp", "npm:4.0.18"],\
           ["@types/gulp-sourcemaps", "npm:0.0.38"],\
-          ["@types/merge2", "npm:1.4.3"],\
+          ["@types/merge2", "npm:1.4.4"],\
           ["@types/mocha", "npm:10.0.3"],\
           ["@types/node", "npm:25.6.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
@@ -7088,10 +7088,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/merge2", [\
-      ["npm:1.4.3", {\
-        "packageLocation": "./.yarn/cache/@types-merge2-npm-1.4.3-4887d1358e-f20b81efef.zip/node_modules/@types/merge2/",\
+      ["npm:1.4.4", {\
+        "packageLocation": "./.yarn/cache/@types-merge2-npm-1.4.4-60dda32e34-704a94cecf.zip/node_modules/@types/merge2/",\
         "packageDependencies": [\
-          ["@types/merge2", "npm:1.4.3"],\
+          ["@types/merge2", "npm:1.4.4"],\
           ["@types/node", "npm:25.6.0"]\
         ],\
         "linkType": "HARD"\
@@ -16572,7 +16572,7 @@ const RAW_RUNTIME_STATE =
           ["@types/chai", "npm:4.3.10"],\
           ["@types/gulp", "npm:4.0.18"],\
           ["@types/gulp-sourcemaps", "npm:0.0.38"],\
-          ["@types/merge2", "npm:1.4.3"],\
+          ["@types/merge2", "npm:1.4.4"],\
           ["@types/mocha", "npm:10.0.3"],\
           ["@types/node", "npm:25.6.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:6.13.0"],\
