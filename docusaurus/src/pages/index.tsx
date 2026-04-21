@@ -1,4 +1,3 @@
-import React from 'react'
 import clsx from 'clsx'
 import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'

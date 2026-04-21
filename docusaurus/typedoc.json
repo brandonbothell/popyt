@@ -3,10 +3,13 @@
   "tsconfig": "../tsconfig.json",
   "readme": "README.md",
   "out": "api",
+  "plugin": [ "typedoc-plugin-markdown" ],
   "name": "popyt",
   "theme": "default",
-  "markedOptions": {
-    "gfm": true,
-    "tables": true
+  "markdownItOptions": {
+    "html": true,
+    "linkify": true,
+    "typographer": true,
+    "xhtmlOut": true,
   }
 }

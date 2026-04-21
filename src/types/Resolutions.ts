@@ -51,7 +51,7 @@ export type CommentResolvable = string | Comment
  */
 export type SubscriptionResolvable = string | Subscription
 
-export interface IDEntity {
+export type IDEntity = {
   id: string
   [key: string]: any
 }

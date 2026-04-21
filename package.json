@@ -75,7 +75,8 @@
     "typescript": "5.1.6"
   },
   "resolutions": {
-    "node-preload": "0.2.0"
+    "node-preload": "0.2.0",
+    "webpack": "5.105.0"
   },
   "engines": {
     "node": "20.19.5"

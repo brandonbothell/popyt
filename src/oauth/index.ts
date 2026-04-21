@@ -18,40 +18,40 @@ export * from './captions'
 
 /**
  * All methods requiring an OAuth access token.
- * Use `YouTube.oauth` to access these methods.
+ * Use [`YouTube.oauth`](../../Library-Exports/classes/YouTube#oauth) to access these methods.
  */
 export class OAuth {
   public youtube: YouTube
 
   /**
-   * All OAuth methods related to [comments](./Library_Exports.Comment).
+   * All OAuth methods related to [comments](../../Library-Exports/classes/Comment).
    */
   public comments = new OAuthComments(this)
 
   /**
-   * All OAuth methods related to [videos](./Library_Exports.Video)/video ratings.
+   * All OAuth methods related to [videos](../../Library-Exports/classes/Video)/video ratings.
    */
   public videos = new OAuthVideos(this)
 
   /**
    * All OAuth methods related to
-   * [playlists](./Library_Exports.Playlist)/playlist items.
+   * [playlists](../../Library-Exports/classes/Playlist)/playlist items.
    */
   public playlists = new OAuthPlaylists(this)
 
   /**
-   * All OAuth methods related to [channels](./Library_Exports.Channel).
+   * All OAuth methods related to [channels](../../Library-Exports/classes/Channel).
    */
   public channels = new OAuthChannels(this)
 
   /**
-   * All OAuth methods related to [captions](./Library_Exports.Caption).
+   * All OAuth methods related to [captions](../../Library-Exports/classes/Caption).
    */
   public captions = new OAuthCaptions(this)
 
   /**
    * 
-   * @param youtube The [YouTube](./Library_Exports.YouTube) object to retrieve the token from.
+   * @param youtube The [YouTube](../../Library-Exports/classes/YouTube) object to retrieve the token from.
    */
   constructor (youtube: YouTube) {
     this.youtube = youtube
@@ -67,7 +67,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [Channel](./Library_Exports.Channel#).  
+   * Gets the authorized user's [Channel](../../Library-Exports/classes/Channel#).  
    */
   public getMe (parts?: Part.ChannelParts): Promise<YT.Channel> {
     this.checkTokenAndThrow()
@@ -76,13 +76,13 @@ export class OAuth {
 
   /**
    * Gets the authorized user's uploads.  
-   * These are **partial [Video](./Library_Exports.Video) objects**,
+   * These are **partial [Video](../../Library-Exports/classes/Video) objects**,
    * meaning they are missing some data. See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
-   * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to
+   * Use [`YouTube.getVideo(playlist.videos)`](../../Library-Exports/classes/YouTube#getvideo) to
    * fetch the full objects while not spamming your quota like you would using a loop.  
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the videos to fetch.
    */
   public async getMyUploads (pageOptions?: YT.PageOptions, parts?: Part.PlaylistItemParts) {
@@ -95,12 +95,12 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [Subscription](./Library_Exports.Subscription#)s.  
+   * Gets the authorized user's [Subscription](../../Library-Exports/classes/Subscription#)s.  
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch
+   * Set pages to a value {'<='}0 to fetch
    * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * Set to a value {'<='}0 to fetch all.
    */
   public getMySubscriptions (pageOptions?: YT.PageOptions, parts?: Part.SubscriptionParts) {
     this.checkTokenAndThrow()
@@ -112,12 +112,12 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [Playlist](./Library_Exports.Playlist#)s.  
+   * Gets the authorized user's [Playlist](../../Library-Exports/classes/Playlist#)s.  
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch
+   * Set pages to a value {'<='}0 to fetch
    * Fetches the maximum allowed by the API by default.
-   * Set to a value <=0 to fetch all.
+   * Set to a value {'<='}0 to fetch all.
    */
   public getMyPlaylists (pageOptions?: YT.PageOptions, parts?: Part.PlaylistParts) {
     this.checkTokenAndThrow()
@@ -129,7 +129,7 @@ export class OAuth {
   }
 
   /**
-   * Gets the authorized user's [ChannelSection](./Library_Exports.ChannelSection)s.  
+   * Gets the authorized user's [ChannelSection](../../Library-Exports/classes/ChannelSection)s.  
    */
   public async getMyChannelSections (parts?: Part.ChannelSectionParts) {
     this.checkTokenAndThrow()

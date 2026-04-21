@@ -3,7 +3,7 @@ import { YouTube, Playlist, Channel, ChannelSectionType, PageOptions, PaginatedR
 import { youtube_v3 } from '@googleapis/youtube'
 
 /**
- * A YouTube [Channel](./Library_Exports.Channel#) section.
+ * A YouTube [Channel](./Channel#) section.
  */
 export class ChannelSection {
   /**
@@ -67,19 +67,19 @@ export class ChannelSection {
   public channelIds?: string[]
 
   /**
-   * The playlists in the channel section. Only available after calling [ChannelSection.fetchPlaylists](./Library_Exports.ChannelSection#fetchPlaylists).
+   * The playlists in the channel section. Only available after calling [ChannelSection.fetchPlaylists](./ChannelSection#fetchplaylists).
    */
   public playlists?: Playlist[]
 
   /**
-   * The channels in the channel section. Only available after calling [ChannelSection.fetchChannels](./Library_Exports.ChannelSection#fetchChannels).
+   * The channels in the channel section. Only available after calling [ChannelSection.fetchChannels](./ChannelSection#fetchchannels).
    */
   public channels?: Channel[]
 
   /**
    * The subscriptions in the channel section.  
    * Only valid if `ChannelSection.type` is `subscriptions`.
-   * Only available after calling [ChannelSection.fetchChannels()](./Library_Exports.ChannelSection#fetchChannels).
+   * Only available after calling [ChannelSection.fetchChannels()](./ChannelSection#fetchchannels).
    */
   public subscriptions?: PaginatedResponse<Subscription>
 
@@ -128,7 +128,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's playlists from the API and assigns them to the [ChannelSection.playlists](./Library_Exports.ChannelSection#playlists) property.
+   * Fetches the channel section's playlists from the API and assigns them to the [ChannelSection.playlists](./ChannelSection#playlists) property.
    */
   public async fetchPlaylists (pageOptions?: PageOptions, parts?: PlaylistParts) {
     if (this.type === 'allplaylists') {
@@ -145,7 +145,7 @@ export class ChannelSection {
   }
 
   /**
-   * Fetches the channel section's channels from the API and assigns them to the [ChannelSection.channels](./Library_Exports.ChannelSection#channels) property.
+   * Fetches the channel section's channels from the API and assigns them to the [ChannelSection.channels](./ChannelSection#channels) property.
    */
   public async fetchChannels (parts?: ChannelParts) {
     if (!this.channelIds) {

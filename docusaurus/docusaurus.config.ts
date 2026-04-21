@@ -1,6 +1,8 @@
-import lightCodeTheme from 'prism-react-renderer/themes/github'
-import darkCodeTheme from 'prism-react-renderer/themes/dracula'
-import { Config } from '@docusaurus/types'
+import { themes } from 'prism-react-renderer'
+import type { Config } from '@docusaurus/types'
+
+const lightCodeTheme = themes.github
+const darkCodeTheme = themes.dracula
 
 const config: Config = {
   title: 'Popyt',
@@ -19,7 +21,17 @@ const config: Config = {
   projectName: 'popyt', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+
+  markdown: {
+    mdx1Compat: {
+      comments: false,
+      admonitions: false,
+      headingIds: false
+    },
+    hooks: {
+      onBrokenMarkdownLinks: 'warn'
+    }
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -34,12 +46,7 @@ const config: Config = {
   plugins: [
     [
       'docusaurus-plugin-typedoc',
-      {
-        includeExtension: false,
-        frontmatter: {
-          title: 'Documentation'
-        }
-      }
+      {}
     ]
   ],
 
@@ -150,4 +157,4 @@ const config: Config = {
     })
 }
 
-module.exports = config
+export default config

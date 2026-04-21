@@ -51,7 +51,7 @@ export class Subscription {
   public dateSubscribed: Date
 
   /**
-   * Information on the [Channel](./Library_Exports.Channel#) that the user subscribed to.
+   * Information on the [Channel](./Channel#) that the user subscribed to.
    */
   public channel: {
     /**

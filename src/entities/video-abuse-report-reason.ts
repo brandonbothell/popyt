@@ -2,7 +2,7 @@ import YouTube from '..'
 import { youtube_v3 } from '@googleapis/youtube'
 
 /**
- * A YouTube [Video](./Library_Exports.Video#) abuse report reason.
+ * A YouTube [Video](./Video#) abuse report reason.
  */
 export class VideoAbuseReportReason {
   /**

@@ -67,7 +67,7 @@ export type ChannelBrandingSettings = {
   }
   image?: {
     /**
-     * The URL of a banner (obtained from [OAuth.uploadChannelBanner](./Library_Exports.OAuth#uploadChannelBanner)) to use for the channel.
+     * The URL of a banner (obtained from [OAuth.uploadChannelBanner](../../OAuth/classes/OAuthChannels#uploadchannelbanner)) to use for the channel.
      */
     bannerExternalUrl?: string
 
@@ -77,7 +77,7 @@ export type ChannelBrandingSettings = {
     trackingImageUrl?: string
 
     /**
-     * The URL for a 25 pixel high image with a width <=170 pixels that appears above the player.
+     * The URL for a 25 pixel high image with a width {'<='}170 pixels that appears above the player.
      */
     watchIconImageUrl?: string
   }

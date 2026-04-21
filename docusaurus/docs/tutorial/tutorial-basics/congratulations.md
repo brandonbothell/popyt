@@ -8,8 +8,6 @@ You have just learned the **basics of Popyt** and retrieved some useful data fro
 
 Popyt has **much more to offer**!
 
-<!--- Have **5 more minutes**? Take a look at **[OAuth](../tutorial-extras/working-with-oauth)**. -->
-
 Anything **unclear** or **buggy** in this tutorial? [Please report it!](https://github.com/brandonbothell/popyt/issues)
 
 ## What's next?

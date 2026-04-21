@@ -39,7 +39,7 @@ export class Video {
   public data: any
 
   /**
-   * Whether or not this is a full video object (would it be the same if we ran [Video.fetch](./Library_Exports.Video#fetch) under the same conditions as last time?).
+   * Whether or not this is a full video object (would it be the same if we ran [Video.fetch](./Video#fetch) under the same conditions as last time?).
    */
   public full: boolean
 
@@ -142,7 +142,7 @@ export class Video {
   public private: boolean
 
   /**
-   * The video's comments. Only defined when [Video.fetchComments](./Library_Exports.Video#fetchComments) is called.
+   * The video's comments. Only defined when [Video.fetchComments](./Video#fetchcomments) is called.
    */
   public comments: PaginatedResponse<Comment>
 
@@ -179,7 +179,7 @@ export class Video {
   }
 
   /**
-   * The caption data associated with this video. Only available after running [Video.fetchCaptions](./Library_Exports.Video#fetchCaptions).
+   * The caption data associated with this video. Only available after running [Video.fetchCaptions](./Video#fetchcaptions).
    */
   public captions: Caption[]
 
@@ -318,10 +318,10 @@ export class Video {
   }
 
   /**
-   * Fetches the video's comments from the API and assigns them to [Video.comments](./Library_Exports.Video#comments).
+   * Fetches the video's comments from the API and assigns them to [Video.comments](./Video#comments).
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
   public async fetchComments (pageOptions?: PageOptions, order?: 'time' | 'relevance', parts?: CommentThreadParts) {

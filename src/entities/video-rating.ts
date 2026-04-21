@@ -2,7 +2,7 @@ import { YouTube } from '..'
 import { youtube_v3 } from '@googleapis/youtube'
 
 /**
- * A YouTube [Video](./Library_Exports.Video) rating (like/dislike).
+ * A YouTube [Video](./Video) rating (like/dislike).
  */
 export class VideoRating {
   /**

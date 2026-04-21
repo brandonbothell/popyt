@@ -128,7 +128,7 @@ export class Comment {
 
   /**
    * Replies directed to the comment. If the comment was fetched from a video,
-   * then this will be partially filled. You'll need to use [Comment.fetchReplies](./Library_Exports.Comment#fetchReplies)
+   * then this will be partially filled. You'll need to use [Comment.fetchReplies](./Comment#fetchreplies)
    * to get all of the replies, though.
    */
   public replies: PaginatedResponse<Comment>
@@ -209,7 +209,7 @@ export class Comment {
    * Fetches replies to the comment from the API.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
   public async fetchReplies (pageOptions?: PageOptions, parts?: CommentParts) {

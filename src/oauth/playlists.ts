@@ -11,7 +11,7 @@ export class OAuthPlaylists {
   constructor (public oauth: OAuth) {}
 
   /**
-   * Creates a [Playlist](./Library_Exports.Playlist#).  
+   * Creates a [Playlist](../../Library-Exports/classes/Playlist#).  
    * @param title A title for the playlist.
    * @param description A description of the playlist.
    * @param privacy Whether the video is private, public, or unlisted.
@@ -47,7 +47,7 @@ export class OAuthPlaylists {
   }
 
   /**
-   * Updates a [Playlist](./Library_Exports.Playlist#).  
+   * Updates a [Playlist](../../Library-Exports/classes/Playlist#).  
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * @param playlistResolvable The playlist to update.
@@ -89,7 +89,7 @@ export class OAuthPlaylists {
   }
 
   /**
-   * Deletes a [Playlist](./Library_Exports.Playlist#).  
+   * Deletes a [Playlist](../../Library-Exports/classes/Playlist#).  
    * @param playlistResolvable The playlist to delete.
    */
   public async deletePlaylist (playlistResolvable: YT.PlaylistResolvable): Promise<void> {
@@ -103,7 +103,7 @@ export class OAuthPlaylists {
   }
 
   /**
-   * Adds a [Video](./Library_Exports.Video#) to a [Playlist](./Library_Exports.Playlist#).  
+   * Adds a [Video](../../Library-Exports/classes/Video#) to a [Playlist](../../Library-Exports/classes/Playlist#).  
    * @param playlistResolvable The playlist to add the video to.
    * @param videoResolvable The video to add to the playlist.
    * @param position The position to add the video in. Defaults to the end.

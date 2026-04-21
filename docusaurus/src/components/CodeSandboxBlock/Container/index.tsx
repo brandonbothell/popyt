@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { type ComponentProps } from 'react'
+import React, { ReactNode, type ComponentProps } from 'react'
 import clsx from 'clsx'
 import { getPrismCssVariables } from '@docusaurus/theme-common/internal'
 import { ThemeClassNames, usePrismTheme } from '@docusaurus/theme-common'
@@ -14,7 +14,7 @@ import styles from './styles.module.css'
 export default function CodeBlockContainer<T extends 'div' | 'pre'> ({
   as,
   ...props
-}: {as: T} & ComponentProps<T>): JSX.Element {
+}: {as: T} & ComponentProps<T>): ReactNode {
   const prismTheme = usePrismTheme()
   const prismCssVariables = getPrismCssVariables(prismTheme)
   const AS = as

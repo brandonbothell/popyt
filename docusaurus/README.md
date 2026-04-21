@@ -14,9 +14,9 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 
 ## Examples
 
-:::tip QUESTION? CHECK THE DOCS
+:::tip[QUESTION? CHECK THE DOCS]
 
-See the [main class documentation](./api/classes/Library_Exports.YouTube), the [tutorial](./tutorial/intro), or the [example project](https://github.com/brandonbothell/popyt-example) to get started.
+See the [main class documentation](./api/Library-Exports/classes/YouTube), the [tutorial](./tutorial/intro), or the [example project](https://github.com/brandonbothell/popyt-example) to get started.
 
 :::
 

@@ -11,7 +11,7 @@ export class OAuthComments {
   constructor (public oauth: OAuth) {}
 
   /**
-   * Post a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+   * Post a [Comment](../../Library-Exports/classes/Comment#) on a [Video](../../Library-Exports/classes/Video#) or [Channel](../../Library-Exports/classes/Channel#) discussion.  
    * @param text The text content of the comment.
    * @param channelResolvable The channel to post the comment on.
    * @param videoResolvable The video of the channel to post the comment on.
@@ -38,10 +38,10 @@ export class OAuthComments {
   }
 
   /**
-   * Replies to a [Comment](./Library_Exports.Comment#).  
+   * Replies to a [Comment](../../Library-Exports/classes/Comment#).  
    * @param commentId The ID of the comment to reply to.
    * @param text The text to reply with.
-   * Required for [Comment.url](./Library_Exports.Comment#url) to be correct.
+   * Required for [Comment.url](../../Library-Exports/classes/Comment#url) to be correct.
    */
   public async replyToComment (commentId: string, text: string) {
     this.oauth.checkTokenAndThrow()
@@ -58,7 +58,7 @@ export class OAuthComments {
   }
 
   /**
-   * Edit a [Comment](./Library_Exports.Comment#) on a [Video](./Library_Exports.Video#) or [Channel](./Library_Exports.Channel#) discussion.  
+   * Edit a [Comment](../../Library-Exports/classes/Comment#) on a [Video](../../Library-Exports/classes/Video#) or [Channel](../../Library-Exports/classes/Channel#) discussion.  
    * @param commentId The ID of the comment.
    * @param text The new text content of the comment.
    */
@@ -80,7 +80,7 @@ export class OAuthComments {
   }
 
   /**
-   * Marks a [Comment](./Library_Exports.Comment#) as spam.  
+   * Marks a [Comment](../../Library-Exports/classes/Comment#) as spam.  
    * @param commentId The ID of the comment to mark as spam.
    */
   public markCommentAsSpam (commentId: string): Promise<void> {
@@ -92,7 +92,7 @@ export class OAuthComments {
   }
 
   /**
-   * Sets the moderation status of a [Comment](./Library_Exports.Comment#)  
+   * Sets the moderation status of a [Comment](../../Library-Exports/classes/Comment#)  
    * @param commentId The ID of the comment to set the moderation status of.
    * @param moderationStatus The moderation status to set the comment to.
    * @param banAuthor Whether or not to ban the author from making future comments.
@@ -120,8 +120,8 @@ export class OAuthComments {
   }
 
   /**
-   * Deletes a [Comment](./Library_Exports.Comment#).  
-   * @param id The ID of the comment to delete.
+   * Deletes a [Comment](../../Library-Exports/classes/Comment#).  
+   * @param commentId The ID of the comment to delete.
    */
   public deleteComment (commentId: string): Promise<void> {
     this.oauth.checkTokenAndThrow()

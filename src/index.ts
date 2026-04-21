@@ -206,7 +206,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Video`](./Library_Exports.Video) object from the URL, ID, or search query of a video.
+   * Get a [`Video`](./Video) object from the URL, ID, or search query of a video.
    * @param videoResolvable The URL, ID, or search query of the video.
    * @param parts The parts of the video to fetch (saves quota if you aren't using certain properties!)
    */
@@ -216,7 +216,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Channel`](./Library_Exports.Channel) object from the URL, ID, search query, or handle of a channel.
+   * Get a [`Channel`](./Channel) object from the URL, ID, search query, or handle of a channel.
    * **Beware**, support for old custom channel URLs is shoddy.
    * Consider migrating to [the new @ system.](https://support.google.com/youtube/answer/2657968?hl=en)
    * @param channelResolvable The URL, ID, search query, or handle of the channel.
@@ -228,7 +228,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Playlist`](./Library_Exports.Playlist) object from the URL, ID, or search query of a playlist.
+   * Get a [`Playlist`](./Playlist) object from the URL, ID, or search query of a playlist.
    * Meant mostly for getting by URL or ID.
    * @param playlistResolvable The URL, ID, or search query of the playlist.
    * @param parts The parts of the playlist to fetch (saves quota if you aren't using certain properties!)
@@ -239,7 +239,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Comment`](./Library_Exports.Comment) object from the ID of a comment.
+   * Get a [`Comment`](./Comment) object from the ID of a comment.
    * @param commentId The ID of the comment.
    * @param parts The parts of the comment to fetch (saves quota if you aren't using certain properties!)
    */
@@ -248,7 +248,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Subscription`](./Library_Exports.Subscription) object from the ID of a subscription.  
+   * Get a [`Subscription`](./Subscription) object from the ID of a subscription.  
    * Fetching a subscription by ID is **CURRENTLY BROKEN** in the Public YouTube API,
    * see https://issuetracker.google.com/issues/288609601
    * @param subscriptionId The ID of the subscription.
@@ -259,7 +259,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`VideoCategory`](./Library_Exports.VideoCategory) object from the ID of a category.
+   * Get a [`VideoCategory`](./VideoCategory) object from the ID of a category.
    * @param categoryId The ID of the category.
    */
   public async getCategory<T extends string | string[]> (categoryId: T) {
@@ -267,8 +267,8 @@ export class YouTube {
   }
 
   /**
-   * Get a [`ChannelSection`](./Library_Exports.ChannelSection) object from the ID of a section.
-   * @param categoryId The ID of the section.
+   * Get a [`ChannelSection`](./ChannelSection) object from the ID of a section.
+   * @param sectionId The ID of the section.
    * @param parts The parts of the channel section to fetch (saves quota if you aren't using certain properties!)
    */
   public async getChannelSection<T extends string | string[]> (sectionId: T, parts?: Part.ChannelSectionParts) {
@@ -276,7 +276,7 @@ export class YouTube {
   }
 
   /**
-   * Get a [`Subscription`](./Library_Exports.Subscription) object from the subscriber and channel of a subscription.
+   * Get a [`Subscription`](./Subscription) object from the subscriber and channel of a subscription.
    * Channels can be passed in the form of ID, URL, or search query.
    * @param subscriberResolvable A resolvable channel that is the subscriber.
    * @param channelResolvable A resolvable channel that is the channel being subscribed to.
@@ -300,12 +300,12 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` videos in a [`Playlist`](./Library_Exports.Playlist).
-   * Used mostly internally with [`Playlist.fetchVideos()`](./Library_Exports.Playlist#fetchvideos).
+   * Get `maxPerPage * pages` videos in a [`Playlist`](./Playlist).
+   * Used mostly internally with [`Playlist.fetchVideos()`](./Playlist#fetchvideos).
    * @param playlistResolvable The URL, ID, or Title of the playlist.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the videos to fetch (saves quota if you aren't using certain properties!)
    * @returns An object containing page token information for future requests and ***partial* video objects**.
    */
@@ -317,12 +317,12 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` [`Comment`](./Library_Exports.Comment)s from a [`Video`](./Library_Exports.Video).
-   * Used mostly internally with [`Video.fetchComments()`](./Library_Exports.Video#fetchcomments).
+   * Get `maxPerPage * pages` [`Comment`](./Comment)s from a [`Video`](./Video).
+   * Used mostly internally with [`Video.fetchComments()`](./Video#fetchcomments).
    * @param videoResolvable The URL, ID, or Title of the video.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the comments to fetch (saves quota if you aren't using certain properties!)
    * @returns An object containing page token information for future requests and **comment objects**.
    */
@@ -335,12 +335,12 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Playlist`](./Library_Exports.Playlist)s.
-   * Used mostly internally with [`Channel.fetchPlaylists()`](./Library_Exports.Channel#fetchplaylists).
+   * Get `maxPerPage * pages` of a [`Channel`](./Channel)'s [`Playlist`](./Playlist)s.
+   * Used mostly internally with [`Channel.fetchPlaylists()`](./Channel#fetchplaylists).
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the playlists to fetch (saves quota if you aren't using certain properties!)
    * @returns An object containing page token information for future requests and **playlist objects**.
    */
@@ -351,12 +351,12 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` of a [`Channel`](./Library_Exports.Channel)'s [`Subscription`](./Library_Exports.Subscription)s.
-   * Used mostly internally with [`Channel.fetchSubscriptions()`](./Library_Exports.Channel#fetchsubscriptions).
+   * Get `maxPerPage * pages` of a [`Channel`](./Channel)'s [`Subscription`](./Subscription)s.
+   * Used mostly internally with [`Channel.fetchSubscriptions()`](./Channel#fetchsubscriptions).
    * @param channelResolvable The Username, URL, or ID of the channel.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the subscriptions to fetch (saves quota if you aren't using certain properties!)
    * @returns An object containing page token information for future requests and **subscription objects**.
    */
@@ -367,12 +367,12 @@ export class YouTube {
   }
 
   /**
-   * Get `maxPerPage * pages` replies to a [`Comment`](./Library_Exports.Comment).
-   * Used mostly internally with [`Comment.fetchReplies`](./Library_Exports.Comment#fetchreplies).
-   * @param commentId The ID of the comment to get replies from.
+   * Get `maxPerPage * pages` replies to a [`Comment`](./Comment).
+   * Used mostly internally with [`Comment.fetchReplies`](./Comment#fetchreplies).
+   * @param commentResolvable The ID or URL of the comment to get replies from.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the replies to fetch (saves quota if you aren't using certain properties!)
    * @returns An object containing page token information for future requests and **comment objects**.
    */
@@ -383,8 +383,8 @@ export class YouTube {
   }
 
   /**
-   * Gets the [`ChannelSection`](./Library_Exports.ChannelSection)s of a [`Channel`](./Library_Exports.Channel).
-   * Used mostly internally with [`Channel.fetchSections`](./Library_Exports.Channel#fetchsections).
+   * Gets the [`ChannelSection`](./ChannelSection)s of a [`Channel`](./Channel).
+   * Used mostly internally with [`Channel.fetchSections`](./Channel#fetchsections).
    * @param channelResolvable The Username, URL, or ID of the channel to get the sections from.
    * @param parts The parts of the channel sections to fetch (saves quota if you aren't using certain properties!)
    * @returns Partial channel section objects.

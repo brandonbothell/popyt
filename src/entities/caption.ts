@@ -41,7 +41,7 @@ export class Caption {
   public id: string
 
   /**
-   * The ID of the [Video](./Library_Exports.Video#) that this caption track is for.
+   * The ID of the [Video](./Video#) that this caption track is for.
    */
   public videoId: string
 
@@ -101,7 +101,7 @@ export class Caption {
   public status: 'failed' | 'serving' | 'syncing'
 
   /**
-   * If [Caption.status](./Library_Exports.Caption#status) is `failed`, then this is populated with the reason failure.
+   * If [Caption.status](./Caption#status) is `failed`, then this is populated with the reason failure.
    */
   // Must fail for this property to be populated
   public failureReason?: 'processingFailed' | 'unknownFormat' | 'unsupportedFormat'

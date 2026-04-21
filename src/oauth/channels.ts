@@ -135,7 +135,7 @@ export class OAuthChannels {
    * Uploads a channel banner.  
    * @param image The channel banner to upload.
    * @returns The URL of the uploaded banner, used as
-   * [`BrandingSettings.image.bannerExternalUrl`](../modules/Library_Exports#channelbrandingsettings)
+   * [`BrandingSettings.image.bannerExternalUrl`](../../Library-Exports/type-aliases/ChannelBrandingSettings#bannerexternalurl)
    * in [`OAuth.updateChannelBranding()`](#updatechannelbranding)
    */
   public async uploadChannelBanner (image: YT.Image): Promise<string> {
@@ -149,7 +149,7 @@ export class OAuthChannels {
   }
 
   /**
-   * Adds a [ChannelSection](./Library_Exports.ChannelSection#) to the authorized user's [Channel](./Library_Exports.Channel#).  
+   * Adds a [ChannelSection](../../Library-Exports/classes/ChannelSection#) to the authorized user's [Channel](../../Library-Exports/classes/Channel#).  
    * @param type The type of channel section.
    * @param name The name of the channel section.
    * @param position The position of the channel section on the channel homepage.
@@ -197,19 +197,15 @@ export class OAuthChannels {
   }
 
   /**
-   * Updates a [ChannelSection](./Library_Exports.ChannelSection#).
+   * Updates a [ChannelSection](../../Library-Exports/classes/ChannelSection#).
    * **If your request does not specify a value for a property that already has a value,
    * the property's existing value will be deleted.**  
    * @param id The ID of the channel section.
    * @param type The type of channel section.
-   * @param style The style of the channel section.
    * @param name The name of the channel section.
    * @param position The position of the channel section on the channel homepage.
-   * @param language The default language of the channel section.
    * @param playlistsResolvable Any playlists in the channel section.
    * @param channelsResolvable Any channels in the channel section.
-   * @param localizations Translations of the channel section's title.
-   * @param targeting Targeting data for the channel section.
    */
   public async updateChannelSection (id: string, type: YT.ChannelSectionType, name?: string, position?: number, playlistsResolvable?: YT.PlaylistResolvable[],
     channelsResolvable?: (YT.ChannelResolvable)[]): Promise<YT.ChannelSection> {
@@ -243,7 +239,7 @@ export class OAuthChannels {
   }
 
   /**
-   * Deletes a [ChannelSection](./Library_Exports.ChannelSection#).
+   * Deletes a [ChannelSection](../../Library-Exports/classes/ChannelSection#).
    * @param id The ID of the channel section.
    */
   public deleteChannelSection (id: string): Promise<YT.ChannelSection> {
@@ -255,7 +251,7 @@ export class OAuthChannels {
   }
 
   /**
-   * Subscribe to a [Channel](./Library_Exports.Channel#).  
+   * Subscribe to a [Channel](../../Library-Exports/classes/Channel#).  
    * @param channelResolvable The channel to subscribe to.
    * @returns A partial subscription object.
    */
@@ -276,8 +272,8 @@ export class OAuthChannels {
   }
 
   /**
-   * Unsubscribe from a [Channel](./Library_Exports.Channel#).  
-   * @param channelId The channel to unsubscribe from.
+   * Unsubscribe from a [Channel](../../Library-Exports/classes/Channel#).  
+   * @param subscriptionId The subscription to unsubscribe from.
    */
   public unsubscribeFromChannel (subscriptionId: string): Promise<void> {
     this.oauth.checkTokenAndThrow()

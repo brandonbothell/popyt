@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import React, { isValidElement, type ReactNode } from 'react'
 import type { Props } from '@theme/CodeBlock'
 import Svg from '@site/static/img/codesandbox_logo.svg'
 import useIsBrowser from '@docusaurus/useIsBrowser'
+import StringContent from './Content/String'
 import ElementContent from './Content/Element'
-import StringContent from './/Content/String'
-import React, { isValidElement, type ReactNode } from 'react'
 
 /**
  * Best attempt to make the children a plain string so it is copyable. If there
@@ -37,13 +37,14 @@ export default function CodeBlock ({
   // relevant styles.
   const isBrowser = useIsBrowser()
   const children = maybeStringifyChildren(rawChildren)
-  const CODEBLOCKCOMP =
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const CodeBlockComp =
     typeof children === 'string' ? StringContent : ElementContent
   return (
     <div>
-      <CODEBLOCKCOMP key={String(isBrowser)} {...props}>
+      <CodeBlockComp key={String(isBrowser)} {...props}>
         {children as string}
-      </CODEBLOCKCOMP>
+      </CodeBlockComp>
       <div style={{
         textAlign: 'start',
         marginBottom: '16px'

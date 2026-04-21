@@ -2,7 +2,7 @@ import YouTube from '..'
 import { youtube_v3 } from '@googleapis/youtube'
 
 /**
- * A YouTube [Video](./Library_Exports.Video#) category.
+ * A YouTube [Video](./Video#) category.
  */
 export class VideoCategory {
   /**
@@ -41,7 +41,7 @@ export class VideoCategory {
   public id: string
 
   /**
-   * The [Channel](./Library_Exports.Channel#) that created the category.
+   * The [Channel](./Channel#) that created the category.
    */
   public channelId: string
 

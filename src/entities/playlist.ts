@@ -60,7 +60,7 @@ export class Playlist {
    * The videos in the playlist. Only available after calling [`Playlist.fetchVideos()`](#fetchvideos).  
    * **These are partial**, meaning they are missing some data.
    * See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
-   * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to fetch the full objects while not spamming your quota
+   * Use [`YouTube.getVideo(playlist.videos)`](./YouTube#getvideo) to fetch the full objects while not spamming your quota
    * like you would using a loop.
    */
   public videos: PaginatedResponse<Video>
@@ -154,11 +154,11 @@ export class Playlist {
    * Fetches the videos in this playlist from the API and adds them to the `videos` property.  
    * **These are partial**, meaning they are missing some data.
    * See the properties they include [here](https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation).
-   * Use [`YouTube.getVideo(playlist.videos)`](./Library_Exports.YouTube#getvideo) to fetch the full objects while not spamming your quota
+   * Use [`YouTube.getVideo(playlist.videos)`](./YouTube#getvideo) to fetch the full objects while not spamming your quota
    * like you would using a loop.
    * @param pageOptions The number of pages and maximum number of items per page.
    * Fetches the maximum number of items allowed by the API per page by default.  
-   * Set pages to a value <=0 to fetch all.
+   * Set pages to a value {'<='}0 to fetch all.
    * @param parts The parts of the object to fetch (saves quota if you aren't using certain properties!)
    */
   public async fetchVideos (pageOptions?: PageOptions, parts?: PlaylistItemParts) {
@@ -195,7 +195,7 @@ export class Playlist {
   }
 
   /**
-   * Adds a [Video](./Library_Exports.Video) to the playlist.
+   * Adds a [Video](./Video) to the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or search query of the video.
    * @param position The zero-based position to insert the video in.
@@ -213,7 +213,7 @@ export class Playlist {
   }
 
   /**
-   * Updates a [Video](./Library_Exports.Video) in the playlist.
+   * Updates a [Video](./Video) in the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    * @param position The zero-based position to move the video to.
@@ -236,7 +236,7 @@ export class Playlist {
   }
 
   /**
-   * Removes a [Video](./Library_Exports.Video) from the playlist.
+   * Removes a [Video](./Video) from the playlist.
    * Must be using an access token with correct scopes.
    * @param videoResolvable The URL, ID, or (not recommended) search query of the video.
    */
@@ -260,9 +260,9 @@ export class Playlist {
   }
 
   /**
-   * Removes a [Video](./Library_Exports.Video) from the playlist.
+   * Removes a [Video](./Video) from the playlist.
    * Must be using an access token with correct scopes.
-   * @param playlistItemId The playlist item ID (not the same as video ID; see [`Playlist.removeVideo()`](./Library_Exports.Playlist#removevideo)).
+   * @param playlistItemId The playlist item ID (not the same as video ID; see [`Playlist.removeVideo()`](./Playlist#removevideo)).
    */
   public async removeItem (playlistItemId: string) {
     await this.youtube.oauth.playlists.deletePlaylistItem(playlistItemId)
