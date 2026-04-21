@@ -8,7 +8,7 @@
 
 > **GenericSearchOptions**\<`T`\> = `object`
 
-Defined in: [types/RetrievalService.ts:106](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/RetrievalService.ts#L106)
+Defined in: [types/RetrievalService.ts:106](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/RetrievalService.ts#L106)
 
 ## Type Parameters
 
@@ -22,7 +22,7 @@ Defined in: [types/RetrievalService.ts:106](https://github.com/brandonbothell/po
 
 > `optional` **pageOptions?**: [`PageOptions`](PageOptions.md)
 
-Defined in: [types/RetrievalService.ts:108](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/RetrievalService.ts#L108)
+Defined in: [types/RetrievalService.ts:108](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/RetrievalService.ts#L108)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/RetrievalService.ts:108](https://github.com/brandonbothell/po
 
 > `optional` **searchFilters?**: [`SearchFilters`](SearchFilters.md)\<`T`\>
 
-Defined in: [types/RetrievalService.ts:107](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/RetrievalService.ts#L107)
+Defined in: [types/RetrievalService.ts:107](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/RetrievalService.ts#L107)

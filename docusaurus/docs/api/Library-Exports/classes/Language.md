@@ -6,7 +6,7 @@
 
 # Class: Language
 
-Defined in: [entities/language.ts:7](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L7)
+Defined in: [entities/language.ts:7](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L7)
 
 A language.
 
@@ -16,7 +16,7 @@ A language.
 
 > **new Language**(`youtube`, `data`, `full?`): `Language`
 
-Defined in: [entities/language.ts:53](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L53)
+Defined in: [entities/language.ts:53](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L53)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/language.ts:53](https://github.com/brandonbothell/popyt/bl
 
 > **data**: `any`
 
-Defined in: [entities/language.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L36)
+Defined in: [entities/language.ts:36](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L36)
 
 The raw data of this language.
 
@@ -52,7 +52,7 @@ The raw data of this language.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/language.ts:31](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L31)
+Defined in: [entities/language.ts:31](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L31)
 
 Whether or not this is a full language object.
 
@@ -62,7 +62,7 @@ Whether or not this is a full language object.
 
 > **hl**: `string`
 
-Defined in: [entities/language.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L46)
+Defined in: [entities/language.ts:46](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L46)
 
 The language code that uniquely identifies the language.
 
@@ -72,7 +72,7 @@ The language code that uniquely identifies the language.
 
 > **id**: `string`
 
-Defined in: [entities/language.ts:41](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L41)
+Defined in: [entities/language.ts:41](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L41)
 
 The ID of this language.
 
@@ -82,7 +82,7 @@ The ID of this language.
 
 > **name**: `string`
 
-Defined in: [entities/language.ts:51](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L51)
+Defined in: [entities/language.ts:51](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L51)
 
 The language's name.
 
@@ -92,7 +92,7 @@ The language's name.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/language.ts:26](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L26)
+Defined in: [entities/language.ts:26](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L26)
 
 The YouTube object that created this language object.
 
@@ -102,7 +102,7 @@ The YouTube object that created this language object.
 
 > `static` **endpoint**: `string` = `'i18nLanguages'`
 
-Defined in: [entities/language.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L11)
+Defined in: [entities/language.ts:11](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L11)
 
 The name of the endpoint used for this entity.
 
@@ -112,7 +112,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string` = `'items(kind,id,snippet(hl,name))'`
 
-Defined in: [entities/language.ts:21](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L21)
+Defined in: [entities/language.ts:21](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L21)
 
 The fields to request for this entity.
 
@@ -122,6 +122,6 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'snippet'`
 
-Defined in: [entities/language.ts:16](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/language.ts#L16)
+Defined in: [entities/language.ts:16](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/language.ts#L16)
 
 The parts to request for this entity.

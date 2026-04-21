@@ -6,7 +6,7 @@
 
 # Class: OAuthCaptions
 
-Defined in: [oauth/captions.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L11)
+Defined in: [oauth/captions.ts:11](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L11)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [oauth/captions.ts:11](https://github.com/brandonbothell/popyt/blob/
 
 > **new OAuthCaptions**(`oauth`): `OAuthCaptions`
 
-Defined in: [oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L12)
+Defined in: [oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L12)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/
 
 > **oauth**: [`OAuth`](OAuth.md)
 
-Defined in: [oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L12)
+Defined in: [oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L12)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: [oauth/captions.ts:12](https://github.com/brandonbothell/popyt/blob/
 
 > **deleteCaption**(`id`): `Promise`\<`void`\>
 
-Defined in: [oauth/captions.ts:170](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L170)
+Defined in: [oauth/captions.ts:170](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L170)
 
 Deletes a [Caption](../../Library-Exports/classes/Caption#) track.
 
@@ -62,7 +62,7 @@ The ID of the caption track to delete.
 
 > **downloadCaption**(`id`, `format?`, `language?`): `Promise`\<`Buffer`\<`ArrayBufferLike`\>\>
 
-Defined in: [oauth/captions.ts:145](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L145)
+Defined in: [oauth/captions.ts:145](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L145)
 
 Downloads a [Caption](../../Library-Exports/classes/Caption#) track.
 
@@ -96,7 +96,7 @@ The language to download the track in.
 
 > **getCaption**(`videoResolvable`, `captionId`): `Promise`\<[`Caption`](../../Library-Exports/classes/Caption.md)\>
 
-Defined in: [oauth/captions.ts:20](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L20)
+Defined in: [oauth/captions.ts:20](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L20)
 
 Get a [Caption](../../Library-Exports/classes/Caption#) object
 from the URL, ID, or search query of its video and the ID of the caption.
@@ -125,7 +125,7 @@ The ID of the caption.
 
 > **getCaptions**(`videoResolvable`): `Promise`\<[`Caption`](../../Library-Exports/classes/Caption.md)[]\>
 
-Defined in: [oauth/captions.ts:45](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L45)
+Defined in: [oauth/captions.ts:45](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L45)
 
 Gets the [Caption](../../Library-Exports/classes/Caption#)s of a [Video](../../Library-Exports/classes/Video#). Used mostly internally with [Video.fetchCaptions](../../Library-Exports/classes/Video#fetchcaptions).
 
@@ -147,7 +147,7 @@ The Title, URL, or ID of the video to get the captions from.
 
 > **updateCaption**(`id`, `track?`, `draft?`): `Promise`\<[`Caption`](../../Library-Exports/classes/Caption.md)\>
 
-Defined in: [oauth/captions.ts:101](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L101)
+Defined in: [oauth/captions.ts:101](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L101)
 
 Edits a [Caption](../../Library-Exports/classes/Caption#) track.  
 **If your request does not specify a value for a property that already has a value,
@@ -183,7 +183,7 @@ Whether or not the caption track is a draft. If it is, it isn't visible to users
 
 > **uploadCaption**(`videoResolvable`, `language`, `name`, `track`, `draft?`): `Promise`\<[`Caption`](../../Library-Exports/classes/Caption.md)\>
 
-Defined in: [oauth/captions.ts:69](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/captions.ts#L69)
+Defined in: [oauth/captions.ts:69](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/captions.ts#L69)
 
 Uploads a [Caption](../../Library-Exports/classes/Caption#) track for a [Video](../../Library-Exports/classes/Video#).
 

@@ -6,7 +6,7 @@
 
 # Class: Comment
 
-Defined in: [entities/comment.ts:5](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L5)
+Defined in: [entities/comment.ts:5](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L5)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [entities/comment.ts:5](https://github.com/brandonbothell/popyt/blob
 
 > **new Comment**(`youtube`, `data`, `full?`): `Comment`
 
-Defined in: [entities/comment.ts:141](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L141)
+Defined in: [entities/comment.ts:141](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L141)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [entities/comment.ts:141](https://github.com/brandonbothell/popyt/bl
 
 > **author**: `object`
 
-Defined in: [entities/comment.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L46)
+Defined in: [entities/comment.ts:46](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L46)
 
 The comment's author.
 
@@ -74,7 +74,7 @@ The author's YouTube username. May not be unique.
 
 > `optional` **channelId?**: `string`
 
-Defined in: [entities/comment.ts:117](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L117)
+Defined in: [entities/comment.ts:117](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L117)
 
 The ID of the channel that uploaded the video this comment is on, if any.  
 **Currently broken**, [see here](https://issuetracker.google.com/issues/288239809).
@@ -85,7 +85,7 @@ The ID of the channel that uploaded the video this comment is on, if any.
 
 > **data**: `any`
 
-Defined in: [entities/comment.ts:31](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L31)
+Defined in: [entities/comment.ts:31](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L31)
 
 The raw data from the YouTube API of the comment.
 
@@ -95,7 +95,7 @@ The raw data from the YouTube API of the comment.
 
 > **dateEdited**: `Date`
 
-Defined in: [entities/comment.ts:111](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L111)
+Defined in: [entities/comment.ts:111](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L111)
 
 Either the date the comment was last edited, or the date it was
 posted.
@@ -106,7 +106,7 @@ posted.
 
 > **datePublished**: `Date`
 
-Defined in: [entities/comment.ts:105](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L105)
+Defined in: [entities/comment.ts:105](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L105)
 
 The date the comment was published.
 
@@ -116,7 +116,7 @@ The date the comment was published.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/comment.ts:41](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L41)
+Defined in: [entities/comment.ts:41](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L41)
 
 Whether or not this a full comment object.
 
@@ -126,7 +126,7 @@ Whether or not this a full comment object.
 
 > **id**: `string`
 
-Defined in: [entities/comment.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L36)
+Defined in: [entities/comment.ts:36](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L36)
 
 The comment's unique YouTube ID.
 
@@ -136,7 +136,7 @@ The comment's unique YouTube ID.
 
 > **likes**: `number`
 
-Defined in: [entities/comment.ts:95](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L95)
+Defined in: [entities/comment.ts:95](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L95)
 
 The number of likes the comment has received.
 
@@ -146,7 +146,7 @@ The number of likes the comment has received.
 
 > `optional` **parentCommentId?**: `string`
 
-Defined in: [entities/comment.ts:127](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L127)
+Defined in: [entities/comment.ts:127](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L127)
 
 If this comment is a reply, then this is the ID of the comment it is replying to.
 
@@ -156,7 +156,7 @@ If this comment is a reply, then this is the ID of the comment it is replying to
 
 > **popular**: `boolean`
 
-Defined in: [entities/comment.ts:90](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L90)
+Defined in: [entities/comment.ts:90](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L90)
 
 Either YouTube thinks it's popular, or it has at least 100 likes.
 
@@ -166,7 +166,7 @@ Either YouTube thinks it's popular, or it has at least 100 likes.
 
 > **rateable**: `boolean`
 
-Defined in: [entities/comment.ts:85](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L85)
+Defined in: [entities/comment.ts:85](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L85)
 
 Whether or not you can like/dislike the comment.
 
@@ -176,7 +176,7 @@ Whether or not you can like/dislike the comment.
 
 > **replies**: [`PaginatedResponse`](../type-aliases/PaginatedResponse.md)\<`Comment`\>
 
-Defined in: [entities/comment.ts:134](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L134)
+Defined in: [entities/comment.ts:134](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L134)
 
 Replies directed to the comment. If the comment was fetched from a video,
 then this will be partially filled. You'll need to use [Comment.fetchReplies](./Comment#fetchreplies)
@@ -188,7 +188,7 @@ to get all of the replies, though.
 
 > `optional` **replyCount?**: `number`
 
-Defined in: [entities/comment.ts:139](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L139)
+Defined in: [entities/comment.ts:139](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L139)
 
 If this comment was fetched from a video, then this is the number of replies on it.
 
@@ -198,7 +198,7 @@ If this comment was fetched from a video, then this is the number of replies on 
 
 > **text**: `object`
 
-Defined in: [entities/comment.ts:71](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L71)
+Defined in: [entities/comment.ts:71](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L71)
 
 The comment's content.
 
@@ -220,7 +220,7 @@ The comment's plain text.
 
 > `optional` **url?**: `string`
 
-Defined in: [entities/comment.ts:100](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L100)
+Defined in: [entities/comment.ts:100](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L100)
 
 The url of the comment.
 
@@ -230,7 +230,7 @@ The url of the comment.
 
 > `optional` **videoId?**: `string`
 
-Defined in: [entities/comment.ts:122](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L122)
+Defined in: [entities/comment.ts:122](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L122)
 
 The ID of the video that this comment is on, if any.
 
@@ -240,7 +240,7 @@ The ID of the video that this comment is on, if any.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/comment.ts:26](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L26)
+Defined in: [entities/comment.ts:26](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L26)
 
 The YouTube object used to create the comment.
 
@@ -250,7 +250,7 @@ The YouTube object used to create the comment.
 
 > `static` **endpoint**: `string` = `'comments'`
 
-Defined in: [entities/comment.ts:9](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L9)
+Defined in: [entities/comment.ts:9](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L9)
 
 The name of the endpoint used for this entity.
 
@@ -260,7 +260,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string`
 
-Defined in: [entities/comment.ts:19](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L19)
+Defined in: [entities/comment.ts:19](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L19)
 
 The fields to request for this entity.
 
@@ -270,7 +270,7 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'snippet'`
 
-Defined in: [entities/comment.ts:14](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L14)
+Defined in: [entities/comment.ts:14](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L14)
 
 The parts to request for this entity.
 
@@ -280,7 +280,7 @@ The parts to request for this entity.
 
 > **delete**(): `Promise`\<`void`\>
 
-Defined in: [entities/comment.ts:262](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L262)
+Defined in: [entities/comment.ts:262](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L262)
 
 Deletes the comment.
 Must be using an access token with correct scopes.
@@ -295,7 +295,7 @@ Must be using an access token with correct scopes.
 
 > **edit**(`text`): `Promise`\<`Comment`\>
 
-Defined in: [entities/comment.ts:225](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L225)
+Defined in: [entities/comment.ts:225](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L225)
 
 Edits the comment.
 Must be using an access token with correct scopes.
@@ -318,7 +318,7 @@ The new text of the comment.
 
 > **fetchReplies**(`pageOptions?`, `parts?`): `Promise`\<[`PaginatedResponse`](../type-aliases/PaginatedResponse.md)\<`Comment`\>\>
 
-Defined in: [entities/comment.ts:215](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L215)
+Defined in: [entities/comment.ts:215](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L215)
 
 Fetches replies to the comment from the API.
 
@@ -348,7 +348,7 @@ The parts of the object to fetch (saves quota if you aren't using certain proper
 
 > **markAsSpam**(): `Promise`\<`void`\>
 
-Defined in: [entities/comment.ts:243](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L243)
+Defined in: [entities/comment.ts:243](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L243)
 
 Marks the comment as spam.
 Must be using an access token with correct scopes.
@@ -363,7 +363,7 @@ Must be using an access token with correct scopes.
 
 > **reply**(`text`): `Promise`\<`Comment`\>
 
-Defined in: [entities/comment.ts:235](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L235)
+Defined in: [entities/comment.ts:235](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L235)
 
 Replies to the comment.
 Must be using an access token with correct scopes.
@@ -386,7 +386,7 @@ The text of the reply.
 
 > **setModerationStatus**(`status?`, `banAuthor?`): `Promise`\<`void`\>
 
-Defined in: [entities/comment.ts:254](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/comment.ts#L254)
+Defined in: [entities/comment.ts:254](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/comment.ts#L254)
 
 Sets the comment's moderation status.
 Must be using an access token with correct scopes.

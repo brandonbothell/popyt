@@ -8,7 +8,7 @@
 
 > **VideoUpdateResource** = `object`
 
-Defined in: [types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/VideoUpdateResource.ts#L1)
+Defined in: [types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/VideoUpdateResource.ts#L1)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/VideoUpdateResource.ts:1](https://github.com/brandonbothell/p
 
 > **id**: `string`
 
-Defined in: [types/VideoUpdateResource.ts:2](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/VideoUpdateResource.ts#L2)
+Defined in: [types/VideoUpdateResource.ts:2](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/VideoUpdateResource.ts#L2)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/VideoUpdateResource.ts:2](https://github.com/brandonbothell/p
 
 > `optional` **localizations?**: `object`
 
-Defined in: [types/VideoUpdateResource.ts:21](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/VideoUpdateResource.ts#L21)
+Defined in: [types/VideoUpdateResource.ts:21](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/VideoUpdateResource.ts#L21)
 
 #### Index Signature
 
@@ -36,7 +36,7 @@ Defined in: [types/VideoUpdateResource.ts:21](https://github.com/brandonbothell/
 
 > `optional` **recordingDetails?**: `object`
 
-Defined in: [types/VideoUpdateResource.ts:18](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/VideoUpdateResource.ts#L18)
+Defined in: [types/VideoUpdateResource.ts:18](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/VideoUpdateResource.ts#L18)
 
 #### recordingDate?
 
@@ -48,7 +48,7 @@ Defined in: [types/VideoUpdateResource.ts:18](https://github.com/brandonbothell/
 
 > `optional` **snippet?**: `object`
 
-Defined in: [types/VideoUpdateResource.ts:3](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/VideoUpdateResource.ts#L3)
+Defined in: [types/VideoUpdateResource.ts:3](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/VideoUpdateResource.ts#L3)
 
 #### categoryId
 
@@ -76,7 +76,7 @@ Defined in: [types/VideoUpdateResource.ts:3](https://github.com/brandonbothell/p
 
 > `optional` **status?**: `object`
 
-Defined in: [types/VideoUpdateResource.ts:10](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/VideoUpdateResource.ts#L10)
+Defined in: [types/VideoUpdateResource.ts:10](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/VideoUpdateResource.ts#L10)
 
 #### embeddable?
 

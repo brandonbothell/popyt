@@ -6,7 +6,7 @@
 
 # Class: Subscription
 
-Defined in: [entities/subscription.ts:9](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L9)
+Defined in: [entities/subscription.ts:9](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L9)
 
 A YouTube subscription.
 
@@ -16,7 +16,7 @@ A YouTube subscription.
 
 > **new Subscription**(`youtube`, `data`, `full?`): `Subscription`
 
-Defined in: [entities/subscription.ts:139](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L139)
+Defined in: [entities/subscription.ts:139](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L139)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/subscription.ts:139](https://github.com/brandonbothell/pop
 
 > **activities**: `"all"` \| `"uploads"`
 
-Defined in: [entities/subscription.ts:137](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L137)
+Defined in: [entities/subscription.ts:137](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L137)
 
 The activities that the user has subscribed to.  
 **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
@@ -53,7 +53,7 @@ The activities that the user has subscribed to.
 
 > **channel**: `object`
 
-Defined in: [entities/subscription.ts:56](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L56)
+Defined in: [entities/subscription.ts:56](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L56)
 
 Information on the [Channel](./Channel#) that the user subscribed to.
 
@@ -75,7 +75,7 @@ The name of the channel.
 
 > **data**: `any`
 
-Defined in: [entities/subscription.ts:41](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L41)
+Defined in: [entities/subscription.ts:41](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L41)
 
 The raw data of this subscription.
 
@@ -85,7 +85,7 @@ The raw data of this subscription.
 
 > **dateSubscribed**: `Date`
 
-Defined in: [entities/subscription.ts:51](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L51)
+Defined in: [entities/subscription.ts:51](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L51)
 
 The date that the user subscribed to the channel on.
 
@@ -95,7 +95,7 @@ The date that the user subscribed to the channel on.
 
 > **description**: `string`
 
-Defined in: [entities/subscription.ts:76](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L76)
+Defined in: [entities/subscription.ts:76](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L76)
 
 The details of the subscription.
 
@@ -105,7 +105,7 @@ The details of the subscription.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/subscription.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L36)
+Defined in: [entities/subscription.ts:36](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L36)
 
 Whether or not this is a full subscription object.
 
@@ -115,7 +115,7 @@ Whether or not this is a full subscription object.
 
 > **id**: `string`
 
-Defined in: [entities/subscription.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L46)
+Defined in: [entities/subscription.ts:46](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L46)
 
 The ID of this subscription.
 
@@ -125,7 +125,7 @@ The ID of this subscription.
 
 > **items**: `object`
 
-Defined in: [entities/subscription.ts:121](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L121)
+Defined in: [entities/subscription.ts:121](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L121)
 
 Statistics on the items that the subscription points to.  
 **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
@@ -148,7 +148,7 @@ The total number of items that the subscription points to.
 
 > **subscriber**: `object`
 
-Defined in: [entities/subscription.ts:82](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L82)
+Defined in: [entities/subscription.ts:82](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L82)
 
 Information on the user that subscribed to the channel.  
 **CURRENTLY NOT WORKING**, see https://issuetracker.google.com/issues/181152600
@@ -195,7 +195,7 @@ Thumbnail images for the user's channel.
 
 > **thumbnails**: `object`
 
-Defined in: [entities/subscription.ts:111](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L111)
+Defined in: [entities/subscription.ts:111](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L111)
 
 Thumbnail images for the subscription.
 
@@ -217,7 +217,7 @@ Thumbnail images for the subscription.
 
 > **title**: `string`
 
-Defined in: [entities/subscription.ts:71](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L71)
+Defined in: [entities/subscription.ts:71](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L71)
 
 The title of the subscription.
 
@@ -227,7 +227,7 @@ The title of the subscription.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/subscription.ts:31](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L31)
+Defined in: [entities/subscription.ts:31](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L31)
 
 The YouTube object that created this subscription object.
 
@@ -237,7 +237,7 @@ The YouTube object that created this subscription object.
 
 > `static` **endpoint**: `string` = `'subscriptions'`
 
-Defined in: [entities/subscription.ts:13](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L13)
+Defined in: [entities/subscription.ts:13](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L13)
 
 The name of the endpoint used for this entity.
 
@@ -247,7 +247,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string`
 
-Defined in: [entities/subscription.ts:23](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L23)
+Defined in: [entities/subscription.ts:23](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L23)
 
 The fields to request for this entity.
 
@@ -257,7 +257,7 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'contentDetails,snippet,subscriberSnippet'`
 
-Defined in: [entities/subscription.ts:18](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L18)
+Defined in: [entities/subscription.ts:18](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L18)
 
 The parts to request for this entity.
 
@@ -267,7 +267,7 @@ The parts to request for this entity.
 
 > **fetch**(`parts?`): `Promise`\<`Subscription`\>
 
-Defined in: [entities/subscription.ts:194](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L194)
+Defined in: [entities/subscription.ts:194](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L194)
 
 Fetches this subscription from the API and reassigns this object to the new subscription object.
 Only useful if `this.full` is false, or if you want updated subscription info.  
@@ -290,7 +290,7 @@ see https://issuetracker.google.com/issues/288609601
 
 > **getChannel**(`parts?`): `Promise`\<[`Channel`](Channel.md)\>
 
-Defined in: [entities/subscription.ts:207](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L207)
+Defined in: [entities/subscription.ts:207](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L207)
 
 #### Parameters
 
@@ -308,7 +308,7 @@ Defined in: [entities/subscription.ts:207](https://github.com/brandonbothell/pop
 
 > **getSubscriber**(`parts?`): `Promise`\<[`Channel`](Channel.md)\>
 
-Defined in: [entities/subscription.ts:212](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/subscription.ts#L212)
+Defined in: [entities/subscription.ts:212](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/subscription.ts#L212)
 
 #### Parameters
 

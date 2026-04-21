@@ -6,7 +6,7 @@
 
 # Class: OAuthComments
 
-Defined in: [oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L10)
+Defined in: [oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L10)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [oauth/comments.ts:10](https://github.com/brandonbothell/popyt/blob/
 
 > **new OAuthComments**(`oauth`): `OAuthComments`
 
-Defined in: [oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L11)
+Defined in: [oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L11)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/
 
 > **oauth**: [`OAuth`](OAuth.md)
 
-Defined in: [oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L11)
+Defined in: [oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L11)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: [oauth/comments.ts:11](https://github.com/brandonbothell/popyt/blob/
 
 > **deleteComment**(`commentId`): `Promise`\<`void`\>
 
-Defined in: [oauth/comments.ts:126](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L126)
+Defined in: [oauth/comments.ts:126](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L126)
 
 Deletes a [Comment](../../Library-Exports/classes/Comment#).
 
@@ -62,7 +62,7 @@ The ID of the comment to delete.
 
 > **editComment**(`commentId`, `text`): `Promise`\<[`Comment`](../../Library-Exports/classes/Comment.md)\>
 
-Defined in: [oauth/comments.ts:65](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L65)
+Defined in: [oauth/comments.ts:65](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L65)
 
 Edit a [Comment](../../Library-Exports/classes/Comment#) on a [Video](../../Library-Exports/classes/Video#) or [Channel](../../Library-Exports/classes/Channel#) discussion.
 
@@ -90,7 +90,7 @@ The new text content of the comment.
 
 > **markCommentAsSpam**(`commentId`): `Promise`\<`void`\>
 
-Defined in: [oauth/comments.ts:86](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L86)
+Defined in: [oauth/comments.ts:86](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L86)
 
 Marks a [Comment](../../Library-Exports/classes/Comment#) as spam.
 
@@ -112,7 +112,7 @@ The ID of the comment to mark as spam.
 
 > **postComment**(`text`, `channelResolvable`, `videoResolvable`): `Promise`\<[`Comment`](../../Library-Exports/classes/Comment.md)\>
 
-Defined in: [oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L20)
+Defined in: [oauth/comments.ts:20](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L20)
 
 Post a [Comment](../../Library-Exports/classes/Comment#) on a [Video](../../Library-Exports/classes/Video#) or [Channel](../../Library-Exports/classes/Channel#) discussion.
 
@@ -147,7 +147,7 @@ If falsey, the comment will be posted to the channel discussion.
 
 > **replyToComment**(`commentId`, `text`): `Promise`\<[`Comment`](../../Library-Exports/classes/Comment.md)\>
 
-Defined in: [oauth/comments.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L46)
+Defined in: [oauth/comments.ts:46](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L46)
 
 Replies to a [Comment](../../Library-Exports/classes/Comment#).
 
@@ -176,7 +176,7 @@ Required for [Comment.url](../../Library-Exports/classes/Comment#url) to be corr
 
 > **setCommentModerationStatus**(`commentId`, `moderationStatus`, `banAuthor?`): `Promise`\<`void`\>
 
-Defined in: [oauth/comments.ts:100](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/comments.ts#L100)
+Defined in: [oauth/comments.ts:100](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/oauth/comments.ts#L100)
 
 Sets the moderation status of a [Comment](../../Library-Exports/classes/Comment#)
 

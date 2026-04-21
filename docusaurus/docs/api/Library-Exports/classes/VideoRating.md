@@ -6,7 +6,7 @@
 
 # Class: VideoRating
 
-Defined in: [entities/video-rating.ts:7](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L7)
+Defined in: [entities/video-rating.ts:7](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L7)
 
 A YouTube [Video](./Video) rating (like/dislike).
 
@@ -16,7 +16,7 @@ A YouTube [Video](./Video) rating (like/dislike).
 
 > **new VideoRating**(`youtube`, `data`, `full?`): `VideoRating`
 
-Defined in: [entities/video-rating.ts:48](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L48)
+Defined in: [entities/video-rating.ts:48](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L48)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/video-rating.ts:48](https://github.com/brandonbothell/popy
 
 > **data**: `any`
 
-Defined in: [entities/video-rating.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L36)
+Defined in: [entities/video-rating.ts:36](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L36)
 
 The raw data of this channel section.
 
@@ -52,7 +52,7 @@ The raw data of this channel section.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/video-rating.ts:31](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L31)
+Defined in: [entities/video-rating.ts:31](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L31)
 
 Whether or not this a full channel section object.
 
@@ -62,7 +62,7 @@ Whether or not this a full channel section object.
 
 > **rating**: `"none"` \| `"like"` \| `"dislike"` \| `"unspecified"`
 
-Defined in: [entities/video-rating.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L46)
+Defined in: [entities/video-rating.ts:46](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L46)
 
 The rating left on this video.
 
@@ -72,7 +72,7 @@ The rating left on this video.
 
 > **videoId**: `string`
 
-Defined in: [entities/video-rating.ts:41](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L41)
+Defined in: [entities/video-rating.ts:41](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L41)
 
 The ID of the video this rating is for.
 
@@ -82,7 +82,7 @@ The ID of the video this rating is for.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/video-rating.ts:26](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L26)
+Defined in: [entities/video-rating.ts:26](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L26)
 
 The YouTube object that created this channel section object.
 
@@ -92,7 +92,7 @@ The YouTube object that created this channel section object.
 
 > `static` **endpoint**: `string` = `'videos/getRating'`
 
-Defined in: [entities/video-rating.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L11)
+Defined in: [entities/video-rating.ts:11](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L11)
 
 The name of the endpoint used for this entity.
 
@@ -102,7 +102,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string` = `'items(videoId,rating)'`
 
-Defined in: [entities/video-rating.ts:21](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L21)
+Defined in: [entities/video-rating.ts:21](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L21)
 
 The fields to request for this entity.
 
@@ -112,7 +112,7 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `''`
 
-Defined in: [entities/video-rating.ts:16](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L16)
+Defined in: [entities/video-rating.ts:16](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L16)
 
 The parts to request for this entity.
 
@@ -122,7 +122,7 @@ The parts to request for this entity.
 
 > **fetch**(): `Promise`\<`VideoRating`\>
 
-Defined in: [entities/video-rating.ts:76](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-rating.ts#L76)
+Defined in: [entities/video-rating.ts:76](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/entities/video-rating.ts#L76)
 
 Fetches this video rating from the API and reassigns this object to the new rating object.
 Only useful if you want updated rating info.

@@ -8,6 +8,6 @@
 
 > **PlaylistResolvable** = `string` \| [`Playlist`](../classes/Playlist.md)
 
-Defined in: [types/Resolutions.ts:32](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Resolutions.ts#L32)
+Defined in: [types/Resolutions.ts:32](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/Resolutions.ts#L32)
 
 A URL, ID, search query, or object of a playlist.
