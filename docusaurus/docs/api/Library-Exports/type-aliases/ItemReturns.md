@@ -8,7 +8,7 @@
 
 > **ItemReturns**\<`T`, `K`, `M`\> = `M` *extends* `true` ? `InstanceType`\<`K`\> : `T` *extends* `any`[] ? `InstanceType`\<`K`\>[] : `InstanceType`\<`K`\>
 
-Defined in: [types/RetrievalService.ts:13](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L13)
+Defined in: [types/RetrievalService.ts:13](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L13)
 
 ## Type Parameters
 

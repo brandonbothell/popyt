@@ -6,7 +6,7 @@
 
 # Class: Caption
 
-Defined in: [entities/caption.ts:7](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L7)
+Defined in: [entities/caption.ts:7](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L7)
 
 A caption track.
 
@@ -16,7 +16,7 @@ A caption track.
 
 > **new Caption**(`youtube`, `data`, `full?`): `Caption`
 
-Defined in: [entities/caption.ts:109](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L109)
+Defined in: [entities/caption.ts:109](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L109)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/caption.ts:109](https://github.com/brandonbothell/popyt/bl
 
 > **audioType**: `"unknown"` \| `"commentary"` \| `"descriptive"` \| `"primary"`
 
-Defined in: [entities/caption.ts:71](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L71)
+Defined in: [entities/caption.ts:71](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L71)
 
 Whether the audio is a commentary/descriptive (alternate audio tracks), the primary audio track, or unknown.
 
@@ -52,7 +52,7 @@ Whether the audio is a commentary/descriptive (alternate audio tracks), the prim
 
 > **autoSynced**: `boolean`
 
-Defined in: [entities/caption.ts:96](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L96)
+Defined in: [entities/caption.ts:96](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L96)
 
 Whether or not this caption track has been autosynced to the audio by YouTube.
 
@@ -62,7 +62,7 @@ Whether or not this caption track has been autosynced to the audio by YouTube.
 
 > **closedCaptions**: `boolean`
 
-Defined in: [entities/caption.ts:76](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L76)
+Defined in: [entities/caption.ts:76](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L76)
 
 Whether or not this caption track is for the deaf/hard of hearing.
 
@@ -72,7 +72,7 @@ Whether or not this caption track is for the deaf/hard of hearing.
 
 > **data**: `any`
 
-Defined in: [entities/caption.ts:36](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L36)
+Defined in: [entities/caption.ts:36](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L36)
 
 The raw data of this caption track.
 
@@ -82,7 +82,7 @@ The raw data of this caption track.
 
 > **draft**: `boolean`
 
-Defined in: [entities/caption.ts:91](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L91)
+Defined in: [entities/caption.ts:91](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L91)
 
 Whether or not this caption track is a draft. If so, it won't be shown to users.
 
@@ -92,7 +92,7 @@ Whether or not this caption track is a draft. If so, it won't be shown to users.
 
 > **easyReader**: `boolean`
 
-Defined in: [entities/caption.ts:86](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L86)
+Defined in: [entities/caption.ts:86](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L86)
 
 Whether or not this caption track is written at a third-grade level (for language learners).
 
@@ -102,7 +102,7 @@ Whether or not this caption track is written at a third-grade level (for languag
 
 > `optional` **failureReason?**: `"processingFailed"` \| `"unknownFormat"` \| `"unsupportedFormat"`
 
-Defined in: [entities/caption.ts:107](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L107)
+Defined in: [entities/caption.ts:107](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L107)
 
 If [Caption.status](./Caption#status) is `failed`, then this is populated with the reason failure.
 
@@ -112,7 +112,7 @@ If [Caption.status](./Caption#status) is `failed`, then this is populated with t
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/caption.ts:31](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L31)
+Defined in: [entities/caption.ts:31](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L31)
 
 Whether or not this is a full caption track object.
 
@@ -122,7 +122,7 @@ Whether or not this is a full caption track object.
 
 > **id**: `string`
 
-Defined in: [entities/caption.ts:41](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L41)
+Defined in: [entities/caption.ts:41](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L41)
 
 The ID of this caption track.
 
@@ -132,7 +132,7 @@ The ID of this caption track.
 
 > **kind**: `"standard"` \| `"ASR"` \| `"forced"`
 
-Defined in: [entities/caption.ts:56](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L56)
+Defined in: [entities/caption.ts:56](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L56)
 
 The kind of caption track this is (automatic speech recognition, forced due to foreign language, or standard).
 
@@ -142,7 +142,7 @@ The kind of caption track this is (automatic speech recognition, forced due to f
 
 > **language**: `string`
 
-Defined in: [entities/caption.ts:61](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L61)
+Defined in: [entities/caption.ts:61](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L61)
 
 The language that this caption track is written in.
 
@@ -152,7 +152,7 @@ The language that this caption track is written in.
 
 > **large**: `boolean`
 
-Defined in: [entities/caption.ts:81](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L81)
+Defined in: [entities/caption.ts:81](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L81)
 
 Whether or not this caption track uses large text for the vision-impaired.
 
@@ -162,7 +162,7 @@ Whether or not this caption track uses large text for the vision-impaired.
 
 > **lastUpdated**: `Date`
 
-Defined in: [entities/caption.ts:51](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L51)
+Defined in: [entities/caption.ts:51](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L51)
 
 When this caption track was last updated.
 
@@ -172,7 +172,7 @@ When this caption track was last updated.
 
 > **name**: `string`
 
-Defined in: [entities/caption.ts:66](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L66)
+Defined in: [entities/caption.ts:66](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L66)
 
 The name of this caption track.
 
@@ -182,7 +182,7 @@ The name of this caption track.
 
 > **status**: `"failed"` \| `"serving"` \| `"syncing"`
 
-Defined in: [entities/caption.ts:101](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L101)
+Defined in: [entities/caption.ts:101](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L101)
 
 The processing status of the caption track.
 
@@ -192,7 +192,7 @@ The processing status of the caption track.
 
 > **videoId**: `string`
 
-Defined in: [entities/caption.ts:46](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L46)
+Defined in: [entities/caption.ts:46](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L46)
 
 The ID of the [Video](./Video#) that this caption track is for.
 
@@ -202,7 +202,7 @@ The ID of the [Video](./Video#) that this caption track is for.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/caption.ts:26](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L26)
+Defined in: [entities/caption.ts:26](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L26)
 
 The YouTube object that created this caption track object.
 
@@ -212,7 +212,7 @@ The YouTube object that created this caption track object.
 
 > `static` **endpoint**: `string` = `'i18nRegions'`
 
-Defined in: [entities/caption.ts:11](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L11)
+Defined in: [entities/caption.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L11)
 
 The name of the endpoint used for this entity.
 
@@ -222,7 +222,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string` = `'items(kind,id,snippet)'`
 
-Defined in: [entities/caption.ts:21](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L21)
+Defined in: [entities/caption.ts:21](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L21)
 
 The fields to request for this entity.
 
@@ -232,7 +232,7 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'snippet'`
 
-Defined in: [entities/caption.ts:16](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L16)
+Defined in: [entities/caption.ts:16](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L16)
 
 The parts to request for this entity.
 
@@ -242,7 +242,7 @@ The parts to request for this entity.
 
 > **delete**(): `Promise`\<`void`\>
 
-Defined in: [entities/caption.ts:180](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L180)
+Defined in: [entities/caption.ts:180](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L180)
 
 Deletes the caption.
 Must be using an access token with correct scopes.
@@ -257,7 +257,7 @@ Must be using an access token with correct scopes.
 
 > **download**(`format?`, `language?`): `Promise`\<`Buffer`\<`ArrayBufferLike`\>\>
 
-Defined in: [entities/caption.ts:172](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L172)
+Defined in: [entities/caption.ts:172](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L172)
 
 Downloads this caption's track.
 Must be using an access token with correct scopes.
@@ -286,7 +286,7 @@ The language to download the track in.
 
 > **fetch**(): `Promise`\<`Caption`\>
 
-Defined in: [entities/caption.ts:150](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L150)
+Defined in: [entities/caption.ts:150](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L150)
 
 Fetches this caption from the API and reassigns this object to the new caption object.
 Only useful if `this.full` is false, or if you want updated caption info.
@@ -302,7 +302,7 @@ Must be using an access token with correct scopes.
 
 > **update**(`track?`, `draft?`): `Promise`\<`Caption`\>
 
-Defined in: [entities/caption.ts:161](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/entities/caption.ts#L161)
+Defined in: [entities/caption.ts:161](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/caption.ts#L161)
 
 Updates this caption.
 Must be using an access token with correct scopes.

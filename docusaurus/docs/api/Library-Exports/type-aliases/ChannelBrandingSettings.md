@@ -8,7 +8,7 @@
 
 > **ChannelBrandingSettings** = `object`
 
-Defined in: [types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/BrandingSettings.ts#L1)
+Defined in: [types/BrandingSettings.ts:1](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/BrandingSettings.ts#L1)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/BrandingSettings.ts:1](https://github.com/brandonbothell/popy
 
 > `optional` **channel?**: `object`
 
-Defined in: [types/BrandingSettings.ts:2](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/BrandingSettings.ts#L2)
+Defined in: [types/BrandingSettings.ts:2](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/BrandingSettings.ts#L2)
 
 #### country?
 
@@ -102,7 +102,7 @@ The ID of a video to highlight to unsubsribed viewers.
 
 > `optional` **image?**: `object`
 
-Defined in: [types/BrandingSettings.ts:68](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/BrandingSettings.ts#L68)
+Defined in: [types/BrandingSettings.ts:68](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/BrandingSettings.ts#L68)
 
 #### bannerExternalUrl?
 

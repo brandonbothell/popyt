@@ -8,7 +8,7 @@
 
 > **EntitySearchOptions**\<`T`\> = `object`
 
-Defined in: [types/RetrievalService.ts:111](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L111)
+Defined in: [types/RetrievalService.ts:111](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L111)
 
 ## Type Parameters
 
@@ -22,7 +22,7 @@ Defined in: [types/RetrievalService.ts:111](https://github.com/brandonbothell/po
 
 > `optional` **pageOptions?**: [`PageOptions`](PageOptions.md)
 
-Defined in: [types/RetrievalService.ts:113](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L113)
+Defined in: [types/RetrievalService.ts:113](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L113)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types/RetrievalService.ts:113](https://github.com/brandonbothell/po
 
 > `optional` **searchFilters?**: `Omit`\<[`SearchFilters`](SearchFilters.md)\<`T`\>, `"types"`\>
 
-Defined in: [types/RetrievalService.ts:112](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L112)
+Defined in: [types/RetrievalService.ts:112](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L112)

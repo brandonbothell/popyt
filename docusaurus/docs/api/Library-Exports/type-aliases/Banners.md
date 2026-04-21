@@ -8,7 +8,7 @@
 
 > **Banners** = `object`
 
-Defined in: [types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L1)
+Defined in: [types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L1)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/Banners.ts:1](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerImageUrl**: `string`
 
-Defined in: [types/Banners.ts:2](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L2)
+Defined in: [types/Banners.ts:2](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L2)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/Banners.ts:2](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerMobileExtraHdImageUrl**: `string`
 
-Defined in: [types/Banners.ts:7](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L7)
+Defined in: [types/Banners.ts:7](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L7)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [types/Banners.ts:7](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerMobileHdImageUrl**: `string`
 
-Defined in: [types/Banners.ts:6](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L6)
+Defined in: [types/Banners.ts:6](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L6)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [types/Banners.ts:6](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerMobileImageUrl**: `string`
 
-Defined in: [types/Banners.ts:3](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L3)
+Defined in: [types/Banners.ts:3](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L3)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [types/Banners.ts:3](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerMobileLowImageUrl**: `string`
 
-Defined in: [types/Banners.ts:4](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L4)
+Defined in: [types/Banners.ts:4](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L4)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [types/Banners.ts:4](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerMobileMediumImageUrl**: `string`
 
-Defined in: [types/Banners.ts:5](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L5)
+Defined in: [types/Banners.ts:5](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L5)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [types/Banners.ts:5](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerTabletExtraHdImageUrl**: `string`
 
-Defined in: [types/Banners.ts:11](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L11)
+Defined in: [types/Banners.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L11)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [types/Banners.ts:11](https://github.com/brandonbothell/popyt/blob/9
 
 > **bannerTabletHdImageUrl**: `string`
 
-Defined in: [types/Banners.ts:10](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L10)
+Defined in: [types/Banners.ts:10](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L10)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [types/Banners.ts:10](https://github.com/brandonbothell/popyt/blob/9
 
 > **bannerTabletImageUrl**: `string`
 
-Defined in: [types/Banners.ts:9](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L9)
+Defined in: [types/Banners.ts:9](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L9)
 
 ***
 
@@ -88,7 +88,7 @@ Defined in: [types/Banners.ts:9](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerTabletLowImageUrl**: `string`
 
-Defined in: [types/Banners.ts:8](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L8)
+Defined in: [types/Banners.ts:8](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L8)
 
 ***
 
@@ -96,7 +96,7 @@ Defined in: [types/Banners.ts:8](https://github.com/brandonbothell/popyt/blob/93
 
 > **bannerTvHighImageUrl**: `string`
 
-Defined in: [types/Banners.ts:15](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L15)
+Defined in: [types/Banners.ts:15](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L15)
 
 ***
 
@@ -104,7 +104,7 @@ Defined in: [types/Banners.ts:15](https://github.com/brandonbothell/popyt/blob/9
 
 > **bannerTvImageUrl**: `string`
 
-Defined in: [types/Banners.ts:12](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L12)
+Defined in: [types/Banners.ts:12](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L12)
 
 ***
 
@@ -112,7 +112,7 @@ Defined in: [types/Banners.ts:12](https://github.com/brandonbothell/popyt/blob/9
 
 > **bannerTvLowImageUrl**: `string`
 
-Defined in: [types/Banners.ts:13](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L13)
+Defined in: [types/Banners.ts:13](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L13)
 
 ***
 
@@ -120,4 +120,4 @@ Defined in: [types/Banners.ts:13](https://github.com/brandonbothell/popyt/blob/9
 
 > **bannerTvMediumImageUrl**: `string`
 
-Defined in: [types/Banners.ts:14](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Banners.ts#L14)
+Defined in: [types/Banners.ts:14](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Banners.ts#L14)

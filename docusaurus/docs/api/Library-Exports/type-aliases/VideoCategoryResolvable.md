@@ -8,6 +8,6 @@
 
 > **VideoCategoryResolvable** = `string` \| [`VideoCategory`](../classes/VideoCategory.md)
 
-Defined in: [types/Resolutions.ts:42](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/Resolutions.ts#L42)
+Defined in: [types/Resolutions.ts:42](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Resolutions.ts#L42)
 
 An ID or object of a video category.

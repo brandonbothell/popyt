@@ -8,7 +8,7 @@
 
 > **VideoSearchOptions** = `object`
 
-Defined in: [types/RetrievalService.ts:123](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L123)
+Defined in: [types/RetrievalService.ts:123](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L123)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/RetrievalService.ts:123](https://github.com/brandonbothell/po
 
 > `optional` **channel?**: [`ChannelResolvable`](ChannelResolvable.md)
 
-Defined in: [types/RetrievalService.ts:124](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L124)
+Defined in: [types/RetrievalService.ts:124](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L124)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/RetrievalService.ts:124](https://github.com/brandonbothell/po
 
 > `optional` **eventType?**: `"completed"` \| `"live"` \| `"upcoming"`
 
-Defined in: [types/RetrievalService.ts:127](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L127)
+Defined in: [types/RetrievalService.ts:127](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L127)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [types/RetrievalService.ts:127](https://github.com/brandonbothell/po
 
 > `optional` **location?**: `string`
 
-Defined in: [types/RetrievalService.ts:134](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L134)
+Defined in: [types/RetrievalService.ts:134](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L134)
 
 Latitude and longitude coordinates in the format (37.42307,-122.08427).
 
@@ -42,7 +42,7 @@ Latitude and longitude coordinates in the format (37.42307,-122.08427).
 
 > `optional` **locationRadius?**: `string`
 
-Defined in: [types/RetrievalService.ts:140](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L140)
+Defined in: [types/RetrievalService.ts:140](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L140)
 
 Units are m, km, ft, and mi. E.g. 5km.  
 No larger than 1000km
@@ -53,7 +53,7 @@ No larger than 1000km
 
 > `optional` **videoCaption?**: `"any"` \| `"closedCaption"` \| `"none"`
 
-Defined in: [types/RetrievalService.ts:129](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L129)
+Defined in: [types/RetrievalService.ts:129](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L129)
 
 ***
 
@@ -61,7 +61,7 @@ Defined in: [types/RetrievalService.ts:129](https://github.com/brandonbothell/po
 
 > `optional` **videoCategory?**: [`VideoCategoryResolvable`](VideoCategoryResolvable.md)
 
-Defined in: [types/RetrievalService.ts:125](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L125)
+Defined in: [types/RetrievalService.ts:125](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L125)
 
 ***
 
@@ -69,7 +69,7 @@ Defined in: [types/RetrievalService.ts:125](https://github.com/brandonbothell/po
 
 > `optional` **videoEmbeddable?**: `boolean`
 
-Defined in: [types/RetrievalService.ts:126](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L126)
+Defined in: [types/RetrievalService.ts:126](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L126)
 
 ***
 
@@ -77,4 +77,4 @@ Defined in: [types/RetrievalService.ts:126](https://github.com/brandonbothell/po
 
 > `optional` **videoType?**: `"any"` \| `"episode"` \| `"movie"`
 
-Defined in: [types/RetrievalService.ts:128](https://github.com/brandonbothell/popyt/blob/93878bc88162f334b5d65b1ec85a2c04f4be86f0/src/types/RetrievalService.ts#L128)
+Defined in: [types/RetrievalService.ts:128](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/RetrievalService.ts#L128)
