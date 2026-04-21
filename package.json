@@ -10,6 +10,7 @@
     "test:oauth": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/oauth/*.spec.ts\" --timeout 30000",
     "test:oauth:captions": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/oauth/captions.spec.ts\" --timeout 30000",
     "test:oauth:channels": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/oauth/channels.spec.ts\" --timeout 30000",
+    "test:oauth:comments": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/oauth/comments.spec.ts\" --timeout 30000",
     "test:http": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/request.spec.ts\" --timeout 30000",
     "test:comments": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/comments.spec.ts\" --timeout 30000",
     "test:youtube": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./test/youtube.spec.ts\" --timeout 30000",

@@ -14,7 +14,7 @@ let commentReplyId: string
 
 describe('OAuth comments', () => {
   it('should post comments', async () => {
-    const text = `testing ${new Date()}`
+    const text = `testing ${new Date().getTime()}`
     const uploads = (await youtube.oauth.getMyUploads()).items
     comment = await uploads[0].postComment(text)
     commentId = comment.id
@@ -23,13 +23,13 @@ describe('OAuth comments', () => {
   })
 
   it('should edit comments', async () => {
-    const text = `testing ${new Date()}`
+    const text = `testing ${new Date().getDay()}`
     await comment.edit(text)
     expect(comment.text.original).to.equal(text)
   })
 
   it('should post comment replies', async () => {
-    const text = `testing ${new Date()}`
+    const text = `testing ${new Date().getFullYear()}`
     reply = await comment.reply(text)
     commentReplyId = reply.id
 
