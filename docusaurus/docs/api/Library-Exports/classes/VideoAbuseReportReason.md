@@ -6,7 +6,7 @@
 
 # Class: VideoAbuseReportReason
 
-Defined in: [entities/video-abuse-report-reason.ts:7](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L7)
+Defined in: [entities/video-abuse-report-reason.ts:7](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L7)
 
 A YouTube [Video](./Video#) abuse report reason.
 
@@ -16,7 +16,7 @@ A YouTube [Video](./Video#) abuse report reason.
 
 > **new VideoAbuseReportReason**(`youtube`, `data`, `full?`): `VideoAbuseReportReason`
 
-Defined in: [entities/video-abuse-report-reason.ts:53](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L53)
+Defined in: [entities/video-abuse-report-reason.ts:53](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L53)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/video-abuse-report-reason.ts:53](https://github.com/brando
 
 > **data**: `any`
 
-Defined in: [entities/video-abuse-report-reason.ts:36](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L36)
+Defined in: [entities/video-abuse-report-reason.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L36)
 
 The raw data of this reason.
 
@@ -52,7 +52,7 @@ The raw data of this reason.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/video-abuse-report-reason.ts:31](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L31)
+Defined in: [entities/video-abuse-report-reason.ts:31](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L31)
 
 Whether or not this is a full reason object.
 
@@ -62,7 +62,7 @@ Whether or not this is a full reason object.
 
 > **id**: `string`
 
-Defined in: [entities/video-abuse-report-reason.ts:41](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L41)
+Defined in: [entities/video-abuse-report-reason.ts:41](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L41)
 
 The ID of this reason.
 
@@ -72,7 +72,7 @@ The ID of this reason.
 
 > **label**: `string`
 
-Defined in: [entities/video-abuse-report-reason.ts:46](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L46)
+Defined in: [entities/video-abuse-report-reason.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L46)
 
 The label text of this reason.
 
@@ -82,7 +82,7 @@ The label text of this reason.
 
 > **secondaryReasons**: `object`[]
 
-Defined in: [entities/video-abuse-report-reason.ts:51](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L51)
+Defined in: [entities/video-abuse-report-reason.ts:51](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L51)
 
 A list of secondary reasons associated with the reason, if any are available.
 
@@ -100,7 +100,7 @@ A list of secondary reasons associated with the reason, if any are available.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/video-abuse-report-reason.ts:26](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L26)
+Defined in: [entities/video-abuse-report-reason.ts:26](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L26)
 
 The YouTube object that created this reason object.
 
@@ -110,7 +110,7 @@ The YouTube object that created this reason object.
 
 > `static` **endpoint**: `string` = `'videoAbuseReportReasons'`
 
-Defined in: [entities/video-abuse-report-reason.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L11)
+Defined in: [entities/video-abuse-report-reason.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L11)
 
 The name of the endpoint used for this entity.
 
@@ -120,7 +120,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string` = `'items(kind,id,snippet(label,secondaryReasons))'`
 
-Defined in: [entities/video-abuse-report-reason.ts:21](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L21)
+Defined in: [entities/video-abuse-report-reason.ts:21](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L21)
 
 The fields to request for this entity.
 
@@ -130,6 +130,6 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'snippet'`
 
-Defined in: [entities/video-abuse-report-reason.ts:16](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-abuse-report-reason.ts#L16)
+Defined in: [entities/video-abuse-report-reason.ts:16](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-abuse-report-reason.ts#L16)
 
 The parts to request for this entity.

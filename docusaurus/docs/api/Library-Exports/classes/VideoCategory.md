@@ -6,7 +6,7 @@
 
 # Class: VideoCategory
 
-Defined in: [entities/video-category.ts:7](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L7)
+Defined in: [entities/video-category.ts:7](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L7)
 
 A YouTube [Video](./Video#) category.
 
@@ -16,7 +16,7 @@ A YouTube [Video](./Video#) category.
 
 > **new VideoCategory**(`youtube`, `data`, `full?`): `VideoCategory`
 
-Defined in: [entities/video-category.ts:58](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L58)
+Defined in: [entities/video-category.ts:58](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L58)
 
 #### Parameters
 
@@ -42,7 +42,7 @@ Defined in: [entities/video-category.ts:58](https://github.com/brandonbothell/po
 
 > **assignable**: `boolean`
 
-Defined in: [entities/video-category.ts:56](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L56)
+Defined in: [entities/video-category.ts:56](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L56)
 
 Whether or not videos can be associated with the category.
 
@@ -52,7 +52,7 @@ Whether or not videos can be associated with the category.
 
 > **channelId**: `string`
 
-Defined in: [entities/video-category.ts:46](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L46)
+Defined in: [entities/video-category.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L46)
 
 The [Channel](./Channel#) that created the category.
 
@@ -62,7 +62,7 @@ The [Channel](./Channel#) that created the category.
 
 > **data**: `any`
 
-Defined in: [entities/video-category.ts:36](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L36)
+Defined in: [entities/video-category.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L36)
 
 The raw data of this category.
 
@@ -72,7 +72,7 @@ The raw data of this category.
 
 > **full**: `boolean` = `true`
 
-Defined in: [entities/video-category.ts:31](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L31)
+Defined in: [entities/video-category.ts:31](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L31)
 
 Whether or not this is a full category object.
 
@@ -82,7 +82,7 @@ Whether or not this is a full category object.
 
 > **id**: `string`
 
-Defined in: [entities/video-category.ts:41](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L41)
+Defined in: [entities/video-category.ts:41](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L41)
 
 The ID of this category.
 
@@ -92,7 +92,7 @@ The ID of this category.
 
 > **title**: `string`
 
-Defined in: [entities/video-category.ts:51](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L51)
+Defined in: [entities/video-category.ts:51](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L51)
 
 The category's title.
 
@@ -102,7 +102,7 @@ The category's title.
 
 > **youtube**: [`YouTube`](YouTube.md)
 
-Defined in: [entities/video-category.ts:26](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L26)
+Defined in: [entities/video-category.ts:26](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L26)
 
 The YouTube object that created this category object.
 
@@ -112,7 +112,7 @@ The YouTube object that created this category object.
 
 > `static` **endpoint**: `string` = `'videoCategories'`
 
-Defined in: [entities/video-category.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L11)
+Defined in: [entities/video-category.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L11)
 
 The name of the endpoint used for this entity.
 
@@ -122,7 +122,7 @@ The name of the endpoint used for this entity.
 
 > `static` **fields**: `string` = `'items(kind,id,snippet(channelId,title,assignable))'`
 
-Defined in: [entities/video-category.ts:21](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L21)
+Defined in: [entities/video-category.ts:21](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L21)
 
 The fields to request for this entity.
 
@@ -132,7 +132,7 @@ The fields to request for this entity.
 
 > `static` **part**: `string` = `'snippet'`
 
-Defined in: [entities/video-category.ts:16](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L16)
+Defined in: [entities/video-category.ts:16](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L16)
 
 The parts to request for this entity.
 
@@ -142,7 +142,7 @@ The parts to request for this entity.
 
 > **fetch**(): `Promise`\<`VideoCategory`\>
 
-Defined in: [entities/video-category.ts:88](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L88)
+Defined in: [entities/video-category.ts:88](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L88)
 
 Fetches this category from the API and reassigns this object to the new category object.
 Only useful if `this.full` is false, or if you want updated category info.
@@ -157,7 +157,7 @@ Only useful if `this.full` is false, or if you want updated category info.
 
 > **getChannel**(): `Promise`\<[`Channel`](Channel.md)\>
 
-Defined in: [entities/video-category.ts:96](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/entities/video-category.ts#L96)
+Defined in: [entities/video-category.ts:96](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/entities/video-category.ts#L96)
 
 Fetches the channel associated with this category from the API.
 

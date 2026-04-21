@@ -8,4 +8,4 @@
 
 > **ChannelSectionParts** = (`"contentDetails"` \| `"id"` \| `"localizations"` \| `"snippet"` \| `"targeting"`)[]
 
-Defined in: [types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Parts.ts#L36)
+Defined in: [types/Parts.ts:36](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Parts.ts#L36)

@@ -8,7 +8,7 @@
 
 > **Authorization** = `object`
 
-Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Util.ts#L44)
+Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Util.ts#L44)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/534e
 
 > `optional` **accessToken?**: `string`
 
-Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Util.ts#L44)
+Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Util.ts#L44)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/534e
 
 > `optional` **apiKey?**: `string`
 
-Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Util.ts#L44)
+Defined in: [types/Util.ts:44](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Util.ts#L44)

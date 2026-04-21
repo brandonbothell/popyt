@@ -8,7 +8,7 @@
 
 > **IDEntity** = `object`
 
-Defined in: [types/Resolutions.ts:54](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Resolutions.ts#L54)
+Defined in: [types/Resolutions.ts:54](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Resolutions.ts#L54)
 
 ## Indexable
 
@@ -20,4 +20,4 @@ Defined in: [types/Resolutions.ts:54](https://github.com/brandonbothell/popyt/bl
 
 > **id**: `string`
 
-Defined in: [types/Resolutions.ts:55](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Resolutions.ts#L55)
+Defined in: [types/Resolutions.ts:55](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Resolutions.ts#L55)

@@ -13,8 +13,12 @@
     "sourceMap": true,
     "rootDir": "src",
     "strict": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowJs": true
   },
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "out",

@@ -8,7 +8,7 @@
 
 > **Thumbnail** = `object`
 
-Defined in: [types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Thumbnail.ts#L1)
+Defined in: [types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Thumbnail.ts#L1)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/Thumbnail.ts:1](https://github.com/brandonbothell/popyt/blob/
 
 > `optional` **height?**: `number`
 
-Defined in: [types/Thumbnail.ts:4](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Thumbnail.ts#L4)
+Defined in: [types/Thumbnail.ts:4](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Thumbnail.ts#L4)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [types/Thumbnail.ts:4](https://github.com/brandonbothell/popyt/blob/
 
 > `optional` **url?**: `string`
 
-Defined in: [types/Thumbnail.ts:2](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Thumbnail.ts#L2)
+Defined in: [types/Thumbnail.ts:2](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Thumbnail.ts#L2)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [types/Thumbnail.ts:2](https://github.com/brandonbothell/popyt/blob/
 
 > `optional` **width?**: `number`
 
-Defined in: [types/Thumbnail.ts:3](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Thumbnail.ts#L3)
+Defined in: [types/Thumbnail.ts:3](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Thumbnail.ts#L3)

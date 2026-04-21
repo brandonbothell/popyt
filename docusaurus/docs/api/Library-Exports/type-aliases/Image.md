@@ -8,7 +8,7 @@
 
 > **Image** = `object`
 
-Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Util.ts#L46)
+Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Util.ts#L46)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/534e
 
 > **data**: `Buffer`
 
-Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Util.ts#L46)
+Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Util.ts#L46)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/534e
 
 > **type**: `"jpeg"` \| `"png"`
 
-Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/types/Util.ts#L46)
+Defined in: [types/Util.ts:46](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/types/Util.ts#L46)

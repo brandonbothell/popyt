@@ -6,7 +6,7 @@
 
 # Class: OAuthVideos
 
-Defined in: [oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L10)
+Defined in: [oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L10)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [oauth/videos.ts:10](https://github.com/brandonbothell/popyt/blob/53
 
 > **new OAuthVideos**(`oauth`): `OAuthVideos`
 
-Defined in: [oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L11)
+Defined in: [oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L11)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/53
 
 > **oauth**: [`OAuth`](OAuth.md)
 
-Defined in: [oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L11)
+Defined in: [oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L11)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: [oauth/videos.ts:11](https://github.com/brandonbothell/popyt/blob/53
 
 > **deleteVideo**(`videoResolvable`): `Promise`\<`void`\>
 
-Defined in: [oauth/videos.ts:116](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L116)
+Defined in: [oauth/videos.ts:116](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L116)
 
 Deletes a [Video](../../Library-Exports/classes/Video#).
 
@@ -62,7 +62,7 @@ The video to delete.
 
 > **getMyRatings**\<`T`\>(`videoResolvable`): `Promise`\<`T` *extends* `any`[] ? [`VideoRating`](../../Library-Exports/classes/VideoRating.md)[] : [`VideoRating`](../../Library-Exports/classes/VideoRating.md)\>
 
-Defined in: [oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L33)
+Defined in: [oauth/videos.ts:33](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L33)
 
 Retrieve your rating on [Videos](../../Library-Exports/classes/Video#).
 
@@ -90,7 +90,7 @@ The video(s) to retrieve your rating from.
 
 > **getVideoAbuseReportReasons**(): `Promise`\<[`VideoAbuseReportReason`](../../Library-Exports/classes/VideoAbuseReportReason.md)[]\>
 
-Defined in: [oauth/videos.ts:188](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L188)
+Defined in: [oauth/videos.ts:188](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L188)
 
 Gets a list of [VideoAbuseReportReason](../../Library-Exports/classes/VideoAbuseReportReason#)s.
 
@@ -104,7 +104,7 @@ Gets a list of [VideoAbuseReportReason](../../Library-Exports/classes/VideoAbuse
 
 > **rateVideo**(`videoResolvable`, `rating`): `Promise`\<`void`\>
 
-Defined in: [oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L18)
+Defined in: [oauth/videos.ts:18](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L18)
 
 Like, dislike, or remove a rating from a [Video](../../Library-Exports/classes/Video#).
 
@@ -132,7 +132,7 @@ The rating to give the video.
 
 > **reportAbuse**(`videoResolvable`, `reasonId`, `secondaryReasonId?`, `comments?`, `language?`): `Promise`\<`void`\>
 
-Defined in: [oauth/videos.ts:87](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L87)
+Defined in: [oauth/videos.ts:87](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L87)
 
 Report a [Video](../../Library-Exports/classes/Video#) for abuse.
 
@@ -178,7 +178,7 @@ The language that the reporter speaks.
 
 > **setThumbnail**(`videoResolvable`, `image`): `Promise`\<\{ `default?`: [`Thumbnail`](../../Library-Exports/type-aliases/Thumbnail.md); `high?`: [`Thumbnail`](../../Library-Exports/type-aliases/Thumbnail.md); `maxres?`: [`Thumbnail`](../../Library-Exports/type-aliases/Thumbnail.md); `medium?`: [`Thumbnail`](../../Library-Exports/type-aliases/Thumbnail.md); `standard?`: [`Thumbnail`](../../Library-Exports/type-aliases/Thumbnail.md); \}\>
 
-Defined in: [oauth/videos.ts:172](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L172)
+Defined in: [oauth/videos.ts:172](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L172)
 
 Sets a new [Thumbnail](../../Library-Exports/type-aliases/Thumbnail) for a [Video](../../Library-Exports/classes/Video).
 
@@ -206,7 +206,7 @@ The image data and type to upload.
 
 > **updateVideo**(`video`): `Promise`\<[`Video`](../../Library-Exports/classes/Video.md)\>
 
-Defined in: [oauth/videos.ts:132](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/videos.ts#L132)
+Defined in: [oauth/videos.ts:132](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/videos.ts#L132)
 
 Updates a [Video](../../Library-Exports/classes/Video#).  
 **If your request does not specify a value for a property that already has a value,

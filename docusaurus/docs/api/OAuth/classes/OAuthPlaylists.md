@@ -6,7 +6,7 @@
 
 # Class: OAuthPlaylists
 
-Defined in: [oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L10)
+Defined in: [oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L10)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [oauth/playlists.ts:10](https://github.com/brandonbothell/popyt/blob
 
 > **new OAuthPlaylists**(`oauth`): `OAuthPlaylists`
 
-Defined in: [oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L11)
+Defined in: [oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L11)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob
 
 > **oauth**: [`OAuth`](OAuth.md)
 
-Defined in: [oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L11)
+Defined in: [oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L11)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: [oauth/playlists.ts:11](https://github.com/brandonbothell/popyt/blob
 
 > **addPlaylistItem**(`playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`\<[`Video`](../../Library-Exports/classes/Video.md)\>
 
-Defined in: [oauth/playlists.ts:113](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L113)
+Defined in: [oauth/playlists.ts:113](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L113)
 
 Adds a [Video](../../Library-Exports/classes/Video#) to a [Playlist](../../Library-Exports/classes/Playlist#).
 
@@ -82,7 +82,7 @@ A partial video object.
 
 > **createPlaylist**(`title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`\<[`Playlist`](../../Library-Exports/classes/Playlist.md)\>
 
-Defined in: [oauth/playlists.ts:22](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L22)
+Defined in: [oauth/playlists.ts:22](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L22)
 
 Creates a [Playlist](../../Library-Exports/classes/Playlist#).
 
@@ -132,7 +132,7 @@ Translated titles and descriptions.
 
 > **deletePlaylist**(`playlistResolvable`): `Promise`\<`void`\>
 
-Defined in: [oauth/playlists.ts:95](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L95)
+Defined in: [oauth/playlists.ts:95](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L95)
 
 Deletes a [Playlist](../../Library-Exports/classes/Playlist#).
 
@@ -154,7 +154,7 @@ The playlist to delete.
 
 > **deletePlaylistItem**(`id`): `Promise`\<`void`\>
 
-Defined in: [oauth/playlists.ts:183](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L183)
+Defined in: [oauth/playlists.ts:183](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L183)
 
 Deletes a playlist item.
 
@@ -176,7 +176,7 @@ The ID of the playlist item to delete.
 
 > **updatePlaylist**(`playlistResolvable`, `title`, `description?`, `privacy?`, `tags?`, `language?`, `localizations?`): `Promise`\<[`Playlist`](../../Library-Exports/classes/Playlist.md)\>
 
-Defined in: [oauth/playlists.ts:61](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L61)
+Defined in: [oauth/playlists.ts:61](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L61)
 
 Updates a [Playlist](../../Library-Exports/classes/Playlist#).  
 **If your request does not specify a value for a property that already has a value,
@@ -234,7 +234,7 @@ Translated titles and descriptions.
 
 > **updatePlaylistItem**(`id`, `playlistResolvable`, `videoResolvable`, `position?`, `note?`): `Promise`\<[`Video`](../../Library-Exports/classes/Video.md)\>
 
-Defined in: [oauth/playlists.ts:151](https://github.com/brandonbothell/popyt/blob/534e5115ace99d29ee44af4839e9db8f769827fb/src/oauth/playlists.ts#L151)
+Defined in: [oauth/playlists.ts:151](https://github.com/brandonbothell/popyt/blob/d2c7d6853da78c625d9181889723f4cfa4f59197/src/oauth/playlists.ts#L151)
 
 Edits a playlist item.  
 **If your request does not specify a value for a property that already has a value,
