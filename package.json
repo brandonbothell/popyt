@@ -52,7 +52,7 @@
   "devDependencies": {
     "@googleapis/youtube": "31.0.0",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
-    "@types/chai": "4.3.10",
+    "@types/chai": "4.3.20",
     "@types/gulp": "4.0.18",
     "@types/gulp-sourcemaps": "0.0.38",
     "@types/merge2": "1.4.3",
@@ -60,7 +60,7 @@
     "@types/node": "25.6.0",
     "@typescript-eslint/eslint-plugin": "6.13.0",
     "@typescript-eslint/parser": "6.13.0",
-    "chai": "4.3.10",
+    "chai": "4.5.0",
     "cross-env": "10.1.0",
     "dotenv": "17.4.2",
     "eslint": "8.53.0",
