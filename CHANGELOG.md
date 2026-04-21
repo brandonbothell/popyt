@@ -1,3 +1,7 @@
+### 8.0.0
+- Major release
+- Starting new changelog format
+
 ### 1.0.7
 - New website/docs.
 

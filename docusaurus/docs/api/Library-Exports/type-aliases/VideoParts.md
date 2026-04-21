@@ -8,4 +8,4 @@
 
 > **VideoParts** = (`"contentDetails"` \| `"fileDetails"` \| `"id"` \| `"liveStreamingDetails"` \| `"localizations"` \| `"player"` \| `"processingDetails"` \| `"recordingDetails"` \| `"snippet"` \| `"statistics"` \| `"status"` \| `"suggestions"` \| `"topicDetails"`)[]
 
-Defined in: [types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/Parts.ts#L1)
+Defined in: [types/Parts.ts:1](https://github.com/brandonbothell/popyt/blob/e69f67439a91b94c7cfd4e3ab9a1fdc4a716cdcf/src/types/Parts.ts#L1)

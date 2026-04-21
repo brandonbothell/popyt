@@ -8,4 +8,4 @@
 
 > **PaginatedType** = *typeof* `PAGINATED_CLASSES`\[`number`\]
 
-Defined in: [types/RetrievalService.ts:42](https://github.com/brandonbothell/popyt/blob/28b3359c23f3ee4335c0cd8622d9ed35c5164361/src/types/RetrievalService.ts#L42)
+Defined in: [types/RetrievalService.ts:42](https://github.com/brandonbothell/popyt/blob/e69f67439a91b94c7cfd4e3ab9a1fdc4a716cdcf/src/types/RetrievalService.ts#L42)

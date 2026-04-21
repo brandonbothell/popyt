@@ -87,7 +87,7 @@ describe('OAuth videos', () => {
 
     try {
       new VideoAbuseReportReason(youtube, { kind: 'invalid' })
-    } catch (err) {
+    } catch (err: any) {
       error = err.message
     }
 

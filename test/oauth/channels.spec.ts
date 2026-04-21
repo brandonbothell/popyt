@@ -19,6 +19,7 @@ describe('OAuth channels', () => {
 
     expect(subscription.channel.id).to.equal(channel.id)
 
+    await new Promise(resolve => setTimeout(resolve, 1000)) // Wait a second for the new subscription to be available
     await channel.unsubscribe(subscription.id)
   })
 
@@ -56,8 +57,9 @@ describe('OAuth channels', () => {
     expect(channel.banner).to.be.a('string')
   })
 
-  it('should work with adding channel sections', async () => {
-    const section = await youtube.oauth.channels.addChannelSection(
+  it('should work with adding, updating, then deleting channel sections', async () => {
+    if (!channel) channel = await youtube.oauth.getMe()
+    let section = await youtube.oauth.channels.addChannelSection(
       'multipleChannels', 'Testing woot', undefined, undefined,
       [ 'UC-lHJZR3Gqxm24_Vd_AJ5Yw', 'UCS5Oz6CHmeoF7vSad0qqXfw' ])
     sectionId = section.id
@@ -67,10 +69,8 @@ describe('OAuth channels', () => {
     expect(section.channelId).to.equal(channel.id)
     expect(section.channelIds).to.contain('UC-lHJZR3Gqxm24_Vd_AJ5Yw')
       .and.contain('UCS5Oz6CHmeoF7vSad0qqXfw')
-  })
 
-  it('should work with updating channel sections', async () => {
-    const section = await youtube.oauth.channels.updateChannelSection(sectionId,
+    section = await youtube.oauth.channels.updateChannelSection(sectionId,
       'multiplePlaylists', 'Test...', 1,
       [ 'PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74', 'PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6' ])
     sectionId = section.id
@@ -80,9 +80,7 @@ describe('OAuth channels', () => {
     expect(section.position).to.equal(1)
     expect(section.playlistIds).to.contain('PLnN8TpQ0Wd0ljBDpST59rMvl7pFmDXU74')
       .and.contain('PLnN8TpQ0Wd0lN-T7dZEyijkjA4A8spMq6')
-  })
 
-  it('should work with deleting channel sections', async () => {
     await youtube.oauth.channels.deleteChannelSection(sectionId)
   })
 })

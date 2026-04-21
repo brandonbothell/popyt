@@ -190,6 +190,7 @@ export class OAuthChannels {
 
     // For some reason the response is just the first channel section
     // C'mon, YouTube
+    await new Promise(resolve => setTimeout(resolve, 1000)) // Wait a second for the new channel section to be available
     const channelSections = await this.oauth.getMyChannelSections()
     return channelSections.find(position == null ?
       section => section.position === channelSections.length - 1 : // Highest position
