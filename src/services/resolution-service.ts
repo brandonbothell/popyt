@@ -41,7 +41,7 @@ export class ResolutionService {
       resolutions[resolutionIndex] = this.resolveStringToIdOrEntity(resolvableStrings[resolutionIndex], type)
     }
 
-    return Promise.all(resolutions) as Promise<ResolveReturn<T, K>>
+    return Promise.all(resolutions.map(r => Promise.resolve(r))) as Promise<ResolveReturn<T, K>>
   }
 
   /**
