@@ -48,7 +48,7 @@ const RAW_RUNTIME_STATE =
           ["dotenv", "npm:17.4.2"],\
           ["eslint", "npm:8.53.0"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.8.2"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.10.1"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:3.0.0"],\
           ["mocha", "npm:11.7.5"],\
           ["nyc", "npm:18.0.0"],\
@@ -5040,11 +5040,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@es-joy/jsdoccomment", [\
-      ["npm:0.40.1", {\
-        "packageLocation": "./.yarn/cache/@es-joy-jsdoccomment-npm-0.40.1-7eafe50c74-6501c29206.zip/node_modules/@es-joy/jsdoccomment/",\
+      ["npm:0.41.0", {\
+        "packageLocation": "./.yarn/cache/@es-joy-jsdoccomment-npm-0.41.0-20acf8fb8c-ea581983f3.zip/node_modules/@es-joy/jsdoccomment/",\
         "packageDependencies": [\
-          ["@es-joy/jsdoccomment", "npm:0.40.1"],\
-          ["comment-parser", "npm:1.4.0"],\
+          ["@es-joy/jsdoccomment", "npm:0.41.0"],\
+          ["comment-parser", "npm:1.4.1"],\
           ["esquery", "npm:1.7.0"],\
           ["jsdoc-type-pratt-parser", "npm:4.0.0"]\
         ],\
@@ -9313,10 +9313,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["comment-parser", [\
-      ["npm:1.4.0", {\
-        "packageLocation": "./.yarn/cache/comment-parser-npm-1.4.0-17c465a2d2-3ce7a97594.zip/node_modules/comment-parser/",\
+      ["npm:1.4.1", {\
+        "packageLocation": "./.yarn/cache/comment-parser-npm-1.4.1-f416dc95e4-16a3260b5e.zip/node_modules/comment-parser/",\
         "packageDependencies": [\
-          ["comment-parser", "npm:1.4.0"]\
+          ["comment-parser", "npm:1.4.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11101,28 +11101,28 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["eslint-plugin-jsdoc", [\
-      ["npm:46.8.2", {\
-        "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-46.8.2-42e5a0a4f3-240c92f4ca.zip/node_modules/eslint-plugin-jsdoc/",\
+      ["npm:46.10.1", {\
+        "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-46.10.1-18dfff75a6-19e37f12fc.zip/node_modules/eslint-plugin-jsdoc/",\
         "packageDependencies": [\
-          ["eslint-plugin-jsdoc", "npm:46.8.2"]\
+          ["eslint-plugin-jsdoc", "npm:46.10.1"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.8.2", {\
-        "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-29d91fb5cd/0/cache/eslint-plugin-jsdoc-npm-46.8.2-42e5a0a4f3-240c92f4ca.zip/node_modules/eslint-plugin-jsdoc/",\
+      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.10.1", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-ab747318d6/0/cache/eslint-plugin-jsdoc-npm-46.10.1-18dfff75a6-19e37f12fc.zip/node_modules/eslint-plugin-jsdoc/",\
         "packageDependencies": [\
-          ["@es-joy/jsdoccomment", "npm:0.40.1"],\
+          ["@es-joy/jsdoccomment", "npm:0.41.0"],\
           ["@types/eslint", null],\
           ["are-docs-informative", "npm:0.0.2"],\
-          ["comment-parser", "npm:1.4.0"],\
+          ["comment-parser", "npm:1.4.1"],\
           ["debug", "virtual:27a95c269073dbdd4169a09f0c8f5e379b1ac1b07300e8a51e15eab9c87a24784c6fb87a66f9ef68f023cbbb1b0273be8de13d79e98ff26129a71ca366ad636d#npm:4.4.3"],\
           ["escape-string-regexp", "npm:4.0.0"],\
           ["eslint", "npm:8.53.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.8.2"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.10.1"],\
           ["esquery", "npm:1.7.0"],\
           ["is-builtin-module", "npm:3.2.1"],\
           ["semver", "npm:7.7.4"],\
-          ["spdx-expression-parse", "npm:3.0.1"]\
+          ["spdx-expression-parse", "npm:4.0.0"]\
         ],\
         "packagePeers": [\
           "@types/eslint",\
@@ -16483,7 +16483,7 @@ const RAW_RUNTIME_STATE =
           ["dotenv", "npm:17.4.2"],\
           ["eslint", "npm:8.53.0"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.8.2"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:46.10.1"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:3.0.0"],\
           ["mocha", "npm:11.7.5"],\
           ["nyc", "npm:18.0.0"],\
@@ -19842,11 +19842,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["spdx-expression-parse", [\
-      ["npm:3.0.1", {\
-        "packageLocation": "./.yarn/cache/spdx-expression-parse-npm-3.0.1-b718cbb35a-a1c6e104a2.zip/node_modules/spdx-expression-parse/",\
+      ["npm:4.0.0", {\
+        "packageLocation": "./.yarn/cache/spdx-expression-parse-npm-4.0.0-1c2f5caf51-936be681fb.zip/node_modules/spdx-expression-parse/",\
         "packageDependencies": [\
           ["spdx-exceptions", "npm:2.5.0"],\
-          ["spdx-expression-parse", "npm:3.0.1"],\
+          ["spdx-expression-parse", "npm:4.0.0"],\
           ["spdx-license-ids", "npm:3.0.23"]\
         ],\
         "linkType": "HARD"\

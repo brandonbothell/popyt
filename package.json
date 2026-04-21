@@ -65,7 +65,7 @@
     "dotenv": "17.4.2",
     "eslint": "8.53.0",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsdoc": "46.8.2",
+    "eslint-plugin-jsdoc": "46.10.1",
     "eslint-plugin-unused-imports": "3.0.0",
     "mocha": "11.7.5",
     "nyc": "18.0.0",
