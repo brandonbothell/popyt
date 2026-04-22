@@ -85,7 +85,7 @@
   },
   "resolutions": {
     "node-preload": "0.2.0",
-    "webpack": "5.105.0"
+    "webpack": "5.106.2"
   },
   "engines": {
     "node": ">=18.0 <24.15 || >=25.0 <25.7"
