@@ -26,5 +26,22 @@
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-secondary: #3d3d3d ;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  .footer__link-item {
+    color: var(--ifm-color-primary-light) !important;
+  }
+
+  .footer__copyright {
+    color: white !important;
+  }
+
+  .button {
+    color: white !important;
+  }
+
+  .button:hover {
+    color: black !important;
+  }
 }
