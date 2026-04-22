@@ -18,17 +18,17 @@ export default function CodeSandboxBlock (props: Props & { url?: string }): Reac
         display: props.url ? 'block' : 'none',
         textAlign: 'start',
         marginBottom: '16px'
-      }}><text fontSize="2.75"><b><a href={props.url} target='_blank'> Try this on <CodeSandboxText /></a></b></text></div>
+      }}><span style={{ fontSize:'10pt' }}><b><a href={props.url} target='_blank'> Try this on <CodeSandboxText /></a></b></span></div>
     </div>
   )
 }
 
 export function CodeSandboxText (): JSX.Element {
   return (
-    <text><Svg role="img" width={15} height={15} style={{
+    <span><Svg role="img" width={15} height={15} style={{
       verticalAlign: '-.1em',
       marginRight: '2px',
       marginLeft: '1px'
-    }} />CodeSandbox</text>
+    }} />CodeSandbox</span>
   )
 }

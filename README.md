@@ -1,14 +1,16 @@
 # Popyt
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
-[![GitHub Issues](https://img.shields.io/github/issues/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/issues)
-[![GitHub stars](https://img.shields.io/github/stars/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/stargazers)
-[![GitHub license](https://img.shields.io/github/license/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
-[![Release coverage](https://codecov.io/gh/brandonbothell/popyt/branch/release/graph/badge.svg?token=OAV13MIW6S)](https://app.codecov.io/gh/brandonbothell/popyt/tree/release)
-[![Actions status](https://github.com/brandonbothell/popyt/workflows/Test/badge.svg)](https://github.com/brandonbothell/popyt/actions)
-[![DeepScan grade](https://deepscan.io/api/teams/21522/projects/24946/branches/772144/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21522&pid=24946&bid=772144)
-[![Downloads](https://img.shields.io/npm/dt/popyt)](https://www.npmjs.com/package/popyt)
-[![Version](https://img.shields.io/npm/v/popyt)](https://www.npmjs.com/package/popyt)
+[![40+ stars on GitHub](https://img.shields.io/github/stars/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/stargazers)
+[![Permissive license](https://img.shields.io/github/license/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
+[![90%+ test coverage](https://codecov.io/gh/brandonbothell/popyt/branch/release/graph/badge.svg?token=OAV13MIW6S)](https://app.codecov.io/gh/brandonbothell/popyt/tree/release)
+[![Automated testing](https://github.com/brandonbothell/popyt/workflows/Test/badge.svg)](https://github.com/brandonbothell/popyt/actions)
+[![DeepScan grade: good](https://deepscan.io/api/teams/21522/projects/24946/branches/772144/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21522&pid=24946&bid=772144)
+[![5k+ downloads](https://img.shields.io/npm/dt/popyt)](https://www.npmjs.com/package/popyt)
+[![Available on NPM](https://img.shields.io/npm/v/popyt)](https://www.npmjs.com/package/popyt)
+[![<100kb](https://badgen.net/bundlephobia/min/popyt)](https://bundlephobia.com/package/popyt)
+[![Zero Dependencies](https://badgen.net/bundlephobia/dependency-count/popyt)](https://bundlephobia.com/package/popyt)
+[![Open an issue on GitHub](https://img.shields.io/github/issues/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/issues)
 
 # Examples
 ### Look at the [documentation](https://popyt.brandonsbench.net/docs/api), or:
