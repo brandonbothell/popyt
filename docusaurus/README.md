@@ -1,7 +1,11 @@
 import CodeBlock from '@theme/CodeBlock'
 
 # Getting Started
-Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
+Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered.
+
+```bash npm2yarn
+npm install popyt
+```
 
 [![40+ stars on GitHub](https://img.shields.io/github/stars/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/stargazers)
 [![Permissive license](https://img.shields.io/github/license/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)

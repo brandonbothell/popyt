@@ -4758,6 +4758,20 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@docusaurus/remark-plugin-npm2yarn", [\
+      ["npm:3.10.0", {\
+        "packageLocation": "./.yarn/cache/@docusaurus-remark-plugin-npm2yarn-npm-3.10.0-6b2d9bb3f9-6b1b9d752c.zip/node_modules/@docusaurus/remark-plugin-npm2yarn/",\
+        "packageDependencies": [\
+          ["@docusaurus/remark-plugin-npm2yarn", "npm:3.10.0"],\
+          ["mdast-util-mdx", "npm:3.0.0"],\
+          ["npm-to-yarn", "npm:3.0.1"],\
+          ["tslib", "npm:2.8.1"],\
+          ["unified", "npm:11.0.5"],\
+          ["unist-util-visit", "npm:5.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@docusaurus/theme-classic", [\
       ["npm:3.10.0", {\
         "packageLocation": "./.yarn/cache/@docusaurus-theme-classic-npm-3.10.0-8b69ee8419-d9f11b0d1e.zip/node_modules/@docusaurus/theme-classic/",\
@@ -10579,6 +10593,7 @@ const RAW_RUNTIME_STATE =
           ["@docusaurus/module-type-aliases", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.10.0"],\
           ["@docusaurus/plugin-content-docs", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.10.0"],\
           ["@docusaurus/preset-classic", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.10.0"],\
+          ["@docusaurus/remark-plugin-npm2yarn", "npm:3.10.0"],\
           ["@docusaurus/theme-classic", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.10.0"],\
           ["@docusaurus/theme-common", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.10.0"],\
           ["@docusaurus/tsconfig", "npm:3.10.0"],\
@@ -15878,6 +15893,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["npm-run-path", "npm:4.0.1"],\
           ["path-key", "npm:3.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["npm-to-yarn", [\
+      ["npm:3.0.1", {\
+        "packageLocation": "./.yarn/cache/npm-to-yarn-npm-3.0.1-332cc6c3f7-0af1332064.zip/node_modules/npm-to-yarn/",\
+        "packageDependencies": [\
+          ["npm-to-yarn", "npm:3.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
