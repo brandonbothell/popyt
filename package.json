@@ -84,7 +84,7 @@
     "undici-types": "8.1.0"
   },
   "resolutions": {
-    "node-preload": "0.2.0",
+    "nyc/node-preload": "0.2.0",
     "webpackbar": "7.0.0"
   },
   "engines": {
