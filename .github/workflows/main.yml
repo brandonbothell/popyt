@@ -5,8 +5,12 @@ on:
     branches:
       - 'master'
 
+permissions:
+  contents: read
+
 jobs:
   lint:
+    
     name: Lint and type check
     runs-on: ubuntu-latest
     steps:

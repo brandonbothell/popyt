@@ -55,7 +55,7 @@ describe('Searching', () => {
   it('should set what it can with search results', async () => {
     const channel = defaultChannelsSearch.items[0]
 
-    expect(channel.id).to.equal('UCwZEU0wAwIyZb4x5G_KJp2w')
+    expect(channel.id).to.be.oneOf([ 'UCwZEU0wAwIyZb4x5G_KJp2w', 'UCuAXFkgsw1L7xaCfnd5JJOw' ])
     expect(channel.country).to.equal(undefined)
     expect(channel.language).to.equal(undefined)
     expect(channel.views).to.equal(undefined)

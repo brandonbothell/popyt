@@ -21,4 +21,12 @@ typings/
 # Swap the comments on the following lines if you don't wish to use zero-installs
 # Documentation here: https://yarnpkg.com/features/zero-installs
 !.yarn/cache
+
+docusaurus/.yarn/*
+!docusaurus/.yarn/patches
+!docusaurus/.yarn/plugins
+!docusaurus/.yarn/releases
+!docusaurus/.yarn/sdks
+!docusaurus/.yarn/versions
+!docusaurus/.yarn/unplugged
 #.pnp.*

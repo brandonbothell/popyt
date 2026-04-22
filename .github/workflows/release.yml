@@ -5,6 +5,10 @@ on:
     types: [released]
   workflow_dispatch:
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish-docs:
     name: Publish documenation
@@ -16,7 +20,7 @@ jobs:
     - name: Set git user
       run: |
           git config --global user.name "Brandon Bothell"
-          git config --global user.email "bothellbrandon@gmail.com"
+          git config --global user.email "brandon@brandonsbench.net"
     - uses: actions/setup-node@v6
       with:
         node-version: '23.x'
@@ -47,5 +51,3 @@ jobs:
       uses: borales/actions-yarn@v5
       with:
         cmd: npm publish
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
