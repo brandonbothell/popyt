@@ -1,10 +1,12 @@
-test/
+tests/
 src/
+scripts/
 docs/
 docusaurus/
 coverage/
 tsconfig.json
-eslint.config.mjs
+tsconfig.build.json
+eslint.config.mts
 .vscode/
 desktop.ini
 renovate.json
@@ -13,7 +15,6 @@ renovate.json
 .gitattributes
 .nycrc
 .nyc_output/
-.coveralls.yml
 .env
 .yarn/
 .yarnrc.yml
