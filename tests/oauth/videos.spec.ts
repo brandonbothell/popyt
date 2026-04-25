@@ -12,12 +12,19 @@ const oauthVideoId = process.env.YOUTUBE_OAUTH_VIDEO_ID
 
 let video: Video
 
+const wait = (ms: number) => new Promise(resolve => {
+  setTimeout(resolve, ms)
+})
+
 describe('OAuth videos', () => {
   it('should rate videos', async () => {
     video = await youtube.getVideo('E6UTz_Doic8')
     await video.like()
+    await wait(1000)
     await video.dislike()
+    await wait(1000)
     await video.unrate()
+    await wait(1000)
   })
 
   it('should retrieve ratings on videos', async () => {
