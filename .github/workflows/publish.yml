@@ -1,0 +1,53 @@
+name: Publish
+
+on:
+  release:
+    types: [released]
+  workflow_dispatch:
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
+jobs:
+  publish-docs:
+    name: Publish documenation
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        ref: 'release'
+    - name: Set git user
+      run: |
+          git config --global user.name "Brandon Bothell"
+          git config --global user.email "brandon@brandonsbench.net"
+    - uses: actions/setup-node@v6
+      with:
+        node-version: '23.x'
+    - name: Build Docs
+      uses: borales/actions-yarn@v5
+      with:
+        cmd: docs:build
+    - name: Publish Docs
+      uses: borales/actions-yarn@v5
+      with:
+        cmd: docs:publish
+      env:
+        GIT_USER: brandonbothell
+        GIT_PASS: ${{ secrets.GIT_ACCESS_TOKEN }}
+        CURRENT_BRANCH: master
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - uses: actions/setup-node@v6
+      with:
+        node-version: '23.x'
+    - name: Build Source and Typings
+      uses: borales/actions-yarn@v5
+      with:
+        cmd: build
+    - name: Publish Package
+      uses: borales/actions-yarn@v5
+      with:
+        cmd: npm publish

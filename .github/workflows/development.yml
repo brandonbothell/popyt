@@ -1,4 +1,4 @@
-name: Test
+name: Development
 
 on:
   push:
@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   lint:
-    
     name: Lint and type check
     runs-on: ubuntu-latest
     steps:
