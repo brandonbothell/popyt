@@ -4,8 +4,6 @@ docs/
 docusaurus/
 coverage/
 tsconfig.json
-tsconfig.utils.json
-tsconfig.eslint.json
 eslint.config.mjs
 .vscode/
 desktop.ini

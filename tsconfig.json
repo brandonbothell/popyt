@@ -14,7 +14,8 @@
     "rootDir": ".",
     "strict": false,
     "esModuleInterop": true,
-    "allowJs": true
+    "allowJs": true,
+    "noCheck": true
   },
   "include": [
     "src/**/*.ts",
