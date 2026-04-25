@@ -50,4 +50,4 @@ jobs:
     - name: Publish Package
       uses: borales/actions-yarn@v5
       with:
-        cmd: publish
+        cmd: run publish
