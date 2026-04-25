@@ -20,6 +20,7 @@ fs.writeFileSync(__dirname + '/../out/package.json', Buffer.from(JSON.stringify(
 fs.writeFileSync(__dirname + '/../out/version.txt', Buffer.from(sourceObj.version, 'utf-8'))
 
 fs.cpSync(__dirname + '/../typings', __dirname + '/../out/declarations', { recursive: true })
+fs.copyFileSync(__dirname + '/../.npmrc', __dirname + '/../out/.npmrc')
 fs.copyFileSync(__dirname + '/../LICENSE', __dirname + '/../out/LICENSE')
 fs.copyFileSync(__dirname + '/../README.md', __dirname + '/../out/README.md')
 fs.copyFileSync(__dirname + '/../SECURITY.md', __dirname + '/../out/SECURITY.md')
