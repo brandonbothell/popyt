@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - 'release'
+    paths:
+        - 'src/**'
+        - 'scripts/**'
+        - 'tests/**'
   workflow_dispatch:
 
 permissions:
@@ -35,4 +39,4 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
-        override_branch: release
+        override_branch: run release

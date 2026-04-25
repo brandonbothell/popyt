@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - 'master'
+    paths:
+        - 'src/**'
+        - 'scripts/**'
+        - 'tests/**'
+  workflow_dispatch:
 
 permissions:
   contents: read
