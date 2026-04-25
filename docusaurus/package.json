@@ -15,6 +15,7 @@
     "build:config": "tsc"
   },
   "dependencies": {
+    "@docsearch/docusaurus-adapter": "4.6.2",
     "@docusaurus/core": "3.10.0",
     "@docusaurus/plugin-content-docs": "3.10.0",
     "@docusaurus/preset-classic": "3.10.0",
@@ -35,6 +36,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "docusaurus-plugin-typedoc": "1.4.2",
+    "dotenv": "17.4.2",
     "typedoc": "0.28.19",
     "typedoc-plugin-markdown": "4.11.0",
     "typescript": "6.0.3"

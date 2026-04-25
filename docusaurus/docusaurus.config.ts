@@ -1,5 +1,6 @@
 import { themes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
+import 'dotenv/config'
 
 const lightCodeTheme = themes.github
 const darkCodeTheme = themes.dracula
@@ -44,10 +45,8 @@ const config: Config = {
   trailingSlash: false,
 
   plugins: [
-    [
-      'docusaurus-plugin-typedoc',
-      {}
-    ]
+    'docusaurus-plugin-typedoc',
+    '@docsearch/docusaurus-adapter'
   ],
 
   presets: [
@@ -74,6 +73,9 @@ const config: Config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: 'algolia-site-verification', content: 'FCB39BC79A140A84' }
+      ],
       colorMode: { defaultMode: 'dark' },
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
@@ -155,6 +157,17 @@ const config: Config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme
+      },
+      docsearch: {
+        appId: process.env.DOCSEARCH_APP_ID,
+        apiKey: process.env.DOCSEARCH_API_KEY,
+        indexName: 'Popyt Documentation',
+        askAi: {
+          assistantId: process.env.DOCSEARCH_ASSISTANT_ID,
+          agentStudio: true,
+          sidePanel: true
+        },
+        contextualSearch: true
       }
     })
 }

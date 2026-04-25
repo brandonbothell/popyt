@@ -75,11 +75,11 @@ export class YouTube {
 
   /**
    *
-   * @param apiKey Your YouTube Data API v3 key. Don't share this with anybody.
-   * @param accessToken A Google OAuth 2.0 access token. Used for [`YouTube.oauth`](#oauth) methods.
+   * @param apiKey Your YouTube Data API key. Don't share this with anybody.
+   * @param accessToken A Google OAuth access token. Used for [`YouTube.oauth`](#oauth) methods.
    * @param options Caching options. Recommended to change.
    * @param language The language for the API to respond in. See [`YouTube.getLanguages()`](#getlanguages).
-   * @param region The region for the API cater responses to. See [`YouTube.getRegions()`](#getregions)..
+   * @param region The region for the API to cater responses to. See [`YouTube.getRegions()`](#getregions)..
    */
   constructor (apiKey?: string, accessToken?: string, options: YouTubeOptions =
   { cache: true, cacheTTL: 600, cacheCheckInterval: 600, cacheSearches: true },
@@ -170,7 +170,7 @@ export class YouTube {
   }
 
   /**
-   * Search videos on YouTube.
+   * Search [`Videos`](/docs/api/Library-Exports/classes/Video) on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.
@@ -181,7 +181,7 @@ export class YouTube {
   }
 
   /**
-   * Search channels on YouTube.
+   * Search [`Channels`](/docs/api/Library-Exports/classes/Channel) on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.
@@ -192,7 +192,7 @@ export class YouTube {
   }
 
   /**
-   * Search playlists on YouTube.
+   * Search [`Playlists`](/docs/api/Library-Exports/classes/Playlist) on YouTube.
    * @param searchTerm What to search for on YouTube.
    * @param searchOptions Options related to the search including search filters,
    * the number of pages, maximum number of results per page, and starting page token.

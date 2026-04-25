@@ -2130,7 +2130,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:^3.9.0 || ^4.3.2":
+"@docsearch/docusaurus-adapter@npm:4.6.2":
+  version: 4.6.2
+  resolution: "@docsearch/docusaurus-adapter@npm:4.6.2"
+  dependencies:
+    "@docsearch/react": "npm:4.6.2"
+    "@docusaurus/core": "npm:^3.9.2"
+    "@docusaurus/plugin-content-docs": "npm:^3.9.2"
+    "@docusaurus/theme-common": "npm:^3.9.2"
+    "@docusaurus/theme-translations": "npm:^3.9.2"
+    algoliasearch: "npm:^5.37.0"
+    algoliasearch-helper: "npm:^3.26.0"
+    clsx: "npm:^2.0.0"
+    eta: "npm:^2.2.0"
+    fs-extra: "npm:^11.1.1"
+    joi: "npm:^17.9.2"
+    lodash: "npm:^4.17.21"
+    tslib: "npm:^2.6.0"
+    utility-types: "npm:^3.10.0"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  checksum: 10/18529ab789c4e3f84f64165fd6bcbfe932a6c958652d7b7314830b5d776810ac8e1d118dbc08b4c89135e3eac6abb40326378d703e32147621deabd83f353610
+  languageName: node
+  linkType: hard
+
+"@docsearch/react@npm:4.6.2, @docsearch/react@npm:^3.9.0 || ^4.3.2":
   version: 4.6.2
   resolution: "@docsearch/react@npm:4.6.2"
   dependencies:
@@ -2214,7 +2239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/core@npm:3.10.0":
+"@docusaurus/core@npm:3.10.0, @docusaurus/core@npm:^3.9.2":
   version: 3.10.0
   resolution: "@docusaurus/core@npm:3.10.0"
   dependencies:
@@ -2380,7 +2405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/plugin-content-docs@npm:3.10.0":
+"@docusaurus/plugin-content-docs@npm:3.10.0, @docusaurus/plugin-content-docs@npm:^3.9.2":
   version: 3.10.0
   resolution: "@docusaurus/plugin-content-docs@npm:3.10.0"
   dependencies:
@@ -2619,7 +2644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-common@npm:3.10.0":
+"@docusaurus/theme-common@npm:3.10.0, @docusaurus/theme-common@npm:^3.9.2":
   version: 3.10.0
   resolution: "@docusaurus/theme-common@npm:3.10.0"
   dependencies:
@@ -2671,7 +2696,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/theme-translations@npm:3.10.0":
+"@docusaurus/theme-translations@npm:3.10.0, @docusaurus/theme-translations@npm:^3.9.2":
   version: 3.10.0
   resolution: "@docusaurus/theme-translations@npm:3.10.0"
   dependencies:
@@ -6909,6 +6934,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docusaurus@workspace:docusaurus"
   dependencies:
+    "@docsearch/docusaurus-adapter": "npm:4.6.2"
     "@docusaurus/core": "npm:3.10.0"
     "@docusaurus/module-type-aliases": "npm:3.10.0"
     "@docusaurus/plugin-content-docs": "npm:3.10.0"
@@ -6924,6 +6950,7 @@ __metadata:
     "@types/react-dom": "npm:19.2.3"
     clsx: "npm:2.1.1"
     docusaurus-plugin-typedoc: "npm:1.4.2"
+    dotenv: "npm:17.4.2"
     prism-react-renderer: "npm:2.4.1"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
