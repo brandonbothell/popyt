@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkdocusaurus=globalThis.webpackChunkdocusaurus||[]).push([[7728],{2549(s){s.exports=JSON.parse('{"name":"docsearch-docusaurus-algolia-search","id":"default"}')}}]);
