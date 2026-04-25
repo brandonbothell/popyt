@@ -31,7 +31,7 @@
     "docs:test": "yarn workspace docusaurus start",
     "lint": "eslint .",
     "build": "rimraf -- ./out/ ./typings/ && tsc --project tsconfig.build.json && ts-node ./scripts/release-prep.ts",
-    "publish": "cross-env-shell \"yarn build && cd out && npm login && npm publish\""
+    "publish": "yarn build && cd out && npm login && npm publish"
   },
   "nyc": {
     "include": "src"
