@@ -23,10 +23,11 @@ export default defineConfig(
   globalIgnores(['docusaurus/**/*.js', 'typings/**/*', 'out/**/*', 'coverage/**/*', '**/.pnp.*', '.yarn/**/*']),
   [{
     extends: fixupConfigRules(compat.extends('plugin:import/recommended')),
-    files: ['src/**/*.ts', 'test/**/*.ts', 'docusaurus/**/*.ts', 'docusaurus/**/*.tsx', 'eslint.config.mjs'],
+    files: ['src/**/*.ts', 'test/**/*.ts', 'docusaurus/**/*.ts', 'docusaurus/**/*.tsx', 'eslint.config.ts', 'scripts/**/*.ts'],
 
     plugins: {
       '@stylistic': stylistic,
+      // @ts-ignore
       '@typescript-eslint': typescriptEslint,
       'unused-imports': unusedImports
     },
@@ -41,7 +42,7 @@ export default defineConfig(
       sourceType: 'module',
 
       parserOptions: {
-        project: ['tsconfig.eslint.json', 'tsconfig.utils.json']
+        project: ['tsconfig.json']
       }
     },
 

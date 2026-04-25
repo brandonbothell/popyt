@@ -24,7 +24,7 @@ describe('Regions', () => {
 
     try {
       new Region(youtube, { kind: 'invalid' })
-    } catch (err) {
+    } catch (err: any) {
       error = err.message
     }
 

@@ -11,13 +11,17 @@
     "declaration": true,
     "removeComments": false,
     "sourceMap": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "strict": false,
     "esModuleInterop": true,
     "allowJs": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "scripts/**/*.ts"
+  ],
+  "files": [
+    "eslint.config.mts"
   ],
   "exclude": [
     "node_modules",
