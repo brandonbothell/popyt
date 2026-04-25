@@ -51,3 +51,5 @@ jobs:
       uses: borales/actions-yarn@v5
       with:
         cmd: run publish
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
