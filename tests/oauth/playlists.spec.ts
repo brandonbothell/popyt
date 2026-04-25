@@ -1,6 +1,7 @@
 import 'mocha'
 import { Playlist, Video } from '../../src'
 import { youtube } from './setup-instance'
+// @ts-expect-error
 import { expect } from 'chai'
 
 /**

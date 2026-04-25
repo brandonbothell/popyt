@@ -1,6 +1,7 @@
 import 'mocha'
 import { Region } from '../src'
 import { youtube } from './setup-instance'
+// @ts-expect-error
 import { expect } from 'chai'
 
 const apiKey = process.env.YOUTUBE_API_KEY

@@ -2,6 +2,7 @@ import 'mocha'
 import { readFileSync } from 'fs'
 import { Channel } from '../../src'
 import { youtube } from './setup-instance'
+// @ts-expect-error
 import { expect } from 'chai'
 
 /**
@@ -27,7 +28,7 @@ describe('OAuth channels', () => {
     channel = await youtube.oauth.getMe()
 
     await channel.setWatermark('fromStart', 3000, 10000,
-      { data: readFileSync('./test/data/watermark.png'), type: 'png' })
+      { data: readFileSync('./tests/data/watermark.png'), type: 'png' })
   })
 
   it('should unset channel watermarks', async () => {
@@ -52,7 +53,7 @@ describe('OAuth channels', () => {
 
   it('should upload and set channel banners', async () => {
     await channel.setBanner(
-      { type: 'png', data: readFileSync('./test/data/banner.png') })
+      { type: 'png', data: readFileSync('./tests/data/banner.png') })
 
     expect(channel.banner).to.be.a('string')
   })

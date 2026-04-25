@@ -1,6 +1,7 @@
 import 'mocha'
 import { Subscription, Channel } from '../src'
 import { youtube } from './setup-instance'
+// @ts-expect-error
 import { expect } from 'chai'
 
 let subscribedToChannel: Channel | undefined

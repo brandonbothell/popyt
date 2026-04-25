@@ -1,6 +1,7 @@
 import 'mocha'
 import { Request } from '../src/util'
 import YouTube from '../src'
+// @ts-expect-error
 import { expect } from 'chai'
 
 const testRequest = new Request('https://httpbin.org/anything')

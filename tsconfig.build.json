@@ -11,23 +11,20 @@
     "declaration": true,
     "removeComments": false,
     "sourceMap": true,
-    "rootDir": ".",
+    "rootDir": "src",
     "strict": false,
     "esModuleInterop": true,
     "allowJs": true
   },
   "include": [
     "src/**/*.ts",
-    "scripts/**/*.ts",
-    "tests/**/*.ts"
   ],
-  "files": [
-    "eslint.config.mts"
-  ],
+  "files": null,
   "exclude": [
     ".yarn",
     "node_modules",
     "out",
     "typings",
+    "docusaurus"
   ]
 }

@@ -19,11 +19,10 @@ const compat = new FlatCompat({
   allConfig: js.configs.all
 })
 
-export default defineConfig(
-  globalIgnores(['docusaurus/**/*.js', 'typings/**/*', 'out/**/*', 'coverage/**/*', '**/.pnp.*', '.yarn/**/*']),
-  [{
+export default defineConfig([
+  globalIgnores(['docusaurus/**/*.js', 'typings/**/*', 'out/**/*', 'coverage/**/*', '**/.pnp.*', '.yarn/**/*', 'out/src/**/*']), {
     extends: fixupConfigRules(compat.extends('plugin:import/recommended')),
-    files: ['src/**/*.ts', 'test/**/*.ts', 'docusaurus/**/*.ts', 'docusaurus/**/*.tsx', 'eslint.config.ts', 'scripts/**/*.ts'],
+    files: ['src/**/*.ts', 'tests/**/*.ts', 'docusaurus/**/*.ts', 'docusaurus/**/*.tsx', 'eslint.config.mts', 'scripts/**/*.ts'],
 
     plugins: {
       '@stylistic': stylistic,

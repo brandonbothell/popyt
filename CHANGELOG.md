@@ -1,3 +1,7 @@
+### 8.0.1
+- Major changes to development environment
+- Documentation refactor/dark mode by default
+
 ### 8.0.0
 - Major release
 - Starting new changelog format

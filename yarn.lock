@@ -12250,6 +12250,7 @@ __metadata:
     "@types/merge2": "npm:1.4.4"
     "@types/mocha": "npm:10.0.10"
     "@types/node": "npm:25.6.0"
+    "@types/react": "npm:19.2.14"
     "@typescript-eslint/eslint-plugin": "npm:8.59.0"
     "@typescript-eslint/parser": "npm:8.59.0"
     chai: "npm:6.2.2"

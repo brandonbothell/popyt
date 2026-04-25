@@ -46,6 +46,7 @@ const RAW_RUNTIME_STATE =
           ["@types/merge2", "npm:1.4.4"],\
           ["@types/mocha", "npm:10.0.10"],\
           ["@types/node", "npm:25.6.0"],\
+          ["@types/react", "npm:19.2.14"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.59.0"],\
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.59.0"],\
           ["chai", "npm:6.2.2"],\
@@ -16665,6 +16666,7 @@ const RAW_RUNTIME_STATE =
           ["@types/merge2", "npm:1.4.4"],\
           ["@types/mocha", "npm:10.0.10"],\
           ["@types/node", "npm:25.6.0"],\
+          ["@types/react", "npm:19.2.14"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.59.0"],\
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.59.0"],\
           ["chai", "npm:6.2.2"],\

@@ -2,6 +2,7 @@ import 'mocha'
 import { readFileSync } from 'fs'
 import { Video, VideoAbuseReportReason } from '../../src'
 import { youtube } from './setup-instance'
+// @ts-expect-error
 import { expect } from 'chai'
 
 /**
@@ -39,7 +40,7 @@ describe('OAuth videos', () => {
     }
 
     video = await youtube.getVideo(oauthVideoId)
-    const image = readFileSync('./test/data/image.jpg')
+    const image = readFileSync('./tests/data/image.jpg')
     const thumbnails = await video.setThumbnail({ type: 'jpeg', data: image })
 
     expect(thumbnails.default?.url).to.be.a('string')
