@@ -34,6 +34,10 @@ jobs:
       uses: borales/actions-yarn@v5
       with:
         cmd: docs:build
+      env:
+        DOCSEARCH_APP_ID: ${{ secrets.DOCSEARCH_APP_ID }}
+        DOCSEARCH_API_KEY: ${{ secrets.DOCSEARCH_API_KEY }}
+        DOCSEARCH_ASSISTANT_ID: ${{ secrets.DOCSEARCH_ASSISTANT_ID }}
   test:
     name: Test and upload coverage
     runs-on: ubuntu-latest
