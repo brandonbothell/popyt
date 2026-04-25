@@ -12,6 +12,7 @@
     "test:oauth:channels": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/oauth/channels.spec.ts\" --timeout 30000",
     "test:oauth:comments": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/oauth/comments.spec.ts\" --timeout 30000",
     "test:oauth:videos": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/oauth/videos.spec.ts\" --timeout 30000",
+    "test:oauth:playlists": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/oauth/playlists.spec.ts\" --timeout 30000",
     "test:http": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/request.spec.ts\" --timeout 30000",
     "test:comments": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/comments.spec.ts\" --timeout 30000",
     "test:youtube": "yarn mocha --exit --require ts-node/register/transpile-only --require source-map-support/register --recursive \"./tests/youtube.spec.ts\" --timeout 30000",

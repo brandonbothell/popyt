@@ -12,6 +12,10 @@ let playlist: Playlist
 let playlistId: string
 let playlistItemId: string
 
+const wait = (ms: number) => new Promise(resolve => {
+  setTimeout(resolve, ms)
+})
+
 describe('OAuth', () => {
   it('should work with creating playlists', async () => {
     playlist = await youtube.oauth.playlists.createPlaylist(
@@ -57,6 +61,7 @@ describe('OAuth', () => {
 
   it('should work with deleting playlist videos', async () => {
     if (!playlist || !video) expect.fail('No playlist/video to test with')
+    await wait(3000) // for the video to be fully added in yt API
     await playlist.removeVideo(video)
   })
 
