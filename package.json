@@ -97,7 +97,7 @@
     "node": ">=18.0 <24.15 || >=25.0 <25.7"
   },
   "repository": {
-    "url": "https://github.com/brandonbothell/popyt.git"
+    "url": "git+https://github.com/brandonbothell/popyt.git"
   },
   "packageManager": "yarn@4.14.1"
 }
