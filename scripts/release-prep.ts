@@ -18,6 +18,7 @@ sourceObj.types = 'declarations/index.d.ts'
 
 fs.writeFileSync(__dirname + '/../out/package.json', Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8'))
 fs.writeFileSync(__dirname + '/../out/version.txt', Buffer.from(sourceObj.version, 'utf-8'))
+fs.writeFileSync(__dirname + '/../out/yarn.lock', '')
 
 fs.cpSync(__dirname + '/../typings', __dirname + '/../out/declarations', { recursive: true })
 fs.copyFileSync(__dirname + '/../LICENSE', __dirname + '/../out/LICENSE')
