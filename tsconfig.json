@@ -19,7 +19,9 @@
   "include": [
     "src/**/*.ts",
     "scripts/**/*.ts",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "docusaurus/**/*.ts",
+    "docusaurus/**/*.tsx"
   ],
   "files": [
     "eslint.config.mts"
