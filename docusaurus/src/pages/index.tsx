@@ -32,7 +32,7 @@ export default function Home (): JSX.Element {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Popyt is a very easy to use YouTube Data API wrapper.">
+      description="Popyt is a fast & simple YouTube Data API Library for Node.JS.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
