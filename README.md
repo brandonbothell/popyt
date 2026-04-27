@@ -2,7 +2,7 @@
 Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wrapper with typings, promises, and caching? No problem! We've got ya covered. `npm i popyt`
 
 [![40+ stars on GitHub](https://img.shields.io/github/stars/brandonbothell/popyt)](https://github.com/brandonbothell/popyt/stargazers)
-[![0 dependencies](https://badgen.net/bundlephobia/dependency-count/popyt?label=dependencies)](https://bundlephobia.com/package/popyt)
+[![0 dependencies](https://badgen.brandonsbench.net/static/dependencies/0/blue)](https://bundlephobia.com/package/popyt)
 [![Permissive license](https://badgen.brandonsbench.net/npm/license/popyt?icon=unlicense&label=)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
 [![Open an issue on GitHub](https://badgen.brandonsbench.net/github/open-issues/brandonbothell/popyt?icon=github)](https://github.com/brandonbothell/popyt/issues)
 [![Automated testing](https://github.com/brandonbothell/popyt/workflows/Development/badge.svg)](https://github.com/brandonbothell/popyt/actions)
