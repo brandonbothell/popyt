@@ -6,7 +6,7 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![Permissive license](https://badgen.brandonsbench.net/npm/license/popyt?icon=unlicense&label=)](https://github.com/brandonbothell/popyt/blob/master/LICENSE)
 [![Open an issue on GitHub](https://badgen.brandonsbench.net/github/open-issues/brandonbothell/popyt?icon=github)](https://github.com/brandonbothell/popyt/issues)
 [![Automated testing](https://github.com/brandonbothell/popyt/workflows/Development/badge.svg)](https://github.com/brandonbothell/popyt/actions)
-[![90%+ test coverage](https://badgen.brandonsbench.net/codecov/github/brandonbothell/popyt/release?icon=codecov)](https://app.codecov.io/gh/brandonbothell/popyt/tree/release)
+[![90%+ test coverage](https://badgen.brandonsbench.net/codecov/github/brandonbothell/popyt/release?icon=codecov&v=1)](https://app.codecov.io/gh/brandonbothell/popyt/tree/release)
 [![DeepScan grade: good](https://badgen.brandonsbench.net/deepscan/grade/team/21522/project/24946/branch/772144?icon=deepscan)](https://deepscan.io/dashboard#view=project&tid=21522&pid=24946&bid=772144)
 [![Trending on NPM](https://badgen.brandonsbench.net/npm/dw/popyt?icon=npm)](https://www.npmjs.com/package/popyt)
 [![Available on NPM](https://badgen.brandonsbench.net/npm/v/popyt?icon=npm&label=)](https://www.npmjs.com/package/popyt)
