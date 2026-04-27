@@ -48,3 +48,4 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/tests-release.junit.xml
         override_branch: release
+        report_type: test_results

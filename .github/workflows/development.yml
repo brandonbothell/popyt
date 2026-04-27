@@ -63,3 +63,4 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/tests-dev.junit.xml
+        report_type: test_results
