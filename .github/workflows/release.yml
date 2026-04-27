@@ -38,7 +38,6 @@ jobs:
       shell: bash
       run: printf "sha=%s\n" $(git log -1 --format=%H) >> "$GITHUB_OUTPUT"
     - name: Upload coverage to Codecov
-      if: ${{ !cancelled() }}
       uses: codecov/codecov-action@v6
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
