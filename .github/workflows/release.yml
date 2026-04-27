@@ -35,8 +35,16 @@ jobs:
         YOUTUBE_CAPTION_VIDEO_ID: uSCIlsJXATc
         YOUTUBE_OAUTH_VIDEO_ID: uSCIlsJXATc
     - name: Upload coverage to Codecov
+      if: ${{ !cancelled() }}
       uses: codecov/codecov-action@v6
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
-        override_branch: run release
+        override_branch: release
+    - name: Upload test results to Codecov
+      if: ${{ !cancelled() }}
+      uses: codecov/codecov-action@v6
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage/tests-release.junit.xml
+        override_branch: release

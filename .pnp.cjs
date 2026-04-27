@@ -59,6 +59,8 @@ const RAW_RUNTIME_STATE =
           ["globals", "npm:17.5.0"],\
           ["jiti", "npm:2.6.1"],\
           ["mocha", "npm:11.7.5"],\
+          ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
+          ["mocha-multi", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.1.7"],\
           ["nyc", "npm:18.0.0"],\
           ["popyt", "workspace:."],\
           ["rimraf", "npm:6.1.3"],\
@@ -9282,6 +9284,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["charenc", [\
+      ["npm:0.0.2", {\
+        "packageLocation": "./.yarn/cache/charenc-npm-0.0.2-aca0c2f207-81dcadbe57.zip/node_modules/charenc/",\
+        "packageDependencies": [\
+          ["charenc", "npm:0.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["cheerio", [\
       ["npm:1.0.0-rc.12", {\
         "packageLocation": "./.yarn/cache/cheerio-npm-1.0.0-rc.12-6785a97c2a-812fed61aa.zip/node_modules/cheerio/",\
@@ -9832,6 +9843,15 @@ const RAW_RUNTIME_STATE =
           ["path-key", "npm:3.1.1"],\
           ["shebang-command", "npm:2.0.0"],\
           ["which", "npm:2.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["crypt", [\
+      ["npm:0.0.2", {\
+        "packageLocation": "./.yarn/cache/crypt-npm-0.0.2-033627d94f-2c72768de3.zip/node_modules/crypt/",\
+        "packageDependencies": [\
+          ["crypt", "npm:0.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -13372,6 +13392,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["is-buffer", [\
+      ["npm:1.1.6", {\
+        "packageLocation": "./.yarn/cache/is-buffer-npm-1.1.6-08199d9ccc-f63da109e7.zip/node_modules/is-buffer/",\
+        "packageDependencies": [\
+          ["is-buffer", "npm:1.1.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["is-callable", [\
       ["npm:1.2.7", {\
         "packageLocation": "./.yarn/cache/is-callable-npm-1.2.7-808a303e61-48a9297fb9.zip/node_modules/is-callable/",\
@@ -14361,6 +14390,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["lodash.once", [\
+      ["npm:4.1.1", {\
+        "packageLocation": "./.yarn/cache/lodash.once-npm-4.1.1-d8ba329ead-202f2c8c3d.zip/node_modules/lodash.once/",\
+        "packageDependencies": [\
+          ["lodash.once", "npm:4.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lodash.uniq", [\
       ["npm:4.5.0", {\
         "packageLocation": "./.yarn/cache/lodash.uniq-npm-4.5.0-7c270dca85-86246ca64a.zip/node_modules/lodash.uniq/",\
@@ -14538,6 +14576,18 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/math-intrinsics-npm-1.1.0-9204d80e7d-11df2eda46.zip/node_modules/math-intrinsics/",\
         "packageDependencies": [\
           ["math-intrinsics", "npm:1.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["md5", [\
+      ["npm:2.3.0", {\
+        "packageLocation": "./.yarn/cache/md5-npm-2.3.0-86c49d3915-88dce9fb8d.zip/node_modules/md5/",\
+        "packageDependencies": [\
+          ["charenc", "npm:0.0.2"],\
+          ["crypt", "npm:0.0.2"],\
+          ["is-buffer", "npm:1.1.6"],\
+          ["md5", "npm:2.3.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15697,6 +15747,22 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["mkdirp", [\
+      ["npm:1.0.4", {\
+        "packageLocation": "./.yarn/cache/mkdirp-npm-1.0.4-37f6ef56b9-d71b8dcd4b.zip/node_modules/mkdirp/",\
+        "packageDependencies": [\
+          ["mkdirp", "npm:1.0.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.0.1", {\
+        "packageLocation": "./.yarn/cache/mkdirp-npm-3.0.1-f94bfa769e-16fd79c286.zip/node_modules/mkdirp/",\
+        "packageDependencies": [\
+          ["mkdirp", "npm:3.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["mocha", [\
       ["npm:11.7.5", {\
         "packageLocation": "./.yarn/cache/mocha-npm-11.7.5-1968420b2d-878fcec45d.zip/node_modules/mocha/",\
@@ -15725,6 +15791,60 @@ const RAW_RUNTIME_STATE =
           ["yargs", "npm:17.7.2"],\
           ["yargs-parser", "npm:21.1.1"],\
           ["yargs-unparser", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["mocha-junit-reporter", [\
+      ["npm:2.2.1", {\
+        "packageLocation": "./.yarn/cache/mocha-junit-reporter-npm-2.2.1-e02a1e67a3-f2e9db2daf.zip/node_modules/mocha-junit-reporter/",\
+        "packageDependencies": [\
+          ["mocha-junit-reporter", "npm:2.2.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1", {\
+        "packageLocation": "./.yarn/__virtual__/mocha-junit-reporter-virtual-fb8f7ce622/0/cache/mocha-junit-reporter-npm-2.2.1-e02a1e67a3-f2e9db2daf.zip/node_modules/mocha-junit-reporter/",\
+        "packageDependencies": [\
+          ["@types/mocha", "npm:10.0.10"],\
+          ["debug", "virtual:7ab5ba52b9fcd6367507dafc155330170c3c55f17548a046d928befadabfd5327abcd100d7e346691e82b7d81666c3047de6cbc3ee0adedeb0cb467f8c06e66d#npm:4.4.3"],\
+          ["md5", "npm:2.3.0"],\
+          ["mkdirp", "npm:3.0.1"],\
+          ["mocha", "npm:11.7.5"],\
+          ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
+          ["strip-ansi", "npm:6.0.1"],\
+          ["xml", "npm:1.0.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/mocha",\
+          "mocha"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["mocha-multi", [\
+      ["npm:1.1.7", {\
+        "packageLocation": "./.yarn/cache/mocha-multi-npm-1.1.7-45e3cd9bd9-848a6ced81.zip/node_modules/mocha-multi/",\
+        "packageDependencies": [\
+          ["mocha-multi", "npm:1.1.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.1.7", {\
+        "packageLocation": "./.yarn/__virtual__/mocha-multi-virtual-eebc914ec5/0/cache/mocha-multi-npm-1.1.7-45e3cd9bd9-848a6ced81.zip/node_modules/mocha-multi/",\
+        "packageDependencies": [\
+          ["@types/mocha", "npm:10.0.10"],\
+          ["debug", "virtual:7ab5ba52b9fcd6367507dafc155330170c3c55f17548a046d928befadabfd5327abcd100d7e346691e82b7d81666c3047de6cbc3ee0adedeb0cb467f8c06e66d#npm:4.4.3"],\
+          ["is-string", "npm:1.1.1"],\
+          ["lodash.once", "npm:4.1.1"],\
+          ["mkdirp", "npm:1.0.4"],\
+          ["mocha", "npm:11.7.5"],\
+          ["mocha-multi", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.1.7"],\
+          ["object-assign", "npm:4.1.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/mocha",\
+          "mocha"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -16721,6 +16841,8 @@ const RAW_RUNTIME_STATE =
           ["globals", "npm:17.5.0"],\
           ["jiti", "npm:2.6.1"],\
           ["mocha", "npm:11.7.5"],\
+          ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
+          ["mocha-multi", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.1.7"],\
           ["nyc", "npm:18.0.0"],\
           ["popyt", "workspace:."],\
           ["rimraf", "npm:6.1.3"],\
@@ -21969,6 +22091,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/xdg-basedir-npm-5.1.0-589d73b54c-b60e8a2c66.zip/node_modules/xdg-basedir/",\
         "packageDependencies": [\
           ["xdg-basedir", "npm:5.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["xml", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "./.yarn/cache/xml-npm-1.0.1-f50a7aeb8e-6c4c31a130.zip/node_modules/xml/",\
+        "packageDependencies": [\
+          ["xml", "npm:1.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
