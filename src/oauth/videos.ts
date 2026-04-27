@@ -2,13 +2,19 @@
  * @module OAuth
  */
 
-import { Cache } from '../util'
+import { Cache, Request } from '../util'
 import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as YT from '..'
 
 export class OAuthVideos {
-  constructor (public oauth: OAuth) {}
+  #request: Request
+  #upload: Request
+
+  constructor (public oauth: OAuth, request: Request, upload: Request) {
+    this.#request = request
+    this.#upload = upload
+  }
 
   /**
    * Like, dislike, or remove a rating from a [Video](../../Library-Exports/classes/Video#).
@@ -20,7 +26,7 @@ export class OAuthVideos {
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
 
-    return this.oauth.youtube._request.post('videos/rate', {
+    return this.#request.post('videos/rate', {
       params: { id: ResolutionService.toId(video), rating },
       authorizationOptions: { accessToken: true }
     })
@@ -103,7 +109,7 @@ export class OAuthVideos {
     if (comments) data.comments = comments
     if (language) data.language = language
 
-    return this.oauth.youtube._request.post('videos/reportAbuse', {
+    return this.#request.post('videos/reportAbuse', {
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
@@ -117,7 +123,7 @@ export class OAuthVideos {
     this.oauth.checkTokenAndThrow()
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
-    return this.oauth.youtube._request.delete('videos', {
+    return this.#request.delete('videos', {
       params: { id: ResolutionService.toId(video) },
       authorizationOptions: { accessToken: true }
     })
@@ -156,7 +162,7 @@ export class OAuthVideos {
 
     if (!parts.length) return this.oauth.youtube.getVideo(video.id)
 
-    const response = await this.oauth.youtube._request.put('videos', {
+    const response = await this.#request.put('videos', {
       params: { part: parts.join(',') },
       data: JSON.stringify(video),
       authorizationOptions: { accessToken: true }
@@ -173,7 +179,7 @@ export class OAuthVideos {
     this.oauth.checkTokenAndThrow()
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
-    const response = await this.oauth.youtube._upload.imagePost('thumbnails/set', {
+    const response = await this.#upload.imagePost('thumbnails/set', {
       params: { videoId: ResolutionService.toId(video) },
       image,
       authorizationOptions: { accessToken: true }

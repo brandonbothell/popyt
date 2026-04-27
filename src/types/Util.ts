@@ -41,6 +41,16 @@ export enum HttpMethod {
  */
 export type AuthorizationOptions = { apiKey?: boolean; accessToken?: boolean }
 
+/**
+ * @ignore
+ */
+export type GetDeleteParams = { auth?: Authorization; contentType?: string; accept?: string }
+
+/**
+ * @ignore
+ */
+export type PostPutParams = GetDeleteParams & { data?: any }
+
 export type Authorization = { apiKey?: string; accessToken?: string }
 
 export type Image = { type: 'jpeg' | 'png'; data: Buffer }

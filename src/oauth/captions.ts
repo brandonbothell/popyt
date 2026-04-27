@@ -2,6 +2,7 @@
  * @module OAuth
  */
 
+import { Request } from '../util'
 import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
@@ -9,7 +10,13 @@ import * as YT from '..'
 import { youtube_v3 } from '@googleapis/youtube'
 
 export class OAuthCaptions {
-  constructor (public oauth: OAuth) {}
+  #request: Request
+  #upload: Request
+
+  constructor (public oauth: OAuth, request: Request, upload: Request) {
+    this.#request = request
+    this.#upload = upload
+  }
 
   /**
    * Get a [Caption](../../Library-Exports/classes/Caption#) object
@@ -26,7 +33,7 @@ export class OAuthCaptions {
 
     if (captionId) params.id = captionId
 
-    const data = await this.oauth.youtube._request.get('captions', {
+    const data = await this.#request.get('captions', {
       params: { part: YT.Caption.part, id: captionId },
       authorizationOptions: { accessToken: true }
     })
@@ -46,7 +53,7 @@ export class OAuthCaptions {
     this.oauth.checkTokenAndThrow()
 
     const video = await this.oauth.youtube._services.resolution.resolve(videoResolvable, YT.Video)
-    const data = await this.oauth.youtube._request.get('captions', {
+    const data = await this.#request.get('captions', {
       params: { part: YT.Caption.part, videoId: ResolutionService.toId(video) },
       authorizationOptions: { accessToken: true }
     })
@@ -79,7 +86,7 @@ export class OAuthCaptions {
       isDraft: draft
     }
 
-    const response = await this.oauth.youtube._upload.multipartStreamPost('captions', {
+    const response = await this.#upload.multipartStreamPost('captions', {
       authorizationOptions: { accessToken: true },
       params: { part: YT.Caption.part },
       parts: [
@@ -110,7 +117,7 @@ export class OAuthCaptions {
 
     if (track) {
       if (draft !== null) {
-        response = await this.oauth.youtube._upload.multipartStreamPut('captions', {
+        response = await this.#upload.multipartStreamPut('captions', {
           authorizationOptions: { accessToken: true },
           params: { part: YT.Caption.part },
           parts: [
@@ -119,14 +126,14 @@ export class OAuthCaptions {
           ]
         })
       } else {
-        response = await this.oauth.youtube._upload.streamPut('captions', {
+        response = await this.#upload.streamPut('captions', {
           authorizationOptions: { accessToken: true },
           params: { part: YT.Caption.part },
           stream: track
         })
       }
     } else {
-      response = await this.oauth.youtube._request.put('captions', {
+      response = await this.#request.put('captions', {
         params: { part: YT.Caption.part },
         data: JSON.stringify(data),
         authorizationOptions: { accessToken: true }
@@ -159,7 +166,7 @@ export class OAuthCaptions {
       params.tlang = language
     }
 
-    return this.oauth.youtube._request.get(`captions/${id}`,
+    return this.#request.get(`captions/${id}`,
       { params, authorizationOptions: { accessToken: true } })
   }
 
@@ -169,7 +176,7 @@ export class OAuthCaptions {
    */
   public deleteCaption (id: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.delete('captions',
+    return this.#request.delete('captions',
       { params: { id }, authorizationOptions: { accessToken: true } })
   }
 }

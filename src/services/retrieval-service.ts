@@ -1,4 +1,4 @@
-import { Cache } from '../util'
+import { Cache, Request } from '../util'
 import { ItemTypes, ItemReturns, PaginatedResponse, PaginatedItemType, PaginatedItemOptions,
   PaginatedType, Resolvable, PaginatedInstance, PaginatedRequestParams, AuthorizationOptions } from '../types'
 import YouTube,
@@ -9,13 +9,17 @@ import YouTube,
  * @ignore
  */
 export class RetrievalService {
+  #request: Request
+
   public readonly _getItemAllowedTypes = new Set([ Video, Channel, Playlist, Comment,
     Subscription, VideoCategory, ChannelSection, Caption ].map(c => c.name))
 
   public readonly _getMineAllowed = new Set([ Playlist, Subscription,
     ChannelSection, Channel ].map(c => c.name))
 
-  constructor (private youtube: YouTube) {}
+  constructor (private youtube: YouTube, request: Request) {
+    this.#request = request
+  }
 
   public async getItem<T extends Resolvable<K> | Resolvable<K>[], K extends ItemTypes, M extends boolean = false>
   (type: K, { mine, resolvableEntity }: { mine?: M; resolvableEntity?: T },
@@ -107,7 +111,7 @@ export class RetrievalService {
       options.hl = this.youtube.language
     }
 
-    const result: { items?: any[] } = await this.youtube._request.get(type.endpoint, {
+    const result: { items?: any[] } = await this.#request.get(type.endpoint, {
       params: options,
       authorizationOptions: { [options.mine ? 'accessToken' : 'apiKey']: true }
     })
@@ -335,7 +339,7 @@ export class RetrievalService {
       }
 
       // No cached page, request one from the API
-      page = await this.youtube._request.get(endpoint, {
+      page = await this.#request.get(endpoint, {
         params: options,
         authorizationOptions: auth ?? { [options.mine ? 'accessToken' : 'apiKey']: true } })
 

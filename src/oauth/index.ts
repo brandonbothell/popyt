@@ -2,6 +2,7 @@
  * @module OAuth
  */
 
+import { Request } from '../util'
 import * as Part from '../types/Parts'
 import YouTube, * as YT from '..'
 import { OAuthVideos } from './videos'
@@ -26,35 +27,40 @@ export class OAuth {
   /**
    * All OAuth methods related to [comments](../../Library-Exports/classes/Comment).
    */
-  public comments = new OAuthComments(this)
+  public comments: OAuthComments
 
   /**
    * All OAuth methods related to [videos](../../Library-Exports/classes/Video)/video ratings.
    */
-  public videos = new OAuthVideos(this)
+  public videos: OAuthVideos
 
   /**
    * All OAuth methods related to
    * [playlists](../../Library-Exports/classes/Playlist)/playlist items.
    */
-  public playlists = new OAuthPlaylists(this)
+  public playlists: OAuthPlaylists
 
   /**
    * All OAuth methods related to [channels](../../Library-Exports/classes/Channel).
    */
-  public channels = new OAuthChannels(this)
+  public channels: OAuthChannels
 
   /**
    * All OAuth methods related to [captions](../../Library-Exports/classes/Caption).
    */
-  public captions = new OAuthCaptions(this)
+  public captions: OAuthCaptions
 
   /**
    * 
    * @param youtube The [YouTube](../../Library-Exports/classes/YouTube) object to retrieve the token from.
    */
-  constructor (youtube: YouTube) {
+  constructor (youtube: YouTube, request: Request, upload: Request) {
     this.youtube = youtube
+    this.captions = new OAuthCaptions(this, request, upload)
+    this.comments = new OAuthComments(this, request)
+    this.videos = new OAuthVideos(this, request, upload)
+    this.playlists = new OAuthPlaylists(this, request)
+    this.channels = new OAuthChannels(this, request, upload)
   }
 
   /**

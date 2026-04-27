@@ -37,26 +37,30 @@ export class YouTube {
    */
   public _cacheCheckInterval: number
 
-  /**
-   * @ignore
-   */
-  public _request: Request
-
-  /**
-   * @ignore
-   */
-  public _upload: Request
-
-  /**
-   * @ignore
-   */
-  public _services = {
-    search: new Service.SearchService(this),
-    resolution: new Service.ResolutionService(this),
-    retrieval: new Service.RetrievalService(this)
-  }
-
   #auth: T.Authorization = {}
+
+  /**
+   * @ignore
+   */
+  #request: Request
+
+  /**
+   * @ignore
+   */
+  #upload: Request
+
+  /**
+   * @ignore
+   */
+  public _services: {
+    search: Service.SearchService
+    resolution: Service.ResolutionService
+    retrieval: Service.RetrievalService
+  } = {
+      search: new Service.SearchService(this),
+      resolution: new Service.ResolutionService(this),
+      retrieval: undefined
+    }
 
   /**
    * Methods requiring an OAuth token.
@@ -92,16 +96,17 @@ export class YouTube {
     }
 
     if (options.request) {
-      this._request = options.request
+      this.#request = options.request
       const authorizationOverwrite: T.Authorization = {}
-      if (!this._request.hasAccessToken()) authorizationOverwrite.accessToken = this.#auth.accessToken
-      if (!this._request.hasApiKey()) authorizationOverwrite.apiKey = this.#auth.apiKey
-      this._request.setAuthorization(authorizationOverwrite)
+      if (!this.#request.hasAccessToken()) authorizationOverwrite.accessToken = this.#auth.accessToken
+      if (!this.#request.hasApiKey()) authorizationOverwrite.apiKey = this.#auth.apiKey
+      this.#request.setAuthorization(authorizationOverwrite)
     }
 
-    if (!this._request) this._request = new Request('https://www.googleapis.com/youtube/v3/', this.#auth)
-    this._upload = new Request('https://www.googleapis.com/upload/youtube/v3/', this.#auth)
-    this.oauth = new OAuth(this)
+    if (!this.#request) this.#request = new Request('https://www.googleapis.com/youtube/v3/', this.#auth)
+    this.#upload = new Request('https://www.googleapis.com/upload/youtube/v3/', this.#auth)
+    this.oauth = new OAuth(this, this.#request, this.#upload)
+    this._services.retrieval = new Service.RetrievalService(this, this.#request)
 
     this._shouldCache = options.cache ?? true
     this._cacheSearches = options.cacheSearches ?? true
@@ -422,7 +427,7 @@ export class YouTube {
 
   public setAuthorization (authorization: T.Authorization) {
     this.#auth = { ...this.#auth, ...authorization }
-    this._request.setAuthorization(this.#auth)
+    this.#request.setAuthorization(this.#auth)
   }
 }
 

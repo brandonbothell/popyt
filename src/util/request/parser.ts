@@ -1,20 +1,19 @@
 import { URL } from 'url'
 import { RequestOptions } from 'http'
 import { SearchParams, Authorization, HttpMethod } from '../..'
-import Request from '.'
 
 /**
  * @ignore
  */
 export class Parser {
-  constructor (private request: Request) {}
+  constructor (private baseUrl: string) {}
 
   public searchParamsToString (params: SearchParams) {
     return Object.entries(params).map(entry => `${entry[0]}=${entry[1]}`).join('&')
   }
 
   public formUrl ({ subUrl, params, auth }: { subUrl: string; params?: SearchParams; auth?: Authorization }) {
-    const parsed = subUrl ? new URL(subUrl, this.request.baseUrl) : new URL(this.request.baseUrl)
+    const parsed = subUrl ? new URL(subUrl, this.baseUrl) : new URL(this.baseUrl)
 
     if (auth?.apiKey && !auth.accessToken) params = { ...params, key: auth.apiKey } // if we have an access token (OAuth), there's no need for an API key.
     if (params) parsed.search = this.searchParamsToString(params)

@@ -2,13 +2,20 @@
  * @module OAuth
  */
 
+import { Request } from '../util'
 import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
 
 export class OAuthChannels {
-  constructor (public oauth: OAuth) {}
+  #request: Request
+  #upload: Request
+
+  constructor (public oauth: OAuth, request: Request, upload: Request) {
+    this.#request = request
+    this.#upload = upload
+  }
 
   /**
    * Updates a channel's branding settings.
@@ -26,7 +33,7 @@ export class OAuthChannels {
     data.id = ResolutionService.toId(channel)
     data.brandingSettings = brandingSettings
 
-    const response = await this.oauth.youtube._request.put('channels', {
+    const response = await this.#request.put('channels', {
       params: { part: 'brandingSettings' },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -53,7 +60,7 @@ export class OAuthChannels {
     data.id = ResolutionService.toId(channel)
     data.localizations = localizations
 
-    const response = await this.oauth.youtube._request.put('channels', {
+    const response = await this.#request.put('channels', {
       params: { part: 'localizations' },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -77,7 +84,7 @@ export class OAuthChannels {
       selfDeclaredMadeForKids: madeForKids
     }
 
-    const response = await this.oauth.youtube._request.put('channels', {
+    const response = await this.#request.put('channels', {
       params: { part: 'status' },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -107,7 +114,7 @@ export class OAuthChannels {
       durationMs: duration
     }
 
-    return this.oauth.youtube._upload.multipartImagePost('watermarks/set', {
+    return this.#upload.multipartImagePost('watermarks/set', {
       authorizationOptions: { accessToken: true },
       params: { channelId: ResolutionService.toId(channel) },
       parts: [
@@ -125,7 +132,7 @@ export class OAuthChannels {
     this.oauth.checkTokenAndThrow()
 
     const channel = await this.oauth.youtube._services.resolution.resolve(channelResolvable, YT.Channel)
-    return this.oauth.youtube._request.post('watermarks/unset', {
+    return this.#request.post('watermarks/unset', {
       params: { channelId: ResolutionService.toId(channel) },
       authorizationOptions: { accessToken: true }
     })
@@ -141,7 +148,7 @@ export class OAuthChannels {
   public async uploadChannelBanner (image: YT.Image): Promise<string> {
     this.oauth.checkTokenAndThrow()
 
-    const response = await this.oauth.youtube._upload.imagePost('channelBanners/insert', {
+    const response = await this.#upload.imagePost('channelBanners/insert', {
       authorizationOptions: { accessToken: true },
       image
     })
@@ -178,7 +185,7 @@ export class OAuthChannels {
 
     if (resolvedPlaylists || resolvedChannels) parts.push('contentDetails')
 
-    const response = await this.oauth.youtube._request.post('channelSections', {
+    const response = await this.#request.post('channelSections', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -231,7 +238,7 @@ export class OAuthChannels {
 
     if (resolvedPlaylists || resolvedChannels) parts.push('contentDetails')
 
-    const response = await this.oauth.youtube._request.put('channelSections', {
+    const response = await this.#request.put('channelSections', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -245,7 +252,7 @@ export class OAuthChannels {
    */
   public deleteChannelSection (id: string): Promise<YT.ChannelSection> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.delete('channelSections', {
+    return this.#request.delete('channelSections', {
       params: { id },
       authorizationOptions: { accessToken: true }
     })
@@ -264,7 +271,7 @@ export class OAuthChannels {
 
     data.snippet.resourceId.channelId = ResolutionService.toId(channel)
 
-    const result = await this.oauth.youtube._request.post('subscriptions', {
+    const result = await this.#request.post('subscriptions', {
       params: { part: 'snippet' },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -278,7 +285,7 @@ export class OAuthChannels {
    */
   public unsubscribeFromChannel (subscriptionId: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.delete('subscriptions', {
+    return this.#request.delete('subscriptions', {
       params: { id: subscriptionId },
       authorizationOptions: { accessToken: true }
     })

@@ -11,7 +11,7 @@ describe('YouTube instance', () => {
     const youtube = new YouTube('Totally An Api Key', 'Another API key', { request: testRequest })
     expect(youtube.hasAccessToken()).to.equal(true)
 
-    let response = await youtube._request.get('', {
+    let response = await testRequest.get('', {
       authorizationOptions: { accessToken: true },
       accept: 'application/json'
     })
@@ -19,7 +19,7 @@ describe('YouTube instance', () => {
     expect(response.headers['Authorization']).to.equal('Bearer Another API key')
 
     youtube.setAuthorization({ apiKey: 'Fakest API Key Ever' })
-    response = await youtube._request.get('', {
+    response = await testRequest.get('', {
       authorizationOptions: { apiKey: true },
       accept: 'application/json'
     })

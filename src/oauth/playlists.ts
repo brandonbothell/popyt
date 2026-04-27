@@ -2,13 +2,18 @@
  * @module OAuth
  */
 
+import { Request } from '../util'
 import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
 
 export class OAuthPlaylists {
-  constructor (public oauth: OAuth) {}
+  #request: Request
+
+  constructor (public oauth: OAuth, request: Request) {
+    this.#request = request
+  }
 
   /**
    * Creates a [Playlist](../../Library-Exports/classes/Playlist#).  
@@ -38,7 +43,7 @@ export class OAuthPlaylists {
     if (privacy) parts.push('status')
     if (localizations) parts.push('localizations')
 
-    const response = await this.oauth.youtube._request.post('playlists', {
+    const response = await this.#request.post('playlists', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -80,7 +85,7 @@ export class OAuthPlaylists {
     if (privacy) parts.push('status')
     if (localizations) parts.push('localizations')
 
-    const response = await this.oauth.youtube._request.put('playlists', {
+    const response = await this.#request.put('playlists', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -96,7 +101,7 @@ export class OAuthPlaylists {
     this.oauth.checkTokenAndThrow()
 
     const playlist = await this.oauth.youtube._services.resolution.resolve(playlistResolvable, YT.Playlist)
-    return this.oauth.youtube._request.delete('playlists', {
+    return this.#request.delete('playlists', {
       params: { id: ResolutionService.toId(playlist) },
       authorizationOptions: { accessToken: true }
     })
@@ -129,7 +134,7 @@ export class OAuthPlaylists {
 
     if (note) parts.push('contentDetails')
 
-    const response = await this.oauth.youtube._request.post('playlistItems', {
+    const response = await this.#request.post('playlistItems', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -168,7 +173,7 @@ export class OAuthPlaylists {
 
     if (note) parts.push('contentDetails')
 
-    const response = await this.oauth.youtube._request.put('playlistItems', {
+    const response = await this.#request.put('playlistItems', {
       params: { part: parts.join(',') },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -182,7 +187,7 @@ export class OAuthPlaylists {
    */
   public deletePlaylistItem (id: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.delete('playlistItems', {
+    return this.#request.delete('playlistItems', {
       params: { id },
       authorizationOptions: { accessToken: true }
     })

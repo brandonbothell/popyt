@@ -2,13 +2,18 @@
  * @module OAuth
  */
 
+import { Request } from '../util'
 import { ResolutionService } from '../services'
 import OAuth from '../oauth'
 import * as Data from '../constants'
 import * as YT from '..'
 
 export class OAuthComments {
-  constructor (public oauth: OAuth) {}
+  #request: Request
+
+  constructor (public oauth: OAuth, request: Request) {
+    this.#request = request
+  }
 
   /**
    * Post a [Comment](../../Library-Exports/classes/Comment#) on a [Video](../../Library-Exports/classes/Video#) or [Channel](../../Library-Exports/classes/Channel#) discussion.  
@@ -28,7 +33,7 @@ export class OAuthComments {
     data.snippet.channelId = ResolutionService.toId(channel)
     data.snippet.videoId = ResolutionService.toId(video)
 
-    const result = await this.oauth.youtube._request.post('commentThreads', {
+    const result = await this.#request.post('commentThreads', {
       params: { part: YT.Comment.part },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -49,7 +54,7 @@ export class OAuthComments {
     const data: typeof Data.COMMENT_DATA = JSON.parse(JSON.stringify(Data.COMMENT_DATA))
     data.snippet = { parentId: commentId, textOriginal: text }
 
-    const response = await this.oauth.youtube._request.post('comments', {
+    const response = await this.#request.post('comments', {
       params: { part: YT.Comment.part },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -69,7 +74,7 @@ export class OAuthComments {
     data.snippet.textOriginal = text
     data.id = commentId
 
-    const result = await this.oauth.youtube._request.put('comments', {
+    const result = await this.#request.put('comments', {
       params: { part: YT.Comment.part },
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
@@ -85,7 +90,7 @@ export class OAuthComments {
    */
   public markCommentAsSpam (commentId: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.post('comments/markAsSpam', {
+    return this.#request.post('comments/markAsSpam', {
       params: { id: commentId },
       authorizationOptions: { accessToken: true }
     })
@@ -113,7 +118,7 @@ export class OAuthComments {
       data.banAuthor = banAuthor
     }
 
-    return this.oauth.youtube._request.post('comments/setModerationStatus', {
+    return this.#request.post('comments/setModerationStatus', {
       data: JSON.stringify(data),
       authorizationOptions: { accessToken: true }
     })
@@ -125,7 +130,7 @@ export class OAuthComments {
    */
   public deleteComment (commentId: string): Promise<void> {
     this.oauth.checkTokenAndThrow()
-    return this.oauth.youtube._request.delete('comments', {
+    return this.#request.delete('comments', {
       params: { id: commentId },
       authorizationOptions: { accessToken: true }
     })
