@@ -11,6 +11,7 @@ import * as Entity from './entities'
 
 export * from './entities'
 export * from './types'
+export * from './util/request'
 
 /**
  * The main class used to interact with the YouTube API. Use this.
