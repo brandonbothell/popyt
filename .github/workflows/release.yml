@@ -34,6 +34,9 @@ jobs:
         YOUTUBE_ACCESS_TOKEN: ${{ secrets.YOUTUBE_ACCESS_TOKEN }}
         YOUTUBE_CAPTION_VIDEO_ID: uSCIlsJXATc
         YOUTUBE_OAUTH_VIDEO_ID: uSCIlsJXATc
+    - id: output_sha
+      shell: bash
+      run: printf "sha=%s\n" $(git log -1 --format=%H) >> "$GITHUB_OUTPUT"
     - name: Upload coverage to Codecov
       if: ${{ !cancelled() }}
       uses: codecov/codecov-action@v6
@@ -41,6 +44,7 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
         override_branch: release
+        override_commit: ${{ steps.output_sha.outputs.sha }}
     - name: Upload test results to Codecov
       if: ${{ !cancelled() }}
       uses: codecov/codecov-action@v6
@@ -48,4 +52,5 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/tests-release.junit.xml
         override_branch: release
+        override_commit: ${{ steps.output_sha.outputs.sha }}
         report_type: test_results
