@@ -50,9 +50,11 @@
     "youtube api",
     "youtube videos",
     "youtube channels",
-    "promise",
+    "youtube library",
+    "promises",
     "promise based",
     "no dependencies",
+    "zero dependency",
     "caching"
   ],
   "devDependencies": {
