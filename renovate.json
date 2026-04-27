@@ -2,6 +2,7 @@
   "extends": [
     "config:base"
   ],
+  "stopUpdatingLabel": "Leave this for now",
   "packageRules": [
     {
       "updateTypes": [ "minor", "patch", "pin", "digest" ],
