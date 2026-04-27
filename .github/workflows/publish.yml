@@ -42,11 +42,7 @@ jobs:
     - uses: actions/setup-node@v6
       with:
         node-version: '23.x'
-    - name: Build Source and Typings
-      uses: borales/actions-yarn@v5
-      with:
-        cmd: build
-    - name: Publish Package
+    - name: Build and Publish Package
       uses: borales/actions-yarn@v5
       with:
         cmd: run publish
