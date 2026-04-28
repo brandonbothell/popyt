@@ -15,7 +15,6 @@ Want to access data from the YouTube Data v3 API? Want a Node.js YouTube API wra
 [![5000 lines of code and counting](https://badgen.brandonsbench.net/deepscan/lines/team/21522/project/24946/branch/772144?label=lines%20of%20code)](https://ghloc.vercel.app/brandonbothell/popyt?branch=master&locsPath=%5B%22src%22%5D)
 [![Written in TypeScript](https://badgen.brandonsbench.net/npm/types/popyt?icon=typescript)](https://popyt.brandonsbench.net/docs/api/Library-Exports/classes/YouTube)
 
-# Examples
 ## Ask the AI assistant on the [documentation site](https://popyt.brandonsbench.net/docs/api), try out the [5-minute tutorial](https://popyt.brandonsbench.net/docs/tutorial/intro), or clone the [example project](https://github.com/brandonbothell/popyt-example).
 ### What you'll need
 
