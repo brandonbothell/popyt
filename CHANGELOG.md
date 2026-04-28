@@ -6,6 +6,22 @@ All dates are in ET (Eastern Time).
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [9.1.0] - 2026-04-28
+
+### Added
+
+- (Undocumented) Library export of [`util/request`](https://github.com/brandonbothell/popyt/blob/v9.1.0/src/util/request/index.ts) (the internal HTTP `Request` class) to help with the creation of a custom HTTP handler provided to `new YouTube(apiKey, accessToken?, options?)` via `options.request`.
+
+### Changed
+
+- Match to the most similar title when getting entities by title.
+  - Before, it just trusted the first result from YouTube Search.
+- To new [`CHANGELOG.md`](https://github.com/brandonbothell/popyt/blob/v9.1.0/CHANGELOG.md) format.
+- Email in [`package.json`](https://github.com/brandonbothell/popyt/blob/v9.1.0/package.json).
+
+### Removed
+- Unused utility function `findArrayIndexFrom`.
+
 ## [9.0.0] - 2026-04-27
 
 ### Changed
