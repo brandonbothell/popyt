@@ -31,7 +31,7 @@ describe('Comments', () => {
   })
 
   it('should work when searching comments by video title', async () => {
-    const comments = await youtube.getVideoComments('never gonna give you up')
+    const comments = await youtube.getVideoComments('Rick Astley - Never Gonna Give You Up (Official Video)')
 
     expect(comments.items).to.be.an.instanceOf(Array)
     expect(comments.items[0]).to.be.an.instanceOf(Comment)

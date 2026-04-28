@@ -1,4 +1,4 @@
-import { Cache, Parser } from '../util'
+import { Cache, Parser, wordSimilarity } from '../util'
 import YouTube, { Channel, Comment, IDEntity, Playlist, Resolvable, ResolvableClass, ResolveReturn, Subscription, Video, VideoCategory } from '..'
 
 /**
@@ -12,11 +12,11 @@ export class ResolutionService {
 
     // A single item can be fast-tracked
     if (!Array.isArray(input)) {
-      if (typeof input !== 'string') return input as ResolveReturn<T, K>
+      if (typeof input !== 'string') return input.id as ResolveReturn<T, K>
       else return this.resolveStringToIdOrEntity(input, type) as Promise<ResolveReturn<T, K>>
     }
 
-    // either the ID or the input if resolution failed
+    // either the ID or the input.id if resolution failed
     const resolutions: (Resolvable<K> | Promise<Resolvable<K>>)[] = new Array(input.length).fill(undefined)
     const resolvableStrings: { [resolutionIndex: number]: string } = {} // could be ID, URL, or search query
 
@@ -27,7 +27,7 @@ export class ResolutionService {
 
       if (typeof resolvable === 'string') resolvableStrings[i] = resolvable
       else {
-        resolutions[i] = resolvable as Resolvable<K>
+        resolutions[i] = resolvable.id
         preresolvedCount++
       }
     }
@@ -126,10 +126,18 @@ export class ResolutionService {
 
     if (isId) return input
 
-    return this.youtube.search(input, {
-      pageOptions: { maxPerPage: 1 },
-      searchFilters: { types: [ type ] }
-    }).then(result => result.items.length ? result.items[0] : undefined) as InstanceType<T>
+    return this.youtube.search(input, { searchFilters: { types: [ type ] } })
+      .then(result => {
+        if (!result.items.length) return undefined
+
+        const titles = result.items.map(item => (item.data.snippet?.title) as string)
+        if (!titles.length) return result.items[0]
+
+        const scores = titles
+          .map((title, index) => ({ score: title !== undefined ? wordSimilarity(input, title) : 0, index }))
+          .sort((a, b) => b.score - a.score)
+        return result.items[scores[0].index]
+      }) as InstanceType<T>
   }
 
   public static toId (entityOrId: string | IDEntity) {
