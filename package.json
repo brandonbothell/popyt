@@ -81,7 +81,7 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsdoc": "62.9.0",
     "eslint-plugin-unused-imports": "4.4.1",
-    "globals": "17.5.0",
+    "globals": "17.6.0",
     "jiti": "2.6.1",
     "mocha": "11.7.5",
     "mocha-junit-reporter": "2.2.1",
