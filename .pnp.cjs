@@ -57,7 +57,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:62.9.0"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
           ["globals", "npm:17.6.0"],\
-          ["jiti", "npm:2.6.1"],\
+          ["jiti", "npm:2.7.0"],\
           ["mocha", "npm:11.7.5"],\
           ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
           ["mocha-multi", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.1.7"],\
@@ -11761,7 +11761,7 @@ const RAW_RUNTIME_STATE =
           ["ignore", "npm:5.3.2"],\
           ["imurmurhash", "npm:0.1.4"],\
           ["is-glob", "npm:4.0.3"],\
-          ["jiti", "npm:2.6.1"],\
+          ["jiti", "npm:2.7.0"],\
           ["json-stable-stringify-without-jsonify", "npm:1.0.1"],\
           ["minimatch", "npm:10.2.5"],\
           ["natural-compare", "npm:1.4.0"],\
@@ -14559,10 +14559,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:2.6.1", {\
-        "packageLocation": "./.yarn/cache/jiti-npm-2.6.1-597ab7fb84-8cd72c5fd0.zip/node_modules/jiti/",\
+      ["npm:2.7.0", {\
+        "packageLocation": "./.yarn/cache/jiti-npm-2.7.0-8852ca77cf-6d75a8dbd6.zip/node_modules/jiti/",\
         "packageDependencies": [\
-          ["jiti", "npm:2.6.1"]\
+          ["jiti", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17360,7 +17360,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:62.9.0"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
           ["globals", "npm:17.6.0"],\
-          ["jiti", "npm:2.6.1"],\
+          ["jiti", "npm:2.7.0"],\
           ["mocha", "npm:11.7.5"],\
           ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
           ["mocha-multi", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.1.7"],\
