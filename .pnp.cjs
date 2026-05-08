@@ -34,7 +34,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@docusaurus/tsconfig", "npm:3.10.1"],\
-          ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.0.5"],\
+          ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.0"],\
           ["@eslint/eslintrc", "npm:3.3.5"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
           ["@googleapis/youtube", "npm:31.0.0"],\
@@ -5674,17 +5674,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@eslint/compat", [\
-      ["npm:2.0.5", {\
-        "packageLocation": "./.yarn/cache/@eslint-compat-npm-2.0.5-0db9afe44e-5d1ce77570.zip/node_modules/@eslint/compat/",\
+      ["npm:2.1.0", {\
+        "packageLocation": "./.yarn/cache/@eslint-compat-npm-2.1.0-65f16afee5-e868afc209.zip/node_modules/@eslint/compat/",\
         "packageDependencies": [\
-          ["@eslint/compat", "npm:2.0.5"]\
+          ["@eslint/compat", "npm:2.1.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.0.5", {\
-        "packageLocation": "./.yarn/__virtual__/@eslint-compat-virtual-c8f1955671/0/cache/@eslint-compat-npm-2.0.5-0db9afe44e-5d1ce77570.zip/node_modules/@eslint/compat/",\
+      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/@eslint-compat-virtual-d43f6f0468/0/cache/@eslint-compat-npm-2.1.0-65f16afee5-e868afc209.zip/node_modules/@eslint/compat/",\
         "packageDependencies": [\
-          ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.0.5"],\
+          ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.0"],\
           ["@eslint/core", "npm:1.2.1"],\
           ["@types/eslint", null],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.3.0"]\
@@ -17337,7 +17337,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@docusaurus/tsconfig", "npm:3.10.1"],\
-          ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.0.5"],\
+          ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.0"],\
           ["@eslint/eslintrc", "npm:3.3.5"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
           ["@googleapis/youtube", "npm:31.0.0"],\
