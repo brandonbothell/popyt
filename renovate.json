@@ -2,6 +2,7 @@
   "extends": [
     "config:base"
   ],
+  "minimumReleaseAge": "1d",
   "stopUpdatingLabel": "Leave this for now",
   "packageRules": [
     {
