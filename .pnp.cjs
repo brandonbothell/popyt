@@ -54,7 +54,7 @@ const RAW_RUNTIME_STATE =
           ["dotenv", "npm:17.4.2"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.4.0"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:62.9.0"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
           ["globals", "npm:17.6.0"],\
           ["jiti", "npm:2.7.0"],\
@@ -11983,15 +11983,15 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["eslint-plugin-jsdoc", [\
-      ["npm:62.9.0", {\
-        "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-62.9.0-9f1f1ff23f-bdb0042fee.zip/node_modules/eslint-plugin-jsdoc/",\
+      ["npm:63.0.0", {\
+        "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-63.0.0-308dbb14ab-dc32e4b923.zip/node_modules/eslint-plugin-jsdoc/",\
         "packageDependencies": [\
-          ["eslint-plugin-jsdoc", "npm:62.9.0"]\
+          ["eslint-plugin-jsdoc", "npm:63.0.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:62.9.0", {\
-        "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-bee3581b28/0/cache/eslint-plugin-jsdoc-npm-62.9.0-9f1f1ff23f-bdb0042fee.zip/node_modules/eslint-plugin-jsdoc/",\
+      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-786f4098d0/0/cache/eslint-plugin-jsdoc-npm-63.0.0-308dbb14ab-dc32e4b923.zip/node_modules/eslint-plugin-jsdoc/",\
         "packageDependencies": [\
           ["@es-joy/jsdoccomment", "npm:0.86.0"],\
           ["@es-joy/resolve.exports", "npm:1.2.0"],\
@@ -12001,13 +12001,13 @@ const RAW_RUNTIME_STATE =
           ["debug", "virtual:7ab5ba52b9fcd6367507dafc155330170c3c55f17548a046d928befadabfd5327abcd100d7e346691e82b7d81666c3047de6cbc3ee0adedeb0cb467f8c06e66d#npm:4.4.3"],\
           ["escape-string-regexp", "npm:4.0.0"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.4.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:62.9.0"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0"],\
           ["espree", "npm:11.2.0"],\
           ["esquery", "npm:1.7.0"],\
           ["html-entities", "npm:2.6.0"],\
           ["object-deep-merge", "npm:2.0.0"],\
           ["parse-imports-exports", "npm:0.2.4"],\
-          ["semver", "npm:7.7.4"],\
+          ["semver", "npm:7.8.0"],\
           ["spdx-expression-parse", "npm:4.0.0"],\
           ["to-valid-identifier", "npm:1.0.0"]\
         ],\
@@ -17469,7 +17469,7 @@ const RAW_RUNTIME_STATE =
           ["dotenv", "npm:17.4.2"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.4.0"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:62.9.0"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
           ["globals", "npm:17.6.0"],\
           ["jiti", "npm:2.7.0"],\
@@ -20381,6 +20381,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/semver-npm-7.7.4-746e538da5-26bdc6d58b.zip/node_modules/semver/",\
         "packageDependencies": [\
           ["semver", "npm:7.7.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:7.8.0", {\
+        "packageLocation": "./.yarn/cache/semver-npm-7.8.0-ee5fb7af58-039a8f68a5.zip/node_modules/semver/",\
+        "packageDependencies": [\
+          ["semver", "npm:7.8.0"]\
         ],\
         "linkType": "HARD"\
       }]\
