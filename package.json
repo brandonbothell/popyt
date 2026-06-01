@@ -62,7 +62,7 @@
     "@eslint/compat": "2.1.0",
     "@eslint/eslintrc": "3.3.5",
     "@eslint/js": "10.0.1",
-    "@googleapis/youtube": "31.0.0",
+    "@googleapis/youtube": "33.0.0",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@stylistic/eslint-plugin": "5.10.0",
     "@types/chai": "5.2.3",
