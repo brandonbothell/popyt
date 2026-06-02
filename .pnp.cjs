@@ -54,7 +54,7 @@ const RAW_RUNTIME_STATE =
           ["dotenv", "npm:17.4.2"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.4.1"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.1"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
           ["globals", "npm:17.6.0"],\
           ["jiti", "npm:2.7.0"],\
@@ -5701,13 +5701,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@es-joy/jsdoccomment", [\
-      ["npm:0.86.0", {\
-        "packageLocation": "./.yarn/cache/@es-joy-jsdoccomment-npm-0.86.0-010ebab551-13790be6aa.zip/node_modules/@es-joy/jsdoccomment/",\
+      ["npm:0.87.0", {\
+        "packageLocation": "./.yarn/cache/@es-joy-jsdoccomment-npm-0.87.0-fd527694ff-d6fef97da0.zip/node_modules/@es-joy/jsdoccomment/",\
         "packageDependencies": [\
-          ["@es-joy/jsdoccomment", "npm:0.86.0"],\
-          ["@types/estree", "npm:1.0.8"],\
-          ["@typescript-eslint/types", "npm:8.59.0"],\
-          ["comment-parser", "npm:1.4.6"],\
+          ["@es-joy/jsdoccomment", "npm:0.87.0"],\
+          ["@types/estree", "npm:1.0.9"],\
+          ["@typescript-eslint/types", "npm:8.60.0"],\
+          ["comment-parser", "npm:1.4.7"],\
           ["esquery", "npm:1.7.0"],\
           ["jsdoc-type-pratt-parser", "npm:7.2.0"]\
         ],\
@@ -7678,6 +7678,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-estree-npm-1.0.8-2195bac6d6-25a4c16a67.zip/node_modules/@types/estree/",\
         "packageDependencies": [\
           ["@types/estree", "npm:1.0.8"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:1.0.9", {\
+        "packageLocation": "./.yarn/cache/@types-estree-npm-1.0.9-63428f58ff-16aabfa703.zip/node_modules/@types/estree/",\
+        "packageDependencies": [\
+          ["@types/estree", "npm:1.0.9"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10193,10 +10200,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["comment-parser", [\
-      ["npm:1.4.6", {\
-        "packageLocation": "./.yarn/cache/comment-parser-npm-1.4.6-ac442a9a41-67218f2c5f.zip/node_modules/comment-parser/",\
+      ["npm:1.4.7", {\
+        "packageLocation": "./.yarn/cache/comment-parser-npm-1.4.7-30f2c8dba8-7c102b7ff0.zip/node_modules/comment-parser/",\
         "packageDependencies": [\
-          ["comment-parser", "npm:1.4.6"]\
+          ["comment-parser", "npm:1.4.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11983,31 +11990,31 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["eslint-plugin-jsdoc", [\
-      ["npm:63.0.0", {\
-        "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-63.0.0-308dbb14ab-dc32e4b923.zip/node_modules/eslint-plugin-jsdoc/",\
+      ["npm:63.0.1", {\
+        "packageLocation": "./.yarn/cache/eslint-plugin-jsdoc-npm-63.0.1-aca49a0a79-3dbb013272.zip/node_modules/eslint-plugin-jsdoc/",\
         "packageDependencies": [\
-          ["eslint-plugin-jsdoc", "npm:63.0.0"]\
+          ["eslint-plugin-jsdoc", "npm:63.0.1"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0", {\
-        "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-786f4098d0/0/cache/eslint-plugin-jsdoc-npm-63.0.0-308dbb14ab-dc32e4b923.zip/node_modules/eslint-plugin-jsdoc/",\
+      ["virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsdoc-virtual-a2e1bbf98f/0/cache/eslint-plugin-jsdoc-npm-63.0.1-aca49a0a79-3dbb013272.zip/node_modules/eslint-plugin-jsdoc/",\
         "packageDependencies": [\
-          ["@es-joy/jsdoccomment", "npm:0.86.0"],\
+          ["@es-joy/jsdoccomment", "npm:0.87.0"],\
           ["@es-joy/resolve.exports", "npm:1.2.0"],\
           ["@types/eslint", null],\
           ["are-docs-informative", "npm:0.0.2"],\
-          ["comment-parser", "npm:1.4.6"],\
+          ["comment-parser", "npm:1.4.7"],\
           ["debug", "virtual:7ab5ba52b9fcd6367507dafc155330170c3c55f17548a046d928befadabfd5327abcd100d7e346691e82b7d81666c3047de6cbc3ee0adedeb0cb467f8c06e66d#npm:4.4.3"],\
           ["escape-string-regexp", "npm:4.0.0"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.4.1"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.1"],\
           ["espree", "npm:11.2.0"],\
           ["esquery", "npm:1.7.0"],\
           ["html-entities", "npm:2.6.0"],\
-          ["object-deep-merge", "npm:2.0.0"],\
+          ["object-deep-merge", "npm:2.0.1"],\
           ["parse-imports-exports", "npm:0.2.4"],\
-          ["semver", "npm:7.8.0"],\
+          ["semver", "npm:7.8.1"],\
           ["spdx-expression-parse", "npm:4.0.0"],\
           ["to-valid-identifier", "npm:1.0.0"]\
         ],\
@@ -16800,10 +16807,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["object-deep-merge", [\
-      ["npm:2.0.0", {\
-        "packageLocation": "./.yarn/cache/object-deep-merge-npm-2.0.0-880dc3be93-d2f9aa0b21.zip/node_modules/object-deep-merge/",\
+      ["npm:2.0.1", {\
+        "packageLocation": "./.yarn/cache/object-deep-merge-npm-2.0.1-9a016e1454-abc06cd036.zip/node_modules/object-deep-merge/",\
         "packageDependencies": [\
-          ["object-deep-merge", "npm:2.0.0"]\
+          ["object-deep-merge", "npm:2.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17469,7 +17476,7 @@ const RAW_RUNTIME_STATE =
           ["dotenv", "npm:17.4.2"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.4.1"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
-          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.0"],\
+          ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:63.0.1"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
           ["globals", "npm:17.6.0"],\
           ["jiti", "npm:2.7.0"],\
@@ -20384,10 +20391,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:7.8.0", {\
-        "packageLocation": "./.yarn/cache/semver-npm-7.8.0-ee5fb7af58-039a8f68a5.zip/node_modules/semver/",\
+      ["npm:7.8.1", {\
+        "packageLocation": "./.yarn/cache/semver-npm-7.8.1-9448873cc9-3244f6c4cb.zip/node_modules/semver/",\
         "packageDependencies": [\
-          ["semver", "npm:7.8.0"]\
+          ["semver", "npm:7.8.1"]\
         ],\
         "linkType": "HARD"\
       }]\
