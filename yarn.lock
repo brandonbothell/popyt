@@ -7879,9 +7879,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:63.0.1":
-  version: 63.0.1
-  resolution: "eslint-plugin-jsdoc@npm:63.0.1"
+"eslint-plugin-jsdoc@npm:63.0.2":
+  version: 63.0.2
+  resolution: "eslint-plugin-jsdoc@npm:63.0.2"
   dependencies:
     "@es-joy/jsdoccomment": "npm:~0.87.0"
     "@es-joy/resolve.exports": "npm:1.2.0"
@@ -7894,12 +7894,12 @@ __metadata:
     html-entities: "npm:^2.6.0"
     object-deep-merge: "npm:^2.0.1"
     parse-imports-exports: "npm:^0.2.4"
-    semver: "npm:^7.8.1"
+    semver: "npm:^7.8.2"
     spdx-expression-parse: "npm:^4.0.0"
     to-valid-identifier: "npm:^1.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
-  checksum: 10/3dbb013272bb1922a206a676a94221e0f596b144a6dbc220da63e5995b5c4c3b4457370cfb555d907458c95d510f77aaad216eddd65baa6faffaf5a27daf16ff
+  checksum: 10/978f8b06cd6509e311e21799abacf42ffcad5166c87accd8eb007e162292ee78d44edb7ea9fdd5dfbc6a6a4ba76c9767d02a1fe3562833e3ac0324ce45bbaff6
   languageName: node
   linkType: hard
 
@@ -12785,7 +12785,7 @@ __metadata:
     dotenv: "npm:17.4.2"
     eslint: "npm:10.4.1"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jsdoc: "npm:63.0.1"
+    eslint-plugin-jsdoc: "npm:63.0.2"
     eslint-plugin-unused-imports: "npm:4.4.1"
     globals: "npm:17.6.0"
     jiti: "npm:2.7.0"
@@ -14683,12 +14683,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.8.1":
-  version: 7.8.1
-  resolution: "semver@npm:7.8.1"
+"semver@npm:^7.8.2":
+  version: 7.8.2
+  resolution: "semver@npm:7.8.2"
   bin:
     semver: bin/semver.js
-  checksum: 10/3244f6c4cb3f8126fea0426d353829ed4967e41e1f4696337c6fdcad87426466fe2badaf49d7dc85849acfc496ea0599432a4aecc33802d2d774e723acfa30e6
+  checksum: 10/52221d8f1cadacda3cc3f0a2e7f7146e0442c7f4219acb25970bed055f5d0a6afbba5f22e293b078c2e93fca3dce0a08b088485e8b75d32a165f16c3627091c8
   languageName: node
   linkType: hard
 
