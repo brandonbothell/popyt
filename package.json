@@ -91,7 +91,7 @@
     "source-map-support": "0.5.21",
     "ts-node": "10.9.2",
     "typescript": "6.0.3",
-    "undici-types": "8.3.0"
+    "undici-types": "8.4.0"
   },
   "resolutions": {
     "nyc/node-preload": "0.2.0",

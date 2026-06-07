@@ -67,7 +67,7 @@ const RAW_RUNTIME_STATE =
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"],\
-          ["undici-types", "npm:8.3.0"]\
+          ["undici-types", "npm:8.4.0"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -17496,7 +17496,7 @@ const RAW_RUNTIME_STATE =
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"],\
-          ["undici-types", "npm:8.3.0"]\
+          ["undici-types", "npm:8.4.0"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -21900,10 +21900,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:8.3.0", {\
-        "packageLocation": "./.yarn/cache/undici-types-npm-8.3.0-d34470de3e-6681d2837a.zip/node_modules/undici-types/",\
+      ["npm:8.4.0", {\
+        "packageLocation": "./.yarn/cache/undici-types-npm-8.4.0-caeb002d84-760841f457.zip/node_modules/undici-types/",\
         "packageDependencies": [\
-          ["undici-types", "npm:8.3.0"]\
+          ["undici-types", "npm:8.4.0"]\
         ],\
         "linkType": "HARD"\
       }]\
