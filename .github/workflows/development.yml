@@ -57,13 +57,13 @@ jobs:
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
     - name: Upload test results to Codecov
       if: ${{ !cancelled() }}
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/tests-dev.junit.xml

@@ -41,7 +41,7 @@ jobs:
       shell: bash
       run: printf "sha=%s\n" $(git log -1 --format=%H) >> "$GITHUB_OUTPUT"
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/coverage-final.json
@@ -49,7 +49,7 @@ jobs:
         override_commit: ${{ steps.output_sha.outputs.sha }}
     - name: Upload test results to Codecov
       if: ${{ !cancelled() }}
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/tests-release.junit.xml
