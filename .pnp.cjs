@@ -11320,7 +11320,7 @@ const RAW_RUNTIME_STATE =
           ["prism-react-renderer", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.1"],\
           ["react", "npm:19.2.7"],\
           ["react-dom", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:19.2.7"],\
-          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.19"],\
+          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
           ["typedoc-plugin-markdown", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:4.12.0"],\
           ["typescript", "patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"]\
         ],\
@@ -14952,6 +14952,14 @@ const RAW_RUNTIME_STATE =
           ["uc.micro", "npm:2.1.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:5.0.2", {\
+        "packageLocation": "./.yarn/cache/linkify-it-npm-5.0.2-091da7d025-1d23387319.zip/node_modules/linkify-it/",\
+        "packageDependencies": [\
+          ["linkify-it", "npm:5.0.2"],\
+          ["uc.micro", "npm:2.1.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["loader-runner", [\
@@ -15202,6 +15210,19 @@ const RAW_RUNTIME_STATE =
           ["entities", "npm:4.5.0"],\
           ["linkify-it", "npm:5.0.0"],\
           ["markdown-it", "npm:14.1.1"],\
+          ["mdurl", "npm:2.0.0"],\
+          ["punycode.js", "npm:2.3.1"],\
+          ["uc.micro", "npm:2.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:14.3.0", {\
+        "packageLocation": "./.yarn/cache/markdown-it-npm-14.3.0-70925f0498-16afbae804.zip/node_modules/markdown-it/",\
+        "packageDependencies": [\
+          ["argparse", "npm:2.0.1"],\
+          ["entities", "npm:4.5.0"],\
+          ["linkify-it", "npm:5.0.2"],\
+          ["markdown-it", "npm:14.3.0"],\
           ["mdurl", "npm:2.0.0"],\
           ["punycode.js", "npm:2.3.1"],\
           ["uc.micro", "npm:2.1.0"]\
@@ -21745,6 +21766,13 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:0.28.20", {\
+        "packageLocation": "./.yarn/cache/typedoc-npm-0.28.20-92d0a89709-947172bc1b.zip/node_modules/typedoc/",\
+        "packageDependencies": [\
+          ["typedoc", "npm:0.28.20"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:0.28.19", {\
         "packageLocation": "./.yarn/__virtual__/typedoc-virtual-89dbcdefde/0/cache/typedoc-npm-0.28.19-d7fd22c3f7-b16fdc717b.zip/node_modules/typedoc/",\
         "packageDependencies": [\
@@ -21764,18 +21792,18 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.19", {\
-        "packageLocation": "./.yarn/__virtual__/typedoc-virtual-72e01a19e7/0/cache/typedoc-npm-0.28.19-d7fd22c3f7-b16fdc717b.zip/node_modules/typedoc/",\
+      ["virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20", {\
+        "packageLocation": "./.yarn/__virtual__/typedoc-virtual-0b29615716/0/cache/typedoc-npm-0.28.20-92d0a89709-947172bc1b.zip/node_modules/typedoc/",\
         "packageDependencies": [\
           ["@gerrit0/mini-shiki", "npm:3.23.0"],\
           ["@types/typescript", null],\
           ["lunr", "npm:2.3.9"],\
-          ["markdown-it", "npm:14.1.1"],\
+          ["markdown-it", "npm:14.3.0"],\
           ["minimatch", "npm:10.2.5"],\
-          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.19"],\
-          ["typedoc-plugin-markdown", "virtual:72e01a19e71df17536573bca30ff20a09a61b8eb5e647d6e436457d316e54c7a3fde90b323b70275cd859053c7501e71c8c85a1134646a92a767162006344568#npm:4.11.0"],\
+          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
+          ["typedoc-plugin-markdown", "virtual:0b2961571620812a0dd1a66b5f830587a038a928bfb1cf58fe331bd4dd5314ebf590c1c922c99be08d5c5866f882eab5c189dc5190641877016a5fed01c24692#npm:4.11.0"],\
           ["typescript", "patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"],\
-          ["yaml", "npm:2.8.3"]\
+          ["yaml", "npm:2.9.0"]\
         ],\
         "packagePeers": [\
           "@types/typescript",\
@@ -21821,12 +21849,12 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:72e01a19e71df17536573bca30ff20a09a61b8eb5e647d6e436457d316e54c7a3fde90b323b70275cd859053c7501e71c8c85a1134646a92a767162006344568#npm:4.11.0", {\
-        "packageLocation": "./.yarn/__virtual__/typedoc-plugin-markdown-virtual-84e31cf08b/0/cache/typedoc-plugin-markdown-npm-4.11.0-5326ed7d0a-dbde98e765.zip/node_modules/typedoc-plugin-markdown/",\
+      ["virtual:0b2961571620812a0dd1a66b5f830587a038a928bfb1cf58fe331bd4dd5314ebf590c1c922c99be08d5c5866f882eab5c189dc5190641877016a5fed01c24692#npm:4.11.0", {\
+        "packageLocation": "./.yarn/__virtual__/typedoc-plugin-markdown-virtual-bcaf4325ff/0/cache/typedoc-plugin-markdown-npm-4.11.0-5326ed7d0a-dbde98e765.zip/node_modules/typedoc-plugin-markdown/",\
         "packageDependencies": [\
           ["@types/typedoc", null],\
-          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.19"],\
-          ["typedoc-plugin-markdown", "virtual:72e01a19e71df17536573bca30ff20a09a61b8eb5e647d6e436457d316e54c7a3fde90b323b70275cd859053c7501e71c8c85a1134646a92a767162006344568#npm:4.11.0"]\
+          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
+          ["typedoc-plugin-markdown", "virtual:0b2961571620812a0dd1a66b5f830587a038a928bfb1cf58fe331bd4dd5314ebf590c1c922c99be08d5c5866f882eab5c189dc5190641877016a5fed01c24692#npm:4.11.0"]\
         ],\
         "packagePeers": [\
           "@types/typedoc",\
@@ -21851,7 +21879,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/__virtual__/typedoc-plugin-markdown-virtual-57a7c8ee50/0/cache/typedoc-plugin-markdown-npm-4.12.0-6e2d50dce5-218162f8d0.zip/node_modules/typedoc-plugin-markdown/",\
         "packageDependencies": [\
           ["@types/typedoc", null],\
-          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.19"],\
+          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
           ["typedoc-plugin-markdown", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:4.12.0"]\
         ],\
         "packagePeers": [\
@@ -22847,6 +22875,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/yaml-npm-2.8.3-dfea86f9e0-ecad41d39d.zip/node_modules/yaml/",\
         "packageDependencies": [\
           ["yaml", "npm:2.8.3"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:2.9.0", {\
+        "packageLocation": "./.yarn/cache/yaml-npm-2.9.0-0cdd9bc0bc-9a95e8e086.zip/node_modules/yaml/",\
+        "packageDependencies": [\
+          ["yaml", "npm:2.9.0"]\
         ],\
         "linkType": "HARD"\
       }]\
