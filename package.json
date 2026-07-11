@@ -58,7 +58,7 @@
     "caching"
   ],
   "devDependencies": {
-    "@docusaurus/tsconfig": "3.10.1",
+    "@docusaurus/tsconfig": "3.10.2",
     "@eslint/compat": "2.1.0",
     "@eslint/eslintrc": "3.3.5",
     "@eslint/js": "10.0.1",
