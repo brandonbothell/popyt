@@ -21,7 +21,7 @@ jobs:
       run: |
           git config --global user.name "Brandon Bothell"
           git config --global user.email "brandon@brandonsbench.net"
-    - uses: actions/setup-node@v6
+    - uses: actions/setup-node@v7
       with:
         node-version: '23.x'
     - name: Install dependencies
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v7
-    - uses: actions/setup-node@v6
+    - uses: actions/setup-node@v7
       with:
         node-version: '23.x'
     - name: Install dependencies
