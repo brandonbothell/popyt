@@ -2135,9 +2135,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/core@npm:4.6.3":
-  version: 4.6.3
-  resolution: "@docsearch/core@npm:4.6.3"
+"@docsearch/core@npm:4.7.0":
+  version: 4.7.0
+  resolution: "@docsearch/core@npm:4.7.0"
   peerDependencies:
     "@types/react": ">= 16.8.0 < 20.0.0"
     react: ">= 16.8.0 < 20.0.0"
@@ -2149,7 +2149,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/39dfaa84f6c89217aca269f9101cf613038dc543875829f2c490951e3704f256a3d152f93bbb94f4db329ff72d7c8fc239ea51b3efdcc7bbc9c3b8d21d4c72b3
+  checksum: 10/3aa35ecad60fb25a7617e7f32b4f40b7db159468f40a4fb44173232d43b8a467e9727cd9fb2fce5d9bc60668b05db51a3f7aff30a05c1dba666916b0ba8aee5a
   languageName: node
   linkType: hard
 
@@ -2160,18 +2160,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/css@npm:4.6.3":
-  version: 4.6.3
-  resolution: "@docsearch/css@npm:4.6.3"
-  checksum: 10/51c6bff5f164891aea82f8fc93ac253d633ef07646d74f87993228a340032f547dc645e6d9427c1a6a33cd949251bb7ff4107b760a312a5be534de7d3debe03f
+"@docsearch/css@npm:4.7.0":
+  version: 4.7.0
+  resolution: "@docsearch/css@npm:4.7.0"
+  checksum: 10/4a44ae2d9cf377da3317a80f51316f07e986a07217e0c8e9b6d098fbc18102b22fbb54934df94aa354fad695f3a85d34475b22fe6d331d4b48f25ea4dfe0e9f5
   languageName: node
   linkType: hard
 
-"@docsearch/docusaurus-adapter@npm:4.6.3":
-  version: 4.6.3
-  resolution: "@docsearch/docusaurus-adapter@npm:4.6.3"
+"@docsearch/docusaurus-adapter@npm:4.7.0":
+  version: 4.7.0
+  resolution: "@docsearch/docusaurus-adapter@npm:4.7.0"
   dependencies:
-    "@docsearch/react": "npm:4.6.3"
+    "@docsearch/react": "npm:4.7.0"
     "@docusaurus/core": "npm:^3.9.2"
     "@docusaurus/plugin-content-docs": "npm:^3.9.2"
     "@docusaurus/theme-common": "npm:^3.9.2"
@@ -2188,17 +2188,17 @@ __metadata:
   peerDependencies:
     react: ^18.0.0 || ^19.0.0
     react-dom: ^18.0.0 || ^19.0.0
-  checksum: 10/cb2be1dfd8dd4c8a1da982b7a9738768823bb94f6d557f125eb2ede29b456a3aa8c7a8818a179972e2a975d20560149366cbef5b7771e2cb88ae4d023f7d0183
+  checksum: 10/e1df15b440bafd4e886620e10bb465100ffd2076f7f0dc0dd93e816ffc5529b905c8943a7b93c64bc9ec0d2ba9e4e067496104f22b0f03880da19479dc70a6e8
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:4.6.3":
-  version: 4.6.3
-  resolution: "@docsearch/react@npm:4.6.3"
+"@docsearch/react@npm:4.7.0":
+  version: 4.7.0
+  resolution: "@docsearch/react@npm:4.7.0"
   dependencies:
     "@algolia/autocomplete-core": "npm:1.19.2"
-    "@docsearch/core": "npm:4.6.3"
-    "@docsearch/css": "npm:4.6.3"
+    "@docsearch/core": "npm:4.7.0"
+    "@docsearch/css": "npm:4.7.0"
   peerDependencies:
     "@types/react": ">= 16.8.0 < 20.0.0"
     react: ">= 16.8.0 < 20.0.0"
@@ -2213,7 +2213,7 @@ __metadata:
       optional: true
     search-insights:
       optional: true
-  checksum: 10/d481be1ee80608549a3420992b1446c9a83af5b3378c69e693aac3e06976dd13d10983951eadfa23b0554d13fb0a939ee1de104fd8048f200545919257ff60dc
+  checksum: 10/e893b05b0ccfa34314b11480dc8d4bc28895679abe97f303966e2f92cb4900ef799eb6117d5a29bddd894e15a6ec013578049bd40a93cc99190ab00d3fb9b213
   languageName: node
   linkType: hard
 
@@ -7384,7 +7384,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docusaurus@workspace:docusaurus"
   dependencies:
-    "@docsearch/docusaurus-adapter": "npm:4.6.3"
+    "@docsearch/docusaurus-adapter": "npm:4.7.0"
     "@docusaurus/core": "npm:3.10.2"
     "@docusaurus/module-type-aliases": "npm:3.10.2"
     "@docusaurus/plugin-content-docs": "npm:3.10.2"
