@@ -59,7 +59,7 @@
   ],
   "devDependencies": {
     "@docusaurus/tsconfig": "3.10.2",
-    "@eslint/compat": "2.1.0",
+    "@eslint/compat": "2.1.1",
     "@eslint/eslintrc": "3.3.7",
     "@eslint/js": "10.0.1",
     "@googleapis/youtube": "33.0.0",
