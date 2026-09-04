@@ -34,7 +34,7 @@
     "@docusaurus/types": "3.10.2",
     "@types/node": "25.6.0",
     "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.5",
+    "@types/react-dom": "19.2.7",
     "docusaurus-plugin-typedoc": "1.4.2",
     "dotenv": "17.4.2",
     "typedoc": "0.28.20",
