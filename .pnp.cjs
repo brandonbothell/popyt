@@ -11404,7 +11404,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:19.2.7"],\
           ["clsx", "npm:2.1.1"],\
           ["docusaurus", "workspace:docusaurus"],\
-          ["docusaurus-plugin-typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.2"],\
+          ["docusaurus-plugin-typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.3"],\
           ["dotenv", "npm:17.4.2"],\
           ["prism-react-renderer", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.1"],\
           ["react", "npm:19.2.8"],\
@@ -11417,25 +11417,28 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["docusaurus-plugin-typedoc", [\
-      ["npm:1.4.2", {\
-        "packageLocation": "./.yarn/cache/docusaurus-plugin-typedoc-npm-1.4.2-19c909d021-1d66505021.zip/node_modules/docusaurus-plugin-typedoc/",\
+      ["npm:1.4.3", {\
+        "packageLocation": "./.yarn/cache/docusaurus-plugin-typedoc-npm-1.4.3-ce1365bffa-3d88d9644e.zip/node_modules/docusaurus-plugin-typedoc/",\
         "packageDependencies": [\
-          ["docusaurus-plugin-typedoc", "npm:1.4.2"]\
+          ["docusaurus-plugin-typedoc", "npm:1.4.3"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.2", {\
-        "packageLocation": "./.yarn/__virtual__/docusaurus-plugin-typedoc-virtual-4dd6065597/0/cache/docusaurus-plugin-typedoc-npm-1.4.2-19c909d021-1d66505021.zip/node_modules/docusaurus-plugin-typedoc/",\
+      ["virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.3", {\
+        "packageLocation": "./.yarn/__virtual__/docusaurus-plugin-typedoc-virtual-54c32e1244/0/cache/docusaurus-plugin-typedoc-npm-1.4.3-ce1365bffa-3d88d9644e.zip/node_modules/docusaurus-plugin-typedoc/",\
         "packageDependencies": [\
+          ["@types/typedoc", null],\
           ["@types/typedoc-plugin-markdown", null],\
-          ["docusaurus-plugin-typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.2"],\
-          ["typedoc", "virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:0.28.19"],\
-          ["typedoc-docusaurus-theme", "virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:1.4.2"],\
+          ["docusaurus-plugin-typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.3"],\
+          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
+          ["typedoc-docusaurus-theme", "virtual:54c32e1244a4fc9333d0cd9bfce5b0cda8763c9dd5891e82e23fe9473161a7e48bea09ab3aa14f3ddc610967b975e6dee1930865a2b75dadd7a6ca496ad5ca44#npm:1.4.3"],\
           ["typedoc-plugin-markdown", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:4.13.0"]\
         ],\
         "packagePeers": [\
           "@types/typedoc-plugin-markdown",\
-          "typedoc-plugin-markdown"\
+          "@types/typedoc",\
+          "typedoc-plugin-markdown",\
+          "typedoc"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15077,14 +15080,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["linkify-it", [\
-      ["npm:5.0.0", {\
-        "packageLocation": "./.yarn/cache/linkify-it-npm-5.0.0-adb5f9c96f-ef3b7609dd.zip/node_modules/linkify-it/",\
-        "packageDependencies": [\
-          ["linkify-it", "npm:5.0.0"],\
-          ["uc.micro", "npm:2.1.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:5.0.2", {\
         "packageLocation": "./.yarn/cache/linkify-it-npm-5.0.2-091da7d025-1d23387319.zip/node_modules/linkify-it/",\
         "packageDependencies": [\
@@ -15335,19 +15330,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["markdown-it", [\
-      ["npm:14.1.1", {\
-        "packageLocation": "./.yarn/cache/markdown-it-npm-14.1.1-45c173274d-088822c8aa.zip/node_modules/markdown-it/",\
-        "packageDependencies": [\
-          ["argparse", "npm:2.0.1"],\
-          ["entities", "npm:4.5.0"],\
-          ["linkify-it", "npm:5.0.0"],\
-          ["markdown-it", "npm:14.1.1"],\
-          ["mdurl", "npm:2.0.0"],\
-          ["punycode.js", "npm:2.3.1"],\
-          ["uc.micro", "npm:2.1.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:14.3.0", {\
         "packageLocation": "./.yarn/cache/markdown-it-npm-14.3.0-70925f0498-16afbae804.zip/node_modules/markdown-it/",\
         "packageDependencies": [\
@@ -21901,38 +21883,12 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["typedoc", [\
-      ["npm:0.28.19", {\
-        "packageLocation": "./.yarn/cache/typedoc-npm-0.28.19-d7fd22c3f7-b16fdc717b.zip/node_modules/typedoc/",\
-        "packageDependencies": [\
-          ["typedoc", "npm:0.28.19"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
       ["npm:0.28.20", {\
         "packageLocation": "./.yarn/cache/typedoc-npm-0.28.20-92d0a89709-947172bc1b.zip/node_modules/typedoc/",\
         "packageDependencies": [\
           ["typedoc", "npm:0.28.20"]\
         ],\
         "linkType": "SOFT"\
-      }],\
-      ["virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:0.28.19", {\
-        "packageLocation": "./.yarn/__virtual__/typedoc-virtual-89dbcdefde/0/cache/typedoc-npm-0.28.19-d7fd22c3f7-b16fdc717b.zip/node_modules/typedoc/",\
-        "packageDependencies": [\
-          ["@gerrit0/mini-shiki", "npm:3.23.0"],\
-          ["@types/typescript", null],\
-          ["lunr", "npm:2.3.9"],\
-          ["markdown-it", "npm:14.1.1"],\
-          ["minimatch", "npm:10.2.5"],\
-          ["typedoc", "virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:0.28.19"],\
-          ["typedoc-plugin-markdown", "virtual:89dbcdefdeeb6e24001bb16cbec5b770e5a79c4fef24c89e651909aa60d7af68ac43b5761a58e4f4e56d89ab708ac445cc3030ff30554b082e5f8d4e5da495f8#npm:4.11.0"],\
-          ["typescript", null],\
-          ["yaml", "npm:2.8.3"]\
-        ],\
-        "packagePeers": [\
-          "@types/typescript",\
-          "typescript"\
-        ],\
-        "linkType": "HARD"\
       }],\
       ["virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20", {\
         "packageLocation": "./.yarn/__virtual__/typedoc-virtual-0b29615716/0/cache/typedoc-npm-0.28.20-92d0a89709-947172bc1b.zip/node_modules/typedoc/",\
@@ -21955,23 +21911,27 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["typedoc-docusaurus-theme", [\
-      ["npm:1.4.2", {\
-        "packageLocation": "./.yarn/cache/typedoc-docusaurus-theme-npm-1.4.2-fc114f622c-238186fbb4.zip/node_modules/typedoc-docusaurus-theme/",\
+      ["npm:1.4.3", {\
+        "packageLocation": "./.yarn/cache/typedoc-docusaurus-theme-npm-1.4.3-b7493b45ce-0162201f8c.zip/node_modules/typedoc-docusaurus-theme/",\
         "packageDependencies": [\
-          ["typedoc-docusaurus-theme", "npm:1.4.2"]\
+          ["typedoc-docusaurus-theme", "npm:1.4.3"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:1.4.2", {\
-        "packageLocation": "./.yarn/__virtual__/typedoc-docusaurus-theme-virtual-ec05162562/0/cache/typedoc-docusaurus-theme-npm-1.4.2-fc114f622c-238186fbb4.zip/node_modules/typedoc-docusaurus-theme/",\
+      ["virtual:54c32e1244a4fc9333d0cd9bfce5b0cda8763c9dd5891e82e23fe9473161a7e48bea09ab3aa14f3ddc610967b975e6dee1930865a2b75dadd7a6ca496ad5ca44#npm:1.4.3", {\
+        "packageLocation": "./.yarn/__virtual__/typedoc-docusaurus-theme-virtual-015b5050ab/0/cache/typedoc-docusaurus-theme-npm-1.4.3-b7493b45ce-0162201f8c.zip/node_modules/typedoc-docusaurus-theme/",\
         "packageDependencies": [\
+          ["@types/typedoc", null],\
           ["@types/typedoc-plugin-markdown", null],\
-          ["typedoc-docusaurus-theme", "virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:1.4.2"],\
+          ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
+          ["typedoc-docusaurus-theme", "virtual:54c32e1244a4fc9333d0cd9bfce5b0cda8763c9dd5891e82e23fe9473161a7e48bea09ab3aa14f3ddc610967b975e6dee1930865a2b75dadd7a6ca496ad5ca44#npm:1.4.3"],\
           ["typedoc-plugin-markdown", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:4.13.0"]\
         ],\
         "packagePeers": [\
           "@types/typedoc-plugin-markdown",\
-          "typedoc-plugin-markdown"\
+          "@types/typedoc",\
+          "typedoc-plugin-markdown",\
+          "typedoc"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -21997,19 +21957,6 @@ const RAW_RUNTIME_STATE =
           ["@types/typedoc", null],\
           ["typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:0.28.20"],\
           ["typedoc-plugin-markdown", "virtual:0b2961571620812a0dd1a66b5f830587a038a928bfb1cf58fe331bd4dd5314ebf590c1c922c99be08d5c5866f882eab5c189dc5190641877016a5fed01c24692#npm:4.11.0"]\
-        ],\
-        "packagePeers": [\
-          "@types/typedoc",\
-          "typedoc"\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["virtual:89dbcdefdeeb6e24001bb16cbec5b770e5a79c4fef24c89e651909aa60d7af68ac43b5761a58e4f4e56d89ab708ac445cc3030ff30554b082e5f8d4e5da495f8#npm:4.11.0", {\
-        "packageLocation": "./.yarn/__virtual__/typedoc-plugin-markdown-virtual-1a9f4941ae/0/cache/typedoc-plugin-markdown-npm-4.11.0-5326ed7d0a-dbde98e765.zip/node_modules/typedoc-plugin-markdown/",\
-        "packageDependencies": [\
-          ["@types/typedoc", null],\
-          ["typedoc", "virtual:4dd60655973adc566289a0471f233c26c494ecf87a40bd5c6fa6410ce4dfbd83b2b6980124438d657e1955e5efee8d100d1866058a071aeec0ffa630fe1c874c#npm:0.28.19"],\
-          ["typedoc-plugin-markdown", "virtual:89dbcdefdeeb6e24001bb16cbec5b770e5a79c4fef24c89e651909aa60d7af68ac43b5761a58e4f4e56d89ab708ac445cc3030ff30554b082e5f8d4e5da495f8#npm:4.11.0"]\
         ],\
         "packagePeers": [\
           "@types/typedoc",\
@@ -23013,13 +22960,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["yaml", [\
-      ["npm:2.8.3", {\
-        "packageLocation": "./.yarn/cache/yaml-npm-2.8.3-dfea86f9e0-ecad41d39d.zip/node_modules/yaml/",\
-        "packageDependencies": [\
-          ["yaml", "npm:2.8.3"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:2.9.0", {\
         "packageLocation": "./.yarn/cache/yaml-npm-2.9.0-0cdd9bc0bc-9a95e8e086.zip/node_modules/yaml/",\
         "packageDependencies": [\
