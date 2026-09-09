@@ -176,7 +176,6 @@ const config: Config = {
         }],
         askAi: {
           agentId: process.env.DOCSEARCH_ASSISTANT_ID,
-          indices: ['popyt-markdown-index'],
           searchParameters: {
             // eslint-disable-next-line @typescript-eslint/naming-convention
             'popyt-markdown-index': {
