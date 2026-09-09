@@ -161,23 +161,27 @@ const config: Config = {
       docsearch: {
         appId: process.env.DOCSEARCH_APP_ID,
         apiKey: process.env.DOCSEARCH_API_KEY,
-        indexName: 'Popyt Documentation',
-        searchParameters: {
-          facetFilters: [
-            'language:en',
-            [ 'docusaurus_tag:default', 'docusaurus_tag:docs-default-current' ]
-          ]
-        },
-        askAi: {
-          indexName: 'Popyt Markdown Index',
-          assistantId: process.env.DOCSEARCH_ASSISTANT_ID,
-          agentStudio: true,
-          sidePanel: true,
+        sidePanel: true,
+        facets: [
+          { key: 'language', label: 'Language' },
+          { key: 'version', label: 'Version' }
+        ],
+        indices: [{
+          name: 'popyt-docs',
           searchParameters: {
             facetFilters: [
-              'language:en',
-              [ 'docusaurus_tag:default', 'docusaurus_tag:docs-default-current' ]
+              'language:en AND docusaurus_tag:docs-default-current'
             ]
+          }
+        }],
+        askAi: {
+          agentId: process.env.DOCSEARCH_ASSISTANT_ID,
+          indices: ['popyt-markdown-index'],
+          searchParameters: {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            'popyt-markdown-index': {
+              filters: 'language:en'
+            }
           }
         },
         contextualSearch: true
