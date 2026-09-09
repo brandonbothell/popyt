@@ -174,6 +174,7 @@ const config: Config = {
         askAi: {
           assistantId: process.env.DOCSEARCH_ASSISTANT_ID,
           searchParameters: {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             'Popyt Markdown Index': {
               filters: [
                 'language:en',
