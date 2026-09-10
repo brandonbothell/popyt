@@ -8020,9 +8020,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:64.3.6":
-  version: 64.3.6
-  resolution: "eslint-plugin-jsdoc@npm:64.3.6"
+"eslint-plugin-jsdoc@npm:64.3.8":
+  version: 64.3.8
+  resolution: "eslint-plugin-jsdoc@npm:64.3.8"
   dependencies:
     "@es-joy/jsdoccomment": "npm:~0.97.0"
     "@es-joy/resolve.exports": "npm:1.2.0"
@@ -8041,7 +8041,7 @@ __metadata:
     to-valid-identifier: "npm:^1.0.0"
   peerDependencies:
     eslint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
-  checksum: 10/24dc95a42624e60446182174099afe68ac53698955f746ef1502c82c8ad8ba628ab5fc7dc50d47dc7341f57d540c5a733b57c444920c7a8ceec4216488e8920a
+  checksum: 10/1f9060dc2cf31d236b2f0bb6040f358c3f226fce3ba0452191d6bcc62e7a25eb5a8662677b07145c18b6f0e0893a1042a5dc6d2e28739c514623af6d39189533
   languageName: node
   linkType: hard
 
@@ -13010,7 +13010,7 @@ __metadata:
     dotenv: "npm:17.4.2"
     eslint: "npm:10.10.0"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jsdoc: "npm:64.3.6"
+    eslint-plugin-jsdoc: "npm:64.3.8"
     eslint-plugin-unused-imports: "npm:4.4.1"
     globals: "npm:17.12.0"
     jiti: "npm:2.7.0"

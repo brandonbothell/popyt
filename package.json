@@ -79,7 +79,7 @@
     "dotenv": "17.4.2",
     "eslint": "10.10.0",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsdoc": "64.3.6",
+    "eslint-plugin-jsdoc": "64.3.8",
     "eslint-plugin-unused-imports": "4.4.1",
     "globals": "17.12.0",
     "jiti": "2.7.0",
