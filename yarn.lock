@@ -17,57 +17,53 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ai-sdk/gateway@npm:2.0.147":
-  version: 2.0.147
-  resolution: "@ai-sdk/gateway@npm:2.0.147"
+"@ai-sdk/gateway@npm:3.0.191":
+  version: 3.0.191
+  resolution: "@ai-sdk/gateway@npm:3.0.191"
   dependencies:
-    "@ai-sdk/provider": "npm:2.0.3"
-    "@ai-sdk/provider-utils": "npm:3.0.36"
-    "@vercel/oidc": "npm:3.1.0"
+    "@ai-sdk/provider": "npm:3.0.16"
+    "@ai-sdk/provider-utils": "npm:4.0.51"
+    "@vercel/oidc": "npm:3.2.0"
   peerDependencies:
     zod: ^3.25.76 || ^4.1.8
-  checksum: 10/eff609733e1703433d452958c516e868a58b3970281feb5de0fa9fbb2af1c8121edc2bc0f613714ba7eb1aa7cf3f3d639509bee86962a9b9cb9e0cc3259d8724
+  checksum: 10/642ec93f2f7758b94c87bf91cad4a1cc9f002432e9c91e8f856bc4ea3b45e8b51073b71ee7629302477e54603f441ccfc03f27ca02c9e74cf836eb19f7bd11d6
   languageName: node
   linkType: hard
 
-"@ai-sdk/provider-utils@npm:3.0.36":
-  version: 3.0.36
-  resolution: "@ai-sdk/provider-utils@npm:3.0.36"
+"@ai-sdk/provider-utils@npm:4.0.51":
+  version: 4.0.51
+  resolution: "@ai-sdk/provider-utils@npm:4.0.51"
   dependencies:
-    "@ai-sdk/provider": "npm:2.0.3"
-    "@standard-schema/spec": "npm:^1.0.0"
-    eventsource-parser: "npm:^3.0.6"
-    undici: "npm:^5.29.0"
+    "@ai-sdk/provider": "npm:3.0.16"
+    "@standard-schema/spec": "npm:^1.1.0"
+    eventsource-parser: "npm:^3.0.8"
+    undici: "npm:^6.28.0"
   peerDependencies:
     zod: ^3.25.76 || ^4.1.8
-  checksum: 10/077dcf91def49a0b75755a468c1c36725e80cafd8e5a305269438c42ed0514389704b1b387672df7898cbc27a3185e739240a2211fb55f17375050760afd3d4d
+  checksum: 10/c7b6268b83ce4d5da588d0babd9bf2caf5aa865f7066912f102aebd4b35966f1ed1480d2461b990d64260c657c28f238b8b5b048f6cf008eab9cb0c6222ffa09
   languageName: node
   linkType: hard
 
-"@ai-sdk/provider@npm:2.0.3":
-  version: 2.0.3
-  resolution: "@ai-sdk/provider@npm:2.0.3"
+"@ai-sdk/provider@npm:3.0.16":
+  version: 3.0.16
+  resolution: "@ai-sdk/provider@npm:3.0.16"
   dependencies:
     json-schema: "npm:^0.4.0"
-  checksum: 10/98fa6f15d3437d47b32abadc8ca44aad9d8a212e80a6a60523528dc7a453584764cdf7455e0d92186b33d9a3b5a85746692c6ef28cd5051e5553b149030c235f
+  checksum: 10/c6b0c85196706a33f860965f3c460a17df32bafe8582dc69fad6437388a2d0782b19189665211837cbae104978bb0382bb3fb57fb87eba0094135752bb9177b5
   languageName: node
   linkType: hard
 
-"@ai-sdk/react@npm:^2.0.30":
-  version: 2.0.256
-  resolution: "@ai-sdk/react@npm:2.0.256"
+"@ai-sdk/react@npm:^3.0.259":
+  version: 3.0.283
+  resolution: "@ai-sdk/react@npm:3.0.283"
   dependencies:
-    "@ai-sdk/provider-utils": "npm:3.0.36"
-    ai: "npm:5.0.253"
+    "@ai-sdk/provider-utils": "npm:4.0.51"
+    ai: "npm:6.0.280"
     swr: "npm:^2.2.5"
     throttleit: "npm:2.1.0"
   peerDependencies:
     react: ^18 || ~19.0.1 || ~19.1.2 || ^19.2.1
-    zod: ^3.25.76 || ^4.1.8
-  peerDependenciesMeta:
-    zod:
-      optional: true
-  checksum: 10/2595ae5e3c8ffd72b9cf0f31e1da62335d456403948066aa443a8f7d081c7b4deb39112a58d0093c6a8f0741c26af97a168c850129e9d21092e43d5736d39ba5
+  checksum: 10/11e91c02f932057df0cea57934b775783604eb1212571d3cbff2792809ca27ef35dab938dd6bc79087132821c75e825b8daf02c828d4d1edcd9bf9b3db0be7cd
   languageName: node
   linkType: hard
 
@@ -2417,9 +2413,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/core@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@docsearch/core@npm:5.0.5"
+"@docsearch/core@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@docsearch/core@npm:5.1.0"
   peerDependencies:
     "@types/react": ">= 16.8.0 < 20.0.0"
     react: ">= 16.8.0 < 20.0.0"
@@ -2431,7 +2427,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/f40eaa0041ef81fca20fcdb0deb5b6d9cab885db32bd62ce70b1ee966d72a7efa0bb6d8ed9524cdc746133b872ad3b96a85a7502afa4b2d7b37ce4330dbbb976
+  checksum: 10/b442b76cb1cbaa2b0436fa1f16631fb1c96be28e218ee9dc6c2880bb6501d93021b3e69b32a276e440178a3d5830abe25a10f54a3da58e4b9911eb3fec1f47aa
   languageName: node
   linkType: hard
 
@@ -2442,22 +2438,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/css@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@docsearch/css@npm:5.0.5"
-  checksum: 10/0bcd56f0c9058b681525d99d3c86aaffae7332d53cdb93c01964299a6461924f5270efe1db44593a888dd7d8c0ff009b31b46888aa69a465099819379b03635b
+"@docsearch/css@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@docsearch/css@npm:5.1.0"
+  checksum: 10/2cce21d2c70436a425e5b2b04df4dcd88e4c8f904f72ff5fecc77d63b4b37a7945241658f13e7394cad6ca10ff47ef1a5475e74c3a07d7e2d38f1bd389ba83d4
   languageName: node
   linkType: hard
 
-"@docsearch/docusaurus-adapter@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@docsearch/docusaurus-adapter@npm:5.0.5"
+"@docsearch/docusaurus-adapter@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@docsearch/docusaurus-adapter@npm:5.1.0"
   dependencies:
     "@algolia/autocomplete-core": "npm:1.19.2"
-    "@docsearch/core": "npm:5.0.5"
-    "@docsearch/modal": "npm:5.0.5"
-    "@docsearch/react": "npm:5.0.5"
-    "@docsearch/sidepanel": "npm:5.0.5"
+    "@docsearch/core": "npm:5.1.0"
+    "@docsearch/modal": "npm:5.1.0"
+    "@docsearch/react": "npm:5.1.0"
+    "@docsearch/sidepanel": "npm:5.1.0"
     "@docusaurus/core": "npm:^3.10.2"
     "@docusaurus/plugin-content-docs": "npm:^3.10.2"
     "@docusaurus/theme-common": "npm:^3.10.2"
@@ -2473,16 +2469,16 @@ __metadata:
   peerDependencies:
     react: ^18.0.0 || ^19.0.0
     react-dom: ^18.0.0 || ^19.0.0
-  checksum: 10/b8c87dff7bf43d997c1ccbd070890fc8c7bf63e60953e799de9542c9083a3735b855af0ce83322fc3211a39a10996bfb5ac226687bb03a2cdf94e802cb97d050
+  checksum: 10/3a3479ef230424a2ec6b31820eb21732667045e09e823b79b2434d24baed35d80d7fc31c7c8ee41adcb8e8e01a902762571430839da0fe3e222a04fc7e904c36
   languageName: node
   linkType: hard
 
-"@docsearch/modal@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@docsearch/modal@npm:5.0.5"
+"@docsearch/modal@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@docsearch/modal@npm:5.1.0"
   dependencies:
-    "@docsearch/core": "npm:5.0.5"
-    "@docsearch/react": "npm:5.0.5"
+    "@docsearch/core": "npm:5.1.0"
+    "@docsearch/react": "npm:5.1.0"
   peerDependencies:
     "@types/react": ">= 16.8.0 < 20.0.0"
     react: ">= 16.8.0 < 20.0.0"
@@ -2494,20 +2490,20 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/fe5d12770de3f6fca280d3c17201e76a5da18a9f5cd9f91ef866958960cd0591c5070653c8b84fa2a239e678b71ed399987ff38f63527fcd0d69236c10a7b9ca
+  checksum: 10/f940ef6d7a3173611e3dd63f7f9ed25f19df932ca8ea429426e9a76476ff9729d1bc6be724ff190ce4e17ca5cedf70db190687e526d19cf77e652d26d0983db4
   languageName: node
   linkType: hard
 
-"@docsearch/react@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@docsearch/react@npm:5.0.5"
+"@docsearch/react@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@docsearch/react@npm:5.1.0"
   dependencies:
-    "@ai-sdk/react": "npm:^2.0.30"
+    "@ai-sdk/react": "npm:^3.0.259"
     "@algolia/autocomplete-core": "npm:1.19.2"
     "@base-ui/react": "npm:^1.5.0"
-    "@docsearch/core": "npm:5.0.5"
-    "@docsearch/css": "npm:5.0.5"
-    ai: "npm:^5.0.30"
+    "@docsearch/core": "npm:5.1.0"
+    "@docsearch/css": "npm:5.1.0"
+    ai: "npm:^6.0.256"
     algoliasearch: "npm:^5.28.0"
     marked: "npm:^16.3.0"
     zod: "npm:^4.1.8"
@@ -2525,7 +2521,7 @@ __metadata:
       optional: true
     search-insights:
       optional: true
-  checksum: 10/eabb1ecb6a31ee754fc6c3186a3e2b06671487d79b026afb6d772820d8b6f83baf0832766481426dfa192f531c8e14ef80be605bf504e8ca3f60765eada4fa2c
+  checksum: 10/ef1fce2d43548576470dc134b12ed196e28043e3804db3a3514d84af844de13f33d1fc30d028b2e2600a234a9b9fc4afbed36b3d9f19ae6ce03f5369e69bed72
   languageName: node
   linkType: hard
 
@@ -2554,13 +2550,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docsearch/sidepanel@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@docsearch/sidepanel@npm:5.0.5"
+"@docsearch/sidepanel@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@docsearch/sidepanel@npm:5.1.0"
   dependencies:
-    "@docsearch/core": "npm:5.0.5"
-    "@docsearch/css": "npm:5.0.5"
-    "@docsearch/react": "npm:5.0.5"
+    "@docsearch/core": "npm:5.1.0"
+    "@docsearch/css": "npm:5.1.0"
+    "@docsearch/react": "npm:5.1.0"
   peerDependencies:
     "@types/react": ">= 16.8.0 < 20.0.0"
     react: ">= 16.8.0 < 20.0.0"
@@ -2572,7 +2568,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/ca2068f9feef4f07e098db9163c037d4769a87a2373a74511c28b27ce649e8abf740f7ae0ada6b691eaed26104296bdcf1b1aad1651eeb68d30be2f9ad37bbaf
+  checksum: 10/f08112edefda1ab8481605412dd6b33ab82bee814928437b4e5d414e8ec0970deed7a70b4d315b49c36062e2ea178e216714ef8fe1a0786d785aa59beba445ba
   languageName: node
   linkType: hard
 
@@ -3318,13 +3314,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fastify/busboy@npm:^2.0.0":
-  version: 2.1.1
-  resolution: "@fastify/busboy@npm:2.1.1"
-  checksum: 10/2bb8a7eca8289ed14c9eb15239bc1019797454624e769b39a0b90ed204d032403adc0f8ed0d2aef8a18c772205fa7808cf5a1b91f21c7bfc7b6032150b1062c5
-  languageName: node
-  linkType: hard
-
 "@floating-ui/core@npm:^1.8.0":
   version: 1.8.0
   resolution: "@floating-ui/core@npm:1.8.0"
@@ -3964,10 +3953,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api@npm:1.9.0":
-  version: 1.9.0
-  resolution: "@opentelemetry/api@npm:1.9.0"
-  checksum: 10/a607f0eef971893c4f2ee2a4c2069aade6ec3e84e2a1f5c2aac19f65c5d9eeea41aa72db917c1029faafdd71789a1a040bdc18f40d63690e22ccae5d7070f194
+"@opentelemetry/api@npm:^1.9.0":
+  version: 1.9.1
+  resolution: "@opentelemetry/api@npm:1.9.1"
+  checksum: 10/b26032739d3c54ca99b5a2920844a1fbd4c3ee383cacbb0915e8c706a2626fe91e96feaa6e893397abe0545dc8d0a765b220aa18a31b1773176eeaf3a225e10e
   languageName: node
   linkType: hard
 
@@ -4271,7 +4260,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@standard-schema/spec@npm:^1.0.0":
+"@standard-schema/spec@npm:^1.1.0":
   version: 1.1.0
   resolution: "@standard-schema/spec@npm:1.1.0"
   checksum: 10/a209615c9e8b2ea535d7db0a5f6aa0f962fd4ab73ee86a46c100fb78116964af1f55a27c1794d4801e534a196794223daa25ff5135021e03c7828aa3d95e1763
@@ -5241,10 +5230,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/oidc@npm:3.1.0":
-  version: 3.1.0
-  resolution: "@vercel/oidc@npm:3.1.0"
-  checksum: 10/2e7fe962a441bbc8b305639f8ab1830fb3c2bb51affa90ae84431af65a29c98343aa089d84dff3730013f0b3fb8dc67ad10fad97c4ce7fdf584510d79fa3919c
+"@vercel/oidc@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@vercel/oidc@npm:3.2.0"
+  checksum: 10/2a64ee806217d8e1cff79cc9d2925d6381883d24fa7b76ef07c9c1178534b624dc8da4d00d39f42e2a3be8c0ef35ab12bec2164dd978913db639c442fb93ccae
   languageName: node
   linkType: hard
 
@@ -5490,17 +5479,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ai@npm:5.0.253, ai@npm:^5.0.30":
-  version: 5.0.253
-  resolution: "ai@npm:5.0.253"
+"ai@npm:6.0.280, ai@npm:^6.0.256":
+  version: 6.0.280
+  resolution: "ai@npm:6.0.280"
   dependencies:
-    "@ai-sdk/gateway": "npm:2.0.147"
-    "@ai-sdk/provider": "npm:2.0.3"
-    "@ai-sdk/provider-utils": "npm:3.0.36"
-    "@opentelemetry/api": "npm:1.9.0"
+    "@ai-sdk/gateway": "npm:3.0.191"
+    "@ai-sdk/provider": "npm:3.0.16"
+    "@ai-sdk/provider-utils": "npm:4.0.51"
+    "@opentelemetry/api": "npm:^1.9.0"
   peerDependencies:
     zod: ^3.25.76 || ^4.1.8
-  checksum: 10/1f7a2489b6367677b1f61aa8e4e6375892eaa19f13799524d7616e01df4e09ea88fb8c2e0577c4c5214b6301ab55d040127418e6783f293c252ffdb5d028ca63
+  checksum: 10/ef5bce41ed91ca470bba71ef189aa92a89e9ad930b6b11db7b0412df1f1a0c4101ee78f74cc761ffeeeb1cd00bf738cdaa85f2161f19411f07722e92602b0395
   languageName: node
   linkType: hard
 
@@ -7502,7 +7491,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docusaurus@workspace:docusaurus"
   dependencies:
-    "@docsearch/docusaurus-adapter": "npm:5.0.5"
+    "@docsearch/docusaurus-adapter": "npm:5.1.0"
     "@docusaurus/core": "npm:3.10.2"
     "@docusaurus/module-type-aliases": "npm:3.10.2"
     "@docusaurus/plugin-content-docs": "npm:3.10.2"
@@ -8332,7 +8321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventsource-parser@npm:^3.0.6":
+"eventsource-parser@npm:^3.0.8":
   version: 3.1.1
   resolution: "eventsource-parser@npm:3.1.1"
   checksum: 10/4ed3fbd0ea5b7041c3d14e6ab686077bc1b93ce230839d50ca735a39754ee17be2402c02be9e6608b325aa7a1e151bfd341ce4c985cb0d0ac2898a0712ab4826
@@ -16172,12 +16161,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.29.0":
-  version: 5.29.0
-  resolution: "undici@npm:5.29.0"
-  dependencies:
-    "@fastify/busboy": "npm:^2.0.0"
-  checksum: 10/0ceca8924a32acdcc0cfb8dd2d368c217840970aa3f5e314fc169608474be6341c5b8e50cad7bd257dbe3b4e432bc5d0a0d000f83644b54fa11a48735ec52b93
+"undici@npm:^6.28.0":
+  version: 6.28.1
+  resolution: "undici@npm:6.28.1"
+  checksum: 10/a64d5972054604918448ffa1bbaa867ecd1ae9ed5aa75344a794550cc048a79949fd95ca196b961463384c49d77e924adb3643758a2aa809e43db5377a390941
   languageName: node
   linkType: hard
 
