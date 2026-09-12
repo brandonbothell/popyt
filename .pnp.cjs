@@ -37,7 +37,7 @@ const RAW_RUNTIME_STATE =
           ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.1"],\
           ["@eslint/eslintrc", "npm:3.3.7"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
-          ["@googleapis/youtube", "npm:35.0.0"],\
+          ["@googleapis/youtube", "npm:38.0.0"],\
           ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
           ["@stylistic/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:5.10.0"],\
           ["@types/chai", "npm:5.2.3"],\
@@ -5907,11 +5907,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@googleapis/youtube", [\
-      ["npm:35.0.0", {\
-        "packageLocation": "./.yarn/cache/@googleapis-youtube-npm-35.0.0-cefeeaca08-14eea5ce23.zip/node_modules/@googleapis/youtube/",\
+      ["npm:38.0.0", {\
+        "packageLocation": "./.yarn/cache/@googleapis-youtube-npm-38.0.0-a1e1e93079-220a67cc92.zip/node_modules/@googleapis/youtube/",\
         "packageDependencies": [\
-          ["@googleapis/youtube", "npm:35.0.0"],\
-          ["googleapis-common", "npm:8.0.1"]\
+          ["@googleapis/youtube", "npm:38.0.0"],\
+          ["googleapis-common", "npm:9.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -13062,15 +13062,25 @@ const RAW_RUNTIME_STATE =
           ["node-fetch", "npm:3.3.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:7.3.1", {\
+        "packageLocation": "./.yarn/cache/gaxios-npm-7.3.1-94b1daa94b-8b00343b2f.zip/node_modules/gaxios/",\
+        "packageDependencies": [\
+          ["extend", "npm:3.0.2"],\
+          ["gaxios", "npm:7.3.1"],\
+          ["https-proxy-agent", "npm:7.0.6"],\
+          ["node-fetch", "npm:3.3.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["gcp-metadata", [\
-      ["npm:8.1.2", {\
-        "packageLocation": "./.yarn/cache/gcp-metadata-npm-8.1.2-76bda3c80f-b3a4674067.zip/node_modules/gcp-metadata/",\
+      ["npm:9.0.3", {\
+        "packageLocation": "./.yarn/cache/gcp-metadata-npm-9.0.3-516c9f34dd-ecb81e7904.zip/node_modules/gcp-metadata/",\
         "packageDependencies": [\
-          ["gaxios", "npm:7.1.4"],\
-          ["gcp-metadata", "npm:8.1.2"],\
-          ["google-logging-utils", "npm:1.1.3"],\
+          ["gaxios", "npm:7.3.1"],\
+          ["gcp-metadata", "npm:9.0.3"],\
+          ["google-logging-utils", "npm:2.0.1"],\
           ["json-bigint", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -13323,37 +13333,38 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["google-auth-library", [\
-      ["npm:10.6.2", {\
-        "packageLocation": "./.yarn/cache/google-auth-library-npm-10.6.2-cc438704e8-06837fc374.zip/node_modules/google-auth-library/",\
+      ["npm:11.0.2", {\
+        "packageLocation": "./.yarn/cache/google-auth-library-npm-11.0.2-726a6002a8-ef796c5865.zip/node_modules/google-auth-library/",\
         "packageDependencies": [\
           ["base64-js", "npm:1.5.1"],\
           ["ecdsa-sig-formatter", "npm:1.0.11"],\
           ["gaxios", "npm:7.1.4"],\
-          ["gcp-metadata", "npm:8.1.2"],\
-          ["google-auth-library", "npm:10.6.2"],\
-          ["google-logging-utils", "npm:1.1.3"],\
+          ["gcp-metadata", "npm:9.0.3"],\
+          ["google-auth-library", "npm:11.0.2"],\
+          ["google-logging-utils", "npm:2.0.1"],\
           ["jws", "npm:4.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
     ]],\
     ["google-logging-utils", [\
-      ["npm:1.1.3", {\
-        "packageLocation": "./.yarn/cache/google-logging-utils-npm-1.1.3-965b63457a-5a6c090399.zip/node_modules/google-logging-utils/",\
+      ["npm:2.0.1", {\
+        "packageLocation": "./.yarn/cache/google-logging-utils-npm-2.0.1-0c4df84165-dc30fe5b59.zip/node_modules/google-logging-utils/",\
         "packageDependencies": [\
-          ["google-logging-utils", "npm:1.1.3"]\
+          ["google-logging-utils", "npm:2.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
     ]],\
     ["googleapis-common", [\
-      ["npm:8.0.1", {\
-        "packageLocation": "./.yarn/cache/googleapis-common-npm-8.0.1-8861e5c5b3-732cd95913.zip/node_modules/googleapis-common/",\
+      ["npm:9.0.4", {\
+        "packageLocation": "./.yarn/cache/googleapis-common-npm-9.0.4-2b26dd3f09-f045d912ca.zip/node_modules/googleapis-common/",\
         "packageDependencies": [\
           ["extend", "npm:3.0.2"],\
-          ["gaxios", "npm:7.1.4"],\
-          ["google-auth-library", "npm:10.6.2"],\
-          ["googleapis-common", "npm:8.0.1"],\
+          ["gaxios", "npm:7.3.1"],\
+          ["google-auth-library", "npm:11.0.2"],\
+          ["google-logging-utils", "npm:2.0.1"],\
+          ["googleapis-common", "npm:9.0.4"],\
           ["qs", "npm:6.15.1"],\
           ["url-template", "npm:2.0.8"]\
         ],\
@@ -17726,7 +17737,7 @@ const RAW_RUNTIME_STATE =
           ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.1"],\
           ["@eslint/eslintrc", "npm:3.3.7"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
-          ["@googleapis/youtube", "npm:35.0.0"],\
+          ["@googleapis/youtube", "npm:38.0.0"],\
           ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
           ["@stylistic/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:5.10.0"],\
           ["@types/chai", "npm:5.2.3"],\
