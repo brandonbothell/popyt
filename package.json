@@ -98,7 +98,7 @@
     "webpackbar": "7.0.0"
   },
   "engines": {
-    "node": ">=18.0 <24.15 || >=25.0 <25.7"
+    "node": ">=18.0 <24.15 || >=25.0 <25.10"
   },
   "repository": {
     "url": "git+https://github.com/brandonbothell/popyt.git"
