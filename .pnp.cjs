@@ -51,7 +51,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.70.1"],\
           ["chai", "npm:6.2.2"],\
           ["cross-env", "npm:10.1.0"],\
-          ["dotenv", "npm:17.4.2"],\
+          ["dotenv", "npm:18.0.4"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.11.0"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
           ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:64.5.4"],\
@@ -11566,7 +11566,7 @@ const RAW_RUNTIME_STATE =
           ["clsx", "npm:2.1.1"],\
           ["docusaurus", "workspace:docusaurus"],\
           ["docusaurus-plugin-typedoc", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:1.4.3"],\
-          ["dotenv", "npm:17.4.2"],\
+          ["dotenv", "npm:18.0.4"],\
           ["prism-react-renderer", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:2.4.1"],\
           ["react", "npm:19.3.0"],\
           ["react-dom", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:19.3.0"],\
@@ -11707,10 +11707,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["dotenv", [\
-      ["npm:17.4.2", {\
-        "packageLocation": "./.yarn/cache/dotenv-npm-17.4.2-46ee0c966e-ca1b6f54d5.zip/node_modules/dotenv/",\
+      ["npm:18.0.4", {\
+        "packageLocation": "./.yarn/cache/dotenv-npm-18.0.4-449ca13e0b-e9f39862f9.zip/node_modules/dotenv/",\
         "packageDependencies": [\
-          ["dotenv", "npm:17.4.2"]\
+          ["dotenv", "npm:18.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17808,7 +17808,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.70.1"],\
           ["chai", "npm:6.2.2"],\
           ["cross-env", "npm:10.1.0"],\
-          ["dotenv", "npm:17.4.2"],\
+          ["dotenv", "npm:18.0.4"],\
           ["eslint", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.11.0"],\
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
           ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:64.5.4"],\
