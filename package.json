@@ -76,7 +76,7 @@
     "@typescript-eslint/parser": "8.70.1",
     "chai": "6.2.2",
     "cross-env": "10.1.0",
-    "dotenv": "17.4.2",
+    "dotenv": "18.0.4",
     "eslint": "10.11.0",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsdoc": "64.5.4",
