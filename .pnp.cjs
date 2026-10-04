@@ -56,7 +56,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
           ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:64.5.4"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
-          ["globals", "npm:17.12.0"],\
+          ["globals", "npm:17.13.0"],\
           ["jiti", "npm:2.7.0"],\
           ["mocha", "npm:11.8.0"],\
           ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
@@ -13343,10 +13343,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:17.12.0", {\
-        "packageLocation": "./.yarn/cache/globals-npm-17.12.0-a1f76512e0-8332915605.zip/node_modules/globals/",\
+      ["npm:17.13.0", {\
+        "packageLocation": "./.yarn/cache/globals-npm-17.13.0-c41b01048d-f723714cfb.zip/node_modules/globals/",\
         "packageDependencies": [\
-          ["globals", "npm:17.12.0"]\
+          ["globals", "npm:17.13.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17813,7 +17813,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-import", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.32.0"],\
           ["eslint-plugin-jsdoc", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:64.5.4"],\
           ["eslint-plugin-unused-imports", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:4.4.1"],\
-          ["globals", "npm:17.12.0"],\
+          ["globals", "npm:17.13.0"],\
           ["jiti", "npm:2.7.0"],\
           ["mocha", "npm:11.8.0"],\
           ["mocha-junit-reporter", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.2.1"],\
