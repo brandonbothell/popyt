@@ -27,7 +27,7 @@ describe('Comments', () => {
 
   it('should not work with valid videos with comments disabled', async () => {
     expect(await youtube.getVideoComments('24EWkH5ipdw').catch(error => error.message))
-      .to.equal('The video identified by the <code><a href="/youtube/v3/docs/commentThreads/list#videoId">videoId</a></code> parameter has disabled comments.')
+      .to.equal('The video identified by the <code><a href="/youtube/data/reference/rest/v3/commentThreads/list#videoId">videoId</a></code> parameter has disabled comments.')
   })
 
   it('should work when searching comments by video title', async () => {
