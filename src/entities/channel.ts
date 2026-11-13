@@ -267,7 +267,9 @@ export class Channel {
   }
 
   /**
-   * Fetches the channel's playlist of uploads from the API and assigns it to the [Channel.videos](./Channel#videos) property.
+   * Fetches the channel's playlist of uploads from the API and assigns it to the [Channel.videos](./Channel#videos) property.  
+   *   
+   * Note: not able to fetch music topic channel's videos at the moment. See [here](https://issuetracker.google.com/issues/581922005#comment2) for more details, an update to the library will come.
    */
   public async fetchVideos (parts?: PlaylistParts) {
     if (!(this.data.contentDetails)) {

@@ -18,7 +18,7 @@ describe('Searching', () => {
 
   before(async () => {
     defaultPlaylistsSearch = await youtube.searchPlaylists('music')
-    defaultChannelsSearch = await youtube.searchChannels('rick astley')
+    defaultChannelsSearch = await youtube.searchChannels('rtgame')
     defaultVideosSearch = await youtube.searchVideos('never gonna give you up')
     videoChannelSearch = await youtube.search('vevo', { searchFilters: { types: [ Video, Channel ] } })
 
@@ -56,17 +56,22 @@ describe('Searching', () => {
   it('should set what it can with search results', async () => {
     const channel = defaultChannelsSearch.items[0]
 
-    expect(channel.id).to.be.oneOf([ 'UCwZEU0wAwIyZb4x5G_KJp2w', 'UCuAXFkgsw1L7xaCfnd5JJOw' ])
+    expect(channel.id).to.be.oneOf([ 'UCRC6cNamj9tYAO6h_RXd5xA', 'UCyUmevTef0H-pFaspmfTb3Q' ])
     expect(channel.country).to.equal(undefined)
     expect(channel.language).to.equal(undefined)
     expect(channel.views).to.equal(undefined)
   })
 
   it('should be able to fetch videos of a channel search result', async () => {
-    const channel = defaultChannelsSearch.items[0]
-    const videos = await channel.fetchVideos([ 'id' ])
+    let index = 0
+    let channel = defaultChannelsSearch.items[index]
+    let result: Video[] | null = null
+    while (!result) {
+      result = await channel.fetchVideos([ 'id' ]).catch((error) => console.error(`Error while fetching search result channels, trying again: ${error.message}`))
+      index++
+    }
 
-    expect(videos).to.be.an.instanceOf(Playlist)
+    expect(result).to.be.an.instanceOf(Playlist)
   })
 
   it('should work with multiple types by default', async () => {
