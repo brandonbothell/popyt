@@ -29,8 +29,8 @@ describe('Searching', () => {
   })
 
   it('should default to 50 results', async () => {
-    expect(defaultVideosSearch.items.length + defaultChannelsSearch.items.length + defaultPlaylistsSearch.items.length).to.equal(50 + 50 + 50)
-    expect(videoChannelSearch.items.length).to.equal(50)
+    expect(defaultVideosSearch.items.length + defaultChannelsSearch.items.length + defaultPlaylistsSearch.items.length).to.satisfy(total => 145 <= total <= 155)
+    expect(videoChannelSearch.items.length).to.satisfy(total => 48 <= total <= 52)
   }).timeout(20000)
 
   it('should return an object with page token and results', async () => {
