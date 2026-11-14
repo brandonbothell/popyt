@@ -3420,12 +3420,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@googleapis/youtube@npm:40.0.2":
-  version: 40.0.2
-  resolution: "@googleapis/youtube@npm:40.0.2"
+"@googleapis/youtube@npm:40.1.0":
+  version: 40.1.0
+  resolution: "@googleapis/youtube@npm:40.1.0"
   dependencies:
     googleapis-common: "npm:^9.0.0"
-  checksum: 10/4d058cd96c23aca9f9a24a03ca6e090431a572aefbd419e0cb3330609d347cde52d974497d74ad4532d0c951c0d9eb30994741a74ec1b85acbe14efe5092f3ba
+  checksum: 10/a0205b79177acac37b759a84eb0f9900266b6d9f475e6708e24e9e56393ddcabb055b24d06ea2aebbc82699b4bb2357c51ae191409e2996affdd5a3295c5a9c5
   languageName: node
   linkType: hard
 
@@ -13176,7 +13176,7 @@ __metadata:
     "@eslint/compat": "npm:2.1.1"
     "@eslint/eslintrc": "npm:3.3.7"
     "@eslint/js": "npm:10.0.1"
-    "@googleapis/youtube": "npm:40.0.2"
+    "@googleapis/youtube": "npm:40.1.0"
     "@istanbuljs/nyc-config-typescript": "npm:1.0.2"
     "@stylistic/eslint-plugin": "npm:5.10.0"
     "@types/chai": "npm:5.2.3"
