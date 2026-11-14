@@ -37,7 +37,7 @@ const RAW_RUNTIME_STATE =
           ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.1"],\
           ["@eslint/eslintrc", "npm:3.3.7"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
-          ["@googleapis/youtube", "npm:40.0.2"],\
+          ["@googleapis/youtube", "npm:40.1.0"],\
           ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
           ["@stylistic/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:5.10.0"],\
           ["@types/chai", "npm:5.2.3"],\
@@ -5942,10 +5942,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@googleapis/youtube", [\
-      ["npm:40.0.2", {\
-        "packageLocation": "./.yarn/cache/@googleapis-youtube-npm-40.0.2-d6057991ae-4d058cd96c.zip/node_modules/@googleapis/youtube/",\
+      ["npm:40.1.0", {\
+        "packageLocation": "./.yarn/cache/@googleapis-youtube-npm-40.1.0-c30c3f6402-a0205b7917.zip/node_modules/@googleapis/youtube/",\
         "packageDependencies": [\
-          ["@googleapis/youtube", "npm:40.0.2"],\
+          ["@googleapis/youtube", "npm:40.1.0"],\
           ["googleapis-common", "npm:9.1.0"]\
         ],\
         "linkType": "HARD"\
@@ -17873,7 +17873,7 @@ const RAW_RUNTIME_STATE =
           ["@eslint/compat", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:2.1.1"],\
           ["@eslint/eslintrc", "npm:3.3.7"],\
           ["@eslint/js", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:10.0.1"],\
-          ["@googleapis/youtube", "npm:40.0.2"],\
+          ["@googleapis/youtube", "npm:40.1.0"],\
           ["@istanbuljs/nyc-config-typescript", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:1.0.2"],\
           ["@stylistic/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:5.10.0"],\
           ["@types/chai", "npm:5.2.3"],\
