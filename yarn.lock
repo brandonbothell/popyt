@@ -13232,7 +13232,7 @@ __metadata:
     source-map-support: "npm:0.5.21"
     ts-node: "npm:10.9.2"
     typescript: "npm:6.0.3"
-    undici-types: "npm:8.12.4"
+    undici-types: "npm:8.13.1"
   languageName: unknown
   linkType: soft
 
@@ -16380,10 +16380,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:8.12.4":
-  version: 8.12.4
-  resolution: "undici-types@npm:8.12.4"
-  checksum: 10/f8976facdd9b41217ba9be1c499d9363ec6954cb99b282f9b1479db6128a1833e601e3e744219f9a6bd142673e70c38f3ad9d96465f1af96c4d2ad664a96e098
+"undici-types@npm:8.13.1":
+  version: 8.13.1
+  resolution: "undici-types@npm:8.13.1"
+  checksum: 10/0955cc2bdd8f7ba103ece94969349b9468b563c58657789ba2cccc594407878053ab67029ed465a62b78595aca1554221ae60b410a41ce2610afa48055feea92
   languageName: node
   linkType: hard
 
