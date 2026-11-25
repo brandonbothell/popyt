@@ -8173,9 +8173,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:65.5.2":
-  version: 65.5.2
-  resolution: "eslint-plugin-jsdoc@npm:65.5.2"
+"eslint-plugin-jsdoc@npm:65.5.3":
+  version: 65.5.3
+  resolution: "eslint-plugin-jsdoc@npm:65.5.3"
   dependencies:
     "@es-joy/escodegen": "npm:^5.0.1"
     "@es-joy/jsdoccomment": "npm:~1.2.0"
@@ -8199,7 +8199,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/bc77a59ac0d3a9e0275333408f1c7571ded66e4b25d978d7c268bfa1121592f5906ebe41d6eec48a46233541dbbc4763a0e075434a34b9a579defb1a78e820b6
+  checksum: 10/97e421772b235f7cd01c17dabc68ff1bcb08ac48976a841e9acb0bdd3ec95c952ac3f98fed394e43a737243adaff25f32d6c2833100d9e740cdcc8bbf273e38a
   languageName: node
   linkType: hard
 
@@ -13220,7 +13220,7 @@ __metadata:
     dotenv: "npm:18.0.10"
     eslint: "npm:10.15.0"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jsdoc: "npm:65.5.2"
+    eslint-plugin-jsdoc: "npm:65.5.3"
     eslint-plugin-unused-imports: "npm:4.4.1"
     globals: "npm:17.14.0"
     jiti: "npm:2.7.0"
