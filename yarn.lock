@@ -3241,16 +3241,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@es-joy/jsdoccomment@npm:~1.2.0":
-  version: 1.2.0
-  resolution: "@es-joy/jsdoccomment@npm:1.2.0"
+"@es-joy/jsdoccomment@npm:~1.2.1":
+  version: 1.2.1
+  resolution: "@es-joy/jsdoccomment@npm:1.2.1"
   dependencies:
     "@types/estree": "npm:^1.0.10"
     "@typescript-eslint/types": "npm:^8.72.2"
     comment-parser: "npm:1.4.9"
     esquery: "npm:^1.7.0"
     jsdoc-type-pratt-parser: "npm:~9.5.0"
-  checksum: 10/7917edc2ec197f9cebfe195a4d5e1b401db239760455abc991c5d10aee38ed7ff87f9d9fee4f1d3e57ddcc1b2f06ead17072db2edb956ce96584ca29b7d591f8
+  checksum: 10/9fe1ac8a3604431a1c2bea7a53f7aae12815a42e58a27c4a1c78479c949e883d70335be58fd485d86abae82a357368386929932e627f36f27ddb24c694e57539
   languageName: node
   linkType: hard
 
@@ -8173,12 +8173,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:65.5.3":
-  version: 65.5.3
-  resolution: "eslint-plugin-jsdoc@npm:65.5.3"
+"eslint-plugin-jsdoc@npm:65.5.5":
+  version: 65.5.5
+  resolution: "eslint-plugin-jsdoc@npm:65.5.5"
   dependencies:
     "@es-joy/escodegen": "npm:^5.0.1"
-    "@es-joy/jsdoccomment": "npm:~1.2.0"
+    "@es-joy/jsdoccomment": "npm:~1.2.1"
     "@es-joy/resolve.exports": "npm:1.2.0"
     "@typescript-eslint/utils": "npm:^8.72.2"
     are-docs-informative: "npm:^0.1.1"
@@ -8199,7 +8199,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/97e421772b235f7cd01c17dabc68ff1bcb08ac48976a841e9acb0bdd3ec95c952ac3f98fed394e43a737243adaff25f32d6c2833100d9e740cdcc8bbf273e38a
+  checksum: 10/5f75103407c9c427200143539ff93fb5b0066425eede5d55c8d15f1bec3b7f1e69103a46c233290354bbc2a73085959cd27c39cbfa337acbd6104b4569982aa3
   languageName: node
   linkType: hard
 
@@ -13220,7 +13220,7 @@ __metadata:
     dotenv: "npm:18.0.10"
     eslint: "npm:10.15.0"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jsdoc: "npm:65.5.3"
+    eslint-plugin-jsdoc: "npm:65.5.5"
     eslint-plugin-unused-imports: "npm:4.4.1"
     globals: "npm:17.14.0"
     jiti: "npm:2.7.0"
