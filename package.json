@@ -72,7 +72,7 @@
     "@types/merge2": "1.4.4",
     "@types/mocha": "10.0.10",
     "@types/node": "25.6.0",
-    "@types/react": "19.3.1",
+    "@types/react": "19.3.3",
     "@typescript-eslint/eslint-plugin": "8.74.0",
     "@typescript-eslint/parser": "8.74.0",
     "chai": "6.3.0",
