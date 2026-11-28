@@ -45,7 +45,7 @@ const RAW_RUNTIME_STATE =
           ["@types/gulp-sourcemaps", "npm:0.0.38"],\
           ["@types/merge2", "npm:1.4.4"],\
           ["@types/mocha", "npm:10.0.10"],\
-          ["@types/node", "npm:25.6.0"],\
+          ["@types/node", "npm:26.6.11"],\
           ["@types/react", "npm:19.3.3"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.74.0"],\
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.74.0"],\
@@ -8092,6 +8092,14 @@ const RAW_RUNTIME_STATE =
           ["undici-types", "npm:7.19.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:26.6.11", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-26.6.11-4388d1c6bb-684887f6f6.zip/node_modules/@types/node/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:26.6.11"],\
+          ["undici-types", "npm:8.9.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@types/picomatch", [\
@@ -11627,7 +11635,7 @@ const RAW_RUNTIME_STATE =
           ["@docusaurus/tsconfig", "npm:3.10.2"],\
           ["@docusaurus/types", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.10.2"],\
           ["@mdx-js/react", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:3.1.1"],\
-          ["@types/node", "npm:25.6.0"],\
+          ["@types/node", "npm:26.6.11"],\
           ["@types/react", "npm:19.3.3"],\
           ["@types/react-dom", "virtual:a670db841204981e24bcd0b150c2109d9b9e2a900edb2a5e8c3b2babe16ddbad2b71f907b8b6cf8d6f4c6c77fa3f2fe6f08431995616fca28b79db094c2ee23d#npm:19.3.0"],\
           ["clsx", "npm:2.1.1"],\
@@ -17906,7 +17914,7 @@ const RAW_RUNTIME_STATE =
           ["@types/gulp-sourcemaps", "npm:0.0.38"],\
           ["@types/merge2", "npm:1.4.4"],\
           ["@types/mocha", "npm:10.0.10"],\
-          ["@types/node", "npm:25.6.0"],\
+          ["@types/node", "npm:26.6.11"],\
           ["@types/react", "npm:19.3.3"],\
           ["@typescript-eslint/eslint-plugin", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.74.0"],\
           ["@typescript-eslint/parser", "virtual:af0fe2b029c109ee83b704965f2ae51002f22a61f8eec26966472959aa3501d5386aaf75824205e3c08255249fca4763c12c942991ba0a945b06d028d4866e8e#npm:8.74.0"],\
@@ -22069,7 +22077,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.11"],\
           ["@tsconfig/node14", "npm:1.0.3"],\
           ["@tsconfig/node16", "npm:1.0.4"],\
-          ["@types/node", "npm:25.6.0"],\
+          ["@types/node", "npm:26.6.11"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
@@ -22395,6 +22403,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/undici-types-npm-8.13.1-7fa475f90e-0955cc2bdd.zip/node_modules/undici-types/",\
         "packageDependencies": [\
           ["undici-types", "npm:8.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.9.0", {\
+        "packageLocation": "./.yarn/cache/undici-types-npm-8.9.0-c5953f392d-8785591929.zip/node_modules/undici-types/",\
+        "packageDependencies": [\
+          ["undici-types", "npm:8.9.0"]\
         ],\
         "linkType": "HARD"\
       }]\
