@@ -4883,12 +4883,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:25.6.0":
+"@types/node@npm:*":
   version: 25.6.0
   resolution: "@types/node@npm:25.6.0"
   dependencies:
     undici-types: "npm:~7.19.0"
   checksum: 10/99b18690a4be55904cbf8f6a6ac8eed5ec5b8d791fdd8ee2ae598b46c0fa9b83cda7b70dd7f00dbfb18189dcfc67648fdc7fdd3fcced2619a5a6453d9aec107d
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:26.6.11":
+  version: 26.6.11
+  resolution: "@types/node@npm:26.6.11"
+  dependencies:
+    undici-types: "npm:~8.9.0"
+  checksum: 10/684887f6f6d1fec32605d9707a11614ededc482b270708d7da0aad6ef2a8641d3aad52c060178450373f88d770743cd43f0d43f9d977da6813b020639e800f58
   languageName: node
   linkType: hard
 
@@ -7664,7 +7673,7 @@ __metadata:
     "@docusaurus/tsconfig": "npm:3.10.2"
     "@docusaurus/types": "npm:3.10.2"
     "@mdx-js/react": "npm:3.1.1"
-    "@types/node": "npm:25.6.0"
+    "@types/node": "npm:26.6.11"
     "@types/react": "npm:19.3.3"
     "@types/react-dom": "npm:19.3.0"
     clsx: "npm:2.1.1"
@@ -13211,7 +13220,7 @@ __metadata:
     "@types/gulp-sourcemaps": "npm:0.0.38"
     "@types/merge2": "npm:1.4.4"
     "@types/mocha": "npm:10.0.10"
-    "@types/node": "npm:25.6.0"
+    "@types/node": "npm:26.6.11"
     "@types/react": "npm:19.3.3"
     "@typescript-eslint/eslint-plugin": "npm:8.74.0"
     "@typescript-eslint/parser": "npm:8.74.0"
@@ -16391,6 +16400,13 @@ __metadata:
   version: 7.19.2
   resolution: "undici-types@npm:7.19.2"
   checksum: 10/05c34c63444c8caca7137f122b29ed50c1d7d05d1e0b2337f423575d3264054c4a0139e47e82e65723d09b97fcad6d8b0223b3550430a9006cc00e72a1e035bf
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~8.9.0":
+  version: 8.9.0
+  resolution: "undici-types@npm:8.9.0"
+  checksum: 10/8785591929de2b71d281c684e915c4a8c41becc225adbf42a3e89148f8b384724a21533494c30a1cbb85b4cbccd088d020788ff4f2d605013eb2863cd47a1639
   languageName: node
   linkType: hard
 
